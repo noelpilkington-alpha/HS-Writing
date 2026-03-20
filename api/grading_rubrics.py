@@ -367,6 +367,662 @@ RUBRICS = {
         ],
         "min_words": 250,
     },
+
+    # ===================== L06: You Already Make Choices =====================
+    "L06_independent_choice_audit": {
+        "task_type": "choice_audit",
+        "lesson": "L06",
+        "description": "Identify 3 specific choices an author makes in a passage and explain what each choice does",
+        "criteria": [
+            {
+                "id": "names_specific_choices",
+                "name": "Names specific authorial choices",
+                "description": "Identifies at least 2 specific choices the author makes (e.g., word choice, sentence structure, opening strategy, tone) — not vague labels like 'good writing'.",
+                "weight": 2,
+            },
+            {
+                "id": "explains_what_choice_does",
+                "name": "Explains what each choice does",
+                "description": "For each choice identified, the student explains what the choice accomplishes — not just that it exists, but what effect it has.",
+                "weight": 2,
+            },
+            {
+                "id": "uses_m1_framework",
+                "name": "Treats writing as deliberate choices",
+                "description": "The response treats the author's writing as intentional decisions (M1: Everything Is a Choice), not as accidental or automatic.",
+                "weight": 1,
+            },
+        ],
+        "common_pitfalls": [
+            "Naming vague features ('good vocabulary') instead of specific choices ('uses the word tyrant instead of ruler')",
+            "Identifying choices but not explaining what they accomplish",
+            "Treating the text as accidental rather than as a set of deliberate decisions",
+        ],
+        "min_words": 40,
+    },
+
+    # ===================== L07: Close Reading Protocol =====================
+    "L07_independent_annotation": {
+        "task_type": "close_reading",
+        "lesson": "L07",
+        "description": "Apply the close reading protocol to a passage — identify patterns and explain what they reveal",
+        "criteria": [
+            {
+                "id": "identifies_patterns",
+                "name": "Identifies specific textual patterns",
+                "description": "Names at least 2 specific patterns in the text (repeated words, shifts in tone, structural choices, imagery clusters).",
+                "weight": 2,
+            },
+            {
+                "id": "explains_significance",
+                "name": "Explains why patterns matter",
+                "description": "Moves beyond identification to explain what the patterns reveal about the author's purpose or argument.",
+                "weight": 2,
+            },
+            {
+                "id": "uses_textual_evidence",
+                "name": "Cites specific words or phrases",
+                "description": "References specific words, phrases, or sentences from the text — not just general impressions.",
+                "weight": 1,
+            },
+        ],
+        "common_pitfalls": [
+            "Listing observations without explaining their significance",
+            "Making claims about the text without pointing to specific evidence",
+            "Identifying only one pattern when multiple are present",
+        ],
+        "min_words": 40,
+    },
+
+    # ===================== L08: Structure-Function-Effect =====================
+    "L08_independent_sfe": {
+        "task_type": "sfe_analysis",
+        "lesson": "L08",
+        "description": "Write S-F-E analysis sentences identifying a structure, explaining its function, and connecting to its effect",
+        "criteria": [
+            {
+                "id": "structure_named",
+                "name": "Names a specific structure",
+                "description": "Identifies a specific rhetorical or literary choice (diction, metaphor, repetition, sentence structure, etc.) with a textual example.",
+                "weight": 1,
+            },
+            {
+                "id": "function_explained",
+                "name": "Explains the function",
+                "description": "Explains WHAT the structure does — its purpose or role in the argument (e.g., 'creates contrast', 'builds credibility', 'signals a shift').",
+                "weight": 2,
+            },
+            {
+                "id": "effect_reached",
+                "name": "Reaches Effect",
+                "description": "Connects to the EFFECT on the reader or the argument as a whole — not just what it does, but why it matters or how it shapes the reader's response.",
+                "weight": 2,
+            },
+        ],
+        "common_pitfalls": [
+            "Stopping at Structure (naming the device without explaining function or effect)",
+            "Reaching Function but not Effect ('The metaphor compares X to Y' without explaining why that matters)",
+            "Vague effect claims ('This is effective' without specifying how or why)",
+            "Confusing summary of what the author says with analysis of how the author says it",
+        ],
+        "min_words": 30,
+    },
+
+    # ===================== L09: Analysis vs. Summary =====================
+    "L09_independent_analysis": {
+        "task_type": "analysis_paragraph",
+        "lesson": "L09",
+        "description": "Write an analytical paragraph that reaches Function and Effect, avoiding summary",
+        "criteria": [
+            {
+                "id": "claim_about_how",
+                "name": "Makes a claim about HOW, not just WHAT",
+                "description": "The paragraph's main claim is about how the author achieves something (rhetorical strategy), not just what the author says (content summary).",
+                "weight": 2,
+            },
+            {
+                "id": "reaches_function",
+                "name": "Reaches Function on evidence",
+                "description": "At least one piece of evidence is explained at the Function level — what the choice does in context.",
+                "weight": 2,
+            },
+            {
+                "id": "reaches_effect",
+                "name": "Reaches Effect on at least one piece of evidence",
+                "description": "At least one piece of evidence is pushed to Effect — why the choice matters for the reader or the argument.",
+                "weight": 2,
+            },
+            {
+                "id": "avoids_summary",
+                "name": "Avoids pure summary",
+                "description": "The paragraph does not simply retell what happens in the text. Every sentence serves the analytical claim.",
+                "weight": 1,
+            },
+        ],
+        "common_pitfalls": [
+            "Writing summary disguised as analysis ('The author says... then the author says...')",
+            "Stopping at Function and never reaching Effect",
+            "Making Effect claims that are vague ('This is powerful') instead of specific",
+            "No textual evidence — claims without quotes or references",
+        ],
+        "min_words": 60,
+    },
+
+    # ===================== L10: S-F-E Fluency Drill =====================
+    "L10_independent_sfe_drill": {
+        "task_type": "sfe_analysis",
+        "lesson": "L10",
+        "description": "Rapid S-F-E analysis on multiple passages — must reach Effect consistently",
+        "criteria": [
+            {
+                "id": "structure_specific",
+                "name": "Names specific structures with evidence",
+                "description": "Each analysis identifies a specific choice and quotes or references the relevant text.",
+                "weight": 1,
+            },
+            {
+                "id": "function_clear",
+                "name": "Function is clearly stated",
+                "description": "Explains what the choice does in context — not just labeling the device.",
+                "weight": 2,
+            },
+            {
+                "id": "effect_consistent",
+                "name": "Reaches Effect consistently",
+                "description": "Pushes to Effect (reader impact / argument significance) on at least half of the analyses.",
+                "weight": 2,
+            },
+        ],
+        "common_pitfalls": [
+            "Rushing and only reaching Structure (naming devices without analysis)",
+            "Repetitive effect claims ('This is effective' on every item)",
+            "Confusing the author's content with the author's strategy",
+        ],
+        "min_words": 30,
+    },
+
+    # ===================== L11: Thesis Development =====================
+    "L11_independent_thesis": {
+        "task_type": "thesis_statement",
+        "lesson": "L11",
+        "description": "Write a text-based analytical thesis that is arguable, specific, and significant",
+        "criteria": [
+            {
+                "id": "arguable",
+                "name": "Thesis is arguable",
+                "description": "A reasonable reader could disagree with this thesis. It makes a claim about HOW the text works, not just WHAT it says.",
+                "weight": 2,
+            },
+            {
+                "id": "specific",
+                "name": "Thesis is specific",
+                "description": "Names particular rhetorical choices, strategies, or techniques — not vague claims like 'uses many techniques'.",
+                "weight": 2,
+            },
+            {
+                "id": "significant",
+                "name": "Thesis is significant",
+                "description": "The claim matters — it tells us something important about how the text works, not something obvious.",
+                "weight": 1,
+            },
+            {
+                "id": "about_rhetoric_not_content",
+                "name": "About rhetoric, not content",
+                "description": "The thesis is about the author's choices and strategies, not a summary of the author's argument or topic.",
+                "weight": 1,
+            },
+        ],
+        "common_pitfalls": [
+            "Thesis is about what the author says, not how they say it",
+            "Too vague: 'The author uses rhetorical strategies to persuade the reader'",
+            "Not arguable: merely stating a fact about the text ('Douglass gives a speech about slavery')",
+            "Too many strategies listed without focus — tries to cover everything",
+        ],
+        "min_words": 15,
+    },
+
+    # ===================== L12: Essay Structures =====================
+    "L12_independent_outline": {
+        "task_type": "essay_outline",
+        "lesson": "L12",
+        "description": "Choose and outline an essay structure (Classical, Rogerian, etc.) for a given passage",
+        "criteria": [
+            {
+                "id": "structure_chosen_justified",
+                "name": "Structure choice is justified",
+                "description": "The student names a specific structure (Classical, Rogerian, Problem-Solution, etc.) and explains WHY it fits this passage and argument.",
+                "weight": 2,
+            },
+            {
+                "id": "outline_complete",
+                "name": "Outline includes all required sections",
+                "description": "The outline has an introduction with thesis, body paragraphs with planned evidence, and a conclusion. No sections are missing.",
+                "weight": 2,
+            },
+            {
+                "id": "evidence_planned",
+                "name": "Evidence is planned for each body paragraph",
+                "description": "Each body paragraph in the outline names the specific quote or textual evidence that will be used.",
+                "weight": 1,
+            },
+        ],
+        "common_pitfalls": [
+            "Choosing a structure without explaining why it fits",
+            "Outline is too vague ('Body 1: talk about metaphor') — needs specific quotes planned",
+            "Missing the conclusion or counterargument section",
+            "Choosing a structure that doesn't match the argument being made",
+        ],
+        "min_words": 40,
+    },
+
+    # ===================== L13: Architecture and Evidence =====================
+    "L13_independent_plan": {
+        "task_type": "essay_plan",
+        "lesson": "L13",
+        "description": "Build a full essay architecture: thesis + evidence map with quotes assigned to paragraphs",
+        "criteria": [
+            {
+                "id": "thesis_present",
+                "name": "Has a clear analytical thesis",
+                "description": "The plan includes a thesis that is arguable, specific, and about rhetorical choices.",
+                "weight": 1,
+            },
+            {
+                "id": "evidence_mapped",
+                "name": "Evidence is mapped to paragraphs",
+                "description": "At least 3 pieces of textual evidence (quotes) are assigned to specific body paragraphs.",
+                "weight": 2,
+            },
+            {
+                "id": "sfe_planned",
+                "name": "S-F-E analysis is sketched for each quote",
+                "description": "For each piece of evidence, the plan includes at least a note about what Function or Effect will be argued.",
+                "weight": 2,
+            },
+        ],
+        "common_pitfalls": [
+            "Evidence selected but not assigned to specific paragraphs",
+            "Quotes chosen that don't connect to the thesis",
+            "No notes about what the analysis will say — just quotes with no planned commentary",
+            "Only 1-2 quotes when 3+ are needed",
+        ],
+        "min_words": 40,
+    },
+
+    # ===================== L14: Body Paragraph Sprint =====================
+    "L14_independent_paragraph": {
+        "task_type": "analytical_body_paragraph",
+        "lesson": "L14",
+        "description": "Write a timed body paragraph with embedded evidence and S-F-E commentary",
+        "criteria": [
+            {
+                "id": "topic_sentence_claim",
+                "name": "Topic sentence makes an analytical claim",
+                "description": "Opens with a claim about a rhetorical choice — not a summary statement.",
+                "weight": 1,
+            },
+            {
+                "id": "embedded_evidence",
+                "name": "Evidence is embedded, not floating",
+                "description": "Quotes are woven into the student's own sentences, not dropped in as standalone sentences.",
+                "weight": 2,
+            },
+            {
+                "id": "sfe_chain_complete",
+                "name": "S-F-E chain is complete",
+                "description": "Commentary moves from naming the Structure through Function to Effect — does not stop at identification.",
+                "weight": 2,
+            },
+            {
+                "id": "reaches_effect",
+                "name": "Reaches Effect",
+                "description": "At least one piece of evidence is analyzed all the way to Effect (reader/argument impact).",
+                "weight": 2,
+            },
+            {
+                "id": "concluding_tie",
+                "name": "Ties back to thesis or larger argument",
+                "description": "The paragraph ends by connecting back to the essay's thesis or the 'so what' of the analysis.",
+                "weight": 1,
+            },
+        ],
+        "common_pitfalls": [
+            "Floating quotes — quote appears as its own sentence without integration",
+            "Stopping at Function and never reaching Effect",
+            "Topic sentence that summarizes the text instead of making an analytical claim",
+            "No tie-back — paragraph ends after the quote or after Function",
+        ],
+        "min_words": 80,
+    },
+
+    # ===================== L15: Analysis vs. Summary Calibration =====================
+    "L15_independent_calibration": {
+        "task_type": "calibration_scoring",
+        "lesson": "L15",
+        "description": "Score sample paragraphs for analysis depth and justify the scores",
+        "criteria": [
+            {
+                "id": "score_accurate",
+                "name": "Score matches the rubric level",
+                "description": "The student's assigned score aligns with the actual depth of the sample (within 1 point of the model score).",
+                "weight": 2,
+            },
+            {
+                "id": "justification_specific",
+                "name": "Justification references specific evidence",
+                "description": "The explanation points to specific sentences or phrases in the sample that justify the score — not vague impressions.",
+                "weight": 2,
+            },
+            {
+                "id": "uses_sfe_test",
+                "name": "Applies the S-F-E test",
+                "description": "The justification explicitly uses S-F-E levels (Structure, Function, Effect) to explain why the sample earns that score.",
+                "weight": 1,
+            },
+        ],
+        "common_pitfalls": [
+            "Scoring too generously — giving high scores to paragraphs that stop at Function",
+            "Justification is vague ('This is good analysis') without pointing to specific evidence",
+            "Not using S-F-E language in the justification",
+            "Confusing length with depth — long paragraphs aren't automatically better analysis",
+        ],
+        "min_words": 30,
+    },
+
+    # ===================== L16: Three-Pass Revision =====================
+    "L16_independent_revision": {
+        "task_type": "revision",
+        "lesson": "L16",
+        "description": "Apply the Three-Pass Revision Protocol to a body paragraph and explain which pass helped most",
+        "criteria": [
+            {
+                "id": "unity_applied",
+                "name": "Unity pass evidence",
+                "description": "The revised paragraph shows evidence that drifting or off-topic sentences were identified and removed or moved.",
+                "weight": 1,
+            },
+            {
+                "id": "coherence_applied",
+                "name": "Coherence pass evidence",
+                "description": "The revised paragraph has clear transitions between ideas and logical flow within the paragraph.",
+                "weight": 1,
+            },
+            {
+                "id": "concision_applied",
+                "name": "Concision pass evidence",
+                "description": "The revised paragraph is tighter than the original — deadwood phrases removed, passive voice fixed where appropriate.",
+                "weight": 1,
+            },
+            {
+                "id": "diagnosis_specific",
+                "name": "Self-diagnosis is specific",
+                "description": "The student identifies which pass helped most and explains what it reveals about their writing habits.",
+                "weight": 2,
+            },
+        ],
+        "common_pitfalls": [
+            "Claiming all three passes helped equally (rare — one usually helps most)",
+            "Making only surface-level changes (fixing commas instead of cutting drifting sentences)",
+            "Self-diagnosis is vague ('I need to revise more') instead of specific",
+        ],
+        "min_words": 80,
+    },
+
+    # ===================== L17: Style — Rhythm, Parallelism & Sentence Combining =====================
+    "L17_independent_parallelism": {
+        "task_type": "sentence_revision",
+        "lesson": "L17",
+        "description": "Fix broken parallelism in a sentence",
+        "criteria": [
+            {
+                "id": "parallelism_fixed",
+                "name": "All items use the same grammatical form",
+                "description": "All items in the series use the same grammatical structure (all gerunds, all infinitives, all noun phrases, etc.).",
+                "weight": 2,
+            },
+            {
+                "id": "meaning_preserved",
+                "name": "Original meaning is preserved",
+                "description": "The revision fixes the structure without changing the meaning of the sentence.",
+                "weight": 1,
+            },
+        ],
+        "common_pitfalls": [
+            "Fixing the form of one item but not all of them",
+            "Changing the meaning while fixing the structure",
+            "Creating a grammatically correct but awkward-sounding sentence",
+        ],
+        "min_words": 10,
+    },
+
+    "L17_independent_combining": {
+        "task_type": "sentence_combining",
+        "lesson": "L17",
+        "description": "Combine sentences using subordination and/or coordination",
+        "criteria": [
+            {
+                "id": "subordination_used",
+                "name": "Uses at least one subordinate clause",
+                "description": "The combined sentence uses a subordinating conjunction (when, because, although, etc.) to show the relationship between ideas.",
+                "weight": 2,
+            },
+            {
+                "id": "relationship_clear",
+                "name": "Relationship between ideas is clear",
+                "description": "The combination clarifies which idea is more important or how the ideas relate (cause-effect, contrast, concession).",
+                "weight": 2,
+            },
+            {
+                "id": "no_run_on",
+                "name": "No run-on or comma splice",
+                "description": "The combined sentence is grammatically correct — no fused sentences or comma splices.",
+                "weight": 1,
+            },
+        ],
+        "common_pitfalls": [
+            "Joining with 'and' only (coordination when subordination would show the relationship better)",
+            "Creating a run-on by combining without proper punctuation",
+            "Losing one of the original ideas in the combination",
+        ],
+        "min_words": 15,
+    },
+
+    "L17_independent_rhythm": {
+        "task_type": "rhythm_imitation",
+        "lesson": "L17",
+        "description": "Write three sentences following a LONG-SHORT-LONG rhythm pattern analyzing an author's choice",
+        "criteria": [
+            {
+                "id": "long_short_long_pattern",
+                "name": "Follows LONG-SHORT-LONG pattern",
+                "description": "First sentence is 20+ words, second is 5 words or fewer, third is 20+ words.",
+                "weight": 2,
+            },
+            {
+                "id": "analytical_content",
+                "name": "Content is analytical",
+                "description": "The three sentences analyze an author's choice — not just describe or summarize.",
+                "weight": 2,
+            },
+            {
+                "id": "short_sentence_impact",
+                "name": "Short sentence creates impact",
+                "description": "The short sentence serves a purpose (emphasis, contrast, surprise) — not just an arbitrary cutoff.",
+                "weight": 1,
+            },
+        ],
+        "common_pitfalls": [
+            "All three sentences are roughly the same length (no actual variation)",
+            "Short sentence is just a filler ('This is true') instead of purposeful",
+            "Content is summary, not analysis",
+        ],
+        "min_words": 40,
+    },
+
+    # ===================== L18: Pre-Gate Practice Essay =====================
+    "L18_practice_essay": {
+        "task_type": "analytical_essay",
+        "lesson": "L18",
+        "description": "Write a timed analytical essay on Red Cloud's Cooper Union speech",
+        "criteria": [
+            {
+                "id": "arguable_thesis",
+                "name": "Arguable thesis about rhetorical strategy",
+                "description": "Contains a thesis that makes a specific, arguable claim about Red Cloud's rhetorical choices — not just what he says.",
+                "weight": 2,
+            },
+            {
+                "id": "embedded_evidence",
+                "name": "At least 3 embedded quotes",
+                "description": "Uses at least 3 quotes from the passage, embedded into the student's own sentences (not floating).",
+                "weight": 2,
+            },
+            {
+                "id": "sfe_commentary",
+                "name": "Commentary reaches Effect",
+                "description": "At least 2 pieces of evidence are analyzed through the S-F-E chain, reaching Effect (reader/argument impact).",
+                "weight": 2,
+            },
+            {
+                "id": "organized_structure",
+                "name": "Clear essay structure",
+                "description": "Has a recognizable introduction (with thesis), at least 2 body paragraphs, and a conclusion.",
+                "weight": 1,
+            },
+            {
+                "id": "conventions_clear",
+                "name": "Conventions do not impede meaning",
+                "description": "Writing is mostly clear — grammar and spelling errors do not prevent the reader from understanding the argument.",
+                "weight": 1,
+            },
+        ],
+        "common_pitfalls": [
+            "Thesis is about what Red Cloud says, not how he says it",
+            "Floating quotes without integration into sentences",
+            "Commentary stops at Function — never reaches Effect",
+            "Essay is mostly summary of the speech rather than analysis of rhetorical choices",
+            "No conclusion or conclusion that just repeats the introduction",
+        ],
+        "min_words": 250,
+    },
+
+    # ===================== L19: Voice + Final Revision =====================
+    "L19_supported_two_voices": {
+        "task_type": "voice_exercise",
+        "lesson": "L19",
+        "description": "Write the same analytical claim in two different voices (spare/direct vs. elaborate/layered)",
+        "criteria": [
+            {
+                "id": "two_versions_present",
+                "name": "Two distinct versions are written",
+                "description": "The student writes two versions of the same claim — one spare/direct and one elaborate/layered.",
+                "weight": 1,
+            },
+            {
+                "id": "voices_distinguishable",
+                "name": "Voices are clearly different",
+                "description": "The two versions sound noticeably different in sentence length, diction, and tone — not just minor word swaps.",
+                "weight": 2,
+            },
+            {
+                "id": "both_analytical",
+                "name": "Both versions are analytical",
+                "description": "Both versions make analytical claims about the text — neither one drifts into summary.",
+                "weight": 2,
+            },
+        ],
+        "common_pitfalls": [
+            "Two versions that sound nearly identical (only changed a few words)",
+            "One version is analytical but the other is just summary",
+            "Confusing 'elaborate' with 'wordy' — adding filler instead of nuance",
+        ],
+        "min_words": 80,
+    },
+
+    "L19_independent_revision": {
+        "task_type": "voice_revision",
+        "lesson": "L19",
+        "description": "Revise a paragraph from L18 to strengthen voice",
+        "criteria": [
+            {
+                "id": "sentence_length_varied",
+                "name": "At least 3 different sentence lengths",
+                "description": "The revised paragraph contains short, medium, and long sentences — not all the same length.",
+                "weight": 1,
+            },
+            {
+                "id": "strong_verbs",
+                "name": "At least one weak verb replaced",
+                "description": "At least one instance of 'is', 'was', or 'has' replaced with a stronger action verb.",
+                "weight": 1,
+            },
+            {
+                "id": "filler_cut",
+                "name": "At least one filler phrase removed",
+                "description": "At least one unnecessary phrase was cut without losing meaning.",
+                "weight": 1,
+            },
+            {
+                "id": "voice_recognizable",
+                "name": "Voice is recognizable and consistent",
+                "description": "The paragraph sounds like a specific person — consistent tone, not generic student writing.",
+                "weight": 2,
+            },
+        ],
+        "common_pitfalls": [
+            "Making only surface changes (fixing commas) instead of voice changes",
+            "Trying to sound 'smart' instead of authentic — voice should feel natural",
+            "All sentences still the same length after revision",
+        ],
+        "min_words": 80,
+    },
+
+    # ===================== L20: Gate Assessment =====================
+    "L20_gate_essay": {
+        "task_type": "analytical_essay",
+        "lesson": "L20",
+        "description": "Gate assessment analytical essay on Abigail Adams's 'Remember the Ladies' letter",
+        "criteria": [
+            {
+                "id": "thesis_arguable_specific",
+                "name": "Thesis: arguable and about rhetorical choices",
+                "description": "Contains a clear thesis that makes an arguable claim about Adams's specific rhetorical strategies — not just what she says.",
+                "weight": 1,
+            },
+            {
+                "id": "evidence_3_plus",
+                "name": "Evidence: 3+ well-selected, embedded quotes",
+                "description": "Uses at least 3 relevant quotes from the passage, properly embedded into the student's sentences.",
+                "weight": 2,
+            },
+            {
+                "id": "commentary_function",
+                "name": "Commentary reaches Function on some evidence",
+                "description": "At least some evidence is analyzed at the Function level — explains what the choice does in context.",
+                "weight": 1,
+            },
+            {
+                "id": "commentary_effect",
+                "name": "Commentary reaches Effect consistently",
+                "description": "At least 2 pieces of evidence are pushed to Effect — explains why the choice matters for the reader or argument.",
+                "weight": 2,
+            },
+            {
+                "id": "conventions_clear",
+                "name": "Conventions: mostly clear",
+                "description": "Grammar and mechanics errors are minor and do not impede meaning.",
+                "weight": 1,
+            },
+        ],
+        "common_pitfalls": [
+            "Thesis is about Adams's topic (women's rights) instead of her rhetorical choices",
+            "Floating quotes — evidence not embedded into sentences",
+            "Commentary stops at Structure or Function — never reaches Effect",
+            "Essay is mostly summary of the letter",
+            "Missing conclusion or conclusion that just restates intro",
+        ],
+        "min_words": 250,
+    },
 }
 
 
