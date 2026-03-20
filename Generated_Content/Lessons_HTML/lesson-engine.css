@@ -143,5 +143,55 @@ body { padding-top: 3rem; }
 .practice-item > details.revealed,
 .comparison-item > details.revealed { display: block !important; }
 
+/* ===== AI GRADING FEEDBACK ===== */
+.grading-container { margin-top: 1rem; animation: fadeIn 0.3s ease; }
+.grading-loading {
+  padding: 1rem; background: #f8f9fa; border: 1px solid var(--border, #dee2e6);
+  border-radius: 8px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.9rem; color: var(--muted, #6c757d);
+}
+.grading-spinner {
+  display: inline-block; width: 14px; height: 14px; border: 2px solid #dee2e6;
+  border-top-color: #0d6efd; border-radius: 50%; animation: spin 0.6s linear infinite;
+  vertical-align: middle; margin-right: 0.5rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.grading-error {
+  padding: 1rem; background: #fff3cd; border: 1px solid #ffc107;
+  border-radius: 8px; font-size: 0.85rem; color: #856404;
+}
+.grading-feedback {
+  background: #fff; border: 2px solid var(--primary, #1a1a2e); border-radius: 8px;
+  padding: 1.25rem; font-size: 0.9rem;
+}
+.grading-title {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1rem;
+  font-weight: 700; color: var(--primary, #1a1a2e); margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent, #e94560);
+}
+.grading-criterion {
+  padding: 0.6rem 0.75rem; margin-bottom: 0.5rem; border-radius: 6px;
+  line-height: 1.5; font-size: 0.85rem;
+}
+.grading-met { background: #d4edda; border-left: 3px solid #28a745; }
+.grading-not-met { background: #f8d7da; border-left: 3px solid #dc3545; }
+.grading-icon { font-weight: 700; margin-right: 0.25rem; }
+.grading-met .grading-icon { color: #155724; }
+.grading-not-met .grading-icon { color: #842029; }
+.grading-score {
+  margin: 0.75rem 0; padding: 0.5rem 0.75rem; background: var(--primary, #1a1a2e);
+  color: #ffc107; border-radius: 6px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700; font-size: 0.9rem; text-align: center;
+}
+.grading-overall {
+  margin: 0.75rem 0; font-style: italic; color: var(--text, #2d2d2d);
+  line-height: 1.6;
+}
+.grading-next-step {
+  margin-top: 0.75rem; padding: 0.75rem; background: #e8f4fd;
+  border-left: 3px solid #0d6efd; border-radius: 0 6px 6px 0;
+  font-size: 0.85rem; line-height: 1.5;
+}
+
 /* ===== ANIMATIONS ===== */
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

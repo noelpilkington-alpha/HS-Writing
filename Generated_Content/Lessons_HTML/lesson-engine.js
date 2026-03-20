@@ -8,6 +8,7 @@
   const SCORE_WRITE = 25;
   const SCORE_EXPLAIN = 10;
   const DEFAULT_MIN_WORDS = 30;
+  const GRADING_API_URL = localStorage.getItem('gradingApiUrl') || 'http://localhost:8000';
 
   // ===== STATE =====
   let totalScore = 0;
@@ -327,6 +328,12 @@
       btn.textContent = words >= minWords ? 'Submit' : 'Submit (' + minWords + '+ words)';
     });
 
+    // Add feedback container
+    var fbContainer = document.createElement('div');
+    fbContainer.className = 'grading-container';
+    fbContainer.style.display = 'none';
+    inputDiv.appendChild(fbContainer);
+
     btn.addEventListener('click', function() {
       btn.textContent = 'Submitted ✓';
       btn.disabled = true;
@@ -335,6 +342,12 @@
       addScore(SCORE_WRITE);
       container.dataset.done = '1';
       if (phaseEl) recheckPhaseBtn(phaseEl);
+
+      // Trigger AI grading if rubric ID is available
+      var rubricId = findRubricId(container);
+      if (rubricId) {
+        gradeSubmission(ta.value, rubricId, fbContainer, btn);
+      }
     });
   }
 
@@ -550,6 +563,96 @@
         '<button class="complete-close" onclick="this.closest(\'.complete-overlay\').remove()">Close</button>' +
       '</div>';
     document.body.appendChild(overlay);
+  }
+
+  // ===== AI GRADING =====
+  function gradeSubmission(studentText, rubricId, feedbackContainer, submitBtn) {
+    // Show loading state
+    feedbackContainer.innerHTML =
+      '<div class="grading-loading">' +
+        '<span class="grading-spinner"></span> Grading your response...' +
+      '</div>';
+    feedbackContainer.style.display = '';
+
+    fetch(GRADING_API_URL + '/grade', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        rubric_id: rubricId,
+        student_text: studentText,
+        lesson_id: document.title || ''
+      })
+    })
+    .then(function(res) {
+      if (!res.ok) return res.json().then(function(e) { throw new Error(e.detail || 'Grading failed'); });
+      return res.json();
+    })
+    .then(function(data) {
+      renderFeedback(data, feedbackContainer);
+    })
+    .catch(function(err) {
+      feedbackContainer.innerHTML =
+        '<div class="grading-error">' +
+          '<strong>Grading unavailable:</strong> ' + err.message +
+          '<br><small>Your writing has been submitted. Feedback will be available when the grading server is running.</small>' +
+        '</div>';
+    });
+  }
+
+  function renderFeedback(data, container) {
+    var html = '<div class="grading-feedback">';
+    html += '<h4 class="grading-title">Feedback</h4>';
+
+    // Word count check
+    if (!data.word_count_met) {
+      html += '<div class="grading-criterion grading-not-met">' +
+        '<strong>Word count:</strong> ' + data.word_count + ' words (minimum: not met). ' +
+        'Write more before this can be fully evaluated.' +
+        '</div>';
+    }
+
+    // Criteria results
+    data.criteria_results.forEach(function(cr) {
+      var cls = cr.met ? 'grading-met' : 'grading-not-met';
+      var icon = cr.met ? '&#10003;' : '&#10007;';
+      html += '<div class="grading-criterion ' + cls + '">' +
+        '<span class="grading-icon">' + icon + '</span> ' +
+        '<strong>' + (cr.id || '').replace(/_/g, ' ') + ':</strong> ' +
+        cr.feedback +
+        '</div>';
+    });
+
+    // Score summary
+    html += '<div class="grading-score">' +
+      data.criteria_met + ' / ' + data.criteria_total + ' criteria met' +
+      '</div>';
+
+    // Overall feedback (wise feedback)
+    if (data.overall_feedback) {
+      html += '<div class="grading-overall">' + data.overall_feedback + '</div>';
+    }
+
+    // Next step
+    if (data.next_step) {
+      html += '<div class="grading-next-step">' +
+        '<strong>Your next step:</strong> ' + data.next_step +
+        '</div>';
+    }
+
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
+  // Look up rubric ID from HTML data attributes or infer from lesson + task context
+  function findRubricId(taskEl) {
+    // Check for explicit data-rubric attribute
+    if (taskEl.dataset.rubric) return taskEl.dataset.rubric;
+
+    // Check parent phase card
+    var phase = taskEl.closest('.phase-card');
+    if (phase && phase.dataset.rubric) return phase.dataset.rubric;
+
+    return null;
   }
 
   // ===== INIT =====
