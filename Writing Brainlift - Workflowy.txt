@@ -1,0 +1,764 @@
+Writing Brainlift - K-12 Writing Instruction
+	Purpose
+		The purpose of this BrainLift is to create the ultimate K-12 writing curriculum that synthesizes the best research on writing instruction, grounded in learning science. This BrainLift is built on two core beliefs: motivation is 90% and writing develops cognition.
+		This BrainLift will train LLMs to understand that effective writing instruction:
+			Requires scaffolded mastery (sentences → paragraphs → essays) rather than assigning writing without explicit instruction
+			Uses templates and structures as legitimate cognitive tools, not "cheating"
+			Prioritizes student engagement through topic choice before layering in curriculum content
+			Teaches grammar contextually within writing as a meaning-making tool, not through isolated drill
+			Applies the mentor mindset (high standards + high support) rather than either low expectations or harsh criticism
+		Without this BrainLift, LLMs default to outdated assumptions about writing instruction—assigning essays without teaching sentences, treating grammar as error correction, and ignoring the motivation science that makes instruction effective.
+		In Scope:
+			K-12 writing instruction methodology
+			Evidence-based writing pedagogy
+			Grammar instruction within writing context
+			Motivation science applied to writing
+			Scaffolded skill progression from sentences to research papers
+		Out of Scope:
+			Creative writing as art form (vs. writing as thinking tool)
+			English Language Learner-specific interventions
+			Writing assessment/grading systems (separate BrainLift)
+	Experts #DOK1
+		Expert 1: Judith Hochman & Natalie Wexler
+			Who: Judith Hochman is founder of The Writing Revolution and former head of The Windward School. Natalie Wexler is education writer and journalist, author of "The Knowledge Gap."
+			Focus: Sentence-level writing instruction; explicit writing strategies; embedding writing across content areas; The Writing Revolution methodology.
+			Why Follow: Their book "The Writing Revolution 2.0" provides the foundational sentence-to-paragraph-to-essay progression that structures this entire curriculum. Their approach—explicit instruction in sentence construction using activities like "Because, But, So" and appositives—directly supports the SPOV that templates enable rather than constrain thinking. Essential for grades 3-8 composition instruction.
+			Where:
+				Book: The Writing Revolution 2.0 (2024)
+				Website: [thewritingrevolution.org](https://www.thewritingrevolution.org)
+				Twitter: @WritingRevolutn
+		Expert 2: Gerald Graff & Cathy Birkenstein
+			Who: Gerald Graff is Professor Emeritus of English and Education at University of Illinois at Chicago, former president of the Modern Language Association. Cathy Birkenstein is Lecturer in English at UIC.
+			Focus: Academic argument structure; rhetorical moves in persuasive writing; templates for entering scholarly conversations; demystifying academic discourse.
+			Why Follow: Their book "They Say / I Say" is the definitive guide to academic argument, used by millions of students. Provides explicit, learnable templates for argumentative writing—directly supporting the SPOV that templates are legitimate tools for sophisticated thinking. Essential for grades 9-12 argumentative writing.
+			Key Frameworks:
+				"They Say / I Say" template structure for entering academic conversations
+				Signal verbs for academic writing (argues, acknowledges, contends, etc.)
+				The "So What? Who Cares?" imperative
+				Naysayer planting (anticipating counterarguments)
+			Where:
+				Book: They Say / I Say: The Moves That Matter in Academic Writing (6th Edition, 2024)
+				Blog: [theysayiblog.com](https://theysayiblog.com)
+		Expert 3: Debra Myhill
+			Who: Professor Emerita of Education at University of Exeter; Director of the Centre for Research in Writing; Professorial Fellow at University of Wollongong, Australia.
+			Focus: Grammar and writing; metalinguistic understanding; contextual grammar instruction; the writing process; language choice in composition.
+			Why Follow: Conducted landmark RCT study (744 students, 31 schools) proving contextual grammar teaching improves writing by +11.52% vs +6.41% for comparison group. Her research provides the evidence base for teaching grammar as meaning-making within writing context, rather than isolated drill. Her work reconciles the "grammar wars" with empirical evidence.
+			Key Research Findings:
+				Contextual grammar instruction significantly outperforms isolated grammar drill
+				Grammar should be taught as "a toolkit for discussing and shaping written text"
+				Teacher linguistic subject knowledge significantly mediates student outcomes
+				Metalinguistic talk (discussing language choices) is essential
+			Where:
+				[University of Exeter Profile](http://education.exeter.ac.uk/people/profile/index.php?web_id=debra_myhill)
+				[Google Scholar](https://scholar.google.com/citations?user=MfNznzYAAAAJ) (9,281+ citations)
+				Key paper: "Re-thinking grammar: the impact of embedded grammar teaching" (2012)
+		Expert 4: Jeff Anderson
+			Who: Veteran middle school teacher (35+ years); author of 16 books on writing and grammar instruction; creator of the "Patterns of Power" approach.
+			Focus: Grammar instruction within writer's workshop; mentor texts for grammar teaching; visual scaffolds; daily grammar routines; making grammar instruction joyful and effective.
+			Why Follow: Provides the practical classroom implementation of Myhill's research. His "Mechanically Inclined" approach has been tested in real classrooms for 20+ years. Bridges research and practice in accessible, teacher-friendly ways. Essential for training teachers to implement contextual grammar instruction.
+			Key Frameworks:
+				Patterns of Power (5-day cycle): Notice → Compare/Contrast → Imitate → Celebrate → Apply
+				Short daily grammar instruction (5-10 minutes) within writer's workshop
+				Mentor texts to model conventions in context
+				"Invitation, not correction" philosophy
+			Where:
+				Website: [writeguy.net](https://www.writeguy.net/)
+				Books: Mechanically Inclined (2005, 2nd ed. 2024), Everyday Editing (2007), Patterns of Power series
+		Expert 5: Virginia Berninger
+			Who: Professor Emerita, Educational Psychology, University of Washington; leading researcher on writing development, learning disabilities, and the neuroscience of writing.
+			Focus: Simple View of Writing; Not-So-Simple View of Writing; transcription fluency; handwriting and spelling development; orthographic loop; writing disabilities.
+			Why Follow: Foundational theorist for understanding why early writers struggle. Her model (Writing = Transcription × Text Generation) explains why transcription must be automatic before higher-order composition can flourish. Essential for designing K-2 writing instruction that builds proper foundations.
+			Key Frameworks:
+				Simple View of Writing: Writing = Transcription × Text Generation
+					Transcription = Handwriting/Keyboarding + Spelling
+					Text Generation = Word-level + Sentence-level + Text-level composition
+				Not-So-Simple View: Adds executive functions (planning, monitoring, reviewing)
+			Where:
+				[University of Washington Profile](https://education.uw.edu/about/directory/virginia-berninger)
+				Key paper: "Writing and reading: Connections between language by hand and language by eye" (2002)
+		Expert 6: Deborah McCutchen
+			Who: Professor of Educational Psychology, University of Washington; former classroom writing teacher turned researcher.
+			Focus: Cognitive processes in reading and writing; working memory and composition; development of writing expertise; knowledge and language fluency in writing.
+			Why Follow: Provides the cognitive psychology foundation for understanding why fluency interventions work. Her "capacity theory" (Writing Quality = f(Working Memory Capacity - Transcription Demands)) explains why sentence-first approaches reduce cognitive load and enable better writing. Essential for understanding differentiation for struggling writers.
+			Key Insight: When transcription is effortful, it consumes working memory that should be available for planning and idea generation. Fluent transcription is prerequisite for quality composition.
+			Where:
+				[University of Washington Profile](https://education.uw.edu/about/directory/deborah-mccutchen)
+				Key paper: "A capacity theory of writing: Working memory in composition" (1996)
+		Expert 7: Pietro Boscolo & Suzanne Hidi
+			Who: Pietro Boscolo is Professor Emeritus of Educational Psychology, University of Padova, Italy. Suzanne Hidi is Professor Emerita, OISE, University of Toronto.
+			Focus: Writing motivation; interest development; self-efficacy in writing; writing as a learning activity; the relationship between interest and writing quality.
+			Why Follow: Their book "Writing and Motivation" is THE foundational text on this topic. Directly supports the SPOV that "motivation is 90%" and that students write better when they care about the topic. Provides research basis for interest-driven writing instruction.
+			Key Frameworks:
+				Four-Phase Model of Interest Development: Triggered Situational Interest → Maintained Situational Interest → Emerging Individual Interest → Well-Developed Individual Interest
+				Interest significantly predicts writing quality
+				Writing about a topic can actually develop interest (bidirectional relationship)
+			Where:
+				Book: Writing and Motivation (Elsevier, 2007)
+				Key chapter: "Motivation and writing" in Handbook of Writing Research (2006)
+		Expert 8: David Yeager
+			Who: Professor of Psychology at University of Texas at Austin; leading researcher on adolescent motivation and development.
+			Focus: Adolescent motivation; the mentor mindset; wise feedback; status and respect in youth development; growth mindset interventions.
+			Why Follow: His book "10 to 25" provides the motivation science foundation for this curriculum. The "mentor mindset" (high standards + high support) is the governing philosophy for all feedback. His research explains WHY adolescents respond to certain instructional approaches (status, respect, autonomy) and reject others.
+			Key Frameworks:
+				Mentor Mindset: High Standards + High Support (not the "compliment sandwich")
+				Wise Feedback: "I have high standards, and I believe you can meet them"
+				The Adolescent Predicament: Young people want adult status but face constant threats to it
+				Testosterone amplifies sensitivity to respect, not defiance per se
+			Where:
+				Book: 10 to 25: The Science of Motivating Young People (2024)
+				[University of Texas Profile](https://liberalarts.utexas.edu/psychology/faculty/dy4377)
+		Expert 9: Steve Graham & Karen Harris
+			Who: Steve Graham is Regents Professor at Arizona State University. Karen Harris is Professor at Arizona State University. Both are leading writing researchers.
+			Focus: Self-Regulated Strategy Development (SRSD); writing intervention research; meta-analyses of writing instruction.
+			Why Follow: Graham's meta-analyses provide the evidence base for what works in writing instruction. Graham & Perin's "Writing Next" meta-analysis (-0.32 effect size for isolated grammar) is foundational evidence against grammar drill. SRSD provides the strategy instruction framework that complements TWR's sentence-level work.
+			Key Findings:
+				Isolated grammar instruction has NEGATIVE effect on writing (-0.32)
+				Strategy instruction has strong positive effects (+0.82)
+				Summarization instruction is effective (+0.82)
+				Sentence combining is effective (+0.50)
+			Where:
+				Meta-analysis: "Writing Next" (Graham & Perin, 2007)
+				Book: Powerful Writing Strategies for All Students (2007)
+		Expert 10: Paul Kirschner, Carl Hendrick & Jim Heal
+			Who: Paul Kirschner is educational psychologist, author of "How Learning Happens." Carl Hendrick is Head of Learning & Research at Wellington College. Jim Heal is co-author of "How Teaching Happens."
+			Focus: Learning science; cognitive load theory; explicit instruction; evidence-based teaching practices; debunking educational neuromyths.
+			Why Follow: Provide the cognitive science foundation for explicit instruction in writing. Their work validates direct instruction, scaffolding, and the importance of prior knowledge—all essential for effective writing instruction. Debunk myths like learning styles that distract from evidence-based practice.
+			Key Principles:
+				Prior knowledge is the most important factor in learning (Ausubel)
+				Cognitive load must be managed (Sweller)
+				Independent learning is paradoxically a BAD way for novices to become independent learners
+				Learning styles are a MYTH
+			Where:
+				Books: How Learning Happens (2020), How Teaching Happens (2022)
+				Twitter: @P_A_Kirschner, @C_Hendrick
+		Expert 11: Siegfried Engelmann
+			Who: Professor of Education at University of Oregon (1970-2014); creator of Direct Instruction methodology; author of "Theory of Instruction."
+			Focus: Direct Instruction; instructional design; curriculum development; teaching low-performing students.
+			Why Follow: His "Theory of Instruction" provides the design principles for how to sequence and present information for maximum learning. Key principle: "If the student hasn't learned, the teacher hasn't taught." Validates explicit, scripted instruction with rapid pacing—essential for teaching writing mechanics.
+			Key Principles:
+				Every child can be taught with proper instruction
+				Low performers need FASTER pace to catch up
+				Instruction must be carefully planned to avoid misinterpretation
+				Clear signals, rapid pacing, group responses, immediate correction
+			Where:
+				Book: Theory of Instruction: Principles and Applications (1991)
+				[National Institute for Direct Instruction](https://www.nifdi.org/)
+	Spiky POVs #DOK4
+		Truths
+			SPOV Truth 1: Motivation is 90%
+				Writing instruction succeeds or fails based on student motivation. High standards + high support (Yeager's "mentor mindset") combined with student choice in topics creates the conditions for growth. Without engagement, even the best curriculum fails. This is why we establish "write what they love" before layering in curriculum content.
+			SPOV Truth 2: Writing Rewires the Brain
+				Writing is the best way to rewire DOK 3/4 schemas — it is better than reading. Writing forces students to take a blob of facts and ideas and organize them into a structured knowledge hierarchy before putting them into structured text. This is DOK 3/4 thinking in action, and it actively restructures cognitive schemas. A student's writing ability directly reflects their cognitive ability. Teaching writing is teaching thinking.
+			SPOV Truth 3: Templates Are Not Cheating
+				Templates and structures reduce cognitive load, freeing working memory for higher-order thinking. Far from being "formulaic," templates represent what Graff & Birkenstein call "the stock-in-trade of sophisticated thinking." Scaffolding enables mastery. The 5-paragraph essay, sentence frames, and argument templates are cognitive tools, not crutches.
+			SPOV Truth 4: Write What They Love
+				Students write better when they care about the topic. Topic choice satisfies adolescent needs for autonomy and status (Yeager). During writing time, students write about what THEY love — write-what-they-love is more important than trying to teach other subjects during writing. Curriculum content can be layered in AFTER engagement is established, and the app can use writing to teach other subjects during THOSE subjects' time blocks. A student who writes passionately about video games is learning to write; a student who writes reluctantly about assigned topics is learning to hate writing.
+			SPOV Truth 5: Bottom-Up Mastery
+				Sentences before paragraphs, paragraphs before essays. Prerequisites must be mastered before advancing. No Swiss cheese knowledge. Assigning essays to students who cannot write clear sentences is educational malpractice. The sequence is: sentence construction → sentence expansion → paragraph structure → multi-paragraph essays → academic argument.
+			SPOV Truth 6: Grammar as Meaning-Making
+				Grammar instruction should be primarily contextual—taught within writing as a tool for meaning-making (Myhill). Research shows isolated grammar instruction has a NEGATIVE effect on writing quality (-0.32 effect size, Graham & Perin), while contextual grammar instruction significantly improves writing (+11.52% in Myhill's RCT). Grammar is taught through students' own compositions, making explicit how grammatical choices shape meaning and effect.
+			SPOV Truth 7: Transcription Must Be Automatic
+				Handwriting/keyboarding and spelling must be fluent before higher-order composition can flourish (Berninger). When transcription consumes working memory, there is nothing left for ideas. K-2 instruction must prioritize transcription automaticity as the foundation for all later writing.
+			SPOV Truth 8: Achievement Causes Motivation
+				Achievement often LEADS to motivation (not just the reverse). Mastery of challenging tasks conveys evidence of enhanced competence (Bandura). Inspirational posters don't work; successful writing experiences do. Design instruction so students succeed, and motivation will follow.
+			SPOV Truth 9: Discrimination Before Production
+				Students must be able to SEE a problem before they can FIX it. If a student can't tell that their paragraph is underdeveloped, no procedure will help. Every skill should be taught in two stages: first discrimination (can you spot the issue?), then production (can you fix or create?). This ordering is non-negotiable and applies across the entire curriculum.
+		Myths
+			SPOV Myth 1: We don't believe that assigning writing teaches writing.
+				Most teachers assign writing without teaching it. They give prompts and grade products without explicit instruction in HOW to construct sentences, paragraphs, and essays. This is like assigning math problems without teaching math. Writing must be explicitly taught.
+			SPOV Myth 2: We don't believe that isolated grammar drills improve writing.
+				Graham & Perin's meta-analysis found that isolated grammar instruction has a NEGATIVE effect on writing quality (-0.32 effect size). Teaching parts of speech through worksheets does not transfer to better writing. Grammar must be taught in context of actual writing.
+			SPOV Myth 3: We don't believe that templates make writing "formulaic."
+				Critics claim templates produce robotic writing. The opposite is true: templates free cognitive resources for higher-order thinking. Once students internalize structures, they can deviate from them strategically. You must know the rules before you can break them effectively.
+			SPOV Myth 4: We don't believe that students should "discover" how to write.
+				Discovery learning and minimal guidance fail novice learners (Kirschner, Sweller, Clark). Students don't discover essay structure through reading; they need explicit instruction. Direct instruction is the fastest path to competence, after which strategic thinking can develop.
+			SPOV Myth 5: We don't believe that reading automatically improves writing.
+				While reading builds vocabulary and exposes students to models, reading alone does not teach writing. Students need explicit instruction in HOW to construct the sentences and structures they encounter in reading. Reading is necessary but not sufficient.
+			SPOV Myth 6: We don't believe that struggling writers need "creative freedom."
+				Struggling writers need MORE structure, not less. Giving struggling writers blank pages and vague prompts increases cognitive load and produces anxiety. Templates, sentence frames, and explicit instruction reduce cognitive load and enable success.
+			SPOV Myth 7: We don't believe that grade-level writing assignments are always appropriate.
+				If a 7th grader writes at a 3rd grade level, assigning 7th grade essays sets them up for failure. Diagnostic assessment must identify actual skill level, and instruction must begin at that level. Meeting students where they are is not lowering standards—it's building the foundation for reaching standards.
+	Knowledge Tree #DOK2
+		The Knowledge Tree is organized into three parallel strands that develop across four grade bands. Students must demonstrate 80%+ mastery before advancing to prevent Swiss cheese knowledge.
+		Overview: The Three Strands
+			STRAND 1: COMPOSITION          STRAND 2: MECHANICS         STRAND 3: DISCOURSE
+			(Sentences→Paragraphs→Essays)  (Grammar in Context)        (Argument, Voice, Audience)
+			↓                              ↓                           ↓
+			DOK1-4 Progression         Meaning-Making Focus         Academic Conversation
+		GRADE BAND: K-2 (Foundational)
+			Primary Goal: Build transcription automaticity and oral language foundation for written expression.
+			Strand 1: Composition (K-2)
+				1.1 Oral Composition
+					Prerequisite: None
+					Skills: Generating ideas verbally, storytelling, answering in complete sentences
+					Method: Teacher transcribes student ideas; students see their words become text
+					Motivation Hook: "Tell me about your favorite..."
+				1.2 Sentence Awareness
+					Prerequisite: Oral Composition
+					Skills: Recognizing what a sentence is, capital letters, end punctuation
+					Method: Sentence vs. not-a-sentence sorting, oral sentence building
+					TWR Connection: Foundation for sentence-level work
+				1.3 Simple Sentence Construction
+					Prerequisite: Sentence Awareness
+					Skills: Subject + verb sentences, adding details (who, what, where, when)
+					Method: Sentence frames with student-chosen topics
+					Template: "The [noun] [verb] [detail]."
+				1.4 Sentence Expansion
+					Prerequisite: Simple Sentence Construction
+					Skills: Adding adjectives, prepositional phrases, combining ideas
+					Method: Kernel sentences → expanded sentences
+					Template: Start simple, add one element at a time
+			Strand 2: Mechanics (K-2)
+				2.1 Letter Formation & Handwriting
+					Prerequisite: None
+					Skills: Proper grip, letter formation, spacing
+					Method: Explicit instruction, repeated practice for automaticity
+					Science: Berninger - transcription fluency limits composition
+				2.2 Phonetic Spelling
+					Prerequisite: Letter Formation
+					Skills: Sound-letter correspondence, encoding words
+					Method: Integrated with phonics instruction
+				2.3 High-Frequency Words
+					Prerequisite: Phonetic Spelling
+					Skills: Automatic spelling of common words
+					Method: Spaced repetition, retrieval practice
+				2.4 Basic Punctuation
+					Prerequisite: Sentence Awareness
+					Skills: Periods, question marks, exclamation points
+					Method: Explicit instruction with immediate practice in own writing
+			Strand 3: Discourse (K-2)
+				3.1 Writing for an Audience
+					Prerequisite: Simple Sentence Construction
+					Skills: Understanding that writing communicates to others
+					Method: Sharing writing with classmates, "author's chair"
+					Motivation Hook: Peer audience creates purpose
+		GRADE BAND: 3-5 (Developing)
+			Primary Goal: Master sentence-level skills and introduce paragraph structure while maintaining engagement through topic choice.
+			Strand 1: Composition (3-5)
+				1.5 Because, But, So (TWR Core)
+					Prerequisite: Sentence Expansion
+					Skills: Extending sentences with conjunctions that show reasoning
+					Method: Given a stem, complete with because/but/so
+					Example: "Dogs make good pets because..."
+					DOK Level: 2 (applying understanding)
+				1.6 Appositives
+					Prerequisite: Because, But, So
+					Skills: Embedding definitions and descriptions
+					Method: Sentence combining with appositives
+					Template: "[Noun], [appositive phrase], [verb]..."
+				1.7 Subordinating Conjunctions
+					Prerequisite: Because, But, So
+					Skills: Although, while, when, if, since, unless
+					Method: Sentence starters, sentence combining
+					DOK Level: 2-3
+				1.8 Single Paragraph Outline (SPO)
+					Prerequisite: All sentence-level skills
+					Skills: Topic sentence, supporting details, concluding sentence
+					Method: Explicit template instruction
+					Template:
+					T: Topic Sentence (claim/main idea)
+					D: Detail 1 + elaboration
+					D: Detail 2 + elaboration
+					D: Detail 3 + elaboration
+					C: Concluding Sentence
+					Motivation Hook: Students choose topics within parameters
+				1.9 Paragraph Types
+					Prerequisite: SPO
+					Skills: Narrative, informational, opinion paragraphs
+					Method: Same SPO structure, different purposes
+					Note: During writing time, students choose their own topics. Content-area writing (using these same structures) happens during content-area time blocks.
+			Strand 2: Mechanics (3-5) - Contextual Grammar
+				2.5 Sentence Boundaries
+					Prerequisite: Basic Punctuation
+					Skills: Avoiding run-ons and fragments
+					Method: Sentence surgery in own drafts, combining/separating exercises
+				2.6 Comma Rules in Context
+					Prerequisite: Subordinating Conjunctions
+					Skills: Commas in compound sentences, after introductory elements, in lists
+					Method: Notice patterns in mentor texts, apply to own writing
+				2.7 Subject-Verb Agreement
+					Prerequisite: Sentence Boundaries
+					Skills: Matching subjects and verbs
+					Method: Revising own sentences for agreement
+				2.8 Verb Tense Consistency
+					Prerequisite: Subject-Verb Agreement
+					Skills: Maintaining tense within paragraphs
+					Method: Editing exercises with own drafts, focused revision
+			Strand 3: Discourse (3-5)
+				3.2 Audience Awareness
+					Prerequisite: Writing for an Audience
+					Skills: Adjusting formality, word choice for different readers
+					Method: Same content, different audiences exercise
+				3.3 Introduction to Voice
+					Prerequisite: Audience Awareness
+					Skills: Recognizing author's voice, beginning to develop own
+					Method: Mentor text analysis, imitation exercises
+		GRADE BAND: 6-8 (Intermediate)
+			Primary Goal: Master multi-paragraph essays and introduce academic argument while developing grammatical understanding through contextual instruction within writing.
+			Strand 1: Composition (6-8)
+				1.10 Multiple Paragraph Outline (MPO)
+					Prerequisite: SPO Mastery
+					Skills: Organizing multiple paragraphs with transitions
+					Method: MPO template instruction
+					Template:
+					Introduction Paragraph
+					- Hook
+					- Context
+					- Thesis
+					Body Paragraph 1 (SPO structure)
+					- Transition + Topic Sentence
+					- Evidence/Details
+					- Analysis/Elaboration
+					- Concluding/Transition
+					Body Paragraph 2 (SPO structure)
+					Body Paragraph 3 (SPO structure)
+					Conclusion Paragraph
+					- Restate thesis (new words)
+					- Synthesize main points
+					- Final thought/call to action
+				1.11 Evidence Integration
+					Prerequisite: MPO
+					Skills: Selecting, introducing, and explaining textual evidence
+					Method: Quote sandwich template
+					Template:
+					Introduce → Quote → Explain
+					"According to [source]..." → "[quote]" → "This shows that..."
+				1.12 They Say / I Say - Basics
+					Prerequisite: Evidence Integration
+					Skills: Summarizing others' views, then responding
+					Method: Templates from Graff & Birkenstein
+					Templates:
+					They Say:
+					- "Many people assume that..."
+					- "It is often said that..."
+					- "Critics argue that..."
+					I Say:
+					- "However, I would argue that..."
+					- "While this may be true, I believe..."
+					- "I agree/disagree because..."
+					Motivation Hook: Take positions on topics they care about
+				1.13 Counterargument
+					Prerequisite: They Say / I Say Basics
+					Skills: Anticipating and addressing opposing views
+					Method: "Some might object that... However..."
+					Template:
+					Acknowledge → Respond
+					"Some might argue that [opposing view]."
+					"However, [your response with evidence]."
+				1.14 Analysis vs. Summary
+					Prerequisite: Evidence Integration
+					Skills: Moving beyond retelling to interpretation
+					Method: "So what?" questioning, claim-evidence-reasoning
+					DOK Level: 3-4
+			Strand 2: Mechanics (6-8) - Contextual Grammar
+				2.9 Parts of Speech in Context
+					Prerequisite: Basic sentence work
+					Skills: Understanding how nouns, verbs, adjectives, adverbs, prepositions, and conjunctions function to create meaning
+					Method: Analyze grammatical choices in mentor texts, then apply to own writing
+					Research Base: Myhill's contextual grammar approach—grammar as "a toolkit for discussing and shaping written text"
+				2.10 Sentence Types as Rhetorical Choices
+					Prerequisite: Parts of Speech in Context
+					Skills: Simple, compound, complex, compound-complex sentences as tools for effect
+					Method: Study how authors use sentence variety for rhythm and emphasis; apply to own drafts during revision
+				2.11 Punctuation as Meaning
+					Prerequisite: Sentence Types as Rhetorical Choices
+					Skills: Using semicolons, colons, dashes, and parentheses to control pacing and emphasis
+					Method: Analyze punctuation choices in published writing; experiment with options in own drafts
+				2.12 Error Patterns in Revision
+					Prerequisite: All above
+					Skills: Identifying and correcting their/they're/there, its/it's, affect/effect in own writing
+					Method: Targeted mini-lessons based on errors appearing in student drafts; editing checklists for revision
+			Strand 3: Discourse (6-8)
+				3.4 Academic Register
+					Prerequisite: Audience Awareness
+					Skills: Formal language, avoiding first person (when appropriate), hedging
+					Method: Formal vs. informal comparisons, revision for register
+				3.5 Signal Verbs
+					Prerequisite: They Say / I Say Basics
+					Skills: Using verbs that indicate author's stance (argues, suggests, claims, acknowledges)
+					Method: Signal verb lists, choosing appropriate verbs
+					From They Say / I Say:
+					Neutral: states, reports, notes
+					Agreement: confirms, supports, endorses
+					Disagreement: disputes, challenges, refutes
+					Qualified: suggests, implies, seems to
+				3.6 Metacommentary
+					Prerequisite: Signal Verbs
+					Skills: Guiding readers through your argument
+					Method: Templates for clarification, emphasis, anticipating objections
+					Templates:
+					"In other words,..."
+					"What I mean is..."
+					"My point is not X but Y..."
+					"Essentially, I am arguing that..."
+		GRADE BAND: 9-12 (Advanced)
+			Primary Goal: Master sophisticated academic argument, develop authentic voice, and prepare for college-level writing.
+			Strand 1: Composition (9-12)
+				1.15 Essay Architecture (Michael Dean)
+					Prerequisite: MPO Mastery
+					Skills: Flexible essay structures beyond 5-paragraph
+					Method: Architecture metaphor - foundation, structure, design
+					Structures:
+						Classical argument
+						Rogerian argument
+						Problem-solution
+						Comparison-contrast
+						Cause-effect analysis
+				1.16 Thesis Development
+					Prerequisite: Essay Architecture
+					Skills: Crafting arguable, specific, significant thesis statements
+					Method: Thesis revision exercises, "so what?" test
+					Progression:
+					Weak: "Social media is bad."
+					Better: "Social media negatively affects teenagers."
+					Strong: "Social media's algorithmic design exploits adolescent
+					psychology, making platform regulation essential."
+				1.17 Sophisticated They Say / I Say
+					Prerequisite: Basic They Say / I Say + Counterargument
+					Skills: Entering complex academic conversations, nuanced positions
+					Templates:
+					Agreeing with a difference:
+					"While I agree with X that..., I want to add that..."
+					Disagreeing diplomatically:
+					"X's argument that... overlooks the fact that..."
+					Complicating the debate:
+					"The debate over X typically focuses on..., but we should
+					also consider..."
+				1.18 Synthesis Writing
+					Prerequisite: Sophisticated They Say / I Say
+					Skills: Integrating multiple sources into coherent argument
+					Method: Source mapping, synthesis matrix, weaving sources together
+					DOK Level: 4
+				1.19 Research Writing Process
+					Prerequisite: Synthesis Writing
+					Skills: Question development, source evaluation, citation, drafting, revision
+					Method: Scaffolded research paper with checkpoints
+					Integration: Full knowledge-transforming process (Bereiter & Scardamalia)
+			Strand 2: Mechanics (9-12) - Style Refinement
+				2.13 Style & Syntax
+					Prerequisite: All grammar foundations
+					Skills: Sentence variety, rhythm, emphasis through structure
+					Method: Imitation exercises, style analysis
+				2.14 Concision
+					Prerequisite: Style & Syntax
+					Skills: Eliminating wordiness, choosing precise words
+					Method: Revision exercises, word count challenges
+				2.15 SAT/ACT Grammar Mastery
+					Prerequisite: All mechanics
+					Skills: Test-specific grammar and writing conventions
+					Method: Targeted practice with test-format questions
+			Strand 3: Discourse (9-12)
+				3.7 Authorial Voice
+					Prerequisite: Academic Register
+					Skills: Developing distinctive, authentic voice within academic constraints
+					Method: Voice analysis, imitation, finding your "sound"
+				3.8 Discipline-Specific Writing
+					Prerequisite: Essay Architecture
+					Skills: Adapting to conventions of different fields
+					Types:
+						Literary analysis (close reading, interpretation)
+						Scientific writing (IMRAD structure, precision)
+						Historical argument (evidence, context, causation)
+						Philosophical argument (logic, definitions, objections)
+				3.9 Revision as Transformation
+					Prerequisite: Full composition skills
+					Skills: Substantive revision, not just editing
+					Method: Revision protocols, feedback cycles
+					From Sommers: Revision transforms ideas, not just corrects errors
+				3.10 Writing for Publication
+					Prerequisite: Voice + Revision skills
+					Skills: Writing for authentic audiences beyond school
+					Method: Blog posts, op-eds, competitions, peer review
+					Motivation Hook: Real audience, real stakes
+		Cross-Cutting: The Grammar Thread (Contextual Approach)
+			K-2: Integrated with composition (basic punctuation, capitals)
+			3-5: Explicit instruction IN CONTEXT of student writing
+			6-8: Grammar as meaning-making (analyzing how grammatical choices shape effect)
+			9-12: Style and syntax refinement (integrated with revision)
+			Research Foundation: Myhill's RCT (744 students, 31 schools) showed contextual grammar instruction improved writing by +11.52% vs +6.41% for comparison group. Graham & Perin's meta-analysis found isolated grammar instruction has a NEGATIVE effect on writing quality (-0.32 effect size).
+		Cross-Cutting: The Motivation Layer
+			Every node in the Knowledge Tree should include:
+				1. Topic Choice - Where can students choose what to write about?
+				2. Audience - Who will read this? (peers, teacher, public)
+				3. Purpose - Why does this writing matter?
+				4. High Standards + High Support - Wise feedback at every stage
+		Mastery Criteria
+			For each node, students must demonstrate:
+				1. Accuracy - Can they do it correctly?
+				2. Fluency - Can they do it efficiently?
+				3. Application - Can they use it in new contexts?
+				4. Transfer - Can they combine it with other skills?
+			Knowledge Component Types:
+				Each KC in the Knowledge Tree has a type that determines the activity the app should present:
+					Discrimination - Can the student see the problem? Always taught before production. Activities: classify, sort, identify ("Is this a sentence or a fragment?")
+					Production - Can the student fix or create? Only introduced after discrimination is solid. Activities: rewrite, combine, revise, compose ("Fix this fragment" or "Write a complete sentence")
+					Structure - Does the student know the rule or pattern? Often taught alongside discrimination. Activities: rules, definitions, patterns ("A comma goes before the conjunction")
+					Integrative - Can the student apply multiple skills together in a realistic context? Activities: edit a full passage, write a paragraph, apply skills to connected text
+			Gateway KCs:
+				Some KCs are "gateway" skills — if a student can't pass these, no amount of procedural instruction will help. For example: if a student can't tell a developed response from an underdeveloped one (discrimination), teaching them elaboration strategies (production) will fail. Gateway KCs must be identified and prioritised in the diagnostic system.
+			Advancement Rules:
+				80%+ mastery required before advancing
+				Targeted remediation on key prerequisites when stuck
+				Spaced review of previously mastered skills
+				No skipping nodes (prevents Swiss cheese knowledge)
+	Key Sources #DOK2
+		Source: The Writing Revolution 2.0 | Author(s): Hochman & Wexler | Primary Contribution: Sentence-level progression
+		Source: They Say / I Say | Author(s): Graff & Birkenstein | Primary Contribution: Academic argument templates
+		Source: 10 to 25 | Author(s): David Yeager | Primary Contribution: Motivation science
+		Source: Re-thinking grammar (2012) | Author(s): Debra Myhill | Primary Contribution: Contextual grammar evidence
+		Source: Writing Next | Author(s): Graham & Perin | Primary Contribution: Meta-analysis of interventions
+		Source: How Learning Happens | Author(s): Kirschner & Hendrick | Primary Contribution: Cognitive science foundations
+		Source: How Teaching Happens | Author(s): Kirschner, Hendrick & Heal | Primary Contribution: Explicit instruction
+		Source: Theory of Instruction | Author(s): Siegfried Engelmann | Primary Contribution: Direct instruction principles
+		Source: A capacity theory of writing | Author(s): Deborah McCutchen | Primary Contribution: Working memory in composition
+		Source: Writing and Motivation | Author(s): Boscolo & Hidi | Primary Contribution: Interest and engagement
+		Source: Simple View of Writing | Author(s): Virginia Berninger | Primary Contribution: Transcription × Text Generation
+		Source: The Math Academy Way | Author(s): Math Academy | Primary Contribution: Mastery learning structure
+	Research Insights from Writing Intervention Studies #DOK3
+		Analysis of 21 research papers on writing instruction (sentence-level interventions, SRSD studies, strategy instruction, and comparative designs) produced the following insights. Findings from studies involving students with learning disabilities (LD) are included only where they are demonstrably applicable to the general student population.
+		Insight 1: SRSD Works for ALL Students, Not Just LD
+			SRSD was developed for students with learning disabilities, but multiple studies now confirm it produces significant gains for general-population students:
+				Typically-achieving first graders (Zumbrunn & Bruning, 2013): 33-309% improvement in story completeness
+				General education 6th graders in Turkey (Turkben, 2021): highly significant gains (t = -10.537, p < .01) while control showed no change
+				6th-grade ESL students in Hong Kong (Teng, 2019): large effects (partial eta-squared = .54-.57)
+				ELL students in Canada (Geres-Smith et al., 2019): effect sizes up to d = 2.82
+				EFL junior high students in Indonesia (Miatin & Wiedarti, 2019): significant improvement (p = .017)
+			Implication: SRSD is not a remedial tool. It is a universal (Tier 1) instructional framework.
+		Insight 2: The Writing Strategy Is the Primary Active Ingredient
+			A component analysis (Geres-Smith et al., 2019) found no significant difference between SRSD with explicit self-statement instruction and SRSD without it on ANY writing measure. The writing task strategy (e.g., TREE, POW) combined with modeling and scaffolded practice is the engine; self-regulation components may develop implicitly through the modeling process.
+			Implication: Invest instructional time in teaching the strategy well (modeling, collaborative practice) rather than spending equal time on explicit self-regulation procedures.
+		Insight 3: Planning Is the Highest-Leverage Intervention Point
+			Across studies, planning instruction produced the largest effect sizes:
+				Planning behavior: g = 5.54 (Ray & Graham, 2020)
+				Overall writing quality: g = 4.86 when planning was the primary intervention target
+				Even first graders benefit from explicit planning instruction (Zumbrunn, 2010)
+			Implication: Planning templates and mnemonics matched to each genre should be central at every grade level. The app must scaffold planning before drafting.
+		Insight 4: Text Structure Instruction and Self-Regulation Serve Different Functions
+			Teng (2019) separated these components in a three-group comparison (TSI vs. SRSI vs. control, N=133 general education students):
+				Text structure instruction was more effective for summary/informational writing (d = 0.801)
+				Self-regulation instruction was more effective for original essay writing (d = 0.826)
+			Implication: Both must be taught. Use text structure instruction when preparing students for source-based/informational writing; emphasize self-regulation when preparing for argumentative/creative writing.
+		Insight 5: Sentence-Level Gains Do NOT Automatically Transfer to Composition Quality
+			Furey et al. (2017) found that 14 sessions of sentence-level instruction produced large gains in writing conventions (ES = 2.36) but no significant effect on story quality (ES = 0.30, p = .63). Similarly, Datchuk & Kubina (2013) found that students who learned sentence combining did NOT necessarily use more complex sentences in extended compositions.
+			Implication: Building blocks must be explicitly connected. Sentence mastery does not automatically produce better essays — explicit bridging instruction in planning, organization, and revision is required. The app must connect sentence-level work to composition-level tasks.
+		Insight 6: Coping Modeling > Mastery Modeling for Self-Efficacy
+			Garcia-Sanchez & Fidalgo-Redondo (2006) compared SRSD (mastery modeling) with a Social Cognitive Model (coping + mastery modeling). Only the SCM model improved writing self-efficacy — SRSD did not, despite improving writing quality equally.
+			Implication: Teacher think-alouds and app demonstrations should deliberately include mistakes and self-correction, not just perfect process. Showing students that errors are normal and correctable builds confidence more effectively than flawless demonstrations.
+		Insight 7: Traditional Instruction May Actively Harm Writing Motivation
+			Multiple studies found that control groups receiving standard instruction showed declining writing attitudes:
+				Turkish 6th graders: attitudes declined under traditional instruction while SRSD group improved (Turkben, 2021)
+				Indonesian EFL students: control group motivation decreased by 3.23 points while SRSD group stayed flat (Miatin & Wiedarti, 2019)
+			Implication: The status quo is not neutral — it may be actively demotivating students. Structured strategy instruction with visible progress protects and builds motivation.
+		Insight 8: Writing Quality and Writing Motivation Are Separable Outcomes
+			SRSD reliably improves writing performance but does NOT reliably improve motivation or self-efficacy (Miatin & Wiedarti, 2019; Garcia-Sanchez & Fidalgo-Redondo, 2006). Some struggling writers are actually overconfident, not underconfident (Santangelo, Harris & Graham, 2007).
+			Implication: The app needs a separate motivational architecture (purpose, choice, authentic audiences, visible progress) alongside its strategy instruction architecture. Self-assessment calibration — not just motivation boosting — is needed.
+		Insight 9: Intensive Short-Duration Instruction Can Produce Massive Effects
+			15 hours (5 days × 3 hours) produced effect sizes of g = 4.86-6.98 for ACT essay writing (Ray & Graham, 2020)
+			5 hours total (10 × 30 min) produced effects up to d = 2.82 (Geres-Smith et al., 2019)
+			8-12 lessons of 30-40 minutes typically suffice for elementary students (Harris, Graham & Mason, 2003)
+			Implication: Well-designed, focused strategy instruction does not need long units. "Sprint" formats may be highly effective for strategy acquisition.
+		Insight 10: The SRSD Stages Are Incremental and Non-Skippable
+			Danoff, Harris & Graham (1993) demonstrated through component analysis: preskill development alone = small gain; + modeling/memorization = additional gain; + collaborative practice + independent practice = full gain. Cutting collaborative practice short means students will not fully master the strategy.
+			Implication: The app must implement all stages. No shortcuts. Substantial front-loading of prerequisite skills (6+ lessons in some studies) is necessary before strategy instruction can be effective.
+		Insight 11: Inclusive Classroom Instruction Produces Larger Effects Than Pull-Out
+			Danoff, Harris & Graham (1993) found that integrating strategy instruction into authentic writing contexts (writers' workshop) produced larger effects than prior pull-out studies using identical strategies. Both LD and normally-achieving students benefited.
+			Implication: Strategy instruction should be embedded in authentic writing tasks, not delivered as isolated exercises.
+		Insight 12: Genre-Specific Strategy Mnemonics Are Essential
+			The research validates specific mnemonics matched to writing demands:
+			Mnemonic: POW | Genre: Universal planning | Steps: Pick idea, Organize notes, Write and say more
+			Mnemonic: WWW, What=2, How=2 | Genre: Story writing | Steps: Who, When, Where, What happens, What happens next, How does it end, How do characters feel
+			Mnemonic: TREE | Genre: Persuasive | Steps: Topic sentence, Reasons, Ending, Examine
+			Mnemonic: STOP + DARE | Genre: Persuasive | Steps: Suspend judgment, Take a side, Organize, Plan + Develop topic, Add support, Reject counterargument, End
+			Mnemonic: PLEASE | Genre: Informative | Steps: Pick topic, List info, Evaluate/select, Activate with topic sentence, Supply support, End/evaluate
+			Mnemonic: POWER | Genre: Informative | Steps: Plan, Organize, Write, Edit, Revise
+			Mnemonic: HIT SONGS3 | Genre: ACT/SAT essay | Steps: Task-specific multi-perspective argument
+			Mnemonic: F-SPEED | Genre: Sentence construction | Steps: Framed, Subject, Predicate, Evaluate, Expand, Describe
+			Implication: The app needs a library of genre-specific planning strategies, not a one-size-fits-all approach.
+		Insight 13: Think Sheets Must Be Thinking Tools, Not Worksheets
+			Baker, Gersten & Graham (2003) explicitly warn: planning tools should be "note-taking tools with prompts to remind students of the thinking strategies and dialogue that good writers use" (Englert et al., 1991) — NOT fill-in-the-blank worksheets.
+			Implication: The app's planning interfaces must prompt strategic thinking, not just data entry. The distinction is pedagogically critical.
+		Insight 14: Common Language Enables Actionable Feedback
+			Planning tools provide a shared vocabulary for teacher-student and peer dialogue about writing (Baker et al., 2003). Without shared terminology ("topic sentence," "evidence," "counterargument"), feedback is too vague to be actionable.
+			Implication: The app must establish and reinforce consistent writing vocabulary that teachers, students, and the AI tutor all share.
+		Additional Sources from Research Papers
+			Source: College Entrance Essay Exam Intervention | Author(s): Ray & Graham (2020) | Key Contribution: SRSD for ACT essays; planning as highest-leverage
+			Source: Review of Sentence-Level Writing | Author(s): Datchuk & Kubina (2013) | Key Contribution: Sentence combining > grammar; transfer is indirect
+			Source: Nurturing Young Students' Writing | Author(s): Zumbrunn (2010) | Key Contribution: SRSD works for typically-achieving 1st graders
+			Source: Component Analysis of SRSD | Author(s): Geres-Smith et al. (2019) | Key Contribution: Strategy is primary ingredient; self-statements dispensable
+			Source: Writing and Knowledge of Emergent Writers | Author(s): Zumbrunn & Bruning (2013) | Key Contribution: First graders can self-regulate; Million Dollar Words
+			Source: SRSD Validated Model | Author(s): Santangelo, Harris & Graham (2007) | Key Contribution: 8 writing challenges; overconfidence barrier
+			Source: SRSD Effect on Middle School | Author(s): Turkben (2021) | Key Contribution: General ed gains; traditional instruction harms motivation
+			Source: Strategic and Interactive Writing (SIWI) | Author(s): Wolbers et al. (2018) | Key Contribution: Interactive co-construction; metalinguistic "language zone"
+			Source: Comparison of TSI and SRSI | Author(s): Teng (2019) | Key Contribution: Text structure vs. self-regulation serve different functions
+			Source: Two Types of Self-Regulatory Instruction | Author(s): Garcia-Sanchez & Fidalgo-Redondo (2006) | Key Contribution: Coping modeling > mastery modeling for self-efficacy
+			Source: Supplemental Sentence-Level Instruction | Author(s): Furey et al. (2017) | Key Contribution: Sentence gains don't transfer to composition; F-SPEED
+			Source: Strategy Instruction in the Regular Classroom | Author(s): Danoff, Harris & Graham (1993) | Key Contribution: SRSD stages are incremental; inclusive > pull-out
+			Source: Writing Instruction for Adolescents with LD | Author(s): Mason & Graham (2008) | Key Contribution: Tier-1 vs Tier-2 elements; conferencing throughout
+			Source: Teaching Expressive Writing | Author(s): Baker, Gersten & Graham (2003) | Key Contribution: Think tools not worksheets; common language; mean ES = .81
+	What the Best Writing App Should Look Like #DOK4
+		Based on the complete synthesis of learning science research, writing intervention studies, motivation science, and cognitive load theory, the best writing app must embody the following design principles.
+		Core Architecture: The Mastery Engine
+			1. Knowledge-Graph-Based Prerequisite System
+				Every writing skill is a node in a directed acyclic graph with explicit prerequisites
+				Students cannot access a node until prerequisites are mastered (80%+ criterion)
+				The system diagnoses actual skill level through adaptive assessment — a 7th grader writing at a 3rd grade level starts at the 3rd grade node, not the 7th
+				Spaced review of previously mastered nodes is automatically scheduled (Bjork's desirable difficulties)
+				No Swiss cheese knowledge: the system enforces the prerequisite chain
+			2. Three-Strand Parallel Progression
+				The app tracks progress across three parallel strands simultaneously:
+					Composition (sentences → paragraphs → essays → research papers)
+					Mechanics (handwriting/typing → spelling → contextual grammar → style)
+					Discourse (audience → voice → academic register → discipline-specific writing)
+			Students advance at their own rate within each strand. The system identifies and surfaces integration points where strands reinforce each other.
+			3. Criterion-Based, Not Time-Based Progression
+				Students proceed when ready, not on a fixed schedule
+				Mastery is assessed through performance, not participation
+				The system adapts pacing to each student — faster students accelerate; struggling students get targeted remediation on key prerequisites
+		The Instructional Loop: How Each Node Is Taught
+			Every node follows a 6-stage SRSD-aligned instructional sequence:
+			The Reusable Lesson Shell:
+				The 5-phase lesson structure is fixed and should be built as a reusable component that content slots into. Lesson content is data; the interaction framework is constant. This enables rapid content creation without rebuilding interaction patterns for each lesson.
+			Phase: 1. Teach | Student-Facing Label: "Here's the writing rule" | What Happens: Content revealed bit by bit. Each screen ends with a check-for-understanding question that must be answered correctly (force-correct) before continuing.
+			Phase: 2. Model | Student-Facing Label: "Watch me" | What Happens: App walks through a worked example step by step. Student taps to reveal each step. Models the thinking process, not just the answer.
+			Phase: 3. Supported Practice | Student-Facing Label: "Our turn together" | What Happens: Student answers questions with a checklist visible. Checklist scaffolds thinking but is not enforced.
+			Phase: 4. Independent Practice | Student-Facing Label: "Now show me what you've got!" | What Happens: Same questions, no checklist. Student must internalise the process. Correct answers get gold stamp feedback.
+			Phase: 5. Bonus | Student-Facing Label: "Bonus challenge" | What Happens: Harder activity applying the skill in realistic context (e.g., finding errors in a full paragraph).
+			Force-Correct Mechanism:
+				When a student answers a check-for-understanding question incorrectly, the app does NOT just show the correct answer. Instead: show brief feedback explaining WHY the answer is wrong → display "Try again" → reset after ~1.2 seconds → student must click the correct answer to continue. This prevents passive skipping through teaching content.
+			Stage 1: Activate Background Knowledge
+				Brief diagnostic assessment identifies what the student already knows
+				Prerequisite gaps are addressed before new instruction begins
+				The system presents the student's current performance data to establish a baseline ("Here's what your writing looks like now")
+			Stage 2: Build Buy-In
+				Show the student why this skill matters using before/after examples
+				Connect to student interests: "This will help you write a better [topic they care about]"
+				Establish a commitment: the student agrees to learn and practice the strategy
+				This is NOT optional — research shows buy-in is a prerequisite for learning
+			Stage 3: Model the Strategy (Coping Modeling)
+				Interactive think-aloud demonstration of the writing strategy
+				Critically: demonstrations include mistakes and self-correction ("Wait, that doesn't make sense. Let me re-read... Oh, I need to add a reason here")
+				Coping modeling builds self-efficacy more effectively than flawless demonstrations (Garcia-Sanchez & Fidalgo-Redondo, 2006)
+				The metacognitive task breakdown is made explicit: Why am I doing this step? How did I know to do it? What do I need to know?
+			Stage 4: Memorize the Strategy
+				Students learn genre-specific mnemonics (TREE for persuasive, WWW for narrative, etc.)
+				Memorization goes beyond parroting — students must explain what each step involves
+				Gamified retrieval practice: rapid recall of strategy steps before writing
+			Stage 5: Scaffolded Practice
+				Three types of scaffolding, faded systematically:
+					Content scaffolding: Start with easier topics/shorter tasks
+					Task scaffolding: Gradually transfer ownership (system names step → student describes → student names + describes → student executes independently)
+					Material scaffolding: Planning templates, cue cards, checklists — all faded as mastery develops
+				Optional peer features: peer sharing and feedback for motivation and audience awareness — but NEVER required for progression. No student's advancement depends on another student being available. This is personalized learning.
+				AI tutor provides conferencing throughout the writing process, not just at the end
+			Stage 6: Independent Performance
+				Student writes without scaffolds
+				The system monitors strategy use and writing quality
+				If performance drops, the system re-engages scaffolding at the appropriate level
+				Generalization: students apply the strategy to new topics, genres, and contexts
+		The Planning Engine
+			Planning is the highest-leverage intervention point in writing instruction. The app must make planning central.
+			Genre-Specific Planning Tools
+				Each genre has a matched planning interface (not a generic outline):
+					Story: Who, When, Where, What happens, What next, How does it end, How do characters feel
+					Persuasive: Topic sentence, Reasons (3+), Evidence for each, Counterargument, Ending
+					Informational: Topic, Subtopics, Key facts for each, Introduction hook, Conclusion
+					Argument (advanced): Multiple perspectives, Thesis, Evidence matrix, Concessions, Synthesis
+				Planning tools are THINKING TOOLS, not fill-in-the-blank worksheets
+				They prompt strategic thinking: "What's the strongest reason? What would someone who disagrees say?"
+			Visual Progress Tracking
+				Students graph their own progress (number of elements included, quality scores, strategy use)
+				Visible improvement drives intrinsic motivation (Zumbrunn & Bruning, 2013)
+				"Rocket Graphing Sheet" style visual tracking for younger students
+		The Sentence Workshop
+			Based on the bottom-up mastery principle, the app includes a dedicated sentence-level practice environment.
+			Sentence Construction Progression:
+				1. Simple sentences (subject + verb + detail) with picture-word prompts for K-2
+				2. Sentence expansion (adding adjectives, prepositional phrases)
+				3. Because, But, So (TWR core)
+				4. Appositives and subordinating conjunctions
+				5. Sentence combining (research-validated as superior to grammar instruction, ES = 0.83)
+				6. F-SPEED framework: Framed, Subject, Predicate, Evaluate, Expand (predicate expanders: where/how/when/why), Describe (subject describers)
+			Contextual Grammar Integration:
+				Grammar is always taught through the student's own writing
+				Mentor text analysis: "Notice how the author uses a short sentence after three long ones — what effect does that create?"
+				Anderson's Patterns of Power cycle: Notice → Compare → Imitate → Celebrate → Apply
+				No isolated grammar worksheets. Ever. (-0.32 effect size, Graham & Perin)
+			Explicit Bridge to Composition:
+				Sentence-level mastery is explicitly connected to paragraph and essay writing
+				After mastering sentence expansion, students immediately use those sentences in paragraphs
+				The transfer gap is real (Furey et al., 2017) — the app cannot assume automatic transfer
+		The Motivation Architecture
+			Writing quality and writing motivation are separable outcomes (Insight 8). The app needs a dedicated motivation layer.
+			Topic Choice Within Parameters
+				At every node, students choose WHAT they write about
+				The app provides the structure and constraints; students provide the content
+				"Write a persuasive paragraph about something you think should change" — not "Write about whether school uniforms are good"
+			Authentic Audience
+				Students write for real readers: classmates, parents, school community, public
+				Publishing features: share writing, receive feedback, build a portfolio
+				Real audience creates real purpose (Boscolo & Hidi)
+			Tournaments and Contests
+				Writing competitions at class, school, and community levels
+				Tournament brackets, peer voting, themed challenges
+				Kids are motivated to write better when writing what they love for an audience of their peers
+				Leaderboards for participation and quality (opt-in), not just speed
+			Wise Feedback (Mentor Mindset)
+				All AI feedback follows Yeager's formula: "I have high standards, and I believe you can meet them"
+				Specific, actionable feedback using shared writing vocabulary
+				Celebrate what's right before addressing what needs work (Anderson's approach)
+				Never: "This is wrong." Always: "Here's how to make this even stronger."
+			Visible Progress
+				Students see their growth over time (quality scores, elements mastered, strategies acquired)
+				Achievement drives motivation: successful writing experiences build self-efficacy
+				Extrinsic rewards for early engagement (kickstarting the competence → confidence cycle)
+			Interest Development Pathway (Hidi & Renninger)
+				Phase 1: Trigger situational interest through engaging topics and immediate success
+				Phase 2: Maintain interest through meaningfulness and visible progress
+				Phase 3: Support emerging individual interest through increasing autonomy
+				Phase 4: Nurture well-developed interest through real-world writing opportunities
+		The Feedback System
+			AI Tutor Feedback Principles:
+				Uses coping modeling language: "I see you started with a strong claim. One thing that could make this even more convincing is adding a specific example — like the difference between 'dogs are loyal' and 'my dog waited by the door every day for six months after my brother left for college.'"
+				Provides common vocabulary: refers to "topic sentence," "evidence," "counterargument" — the same terms used in instruction
+				Feedback occurs DURING writing (conferencing throughout), not just after
+				Substantive revision feedback: pushes for meaning-level changes, not just surface editing
+				Calibrates self-assessment: helps students accurately evaluate their own writing
+			Peer Feedback Features (Optional, Never Gating):
+				Peer sharing and feedback are motivational tools — writing for an audience of peers drives quality
+				Structured peer revision with checklists matched to the current strategy, when peers are available
+				Tournaments, contests, and peer publishing create authentic stakes and audience
+				Peer feedback improves both the giver and receiver (ES = 1.09, Mason & Graham, 2008)
+				Critical constraint: No student's progression depends on another student. Peer features enrich the experience but the AI tutor can always substitute. This preserves the premise of personalized learning.
+		The Teacher Dashboard
+			Diagnostic View:
+				Where each student is in the knowledge graph
+				Which prerequisites are blocking advancement
+				Which students need targeted remediation vs. which are ready to advance
+			Instructional Support:
+				Think-aloud scripts for modeling each strategy (with coping modeling guidance)
+				Suggested mini-lessons based on common error patterns in student writing
+				Common writing vocabulary reference for consistent feedback language
+			Progress Analytics:
+				Class-level and individual mastery rates
+				Time-in-node data (are students stuck?)
+				Writing quality trends over time
+				Motivation indicators (time spent writing, topic engagement, voluntary revision)
+		What the App Must NOT Do
+			Based on the research, the following features would be counterproductive:
+				1. No isolated grammar drills — Grammar worksheets disconnected from writing have a negative effect (-0.32 ES). All grammar instruction must be contextual.
+				2. No time-based progression — Moving students forward on a schedule rather than by mastery creates Swiss cheese knowledge.
+				3. No blank-page-first approach — Presenting a blank writing screen without planning scaffolds increases cognitive load and produces anxiety, especially for struggling writers.
+				4. No fill-in-the-blank planning — Planning tools must prompt thinking, not just data entry. "What are three reasons?" is a worksheet. "What's your strongest reason — the one that would convince even someone who disagrees?" is a thinking tool.
+				5. No mastery-only modeling — Demonstrating only perfect writing processes fails to build self-efficacy. The app must show mistakes, uncertainty, and self-correction.
+				6. No one-size-fits-all strategy — Different genres require different planning strategies, different text structures, and different revision approaches. A single "writing process" template is insufficient.
+				7. No skipping prerequisites — Assigning essay writing to students who cannot construct clear sentences is educational malpractice. The knowledge graph enforces the sequence.
+				8. No feedback without shared vocabulary — Vague feedback ("make it better," "add more detail") is not actionable. All feedback must use the specific terms students have been taught.
+				9. No separating motivation from instruction — Motivation is not a warm-up activity. It is embedded in every design decision: topic choice, visible progress, authentic audience, wise feedback.
+				10. No assuming transfer — Sentence-level skills do not automatically transfer to composition quality. The app must explicitly bridge each level to the next through guided practice.
+				11. No peer dependencies for progression — Peer review and sharing are motivational tools, not progression gates. A student should never be blocked from advancing because a peer is unavailable. The AI tutor substitutes for peer functions when needed. This is personalized learning.
+				12. No teaching other subjects during writing time — During writing time, students write about what they love. The app can use writing to teach other subjects during those subjects' time blocks, but writing instruction prioritizes student-chosen topics.
+				13. No production before discrimination — Never ask students to fix a problem they can't yet see. If a student can't identify a fragment, don't ask them to fix one. If they can't tell a developed paragraph from an underdeveloped one, don't teach elaboration strategies. Discrimination is the gateway to every skill.
+				14. No showing the correct answer on wrong responses — When students answer incorrectly, show brief feedback explaining WHY the answer is wrong, then require them to try again. Passively showing the correct answer teaches nothing. The student must actively select the right answer to continue (force-correct mechanism).
+			Writing Brainlift - Complete
+			Created: February 2026
+			Updated: March 2026 (Research insights and Best Writing App section added)

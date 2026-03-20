@@ -1,0 +1,16 @@
+# Environment / secrets
+.env
+
+# Copyrighted books / PDFs
+*.pdf
+
+# Utility scripts
+inject_engine.py
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/

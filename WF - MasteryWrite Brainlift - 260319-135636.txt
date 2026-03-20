@@ -1,0 +1,368 @@
+MasteryWrite Brainlift
+
+- Owner: Sarah Cottinghatt
+- Purpose
+  - A hole-filling writing app for Grades 3-5
+  - It does not teach writing from scratch; it targets the specific gaps that stop students passing the STAAR writing test
+  - The curriculum focuses exclusively on STAAR-tested skills: essay writing, text evidence, sentence errors, and conventions
+- Research and sources
+  - STAAR data case
+    - Writing accounts for roughly 50% of STAAR RLA points across Grades 3-5 (26-27 out of 51-56 total)
+    - The Extended Constructed Response (ECR) essay alone is worth 10 points, roughly 40% of the writing score, and is the single highest-value item on the test
+    - The ECR is always a passage-based informational writing task: read a passage, identify a central idea, select evidence, write a multi-paragraph response
+    - Mastery Write is designed to cover the full range of STAAR writing points at Grades 3-5 (26-27 points total)
+  - Noel's error analysis (36 struggling writers deep-dive diagnostic)
+    - 50% produce underdeveloped responses with minimal detail
+    - 33% produce fragments or run-ons
+    - 64% struggle with sentence combining
+    - 81% fail extended writing tasks
+    - 53% have persistent spelling errors
+    - 75% are flagged as rushed (averaging under 20 minutes on tests requiring much longer)
+  - Research findings
+    - Graham et al (2012) meta-analysis gives sentence combining an effect size of 0.53
+    - SRSD has the highest effect size of any writing intervention at 1.17
+- Curriculum and content
+  - Four content areas chosen to close the biggest gaps between what STAAR tests and what students can currently do
+    - Sentence Mastery (14 lessons, 25 KCs): fragments, run-ons, compound/complex sentences
+    - Idea Development (7 lessons, 19 KCs): discrimination of developed vs underdeveloped writing, then production of reasons, examples, concrete details, topic sentences, paragraphs
+    - Text Evidence Integration (4 lessons, 14 KCs): finding central ideas, selecting relevant evidence, paraphrasing, integrating evidence with a signal phrase and explanation
+    - Organisation and Composition (6 lessons, 16 KCs): paragraph structure, multi-paragraph writing, essay architecture
+  - Content decisions: what is excluded and why
+    - Appositives: not in Grade 3 TEKS; not a priority for STAAR performance
+    - Question transformation: not tested on STAAR; not a priority for STAAR performance
+    - These skills were excluded to free up instructional time for the highest-value gaps
+  - The Knowledge Component approach
+    - Coarse-grained instruction (e.g. "add because" as a single elaboration move, or "combine sentences" as a single activity) creates two problems: students have not learned the underlying concepts, and transfer is weak
+    - Mastery Write addresses both problems through Knowledge Components (KCs): fine-grained atoms of knowledge that each get their own teaching, checking, and practice
+    - The curriculum contains 74 KCs across 31 lessons, grouped into 4 areas and 13 parts
+  - The four KC types
+    - Discrimination: Can the student see the problem? (e.g. tell a sentence from a fragment). Always taught first.
+    - Production: Can the student fix or create? (e.g. fix a fragment by adding the missing subject). Only introduced after discrimination is solid.
+    - Structure: Does the student know the rule or pattern? (e.g. a comma goes before a coordinating conjunction). Often taught alongside discrimination.
+    - Integrative: Can the student apply multiple skills together in a realistic context? (e.g. edit a full passage for sentence errors)
+  - Discrimination before production principle
+    - Every skill is taught in two stages: first learn to see the problem, then learn to fix it
+    - Without this sequencing, students are asked to combine sentences without first being able to identify sentence boundaries
+    - The KC framework enforces this: every area begins with Discrimination KCs before Production KCs
+  - Area ordering and prerequisites
+    - Fixed order: Sentence Mastery, Idea Development, Text Evidence Integration, Organisation and Composition
+    - This ordering is driven by cross-area prerequisites: idea development requires sentence-level skills, text evidence requires idea development, organisation requires all three
+    - Within each area, parts must be completed in order
+    - Cross-area gates: a student cannot begin a new area until they have completed (or tested out of) the required parts from prior areas
+  - Test out
+    - Students can demonstrate they already have the skills taught in a part and skip its lessons entirely
+    - Granularity is per Part (e.g. "Fragment Spotting and Fixing" = Lessons 1-2). Per-lesson would be tedious; per-area would be too coarse
+    - The test samples across KC types in that part and must include production items, not just MCQs
+    - Pass threshold: demonstrate the capstone/integrative KC with no more than one retry
+    - Cross-area gates apply: cannot test out of a later area without completing prerequisites
+    - If a student fails, they start the first lesson of that part. No immediate retry.
+    - Test-out is optional and always offered at the start of a part
+- Instructional design
+  - Direct instruction philosophy
+    - Every lesson follows the same phases in the same order. Consistency matters: students should not have to learn a new interface each time.
+    - The app is highly interactive. Students are never passive for more than one screen. Every teaching point is followed immediately by a check.
+    - Content is revealed progressively, not all at once. Each idea lands before the next appears.
+  - The lesson phases
+    - Phase 1: TEACH (Here is the writing rule)
+      - Each knowledge point is taught on its own screen with a key-point callout
+      - Each teaching screen ends with an MCQ testing recognition of what was just taught. This gates the Continue button.
+      - After a sequence of related knowledge points, a tick-to-remember checklist summarises all items; the student ticks each before continuing
+      - Immediately after the tick-to-remember, a gap-fill check for listening appears
+      - Teaching screens use minimal text; the near-peer voice introduces and bridges, but the rule itself stands alone with authority
+    - Phase 2: MODEL (Watch me)
+      - The near-peer models the task that practice will ask, working through a realistic set of items (not isolated examples)
+      - The model is done twice (two model screens with different content) before practice begins
+      - After each model, an MCQ asks students to classify what they observed (discrimination, not production)
+    - Phase 3: SUPPORTED PRACTICE (Your turn)
+      - Student does the same task as the model, but now doing the thinking themselves
+      - A read-only reference checklist is visible as a reminder, but not interactive
+      - After identifying the correct item, a second stage asks the student to explain what is wrong using a grey sentence starter
+    - Phase 4: INDEPENDENT PRACTICE (Show me)
+      - Same format as supported practice, but the reference checklist is removed entirely
+      - This forces internalisation (covertising) rather than dependence on scaffolding
+    - Phase 5: 3 FOR 3 (end activity)
+      - A timed activity where the student must do 3 of something as fast as they can
+      - The task mirrors the lesson content
+      - A live timer starts on first tap. Points are awarded based on speed and accuracy.
+    - Phase 6: REFLECT
+      - A bridging screen shows contexts where the skill applies beyond the app
+      - Student selects which contexts apply (all are correct — the point is expansive framing)
+  - Checks for listening
+    - Gap-fill checks appear immediately after every key knowledge sequence
+    - The teaching content is no longer on screen; the student has to recall from memory
+    - They are simple: a student who was paying attention should get them right. Attention is the only variable.
+    - There is no feedback explaining why an answer is wrong. No hints. If the student cannot remember, they go back and re-read.
+    - Go-back-to-review mechanic: if wrong twice, a button sends the student back to the relevant teaching sequence. The app enters review mode where all gates are bypassed and content is instantly accessible. When they reach the original gap-fill, review mode ends and they try again.
+  - Checks for understanding (MCQs)
+    - Every teaching screen ends with an MCQ testing recognition, not recall
+    - 3 options: 1 correct, 2 plausible distractors based on common errors
+    - Wrong-answer feedback tells the student what to look for, not what the answer is
+    - MCQs gate the Continue button
+  - Durable mastery
+    - All KCs require multiple spaced encounters. Each encounter demands retrieval from memory, and later encounters interleave skills.
+    - E1: First Encounter (Learn it)
+      - The full instructional sequence: Teach, Model, Supported Practice, Independent Practice, 3 for 3, Reflect
+      - Everything is new. Teaching is explicit and scaffolded.
+      - E1 is the longest encounter: 20-25 screens, 15-25 minutes.
+    - E2: Retrieval Practice (Remember it)
+      - Happens 2-7 days after E1. The student should have partially forgotten, so retrieval is effortful.
+      - No re-teaching, no model, no supported practice. Straight to independent-level retrieval tasks with new examples and contexts.
+      - If the student struggles, they see a mini-review (condensed refresher of just the rule and one example for the specific KC they failed), then retry. This is successive relearning: retrieve, fail, restudy, retrieve again.
+      - E2 is shorter: 8-12 screens, 5-10 minutes. It should feel like a quick challenge, not a repeat.
+    - E3: Interleaved Practice (Use it flexibly)
+      - Happens 1-2 weeks after E2. Mixes KCs from multiple lessons and parts.
+      - The student does not know in advance which skill is needed. This is where transfer lives.
+      - No teaching, no model, no scaffolding. Pure application with targeted feedback on failure.
+      - E3 is the shortest (6-10 screens, 5-8 minutes) but cognitively the most demanding.
+    - What stays the same: near-peer voice, peer gate pattern, points system, 3 for 3
+    - What changes: teaching (E1 only), model (E1 only), supported practice (E1 only), scaffolding removal, peer voice tone, length, failure handling
+    - Not all KCs need all three encounters. Simple structure KCs may only need E1 + E2. Complex integrative KCs may need multiple E3 rounds.
+- Motivation and self-regulation
+  - The student name
+    - Entered on the rules screen at the start of each E1 lesson
+    - Used sparingly and deliberately to make it feel personal when it does appear
+    - Where it appears: gap-fill headings ("[Name], can you remember?"), phase transitions ("[Name], now it is your turn"), 3 for 3 ("[Name], last challenge!"), closing ("[Name], this is exactly where I was after my first lesson")
+    - Where it does NOT appear: routine transitions like "One more set. Same steps." or "Here is another set. This one is trickier."
+  - The near-peer voice
+    - A disembodied writer who types to the student. Unnamed. They function as a model of who this student could become.
+    - They used to be a bad writer; now they are better. They learned the rules and they worked.
+    - Voice qualities: warm, honest, admits difficulty, celebrates progress through shared experience rather than cheerleading
+    - Emotional honesty: admits specific struggles ("I wrote a fragment in every single paragraph"), not vague ones ("I found this hard")
+    - No cheerleading: "I couldn't do this either at first" is more motivating than "You can do it!" The peer is honest, not performatively positive.
+    - Sentence length: mostly 5-12 words. Grade 3 reading level. No complex syntax.
+    - Contractions are allowed and encouraged in the peer voice ("here's", "I'll", "isn't") but NEVER in teaching content, rules, feedback, or checklists
+    - The near-peer never delivers the actual knowledge content; they frame it, react to it, and make it feel like a shared experience
+    - Pattern: near-peer introduces ("Here is the thing that changed my writing"), rule stands alone with authority, near-peer reacts and bridges ("This one got me at first"), practice is framed socially ("I wrote these at the start of the year. Watch me use our checklist.")
+    - Voice tone shifts by encounter: E1 = "Here is the thing that changed my writing", E2 = "Let's see if this stuck", E3 = "This is the real test — everything mixed together"
+  - Gold-plated sentences and audio feedback
+    - When a student gets a practice answer correct, the answer card gets a gold stamp animation with a satisfying musical phrase
+    - Three distinct sound effects: gold arpeggio for correct practice, high tone for correct MCQs/gap fills, low tone for wrong answers
+    - The gold plating makes correctness feel rewarding. It is the primary moment-to-moment reward.
+  - Points system
+    - Points create a tangible measure of performance without being punitive
+    - Checks for listening (gap fills): 10 points per set if ALL blanks correct on first attempt. 0 if any wrong.
+    - MCQs on teaching screens: 10 points each if correct on first attempt. 0 if any wrong attempt.
+    - Practice questions (supported + independent): 25 points if correct on first tap and explanation correct. 10 on second attempt. 0 on third or later.
+    - 3 for 3: 30 points if all correct first tap under 30 seconds. 20 if all correct but over 30 seconds. 10 if retries needed.
+    - A persistent counter in the top bar shows the running total
+    - When points are awarded, a token animates from the centre of the screen to the counter
+    - Lesson complete screen shows total points and a star rating (3 stars / 2 stars / 1 star based on thresholds calibrated per lesson)
+  - Self-regulation woven through the structure
+    - Rules screen sets expectations and gets commitment
+    - Tick-to-remember checklists: active recall that gates the Continue button
+    - Read-only checklist during supported practice models the self-checking behaviour we want students to internalise
+    - Checklist removal during independent practice forces self-regulation without external scaffolding
+    - 3 for 3: timed format requires self-monitoring under pressure
+    - Bridging screen: shows the skill applies beyond the app
+- App design (as it currently is; elements up for discussion)
+  - This section contains the full build spec. An LLM should be able to take this section and build a lesson matching the design of the existing Lesson 1.
+  - Screen structure
+    - All lesson content is stored as a SCREENS array of data objects, each with phase, badge, and render function
+    - Navigation is linear: no back button, single forward path from screen 0 to end
+    - Progress bar at top shows percentage completion
+    - Phase badges show which phase the student is in (colour-coded)
+  - The Continue button is gated differently depending on the screen type
+    - MCQ gate: must answer correctly
+    - Check gate: must complete gap-fill
+    - Reveal gate: must tap through all steps in a modelled example
+    - Tick gate: must tick all items in a tick-to-remember checklist
+    - Practice gate: must find correct item and explain what is wrong
+    - Typing gate: typing animation must finish or student clicks Skip
+    - 3 for 3 gate: must find all items
+    - No gate: some screens have no gate; Continue is immediately active
+  - Peer gate pattern
+    - On every screen with a peer note and further content, the peer note types first and the rest of the screen is hidden
+    - When typing finishes, a contextual button appears below the peer note
+    - Only when the student taps it does the teaching content reveal bit-by-bit (staggered, 650ms between children elements)
+    - This prevents information overload and forces reading the peer's framing before seeing new content
+    - If there is a question (MCQ, tick-to-remember, or practice task), it must appear LAST in the reveal sequence
+    - Button labels must match context:
+      - "Ready": before the lesson's first teaching content
+      - "Show me": before any screen revealing a new rule or concept
+      - "Let's go": before practice or challenge activities
+      - "Got it": brief transitions only, not before new content
+    - Implementation: setupPeerGate(peerId, afterId, onDone, label) where peerId is the peer note container, afterId is the div wrapping hidden content, onDone is an optional callback (e.g. to enable()), and label is the button text. The function registers a callback in peerDoneCallbacks that fires when typing completes, then creates the button.
+    - In review mode (returnToScreen !== null), the gate is bypassed entirely.
+  - Near-peer typing engine
+    - All peer text types live, character by character, at ~50-65ms per character (matching grade 3 reading pace)
+    - Supports type, delete, newline, and pause actions
+    - Every peer note has a Skip button
+    - Model verdict text also types live using the same engine
+    - Visual style: white card, green dot, "Writing..." label, Quicksand font
+  - Typing intro structure (first screen of each lesson)
+    - Line 1: say what you used to think about yourself as a writer (e.g. "I am not a very good writer.")
+    - Edit line 1: delete backwards, retype to show growth (e.g. "a very good writer!")
+    - Set up the lesson: mention the skill, make a mistake matching the lesson content, notice it, delete it, rewrite correctly
+    - Inspirational line (e.g. "Soon you will be able to write so anyone can understand you.")
+    - Sign off: "Let me show you what I learned."
+  - Teaching screens
+    - One knowledge point per screen
+    - Rule/concept in formal language (no contractions, no em dashes)
+    - Key-point callout with the critical takeaway (subtle background, bold text, no heavy borders)
+    - Sample cards: bad example (light orange background) and good example (light green background). Key point should always be more visually prominent than the examples.
+    - Content revealed line by line using staggered CSS animation (650ms between items)
+    - Content must use student-friendly terminology. Each lesson defines its own vocabulary. Example from the fragment lesson: "who" not "subject", "what happened" not "predicate", "depends word" not "subordinating conjunction", "fragment" not "incomplete sentence"
+  - MCQs on teaching screens
+    - 3 options: 1 correct, 2 plausible distractors based on common errors
+    - Tests recognition not recall: "Which one is an example of [concept]?"
+    - Wrong-answer feedback tells the student what to look for, not what the answer is
+    - Example from the fragment lesson: after teaching "no 'who'" fragments, the MCQ asks "Which one is a fragment with no 'who'?" with options like "The dog barked loudly" (has a who), "Ran all the way to school" (correct), "My sister is very tall" (has a who)
+    - MCQs gate the Continue button and earn 10 points for first-attempt correct
+  - Tick-to-remember checklists
+    - One checklist after each sequence of 2-4 related teaching screens
+    - Each item is a one-sentence statement of a KC
+    - All items must be ticked before Continue is enabled
+    - Immediately followed by a gap-fill check for listening
+  - Gap-fill checks for listening
+    - Questions with 1-2 blanks testing recall of just-taught content
+    - Blanks at strategic positions (not just sentence starts — also middle and end)
+    - Example: "___ sentences might still be ___." (Long, fragments) rather than just "___ sentences might still be fragments."
+    - No feedback, no hints. If wrong twice, "Go back to review" button sends student back to start of relevant teaching sequence.
+    - Each gap-fill screen is mapped to its review target in GAP_REVIEW_MAP (e.g. {4:3, 9:5, 11:10, 13:12} in Lesson 1)
+  - Model screens (Watch Me)
+    - 2 model screens with different content
+    - Near-peer walks through a cluster of 2-4 items (not isolated examples)
+    - Near-peer applies the portable strategy step by step (e.g. the 4-step sentence check in the fragment lesson)
+    - Near-peer types their verdict explaining what is wrong
+    - Error position should vary between the two models
+    - After each model, an MCQ asks students to classify what they observed
+    - MC options must include all error types for the lesson so students discriminate, not just recognise the most recent type
+  - Practice screens
+    - Two-stage mechanic:
+      - Stage 1: student taps the item with the problem (e.g. the fragment in a set of 3 sentences)
+      - Stage 2: text input appears asking "What is wrong with it?" with a grey sentence starter pre-filled as placeholder text
+    - Grey starters are tailored to the lesson content. Example from the fragment lesson: "It has no " (no-who), "The -ing word has no " (ing-fragment), "It starts with a depends word and " (depends-fragment). Other lessons will have their own starters matching their error types.
+    - Validation uses fuzzy keyword matching against the expected error type (not exact string matching)
+    - Error positions should vary across practice sets to prevent positional guessing
+    - Supported practice: 2 sets, read-only reference checklist visible (light purple checkboxes, background #EDE9FE, border #C4B5FD, tick #6366F1, pre-ticked, not interactive, no pointer cursor)
+    - Independent practice: 2 sets, reference checklist removed entirely
+    - Correct answers during practice get gold stamp animation
+    - Scoring: 25 points first tap + correct explanation, 10 second attempt, 0 third+
+  - Progressive disclosure
+    - Screens with multiple related items (e.g. "3 tricks that fool people") use tap-to-reveal buttons
+    - Student taps to reveal each item one at a time, preventing scanning without processing
+  - 3 for 3 end activity
+    - Realistic context: paragraph, passage, or set of items containing exactly 3 targets
+    - Topic should be relatable (school, peers, everyday life, science, games)
+    - Timer starts on first tap
+    - Scoring: 30 points all correct first tap under 30 seconds, 20 all correct over 30 seconds, 10 if retries needed
+  - Reflect screen
+    - Near-peer frames: "I used to think [skill] only mattered in English class. I was wrong."
+    - Student selects contexts where the skill applies (all correct — expansive framing)
+    - Contexts should be specific: science journals, messages to friends, instructions for a game, own writing
+  - Rules and commitment screen (screen 0)
+    - Name entry field (name is used throughout the lesson)
+    - 5 rules displayed in a clean card:
+      - Rule 1: You must always write in full sentences
+      - Rule 2: Always start with a capital letter and end with a full stop
+      - Rule 3: Pay close attention. After everything you learn, you will be tested straight away.
+      - Rule 4: When you need to write, we will give you greyed sentence starters to help
+      - Rule 5: Earn points for correct answers!
+    - "I agree to the rules" button (not a signature canvas — the commitment comes from the explicit agreement)
+    - Only appears in E1; E2 and E3 skip it
+  - Review mode (go-back-to-review)
+    - GAP_REVIEW_MAP defines which gap screen maps to which teaching screen
+    - goBackToReview(targetIdx) sets returnToScreen = current screen, navigates to target
+    - renderScreen() checks returnToScreen !== null: if true, calls enable() and sets button text to "Skip to check"
+    - setupPeerGate() skips gate entirely in review mode
+    - revealChildren() shows all children instantly in review mode
+    - goNext() checks if cur >= returnToScreen: if true, resets returnToScreen to null, button reverts to "Continue"
+  - Points and scoring implementation
+    - Persistent counter in topbar (star icon + number), always visible
+    - Fly-to-counter animation: token appears at centre, holds 500ms, flies to topbar counter with cubic-bezier easing, counter bumps (scale animation) on arrival, displayed total updates
+    - Scoring summary: gap fills 10pts/set first attempt, MCQs 10pts first attempt, practice 25/10/0, 3 for 3 30/20/10
+    - Star thresholds calibrated per lesson: 3 stars (e.g. >170), 2 stars (e.g. >120), 1 star (e.g. >70)
+  - Feedback
+    - All feedback text is short and specific
+    - Names the exact problem: "There is no 'who' in this sentence" not "That is incorrect, try again"
+    - Wrong-answer feedback tells what to look for, not what the answer is
+    - Example from the fragment lesson: "Use the 4-step check. Is the problem no 'who', no 'what happened', a depends word with no main clause, or -ing without a helper verb?" Other lessons will have feedback referencing their own portable strategy.
+  - Visual design
+    - Clean and crisp: fewer boxes, fewer colours, more whitespace
+    - Font stack: Inter for UI and teaching content; Quicksand for near-peer voice (loaded from Google Fonts)
+    - Near-peer voice is visually distinct from teaching content: Quicksand font in a typing-area card vs Inter in standard cards
+    - Single checklist style: all checklists use the same neutral background regardless of context
+    - Read-only checklists look "already done" (light purple, pre-ticked) not "disabled" (grey, faded)
+  - Technical implementation
+    - Each lesson is a single HTML file with embedded CSS and JS; no dependencies except Google Fonts
+    - Opens in Safari on a tablet
+    - Typing animation: character-by-character at 50-65ms; supports type, delete, newline, pause actions
+    - Web Audio API: pentatonic arpeggio for gold plating, sine 800Hz for correct, square 300Hz for wrong
+    - CSS: goldGlow animation, reveal-child transitions (opacity + max-height, 650ms stagger), phase badges colour-coded, points-fly token animation
+    - All lesson content stored as SCREENS array of data objects with phase, badge, and render function
+    - Points tracked in a score object with per-screen tracking for first-attempt bonuses
+- Step-by-step LLM instructions for building a lesson
+  - Step 1: Identify KCs for this lesson
+    - Check the KC framework spreadsheet
+    - Note cognitive types (discriminate, produce, structure, integrative)
+    - Note prerequisites — what must the student already know?
+    - Confirm this is an E1, E2, or E3 lesson
+  - Step 2: Plan the screen sequence
+    - Count teaching screens needed (1 per KC, plus tick-to-remember + gap fill after each sequence of 2-4 related KCs)
+    - Count model screens (always 2, with different content)
+    - Count practice screens (2 supported + 2 independent)
+    - Add 3 for 3 screen and reflect screen
+    - Total should be 20-25 screens for a typical E1
+    - Map which gap-fill screens link back to which teaching screens (GAP_REVIEW_MAP)
+  - Step 3: Write teaching content for each KC
+    - Follow the teaching screen spec in App Design
+    - One knowledge point per screen, formal language, key-point callout, sample cards
+    - Write an MCQ for each: 3 options, tests recognition, feedback tells what to look for
+  - Step 4: Write tick-to-remember checklists and gap-fill checks
+    - Follow the tick-to-remember and gap-fill specs in App Design
+    - Map each gap-fill to its review target
+  - Step 5: Write model screens
+    - Follow the model screen spec in App Design
+    - 2 models with different content, near-peer applies the portable strategy, MCQ after each
+  - Step 6: Write supported and independent practice
+    - Follow the practice screen spec in App Design
+    - 2 supported sets (with checklist) + 2 independent sets (without)
+    - Grey starters, fuzzy keyword validation, varying error positions
+  - Step 7: Write 3 for 3, reflect screen, and rules screen
+    - Follow the specs in App Design for each
+  - Step 8: Write the near-peer voice
+    - Typing intro: follow the typing intro structure in App Design
+    - Peer notes for every screen: contractions, 5-12 word sentences, specific struggles, no cheerleading
+    - Use student name only at key moments (see Motivation section)
+    - Peer gate labels: Ready, Show me, Let's go, Got it (see App Design)
+  - Step 9: Wire up peer gates, review mode, points, and scoring
+    - Follow the peer gate, review mode, and points specs in App Design
+  - Step 10: Build the HTML file
+    - Single file with embedded CSS and JS
+    - Follow the technical implementation spec in App Design
+  - Step 11: Quality check
+    - Play through the entire lesson start to finish
+    - Verify every peer gate works (peer types, button, content reveals)
+    - Verify every MCQ gates Continue correctly
+    - Verify every gap-fill sends back to review on 2 wrong attempts
+    - Verify review mode: all gates bypassed, "Skip to check" on every screen, returns to gap correctly
+    - Verify points fly to counter and counter updates
+    - Verify gold stamp animation plays on correct practice answers
+    - Verify no contractions in teaching content or feedback
+    - Verify student name appears only at key moments
+    - Verify error positions vary across practice sets
+- Terminology decisions
+  - General principles
+    - Always prefer student-friendly language over academic terms
+    - No contractions in teaching content or feedback; contractions allowed in near-peer voice
+    - No em dashes in student-facing text (replaced with colons, semicolons, or commas)
+    - Each lesson defines its own vocabulary — the principle is: use the simplest accurate term
+  - Example terminology from the fragment lesson (Sentence Mastery Lesson 1)
+    - "who" not "subject"
+    - "what happened" not "predicate"
+    - "depends word" not "trap word" or "subordinating conjunction"
+    - "main clause" explained simply as "the part that can stand on its own"
+    - "fragment" not "incomplete sentence"
+    - -ing is a fragment type (Type 4) not a "trick"; it is a genuinely different structural problem
+    - "No 'who'" not "missing the 'who'" (shorter, consistent)
+    - "What is wrong?" not "What is missing?" (covers all fragment types including depends words)
+- Known design tensions and open questions
+  - 3 for 3 timing thresholds: the 30-second threshold for maximum points may need per-lesson calibration. Some lessons may have longer reading requirements.
+  - Grey starter validation: currently the explain step uses fuzzy keyword matching. A student who types the starter text and adds a single keyword will pass. This is a deliberate simplification — the explain step is about classification, not extended writing.
+  - Trick selection: which misconceptions to teach as "tricks" should be based on error analysis data for the specific skill. Only the most common misconceptions should be included to keep cognitive load manageable.
+  - Error analysis sample size: the percentages cited (50% underdeveloped, 33% fragments, etc.) come from Noel's diagnostic of 36 struggling writers. These students were specifically selected as struggling, so the percentages reflect the target population for Mastery Write, not all students.
+  - E2 spacing calibration: the recommended 2-7 day gap between E1 and E2 is based on general spacing research, but the optimal gap likely varies by KC complexity. This needs testing.
+  - E2 mini-review depth: how condensed? One option is just the rule + one example. Another is rule + example + one practice item. Too much and E2 becomes a re-teach; too little and struggling students loop without learning.
+  - E3 KC mixing scope: mix within a part only, across parts within an area, or across areas? Safest is within a part; most transfer-promoting is across areas but risks overwhelm.
+  - E3 for production KCs: interleaving production tasks is harder than discrimination. E3 production items may need to present the error type as a given rather than requiring identification too.
+  - Which KCs need all three encounters: simple structure KCs might be durable after E1 + E2 alone. The KC framework should be extended with an "encounters needed" column once we have data.

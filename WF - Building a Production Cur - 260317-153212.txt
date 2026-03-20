@@ -1,0 +1,195 @@
+Building a Production Curriculum with AI BrainLift
+
+- Owner
+  - Ilma
+- Purpose
+  - Document the end-to-end methodology for building a production-grade reading curriculum (articles + comprehension questions) using AI — from research through QC — so the wider org can understand, evaluate, and replicate the approach
+  - Out of scope: pedagogy theory (covered in consultant brainlifts), platform/UI integration, student-facing delivery
+- DOK4 - SPOV
+  - A single person with AI can build a better curriculum in days than a content team builds in months
+    - Orgs assume curriculum development requires large teams and months of review cycles. The bottleneck is actually research design, not headcount
+  - Never trust a single model's output. The best content comes from models competing against each other, not picking the best model.
+    - No model wins even half the slots: removing any one model reduces coverage
+  - The quality of your QC pipeline matters more than the quality of your generator. A bad writer with a great editor beats a great writer with no editor.
+    - Our data shows the fix pipeline moved the score more than the model choice did
+- DOK3 - Insights
+  - Multi-model tournament beats single-model generation every time. When 3 models compete on the same prompt and a QC layer picks the winner, the output quality exceeds what any single model produces alone — because different models fail in different ways. Gemini won 46% of question slots, Opus 38%, GPT 16%. No single model dominated.
+  - QC is more important than generation. A mediocre article through a rigorous QC pipeline (10 binary checks, auto-fix, re-QC loop) produces better output than a brilliant article with no QC. Build 2 scored 94.25/100 after a 4-fix pipeline (slop removal, vocab recurrence, literary excerpts, word count trimming) — it would have scored ~75 without fixes.
+  - The curriculum bottleneck is research, not writing. Generating 884 articles took ~3 hours. Getting the curriculum right (which topics, which grade, which sequence, how many articles per topic) took 3 days of iterative research across 3 different AI research tools, plus calibration against the Core Knowledge Sequence, standardized test Lexile bands from 5 states, and 5 consultant brainlifts.
+  - Programmatic fixes outperform LLM fixes for mechanical problems. Slop replacement (445 instances, regex-based) was instant and perfect. LLM-based vocab insertion was reverted because it degraded quality — sentences were tacked on at arbitrary positions. The lesson: use LLMs for judgment, use scripts for pattern replacement.
+  - Running 5 competing builds and scoring them with a rubric is the single highest-value step. Without the 5-build comparison, we would have shipped Build 1. Build 2 beat it by 9 points, and the comparison surfaced specific weaknesses (slop rate, vocab scaffolding, misconception coverage) that were invisible to qualitative review.
+- Experts
+  - E.D. Hirsch Jr.
+    - Core Knowledge Foundation founder; developed the Core Knowledge Sequence used as our curriculum backbone
+    - Main view: reading comprehension is a knowledge problem, not a skills problem. The "reading gap" is a knowledge gap.
+    - Why follow: the CK Sequence is the most detailed, grade-by-grade content specification available for K-8. Our entire topic map is derived from it.
+    - coreknowledge.org
+  - Carl Hendrick
+    - Vocabulary instruction, instructional invariants, schema-based learning
+    - Main views: "Reading comprehension is not a skill — it is a by-product of knowledge." Tier 2 vocab needs 6-12 robust encounters. Schema videos must reference prior schemas.
+    - Why follow: his brainlift directly shaped our meaning-marker QC check, vocab recurrence targets, and spiral design evaluation
+    - Internal brainlift
+  - Becky Allen
+    - Graded assessment systems, knowledge demand typology
+    - Main views: assessments must map to specific knowledge components. Algorithmic sampling based on topic share × objective importance × difficulty. KCs rated on abstraction, decomposability, confusability.
+    - Why follow: her framework shaped our 16 question QC checks and the misconception-driven distractor design
+    - Internal brainlift
+  - Zach Groshell
+    - Direct Instruction, cognitive load measurement, track/strand design
+    - Main views: content must match prior knowledge and build systematically. Topics must cross-cut the entire app as tracks/strands, not one-off dots. Each new atom adds to existing repertoire.
+    - Why follow: his DI framework drove our spiral design scoring and the requirement for 3-6 sections per article (cognitive load management)
+    - Internal brainlift
+- DOK2 - Knowledge Tree
+  - Category 1: Curriculum Research & Design
+    - Core Knowledge Sequence (2023 Edition) — E.D. Hirsch Jr. / Core Knowledge Foundation
+      - DOK1 - facts
+        - CK Sequence specifies exact content for K-8 across Language Arts, History/Geography, Science, Visual Arts, and Music
+        - CKLA structures each grade into 8-12 content domains, each spanning 10-15 instructional days with 10-15 chapters per major topic
+          - Knowledge builds spirally year-over-year with cross-curricular integration (history/science topics feed directly into nonfiction reading)
+          - Recommended: 100-150 reading pieces per grade, 70% nonfiction / 30% literature
+          - Major domain/unit: 8-12 articles; subtopic: 2-4 focused articles
+          - Studies show 16 percentile point reading gains when implemented with fidelity (UVA-linked analysis)
+      - DOK2 - summary
+        - The CK Sequence is the most detailed publicly available grade-by-grade content specification for K-8. It tells you what to teach at each grade — not how. We used it as the authoritative source for topic selection, grade placement, and domain balance.
+        - Its core insight — that shared background knowledge is the driver of reading comprehension, not "reading skills" — informed our entire approach: build knowledge-rich articles first, assess comprehension second.
+      - link: coreknowledge.org/core-knowledge-sequence
+    - Multi-tool AI research process
+      - DOK1 - facts
+        - 3 independent AI research tools used: Grok researcher agent (structured 10-dimension analysis), Perplexity Computer (spreadsheet-based topic mapping with article counts), Claude Code researcher agent (deep research synthesis)
+        - Grok output: 192 articles across 6 grades, 8 topics/grade, 4 articles/topic — mapped to CK Sequence with Lexile/word count bands
+        - Perplexity output: 1,195 articles across 224 content domains — full CK Sequence mapping, subject area breakdown (55% History/Geography, 18% Science, 15% Literature/ELA, 6% Visual Arts, 5% Music)
+        - Claude Code output: 884 articles across 183 topics — most balanced domain coverage with 6 dedicated domains including Geography, Music, Visual Arts
+        - Each research tool was given the same prompt but produced structurally different curricula — different topic granularity, article counts, domain weighting
+      - DOK2 - summary
+        - No single AI research tool produced a complete, accurate curriculum. Each had blind spots: Grok was too compressed (only 4 articles/topic), Perplexity over-indexed on History (55%), Claude Code misplaced Medieval topics in Grade 3 instead of Grade 4. The value came from triangulating across all three and using CK Sequence as the ground truth.
+        - The research phase took ~1.5 days of iterative refinement (initial research → constraint updates → Lexile calibration against state standards). This was the slowest part of the pipeline — but also the most consequential.
+    - Lexile calibration against state standards
+      - DOK1 - facts
+        - Lexile bands calibrated against standardized tests from 5 high-rigor states: Texas (TEKS/STAAR), Massachusetts (MCAS), Louisiana (LEAP), Florida (FSA/FAST), and CCSS benchmarks
+        - Final bands: G3 520-820L, G4 700-940L, G5 800-1010L, G6 900-1070L, G7 950-1120L, G8 1000-1185L
+        - Build 2 achieved 98% in-band rate with natural variation (stdev 23-54L per grade)
+        - Builds 1 and 4 had suspiciously tight Lexile stdev (14-21L) suggesting assigned rather than measured values
+      - DOK2 - summary
+        - Lexile targets must be derived from what students actually encounter on state assessments, not from publisher recommendations or model defaults. The 5-state calibration caught that our initial bands were too narrow at lower grades and too generous at upper grades.
+      - link: lexile.com/educators/tools-to-support-reading-at-school/tools-to-determine-a-books-complexity/the-lexile-analyzer
+  - 
+  - Category 2: Article Generation
+    - Multi-model article builds
+      - DOK1 - facts
+        - 5 competing builds generated: Build 1 (Andy's Perplexity + Sonnet), Build 2 (Opus 4.6 end-to-end), Build 3 (Perplexity curriculum + Gemini 3.1 articles), Build 4 (Grok curriculum + Opus articles), Build 5 (Perplexity curriculum + Opus articles)
+        - Build throughput: Opus at 268 articles/hour (3h total), Gemini 3.1 at 1,772 articles/hour (30min total)
+        - Article generation used a structured agent: Article Writer Agent with curriculum JSON as input, per-article prompt including topic, grade, Lexile target, word count band, facts, focus
+        - 3-stage Content Fixer Agent pipeline: (1) Analyze — diagnose slop, weak hooks, missing misconceptions, (2) Rewrite — full narrative rewrite, (3) QC — verify facts preserved + topics covered + slop removed
+      - DOK2 - summary
+        - Generation is fast — the real cost is in the curriculum design upstream and QC downstream. Opus produced the best standalone articles but at 4x slower throughput than Gemini. Gemini was fast but produced academic/textbook prose with high slop (23.6/10k words). The winning strategy was Opus-generated curriculum + Opus-generated articles + programmatic fix pipeline.
+        - Grok was tested and rejected for article generation — struggled with length control and formatted output. Codex was skipped (historically weak on non-coding tasks).
+    - Article Writer Agent design
+      - DOK1 - facts
+        - Agent reads curriculum JSON schema first, then research report, then generates articles in sequence
+        - Construction phases: Subject Analysis → Grade Band Mapping → Unit Sequencing → Topic Generation → Metadata Population → Self-Review
+        - Each article includes: semantic HTML body (<article>, <section>, <h2>, <p>), bold vocabulary terms (<strong>), target Lexile, word count, facts, focus, connections
+        - Content Fixer Agent runs a 3-stage chain: Opus 4.6 at temp=0.3 (analyze), temp=0.7 (rewrite), temp=0.0 (QC). Articles that fail QC are revised up to 2x.
+        - Sentence complexity calibrated per grade: G3 avg 10-15 words/sentence → G8 avg 19-24 words/sentence
+      - DOK2 - summary
+        - The agent design enforces a contract between curriculum spec and article output: every article must address its topic list items, hit its Lexile band, land in its word count range, and include vocabulary scaffolding. Ambiguous topics get flagged rather than silently interpreted. Word count / topic coverage conflicts get flagged rather than silently resolved.
+  - Category 3: Build Comparison & Evaluation
+    - 5-build comparison rubric (v1 — structural)
+      - DOK1 - facts
+        - 4 weighted categories: Learning Outcomes (35%), Content Quality (30%), Readability (20%), Structural Design (15%)
+        - 20 individual criteria scored 0-4 with mandatory evidence citation
+        - Disqualifying conditions: factual errors misleading students, >10% articles outside Lexile band by >100L, invalid JSON, any grade band missing, >15% topic items unaddressed
+        - Tiebreaker cascade: Content Quality → Learning Outcomes → Readability → Reviewer judgment
+        - Results: Build 2 = 94.25, Build 1 = 85.25, Build 3 = 64.0, Build 4 = 63.75
+      - DOK2 - summary
+        - The rubric's most valuable contribution was forcing evidence-based scoring. "The content seems well-written" is rejected — you must cite article IDs and specific passages. This eliminated the halo effect where Build 1's human provenance biased reviewers toward it despite Build 2's measurably stronger quality.
+    - Learning Science Evaluation Framework (v2 — consultant-grounded)
+      - DOK1 - facts
+        - 7 dimensions weighted by consultant emphasis: Knowledge Breadth (25%), Knowledge Architecture (20%), Vocabulary Design (15%), Writing Quality (15%), Text Complexity (10%), Literary Integration (10%), Assessment Readiness (5%)
+        - Weight derivation: each dimension's weight reflects (a) how many consultants advocate for it, (b) centrality to their frameworks, (c) strength of research base
+        - V1 rubric over-weighted "structural tidiness" (Lexile consistency, topic coherence scores) and under-weighted "knowledge breadth" — the dimension all 5 consultants treat as foundational
+        - Build 2 remained the winner under v2 framework, confirming robustness of the selection
+      - DOK2 - summary
+        - Having two independent evaluation frameworks (structural rubric + learning science framework) that converge on the same winner gives high confidence in the selection. The v2 framework corrected the blind spot of v1: knowledge breadth matters more than Lexile precision, because reading comprehension is driven by knowledge, not text difficulty matching.
+    - Multi-evaluator comparison (Claude, GPT, Perplexity)
+      - DOK1 - facts
+        - 3 independent LLM evaluators used: Claude Opus, GPT-5.4 (ChatGPT), Perplexity
+        - All 3 evaluators selected Build 2 as the winner
+        - Each evaluator surfaced different improvement areas: Claude flagged vocab recurrence, GPT flagged word count overshoot, Perplexity flagged insufficient literary excerpts
+        - Combined feedback drove the 4-fix pipeline (slop → vocab → excerpts → word count)
+      - DOK2 - summary
+        - Using multiple LLM evaluators is the evaluation equivalent of multi-model generation. Each model has different biases: Claude focuses on structural integrity, GPT on readability flow, Perplexity on source integration. Their combined feedback was more actionable than any single evaluation. The fixes they collectively identified moved Build 2 from 94.25 toward production readiness.
+  - Category 4: Article QC & Fix Pipeline
+    - Programmatic fixes
+      - DOK1 - facts
+        - Fix 1 — Slop replacement (fix_slop.py): 445 instances replaced across 7 slop words (extraordinary=235, remarkable=92, stunning=36, incredible=36, breathtaking=18, amazing=15, fascinating=13). Context-aware replacements using domain-based rotation. Slop rate 3.7/10k → 0.1/10k.
+        - Fix 2 — Vocab recurrence (fix_vocab_recurrence.py): surfaced 902 terms already in article body text but missing from vocab lists. Added <strong> tags and vocab entries. Single-occurrence terms 75.8% → 69.8%.
+        - Fix 3 — Literary excerpts (fix_literary_excerpts.py): added blockquoted Gutenberg excerpts to 16 articles (G5-G8). 70-170 words per excerpt. Blockquote count 55 → 71.
+        - Fix 4 — Word count trimming (fix_word_count.py): 3-level approach (filler phrase removal → sentence-level density scoring → paragraph removal). 699 articles trimmed. In-band 17.1% → 93.2%.
+      - DOK2 - summary
+        - Programmatic fixes are fast, deterministic, and reversible. The entire 4-fix pipeline runs in minutes on 884 articles. The key insight is separating what to fix (identified by LLM evaluators) from how to fix (programmatic for patterns, LLM for judgment). The LLM vocab insertion was the one case where we violated this rule and it was reverted — quality degraded because the LLM inserted sentences at a fixed position regardless of context.
+    - LLM-based QC checks
+      - DOK1 - facts
+        - 10 binary article QC checks: 5 programmatic (meaning markers ≥3, vocab in context, word count in band, slop-free, section count 3-6) + 5 LLM (testable claims per section, grade appropriateness, tone/engagement, section coherence, factual consistency)
+        - Auto-fix pipeline: Opus 4.6 comprehensive single-prompt fix (replaced sequential Sonnet approach — holistic fix outperformed sequential)
+          - QC → fix → re-QC loop, max 3 rounds. Result: 710/884 articles passing (80.3%)
+          - 126 tests covering all checks and fix pipeline
+      - DOK2 - summary
+        - Binary checks ("pass" or "fail", no partial scores) eliminate the ambiguity of rubric-based scoring. A check like "every section contains at least one testable claim" is auditable and reproducible. The 100% pass threshold is aggressive but necessary — a question can't be generated from a section that has no testable claims.
+    - Reverted fix: LLM vocab recurrence
+      - DOK1 - facts
+        - fix_vocab_recurrence_llm.py used Opus 4.6 to generate sentences incorporating target vocab terms and insert them into articles
+        - Improved metric: single-occurrence terms 69.8% → 62.1%
+        - Reverted: sentences inserted at fixed position (end of last section), producing artificial content that didn't integrate naturally
+        - Lesson captured: vocab recurrence improvements should come from rewriting existing sentences, not appending new ones
+      - DOK2 - summary
+        - This is the clearest example of metric-chasing degrading quality. The number improved but the articles got worse. The revert was the right call. It also established a principle: if an LLM fix can't be done contextually (rewriting existing prose), fall back to programmatic-only.
+  - Category 5: Question Generation & QC
+    - Multi-model tournament architecture
+      - DOK1 - facts
+        - 3 models compete per question slot: Claude Opus 4.6, GPT-5.4, Google Gemini 3.1 Pro
+        - Each round: generate candidates from all 3 in parallel → QC all candidates → first to pass all checks wins → if none pass, feedback from best candidate's failures feeds next round
+        - Up to 5 rounds (3 models × 5 rounds = 15 attempts max per question)
+      - DOK2 - summary
+        - The tournament architecture is the question generation equivalent of the 5-build article comparison: let multiple models compete and let quality checks pick the winner. No model dominates — Gemini wins plurality of slots but Opus wins many that Gemini can't. GPT's 16% still represents 253 questions that neither competitor could produce. Removing any model reduces total coverage.
+    - 16 binary question QC checks
+      - DOK1 - facts
+        - 1 programmatic: length_balance (option lengths within ratio)
+        - 15 LLM checks: grammatical_parallel, plausibility, homogeneity, specificity_balance, discriminability, clarity_precision, single_correct_answer, passage_reference, text_dependency, grade_level_comprehension, meaning_relationship, misconception_specificity, evidence_grounding, faultless_communication, ccss_alignment
+        - 5 brainlift-aligned checks (new, from consultant frameworks): discriminability (Becky: "distractor must be wrong for a specific reason"), meaning_relationship (Carl: "meaning relationships as knowledge components"), misconception_specificity (Becky: "each distractor targets a named misconception"), evidence_grounding (Sarah: "answer must be traceable to specific text"), faultless_communication (Zach: "question must be unambiguous to a compliant student")
+        - All 16 must pass — 100% threshold, no partial credit
+      - DOK2 - summary
+        - The 5 new checks derived from consultant brainlifts are the difference between generic MCQs and pedagogically grounded assessment items. A question that passes "single correct answer" but fails "misconception specificity" is a question that can't diagnose why a student got it wrong — it just tells you they got it wrong. The brainlift-aligned checks ensure every distractor teaches something about student thinking.
+    - Question prompt design
+      - DOK1 - facts
+        - Section questions: 1 MCQ per section, DOK 1-2, require evidence sentence citation, each distractor must name its target misconception (e.g., "overgeneralization", "causal reversal", "adjacent-concept confusion", "temporal misordering")
+        - Quiz questions: 4 MCQs per article, DOK 2-3, cross-section synthesis required
+        - Meaning relationships built into prompts: questions must target a specific relationship type (cause-effect, comparison, sequence, etc.) — from Carl's brainlift on knowledge components
+        - Options must be: grammatically parallel, similar length, same conceptual category, correct answer not the longest
+      - DOK2 - summary
+        - The prompt design encodes assessment design principles directly into the generation instruction. Rather than hoping the model produces good questions, the prompt specifies exactly what makes a question good: named misconceptions, evidence sentences, meaning relationships, grammatical parallelism. The QC checks then verify the model actually followed these instructions.
+    - CCSS coverage strategy
+      - DOK1 - facts
+        - 3-pass approach: Pass 1 forces a specific CCSS standard per question slot. Pass 2 re-runs failures with model-chosen CCSS. Pass 3 targets remaining standard gaps.
+        - Structurally impossible standards excluded: X.7 (multimedia) and X.9 (multi-text) — require formats the article-based corpus can't support
+      - DOK2 - summary
+        - Forced CCSS in pass 1 was too rigid — some standard-section pairings are genuinely impossible (you can't test "author's point of view" on a purely factual science section). Pass 2's model-chosen approach lets the model pick the standard that naturally fits the passage content.
+  - Category 6: Pipeline Architecture & Decisions
+    - End-to-end pipeline stages
+      - DOK1 - facts
+        - Stage 1: Curriculum research (3 AI research tools + CK Sequence + state Lexile calibration) → curriculum JSON
+        - Stage 2: Article generation (multi-model, Opus primary) → 884 articles in semantic HTML
+        - Stage 3: Article evaluation (5 competing builds × 2 evaluation frameworks × 3 LLM evaluators) → winner selection
+        - Stage 4: Article fixing (4-fix programmatic pipeline) → slop-free, vocab-rich, excerpt-enhanced, word-count-calibrated articles
+        - Stage 5: Article QC (10 binary checks, auto-fix loop)
+        - Stage 6: Re-sectioning (LLM-based merge/split to 3-6 sections) → question-ready articles
+        - Stage 7: Question generation (multi-model tournament, 16 QC checks) → section questions + quiz questions
+        - Total timeline: ~5 days from research start to production-quality articles with questions
+      - DOK2 - summary
+        - The pipeline is designed for idempotency and checkpoint recovery. Each stage reads from disk and writes to disk. If stage N fails, you restart from stage N, not stage 1. This matters because LLM API calls are expensive and flaky — the question generation pass alone involves thousands of API calls across 3 providers.
+    - Key architectural decisions
+      - DOK1 - facts
+        - Decision: Opus 4.6 for article generation (not Gemini, not Grok). Grok struggled with length and formatting. Gemini was 7x faster but produced textbook prose with 6x higher slop rate.
+        - Decision: 100% QC threshold (all checks binary, all must pass). Partial credit scoring was rejected — a question that fails "single correct answer" is not 93% good, it's broken.
+        - Decision: Multi-model tournament for questions (not single-model). Any single model leaves 20-45% of slots unfilled. Three models together achieve ~60% pass rate on first pass.
+      - DOK2 - summary
+        - Every decision was driven by evidence from the pipeline itself, not by prior assumptions about which model is "best." The 5-build comparison, multi-evaluator review, and QC pass rates are all empirical. The single most important meta-decision was to measure everything and let the data decide.

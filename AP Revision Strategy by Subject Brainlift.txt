@@ -1,0 +1,131 @@
+﻿Revision Strategy by Subject: Why One Size Doesn't Fit All
+The Problem
+When we give students revision advice that works well in one subject and they apply it to a different subject, it often fails. This isn't because the student is doing it wrong — it's because subjects have fundamentally different knowledge structures, and the optimal revision tasks depend on that structure.
+This document explains why, then gives concrete guidance for each AP subject. The guidance reflects both the structure of the subject and the exam (so, for example, a history exam in another country might demand a completely different revision strategy).
+NB. This advice applies to revision only - the point where the initial encoding is secure AND the student has been taught how to answer the different types of exam questions they will encounter.
+________________
+
+
+The Framework
+Why "Just Do Practice Questions" Works for Some Subjects and Not Others
+In math and physics, doing exam-style practice questions is close to optimal as a single revision activity. This is because these subjects share a specific set of properties:
+   * Low retrieval load — there isn't much to memorize cold. Students don't forget the Pythagorean theorem; they forget when and how to apply it. Doing questions naturally reinforces whatever retrieval is needed.
+   * Inseparable technique — there's no "how to structure your answer" layer sitting on top of the content knowledge. The working IS the answer.
+   * Short cycle time — a single question takes 2-5 minutes, so students can touch many topics per session, getting natural spaced repetition.
+   * Self-assessable — students can check whether they got the right answer without needing a teacher or reliable LLM rubric.
+   * Hierarchical integration — a trigonometry question naturally pulls in algebra, so practicing one topic reinforces others.
+The moment you move to history, English, or even some parts of science, these properties come apart. Which ones come apart — and how — determines what revision tasks the student needs.
+Five Dimensions That Determine Revision Strategy
+Retrieval load — how much do you need to know cold?
+* Low: Math (formulas/procedures only)
+* High: Psychology (terms, studies, researchers)
+Technique separability — is "how to answer" a distinct skill from knowing the content?
+* Low: Physics (problem-solving IS the content)
+* High: APUSH (DBQ technique is separate from historical knowledge)
+Cycle time — how long does one practice task take?
+* Low: Math (3 min)
+* High: LEQ essay (40 min)
+Self-assessability — can students check their own work?
+* Low: English (quality is subjective)
+* High: Math/Physics (right or wrong)
+Domain structure — how is knowledge organized?
+* Hierarchical: Math
+* Networked/thematic: History
+* Modular: English Lit (text by text)
+Three Types of Retrieval (Not All Flashcard-Shaped)
+This is important: "retrieval practice" is not synonymous with "flashcards" or MCQs. There are three distinct types, and using the wrong format can actively harm learning because it is inconsistent with the way we want to support encoding and retrieval.
+Atomic retrieval — genuinely isolated facts with no meaningful structure to exploit. Dates, specific terminology, names of researchers, constitutional amendments. Flashcards/Anki work fine here because there's no structure to lose.
+Structural retrieval — knowledge that is spatial or relational. A biology diagram, the structure of the federal government, the layers of the atmosphere. The optimal task is "reproduce the structure from memory" (draw the diagram, sketch the flowchart), NOT "recall individual facts." Flashcards actively harm this type of knowledge by ripping facts away from the spatial structure that makes them memorable and meaningful.
+Narrative retrieval — causal chains and processes where each step makes the next one make sense. Causes of the Civil War, how a bill becomes law, the carbon cycle. The retrieval task is "write out the chain from memory" — a mini-exposition, not a flashcard.
+Essay Practice Isn't One Thing
+For subjects with extended writing, there are three distinct task types:
+   * Essay planning (5-8 min) — sketch the argument structure, identify which evidence you'd deploy, note your thesis and conclusion. This exercises almost all the cognitive work of essay writing without the time cost.
+   * Single paragraph to exam standard (5-7 min) — one claim, one piece of evidence, analysis, connection back to the question. This targets the skill of writing analytical prose quickly.
+   * Full essay (35-45 min) — sustaining an argument, adapting mid-flow, writing under time pressure. Important but low frequency. Ratio could be roughly 4 plans : 2 paragraphs : 1 full essay.
+________________
+
+
+Subject-by-Subject Guidance
+AP Physics 1
+Profile: Very similar to math. Low retrieval, inseparable technique, short cycle time, self-assessable, hierarchical.
+What goes in the revision pot:
+* Exam-style problems (the only task type needed)
+Notes: Physics is the one AP subject where "just do practice questions" genuinely suffices as a complete revision strategy. Each problem naturally integrates multiple concepts (a projectile motion problem requires kinematics AND vectors AND sometimes energy). The formulas are provided on the formula sheet, so even the small retrieval load is reduced. Break multi-part FRQ problems into individual parts and cycle through them.
+Chunking (i.e. how many minutes of study needed per session?): Any way you like. Even 3-minute blocks (one problem each) work.
+AP Computer Science A
+Profile: Similar to math/physics. Problem-solving based, self-assessable, short cycle time.
+What goes in the revision pot:
+* Code-writing and code-tracing problems (primary task)
+* Occasional concept-check retrieval for terminology (e.g., inheritance vs. polymorphism definitions) — but this is minor and mostly reinforced by doing problems
+Notes: Like math, the doing is the learning. Writing and tracing code exercises both the conceptual understanding and the procedural skill simultaneously. FRQ parts can be practiced independently.
+Chunking (i.e. how many minutes of study needed per session?): Flexible. Individual code problems take 5-10 minutes.
+AP Chemistry
+Profile: Hybrid. Part problem-solving (like physics), part conceptual explanation, moderate retrieval.
+What goes in the revision pot:
+* Calculation/problem-solving questions (stoichiometry, equilibrium, electrochemistry) — these work like physics problems
+* Structural retrieval: reproduce key patterns from memory (periodic trends, electron configurations, reaction type classifications). Don't flashcard these — the patterns matter more than individual facts
+* Conceptual explanation practice: short-answer questions that require explaining WHY something happens at the molecular level (these are a distinct skill from calculation)
+Notes: Chemistry sits between physics and biology on the retrieval spectrum. There's meaningful stuff to memorize, but much of it is patterned rather than arbitrary, so structural retrieval (reproduce the pattern) beats flashcards.
+Chunking (i.e. how many minutes of study needed per session?): Calculation problems are short (3-5 min). Structural retrieval tasks take 5-8 min. Conceptual explanations 5-7 min. All fit in short blocks.
+AP Environmental Science
+Profile: High retrieval load (lots of factual content — systems, legislation, case studies), moderate technique, moderate cycle time.
+What goes in the revision pot:
+* Atomic retrieval: flashcards for legislation names, specific statistics, terminology (this subject genuinely has a lot of isolated facts)
+* Structural retrieval: reproduce system diagrams from memory (carbon cycle, nitrogen cycle, energy flow through trophic levels, water cycle). These are spatial and relational — draw them, don't flashcard them
+* FRQ practice: these require applying knowledge to scenarios, a distinct skill from knowing the facts. Practice as short tasks (one FRQ part at a time, 5-8 min)
+Notes: APES has the highest pure retrieval load of the AP sciences. Students who only do practice questions will miss gaps in their factual base because the questions can't systematically and regularly cover everything. Dedicated retrieval practice is essential here.
+Chunking (i.e. how many minutes of study needed per session?): Flashcard sessions can be very short (3 min). Diagram reproduction 5-8 min. FRQ parts 5-8 min.
+AP Psychology
+Profile: Very high retrieval load (terminology, researchers, studies, theories), moderate technique separability, short-to-moderate cycle time.
+What goes in the revision pot:
+* Atomic retrieval: flashcards are genuinely effective here. Psychology has a huge vocabulary of specific terms, named researchers, and landmark studies that students need cold. This is one of the most MCQ/flashcard-appropriate AP subjects
+* Narrative retrieval: for processes and theories (stages of development, conditioning processes, memory models) — write out the sequence/model from memory rather than flashcarding individual terms
+* FRQ application practice: AP Psych FRQs require applying concepts to novel scenarios (e.g., "explain how each of the following concepts relates to Maria's experience..."). This is a distinct skill — knowing the definition isn't enough; you need to generate an example. Practice one FRQ part at a time (3-5 min each)
+Notes: Psychology is retrieval-heavy but the FRQs are relatively short and structured. The main risk is students who know definitions but can't apply them to novel scenarios — which is why FRQ practice is essential alongside flashcards.
+Chunking (i.e. how many minutes of study needed per session?): All task types are short. Flashcards 3 min, narrative retrieval 5 min, FRQ parts 3-5 min. Very flexible.
+AP US History (APUSH)
+Profile: High retrieval load, highly separable technique ( with three very different FRQ types), long cycle time for full responses, low self-assessability on essays, networked domain structure.
+What goes in the revision pot:
+* Atomic retrieval: flashcards for dates, key figures, legislation, turning points. These are genuinely atomic and flashcard-appropriate and form a very large part of the revision needed.
+* Narrative retrieval: write out causal chains from memory (causes of the Civil War, factors leading to westward expansion, the chain of events in the Cold War). These are NOT flashcard-appropriate — the causal web is the knowledge
+* Structural retrieval: reproduce period/theme overview structures from memory (timeline of a period with key events and their connections)
+* SAQ practice: Short Answer Questions are quick (3-5 min each), cover lots of topics, and are somewhat self-assessable. These are a very useful high-frequency task
+* DBQ planning: plan a DBQ response (thesis, document groupings, outside evidence) without writing the full essay. 8-10 min. Exercises the hardest analytical skill
+* LEQ planning: plan a Long Essay (thesis, argument structure, evidence selection). 5-8 min
+* Single paragraph: write one body paragraph to exam standard. 5-7 min
+* Full DBQ or LEQ: low frequency, roughly once every 2-3 weeks. 35-40 min.
+Notes: APUSH has the most complex task mix of any AP subject. The three FRQ types (SAQ, DBQ, LEQ) are structurally different enough that practicing one doesn't transfer well to another. SAQs should be the workhorse task because they're short, cover lots of content, and build both retrieval and application skills. The big risk is students who only do content retrieval and never practice the analytical writing — or vice versa.
+Chunking (i.e. how many minutes of study needed per session?): Everything except full essays fits in blocks of 10 min or less.
+AP World History: Modern
+Profile: Very similar to APUSH in structure. High retrieval, separable technique, same FRQ types.
+What goes in the revision pot:
+* Same task types as APUSH (see above)
+* Additional emphasis on structural retrieval for comparative frameworks (e.g., reproduce from memory: key features of empire X vs. empire Y, trade networks in period 3)
+Notes: The same guidance as APUSH applies. The specific content differs but the knowledge structure and exam format are essentially identical. SAQs are again a useful workhorse task.
+AP Human Geography
+Profile: Moderate-to-high retrieval (models, vocabulary, case studies), moderate technique separability, shorter FRQs than history.
+What goes in the revision pot:
+* Atomic retrieval: flashcards for key terminology and model names (many specific terms: gentrification, devolution, supranationalism, etc.)
+* Structural retrieval: reproduce models and spatial patterns from memory (demographic transition model, Burgess concentric zone model, Von Thünen model). These are inherently spatial — draw them, don't flashcard them
+* FRQ practice: APHG FRQs are shorter and more structured than history essays. Practice individual parts (define, explain, give an example). 5-8 min each. These are reasonably self-assessable
+Notes: APHG is less complex than the history subjects because the FRQs are shorter and more structured. The models are the distinctive challenge — students need to be able to reproduce and apply them, not just recognize them. Good structural retrieval (drawing models from memory) is incredibly important for this subject.
+Chunking (i.e. how many minutes of study needed per session?): Everything fits in short blocks. Very flexible.
+AP Government and Politics
+Profile: Moderate retrieval (institutions, court cases, amendments, political processes), moderately separable technique (four distinct FRQ types), moderate cycle time.
+What goes in the revision pot:
+* Atomic retrieval: flashcards for required Supreme Court cases (there's a defined list), amendments, key terminology
+* Structural retrieval: reproduce the structure of government institutions and processes from memory (how a bill becomes law, the committee system, the judicial appointment process). These are process-based — write out the sequence, don't flashcard individual steps
+* Narrative retrieval: for foundational documents and their arguments — summarize the argument of Federalist No. 10 from memory, etc.
+* FRQ practice by type: the four FRQ types (concept application, quantitative analysis, SCOTUS comparison, argument essay) are structurally different. Practice each type separately. Concept application and quantitative analysis are short (5-8 min). SCOTUS comparison is moderate (8-10 min). Argument essay benefits from the plan/paragraph/full essay split
+Notes: The required SCOTUS cases and foundational documents create a defined retrieval set that flashcards handle well. The argument essay is where technique separability is highest — it requires constructing an evidence-based argument with a specific structure that is distinct from simply knowing the content.
+Chunking (i.e. how many minutes of study needed per session?): Most task types are short. Argument essay planning (8 min) is the longest regular task. Full argument essays can be handled in class.
+AP English Language and Composition
+Profile: Very low retrieval load, very high technique separability, long cycle time for full essays, low self-assessability.
+What goes in the revision pot:
+* Rhetorical analysis practice: read a short passage and identify the key rhetorical strategies and their effects. 8-10 min. This is the core analytical skill
+* Argument essay planning: given a prompt, plan your argument (thesis, evidence selection, counterargument). 5-8 min
+* Synthesis essay planning: given sources, plan how you'd integrate them into an argument. 8-10 min
+* Single paragraph to exam standard: write one analytical or argumentative paragraph. 5-7 min
+* Full essay: low frequency. 35-40 min.
+Notes: AP Lang is almost the inverse of psychology — almost nothing to memorize, almost everything is technique. The three essay types (rhetorical analysis, argument, synthesis) are structurally different enough that practicing one doesn't fully transfer to another. Unlike content-heavy subjects, there's no "coverage" problem — the skill is general, not topic-specific. So the revision focus is repetition of the analytical process across different passages and prompts, not ensuring you've touched every topic. Specifically, the students benefit from memorizing sentence frames of analytical writing, e.g. “At the heart of this article is the notion of…”. They also benefit from knowing the names of rhetorical devices (i.e. technically they don’t need to know them, but realistically they do).
+Chunking (i.e. how many minutes of study needed per session?): Planning tasks fit in 5-10 min blocks. Full essays don't fit and should happen in class.

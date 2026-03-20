@@ -1,0 +1,160 @@
+﻿TimeBack Reporting MCP 
+LLM Compatibility
+This guide walks you through connecting Claude Desktop to the TimeBack Reporting server.  The MCP server can also be used in Cursor, and may be compatible with other LLM clients as well, depending on their level of OAuth and MCP resources support.  The web version of Claude (Claude.ai) also works with the MCP server, but Claude Code (i.e. the command line only version) is NOT supported, because it doesn't properly support OAuth2 redirects as of today (Feb 13, 2026).
+Setup Guide
+Once connected, you can ask Claude Desktop (or Cursor) questions about school data — student enrollment, mastery progress, engagement metrics, MAP scores, and more — using plain English.
+________________
+
+
+Before You Begin
+You'll need the following before starting:
+1. A TimeBack account — You must have an active TimeBack account (the same email/password you use to log in to alpha.timeback.com).
+2. Reporting access — An administrator must grant you access to the reporting server. If you haven't been granted access, contact your TimeBack administrator and ask them to add you to the MCP Reporting group.
+3. Claude Desktop installed (or using Claude.ai) — you can download Claude Desktop from claude.ai/download, available for Windows and macOS.
+4. A Claude account — You need a Claude Pro, Team, or Enterprise subscription to use MCP integrations in Claude Desktop.
+________________
+
+
+Step 1: Open Claude Desktop
+Launch the Claude Desktop application on your computer. If this is your first time opening it, sign in with your Claude (Anthropic) account.
+________________
+
+
+Step 2: Open Settings
+Click the hamburger menu (☰) in the top-left corner of the Claude Desktop window, then click File->Settings.
+  
+
+________________
+
+
+Step 3: Navigate to the Connectors Tab
+In the Settings window, click Connectors in the left sidebar. You'll see a list of available connectors (i.e. MCP Servers).
+  
+
+________________
+
+
+Step 4: Add the TimeBack Reporting Server
+Click the Add Custom Connector button. A dialog will appear asking for the server details.
+Fill in the following:
+Field
+	Value
+	Server Name
+	timeback-reporting 
+* this name can be anything you choose, this is how you’ll refer to the MCP server in your prompts
+	Server URL
+	https://api.alpha-1edtech.ai/mcp/reporting
+	
+
+Then click Add.
+  
+
+________________
+
+
+Step 5: Sign In to TimeBack
+After adding the server, click the Connect button next to it, and Claude Desktop will open a browser window for you to sign in. This is the standard TimeBack login page.
+Enter the email and password (or Google SSO) that you normally use to log in to TimeBack, then click Sign in.
+  
+
+After signing in successfully, the browser will redirect you back to Claude Desktop. You can close the browser tab if it doesn't close automatically.
+Note: If you see an "Access Denied" error after signing in, it means your account hasn't been added to the Reporting group yet. Contact your TimeBack administrator to request access.
+________________
+
+
+Step 6: Verify the Connection
+Back in Claude Desktop, you should see the timeback-reporting server listed under your Connectors with a green indicator showing it's connected.
+  
+
+If the server shows an error state, try clicking Configure and ensuring it has permissions set to Always Allow.  If you still have issues, try removing the server and adding it again (repeating Steps 4-5).
+________________
+
+
+Step 7: Start Asking Questions!
+You're all set! Open a new chat in Claude Desktop and start asking questions about your school's data. Claude will automatically use the TimeBack Reporting connection to look up real data and answer your questions.
+  
+
+Example Questions You Can Ask
+Here are some things you can try:
+Student Information
+* "How many students are currently enrolled at my school?"
+* "Show me a list of all active students in 5th grade."
+* "Which students enrolled after January 2025?"
+Mastery & Achievement
+* "Which students have mastered all grade-level math standards?"
+* "Show me the average mastery percentage by grade level."
+* "What are the latest MAP scores for 8th graders?"
+Engagement & Activity
+* "Which students have the most XP this month?"
+* "Show me daily activity trends for the past two weeks."
+* "Which students haven't logged in for more than 5 days?"
+Comparisons
+* "Compare math mastery between 6th and 7th grade."
+* "How does this month's engagement compare to last month?"
+Catch-Up & Intervention
+* "Which students are behind grade level in reading?"
+* "Show me students who need catch-up support in math."
+________________
+
+
+Alternative Setup: Editing the Config File Directly
+If the Settings UI method doesn't work, or you prefer manual configuration, you can edit the Claude Desktop (or Cursor) config file directly.
+Find the Config File
+The configuration file is located at:
+* Windows: %APPDATA%\Claude\claude_desktop_config.json
+* macOS: ~/Library/Application Support/Claude/claude_desktop_config.json
+To open it on Windows:
+1. Press Win + R to open the Run dialog
+2. Type %APPDATA%\Claude and press Enter
+3. Open the file claude_desktop_config.json in any text editor (Notepad works fine)
+To open it on macOS:
+1. Open Finder
+2. Press Cmd + Shift + G (Go to Folder)
+3. Type ~/Library/Application Support/Claude and press Enter
+4. Open the file claude_desktop_config.json in any text editor
+Edit the Config File
+Add the following to the file (or replace its contents if the file is empty or only has {}):
+{
+  "mcpServers": {
+    "timeback-reporting": {
+      "url": "https://api.alpha-1edtech.ai/mcp/reporting"
+    }
+  }
+}
+Important: If you already have other MCP servers configured, add the "timeback-reporting" entry inside the existing "mcpServers" object rather than replacing the whole file.
+Save and Restart
+1. Save the file
+2. Completely quit Claude Desktop (not just close the window — use File → Quit or right-click the system tray icon and select Quit)
+3. Reopen Claude Desktop
+4. Go to Settings → Connectors to see if the timeback-reporting MCP server is listed.
+5. Click Connect to be prompted to login and authenticate (see Step 5 above).
+________________
+
+
+Troubleshooting
+"Access Denied" after signing in
+Your account hasn't been added to the Reporting access group. Contact your TimeBack administrator and ask them to enable MCP Reporting access for your email address.
+Server shows as disconnected
+* Check your internet connection
+* Try clicking Reconnect on the server
+* Quit and reopen Claude Desktop completely
+* Your sign-in session may have expired — remove and re-add the server to sign in again
+Claude doesn't seem to use the reporting data
+* Make sure the server shows as connected
+* Start a new chat — MCP connections are established at the start of a conversation
+* Try specifying the MCP server by name in your prompt, e.g., “Use the timeback-reporting MCP to tell me ….. “
+Browser doesn't open for sign-in
+* Make sure your default web browser is working
+* Try the config file method (see Alternative Setup above) and restart Claude Desktop
+"Server not found" or connection error
+* Verify the URL is exactly: https://api.alpha-1edtech.ai/mcp/reporting
+* Check that there are no extra spaces or typos
+* Make sure you're connected to the internet and can access other websites
+________________
+
+
+Need Help?
+If you're still having trouble after trying the steps above, contact your TimeBack administrator or reach out to zeb.hardy@alpha.school with the following information:
+* The email address you're trying to connect with
+* Any error messages you see (a screenshot is helpful)
+* Whether you can sign in to the regular TimeBack app with the same credentials
