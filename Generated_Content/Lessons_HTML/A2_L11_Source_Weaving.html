@@ -106,6 +106,7 @@ tr:nth-child(even) { background: #f8f9fa; }
   background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
   padding: 1rem 1.25rem; margin: 1rem 0;
 }
+.rubric-box h4 { margin-top: 0; color: var(--success); }
 .rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
 .rubric-box li { margin-bottom: 0.5rem; }
 .footnote {
@@ -162,9 +163,9 @@ ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
   <h1>Source Weaving Drill</h1>
   <p class="subtitle">Making sources talk to each other</p>
   <div class="meta-bar">
-    <span>⏱ ~25 min</span>
-    <span>📍 KC: C.10.10</span>
-    <span>🧠 Mental Model: M4</span>
+    <span>~25 min</span>
+    <span>KC: C.10.10</span>
+    <span>Mental Model: M4 (Claim Hierarchy)</span>
   </div>
 </div>
 
@@ -172,6 +173,7 @@ ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
   <strong>The Core Skill:</strong> Source weaving means making sources <strong>converse with each other</strong> within your paragraphs. Instead of "Source A says X. Source B says Y," you write sentences where multiple sources appear together, supporting or complicating the same point. Your argument controls the paragraph; sources serve it.
 </div>
 
+<!-- ============================================================ -->
 <h2>Phase 1: Teach (2 min)</h2>
 <div class="phase-card teach-card" data-phase="1">
   <h3>Three Source Weaving Patterns</h3>
@@ -187,15 +189,15 @@ ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
   </div>
 
   <div class="pattern-box">
-    <h4>Pattern 2: Tension/Contrast</h4>
+    <h4>Pattern 2: Tension / Contrast</h4>
     <p>Sources present competing views or different dimensions of the same issue.</p>
     <p style="font-style: italic; color: #555;">"While Chen argues that tests provide objective accountability measures, Rodriguez's experience reveals that this 'objectivity' comes at the cost of creativity and critical thinking in the classroom."</p>
   </div>
 
   <div class="pattern-box">
-    <h4>Pattern 3: Synthesis</h4>
-    <p>Sources from different angles combine to reveal a larger insight.</p>
-    <p style="font-style: italic; color: #555;">"Chen's theory of habit formation, combined with Okafor's pre-registration data, reveals that the timing of first voting experiences matters more than the legal voting age itself."</p>
+    <h4>Pattern 3: Building Synthesis</h4>
+    <p>Sources from different angles combine to reveal a larger insight neither one contains alone.</p>
+    <p style="font-style: italic; color: #555;">"Chen's defense of data-driven accountability, combined with Owens's proposal for performance-based assessments, reveals that the real question isn't whether to measure learning but how to measure it without distorting it."</p>
   </div>
 
   <div class="key-concept">
@@ -205,44 +207,61 @@ ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
   <button class="phase-next-btn">Continue to Model</button>
 </div>
 
+<!-- ============================================================ -->
 <h2>Phase 2: Model (4 min)</h2>
 <div class="phase-card model-card phase-locked" data-phase="2">
   <h3>Coping Model: Integrating Three Sources</h3>
 
-  <p><strong>Task:</strong> Write a paragraph integrating three sources on standardized testing. The sources are Chen (pro-testing researcher), Rodriguez (anti-testing teacher), and Owens (policy analyst proposing better assessments).</p>
+  <p><strong>Task:</strong> Write a paragraph integrating three sources from Source Set A (Standardized Testing).</p>
+
+  <div class="passage-box">
+    <h4>Source Set A (Quick Reference)</h4>
+    <p><strong>Source 1 -- Dr. Michael Chen (education researcher, pro-testing):</strong> Longitudinal study of 15,000 students shows standardized test scores are the strongest single predictor of college completion. Tests prevent subjective grading bias and ensure accountability across districts.</p>
+    <p><strong>Source 2 -- Jennifer Rodriguez (high school English teacher, anti-testing):</strong> In 18 years of teaching, Rodriguez has watched three weeks of literary analysis disappear each spring to test prep. Students who score well on tests often can't write a coherent essay or think critically about a novel.</p>
+    <p><strong>Source 3 -- Dr. Patricia Owens (education policy analyst, reform position):</strong> Proposes replacing most multiple-choice standardized tests with performance-based assessments modeled on Finland and Singapore. Her data shows portfolio-based evaluation predicts long-term career success better than standardized tests while preserving system-level accountability.</p>
+    <p class="attribution">Source Set A -- Standardized Testing Perspectives (curated for A2 synthesis unit)</p>
+  </div>
 
   <div class="coping-model">
     <p><span class="false-start">"Dr. Chen says that standardized tests are the best predictor of college success and they prevent subjective bias in grading. Jennifer Rodriguez, a high school teacher, says that tests narrow the curriculum and cause anxiety. She also says teachers spend weeks on test prep instead of real learning. Dr. Owens proposes that we need performance-based assessments instead of multiple-choice tests, pointing to international models like Finland and Singapore."</span></p>
 
-    <p style="margin-top: 1rem;"><span class="correction">"Wait, I'm just listing what each source says in order. This is serial summarizing. My CLAIM should come first, and then the sources should work together to support or complicate that claim. Let me start with my argument."</span></p>
+    <p style="margin-top: 1rem;"><span class="correction">"Wait -- I'm organizing by source, not by argument. I've got three separate summaries just sitting next to each other. My CLAIM should come first, and then sources should work together to support or complicate that claim. Let me start with my argument."</span></p>
 
-    <p style="margin-top: 1rem;"><span class="strong">"The fundamental problem with standardized testing isn't whether tests provide useful data—Chen's research demonstrates they do predict certain academic outcomes—but whether that narrow predictive power justifies the curriculum distortion Rodriguez documents in her classroom. When teachers lose weeks of instruction to test preparation, students may score higher on assessments while learning less about literature, scientific inquiry, or historical reasoning. Owens's proposal for performance-based assessments addresses this tension directly: sophisticated evaluation tasks could provide the accountability data Chen values while preserving the rich learning experiences Rodriguez advocates. The question isn't 'tests or no tests' but rather 'what kinds of assessment capture complex learning without reducing education to test-taking skills.'"</span></p>
+    <p style="margin-top: 1rem;"><span class="strong">"The fundamental problem with standardized testing isn't whether tests provide useful data -- Chen's research demonstrates they do predict certain academic outcomes -- but whether that narrow predictive power justifies the curriculum distortion Rodriguez documents in her classroom. When teachers lose weeks of instruction to test preparation, students may score higher on assessments while learning less about literature, scientific inquiry, or historical reasoning. Owens's proposal for performance-based assessments addresses this tension directly: sophisticated evaluation tasks could provide the accountability data Chen values while preserving the rich learning experiences Rodriguez advocates. The question isn't 'tests or no tests' but rather 'what kinds of assessment capture complex learning without reducing education to test-taking skills.'"</span></p>
   </div>
 
   <p><strong>What changed?</strong></p>
   <ul>
     <li><strong>Structure:</strong> Started with my claim ("The fundamental problem..."), then used sources as evidence</li>
     <li><strong>Weaving:</strong> Chen and Rodriguez appear in the same sentence, serving my point about trade-offs</li>
-    <li><strong>Integration:</strong> Owens isn't just "another source"—he provides a solution to the tension I identified</li>
+    <li><strong>Integration:</strong> Owens isn't just "another source" -- she provides a solution to the tension I identified between Chen and Rodriguez</li>
     <li><strong>Voice:</strong> MY argument drives the paragraph; sources support it</li>
   </ul>
 
   <button class="phase-next-btn">Continue to Supported Practice</button>
 </div>
 
+<!-- ============================================================ -->
 <h2>Phase 3: Supported Practice (10 min)</h2>
 <div class="phase-card practice-card phase-locked" data-phase="3">
-  <h3>Write Two Weaving Paragraphs</h3>
+  <h3>Source Weaving Drill: Two Paragraphs</h3>
 
-  <p>You'll write two short paragraphs, each integrating 2-3 sources around one claim. Use the standardized testing source set (Chen, Rodriguez, Owens, Washington).</p>
+  <p>Write two short paragraphs from Source Set A, each integrating 2-3 sources around one claim. Use the claim-first structure from the model.</p>
 
   <div class="scaffold-box">
     <h4>Scaffold: Claim-First Structure</h4>
     <ol>
       <li><strong>State your claim first</strong> (one sentence)</li>
       <li><strong>Weave in sources</strong> that support, complicate, or provide evidence for your claim</li>
-      <li><strong>Don't just list</strong> what sources say—show how they relate to each other and to your argument</li>
+      <li><strong>Don't just list</strong> what sources say -- show how they relate to each other and to your argument</li>
     </ol>
+  </div>
+
+  <div class="pattern-box" style="margin-bottom: 1.5rem;">
+    <h4>Source Weaving Patterns (Reference)</h4>
+    <p><strong>Agreement Amplification:</strong> "Both X and Y confirm that..."</p>
+    <p><strong>Tension / Contrast:</strong> "While X argues..., Y's data suggests..."</p>
+    <p><strong>Building Synthesis:</strong> "X's theory, combined with Y's evidence, reveals that..."</p>
   </div>
 
   <h4>Paragraph 1: Write about test validity (What do tests actually measure?)</h4>
@@ -253,48 +272,79 @@ ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
       class="writing-ta"
       data-phase-gate="3"
       data-min-words="60"
-      placeholder="Write your first paragraph here (60+ words)..."></textarea>
+      placeholder="Write your first weaving paragraph here (60+ words). Start with your claim, then weave in sources..."></textarea>
     <div class="writing-footer">
       <span class="wc">Word count: <span>0</span></span>
     </div>
   </div>
 
-  <h4 style="margin-top: 2rem;">Paragraph 2: Write about equity concerns (Who benefits? Who is harmed?)</h4>
-  <p style="font-size: 0.9rem; color: #555;">Integrate at least 2 sources discussing fairness, bias, or differential impacts.</p>
+  <div class="rubric-box">
+    <h4>Success Criteria -- Paragraph 1:</h4>
+    <ul>
+      <li>Uses claim-first structure</li>
+      <li>Integrates 2-3 sources with varied attribution</li>
+      <li>Sources serve the argument (not serial summary)</li>
+    </ul>
+  </div>
+
+  <h4 style="margin-top: 2rem;">Paragraph 2: Write about equity concerns (Who benefits from testing? Who is harmed?)</h4>
+  <p style="font-size: 0.9rem; color: #555;">Integrate at least 2 sources discussing fairness, bias, or differential impacts of testing.</p>
 
   <div class="writing-input">
     <textarea
       class="writing-ta"
       data-phase-gate="3"
       data-min-words="60"
-      placeholder="Write your second paragraph here (60+ words)..."></textarea>
+      placeholder="Write your second weaving paragraph here (60+ words). Start with your claim, then weave in sources..."></textarea>
     <div class="writing-footer">
       <span class="wc">Word count: <span>0</span></span>
     </div>
   </div>
 
+  <div class="rubric-box">
+    <h4>Success Criteria -- Paragraph 2:</h4>
+    <ul>
+      <li>Uses claim-first structure</li>
+      <li>Integrates 2-3 sources with varied attribution</li>
+      <li>Sources serve the argument (not serial summary)</li>
+    </ul>
+  </div>
+
   <button class="phase-next-btn">Continue to Independent Practice</button>
 </div>
 
+<!-- ============================================================ -->
 <h2>Phase 4: Independent Practice (6 min)</h2>
 <div class="phase-card independent-card phase-locked" data-phase="4">
   <h3>Source Weaving Without Scaffold</h3>
 
-  <p><strong>New topic:</strong> Social media and mental health. You have three sources:</p>
+  <p><strong>New topic: Social Media &amp; Teen Mental Health.</strong> Read the four sources below, then write ONE paragraph integrating at least 3 of them around a claim YOU generate. No scaffold provided -- you choose how to organize and weave.</p>
 
   <div class="passage-box">
-    <p><strong>Source A (Henderson, researcher):</strong> Moderate social media use (1-2 hours daily) correlates with higher self-reported happiness and larger friend networks. Heavy use (3+ hours) correlates with increased anxiety and depression.</p>
+    <h4>Source 1: Dr. Rachel Torres (Developmental Psychologist)</h4>
+    <p>After a decade of studying adolescent social media use, Torres concludes that the relationship between social media and mental health is "far more nuanced than headlines suggest." Her longitudinal study of 8,000 teens found that moderate, active social media use (creating content, messaging friends, joining interest-based communities) correlates with higher self-reported wellbeing. However, passive scrolling -- consuming content without interacting -- correlates with increased anxiety and social comparison. "The question isn't how much time teens spend online," Torres argues, "but what they're doing with that time."</p>
+    <p class="attribution">Source: Dr. Rachel Torres, Journal of Adolescent Psychology, 2024</p>
   </div>
 
   <div class="passage-box">
-    <p><strong>Source B (Patel & Johnson, researchers):</strong> The content of social media use matters more than duration. Passive scrolling correlates with negative outcomes; active engagement (commenting, messaging) correlates with positive outcomes.</p>
+    <h4>Source 2: Sarah Mitchell (Parent Advocate, Founder of ScreenSafe Kids)</h4>
+    <p>Mitchell launched ScreenSafe Kids after her daughter developed an eating disorder she traces directly to Instagram. "The algorithm fed my 14-year-old a steady diet of 'thinspiration' content for months before we noticed," Mitchell writes. She points to internal documents from major platforms showing that companies knew their products harmed teen girls' body image and chose not to act. Mitchell advocates for legislation requiring age verification, algorithmic transparency, and parental notification features. "We don't let kids buy cigarettes. Why do we let tech companies profit from their anxiety?"</p>
+    <p class="attribution">Source: Sarah Mitchell, ScreenSafe Kids Policy Brief, 2025</p>
   </div>
 
   <div class="passage-box">
-    <p><strong>Source C (Lee, psychologist):</strong> The direction of causation is unclear. Students who are already anxious may use social media as a coping mechanism, meaning social media use could be a symptom rather than a cause of poor mental health.</p>
+    <h4>Source 3: Mark Davidson (Tech Industry Analyst, former Meta Product Manager)</h4>
+    <p>Davidson pushes back against "moral panic" narratives, arguing that social media provides critical benefits for marginalized youth. "For LGBTQ+ teens in rural areas, online communities can be literally lifesaving," he notes. Davidson's analysis of platform data shows that teens who use social media to connect with identity-based support groups report 40% lower rates of isolation than peers without those connections. He acknowledges design problems -- infinite scroll, notification dopamine loops -- but argues these are fixable engineering issues, not reasons to restrict teen access entirely.</p>
+    <p class="attribution">Source: Mark Davidson, Tech Policy Review, 2024</p>
   </div>
 
-  <p><strong>Your Task:</strong> Write ONE paragraph that integrates all three sources around a claim YOU generate about social media's relationship to adolescent wellbeing. No scaffold provided—you choose how to organize and weave the sources.</p>
+  <div class="passage-box">
+    <h4>Source 4: Dr. James Park (Neuroscientist, University of Michigan)</h4>
+    <p>Park's brain-imaging studies reveal that heavy social media use (3+ hours daily) physically alters adolescent neural pathways. "We see reduced activity in the prefrontal cortex -- the region responsible for impulse control and long-term planning -- and heightened activation in the amygdala, which processes fear and anxiety," Park reports. However, he cautions against simple cause-and-effect claims: "Teens who are already anxious may gravitate toward excessive screen time as a coping mechanism. Social media use could be a symptom of poor mental health rather than its cause -- or both, in a feedback loop."</p>
+    <p class="attribution">Source: Dr. James Park, Neuroscience &amp; Digital Behavior, 2025</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Write ONE paragraph that integrates at least 3 of the 4 sources around a claim you generate about social media's relationship to adolescent mental health. No scaffold -- you choose the claim, the structure, and the weaving pattern.</p>
 
   <div class="writing-input">
     <textarea
@@ -302,7 +352,7 @@ ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
       data-phase-gate="4"
       data-rubric="L11_source_weaving"
       data-min-words="80"
-      placeholder="Write your paragraph here (80+ words)..."></textarea>
+      placeholder="Write your paragraph here (80+ words). Start with YOUR claim, then weave in at least 3 sources..."></textarea>
     <div class="writing-footer">
       <span class="wc">Word count: <span>0</span></span>
     </div>
@@ -312,8 +362,8 @@ ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
     <h4>Success Criteria:</h4>
     <ul>
       <li>Your claim comes FIRST, not source summary</li>
-      <li>At least 2 sources woven together (in same sentence or tightly connected sentences)</li>
-      <li>Varied attribution—not just "says" three times</li>
+      <li>At least 3 sources woven together (in same sentence or tightly connected sentences)</li>
+      <li>Varied attribution -- not just "says" three times</li>
       <li>Sources support YOUR argument; you're not serving the sources</li>
       <li>Reader can follow your reasoning without getting lost in source-by-source summary</li>
     </ul>
@@ -322,41 +372,44 @@ ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
   <button class="phase-next-btn">Continue to Transfer</button>
 </div>
 
+<!-- ============================================================ -->
 <h2>Phase 5: Transfer (3 min)</h2>
 <div class="phase-card transfer-card phase-locked" data-phase="5">
-  <h3>Apply to Your Next Essay</h3>
+  <h3>Listen for the Conversation</h3>
 
   <div class="self-check">
     <div class="q-label">Self-Check</div>
-    <p><strong>Read your paragraph aloud. Can you hear the CONVERSATION between sources?</strong></p>
+    <p><strong>Read your paragraph aloud. Can you hear the CONVERSATION between sources? Or are they talking past each other?</strong></p>
 
-    <p style="margin-top: 1rem;">If your paragraph sounds like: "Source A says... Source B says... Source C says..." — you're summarizing, not synthesizing.</p>
+    <p style="margin-top: 1rem;">If your paragraph sounds like: "Source A says... Source B says... Source C says..." -- you're summarizing, not synthesizing.</p>
 
-    <p style="margin-top: 1rem;">If your paragraph sounds like: "The relationship between X and Y is complex because [claim]. While [Source A] shows [evidence], [Source B] complicates this by [evidence], suggesting that [your insight]." — you're weaving.</p>
+    <p style="margin-top: 1rem;">If your paragraph sounds like: "The relationship between X and Y is complex because [claim]. While [Source A] shows [evidence], [Source B] complicates this by [evidence], suggesting that [your insight]." -- you're weaving.</p>
+
+    <p style="margin-top: 1rem;">Which pattern did you use most -- Agreement Amplification, Tension/Contrast, or Building Synthesis? Could a different pattern have produced a more interesting paragraph?</p>
   </div>
 
   <div class="key-concept" style="margin-top: 1.5rem;">
     <h3>Why This Matters</h3>
     <p>On AP exams and in college writing, graders distinguish between <strong>competent source use</strong> (citing accurately) and <strong>sophisticated synthesis</strong> (weaving sources into an argument). Source weaving is the clearest marker of advanced thinking.</p>
 
-    <p style="margin-top: 1rem;">When you make sources talk to each other—"While X argues A, Y's data suggests B, revealing C"—you're showing that you can hold multiple perspectives simultaneously and extract insight from their interaction. That's doctoral-level thinking, and you're practicing it now.</p>
+    <p style="margin-top: 1rem;">When you make sources talk to each other -- "While X argues A, Y's data suggests B, revealing C" -- you're showing that you can hold multiple perspectives simultaneously and extract insight from their interaction. That's doctoral-level thinking, and you're practicing it now.</p>
   </div>
 
   <div style="background: #fff3e0; border-left: 4px solid #fd7e14; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;">
-    <p><strong>Next Lesson:</strong> In L12, you'll write your first full synthesis essay under timed conditions. Everything you've learned—Rhetorical Force Field (L01), Claim Hierarchy (L02), source perspective mapping (L08), serial vs. synthesis (L09), attribution fluency (L10), and source weaving (L11)—will come together in one 40-minute assessment.</p>
+    <p><strong>Next Lesson:</strong> In L12, you'll write your first full synthesis essay -- a GATEWAY assessment. Everything you've learned (Rhetorical Force Field, Claim Hierarchy, source perspective mapping, serial vs. synthesis, attribution fluency, and source weaving) will come together in one timed essay.</p>
   </div>
 
   <p style="margin-top: 2rem; text-align: center; font-size: 1.1em;"><strong>Lesson Complete!</strong></p>
 </div>
 
 <div class="footnote">
-  <p>A2 L11 • Source Weaving Drill • KC C.10.10 • ~25 min • M4</p>
+  <p>A2 L11 | Source Weaving Drill | KC C.10.10 | ~25 min | M4 (Claim Hierarchy)</p>
 </div>
 
 <script src="lesson-engine.js"></script>
 <nav class="lesson-nav">
-  <a href="A2_L10_Attribution_Fluency.html" class="prev">← L10: Attribution Fluency</a>
-  <a href="A2_L12_Synthesis_Essay.html" class="next">L12: Full Synthesis Essay →</a>
+  <a href="A2_L10_Attribution_Fluency.html" class="prev">&larr; L10: Attribution Fluency</a>
+  <a href="A2_L12_Synthesis_Essay.html" class="next">L12: Full Synthesis Essay &rarr;</a>
 </nav>
 </body>
 </html>
