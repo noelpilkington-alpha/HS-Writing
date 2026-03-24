@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L01: Who Benefits?</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 1</span>
+  <h1>Who Benefits?</h1>
+  <p class="subtitle">Introducing M6: Who Benefits from This Framing?</p>
+  <div class="meta-bar">
+    <span>⏱ ~30 min</span>
+    <span>📍 KCs: M6 introduced, C.HS.01 (preview)</span>
+    <span>🧠 Mental Model: M6</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Mental Model 6: Who Benefits?</strong> For any argument or rhetorical move, ask: Who benefits from the audience accepting this claim? Whose interests are served by framing the issue this way? What is made visible — and what is obscured? This is NOT cynicism. Every writer has a perspective. Recognizing perspective is an analytical move, not an accusation.
+</div>
+
+<h2>Phase 1: Teach (4 min)</h2>
+<div class="phase-card teach-card">
+  <h3>M6: The Perspective Layer</h3>
+
+  <p>You now have five Mental Models: <strong>M1 (Everything Is a Choice)</strong>, <strong>M2 (Structure-Function-Effect)</strong>, <strong>M3 (Force Field)</strong>, <strong>M4 (Claim Hierarchy)</strong>, and <strong>M5 (Reverse Engineering)</strong>. These tools analyze HOW rhetorical strategies work.</p>
+
+  <p><span class="vocab-term">M6: Who Benefits?</span> adds a new dimension: WHY these strategies — and not others — were chosen. M6 asks about <strong>framing effects</strong>: whose interests are served by presenting an issue this particular way?</p>
+
+  <p><strong>The Three M6 Questions:</strong></p>
+  <ul>
+    <li><strong>What does this framing make visible?</strong> What aspects of the issue are foregrounded?</li>
+    <li><strong>What does it obscure?</strong> What perspectives, counterarguments, or complications disappear?</li>
+    <li><strong>Who benefits from this framing?</strong> Whose position is strengthened when the audience accepts these terms?</li>
+  </ul>
+
+  <p>M6 is what earns <strong>Row C (Sophistication)</strong> on the AP rubric. It shows you can think beyond the text's own terms — that you recognize every argument is a perspective, not the whole picture.</p>
+
+  <h3>How M6 Sharpens M1-M5</h3>
+
+  <table>
+    <tr>
+      <th>Without M6</th>
+      <th>With M6</th>
+    </tr>
+    <tr>
+      <td>M1: Douglass chose to use irony.</td>
+      <td>M1 + M6: Douglass chose irony because it benefits his argument by making the audience confront the contradiction before he states it — this framing obscures his own vulnerability as a formerly enslaved speaker.</td>
+    </tr>
+    <tr>
+      <td>M2: The anaphora creates emphasis.</td>
+      <td>M2 + M6: The anaphora emphasizes working-class women's experiences, which benefits Truth's claim — but it obscures legal arguments that would center property rights instead of lived experience.</td>
+    </tr>
+    <tr>
+      <td>M3: Wells addresses a skeptical white audience.</td>
+      <td>M3 + M6: Wells frames lynching as a national moral crisis (not a regional problem), which benefits the abolition movement by making Northern complicity visible — but it obscures internal Black debates about strategy.</td>
+    </tr>
+    <tr>
+      <td>M5: The writer faced X problem and solved it with Y strategy.</td>
+      <td>M5 + M6: The writer chose THIS solution over alternatives because it serves their interests by making X visible while obscuring Y — and this choice reveals whose perspective the text represents.</td>
+    </tr>
+  </table>
+
+  <p><strong>Key Insight:</strong> M6 is NOT about accusing writers of bias. Every argument has a perspective. M6 makes that perspective visible — and THAT is sophistication.</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>A student writes: "Douglass uses M6 to benefit his argument against slavery." What's wrong with this statement?</strong></p>
+    <ol type="A">
+      <li>Nothing — the student correctly identifies that Douglass benefits from his argument</li>
+      <li>M6 isn't about the writer's personal benefit; it's about what the FRAMING reveals and hides</li>
+      <li>M6 should only be used for synthesis essays, not rhetorical analysis</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> M6 is about framing effects, not personal motivation. The question isn't "Does Douglass benefit?" (obviously yes — he's arguing for abolition). The question is: "What does Douglass's particular FRAMING of July 4th make visible and what does it obscure? Whose interests are served by framing the holiday as hypocrisy rather than aspiration?" That's the sophistication move — analyzing the framing choice, not the writer's intent.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (6 min)</h2>
+<div class="phase-card model-card">
+  <h3>M6 Analysis: Douglass's "Fourth of July" Speech</h3>
+
+  <div class="passage-box">
+    <h3>Frederick Douglass, "What to the Slave Is the Fourth of July?" (1852)</h3>
+
+    <p><strong>[Move 1: Opening Address]</strong> Fellow-citizens, pardon me, allow me to ask, why am I called upon to speak here today? What have I, or those I represent, to do with your national independence?</p>
+
+    <p><strong>[Move 2: The Inversion]</strong> What, to the American slave, is your 4th of July? I answer: a day that reveals to him, more than all other days in the year, the gross injustice and cruelty to which he is the constant victim. To him, your celebration is a sham; your boasted liberty, an unholy license.</p>
+
+    <p><strong>[Move 3: Global Comparison]</strong> There is not a nation on the earth guilty of practices more shocking and bloody than are the people of these United States, at this very hour. Go where you may, search where you will, roam through all the monarchies and despotisms of the old world... for revolting barbarity and shameless hypocrisy, America reigns without a rival.</p>
+
+    <p class="attribution">Frederick Douglass, "What to the Slave Is the Fourth of July?", Rochester, NY, July 5, 1852 (public domain excerpt)</p>
+  </div>
+
+  <p><strong>Watch a writer apply M6 to three key moves — including the false start.</strong></p>
+
+  <div class="coping-model">
+    <p><strong>Writer's M6 Analysis:</strong></p>
+
+    <p><span class="false-start">Move 1 — Douglass benefits because he's arguing for abolition, and addressing the audience as "Fellow-citizens" helps him gain their trust before criticizing them.</span></p>
+
+    <p><span class="correction">Wait — that's too simple. M6 isn't about Douglass's personal motivation or strategy effectiveness. It's about what the FRAMING reveals and hides. Let me ask the three M6 questions.</span></p>
+
+    <p><span class="strong">Move 1 — What does "Fellow-citizens" make visible? It foregrounds the hypocrisy: Douglass claims citizenship that is denied to him. What does it obscure? It hides Douglass's own legal vulnerability as a formerly enslaved person — he doesn't mention his personal history. Who benefits? The abolition movement benefits because this framing makes the audience confront the contradiction (they invited a non-citizen to celebrate citizenship) without requiring them to see Douglass as an individual victim. Alternative framing: He could have led with his personal enslavement narrative, but that would center individual suffering over systemic critique.</span></p>
+
+    <p><span class="strong">Move 2 — What does "YOUR celebration" make visible? It positions Douglass as an outsider looking in, making the audience's hypocrisy visible by using second-person pronouns repeatedly. What does it obscure? It obscures any common ground between Douglass and his white abolitionist audience — they're positioned as complicit. Who benefits? Black Americans benefit because the framing refuses to let white audiences claim innocence through abolitionist sympathy. Alternative framing: He could have said "OUR celebration has been corrupted," but that would obscure the racial divide.</span></p>
+
+    <p><span class="strong">Move 3 — What does the global comparison make visible? It establishes American slavery as uniquely evil ("reigns without a rival"), making visible that American exceptionalism is moral depravity, not virtue. What does it obscure? It obscures gradations — the passage suggests no nation is worse, which might overstate the case and give critics ammunition. Who benefits? The abolition argument benefits because this framing removes the "everyone does it" defense. Alternative framing: He could have focused on specific Southern practices, but that would let Northern audiences off the hook.</span></p>
+  </div>
+
+  <p><strong>Key Pattern:</strong> Each M6 analysis asks what's made VISIBLE and what's OBSCURED by the framing choice, then identifies whose position is strengthened. The false start — "Douglass benefits because..." — is the most common M6 error. Fix it by focusing on framing effects, not authorial intent.</p>
+</div>
+
+<h2>Phase 3: Supported Practice (8 min)</h2>
+<div class="phase-card practice-card">
+  <h3>M6 Protocol: Patrick Henry</h3>
+
+  <div class="passage-box">
+    <h3>Patrick Henry, "Give Me Liberty, or Give Me Death!" (1775)</h3>
+
+    <p><strong>[Move 1: Concession Opening]</strong> No man thinks more highly than I do of the patriotism, as well as abilities, of the very worthy gentlemen who have just addressed the House. But different men often see the same subject in different lights; and, therefore, I hope it will not be thought disrespectful to those gentlemen if, entertaining as I do opinions of a character very opposite to theirs, I shall speak forth my sentiments freely and without reserve.</p>
+
+    <p><strong>[Move 2: Evidence of British Aggression]</strong> Ask yourselves how this gracious reception of our petition comports with those warlike preparations which cover our waters and darken our land. Are fleets and armies necessary to a work of love and reconciliation? Have we shown ourselves so unwilling to be reconciled that force must be called in to win back our love?</p>
+
+    <p class="attribution">Patrick Henry, speech at the Second Virginia Convention, March 23, 1775 (public domain excerpt)</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Complete the M6 Protocol for the two moves below. Use the template to guide your analysis.</p>
+
+  <h3>Move 1: The Concession Opening</h3>
+
+  <table>
+    <tr>
+      <th style="width: 30%;">M6 Question</th>
+      <th>Your Analysis</th>
+    </tr>
+    <tr>
+      <td><strong>What does this framing make visible?</strong></td>
+      <td><em>Hint: What does Henry's praise of his opponents reveal about the debate? What does his acknowledgment that "different men see different lights" establish?</em></td>
+    </tr>
+    <tr>
+      <td><strong>What does it obscure?</strong></td>
+      <td><em>Hint: What harsh criticisms of his opponents' position does this polite opening hide? What urgency does the conciliatory tone delay?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Who benefits from this framing?</strong></td>
+      <td><em>Hint: How does this opening benefit Henry's radical argument? What alternative framing (direct attack) would have weakened his position?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Alternative framing?</strong></td>
+      <td><em>What other way could Henry have opened? Why did he choose this path instead?</em></td>
+    </tr>
+  </table>
+
+  <h3>Move 2: Rhetorical Questions About "Warlike Preparations"</h3>
+
+  <table>
+    <tr>
+      <th style="width: 30%;">M6 Question</th>
+      <th>Your Analysis</th>
+    </tr>
+    <tr>
+      <td><strong>What does this framing make visible?</strong></td>
+      <td><em>Hint: What does framing British actions as "warlike preparations" reveal? What contrast does "love and reconciliation" create?</em></td>
+    </tr>
+    <tr>
+      <td><strong>What does it obscure?</strong></td>
+      <td><em>Hint: What British justifications for military presence does this framing ignore? What colonial provocations does it hide?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Who benefits from this framing?</strong></td>
+      <td><em>Hint: How does framing British military as aggression (not defensive) benefit the revolutionary cause?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Alternative framing?</strong></td>
+      <td><em>How could Britain's military presence be framed differently? Why didn't Henry choose that framing?</em></td>
+    </tr>
+  </table>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p><strong>After completing your M6 Protocol, ask:</strong> Did I focus on FRAMING EFFECTS (what the choice reveals/hides) or did I drift into STRATEGY ANALYSIS (how effective the choice is)? M6 is not "this works because..." — it's "this framing makes X visible and Y invisible, which serves Z interests." If you wrote about effectiveness instead of perspective, revise.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (8 min)</h2>
+<div class="phase-card independent-card">
+  <h3>M6 Analysis: Contemporary Editorial</h3>
+
+  <div class="passage-box">
+    <h3>Editorial Excerpt: "The Digital Divide in Education" (Representative Contemporary Example)</h3>
+
+    <p><strong>[Move 1]</strong> The pandemic exposed what educators have long known: millions of American students lack reliable internet access at home. In 2024, we call this the "digital divide" — a term that suggests a gap to be bridged, a technical problem awaiting a technological solution.</p>
+
+    <p><strong>[Move 2]</strong> But framing internet access as an infrastructure problem obscures a deeper issue. Students without internet often lack quiet study spaces, adult supervision during remote learning, and devices that aren't shared with siblings or working parents. Providing broadband doesn't solve these problems — it reveals them. The "digital divide" is actually an economic divide, and calling it digital lets policymakers avoid confronting that reality.</p>
+
+    <p class="attribution">Representative editorial excerpt, public domain-equivalent for educational use</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Apply the full M6 Protocol to BOTH moves in this editorial. For each move, answer all four questions: (1) What does this framing make visible? (2) What does it obscure? (3) Who benefits? (4) What alternative framing exists?</p>
+
+  <p>Write your analysis as connected prose (not a table). Aim for 2-3 sentences per move, following the model from Phase 2.</p>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li>Identifies what the framing makes VISIBLE (not just what the writer says)</li>
+      <li>Names what the framing OBSCURES (alternative perspectives, complications, counterarguments)</li>
+      <li>Explains whose position is strengthened (WHO BENEFITS) from this framing being accepted</li>
+      <li>Describes at least one alternative framing and explains why the writer didn't choose it</li>
+      <li>Avoids the "writer benefits" error — focuses on framing effects, not authorial motivation</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (4 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>From M6 Reading to M6 Writing:</strong> You've now learned to apply M6 as a reading tool — analyzing what framings make visible and obscure. The next step: using M6 to GENERATE sophistication in your own writing.</p>
+
+    <p>When you plan an AP essay, add one M6 question to your reverse engineering process: <strong>"What is this author's framing NOT showing me?"</strong> That answer becomes your sophistication move.</p>
+
+    <p>Example: If you're analyzing Douglass's "Fellow-citizens" opening, M6 reveals that the framing makes systemic hypocrisy visible but obscures Douglass's personal vulnerability. In your essay, you could write: <em>"While Douglass's ironic claim to citizenship effectively exposes American hypocrisy, this framing also obscures his own legal precarity as a formerly enslaved person — a strategic choice that shifts attention from individual suffering to national shame."</em></p>
+
+    <p>That's Row C. That's sophistication. That's M6 in action.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>Compare M6 to your B1L analysis.</strong> In B1L, you analyzed HOW strategies work (M2: S-F-E, M5: reverse engineering). M6 asks WHY those strategies — and not others — were chosen. How does asking "What does this framing obscure?" change your understanding of the passage? Write 2-3 sentences.</p>
+  </div>
+
+  <details>
+    <summary>Click to reveal model response</summary>
+    <div class="model-answer">
+      <p>In B1L, I learned to explain how Douglass's irony functions and what effect it creates. M6 adds a new layer: recognizing that every framing choice reveals some things and hides others. When I ask "What does this framing obscure?", I start seeing the passage as ONE perspective among alternatives, not the definitive view. That's sophistication — understanding that great rhetoric isn't "objective truth" but strategic perspective. This helps me write Row C analysis because I can identify what the text doesn't show, not just what it does.</p>
+    </div>
+  </details>
+</div>
+
+<div class="footnote">
+  <p>B2 L01 • Who Benefits? • M6 Introduction • ~30 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <span style="color: var(--muted);">← Previous: B1L Gate</span>
+  <a href="B2_L02_Framing_Analysis.html">Next: L02 Framing Analysis →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

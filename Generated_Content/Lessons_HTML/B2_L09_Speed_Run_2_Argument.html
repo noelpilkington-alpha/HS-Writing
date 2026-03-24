@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L09: Speed Run 2 - Argument</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 9</span>
+  <h1>Speed Run 2: Argument</h1>
+  <p class="subtitle">Full Timed Argument Essay with Sophistication</p>
+  <div class="meta-bar">
+    <span>⏱ ~50 min</span>
+    <span>📍 KCs: C.HS.04 (Sustain Quality Under Time Pressure)</span>
+    <span>🧠 Mental Models: M1-M6</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Speed Run 2 Focus:</strong> Argument essay at full AP timing (40 min). Your plan must include a sophistication move. New focus: evidence specificity under pressure. When time is short, students default to vague evidence ("Throughout history..."). Counter-strategy: during your 4-minute brainstorm, write 3 SPECIFIC examples with at least one detail each. Specific beats numerous.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Evidence Specificity Under Pressure</h3>
+
+  <p>This is your second full-speed essay in B2. The same rules apply: plan must include sophistication move, monitor your quality drop-off, sustain analytical depth in final paragraphs.</p>
+
+  <p><strong>New focus: evidence specificity.</strong> Under time pressure, students default to generic examples:</p>
+  <ul>
+    <li>"Throughout history, people have acted without full knowledge."</li>
+    <li>"Many scientists have made discoveries by taking action."</li>
+    <li>"In modern society, we often have to make decisions quickly."</li>
+  </ul>
+
+  <p>These examples are <strong>true but useless</strong>. They don't prove anything because they're too vague to evaluate. AP readers call this "placeholder evidence."</p>
+
+  <p><strong>Counter-strategy:</strong> During your 4-minute brainstorm, write 3 SPECIFIC examples with at least one detail each:</p>
+  <ul>
+    <li>"Jonas Salk tested the polio vaccine on himself and his family in 1953 before clinical trials."</li>
+    <li>"The Allies launched D-Day on June 6, 1944 despite incomplete intelligence about German defenses."</li>
+    <li>"Rosa Parks refused to give up her bus seat on December 1, 1955, knowing she would be arrested."</li>
+  </ul>
+
+  <p>Notice: each example includes a name, a specific action, and a date or detail. <strong>Specific beats numerous.</strong> Three sharp examples are stronger than six vague ones.</p>
+
+  <p><strong>Your task today:</strong> Write a full argument essay in 40 minutes with specific evidence and a sophistication move. Track your quality drop-off and compare to Speed Run 1.</p>
+</div>
+
+<h2>Phase 2: Independent (40 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Full Argument Essay: Knowledge and Action</h3>
+
+  <div class="passage-box">
+    <h3>AP Argument Prompt</h3>
+
+    <p><strong>Time: 40 minutes</strong></p>
+
+    <p>Some argue that knowledge must precede action—that we should gather information, consider consequences, and plan thoroughly before making important decisions. Others contend that action often must precede knowledge—that we learn by doing, discover through experience, and gain understanding through engagement rather than observation.</p>
+
+    <p><strong>Assignment:</strong> Write an essay that argues your position on the relationship between knowledge and action. Use appropriate evidence from your reading, experience, or observations to develop your argument.</p>
+
+    <p class="attribution">AP-style argument prompt (representative)</p>
+  </div>
+
+  <div class="rubric-box">
+    <p><strong>Timing Strategy (40 minutes total):</strong></p>
+    <ul>
+      <li><strong>0-5 min:</strong> Planning. Write thesis, 3 body paragraph claims, specific evidence for each (with at least one detail per example), sophistication move type and location.</li>
+      <li><strong>5-30 min:</strong> Writing. Introduction with thesis and line of reasoning (4 min), Body paragraph 1 (8 min), Body paragraph 2 (8 min), Body paragraph 3 with sophistication move (8 min), Conclusion (2 min).</li>
+      <li><strong>30-35 min:</strong> Review. Check: Does evidence include specific details? Does sophistication move appear? Is final paragraph as strong as first?</li>
+      <li><strong>35-40 min:</strong> Final edits.</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Before You Begin</div>
+    <p><strong>Evidence Specificity Check:</strong> During your 4-minute brainstorm, test each example: "Can I add a name, date, or specific detail?" If yes, add it to your plan. If no, the example may be too generic. Aim for 3 specific examples—that's enough for a 5+ essay.</p>
+  </div>
+
+  <p><strong>Write your essay now. Set a timer for 40 minutes.</strong></p>
+
+  <p style="margin-top: 2rem; padding: 1rem; background: #fff3e0; border-left: 4px solid #fd7e14; border-radius: 0 6px 6px 0;">
+    <strong>When complete:</strong> Proceed to self-scoring below. Do NOT skip the quality drop-off tracker—this is how you identify your timing weakness.
+  </p>
+</div>
+
+<h2>Phase 3: Self-Score (5 min)</h2>
+<div class="phase-card practice-card">
+  <h3>AP Rubric Self-Scoring</h3>
+
+  <div class="rubric-box">
+    <p><strong>Row A: Thesis (0-1 point)</strong></p>
+    <ul>
+      <li><strong>1 point:</strong> Responds to the prompt with a defensible thesis that establishes a line of reasoning.</li>
+      <li><strong>0 points:</strong> No defensible thesis or line of reasoning.</li>
+    </ul>
+
+    <p style="margin-top: 1rem;"><strong>Row B: Evidence and Commentary (0-4 points)</strong></p>
+    <ul>
+      <li><strong>4 points:</strong> Provides specific evidence + explains how evidence supports the argument. Commentary consistently analyzes the relationship between evidence and thesis.</li>
+      <li><strong>3 points:</strong> Provides specific evidence + explains connection in most cases, but may have moments of underdevelopment.</li>
+      <li><strong>2 points:</strong> Provides some specific evidence, but explanation is superficial or inconsistent.</li>
+      <li><strong>1 point:</strong> Provides evidence but with little or no explanation.</li>
+      <li><strong>0 points:</strong> No evidence or only generic assertions.</li>
+    </ul>
+
+    <p style="margin-top: 1rem;"><strong>Row C: Sophistication (0-1 point)</strong></p>
+    <ul>
+      <li><strong>1 point:</strong> Demonstrates sophistication of thought through one or more of: broader context, alternative interpretation, tension/complexity, consistently vivid and persuasive style.</li>
+      <li><strong>0 points:</strong> Does not meet sophistication criteria.</li>
+    </ul>
+  </div>
+
+  <table>
+    <tr>
+      <th>Row</th>
+      <th>Your Score</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td><strong>Row A (Thesis)</strong></td>
+      <td><em>0 or 1</em></td>
+      <td><em>Is your thesis defensible? Does it have a line of reasoning?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Row B (Evidence)</strong></td>
+      <td><em>0-4</em></td>
+      <td><em>Did you include specific evidence? Did you explain how it supports your thesis?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Row C (Sophistication)</strong></td>
+      <td><em>0 or 1</em></td>
+      <td><em>Did your sophistication move appear? Which type?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td><em>0-6</em></td>
+      <td><em>Target: 5+</em></td>
+    </tr>
+  </table>
+
+  <div class="self-check">
+    <div class="q-label">Quality Drop-Off Tracker</div>
+    <p><strong>Mark the exact paragraph where your essay's quality started to decline:</strong></p>
+    <ul>
+      <li>Introduction: Quality maintained</li>
+      <li>Body Paragraph 1: Quality maintained / Quality dropped here</li>
+      <li>Body Paragraph 2: Quality maintained / Quality dropped here</li>
+      <li>Body Paragraph 3: Quality maintained / Quality dropped here</li>
+      <li>Conclusion: Quality maintained / Quality dropped here</li>
+    </ul>
+    <p><strong>Evidence Specificity Check:</strong> Look at your third body paragraph. Did your evidence stay specific, or did you default to vague examples? Circle any generic phrases: "Throughout history," "Many people," "In modern society," "Often," "Always."</p>
+  </div>
+</div>
+
+<h2>Phase 4: Debrief (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>Speed Run 2 Complete.</strong> You've now written 2 full AP essays in B2 (Speed Run 1: Rhetorical Analysis, Speed Run 2: Argument).</p>
+
+    <p><strong>Compare your results:</strong></p>
+    <ul>
+      <li><strong>Did your drop-off point move later in the essay?</strong> If yes, that's progress. If Speed Run 1 quality dropped at Body Paragraph 2 and Speed Run 2 quality dropped at Body Paragraph 3, your timing allocation is improving.</li>
+      <li><strong>Did your evidence stay specific or go vague?</strong> Check your third body paragraph. If you wrote "Many people throughout history have faced this dilemma," you defaulted to placeholder evidence. If you wrote "When Marie Curie continued her radiation research despite known health risks in 1902," you maintained specificity under pressure.</li>
+      <li><strong>Did your sophistication move appear?</strong> If yes, which type? If no, where were you planning to place it?</li>
+    </ul>
+
+    <p><strong>Your Next Speed Run (L10): Synthesis.</strong> This is the hardest: 6 sources in 15 minutes, then 40 minutes writing. Start preparing by reviewing your pattern: Where do YOU consistently lose quality? That's your target for Speed Run 3.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>What is your current timing weakness?</strong> Based on Speed Runs 1-2, identify: (1) Do you spend too long planning and rush the conclusion? (2) Do you write strong openings but run out of steam? (3) Do you sacrifice evidence specificity when time-pressured? Name the pattern, then write one strategy you'll test in Speed Run 3 to counteract it.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B2 L09 • Speed Run 2: Argument • Evidence Specificity Focus • ~50 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L08_Speed_Run_1_Rhetorical_Analysis.html">← Previous: L08 Speed Run 1</a>
+  <a href="B2_L10_Speed_Run_3_Synthesis.html">Next: L10 Speed Run 3 (Synthesis) →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L20: Voice Under Pressure + Gate Prep</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.gate-card { border-left: 4px solid #6f42c1; background: #f9f7fc; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.gate-box {
+  background: #fff3e0; border: 2px solid #fd7e14; border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 20</span>
+  <h1>Voice Under Pressure + Gate Prep</h1>
+  <p class="subtitle">Maintaining Voice Under Time Constraints & Final Gate Strategy</p>
+  <div class="meta-bar">
+    <span>⏱ ~30 min</span>
+    <span>📍 KCs: D.9.03 (under pressure), C.HS.04, all KCs reviewed</span>
+    <span>🧠 Mental Models: All (M1-M6)</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>The Final Challenge:</strong> You have developed a voice. You can write sophistication moves. You can self-diagnose. Now: can you execute under pressure? When the clock is ticking, students revert to template prose. Your counter-strategy: write your FIRST SENTENCE in your own voice. Once the first sentence sounds like you, the rest follows. This lesson prepares you for the B2 Gate—the full AP Practice Exam.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Voice Collapse Under Pressure</h3>
+
+  <p>You've spent two lessons developing voice. In L18, you analyzed three published voices. In L19, you wrote the same paragraph in two voices and chose yours. You proved voice is controllable.</p>
+
+  <p>But here's what happens on test day: <strong>under time pressure, voice collapses.</strong> Students who write with personality and precision during practice revert to template language during timed essays. "However, this demonstrates that the author effectively utilizes rhetorical strategies to convey their message to the audience."</p>
+
+  <p>Why? Because template language is <em>cognitively cheap</em>. When you're stressed, your brain defaults to cached phrases. Writing in your own voice requires conscious attention—which is expensive under time pressure.</p>
+
+  <p><strong>The Counter-Strategy:</strong> Write your <span class="vocab-term">First Sentence in Your Voice</span>. Not the thesis sentence—that's often formulaic. The first sentence of your FIRST BODY PARAGRAPH. If that sentence sounds like you (not like a template), the rest of the paragraph follows. Voice is momentum: once you start in your voice, you stay in your voice.</p>
+
+  <p><strong>The Template Language Checklist:</strong> Before you finish any timed paragraph, scan for these phrases. If you find them, revise.</p>
+  <ul>
+    <li>"This demonstrates that..."</li>
+    <li>"It is important to note..."</li>
+    <li>"The author effectively utilizes..."</li>
+    <li>"In conclusion..."</li>
+    <li>"This example clearly shows..."</li>
+    <li>"Throughout the passage..."</li>
+  </ul>
+
+  <p>These phrases are not wrong. They're just not YOU. Replace them with sentences that sound like something a human being would say when explaining an idea to another human being.</p>
+</div>
+
+<h2>Phase 2: Independent Practice — Timed Paragraph (7 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Voice Under Time Pressure</h3>
+
+  <p><strong>Your Task:</strong> Write one body paragraph analyzing Carrie Chapman Catt's rhetorical strategy in the excerpt below. You have <strong>7 minutes</strong>. The paragraph must include S-F-E analysis, a sophistication move, and YOUR VOICE. No template language.</p>
+
+  <div class="passage-box">
+    <h3>Excerpt: Carrie Chapman Catt, "The Crisis" (1916)</h3>
+    <p>Woman suffrage is coming—you know it. Will you, Honorable Senators and Members of the House of Representatives, help or hinder it? We want your support, but whether you give it to us now or later, or never, suffrage for women is inevitable. The only question left for you to decide is whether it will come under your leadership, with your reputation enhanced by standing with a great cause, or whether it will come in spite of your obstruction, leaving you the inglorious reputation of having stood against civilization and progress.</p>
+    <p class="attribution">Carrie Chapman Catt, address to Congress, "The Crisis," 1916 (public domain excerpt)</p>
+  </div>
+
+  <p><strong>Analytical Focus:</strong> How does Catt use the certainty of suffrage's success (framed as inevitable) to reframe the stakes for her audience? What rhetorical move is she making when she shifts the question from "Will suffrage happen?" to "How will you be remembered when it does?"</p>
+
+  <p><strong>Set a 7-minute timer. Start now.</strong></p>
+
+  <div style="border: 2px solid var(--accent); border-radius: 4px; padding: 1.25rem; background: white; min-height: 150px; margin: 1rem 0;">
+    <em>Write your timed body paragraph here. Include: S-F-E analysis, sophistication move, YOUR voice (no template language).</em>
+  </div>
+</div>
+
+<h2>Phase 3: Self-Check (3 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Template Language Audit</h3>
+
+  <p><strong>Read your timed paragraph from Phase 2. Apply the Template Language Checklist.</strong></p>
+
+  <div class="self-check">
+    <div class="q-label">Circle Any Template Phrases</div>
+    <p>Mark any of the following phrases (or similar ones):</p>
+    <ul>
+      <li>"This demonstrates that..."</li>
+      <li>"It is important to note..."</li>
+      <li>"The author effectively utilizes..."</li>
+      <li>"This example clearly shows..."</li>
+      <li>"Throughout the passage..."</li>
+      <li>Any other phrase that sounds like it came from an essay-writing robot.</li>
+    </ul>
+  </div>
+
+  <p><strong>Now: Revise ONE sentence to sound more like you.</strong> Don't rewrite the whole paragraph—just pick the sentence that sounds most like a template and make it sound like a person.</p>
+
+  <p><strong>Example Revision:</strong></p>
+  <ul>
+    <li><strong>Template Version:</strong> "This demonstrates that Catt effectively utilizes rhetorical strategies to persuade her audience."</li>
+    <li><strong>Human Version:</strong> "Catt traps Congress in a binary where both options lead to suffrage—the only variable is their reputation."</li>
+  </ul>
+
+  <div style="border: 1px solid var(--border); border-radius: 4px; padding: 1rem; background: #f9f9f9; margin: 1rem 0;">
+    <p><strong>Original Sentence (template):</strong> _______________________________</p>
+    <p><strong>Revised Sentence (your voice):</strong> _______________________________</p>
+  </div>
+</div>
+
+<h2>Phase 4: Gate Preview (10 min)</h2>
+<div class="phase-card gate-card">
+  <h3>B2 Gate: Full AP Practice Exam</h3>
+
+  <div class="gate-box">
+    <h3>Gate Format</h3>
+    <p><strong>Total Time:</strong> 2 hours 15 minutes (135 minutes)</p>
+    <p><strong>Three Essays:</strong></p>
+    <ul>
+      <li><strong>Synthesis Essay (55 min):</strong> 15 min reading 6 sources + 40 min writing. You must synthesize at least 3 sources to support a position.</li>
+      <li><strong>Rhetorical Analysis Essay (40 min):</strong> 5 min reading + 30 min writing + 5 min review. Analyze how an author uses rhetorical strategies to achieve a purpose.</li>
+      <li><strong>Argument Essay (40 min):</strong> 5 min planning + 30 min writing + 5 min review. Defend, challenge, or qualify a position using evidence from your knowledge and experience.</li>
+    </ul>
+    <p><strong>Passing Standard:</strong> Score 5+ on at least 2 of 3 essays, with NO essay below 4.</p>
+  </div>
+
+  <h3>Review Your Pattern Diagnosis (from L15)</h3>
+
+  <p>In L15, you diagnosed your consistent weakness across your Speed Run essays (L08-L10). Return to that diagnosis now. Answer these questions:</p>
+
+  <div class="rubric-box">
+    <p><strong>Pattern Review:</strong></p>
+    <ul>
+      <li><strong>Which Row is consistently your weakest?</strong> Row A (Thesis), Row B (Evidence/Analysis), or Row C (Sophistication)?</li>
+      <li><strong>Which essay type is your weakest?</strong> Rhetorical Analysis, Argument, or Synthesis?</li>
+      <li><strong>Where does quality typically drop in your essays?</strong> Third body paragraph? Conclusion? Evidence analysis in second half?</li>
+    </ul>
+  </div>
+
+  <p><strong>Based on your pattern diagnosis, build your gate strategy:</strong></p>
+
+  <h3>Gate Strategy Planner</h3>
+
+  <table>
+    <tr>
+      <th style="width: 30%;">Question</th>
+      <th>Your Strategy</th>
+    </tr>
+    <tr>
+      <td><strong>Essay Order:</strong> Which essay type will you write first?</td>
+      <td><em>Most students write Synthesis first (it has sources to work with). But if Synthesis is your weakest, consider writing Rhetorical Analysis first to build confidence.</em></td>
+    </tr>
+    <tr>
+      <td><strong>Sophistication Placement:</strong> Where will your sophistication move go in each essay?</td>
+      <td><em>Plan this during your 5-minute planning phase. Most effective: end of 2nd body paragraph or start of 3rd.</em></td>
+    </tr>
+    <tr>
+      <td><strong>Your Consistent Weakness:</strong> What's the ONE thing you'll monitor throughout?</td>
+      <td><em>If Row B is weak, monitor S-F-E analysis—reach Effect in every paragraph. If Row C is weak, plan sophistication move before writing. If quality drops, check your pacing every 10 minutes.</em></td>
+    </tr>
+    <tr>
+      <td><strong>Recovery Plan:</strong> What will you do if you fall behind?</td>
+      <td><em>Review L13 (Recovery Drill). Minimum viable essay: thesis + 2 body paragraphs with S-F-E + brief conclusion = score 3-4. A complete mediocre essay beats an unfinished strong essay.</em></td>
+    </tr>
+    <tr>
+      <td><strong>Voice Reminder:</strong> How will you maintain voice under pressure?</td>
+      <td><em>Write your first body paragraph's first sentence in YOUR voice. Not a template. Once you start in your voice, you'll stay in your voice.</em></td>
+    </tr>
+  </table>
+
+  <div class="self-check">
+    <div class="q-label">Write Your Gate Strategy (3 Sentences)</div>
+    <p><strong>Summarize your plan for the gate:</strong> (1) Essay order, (2) Your consistent weakness and how you'll address it, (3) Your recovery plan if timing goes wrong.</p>
+  </div>
+</div>
+
+<h2>Phase 5: Optional Warm-Up Practice (if time remains)</h2>
+<div class="phase-card practice-card">
+  <h3>Warm-Up: Thesis + First Body Paragraph</h3>
+
+  <p><strong>If you have time remaining:</strong> Write a thesis and first body paragraph for the rhetorical analysis prompt below. This is a warm-up to reduce cold-start anxiety before the gate.</p>
+
+  <p><strong>Time:</strong> 5 minutes planning + 10 minutes writing = 15 minutes total</p>
+
+  <div class="passage-box">
+    <h3>Practice Prompt (Warm-Up Only)</h3>
+    <p><strong>Passage:</strong> An excerpt from Sojourner Truth's "Ain't I a Woman?" speech (1851)—you've analyzed this before in A2 and B1L. Now write a full rhetorical analysis essay plan and first body paragraph.</p>
+    <p><strong>Task:</strong> Analyze how Sojourner Truth uses rhetorical strategies to challenge prevailing definitions of womanhood and argue for women's rights.</p>
+  </div>
+
+  <p><strong>Focus:</strong> Your thesis should include a line of reasoning (not just list strategies). Your first body paragraph should include S-F-E analysis and be written in YOUR voice. Plan your sophistication move before writing.</p>
+
+  <div style="border: 1px solid var(--border); border-radius: 4px; padding: 1rem; background: white; min-height: 100px; margin: 1rem 0;">
+    <p><strong>Thesis:</strong> _______________________________</p>
+  </div>
+
+  <div style="border: 1px solid var(--border); border-radius: 4px; padding: 1rem; background: white; min-height: 120px; margin: 1rem 0;">
+    <p><strong>First Body Paragraph:</strong></p>
+  </div>
+</div>
+
+<h2>Phase 6: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>You've Completed B2's Skill Development:</strong> You have all 6 Mental Models (M1-M6). You can write sophistication moves in all 4 types. You can self-diagnose with 80%+ accuracy. You can apply the 4-pass revision protocol. You have developed an analytical voice. Now: the gate.</p>
+    <p><strong>Tomorrow: AP Practice Exam (L21-L22):</strong></p>
+    <ul>
+      <li><strong>L21:</strong> Synthesis essay (55 min) on Healthcare Access & Equity (SYN-10, reserved source set)</li>
+      <li><strong>L22:</strong> Rhetorical Analysis (40 min) + Argument (40 min)</li>
+      <li><strong>Target:</strong> 5+ on at least 2 of 3 essays, no essay below 4</li>
+    </ul>
+    <p><strong>You are ready.</strong> You have the tools. You have the strategy. The only question is execution. Remember: the AP exam doesn't ask you to write perfectly. It asks you to write WELL under constraints. That's what you've been training for.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Final Reflection</div>
+    <p><strong>What's the most important thing you've learned in B2?</strong> Was it M6 (sophistication through framing analysis)? The 4-pass revision protocol? Self-diagnosis? Voice development? Or something else? Write 2-3 sentences describing the skill that transformed your writing the most.</p>
+  </div>
+
+  <details>
+    <summary>Click to reveal model response</summary>
+    <div class="model-answer">
+      <p>The most transformative skill in B2 was learning that sophistication isn't decorative—it's analytical depth generated through M6. Before B2, I thought Row C was something you "added" at the end, like a bonus feature. M6 taught me that sophistication comes from asking what my analysis doesn't account for, whose perspective is missing, what alternative interpretation exists. That question is now part of my planning process, not an afterthought. Once I started asking "What is this framing NOT showing me?" during my 5-minute planning phase, sophistication stopped feeling like magic and started feeling like method. That shift—from sophistication as accident to sophistication as protocol—is what makes a 5+ writer.</p>
+    </div>
+  </details>
+</div>
+
+<div class="footnote">
+  <p>B2 L20 • Voice Under Pressure + Gate Prep • All KCs reviewed • ~30 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L19_Voice_Experiment.html">← Previous: L19 Voice Experiment</a>
+  <a href="B2_L21_AP_Practice_Synthesis.html">Next: L21 AP Practice Exam – Synthesis →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

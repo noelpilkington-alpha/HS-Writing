@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L12: Plan-to-Essay Bridge 2</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 12</span>
+  <h1>Plan-to-Essay Bridge 2</h1>
+  <p class="subtitle">8-Minute Plan + 32-Minute Write: Argument</p>
+  <div class="meta-bar">
+    <span>⏱ ~45 min</span>
+    <span>📍 KCs: C.HS.04 (Sustain Quality Under Time Pressure, deepened)</span>
+    <span>🧠 Mental Models: M1-M6</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Plan-to-Essay Bridge 2:</strong> Apply the 8-minute planning structure to an argument essay. The challenge: your plan must include specific evidence from knowledge, not sources. During the 8-minute plan, brainstorm AND select evidence. Don't just list topics—write the specific example with one detail.
+</div>
+
+<h2>Phase 1: Teach (1 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Planning Specific Evidence from Knowledge</h3>
+
+  <p>You practiced the 8-minute plan with rhetorical analysis in L11. The structure is the same for argument: thesis, 3 body claims, evidence, sophistication move. The difference: your evidence comes from knowledge (reading, experience, observation), not from analyzing a passage.</p>
+
+  <p><strong>The trap:</strong> Students write "Use an example from history" in their plan, then panic during writing when they can't think of a specific historical example. This is planning a topic, not planning evidence.</p>
+
+  <p><strong>The fix:</strong> During your 8-minute plan, brainstorm 5-6 possible examples, then SELECT the 3 most specific. Write them in your plan with at least one detail:</p>
+  <ul>
+    <li><strong>Vague:</strong> "Use a historical example about tradition vs. progress"</li>
+    <li><strong>Specific:</strong> "Galileo's heliocentrism (1633) — Church tradition blocked scientific progress, but eventually truth prevailed"</li>
+  </ul>
+
+  <p>The second version is plannable. When you write Body Paragraph 1, you don't have to brainstorm—you already know you're using Galileo, you know the date, you know the tension. You just have to write it clearly.</p>
+
+  <p><strong>Today's task:</strong> 8-minute plan + 32-minute essay on tradition and progress. Your plan must include 3 specific examples with details. Then: check whether your evidence stayed as specific in the essay as in the plan.</p>
+</div>
+
+<h2>Phase 2: Independent (40 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Plan-to-Essay Bridge: Tradition and Progress</h3>
+
+  <div class="passage-box">
+    <h3>AP Argument Prompt</h3>
+
+    <p><strong>Time: 40 minutes (8 min planning + 32 min writing)</strong></p>
+
+    <p>Tradition provides continuity, stability, and cultural identity, yet progress often requires breaking with established practices. Some argue that tradition serves as a necessary anchor, preventing reckless change and preserving wisdom accumulated over generations. Others contend that tradition can hinder progress, perpetuating outdated systems and blocking necessary innovation.</p>
+
+    <p><strong>Assignment:</strong> Write an essay that argues your position on whether tradition primarily serves or hinders progress. Use appropriate evidence from your reading, experience, or observations to develop your argument.</p>
+
+    <p class="attribution">AP-style argument prompt (representative)</p>
+  </div>
+
+  <div class="rubric-box">
+    <p><strong>Assignment: 8-Minute Plan + 32-Minute Essay</strong></p>
+    <ul>
+      <li><strong>0-8 min (strict timer):</strong> Write your 8-minute plan. During minutes 0-4, brainstorm 5-6 possible examples (history, current events, literature, personal observation). During minutes 4-8, select the 3 most specific and write your plan: thesis, 3 body claims, evidence for each (with details), sophistication move (type + location).</li>
+      <li><strong>8-40 min:</strong> Write the full essay. Introduction (4 min), Body 1 (9 min), Body 2 (9 min), Body 3 with sophistication (9 min), Conclusion (1 min). Follow your plan—use the evidence you selected.</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Planning Checkpoint (At 4 Minutes)</div>
+    <p><strong>Brainstorm Phase (0-4 min):</strong> List 5-6 possible examples. Mix domains: history, science, literature, current events, personal observation. Don't evaluate yet—just generate possibilities.</p>
+    <p><strong>Example brainstorm list:</strong></p>
+    <ul>
+      <li>Galileo vs. Church (science tradition blocking progress)</li>
+      <li>Civil Rights Movement vs. Jim Crow (social tradition blocking justice)</li>
+      <li>Industrial Revolution (breaking agricultural tradition for economic progress)</li>
+      <li>Japanese tea ceremony (tradition preserving cultural identity despite modernization)</li>
+      <li>Indigenous land management (traditional practices now recognized as sustainable)</li>
+      <li>Vaccine hesitancy (medical tradition vs. new technology fears)</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Selection Phase (4-8 min)</div>
+    <p><strong>Select the 3 examples you'll actually use.</strong> Test each: Can I add a specific name, date, or detail? Can I explain how this example supports my thesis? If yes, write it in your plan with the detail. If no, pick a different example.</p>
+    <p><strong>Write your complete plan:</strong></p>
+    <ul>
+      <li><strong>Thesis:</strong> (1 complete sentence with line of reasoning)</li>
+      <li><strong>Body 1 Claim + Evidence:</strong> (What's your first argument? What specific example supports it?)</li>
+      <li><strong>Body 2 Claim + Evidence:</strong> (What's your second argument? What specific example?)</li>
+      <li><strong>Body 3 Claim + Evidence:</strong> (What's your third argument? What specific example?)</li>
+      <li><strong>Sophistication Move:</strong> (Type and location: broader context / alternative reading / tension-complexity / other)</li>
+    </ul>
+  </div>
+
+  <p><strong>Write your 8-minute plan now, then your 32-minute essay. Set strict timers.</strong></p>
+
+  <p style="margin-top: 2rem; padding: 1rem; background: #fff3e0; border-left: 4px solid #fd7e14; border-radius: 0 6px 6px 0;">
+    <strong>When complete:</strong> Proceed to self-scoring and evidence specificity check below.
+  </p>
+</div>
+
+<h2>Phase 3: Self-Score + Plan Review (4 min)</h2>
+<div class="phase-card practice-card">
+  <h3>AP Rubric Self-Scoring + Evidence Specificity Check</h3>
+
+  <div class="rubric-box">
+    <p><strong>Row A: Thesis (0-1 point)</strong></p>
+    <ul>
+      <li><strong>1 point:</strong> Responds to the prompt with a defensible thesis that establishes a line of reasoning.</li>
+      <li><strong>0 points:</strong> No defensible thesis or line of reasoning.</li>
+    </ul>
+
+    <p style="margin-top: 1rem;"><strong>Row B: Evidence and Commentary (0-4 points)</strong></p>
+    <ul>
+      <li><strong>4 points:</strong> Provides specific evidence + explains how evidence supports the argument. Commentary consistently analyzes the relationship between evidence and thesis.</li>
+      <li><strong>3 points:</strong> Provides specific evidence + explains connection in most cases, but may have moments of underdevelopment.</li>
+      <li><strong>2 points:</strong> Provides some specific evidence, but explanation is superficial or inconsistent.</li>
+      <li><strong>1 point:</strong> Provides evidence but with little or no explanation.</li>
+      <li><strong>0 points:</strong> No evidence or only generic assertions.</li>
+    </ul>
+
+    <p style="margin-top: 1rem;"><strong>Row C: Sophistication (0-1 point)</strong></p>
+    <ul>
+      <li><strong>1 point:</strong> Demonstrates sophistication through broader context, alternative interpretation, tension/complexity, or vivid style.</li>
+      <li><strong>0 points:</strong> Does not meet criteria.</li>
+    </ul>
+  </div>
+
+  <table>
+    <tr>
+      <th>Row</th>
+      <th>Your Score</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td><strong>Row A (Thesis)</strong></td>
+      <td><em>0 or 1</em></td>
+      <td><em>Is your thesis defensible? Does it have a line of reasoning?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Row B (Evidence)</strong></td>
+      <td><em>0-4</em></td>
+      <td><em>Did you use specific evidence with details? Did you explain how it supports your thesis?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Row C (Sophistication)</strong></td>
+      <td><em>0 or 1</em></td>
+      <td><em>Did your sophistication move appear where planned?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td><em>0-6</em></td>
+      <td><em>Target: 5+</em></td>
+    </tr>
+  </table>
+
+  <div class="self-check">
+    <div class="q-label">Evidence Specificity Check</div>
+    <p><strong>Compare your plan to your essay. For each piece of evidence, check:</strong></p>
+    <ul>
+      <li><strong>Body 1 Evidence:</strong> Was it as specific in the essay as in the plan? If you planned "Galileo's heliocentrism, 1633, Church tradition blocked scientific progress," did you write that level of detail? Or did you write "Throughout history, people have challenged tradition"?</li>
+      <li><strong>Body 2 Evidence:</strong> Specific / Vague. If vague, what detail did you lose from the plan?</li>
+      <li><strong>Body 3 Evidence:</strong> Specific / Vague. If vague, why did specificity drop in the final paragraph?</li>
+    </ul>
+
+    <p><strong>Pattern diagnosis:</strong> If your evidence stayed specific across all 3 body paragraphs, your planning worked. If specificity dropped in Body 3, you're running out of energy or time—your timing allocation needs adjustment. If specificity dropped across all paragraphs, you're not using your plan during writing—you're improvising. Follow the plan.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>Plan-to-Essay Bridge 2 Complete.</strong> You've now practiced the 8-minute structure with both rhetorical analysis (L11) and argument (L12). The structure is the same: thesis, claims, evidence, sophistication. The challenge differs by essay type.</p>
+
+    <p><strong>Key insight from L12:</strong> Planning evidence from knowledge requires brainstorming AND selecting during the 8 minutes. If you skip the selection step, you'll plan topics ("use a history example") instead of evidence ("Galileo, 1633, heliocentrism vs. Church"). Topics don't write themselves. Evidence does.</p>
+
+    <p><strong>Unit 3 complete.</strong> You've written 3 Speed Runs (L08-L10) and 2 Plan-to-Essay Bridges (L11-L12). Next unit: Self-Diagnosis & Revision. You'll calibrate your scoring accuracy to 80%+, diagnose your pattern weaknesses across all 5 essays, and learn to revise for meaning transformation (not just surface editing).</p>
+
+    <p><strong>Before L14:</strong> Review your 5 essays (3 Speed Runs + 2 Bridges). Identify: (1) Which row is consistently weakest? (2) Which essay type is weakest? (3) Where does quality consistently drop? Those 3 answers are your self-diagnosis—Unit 4 will teach you to act on it.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B2 L12 • Plan-to-Essay Bridge 2 • Evidence from Knowledge • ~45 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L11_Plan_to_Essay_Bridge_1.html">← Previous: L11 Plan-to-Essay Bridge 1</a>
+  <a href="B2_L13_Recovery_Drill.html">Next: L13 Recovery Drill →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

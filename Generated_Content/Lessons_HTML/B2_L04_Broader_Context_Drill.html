@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L04: Broader Context Drill</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent; }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.before-after {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;
+}
+.before-after > div {
+  background: #fff; border: 2px solid #dee2e6; border-radius: 8px;
+  padding: 1rem; font-size: 0.9rem;
+}
+.before-after .label {
+  font-weight: 700; text-transform: uppercase; font-size: 0.75rem;
+  color: var(--muted); margin-bottom: 0.5rem; letter-spacing: 0.05em;
+}
+.tacked-on { border-color: #dc3545 !important; }
+.organic { border-color: #28a745 !important; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 4</span>
+  <h1>Broader Context Drill</h1>
+  <p class="subtitle">Writing Organic (Not Tacked-On) Sophistication</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.HS.03 (Write Sophistication — Broader Context)</span>
+    <span>🧠 Mental Model: M6</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>The Broader Context Move:</strong> "Situated within the broader context of [movement/period/debate], [author]'s choice takes on added significance because..." This connects your analysis to something LARGER than the passage itself. It must feel organic, not tacked on. The test: does the broader context deepen your analysis, or is it just a fact you added?
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Organic vs. Tacked-On Context</h3>
+
+  <p>Broader context is the most common sophistication move on AP exams — and the easiest to do badly. Most students add historical facts without connecting them to the analysis. That's <strong>tacked-on context</strong>. It's worse than no sophistication at all.</p>
+
+  <p><span class="vocab-term">Organic Context</span> deepens your analysis by explaining WHY the writer chose this strategy at THIS moment. It answers: "What about the broader context makes this choice particularly significant or effective?"</p>
+
+  <p><span class="vocab-term">Tacked-On Context</span> drops historical facts into the essay without connecting them to the rhetorical analysis. It reads like: "This speech was given in 1852, a time of great tension over slavery." So what? How does that timing explain the writer's choices?</p>
+
+  <h3>The Test Question</h3>
+
+  <p><strong>"If I removed this context sentence, would my analysis lose explanatory power?"</strong></p>
+  <ul>
+    <li><strong>If yes</strong> → The context is organic. It explains something about the writer's strategies that wouldn't be clear otherwise.</li>
+    <li><strong>If no</strong> → The context is tacked on. It's decoration, not analysis.</li>
+  </ul>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>Which sentence demonstrates organic broader context?</strong></p>
+    <ol type="A">
+      <li>"Douglass delivered this speech in 1852, nine years before the Civil War."</li>
+      <li>"Douglass's ironic address to 'Fellow-citizens' takes on added significance when situated in the context of the 1850 Fugitive Slave Act, which required Northern citizens to assist in capturing escaped slaves — the very audience he addresses was legally complicit in his potential re-enslavement."</li>
+      <li>"The Fourth of July has been celebrated as Independence Day since 1776."</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> Sentence B is organic because the context (Fugitive Slave Act requiring Northern citizens to assist in capturing escaped slaves) directly explains WHY Douglass's "Fellow-citizens" address is ironic and risky. The context deepens our understanding of the rhetorical move. Sentences A and C are tacked-on facts — they provide dates but don't explain how those historical moments shape Douglass's strategic choices. Test: Remove sentence B and you lose explanatory power. Remove A or C and the analysis is unchanged.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <h3>Before/After: Ida B. Wells</h3>
+
+  <div class="passage-box">
+    <h3>Ida B. Wells, "Lynch Law in All Its Phases" (1893)</h3>
+
+    <p>I am before the American people today through no inclination of my own, but because of a deep-seated conviction that the country at large does not know the extent to which lynch law prevails in parts of the Republic. The student of American sociology will find the year 1894 marked by a pronounced awakening of the public conscience to a system of anarchy and outlawry which has grown during the past ten years to be so common, that scenes of unusual brutality failed to have any visible effect upon the humane sentiments of the people of our land.</p>
+
+    <p class="attribution">Ida B. Wells, "Lynch Law in All Its Phases," excerpt, 1893 (public domain representative excerpt)</p>
+  </div>
+
+  <p><strong>Watch the transformation from tacked-on to organic context.</strong></p>
+
+  <div class="before-after">
+    <div class="tacked-on">
+      <div class="label">❌ Version A: Tacked-On</div>
+      <p>Wells positions herself as a reluctant witness ("through no inclination of my own") to establish credibility with a skeptical white Northern audience. This ethos strategy functions to preempt dismissal of her testimony as biased activism. Wells delivered this speech in 1893, during the post-Reconstruction era when lynching was increasing across the South.</p>
+    </div>
+    <div class="organic">
+      <div class="label">✓ Version B: Organic</div>
+      <p>Wells positions herself as a reluctant witness ("through no inclination of my own") to establish credibility with a skeptical white Northern audience. This ethos strategy functions to preempt dismissal of her testimony as biased activism. Situated within the broader context of post-Reconstruction's systematic dismantling of Black political power, Wells's choice to frame herself as compelled by conscience rather than ambition takes on added significance: in an era when Black women's public speech was itself read as transgressive, the reluctance strategy allows Wells to claim moral authority without triggering her audience's resistance to Black female leadership.</p>
+    </div>
+  </div>
+
+  <p><strong>What makes Version B organic?</strong></p>
+
+  <div class="coping-model">
+    <p><span class="strong">Version B connects the context to the strategy:</span> The post-Reconstruction context doesn't just provide a date — it explains WHY Wells chose the reluctance strategy. The era's systematic dismantling of Black political power + Black women's transgressive public speech = audience resistance. Wells's "reluctance" framing solves that rhetorical problem.</p>
+
+    <p><span class="strong">Version A just adds a fact:</span> "Wells spoke in 1893 during post-Reconstruction when lynching increased." True, but so what? That fact doesn't explain Wells's strategic choice to frame herself as reluctant. Remove it and the analysis is unchanged.</p>
+
+    <p><span class="strong">The test question proves it:</span> If you remove Version B's context, you lose the explanation of why reluctance was necessary (audience resistance to Black female leadership). If you remove Version A's context, nothing changes — the analysis of the ethos strategy stands without it.</p>
+  </div>
+</div>
+
+<h2>Phase 3: Supported Practice (10 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Add Organic Context to Two Paragraphs</h3>
+
+  <p><strong>Your Task:</strong> Each paragraph below analyzes a rhetorical strategy but lacks broader context. Add 1-2 sentences of organic context that explain WHY the writer chose this strategy given the historical/cultural/social moment.</p>
+
+  <h3>Paragraph 1: Patrick Henry (1775)</h3>
+
+  <div class="passage-box">
+    <p><strong>Context Clue:</strong> Henry spoke to the Virginia Convention in March 1775, months before the Revolutionary War began. Many colonists still hoped for reconciliation with Britain. Advocating armed resistance was radical and risky.</p>
+  </div>
+
+  <div style="background: #fff; border: 2px solid #dee2e6; border-radius: 8px; padding: 1rem; margin: 1rem 0; font-size: 0.9rem;">
+    <p>Henry's opening concession to his opponents ("No man thinks more highly than I do of the patriotism...of the very worthy gentlemen") establishes his ethos as reasonable and respectful before advancing his radical argument for armed resistance. This strategy functions to disarm potential dismissal: by praising those who disagree, Henry positions himself as thoughtful rather than reckless, making his subsequent call to arms harder to reject as extremism.</p>
+    <p><em><strong>[Add 1-2 sentences of organic broader context here. Explain WHY this concession strategy was particularly important given the March 1775 moment and the audience's hope for reconciliation.]</strong></em></p>
+  </div>
+
+  <h3>Paragraph 2: Sojourner Truth (1851)</h3>
+
+  <div class="passage-box">
+    <p><strong>Context Clue:</strong> Truth spoke at the 1851 Akron Women's Rights Convention. The women's rights movement was dominated by educated white women arguing for legal and intellectual equality. Truth was illiterate, formerly enslaved, and Black.</p>
+  </div>
+
+  <div style="background: #fff; border: 2px solid #dee2e6; border-radius: 8px; padding: 1rem; margin: 1rem 0; font-size: 0.9rem;">
+    <p>Truth frames womanhood through physical labor rather than intellectual or legal capacity, using her own body as evidence: "Look at me! Look at my arm! I have ploughed and planted, and gathered into barns, and no man could head me!" This strategic choice to center bodily strength allows Truth to claim equality with men in the one arena where her lived experience provided undeniable proof — she could match or exceed male labor.</p>
+    <p><em><strong>[Add 1-2 sentences of organic broader context here. Explain WHY Truth chose physical labor over legal/intellectual arguments given the 1851 women's rights movement's focus and Truth's position as an illiterate formerly enslaved woman.]</strong></em></p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p><strong>After writing your context sentences, apply the test question:</strong> "If I removed my context, would my analysis lose explanatory power?" If yes, your context is organic — it explains WHY the strategy made sense at that moment. If no, revise: connect the historical moment to the rhetorical problem the writer faced. Don't just add facts; explain how those facts shaped the writer's choices.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (7 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Full Paragraph with Organic Context: Emma Goldman</h3>
+
+  <div class="passage-box">
+    <h3>Emma Goldman, "The Tragedy of Woman's Emancipation" (1906)</h3>
+
+    <p>The right to vote, or equal civil rights, may be good demands, but true emancipation begins neither at the polls nor in courts. It begins in woman's soul. History tells us that every oppressed class gained true liberation from its masters through its own efforts. It is necessary that woman learn that lesson, that she realize that her freedom will reach as far as her power to achieve her freedom reaches.</p>
+
+    <p class="attribution">Emma Goldman, "The Tragedy of Woman's Emancipation," 1906 (public domain excerpt)</p>
+  </div>
+
+  <div class="passage-box">
+    <p><strong>Context Clue:</strong> Goldman wrote this in 1906, during the height of the suffrage movement when most activists focused on winning the vote. Goldman was an anarchist feminist who believed legal equality was insufficient and that the suffrage movement's focus on voting rights obscured deeper questions about women's economic and sexual autonomy.</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Write a full body paragraph (150-200 words) that:</p>
+  <ol>
+    <li>Analyzes Goldman's rhetorical strategy (how she reframes "emancipation" from legal rights to internal transformation)</li>
+    <li>Explains the strategy's function and effect (Row B analysis)</li>
+    <li><strong>Includes an organic broader context move</strong> that explains WHY Goldman chose to redefine emancipation this way given the 1906 suffrage movement's focus on voting rights</li>
+  </ol>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li>Identifies Goldman's reframing strategy (from legal rights to "woman's soul")</li>
+      <li>Explains how the reframing functions (shifts the definition of liberation)</li>
+      <li>Explains the effect on the audience (challenges their assumptions about what emancipation means)</li>
+      <li><strong>Broader context is organic:</strong> connects the 1906 suffrage movement's focus to Goldman's strategic choice to reject legal equality as insufficient</li>
+      <li><strong>Test question passes:</strong> If you remove the context sentence, the analysis loses explanatory power (you no longer understand WHY Goldman rejected voting rights as the primary goal)</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>The Tacked-On vs. Organic Distinction:</strong> Many students add historical facts and call it sophistication. AP readers see through this immediately. The fix: always ask "Does this context explain WHY?" not just "What happened when?"</p>
+
+    <p><strong>Sentence Frames for Organic Context:</strong></p>
+    <ul>
+      <li>"Situated within the broader context of [historical moment], [author]'s choice to [strategy] takes on added significance because [how context shapes the rhetorical problem]."</li>
+      <li>"Given [historical/cultural context], [author]'s decision to [strategy] rather than [alternative] reveals [what the context demanded or made possible]."</li>
+      <li>"In the context of [movement/debate], [author]'s [strategy] functions not merely to [immediate effect] but to [larger significance revealed by context]."</li>
+    </ul>
+
+    <p>Notice: all three frames CONNECT context to strategy. That connection is what makes it organic.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>Why is tacked-on context worse than no context?</strong> A score-4 essay with strong Row B analysis is coherent and effective. If you add tacked-on context, what message does that send to the AP reader about your analytical skills? Write 2-3 sentences.</p>
+  </div>
+
+  <details>
+    <summary>Click to reveal model response</summary>
+    <div class="model-answer">
+      <p>Tacked-on context is worse than no context because it signals to the AP reader that you think sophistication is decoration, not depth. When you drop a historical fact into your essay without connecting it to your analysis, you're essentially saying "I know I need Row C, so here's a random fact." The reader sees that you don't understand what sophistication IS — it's not about knowing history, it's about using that history to explain rhetorical choices. A clean score-4 essay shows you can analyze effectively. A score-4 essay with tacked-on context shows you tried for sophistication and failed, which suggests you don't understand the rubric.</p>
+    </div>
+  </details>
+</div>
+
+<div class="footnote">
+  <p>B2 L04 • Broader Context Drill • Organic vs. Tacked-On • ~25 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L03_Sophistication_Move_Identification.html">← Previous: L03 Sophistication Move Identification</a>
+  <a href="B2_L05_Alternative_Reading_Drill.html">Next: L05 Alternative Reading Drill →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

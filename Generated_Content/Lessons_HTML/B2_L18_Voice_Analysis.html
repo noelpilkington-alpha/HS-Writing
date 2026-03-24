@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L18: Voice Analysis in Published Criticism</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.voice-excerpt {
+  background: #f0f4f8; border: 1px solid #c8d6e5; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 18</span>
+  <h1>Voice Analysis in Published Criticism</h1>
+  <p class="subtitle">Reverse-Engineering Analytical Voice Through Syntactic Choices</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: D.9.03</span>
+    <span>🧠 Mental Models: M1, M6</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Voice as Choice:</strong> Voice is the distinctive way a writer sounds on the page. It emerges from diction (word choice), syntax (sentence structure), register (formal/informal), and rhythm (sentence length variation). Apply M1: voice is a CHOICE, not an accident. Great analytical writers have voices as distinctive as great novelists. A 4-level essay sounds generic. A 5+ essay sounds like a person.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>What Is Voice in Analytical Writing?</h3>
+
+  <p>You've written many analytical essays by now. Some scored higher than others. But here's a question you may not have asked: <em>Do your essays sound like you?</em></p>
+
+  <p>Most AP essays sound interchangeable. They use the same template phrases ("This demonstrates that..." "However, it is important to note..." "In conclusion, the author effectively..."). They default to what we might call <span class="vocab-term">Default Academic Prose</span>—correct, clear, but utterly impersonal.</p>
+
+  <p>Default Academic Prose earns a 4. It's competent. But a 5+ essay has <strong>voice</strong>—the reader notices that a specific human being wrote it. Voice is one of the four types of sophistication (Row C: vivid style).</p>
+
+  <p><strong>The Four Dimensions of Voice:</strong></p>
+  <ul>
+    <li><strong>Diction:</strong> Word choice. Do you use plain Anglo-Saxon words (think, make, show) or Latinate abstractions (conceptualize, manifest, demonstrate)? Both are valid—but they create different effects.</li>
+    <li><strong>Syntax:</strong> Sentence structure. Do you write short declarative sentences, or long cumulative ones with embedded clauses? Do you vary structure, or default to Subject-Verb-Object?</li>
+    <li><strong>Register:</strong> Formality level. Do you address the reader directly ("Notice how...") or maintain academic distance ("One observes that...")? Do you use contractions, or avoid them?</li>
+    <li><strong>Rhythm:</strong> Sentence length variation. Do you alternate between short and long? Do you use parallel structure for emphasis? Does your prose have a beat?</li>
+  </ul>
+
+  <p>Voice is the <em>combination</em> of these choices. And because voice is a choice (M1), you can control it. Today you'll reverse-engineer three different analytical voices to see how diction, syntax, register, and rhythm create distinctive effects.</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>A student writes: "The utilization of rhetorical interrogatives facilitates audience engagement." Another writes: "The questions hook the audience." Which sentence has stronger voice?</strong></p>
+    <ol type="A">
+      <li>The first — it uses sophisticated vocabulary</li>
+      <li>The second — it sounds like a human being</li>
+      <li>Neither — both lack analytical depth</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> The first sentence uses Latinate abstractions ("utilization," "rhetorical interrogatives," "facilitates") that create distance. It sounds like a thesaurus, not a writer. The second sentence uses plain diction ("questions," "hook") and active syntax. It sounds like a person explaining an idea. Sophisticated vocabulary ≠ sophisticated voice. Voice is about clarity, precision, and personality. The second sentence has all three. Voice is not about showing off—it's about sounding like yourself.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (5 min)</h2>
+<div class="phase-card model-card">
+  <h3>Three Analytical Voices</h3>
+
+  <p>Below are three excerpts analyzing the same moment in George Orwell's "Politics and the English Language." All three writers are analyzing the same passage—Orwell's opening paragraph. But their voices are completely different. Watch how diction, syntax, register, and rhythm create distinct effects.</p>
+
+  <h3>Voice A: Spare and Direct</h3>
+
+  <div class="voice-excerpt">
+    <p>Orwell opens with a concession. This is tactical. He grants his opponents their pessimism immediately. The language is in a bad way—he won't dispute that. But then notice the shift. What seems like a statement of fact ("it is generally assumed") is actually a claim he's about to demolish. The metaphor sequence exposes the absurdity: if fighting bad language is like preferring candles to electric bulbs, then improvement is backward. But the metaphor collapses on inspection. Light and transport improved. Language, in this view, only decays. The metaphor doesn't fit. Orwell lets his opponents overreach. He gives them rope. Then he shows that their own metaphor defeats them. The whole opening is a trap.</p>
+  </div>
+
+  <p><strong>Analysis of Voice A:</strong></p>
+  <ul>
+    <li><strong>Diction:</strong> Plain Anglo-Saxon words: "grants," "shift," "trap," "rope," "defeats." Only one Latinate term: "tactical." Verb-heavy. Almost no abstract nouns.</li>
+    <li><strong>Syntax:</strong> Short declarative sentences. Average 11 words. Subject-Verb-Object. Frequent fragments for emphasis ("This is tactical." "The whole opening is a trap.").</li>
+    <li><strong>Register:</strong> Informal but authoritative. Uses contractions ("won't," "doesn't"). Directly addresses reader ("notice the shift").</li>
+    <li><strong>Rhythm:</strong> Staccato. Short bursts. Punchy. Key ideas get their own sentences.</li>
+    <li><strong>Effect:</strong> Immediate clarity. Forceful. Teacherly. Reads like someone explaining a concept aloud.</li>
+  </ul>
+
+  <h3>Voice B: Elaborate and Layered</h3>
+
+  <div class="voice-excerpt">
+    <p>The opening paragraph establishes the rhetorical architecture that will govern the entire essay, positioning Orwell as a reformer challenging linguistic determinism. By granting the premise of linguistic decline ("the English language is in a bad way") while disputing the fatalism that typically accompanies it, Orwell occupies a middle position between those who deny the crisis and those who consider it irreversible—a characteristic move that allows him to claim both realism and agency. The concessive structure ("Most people...would admit...but it is generally assumed") enacts a model of critical thinking that recurs throughout: acknowledge the partial truth in received wisdom, then expose the non sequitur that derives from it. The metaphor sequence (candles/light, hansom cabs/aeroplanes) functions on multiple levels: ostensibly, it represents the defeatist position he opposes, but by selecting metaphors of technological <em>improvement</em> to represent linguistic <em>decay</em>, Orwell constructs an analogy whose internal contradictions betray the incoherence of the position itself.</p>
+  </div>
+
+  <p><strong>Analysis of Voice B:</strong></p>
+  <ul>
+    <li><strong>Diction:</strong> Latinate and abstract: "rhetorical architecture," "determinism," "fatalism," "concessive structure," "non sequitur." Nominalizations transform actions into concepts.</li>
+    <li><strong>Syntax:</strong> Heavily subordinated. Embedded clauses nest inside clauses. Average 38 words per sentence. Colons and dashes extend sentences.</li>
+    <li><strong>Register:</strong> Formal academic prose. No contractions. Third-person analytical distance.</li>
+    <li><strong>Rhythm:</strong> Flowing and cumulative. Long waves of thought. Clauses build upon each other. Reader must hold multiple ideas in suspension.</li>
+    <li><strong>Effect:</strong> Comprehensive depth. Dense. Authoritative. Reads like a scholarly article.</li>
+  </ul>
+
+  <h3>Voice C: Balanced and Rhythmic</h3>
+
+  <div class="voice-excerpt">
+    <p>Orwell begins by granting what his opponents believe: the language is deteriorating, and we are powerless to stop it. This is strategic concession, not genuine agreement. Notice the structure: first, he lets the defeatists speak ("Most people...would admit," "it is generally assumed," "so the argument runs"). Then he lets them overreach. The metaphor they choose—candles versus electric light, hansom cabs versus aeroplanes—is supposed to make reform look ridiculous, a nostalgic preference for obsolete technologies. But the metaphor betrays them. Light and transportation improved; in this view, language only decays. If language is like candles being replaced by bulbs, then change represents progress, not collapse. The metaphor says the opposite of what it intends. Orwell doesn't point this out yet—he's too subtle for that. He simply presents the argument and lets the contradiction sit there, waiting.</p>
+  </div>
+
+  <p><strong>Analysis of Voice C:</strong></p>
+  <ul>
+    <li><strong>Diction:</strong> Mix of plain and precise language. Anglo-Saxon clarity ("lets them speak," "overreach," "betray") combined with analytical precision ("strategic concession," "obsolete technologies").</li>
+    <li><strong>Syntax:</strong> Varied structures. Short sentences for key claims ("But the metaphor betrays them.") and longer sentences for development. Average 19 words.</li>
+    <li><strong>Register:</strong> Clear but sophisticated. No contractions, but direct address to reader ("Notice the structure").</li>
+    <li><strong>Rhythm:</strong> Balanced. Alternates between short and long sentences. Parallel structures create echoes. Variation prevents monotony.</li>
+    <li><strong>Effect:</strong> Accessible sophistication. Controlled. Explanatory. Reads like an engaged teacher guiding a smart student.</li>
+  </ul>
+</div>
+
+<h2>Phase 3: Supported Practice (8 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Compare and Evaluate the Three Voices</h3>
+
+  <p><strong>Your Task:</strong> All three writers analyze the same passage and make similar analytical points. But their voices create different reading experiences. Answer the following questions about each voice.</p>
+
+  <table>
+    <tr>
+      <th>Question</th>
+      <th>Voice A (Spare)</th>
+      <th>Voice B (Elaborate)</th>
+      <th>Voice C (Balanced)</th>
+    </tr>
+    <tr>
+      <td><strong>Which voice is easiest to read?</strong></td>
+      <td colspan="3"><em>Write your answer and explain why.</em></td>
+    </tr>
+    <tr>
+      <td><strong>Which voice feels most "academic"?</strong></td>
+      <td colspan="3"><em>Write your answer and explain why.</em></td>
+    </tr>
+    <tr>
+      <td><strong>Which voice sounds most like a person talking?</strong></td>
+      <td colspan="3"><em>Write your answer and explain why.</em></td>
+    </tr>
+    <tr>
+      <td><strong>Which voice packs the most analysis into the fewest words?</strong></td>
+      <td colspan="3"><em>Write your answer and explain why.</em></td>
+    </tr>
+    <tr>
+      <td><strong>Which voice do YOU find most persuasive? Why?</strong></td>
+      <td colspan="3"><em>This is the key question. Your answer reveals YOUR analytical voice preference.</em></td>
+    </tr>
+  </table>
+
+  <div class="self-check">
+    <div class="q-label">Reflect on Your Preference</div>
+    <p><strong>The voice you find most persuasive probably resembles your own natural analytical voice.</strong> If you prefer Voice A, you value clarity and directness. If you prefer Voice B, you value comprehensiveness and precision. If you prefer Voice C, you value balance and rhythm. None of these is "better"—they're different rhetorical choices appropriate for different contexts. A 5+ writer can choose their voice deliberately rather than defaulting to template language.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (7 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Describe Your Own Current Voice</h3>
+
+  <p><strong>Your Task:</strong> Return to one of your Speed Run essays from B2 (L08, L09, or L10). Read it with fresh eyes—not for content, but for <em>voice</em>. Then answer these questions:</p>
+
+  <ol>
+    <li><strong>Diction:</strong> Do you use plain words or Latinate abstractions? Count: how many of your sentences use abstract nouns ending in -tion, -ment, -ness, -ity? (Examples: "utilization," "implementation," "effectiveness," "complexity.") If more than 30%, you're defaulting to nominalization. Plain verbs are stronger.</li>
+    <li><strong>Syntax:</strong> What's your average sentence length? Count the words in 5 consecutive sentences and divide by 5. If under 12 words: spare. If over 25 words: elaborate. If 15-22 words: balanced. Do you vary sentence length, or are all your sentences roughly the same?</li>
+    <li><strong>Register:</strong> Do you use contractions? Do you address the reader? Do you use first person ("I argue") or avoid it? Is your tone formal or conversational?</li>
+    <li><strong>Rhythm:</strong> Read one paragraph aloud (silently). Does it have a beat? Do you use parallel structure? Do your sentences feel choppy, flowing, or varied?</li>
+    <li><strong>Template Language:</strong> Circle every phrase that sounds like it came from a template: "This demonstrates that..." "It is important to note..." "In conclusion..." "The author effectively..." How many circles? If more than 3 per page, you're not writing in your voice—you're writing in Essay Voice.</li>
+  </ol>
+
+  <div class="rubric-box">
+    <p><strong>After analyzing your voice, write 2-3 sentences describing it:</strong></p>
+    <ul>
+      <li>Is your current voice <strong>chosen</strong> (deliberate stylistic decisions), or <strong>default</strong> (unconscious template language)?</li>
+      <li>Does it sound like you, or like an essay-writing robot?</li>
+      <li>Identify 2 specific syntactic choices you could make to strengthen your voice. (Examples: "Vary sentence length more," "Cut abstract nouns," "Eliminate template phrases," "Use more active verbs.")</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>Voice Is Not Fixed:</strong> Your voice right now is probably "default academic"—template phrases, moderate formality, safe and generic. That's fine for a 4. But a 5+ requires a voice the reader notices: clear, precise, and distinctive.</p>
+    <p>The good news: voice is a choice (M1). If you can identify the dimensions of voice (diction, syntax, register, rhythm), you can control them. You don't need to sound like Voice A, B, or C. You need to sound like <strong>YOU</strong>, on purpose.</p>
+    <p><strong>Next lesson (L19):</strong> You'll experiment with writing the same paragraph in two different voices. This will prove that voice is controllable. Once you know you can choose your voice, you can never again claim "that's just how I write."</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>How does recognizing voice as a choice (M1) change your approach to analytical writing?</strong> Before this lesson, did you think about voice at all, or did you just write whatever came out? Now that you can identify the four dimensions of voice, what will you pay attention to in your next essay?</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B2 L18 • Voice Analysis in Published Criticism • D.9.03 • ~25 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L17_Multi_Pass_Revision.html">← Previous: L17 Multi-Pass Revision</a>
+  <a href="B2_L19_Voice_Experiment.html">Next: L19 Voice Experiment →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

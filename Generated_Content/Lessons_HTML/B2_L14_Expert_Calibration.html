@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L14: Expert Calibration</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.essay-box {
+  background: #f8f9fa; border: 1px solid var(--border); border-radius: 8px;
+  padding: 1rem; margin: 1rem 0; font-size: 0.9rem;
+  line-height: 1.6;
+}
+.score-reveal {
+  background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px;
+  padding: 1rem; margin: 1rem 0; font-weight: 600;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 14</span>
+  <h1>Expert Calibration</h1>
+  <p class="subtitle">Achieving 80%+ Scoring Accuracy</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.HS.05 (Self-Diagnose Against AP Rubric)</span>
+    <span>🧠 Calibration</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Expert Calibration = 80%+ Scoring Accuracy.</strong> If you can score sample essays within 1 point of the official score on EVERY row (A, B, C), you can accurately diagnose your own writing. Calibration drift happens when you haven't scored essays recently—your standards shift. This lesson recalibrates your judgment to expert level.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>The 80% Accuracy Standard</h3>
+
+  <p>In B1L, you learned to score essays against the AP rubric. Today's goal is more demanding: <strong>score within 1 point of the official score on EVERY row.</strong></p>
+
+  <p><strong>Why this matters:</strong> If you score an essay 5/6 but it's actually 3/6, you can't diagnose what needs fixing. If you think your thesis is strong (Row A = 1) but it's actually weak (Row A = 0), you'll practice the wrong skills.</p>
+
+  <div class="rubric-box">
+    <p><strong>Expert Calibration Standard:</strong></p>
+    <ul>
+      <li><strong>Row A (Thesis):</strong> Your score matches official score (0 or 1)</li>
+      <li><strong>Row B (Evidence & Commentary):</strong> Your score is within 1 point of official score (0-4 scale)</li>
+      <li><strong>Row C (Sophistication):</strong> Your score matches official score (0 or 1)</li>
+      <li><strong>Accuracy target:</strong> 80%+ across all rows on all 4 essays = expert calibration</li>
+    </ul>
+  </div>
+
+  <p><strong>Common calibration errors:</strong></p>
+  <ul>
+    <li><strong>Over-scoring Row B:</strong> Mistaking feature-spotting for analysis ("Douglass uses repetition") → actual score 1-2, you score 3-4</li>
+    <li><strong>Over-scoring Row C:</strong> Thinking a historical fact is broader context → actual score 0, you score 1</li>
+    <li><strong>Under-scoring Row A:</strong> Expecting a perfect thesis → actual score 1, you score 0</li>
+  </ul>
+
+  <p>Today: score 4 essays, check your accuracy, and recalibrate where needed.</p>
+</div>
+
+<h2>Phase 2: Supported Practice (16 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Score 4 Sample Essays</h3>
+
+  <p><strong>Instructions:</strong> For each essay below, score on Rows A, B, and C. After scoring each essay, reveal the official score and track your accuracy.</p>
+
+  <h3>Essay 1: Sojourner Truth Rhetorical Analysis</h3>
+
+  <div class="essay-box">
+    <p><strong>Prompt:</strong> Analyze the rhetorical strategies Sojourner Truth uses in "Ain't I a Woman?" to convey her message about women's rights and capabilities.</p>
+
+    <p><strong>Essay:</strong></p>
+
+    <p>In "Ain't I a Woman?" Sojourner Truth argues that women deserve equal rights by showing that women are just as strong and capable as men. She uses repetition, personal examples, and contrast to make her point.</p>
+
+    <p>Truth's main strategy is repetition. She repeats the phrase "Ain't I a woman?" throughout the speech. This repetition appears after she describes her physical strength and work experience. Each time she says "Ain't I a woman?" it reminds the audience that she is female despite her strength. The repetition makes the speech memorable and emphasizes her main point. It also creates a rhythm that would have been easy for listeners to remember, which is important in a speech since people can't go back and reread it like they can with written text.</p>
+
+    <p>Another strategy Truth uses is personal examples. She talks about how she has "plowed and planted and gathered into barns" and how no man could help her. She also mentions that she has "borne thirteen children" and seen most of them sold into slavery. These examples are concrete and specific, not abstract. By sharing her own experiences, Truth makes her argument more credible because she is speaking from direct knowledge, not theory. Her audience can't dismiss her claims because she is living proof of women's capabilities.</p>
+
+    <p>Truth also uses contrast when she compares herself to delicate white women who need help getting into carriages or stepping over puddles. She points out that nobody helps her in these ways, yet she is still a woman. This contrast shows that the stereotype of women as weak and delicate doesn't apply to all women, especially not to Black women like herself. The contrast reveals the hypocrisy in how society defines womanhood.</p>
+
+    <p>Truth's rhetorical strategies effectively challenge the audience's assumptions about women's abilities and make a strong case for women's rights.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Your Score</div>
+    <p><strong>Before revealing the official score, write down your scores:</strong></p>
+    <ul>
+      <li>Row A (Thesis): 0 or 1?</li>
+      <li>Row B (Evidence & Commentary): 0, 1, 2, 3, or 4?</li>
+      <li>Row C (Sophistication): 0 or 1?</li>
+      <li>Total: __/6</li>
+    </ul>
+  </div>
+
+  <details>
+    <summary>Show Official Score & Explanation</summary>
+    <div class="score-reveal">
+      <p><strong>Official Score: 3/6</strong></p>
+      <p>Row A = 1 | Row B = 2 | Row C = 0</p>
+    </div>
+    <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+      <p><strong>Row A (1 point):</strong> The thesis is defensible: Truth uses "repetition, personal examples, and contrast" to demonstrate women's capabilities. This establishes a line of reasoning that the essay follows.</p>
+      <p><strong>Row B (2 points):</strong> The essay identifies legitimate strategies and provides textual evidence, but the analysis remains at the level of feature-spotting. The writer describes WHAT Truth does ("repetition makes the speech memorable") but doesn't deeply explore WHY these choices work for THIS audience in THIS rhetorical situation. For example, the repetition analysis doesn't explain why the vernacular phrasing "Ain't I a woman?" (rather than formal "Am I not a woman?") is strategically powerful—it claims authority through lived experience rather than formal education. Score = 2 (adequate but limited analysis).</p>
+      <p><strong>Row C (0 points):</strong> No sophistication move. The essay provides straightforward rhetorical analysis without broader context, alternative readings, or exploration of tensions.</p>
+      <p><strong>Common error:</strong> Students often score this 4 or 5 because it's well-organized and identifies strategies. But organization doesn't compensate for limited analytical depth.</p>
+    </div>
+  </details>
+
+  <hr style="margin: 2rem 0;">
+
+  <h3>Essay 2: Patrick Henry Rhetorical Analysis</h3>
+
+  <div class="essay-box">
+    <p><strong>Prompt:</strong> Analyze the rhetorical strategies Patrick Henry uses in "Give Me Liberty or Give Me Death" to persuade his audience to support military action against Britain.</p>
+
+    <p><strong>Essay:</strong></p>
+
+    <p>Patrick Henry's "Give Me Liberty or Give Me Death" speech employs rhetorical questions, religious imagery, and binary framing to corner his audience into supporting war—but his very need for such aggressive rhetoric reveals the weakness of his position among hesitant colonists.</p>
+
+    <p>Henry's most prominent strategy is the rhetorical question, which appears throughout the speech: "Is life so dear, or peace so sweet, as to be purchased at the price of chains and slavery?" These questions function as false choices that make neutrality impossible. Henry doesn't ask whether war is wise or winnable; he asks whether listeners value comfort over freedom. By framing the issue this way, he makes any position other than immediate military action seem cowardly. The questions don't invite deliberation—they coerce agreement by making disagreement shameful.</p>
+
+    <p>Henry reinforces this either-or thinking through religious imagery that casts the conflict in cosmic terms. He references "the majesty of heaven" and states, "I know not what course others may take, but as for me, give me liberty or give me death!" This biblical language (echoing Joshua's "as for me and my house, we will serve the Lord") transforms a political dispute into a test of faith. If this is God's cause, then opposition isn't just mistaken policy—it's moral failure. The religious framing adds urgency and stakes beyond practical military considerations.</p>
+
+    <p>Yet Henry's rhetorical aggression might actually indicate weakness rather than strength. If the Virginia Convention were already convinced of war's necessity, Henry wouldn't need such forceful, binary rhetoric. The very fact that he must make moderation impossible suggests that many in his audience preferred caution or negotiation. His speech, then, represents not the expression of unanimous colonial sentiment but an attempt to manufacture that unanimity through rhetoric that forecloses alternatives. We might read Henry's famous closing as revealing strategic desperation: he can't win through calm deliberation, so he must make deliberation itself seem treasonous.</p>
+
+    <p>This alternative reading doesn't diminish Henry's rhetorical skill—it highlights it. He recognizes that his audience is divided and hesitant, so he employs strategies specifically designed to overcome uncertainty by making it socially and morally untenable.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Your Score</div>
+    <p><strong>Score this essay before revealing:</strong></p>
+    <ul>
+      <li>Row A: __</li>
+      <li>Row B: __</li>
+      <li>Row C: __</li>
+      <li>Total: __/6</li>
+    </ul>
+  </div>
+
+  <details>
+    <summary>Show Official Score & Explanation</summary>
+    <div class="score-reveal">
+      <p><strong>Official Score: 6/6</strong></p>
+      <p>Row A = 1 | Row B = 4 | Row C = 1</p>
+    </div>
+    <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+      <p><strong>Row A (1 point):</strong> Clear thesis with line of reasoning: Henry uses rhetorical questions, religious imagery, and binary framing to persuade, and these choices reveal his response to a resistant audience.</p>
+      <p><strong>Row B (4 points):</strong> The essay provides sophisticated, insightful analysis. The writer goes beyond feature-function description to explore how rhetorical questions "coerce agreement by making disagreement shameful" and how religious imagery "transforms a political dispute into a test of faith." The analysis is specific, nuanced, and consistently focused on rhetorical situation.</p>
+      <p><strong>Row C (1 point):</strong> The third body paragraph demonstrates an alternative reading sophistication move: "Yet Henry's rhetorical aggression might actually indicate weakness rather than strength." The writer offers a different interpretation (rhetorical force as compensation for divided audience) and develops this insight with specific reasoning.</p>
+      <p><strong>Note:</strong> Sophistication doesn't require length—this essay's Row C move is compact but genuine.</p>
+    </div>
+  </details>
+
+  <hr style="margin: 2rem 0;">
+
+  <h3>Essay 3: Argument — Value of Difficulty</h3>
+
+  <div class="essay-box">
+    <p><strong>Prompt:</strong> Some educators argue that students learn best when challenged with difficult material. Others contend that students need achievable tasks that build confidence. Write an essay arguing for or against the educational value of difficulty.</p>
+
+    <p><strong>Essay:</strong></p>
+
+    <p>While confidence-building through success has its place in education, genuine learning requires difficulty, struggle, and even frustration. Students who encounter only achievable tasks develop skills without developing resilience, leaving them unprepared for the authentic challenges they will face beyond school.</p>
+
+    <p>First, difficulty forces students to develop problem-solving strategies rather than simply executing known procedures. When my younger brother struggled with algebra, he initially wanted my parents to show him "the right way" to solve each problem type. But his teacher insisted he first attempt problems independently, even if he failed. Through this struggle, he learned to identify what type of problem he was facing, recall relevant principles, and test different approaches—metacognitive skills that wouldn't develop if every problem came with instructions. Research by cognitive psychologist Robert Bjork shows that "desirable difficulties" in learning, such as spacing practice and varying problem types, produce better long-term retention than massed practice on uniform problems. Students need to struggle with retrieval and application precisely because that struggle strengthens memory and understanding.</p>
+
+    <p>Second, experiencing difficulty in controlled educational settings prepares students for the unstructured challenges of professional and civic life. In school, students face problems that teachers have designed to be solvable with available resources. But after graduation, they will encounter problems without clear solutions, domains where they lack expertise, and situations where initial attempts fail. Students who have learned to persist through frustration, revise failed approaches, and tolerate ambiguity are far better equipped for these realities than students whose education prioritized constant success. When I interviewed for my first job, the employer asked me to analyze a business case I knew nothing about. My ability to work through confusion and acknowledge what I didn't know—skills I developed struggling through AP courses—mattered more than any specific content knowledge.</p>
+
+    <p>Finally, struggle teaches students that intelligence is not fixed but developed through effort. Students who succeed easily often develop a "fixed mindset," believing their abilities are innate rather than cultivated. When they inevitably encounter material that doesn't come easily, they interpret difficulty as evidence of inadequacy rather than opportunity for growth. But students who regularly work through difficult material learn that confusion is temporary and competence develops through persistence. This "growth mindset" may be the most valuable outcome of difficult coursework—not the content mastery itself, but the understanding that mastery is possible through sustained effort.</p>
+
+    <p>Difficulty in education must be calibrated—impossible tasks that produce only demoralization serve no purpose. But appropriately challenging work that requires genuine struggle develops problem-solving skills, resilience, and growth mindset that confidence-building through easy success cannot provide.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Your Score</div>
+    <p><strong>Score before revealing:</strong></p>
+    <ul>
+      <li>Row A: __</li>
+      <li>Row B: __</li>
+      <li>Row C: __</li>
+      <li>Total: __/6</li>
+    </ul>
+  </div>
+
+  <details>
+    <summary>Show Official Score & Explanation</summary>
+    <div class="score-reveal">
+      <p><strong>Official Score: 4/6</strong></p>
+      <p>Row A = 1 | Row B = 3 | Row C = 0</p>
+    </div>
+    <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+      <p><strong>Row A (1 point):</strong> Clear thesis: "genuine learning requires difficulty" because achievable-only tasks leave students "unprepared for authentic challenges." Establishes a line of reasoning (develops problem-solving, prepares for real world, teaches growth mindset).</p>
+      <p><strong>Row B (3 points):</strong> The essay provides adequate support with personal evidence (brother's algebra, job interview), expert testimony (Robert Bjork's research), and reasoning about transfer. Each body paragraph develops a distinct reason. However, the analysis doesn't reach exceptional depth—the reasoning is solid but not particularly original or nuanced. Evidence is specific and relevant but not unusually compelling.</p>
+      <p><strong>Row C (0 points):</strong> No sophistication move. The final paragraph mentions that difficulty "must be calibrated" but doesn't develop this complication into genuine exploration of tension or trade-offs. Sophistication requires more than mentioning a complexity—it requires developing insight from it.</p>
+      <p><strong>Common error:</strong> Students over-score this (5 or 6) because it's well-organized and thorough. But Row B = 3 is appropriate for "adequate" work. Good, not exceptional.</p>
+    </div>
+  </details>
+
+  <hr style="margin: 2rem 0;">
+
+  <h3>Essay 4: Synthesis — Technology in Education</h3>
+
+  <div class="essay-box">
+    <p><strong>Prompt:</strong> Using the provided sources, develop an argument about the appropriate role of technology in education.</p>
+
+    <p><strong>Essay:</strong></p>
+
+    <p>Schools should integrate technology into education not as a replacement for traditional instruction but as a tool that allows teachers to personalize learning and provide immediate feedback. While technology offers clear benefits for skill development, its effectiveness depends on addressing equity concerns and maintaining human connection in learning.</p>
+
+    <p>Research demonstrates technology's potential to improve student outcomes in specific domains. A study of adaptive learning software in mathematics shows significant score improvements, particularly for students who were behind grade level (Source A). The software's ability to adjust difficulty based on student performance and provide immediate feedback addresses a limitation of whole-class instruction: teachers cannot simultaneously meet the needs of students at different skill levels. Technology enables this personalization at scale, allowing each student to work at their optimal challenge level while the teacher provides targeted support to students who need it most.</p>
+
+    <p>However, teacher testimony about decreased attention spans reveals the tension inherent in educational technology: the same devices that enable personalized learning also provide constant access to distraction (Source B). Teachers report that students accustomed to the rapid stimulus changes of social media and video games struggle with sustained focus on academic tasks. This suggests that technology's role must be carefully bounded—it should support specific learning objectives rather than simply occupying student attention. The challenge lies in leveraging technology's benefits while teaching students to use it as a tool rather than an entertainment device.</p>
+
+    <p>Moreover, the effectiveness of educational technology is undermined by persistent inequities in access. Research on the digital divide shows that while affluent schools provide students with devices and high-speed internet, many low-income students lack reliable technology access at home (Source D). This means technology integration risks exacerbating existing achievement gaps rather than closing them. The costs of technology initiatives are substantial (Source C), raising questions about whether schools in under-resourced communities can afford both the devices and the infrastructure required for effective implementation. Any expansion of educational technology must include plans for equitable access, or it will simply be another advantage available primarily to privileged students.</p>
+
+    <p>The appropriate role for technology in education, then, is neither wholesale adoption nor blanket rejection but strategic integration that maximizes benefits while addressing limitations. Technology should augment teacher instruction rather than replace it, focus student attention rather than fragment it, and expand opportunity rather than concentrate it among the already-advantaged.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Your Score</div>
+    <p><strong>Score before revealing:</strong></p>
+    <ul>
+      <li>Row A: __</li>
+      <li>Row B: __</li>
+      <li>Row C: __</li>
+      <li>Total: __/6</li>
+    </ul>
+  </div>
+
+  <details>
+    <summary>Show Official Score & Explanation</summary>
+    <div class="score-reveal">
+      <p><strong>Official Score: 4/6</strong></p>
+      <p>Row A = 0 | Row B = 3 | Row C = 1</p>
+    </div>
+    <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+      <p><strong>Row A (0 points):</strong> The thesis is too vague: "technology as a tool that allows personalization and feedback" is descriptive rather than argumentative. It describes a possible role without arguing WHY this role is preferable or what principles should govern technology integration. The essay's actual reasoning is more nuanced (bounded use, equity focus), but these ideas aren't captured in the thesis. The weak thesis costs Row A credit even though the essay demonstrates strong thinking in the body.</p>
+      <p><strong>Row B (3 points):</strong> Despite the weak thesis, the essay demonstrates solid source integration and commentary. Each paragraph engages with sources (adaptive software, teacher testimony, digital divide) and provides analysis connecting evidence to claims. The essay synthesizes across sources rather than summarizing each separately. Adequate Row B work.</p>
+      <p><strong>Row C (1 point):</strong> The second body paragraph demonstrates a tension/complexity move: "the same devices that enable personalized learning also provide constant access to distraction." The essay explicitly names this as a "tension inherent in educational technology" and develops the insight that technology's benefits and drawbacks are linked. This earns Row C credit.</p>
+      <p><strong>Key insight:</strong> An essay can score 0 on Row A but still earn credit on Rows B and C. The rubric rows are independent.</p>
+    </div>
+  </details>
+</div>
+
+<h2>Phase 3: Independent Practice (5 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Re-Score Your Own Work</h3>
+
+  <p><strong>Task:</strong> Return to your Speed Run 1 essay from Lesson 8. Re-score it with calibrated eyes.</p>
+
+  <div class="self-check">
+    <div class="q-label">Calibration Check</div>
+    <p><strong>Answer these questions:</strong></p>
+    <ol>
+      <li><strong>Has your score changed from your original self-score?</strong> If yes, where were you most inaccurate?</li>
+      <li><strong>Compare your scoring accuracy across the 4 practice essays:</strong> Did you score within 1 point on every row for all 4 essays? If not, where did your calibration fail?</li>
+      <li><strong>Pattern diagnosis:</strong> Are you consistently over-scoring (too generous) or under-scoring (too harsh)? Which row has the most calibration error?</li>
+    </ol>
+  </div>
+
+  <p><strong>Recalibration note:</strong> If your accuracy was below 80% (more than 2 errors across 12 row scores on 4 essays), you need additional calibration practice. Common errors: over-scoring Row B by mistaking feature-spotting for analysis, over-scoring Row C by mistaking facts for sophistication.</p>
+</div>
+
+<h2>Phase 4: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>Why calibration accuracy predicts improvement:</strong> If you can't accurately diagnose your writing, you can't fix it. A student who thinks their thesis is strong (self-score Row A = 1) when it's actually weak (actual score Row A = 0) will practice the wrong skills. Accurate diagnosis → targeted practice → actual improvement.</p>
+
+    <p><strong>From this point forward:</strong> Your self-scores should be within 1 point of expert scoring on every row. If you're unsure, err toward harsh rather than generous scoring—under-scoring motivates improvement, over-scoring creates false confidence.</p>
+
+    <p><strong>Next lesson:</strong> You'll apply the self-diagnosis protocol to your own Speed Run essays. Calibration is the foundation for self-diagnosis.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B2 L14 • Expert Calibration • C.HS.05 (Self-Diagnose Against AP Rubric) • ~25 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L13_Recovery_Drill.html">← Previous: L13 Recovery Drill</a>
+  <a href="B2_L15_Diagnose_Your_Own_Work.html">Next: L15 Diagnose Your Own Work →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

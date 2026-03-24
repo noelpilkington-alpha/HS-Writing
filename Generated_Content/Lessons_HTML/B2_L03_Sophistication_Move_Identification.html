@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L03: Sophistication Move Identification</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.essay-excerpt {
+  background: #fff; border: 2px solid #dee2e6; border-radius: 8px;
+  padding: 1rem; margin: 1rem 0; font-size: 0.9rem; line-height: 1.6;
+}
+.essay-excerpt .score {
+  display: inline-block; background: #6f42c1; color: white;
+  padding: 0.2rem 0.6rem; border-radius: 3px; font-weight: 600;
+  font-size: 0.75rem; margin-bottom: 0.5rem;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 3</span>
+  <h1>Sophistication Move Identification</h1>
+  <p class="subtitle">Spotting Row C Before Writing It</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.HS.02 (Identify Sophistication Moves)</span>
+    <span>🧠 Mental Model: M6</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>The 4 Types of Sophistication:</strong> (1) Broader context — connecting to larger forces, (2) Alternative interpretation — acknowledging a different reading, (3) Tension/complexity — identifying what resists resolution, (4) Vivid style — consistently clear, precise, engaging prose. You need ONE for Row C. Most students never attempt any.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Discrimination Before Production</h3>
+
+  <p>You've learned to GENERATE sophistication using M6 (L01-L02). Now you learn to SPOT it in others' writing — discrimination before production, exactly like you learned in A1 and B1L.</p>
+
+  <p><strong>Why discrimination matters:</strong> If you can identify what makes a 6 different from a 5, you can reverse-engineer that difference into your own writing. Most students know Row C exists but can't see what it looks like in practice. Today you learn to see it.</p>
+
+  <h3>The 4 Types of Sophistication (AP Rubric, Row C)</h3>
+
+  <table>
+    <tr>
+      <th style="width: 30%;">Type</th>
+      <th>What It Looks Like</th>
+      <th>Example Phrase</th>
+    </tr>
+    <tr>
+      <td><strong>1. Broader Context</strong></td>
+      <td>Connects the passage to larger historical, cultural, or social forces</td>
+      <td>"Situated within the broader context of..."</td>
+    </tr>
+    <tr>
+      <td><strong>2. Alternative Interpretation</strong></td>
+      <td>Acknowledges a different reading and explains why yours is stronger</td>
+      <td>"While one might read this as..., a more persuasive interpretation..."</td>
+    </tr>
+    <tr>
+      <td><strong>3. Tension/Complexity</strong></td>
+      <td>Identifies something that resists simple resolution</td>
+      <td>"The tension between X and Y resists resolution, instead pointing to..."</td>
+    </tr>
+    <tr>
+      <td><strong>4. Vivid Style</strong></td>
+      <td>Consistently clear, precise, and engaging prose throughout the essay</td>
+      <td>(No formula — it's sustained quality across all paragraphs)</td>
+    </tr>
+  </table>
+
+  <p><strong>Key Insight:</strong> Types 1-3 can be targeted (you plan where to place them). Type 4 is holistic (it's about your entire essay's quality). For B2, focus on 1-3 first, develop 4 in Unit 5 (Voice).</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>Which sentence demonstrates Type 2 (Alternative Interpretation)?</strong></p>
+    <ol type="A">
+      <li>"Douglass's irony effectively exposes American hypocrisy regarding slavery and freedom."</li>
+      <li>"While Douglass's speech was delivered in 1852, its themes remain relevant to contemporary debates about racial justice."</li>
+      <li>"While one might interpret Douglass's address to 'Fellow-citizens' as simple sarcasm, this reading overlooks how the phrase functions as a legal claim to citizenship that slavery denied."</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> C</p>
+        <p><strong>Why:</strong> Sentence C demonstrates Type 2 by acknowledging an alternative reading ("one might interpret as sarcasm") and then explaining why a different interpretation is stronger ("overlooks how the phrase functions as a legal claim"). Sentence A is Row B analysis (no sophistication). Sentence B is a weak attempt at broader context — connecting to contemporary relevance — but it's surface-level and doesn't deepen the analysis of Douglass's 1852 strategies.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <h3>Scored Essay Pair: 5 vs. 6</h3>
+
+  <p><strong>Prompt:</strong> Analyze how Frederick Douglass uses rhetorical strategies to achieve his purpose in "What to the Slave Is the Fourth of July?" (excerpt provided)</p>
+
+  <div class="essay-excerpt">
+    <div class="score">Essay A: Score 5 (Row A=1, Row B=3, Row C=0)</div>
+    <p><strong>[Body Paragraph 2]</strong> Douglass uses irony throughout the speech to expose American hypocrisy. When he addresses his audience as "Fellow-citizens" despite being excluded from citizenship himself, he creates a jarring contrast between the word and the reality. This irony functions to make his white abolitionist audience confront the contradiction between American ideals of liberty and the practice of slavery. The effect is powerful: the audience must recognize that celebrating freedom while millions are enslaved is fundamentally hypocritical. Douglass's strategic use of "your celebration" and "your boasted liberty" reinforces this ironic distance, positioning himself as an outsider judging their moral failure.</p>
+  </div>
+
+  <div class="essay-excerpt">
+    <div class="score">Essay B: Score 6 (Row A=1, Row B=4, Row C=1)</div>
+    <p><strong>[Body Paragraph 2]</strong> Douglass uses irony throughout the speech to expose American hypocrisy. When he addresses his audience as "Fellow-citizens" despite being excluded from citizenship himself, he creates a jarring contrast between the word and the reality. This irony functions to make his white abolitionist audience confront the contradiction between American ideals of liberty and the practice of slavery. Yet Douglass's framing of the Fourth of July as hypocrisy rather than aspiration reveals a strategic choice: by centering the gap between American ideals and practice, he positions slavery as a betrayal of the nation's founding principles rather than an integral part of them. This framing benefits the abolition movement by appealing to patriotic sentiment, though it necessarily obscures the historical reality that many Founders were themselves slaveholders who viewed slavery as consistent with liberty for white men.</p>
+  </div>
+
+  <p><strong>Analysis:</strong> Both essays demonstrate strong Row B analysis (S-F-E structure, clear thesis, line of reasoning). The difference is the final two sentences of Essay B.</p>
+
+  <div class="coping-model">
+    <p><strong>What makes Essay B a 6?</strong></p>
+
+    <p><span class="strong">The sophistication move appears in the final two sentences:</span> "Yet Douglass's framing of the Fourth of July as hypocrisy rather than aspiration reveals a strategic choice... This framing benefits the abolition movement by appealing to patriotic sentiment, though it necessarily obscures the historical reality that many Founders were themselves slaveholders..."</p>
+
+    <p><span class="strong">This is Type 1 (Broader Context) combined with M6:</span> The writer places Douglass's choice in the broader context of how abolitionists framed slavery (betrayal vs. integral feature), then uses M6 to identify what this framing makes visible (patriotic appeal) and what it obscures (Founders' complicity). This shows the writer can think beyond Douglass's own terms.</p>
+
+    <p><span class="strong">The key difference:</span> Essay A stops at "this irony exposes hypocrisy" (Row B). Essay B adds "this framing choice has consequences — it serves some interests and obscures others" (Row C). That's the sophistication point.</p>
+  </div>
+</div>
+
+<h2>Phase 3: Supported Practice (10 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Sophistication Move Sort</h3>
+
+  <p><strong>Your Task:</strong> For each excerpt below, determine: (a) Does it contain a sophistication move? (b) If yes, which type (1-4)? (c) If no, what type could be added?</p>
+
+  <h3>Excerpt 1</h3>
+  <div class="essay-excerpt">
+    <p>Wells's use of statistical evidence (over 1,400 lynchings from 1882-1891) serves a crucial rhetorical function: it transforms anecdotal horror into systemic crisis. By quantifying violence, Wells refutes the dismissal that lynching is an isolated Southern problem, instead establishing it as a national moral failure requiring urgent federal intervention.</p>
+  </div>
+
+  <p><strong>(a) Sophistication move present?</strong> <em>Yes / No</em></p>
+  <p><strong>(b) If yes, which type?</strong> <em>Type 1 / Type 2 / Type 3 / Type 4</em></p>
+  <p><strong>(c) If no, suggest one:</strong> <em>What could be added?</em></p>
+
+  <h3>Excerpt 2</h3>
+  <div class="essay-excerpt">
+    <p>Truth's framing of womanhood through physical labor makes working-class women's experiences visible, but it necessarily obscures the legal and intellectual arguments that would dominate later suffrage movements. This choice reveals how the definition of "women's rights" was itself contested terrain: what benefited formerly enslaved Black women (claims based on bodily strength and maternal suffering) differed from what benefited propertied white women (claims based on education and legal status).</p>
+  </div>
+
+  <p><strong>(a) Sophistication move present?</strong> <em>Yes / No</em></p>
+  <p><strong>(b) If yes, which type?</strong> <em>Type 1 / Type 2 / Type 3 / Type 4</em></p>
+  <p><strong>(c) Why does this work as sophistication?</strong> <em>Explain.</em></p>
+
+  <h3>Excerpt 3</h3>
+  <div class="essay-excerpt">
+    <p>Patrick Henry's concession to his opponents ("No man thinks more highly than I do of the patriotism...of the very worthy gentlemen") is an effective ethos strategy. By praising those who disagree with him, Henry establishes himself as reasonable and respectful, making his subsequent radical argument for armed resistance more palatable to a cautious audience.</p>
+  </div>
+
+  <p><strong>(a) Sophistication move present?</strong> <em>Yes / No</em></p>
+  <p><strong>(b) If no, add Type 1 (Broader Context):</strong> <em>Write 1-2 sentences placing Henry's concession in the context of 1775 Virginia politics or Revolutionary rhetoric.</em></p>
+
+  <h3>Excerpt 4</h3>
+  <div class="essay-excerpt">
+    <p>While one might read Anthony's constitutional argument as a straightforward legal claim, this interpretation overlooks the rhetorical audacity of a woman citing the Constitution as her defense for an act the law deemed criminal. Anthony doesn't ask for inclusion in "We, the people" — she claims she was already included, transforming her arrest from a confession of wrongdoing into evidence of legal injustice.</p>
+  </div>
+
+  <p><strong>(a) Sophistication move present?</strong> <em>Yes / No</em></p>
+  <p><strong>(b) If yes, which type?</strong> <em>Type 1 / Type 2 / Type 3 / Type 4</em></p>
+  <p><strong>(c) What alternative reading does this excerpt present and refute?</strong></p>
+
+  <h3>Excerpt 5</h3>
+  <div class="essay-excerpt">
+    <p>Douglass's global comparison ("There is not a nation on the earth guilty of practices more shocking...") uses geographic scope to establish American slavery as uniquely evil. However, this hyperbolic framing creates a tension: by claiming America "reigns without a rival" in barbarism, Douglass risks overstating his case and giving critics ammunition to cite other nations' atrocities. Yet this very tension serves his purpose — the exaggeration forces the audience to defend American exceptionalism by defending American slavery, a position most Northern abolitionists found untenable.</p>
+  </div>
+
+  <p><strong>(a) Sophistication move present?</strong> <em>Yes / No</em></p>
+  <p><strong>(b) If yes, which type?</strong> <em>Type 1 / Type 2 / Type 3 / Type 4</em></p>
+  <p><strong>(c) What makes this Type 3 (Tension/Complexity)?</strong> <em>Explain.</em></p>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p><strong>After completing the sort, review your answers:</strong> Did you identify sophistication when present (Excerpts 2, 4, 5)? Did you recognize its absence when analysis stops at Row B (Excerpts 1, 3)? The key distinction: Row B explains HOW strategies work. Row C asks "What does this choice reveal/obscure?" or "What tension exists here?" or "How does this connect to broader forces?" If you missed sophistication moves, reread and look for those patterns.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (6 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Add Sophistication to a Score-4 Essay</h3>
+
+  <div class="essay-excerpt">
+    <div class="score">Student Essay: Score 4 (Row A=1, Row B=3, Row C=0)</div>
+    <p><strong>[Complete Body Paragraph]</strong> Ida B. Wells establishes her credibility through careful audience management. In the opening of "Lynch Law in All Its Phases," she emphasizes that she speaks "through no inclination of my own, but because of a deep-seated conviction." This reluctance strategy builds ethos by positioning Wells as a reluctant witness compelled by conscience rather than an angry activist seeking attention. For a white Northern audience skeptical of Black women's public speech, this framing makes Wells appear measured and trustworthy. She reinforces this ethos by adopting an analytical tone, using phrases like "the student of American sociology will find" that position her as a scholar presenting objective data rather than a victim sharing personal grievance. The effect is cumulative: by the time Wells presents her statistical evidence of 1,400 lynchings, her audience has been primed to receive it as fact rather than dismiss it as exaggeration.</p>
+  </div>
+
+  <p><strong>Your Task:</strong></p>
+  <ol>
+    <li><strong>Identify where a sophistication move could go.</strong> Mark the sentence after which you would insert Row C analysis.</li>
+    <li><strong>Choose which type of sophistication fits best:</strong> Type 1 (Broader Context), Type 2 (Alternative Reading), or Type 3 (Tension/Complexity).</li>
+    <li><strong>Write 2-3 sentences adding that sophistication move.</strong> Your sentences should fit organically into the paragraph, deepening the analysis rather than feeling tacked on.</li>
+  </ol>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li>Your sophistication move appears at a logical place (usually after establishing the strategy's function)</li>
+      <li>It uses one of the 3 types (broader context, alternative reading, tension/complexity)</li>
+      <li>It connects to the paragraph's existing analysis (not a random historical fact)</li>
+      <li>It deepens understanding by revealing what the framing obscures, what alternative exists, or what tension resists resolution</li>
+      <li>It could plausibly raise the paragraph's score from 4 to 5+</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>You can now see sophistication.</strong> Next lesson: you'll write it. The key insight from today: sophistication isn't decorative. It's analytical depth — the moment where your essay acknowledges that the world is more complex than your thesis alone suggests.</p>
+
+    <p><strong>The Pattern You've Learned:</strong></p>
+    <ul>
+      <li><strong>Row B analysis:</strong> "This strategy functions to create this effect."</li>
+      <li><strong>Row C sophistication:</strong> "Yet this framing choice reveals/obscures X, connects to broader Y, or creates tension Z."</li>
+    </ul>
+
+    <p>When you add that "Yet..." or "However..." or "Situated within..." sentence, you're not contradicting your analysis — you're showing you can think beyond it. That's what the AP rubric rewards.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>Compare the 5 and the 6.</strong> Essay A (score 5) is a strong essay with clear analysis. Essay B (score 6) adds two sentences. How do those two sentences change the essay's intellectual work? What do they demonstrate that Essay A doesn't?</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B2 L03 • Sophistication Move Identification • Discrimination Before Production • ~25 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L02_Framing_Analysis.html">← Previous: L02 Framing Analysis</a>
+  <a href="B2_L04_Broader_Context_Drill.html">Next: L04 Broader Context Drill →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

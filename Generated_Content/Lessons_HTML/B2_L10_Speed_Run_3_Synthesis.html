@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L10: Speed Run 3 - Synthesis</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.4rem 0; font-weight: 600; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.source-box {
+  background: #f0f8ff; border: 1px solid #b0d4f1; border-radius: 8px;
+  padding: 1rem; margin: 1rem 0; font-size: 0.9rem;
+}
+.source-box h4 { color: #0d6efd; margin-top: 0; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 10</span>
+  <h1>Speed Run 3: Synthesis</h1>
+  <p class="subtitle">Full Timed Synthesis Essay with 6 Sources</p>
+  <div class="meta-bar">
+    <span>⏱ ~65 min</span>
+    <span>📍 KCs: C.HS.04 (Sustain Quality Under Time Pressure)</span>
+    <span>🧠 Mental Models: M1-M6</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Speed Run 3 Focus:</strong> Synthesis is the hardest AP essay: 6+ sources in 15 minutes, then 40 minutes writing. Sophistication in synthesis often comes from M6: asking whose perspective the source set represents and whose is missing. This is NOT a criticism of the sources—it's an analytical move that demonstrates you think beyond what's given.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Synthesis + M6: The Missing Perspective</h3>
+
+  <p>This is your third full-speed essay in B2 and your hardest. Synthesis requires you to read, understand, and cite 3+ sources (out of 6) while developing your own argument—all in 55 minutes.</p>
+
+  <p><strong>Sophistication in synthesis:</strong> Most students synthesize the sources they're given but never ask what's NOT there. M6 (Who Benefits?) gives you a sophistication strategy: identify whose perspective the source set represents and whose is missing.</p>
+
+  <p>Example: A source set about education policy includes voices from teachers, administrators, researchers, and policymakers. Missing: students themselves. A sophistication move: "While these sources represent adult stakeholders, the student perspective—those most directly affected by policy changes—is notably absent. This omission suggests that education debates often proceed as if students are subjects to be managed rather than agents with valuable insights."</p>
+
+  <p><strong>This is NOT a criticism of the College Board.</strong> It's an analytical move showing you can think beyond the given sources. You're demonstrating metacognitive awareness: "I see what I've been given, and I also see what I haven't been given."</p>
+
+  <p><strong>Your task today:</strong> Write a full synthesis essay on AI and Employment. Use at least 3 sources. Include a sophistication move (missing perspective or another type). Track your quality drop-off across all 3 Speed Runs.</p>
+</div>
+
+<h2>Phase 2: Independent (55 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Full Synthesis Essay: AI and Employment</h3>
+
+  <div class="passage-box">
+    <h3>AP Synthesis Prompt (SYN-09)</h3>
+
+    <p><strong>Time: 55 minutes (15 min reading + 40 min writing)</strong></p>
+
+    <p><strong>Prompt:</strong> Write an essay that synthesizes material from at least three of the provided sources and develops your position on the role of artificial intelligence in shaping the future of employment.</p>
+
+    <p><strong>Instructions:</strong> Your argument should be central. Use the sources to support your reasoning. Avoid merely summarizing sources. Cite sources as Source A, Source B, etc., or by the authors' names.</p>
+
+    <p class="attribution">AP-style synthesis prompt (representative)</p>
+  </div>
+
+  <h3 style="margin-top: 2rem;">Source Set: AI and Employment (6 Sources)</h3>
+
+  <div class="source-box">
+    <h4>Source A: Lee (Economist — Optimistic with Caveats)</h4>
+    <p><strong>Key Position:</strong> Economic research shows AI eliminated 3.2M jobs but created 4.7M new roles (2015-2023). "Technology eliminates tasks, not occupations." However, transition creates "friction costs"—40% skills gap between available jobs and qualified workers. Challenge is not job scarcity but ensuring displaced workers access retraining before "savings and morale are exhausted."</p>
+    <p><strong>Best Use:</strong> Rebutting doom scenarios; highlighting transition support needs; quantifying net job growth.</p>
+    <p><strong>Key Quote:</strong> "The transition is painful for displaced workers, but claims of net job loss ignore the historical pattern."</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source B: Chen (Tech CEO — Strongly Pro-AI)</h4>
+    <p><strong>Key Position:</strong> AI serves as "cognitive augmentation," not replacement. "The jobs AI eliminates are precisely the ones draining human potential—repetitive drudgery." Cites hospital deployments (AI handles scheduling, freeing nurses for patient care) and law firms (AI reviews documents, allowing associates to focus on strategy). Dismisses displacement concerns as "Luddite fear-mongering" like anxieties about ATMs replacing bank tellers (proven false).</p>
+    <p><strong>Best Use:</strong> Supporting AI benefits; may be too dismissive for nuanced argument.</p>
+    <p><strong>Key Quote:</strong> "This represents liberation, not layoff."</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source C: National Labor Federation (Union — Worker Protection Focus)</h4>
+    <p><strong>Key Position:</strong> Represents 4.2M members facing automation. "Our members are not anti-technology; they are anti-abandonment." Documents cases of mass layoffs with no severance or retraining. Proposes mandatory "transition plans" requiring 18 months paid retraining, relocation assistance, or early retirement packages. Critiques "rosy projections" as irrelevant to 50-year-old workers with families who cannot afford multi-year retraining or cross-country moves.</p>
+    <p><strong>Best Use:</strong> Humanizing displacement costs; advocating regulation; questioning who benefits from efficiency.</p>
+    <p><strong>Key Quote:</strong> "We are told to celebrate AI's efficiency gains, but efficiency for whom? Shareholders reap billions while our members face foreclosure."</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source D: Rodriguez and Patterson (Historians — Cautiously Optimistic)</h4>
+    <p><strong>Key Position:</strong> Compares AI to Industrial Revolution, mechanized agriculture, and computerization. Each wave displaced millions, yet unemployment ultimately decreased as economies reorganized (15-30 year transition periods). "Transitional suffering was real—Luddite weavers faced destitution—but societies adapted." Cautions that AI's pace may exceed historical precedents: Industrial Revolution unfolded over 80 years, AI may achieve comparable penetration in 15-20, "compressing transition suffering into a narrower window."</p>
+    <p><strong>Best Use:</strong> Providing historical context; tempering both extremes; warning about pace.</p>
+    <p><strong>Key Quote:</strong> "Each wave displaced millions, yet unemployment rates ultimately decreased as economies reorganized around new technologies."</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source E: U.S. Department of Labor (Government — Moderate/Pragmatic)</h4>
+    <p><strong>Key Position:</strong> Balances competitiveness and worker protection. Proposes: tax incentives for companies offering retraining, expansion of adjustment assistance programs, portable benefits for gig workers, 90-day notice before mass layoffs. "Guardrails, not bans." Projects proactive policies could reduce transition hardship by 60% while maintaining innovation. Critics from labor call it "inadequate bandages"; business groups protest "excessive burdens."</p>
+    <p><strong>Best Use:</strong> Policy solutions; balancing innovation and protection; pragmatic middle ground.</p>
+    <p><strong>Key Quote:</strong> "We cannot stop the wave, but we can teach people to swim."</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source F: Bergman (Philosopher — Radical/Post-Work)</h4>
+    <p><strong>Key Position:</strong> Questions whether job preservation should be society's goal. "The work ethic—the notion that employment defines human worth—is a recent historical construct, not a timeless truth." Proposes AI-driven abundance could enable "post-work society" with universal basic income freeing humans for creative/relational pursuits. "We mourn job losses, but why? Because we equate employment with dignity, not because the tasks themselves are inherently meaningful." Points to studies showing retirees and wealthy report higher satisfaction than workers.</p>
+    <p><strong>Best Use:</strong> Challenging assumptions; exploring radical alternatives; sophistication via tension.</p>
+    <p><strong>Key Quote:</strong> "The problem is not AI eliminating work, but our cultural inability to imagine purpose beyond paychecks."</p>
+  </div>
+
+  <div class="rubric-box">
+    <p><strong>Timing Strategy (55 minutes total):</strong></p>
+    <ul>
+      <li><strong>0-15 min:</strong> Read all 6 sources. As you read, mark 3-4 you'll cite. Note 1-2 quotable phrases per source. Identify: What perspective is MISSING from this set?</li>
+      <li><strong>15-20 min:</strong> Planning. Write thesis with line of reasoning, 3 body claims, sources for each, sophistication move type and location.</li>
+      <li><strong>20-50 min:</strong> Writing. Introduction (4 min), Body 1 (8 min), Body 2 (8 min), Body 3 with sophistication (8 min), Conclusion (2 min).</li>
+      <li><strong>50-55 min:</strong> Review. Check: Did you cite 3+ sources? Does sophistication appear? Is final paragraph as strong as first?</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Before You Write</div>
+    <p><strong>Source Selection Strategy:</strong> You don't need all 6 sources. Choose 3-4 that create a conversation: one optimistic (Lee or Chen), one skeptical (NLF), one complicating (Rodriguez or Bergman), one policy-focused (DOL). This balance shows you can synthesize multiple perspectives, not just cherry-pick sources that agree with you.</p>
+  </div>
+
+  <p><strong>Write your essay now. Set a timer for 55 minutes (15 min reading + 40 min writing).</strong></p>
+
+  <p style="margin-top: 2rem; padding: 1rem; background: #fff3e0; border-left: 4px solid #fd7e14; border-radius: 0 6px 6px 0;">
+    <strong>When complete:</strong> Proceed to self-scoring below. This is your third Speed Run—compare patterns across all three essays.
+  </p>
+</div>
+
+<h2>Phase 3: Self-Score (5 min)</h2>
+<div class="phase-card practice-card">
+  <h3>AP Synthesis Rubric Self-Scoring</h3>
+
+  <div class="rubric-box">
+    <p><strong>Row A: Thesis (0-1 point)</strong></p>
+    <ul>
+      <li><strong>1 point:</strong> Responds to the prompt with a defensible thesis that establishes a line of reasoning.</li>
+      <li><strong>0 points:</strong> No defensible thesis or line of reasoning.</li>
+    </ul>
+
+    <p style="margin-top: 1rem;"><strong>Row B: Evidence and Commentary (0-4 points)</strong></p>
+    <ul>
+      <li><strong>4 points:</strong> Provides specific evidence from at least 3 sources + explains how evidence supports the argument. Sources are integrated smoothly, not just summarized. Commentary analyzes the relationship between sources and thesis.</li>
+      <li><strong>3 points:</strong> Cites 3+ sources with explanation, but integration may be mechanical or commentary underdeveloped in places.</li>
+      <li><strong>2 points:</strong> Cites 2-3 sources, but explanation is superficial or sources are merely summarized.</li>
+      <li><strong>1 point:</strong> Cites sources but with little or no explanation of how they support the argument.</li>
+      <li><strong>0 points:</strong> Cites fewer than 2 sources or no meaningful engagement with sources.</li>
+    </ul>
+
+    <p style="margin-top: 1rem;"><strong>Row C: Sophistication (0-1 point)</strong></p>
+    <ul>
+      <li><strong>1 point:</strong> Demonstrates sophistication through one or more of: broader context, identifying missing perspectives (M6), tension/complexity across sources, vivid and persuasive style.</li>
+      <li><strong>0 points:</strong> Does not meet sophistication criteria.</li>
+    </ul>
+  </div>
+
+  <table>
+    <tr>
+      <th>Row</th>
+      <th>Your Score</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td><strong>Row A (Thesis)</strong></td>
+      <td><em>0 or 1</em></td>
+      <td><em>Is your thesis defensible? Does it have a line of reasoning?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Row B (Evidence)</strong></td>
+      <td><em>0-4</em></td>
+      <td><em>Did you cite 3+ sources? Did you explain how they support your thesis, or just summarize them?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Row C (Sophistication)</strong></td>
+      <td><em>0 or 1</em></td>
+      <td><em>Did your sophistication move appear? Did you identify a missing perspective?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td><em>0-6</em></td>
+      <td><em>Target: 5+</em></td>
+    </tr>
+  </table>
+
+  <div class="self-check">
+    <div class="q-label">Quality Drop-Off Tracker + Source Count</div>
+    <p><strong>Mark where quality declined:</strong> Introduction / Body 1 / Body 2 / Body 3 / Conclusion</p>
+    <p><strong>How many sources did you cite?</strong> _____ (Target: 3-4)</p>
+    <p><strong>Did you summarize sources or analyze them?</strong> Check one body paragraph. Did you write "Source A says..." followed by a summary? Or did you write "Source A's evidence of X supports my claim that Y because Z"? The second is analysis.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Debrief (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>Speed Run 3 Complete.</strong> You've now written 3 full AP essays in B2: Rhetorical Analysis (L08), Argument (L09), Synthesis (L10).</p>
+
+    <p><strong>Cross-Essay Comparison:</strong> Look at your Rows A, B, C across all 3 essays. Fill in this pattern tracker:</p>
+
+    <table>
+      <tr>
+        <th>Essay Type</th>
+        <th>Row A</th>
+        <th>Row B</th>
+        <th>Row C</th>
+        <th>Total</th>
+        <th>Quality Drop-Off Point</th>
+      </tr>
+      <tr>
+        <td><strong>Speed Run 1 (Rhetoric)</strong></td>
+        <td>___</td>
+        <td>___</td>
+        <td>___</td>
+        <td>___</td>
+        <td>___</td>
+      </tr>
+      <tr>
+        <td><strong>Speed Run 2 (Argument)</strong></td>
+        <td>___</td>
+        <td>___</td>
+        <td>___</td>
+        <td>___</td>
+        <td>___</td>
+      </tr>
+      <tr>
+        <td><strong>Speed Run 3 (Synthesis)</strong></td>
+        <td>___</td>
+        <td>___</td>
+        <td>___</td>
+        <td>___</td>
+        <td>___</td>
+      </tr>
+    </table>
+
+    <p style="margin-top: 1rem;"><strong>Now diagnose:</strong></p>
+    <ul>
+      <li><strong>Which ROW is consistently weakest?</strong> If Row B is always your lowest score, you need to practice evidence analysis and S-F-E. If Row C never appears, you need to practice sophistication moves. If Row A is inconsistent, you need thesis work.</li>
+      <li><strong>Which ESSAY TYPE is weakest?</strong> If you scored 5-5-3, synthesis is your vulnerability. If you scored 4-5-5, rhetorical analysis needs work. If you scored 5-4-5, argument (specifically evidence from knowledge) is your gap.</li>
+      <li><strong>Where does quality drop?</strong> If all 3 essays dropped at Body 3, you're running out of steam. If drop-off points vary, your timing allocation is inconsistent.</li>
+    </ul>
+
+    <p><strong>This pattern defines your practice plan for the rest of B2.</strong> Weakest row? That's what you drill. Weakest essay type? That's what you write more of. Consistent drop-off point? That's your timing target.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>Write your 2-sentence pattern diagnosis:</strong> "Across my 3 Speed Runs, my consistent weakness is [row/essay type/timing issue]. My practice priority for the rest of B2 is [specific skill or strategy]." This diagnosis is more valuable than any single essay score—it tells you exactly what to improve.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B2 L10 • Speed Run 3: Synthesis • Cross-Essay Pattern Diagnosis • ~65 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L09_Speed_Run_2_Argument.html">← Previous: L09 Speed Run 2 (Argument)</a>
+  <a href="B2_L11_Plan_to_Essay_Bridge_1.html">Next: L11 Plan-to-Essay Bridge 1 →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

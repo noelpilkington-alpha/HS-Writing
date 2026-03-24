@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L07: Sophistication in Full Essay Plan</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.plan-box {
+  background: #f8f9fa; border: 1px solid var(--border); border-left: 4px solid #6f42c1; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-family: 'Courier New', monospace; font-size: 0.85rem;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 7</span>
+  <h1>Sophistication in Full Essay Plan</h1>
+  <p class="subtitle">Integrating Row C Moves into Your Planning Process</p>
+  <div class="meta-bar">
+    <span>⏱ ~30 min</span>
+    <span>📍 KCs: C.HS.03 (integrated), C.HS.04 (preview)</span>
+    <span>🧠 Mental Models: M6, all models</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Transfer Bridge Lesson:</strong> Sophistication isn't bolted on after writing—it's PLANNED from the start. During your 5-minute planning phase, add one step: "Where will my sophistication move go, and what type will it be?" This lesson teaches you to integrate Row C into your essay planning so sophistication becomes automatic, not optional.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Plan Sophistication, Don't Improvise It</h3>
+
+  <p>You've now practiced all 4 sophistication types:</p>
+  <ol>
+    <li><strong>Broader Context</strong> — connecting to larger historical/cultural forces</li>
+    <li><strong>Alternative Reading</strong> — acknowledging a different interpretation and defending yours</li>
+    <li><strong>Tension/Complexity</strong> — exploring unresolved contradictions</li>
+    <li><strong>Vivid Style</strong> — consistently clear, precise, and engaging prose (not taught separately—it's woven throughout)</li>
+  </ol>
+
+  <p>Most students who miss Row C make this mistake: they write their essay and THEN wonder, "Where could I add sophistication?" By that point, it feels tacked on.</p>
+
+  <p><span class="vocab-term">The Sophistication Checklist</span> solves this. During your 5-minute planning phase, add ONE question: "Where will my sophistication move go, and what type will it be?"</p>
+
+  <p><strong>Most effective placement:</strong> End of second body paragraph or beginning of third (where the argument deepens). Your sophistication move should feel like the moment your analysis reaches its highest level—not an afterthought in the conclusion.</p>
+
+  <div class="rubric-box">
+    <p><strong>Sophistication Checklist (add to your planning):</strong></p>
+    <ul>
+      <li>Which sophistication type fits this passage best?</li>
+      <li>Where in my essay structure does it belong?</li>
+      <li>What specific sentence will signal the sophistication move?</li>
+      <li>Does it feel organic, or am I forcing it?</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <h3>Watch a Full Essay Plan with M6 Integration</h3>
+
+  <p><strong>Prompt:</strong> Analyze the rhetorical strategies Sojourner Truth uses to challenge prevailing definitions of womanhood in her 1851 speech "Ain't I a Woman?"</p>
+
+  <div class="coping-model">
+    <p><strong>Writer's planning process (5 minutes):</strong></p>
+
+    <p><span class="false-start">1. Map rhetorical situation: Truth addressing women's rights convention, mixed audience (abolitionists + feminists), 1851 (before Civil War). Purpose: challenge exclusion of Black women from feminist movement.<br>
+    2. Identify strategies: anaphora ("Ain't I a woman?"), physical evidence (arm, labor), contrast (white women's fragility vs. her strength), Biblical reference (Eve).<br>
+    3. Thesis: Truth uses anaphora and physical evidence to challenge definitions of womanhood that exclude Black women's experience.<br>
+    4. Body paragraphs: BP1 = anaphora, BP2 = physical evidence/labor, BP3 = Biblical reference.<br>
+    5. Sophistication? Hmm... where does it go?</span></p>
+
+    <p><span class="correction">I planned sophistication LAST, so it feels tacked on. Let me integrate M6 from the start and decide sophistication type during planning, not after.</span></p>
+
+    <p><span class="strong">REVISED PLAN with M6 integration:</span></p>
+
+    <div class="plan-box">
+<strong>1. MAP RHETORICAL SITUATION (M3 Force Field):</strong>
+   - Audience: Women's rights convention (white feminists + male attendees)
+   - Constraint: Prevailing definition of womanhood = fragility, domesticity, protection
+   - Truth's position: Black woman, formerly enslaved, physical laborer
+   - M6 question: WHO BENEFITS from defining womanhood as fragility? (White middle-class women—excludes working-class and Black women)
+
+<strong>2. THESIS (with line of reasoning):</strong>
+   Truth challenges exclusionary definitions of womanhood by using anaphora to assert her claim, physical evidence to refute fragility, and Biblical reference to reframe authority—strategies that expose how race and class shape whose bodies count as "women's bodies."
+
+<strong>3. BODY PARAGRAPH CLAIMS:</strong>
+   BP1: Anaphora ("Ain't I a woman?") forces the audience to confront the contradiction between their definition and her existence
+   BP2: Physical evidence (labor, strength) systematically refutes each marker of fragility the audience associates with womanhood
+   BP3: Biblical reference (Eve) claims moral authority by reframing the debate beyond social convention to religious foundation
+
+<strong>4. SOPHISTICATION MOVE (planned for BP2):</strong>
+   TYPE: Tension/Complexity
+   LOCATION: End of BP2 (after analyzing physical evidence)
+   CONTENT: The tension between Truth's insistence "Ain't I a woman?" and her refutation of every criterion of womanhood her audience holds resists simple resolution. She doesn't propose a new definition—she exposes that "womanhood" is a race/class-specific category. The unresolved tension IS the argument.
+   TEST: Organic? Yes—it deepens the analysis of physical evidence by showing why the contradiction matters.
+
+<strong>5. EVIDENCE FOR EACH BP:</strong>
+   BP1: "Nobody ever helps me into carriages... And ain't I a woman?"
+   BP2: "I have ploughed and planted, and gathered into barns, and no man could head me!"
+   BP3: "If the first woman God ever made was strong enough to turn the world upside down all alone, these women together ought to be able to turn it back"
+    </div>
+
+    <p><span class="strong">Notice: Sophistication is identified DURING planning (not after), type is chosen based on what the passage supports (tension/complexity fits Truth's contradictions), and placement is strategic (end of BP2, where the argument reaches its deepest insight). This plan took 5 minutes but makes the essay write itself.</span></p>
+  </div>
+</div>
+
+<h2>Phase 3: Supported Practice (12 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Plan a Full Essay with Sophistication</h3>
+
+  <div class="passage-box">
+    <h3>Rhetorical Analysis Prompt</h3>
+    <p><strong>Prompt:</strong> In her 1893 speech "Lynch Law in All Its Phases," Ida B. Wells documents the prevalence of lynching in the American South and refutes justifications for racial violence. Analyze the rhetorical strategies Wells uses to challenge her audience's assumptions about lynching.</p>
+    <p><em>Note: You should already be familiar with Wells's speech from prior lessons. Use your knowledge of her statistical evidence, refutation structure, and ethos moves.</em></p>
+  </div>
+
+  <p><strong>Your Task:</strong> Write a full essay plan that includes:</p>
+  <ol>
+    <li>Rhetorical situation map (M3 + M6 question)</li>
+    <li>Thesis with line of reasoning</li>
+    <li>3 body paragraph claims</li>
+    <li><strong>Sophistication move with TYPE, LOCATION, and CONTENT specified</strong></li>
+    <li>Key evidence for each body paragraph</li>
+  </ol>
+
+  <p><strong>Time limit: 8 minutes</strong> (simulating AP planning time with the added sophistication step)</p>
+
+  <div class="self-check">
+    <div class="q-label">Peer Self-Check</div>
+    <p><strong>After completing your plan, evaluate:</strong></p>
+    <ul>
+      <li>Is my sophistication move ORGANIC (deepens the analysis) or TACKED ON (feels like an afterthought)?</li>
+      <li>Did I choose the sophistication TYPE based on what the passage supports, or did I force my favorite type?</li>
+      <li>Is the LOCATION strategic (where the argument deepens) or arbitrary (just stuck it somewhere)?</li>
+      <li>Could I write this essay from this plan, or do I need to figure out my argument while writing?</li>
+    </ul>
+  </div>
+
+  <details>
+    <summary>Click to reveal a model plan</summary>
+    <div class="model-answer">
+      <div class="plan-box">
+<strong>1. RHETORICAL SITUATION:</strong>
+   - Audience: Northern white Americans (unfamiliar with lynching's extent)
+   - Constraint: Rape justification accepted as fact; Wells seen as partisan
+   - Wells's position: Black woman, journalist, personal stake (friend lynched)
+   - M6: Who benefits from the rape narrative? (Justifies racial violence, protects white supremacy)
+
+<strong>2. THESIS:</strong>
+   Wells challenges assumptions about lynching by using statistical evidence to establish scale, refutation structure to dismantle the rape justification, and reluctant ethos to establish credibility—strategies that transform lynching from "isolated incidents" into a systematic campaign of racial terror.
+
+<strong>3. BODY PARAGRAPHS:</strong>
+   BP1: Statistical evidence ("over 1,400 men, women, and children") establishes scale and refutes "isolated incident" framing
+   BP2: Refutation structure (states rape claim, then dismantles with data: "less than 30 out of 100") removes the moral justification
+   BP3: Reluctant ethos ("through no inclination of my own") establishes that she speaks from conviction, not bias
+
+<strong>4. SOPHISTICATION MOVE:</strong>
+   TYPE: Alternative Reading
+   LOCATION: End of BP3 (after analyzing reluctant ethos)
+   CONTENT: "An alternative reading might suggest that Wells's claim to speak reluctantly undermines her authority by positioning her as a reluctant rather than expert witness. However, the reluctance frame is more persuasive as a strategic counter to the expectation that she speaks from personal grievance. By framing herself as compelled by conscience despite personal risk, Wells transforms potential bias into moral authority—she speaks not because she wants to, but because the evidence demands it."
+   TEST: Organic? Yes—it addresses a real interpretive question about her ethos strategy.
+
+<strong>5. EVIDENCE:</strong>
+   BP1: "1,400 men, women, and children," "scenes of unusual brutality failed to have any visible effect"
+   BP2: "Out of every 100 lynchings, less than 30 are for the charge of rape"
+   BP3: "I am before the American people today through no inclination of my own"
+      </div>
+    </div>
+  </details>
+</div>
+
+<h2>Phase 4: Independent Practice (10 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Plan + Write Sophistication Paragraph Only</h3>
+
+  <div class="passage-box">
+    <h3>Argument Prompt</h3>
+    <p><strong>Prompt:</strong> In a world of increasing complexity, some argue that acknowledging uncertainty and multiple perspectives is essential for understanding. Others contend that the pursuit of certainty and clear positions is necessary for progress. Write an essay that argues your position on whether embracing uncertainty or seeking certainty is more valuable for human understanding.</p>
+  </div>
+
+  <p><strong>Your Task (10 minutes total):</strong></p>
+  <ol>
+    <li><strong>Plan (3 minutes):</strong> Write a full essay plan including thesis, 3 body paragraph claims, and sophistication move (TYPE, LOCATION, CONTENT)</li>
+    <li><strong>Write (7 minutes):</strong> Write ONLY the paragraph that contains your sophistication move. Don't write the full essay—focus on executing Row C quality in one paragraph.</li>
+  </ol>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria for Your Sophistication Paragraph:</strong></p>
+    <ul>
+      <li>Clear topic sentence that advances your argument</li>
+      <li>Evidence with reasoning (argument essays draw from knowledge, not passages)</li>
+      <li>Sophistication move that feels integrated (not bolted on)</li>
+      <li>Paragraph flows naturally into and out of the sophistication moment</li>
+      <li>Demonstrates Row C quality: recognizes complexity beyond your thesis</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Assessment</div>
+    <p><strong>After writing, ask yourself:</strong></p>
+    <ul>
+      <li>If I removed the sophistication sentence(s), would my paragraph lose analytical depth? (If yes, it's organic. If no, revise.)</li>
+      <li>Does my sophistication move demonstrate that I see beyond my own position?</li>
+      <li>Is my paragraph at the same quality level as my B1L work, or have I raised the bar?</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>From This Point Forward:</strong> Every essay plan includes a sophistication move. It's not optional—it's part of your process.</p>
+
+    <p>The shift you just made: sophistication moves from "something I try to add if I have time" to "something I plan before writing." This is what separates 4-level writers from 5+ writers. The 4-level writer writes and hopes sophistication appears. The 5+ writer plans where sophistication will go and what type it will be.</p>
+
+    <p><strong>Next lesson:</strong> Speed Run 1 (Rhetorical Analysis). You'll write a full timed essay with sophistication planned from the start. The planning process you practiced today becomes your AP exam process.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>How does planning sophistication BEFORE writing change your relationship to Row C?</strong> Does it feel more achievable when it's planned, not improvised? What's the hardest part of integrating sophistication into your planning process?</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B2 L07 • Sophistication in Full Essay Plan • C.HS.03 (integrated), C.HS.04 (preview) • ~30 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L06_Tension_Complexity_Drill.html">← Previous: L06 Tension/Complexity Drill</a>
+  <a href="B2_L08_Speed_Run_1_Rhetorical_Analysis.html">Next: L08 Speed Run 1: Rhetorical Analysis →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

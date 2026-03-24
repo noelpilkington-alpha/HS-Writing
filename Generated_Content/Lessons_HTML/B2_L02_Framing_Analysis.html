@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L02: Framing Analysis</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 2</span>
+  <h1>Framing Analysis</h1>
+  <p class="subtitle">Using M6 to Generate Sophistication</p>
+  <div class="meta-bar">
+    <span>⏱ ~30 min</span>
+    <span>📍 KCs: C.HS.01 (Framing Analysis)</span>
+    <span>🧠 Mental Model: M6</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Framing Analysis:</strong> Every passage FRAMES its subject — what's included, what's excluded, what language is chosen, what audience is centered. The 4-question M6 protocol reveals these choices. The alternative framing question is the key to sophistication: it shows you can think beyond the text's own terms.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>From M6 Reading to M6 Writing</h3>
+
+  <p>In L01, you learned the M6 protocol as a reading tool. Today you learn to use it as a <strong>writing tool</strong> — a systematic method for generating sophistication moves in your essays.</p>
+
+  <p><span class="vocab-term">Framing Analysis</span> applies the M6 protocol systematically to identify what a passage makes visible, what it obscures, who benefits, and what alternative framings exist. The fourth question — alternative framing — is crucial: it proves you can see beyond the text's perspective.</p>
+
+  <h3>The 4-Question M6 Protocol</h3>
+  <ol>
+    <li><strong>What does this framing make visible?</strong> What aspects of the issue are foregrounded? What language choices reveal the writer's angle?</li>
+    <li><strong>What does it obscure?</strong> What perspectives, complications, or counterarguments disappear when this framing is accepted?</li>
+    <li><strong>Who benefits from this framing?</strong> Whose position is strengthened if the audience accepts these terms?</li>
+    <li><strong>What alternative framing exists?</strong> How else could this issue be framed? Why didn't the writer choose that path?</li>
+  </ol>
+
+  <p><strong>Key Insight:</strong> Once you complete the M6 protocol, you have RAW MATERIAL for sophistication. Your job: convert that analysis into 1-2 sentences that could appear in your essay.</p>
+
+  <p><strong>Sophistication Sentence Pattern:</strong> "While [author]'s framing of [issue] as [X] effectively [purpose], this approach obscures [alternative perspective], revealing [whose interests are served]."</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>Which sentence demonstrates sophistication using M6?</strong></p>
+    <ol type="A">
+      <li>"Sojourner Truth effectively uses repetition to emphasize her point about women's rights."</li>
+      <li>"While Truth's framing of womanhood through physical labor makes working-class women's experiences visible, it obscures legal arguments about property rights that would have benefited educated women."</li>
+      <li>"Truth's speech is powerful because she uses personal evidence to support her claim."</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> Sentence B demonstrates M6 sophistication by naming what Truth's framing makes visible (working-class experiences) AND what it obscures (legal arguments), then identifying whose interests are served. Sentences A and C are B1L-level analysis — they explain strategies and effects but don't examine framing choices or alternative perspectives. That's the difference between Row B and Row C.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (5 min)</h2>
+<div class="phase-card model-card">
+  <h3>Full Framing Analysis: Sojourner Truth</h3>
+
+  <div class="passage-box">
+    <h3>Sojourner Truth, "Ain't I a Woman?" (1851)</h3>
+
+    <p>That man over there says that women need to be helped into carriages, and lifted over ditches, and to have the best place everywhere. Nobody ever helps me into carriages, or over mud-puddles, or gives me any best place! And ain't I a woman? Look at me! Look at my arm! I have ploughed and planted, and gathered into barns, and no man could head me! And ain't I a woman? I could work as much and eat as much as a man—when I could get it—and bear the lash as well! And ain't I a woman?</p>
+
+    <p>I have borne thirteen children, and seen most all sold off to slavery, and when I cried out with my mother's grief, none but Jesus heard me! And ain't I a woman?</p>
+
+    <p class="attribution">Sojourner Truth, Women's Rights Convention, Akron, Ohio, 1851 (as recorded by Frances Gage; public domain excerpt)</p>
+  </div>
+
+  <p><strong>Watch the full M6 protocol applied to Truth's speech, then see how that analysis becomes sophistication sentences.</strong></p>
+
+  <div class="coping-model">
+    <p><strong>Step 1: Apply M6 Protocol</strong></p>
+
+    <p><span class="strong">1. What does this framing make visible?</span> Truth frames womanhood through physical labor and motherhood — specifically, the labor and suffering of enslaved Black women. Her repeated "Ain't I a woman?" forces the audience to see that their definition of womanhood (fragile, protected, middle-class) excludes her entirely.</p>
+
+    <p><span class="strong">2. What does it obscure?</span> This framing obscures legal arguments about property rights, voting rights, and contractual capacity — arguments that would have benefited educated white women with access to legal systems. It also obscures middle-class women's intellectual contributions, centering instead physical strength and maternal suffering.</p>
+
+    <p><span class="strong">3. Who benefits from this framing?</span> Working-class women and Black women benefit because Truth's framing refuses to let "women's rights" mean only white middle-class women's concerns. The abolition movement also benefits by linking women's rights to enslaved people's rights through Truth's embodied experience.</p>
+
+    <p><span class="strong">4. What alternative framing exists?</span> Truth could have framed women's rights through legal equality (like Susan B. Anthony would later do) or intellectual capacity (like Mary Wollstonecraft). She chose physical labor because it was the one arena where she could claim equality or superiority to men — and because it exposed the class and race assumptions embedded in the dominant framing of womanhood as fragility.</p>
+
+    <p><strong>Step 2: Convert to Sophistication Sentences</strong></p>
+
+    <p><span class="strong">Sophistication Option 1 (Broader Context):</span> "While Truth's framing of womanhood through physical labor makes working-class and Black women's experiences visible, it necessarily obscures the legal arguments about property and voting rights that would dominate later suffrage movements, revealing how the definition of 'women's rights' was itself a contested terrain."</p>
+
+    <p><span class="strong">Sophistication Option 2 (Alternative Reading):</span> "Truth's choice to frame womanhood through bodily strength rather than intellectual equality represents a strategic response to her rhetorical situation: as an illiterate formerly enslaved woman, she leveraged the one form of capital — physical labor — that her audience could not deny her, even as this framing excluded the intellectual contributions of women like herself who would later learn to read and write."</p>
+  </div>
+
+  <p><strong>Key Pattern:</strong> The M6 protocol generates the raw analysis. The sophistication sentence packages that analysis for an essay, using the "While X, it obscures Y, revealing Z" structure.</p>
+</div>
+
+<h2>Phase 3: Supported Practice (10 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Framing Analysis + Sophistication: Susan B. Anthony</h3>
+
+  <div class="passage-box">
+    <h3>Susan B. Anthony, "On Women's Right to Vote" (1873)</h3>
+
+    <p>Friends and fellow citizens: I stand before you tonight under indictment for the alleged crime of having voted at the last presidential election, without having a lawful right to vote. It shall be my work this evening to prove to you that in thus voting, I not only committed no crime, but, instead, simply exercised my citizen's rights, guaranteed to me and all United States citizens by the National Constitution.</p>
+
+    <p>The preamble of the Federal Constitution says: "We, the people of the United States, in order to form a more perfect union, establish justice, insure domestic tranquility, provide for the common defense, promote the general welfare, and secure the blessings of liberty to ourselves and our posterity, do ordain and establish this Constitution for the United States of America." It was we, the people; not we, the white male citizens; nor yet we, the male citizens; but we, the whole people, who formed the Union.</p>
+
+    <p class="attribution">Susan B. Anthony, speech following her arrest for voting, 1873 (public domain excerpt)</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Complete the M6 Protocol, then write 2 sophistication sentences.</p>
+
+  <h3>Step 1: M6 Protocol</h3>
+
+  <table>
+    <tr>
+      <th style="width: 35%;">M6 Question</th>
+      <th>Your Analysis</th>
+    </tr>
+    <tr>
+      <td><strong>What does this framing make visible?</strong></td>
+      <td><em>Hint: How does Anthony's constitutional framing position her argument? What does focusing on "we, the people" reveal about citizenship?</em></td>
+    </tr>
+    <tr>
+      <td><strong>What does it obscure?</strong></td>
+      <td><em>Hint: What arguments does the legal/constitutional framing exclude? What experiences does it not center?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Who benefits?</strong></td>
+      <td><em>Hint: Which women benefit most from a constitutional argument? Whose claims to citizenship does this framing strengthen?</em></td>
+    </tr>
+    <tr>
+      <td><strong>What alternative framing exists?</strong></td>
+      <td><em>Hint: How else could women's voting rights be argued? What did Anthony NOT choose to emphasize?</em></td>
+    </tr>
+  </table>
+
+  <h3>Step 2: Write 2 Sophistication Sentences</h3>
+
+  <p><strong>Use one of these patterns:</strong></p>
+  <ul>
+    <li>"While Anthony's framing of [X] makes [Y] visible, it obscures [Z], revealing [whose interests are served]."</li>
+    <li>"Anthony's choice to frame [issue] as [X] rather than [alternative] benefits [who] by [why], though this approach necessarily excludes [what perspectives]."</li>
+  </ul>
+
+  <p><em>Write your two sophistication sentences here. These should be sentences you could insert into an essay body paragraph.</em></p>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p><strong>Check your sophistication sentences:</strong> (1) Do they name both what's visible AND what's obscured? (2) Do they identify who benefits? (3) Do they reference an alternative framing? (4) Could they fit organically into an essay paragraph, or do they feel "tacked on"? If tacked on, revise to connect the sophistication to your analysis of Anthony's strategies.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (9 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Full Framing Analysis: Economic Policy Passage</h3>
+
+  <div class="passage-box">
+    <h3>Op-Ed Excerpt: "Universal Basic Income — A Solution or a Trap?" (Representative Example)</h3>
+
+    <p>Proponents of Universal Basic Income frame it as a matter of economic security: in an age of automation and unstable gig work, every citizen deserves a guaranteed minimum income regardless of employment status. This framing casts UBI as a safety net, a floor beneath which no one should fall.</p>
+
+    <p>But what if we reframe UBI not as security, but as control? A guaranteed income makes citizens dependent on the state for survival — and what the state gives, the state can take away. The "security" framing obscures the power dynamics: who decides how much is "enough"? Who defines the conditions under which the income continues? The framing that promises freedom from want may deliver a new form of dependence.</p>
+
+    <p class="attribution">Representative op-ed excerpt, public domain-equivalent for educational use</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Write a complete framing analysis following the two-step process:</p>
+
+  <ol>
+    <li><strong>Apply the full M6 Protocol</strong> to the passage (answer all 4 questions in prose form, 1-2 sentences each)</li>
+    <li><strong>Write 2 sophistication sentences</strong> that could appear in an essay analyzing this op-ed's rhetorical strategies</li>
+  </ol>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li><strong>M6 Protocol:</strong> Identifies what BOTH framings (security vs. control) make visible and obscure</li>
+      <li><strong>M6 Protocol:</strong> Names who benefits from each framing being accepted</li>
+      <li><strong>M6 Protocol:</strong> Explains why the writer shifts from the "security" frame to the "control" frame</li>
+      <li><strong>Sophistication Sentences:</strong> Use "While/Though X, it obscures Y" structure</li>
+      <li><strong>Sophistication Sentences:</strong> Could fit organically into an essay (not tacked-on historical facts)</li>
+      <li><strong>Sophistication Sentences:</strong> Demonstrate thinking beyond the text's own terms</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>M6 as Part of Your Process:</strong> Framing analysis isn't something you do AFTER writing your essay. It's part of your planning phase.</p>
+
+    <p><strong>New Planning Step (Add to your B1L process):</strong></p>
+    <ol>
+      <li>Read passage and map rhetorical situation (5 min)</li>
+      <li>Identify 2-3 key strategies (M5: reverse engineering)</li>
+      <li><strong>Apply M6 to ONE strategy:</strong> What does this framing obscure? What alternative exists? (1 min)</li>
+      <li>Write thesis with line of reasoning</li>
+      <li>Outline body paragraphs, placing M6 sophistication in paragraph 2 or 3</li>
+      <li>Write essay (30 min)</li>
+    </ol>
+
+    <p>That one minute of M6 analysis — asking "What does this framing NOT show me?" — is what transforms a 4 into a 5+.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>How does M6 change your essay planning?</strong> Before this lesson, you planned essays by identifying strategies and effects (Row B). Now you have a tool for generating Row C sophistication. How will you integrate the M6 protocol into your 5-minute planning phase? What specific step will you add?</p>
+  </div>
+
+  <details>
+    <summary>Click to reveal model response</summary>
+    <div class="model-answer">
+      <p>Before M6, I planned essays by listing strategies (anaphora, rhetorical questions, metaphor) and thinking about their effects. M6 adds a specific question I can ask during planning: "What does this author's framing obscure?" I'll add one step after identifying my main strategies: pick the strongest strategy and ask the four M6 questions (especially #2 and #4 — what's obscured and what's the alternative). That 60-second analysis gives me raw material for a sophistication sentence that I'll place in my second body paragraph. The key: M6 isn't extra work AFTER the essay — it's a planning tool that generates Row C content BEFORE writing.</p>
+    </div>
+  </details>
+</div>
+
+<div class="footnote">
+  <p>B2 L02 • Framing Analysis • M6 as Writing Tool • ~30 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L01_Who_Benefits.html">← Previous: L01 Who Benefits?</a>
+  <a href="B2_L03_Sophistication_Move_Identification.html">Next: L03 Sophistication Move Identification →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L11: Plan-to-Essay Bridge 1</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 11</span>
+  <h1>Plan-to-Essay Bridge 1</h1>
+  <p class="subtitle">8-Minute Plan + 32-Minute Write: Rhetorical Analysis</p>
+  <div class="meta-bar">
+    <span>⏱ ~45 min</span>
+    <span>📍 KCs: C.HS.04 (Sustain Quality Under Time Pressure, deepened)</span>
+    <span>🧠 Mental Models: M1-M6</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Plan-to-Essay Bridge:</strong> 8 minutes planning, 32 minutes writing. The plan is your blueprint—every minute saved in planning costs 2 minutes in writing (because you have to figure out your argument while writing). The 8-minute plan must include: thesis, 3 body claims, evidence for each, sophistication move type and location. If your plan is good, the essay writes itself.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Why 8 Minutes of Planning Saves 16 Minutes of Writing</h3>
+
+  <p>Speed Runs (L08-L10) gave you 40 minutes with minimal structure: "Plan however long you need, then write." Most students spend 3-4 minutes planning and 32-36 minutes writing. This feels efficient but creates a hidden cost: you're figuring out your argument WHILE writing, which slows every sentence.</p>
+
+  <p><strong>The Plan-to-Essay Bridge formula:</strong> 8 minutes planning + 32 minutes writing = a stronger essay written in the same 40 minutes.</p>
+
+  <p><strong>What an 8-minute plan must include:</strong></p>
+  <ul>
+    <li><strong>Thesis</strong> (1 sentence, complete) — not "I'll write about ethos and pathos," but the actual thesis you'll use in the essay</li>
+    <li><strong>3 body paragraph claims</strong> (1 sentence each) — the topic sentence of each body paragraph</li>
+    <li><strong>Evidence for each claim</strong> (specific strategies, quotes, or examples) — not "use an example," but "irony in para 2: 'your celebration'"</li>
+    <li><strong>Sophistication move</strong> (type and location) — "broader context in body 3: connect to post-Reconstruction disenfranchisement"</li>
+  </ul>
+
+  <p>If your plan has all four components, writing becomes transcription, not composition. You already know WHAT to argue—you're just deciding HOW to phrase it. That's dramatically faster.</p>
+
+  <p><strong>Today's structure:</strong> 8 minutes planning (strict timer) + 32 minutes writing. Then: compare your plan to your essay. Where did you follow the plan? Where did you deviate? Was the deviation an improvement or a loss of focus?</p>
+</div>
+
+<h2>Phase 2: Model (3 min)</h2>
+<div class="phase-card model-card">
+  <h3>A Completed 8-Minute Plan</h3>
+
+  <p><strong>Passage: Carrie Chapman Catt, "The Crisis" (1916) — arguing for women's suffrage</strong></p>
+
+  <div class="coping-model">
+    <p><strong>8-Minute Planning Process (showing completed plan):</strong></p>
+
+    <p><span class="strong">Thesis (0-2 min):</span> "In 'The Crisis,' Carrie Chapman Catt employs strategic reframing of democratic ideals, appeals to national embarrassment, and urgent temporal framing to galvanize her audience into immediate suffrage action."</p>
+
+    <p><span class="strong">Body 1 Claim (2-4 min):</span> "Catt reframes suffrage not as a women's rights issue but as a democratic consistency issue, turning her audience's patriotic values into an indictment of current practice."<br>
+    <em>Evidence: "We have made partners of the men of this nation" (para 4) — reframing women as already-participants. "The world was at war for democracy" (para 7) — hypocrisy of fighting for democracy abroad while denying it at home. Strategy: Reframing + patriotic appeal.</em></p>
+
+    <p><span class="strong">Body 2 Claim (4-6 min):</span> "Catt leverages international comparison to create national embarrassment, using global suffrage momentum as evidence that America is falling behind its own democratic ideals."<br>
+    <em>Evidence: Lists countries granting suffrage (Russia, UK, Canada) — accumulation strategy. "Are we to remain the only backward nation?" Implicit question creates urgency. Strategy: Comparison + rhetorical question.</em></p>
+
+    <p><span class="strong">Body 3 Claim (6-7 min):</span> "Catt's temporal framing—'the crisis'—transforms suffrage from a gradual reform into an emergency requiring immediate action, collapsing audience complacency."<br>
+    <em>Evidence: Title itself: "The Crisis" — not "the debate" or "the question." "The hour has struck" (para 10) — military/revolutionary language. Strategy: Temporal urgency + diction.</em></p>
+
+    <p><span class="strong">Sophistication Move (7-8 min):</span> "Broader context in Body 3. Connect temporal framing to 1916 moment: WWI had just demonstrated speed of political upheaval (Russian Revolution, Ottoman collapse). Catt's 'crisis' language leverages wartime consciousness that political orders can change overnight—making gradual suffrage opposition seem naïve."</p>
+  </div>
+
+  <p><strong>Notice:</strong> This plan took 8 minutes. It includes complete thesis, specific claims, evidence with strategy names, and sophistication type/location. When I write the essay, I don't have to think "What's my second body paragraph about?" — I already know. I just have to write it clearly.</p>
+
+  <p><strong>The first paragraph of the essay from this plan:</strong> "In her 1916 speech 'The Crisis,' Carrie Chapman Catt employs strategic reframing of democratic ideals, appeals to national embarrassment, and urgent temporal framing to galvanize her audience into immediate suffrage action. Catt transforms suffrage from a women's issue into a national credibility crisis, leveraging her audience's patriotism against their inaction."</p>
+
+  <p>That paragraph came directly from the plan. I didn't have to figure out my thesis while writing—I only had to think about HOW to phrase it.</p>
+</div>
+
+<h2>Phase 3: Independent (40 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Plan-to-Essay Bridge: Carrie Chapman Catt, "The Crisis"</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Carrie Chapman Catt, "The Crisis" (1916)</h3>
+
+    <p><strong>[Opening]</strong> I have taken for my subject, "The Crisis," because I believe that a crisis has come in our movement which, if recognized and the opportunity seized with vigor, enthusiasm and will, means the final victory of our great cause in the very near future. I am aware that some suffragists do not share this belief. To them, the movement has been a long, slow, but sure evolution toward the goal. There is, however, another point of view.</p>
+
+    <p><strong>[Argument — Democratic Consistency]</strong> We have made partners of the men of this nation in business, in government, in education. We have asked them and they have granted to us representation in every phase of their own chosen government. Shall they refuse us now the crowning dignity of full citizenship? The world was at war for democracy. Shall we alone not practice what we preach?</p>
+
+    <p><strong>[Argument — International Comparison]</strong> In the last four years, Russia, England, Canada have granted full or partial suffrage to women. Are we to remain the only backward nation, the only people who refuse to see what the whole world sees? Are we to be the single exception to the inevitable progress of modern civilization?</p>
+
+    <p><strong>[Argument — Temporal Urgency]</strong> The woman's hour has struck. The victory is already ours if we have but the courage and the vision to grasp it. If we falter now, if we fail to seize this supreme moment, the opportunity may not come again in our lifetime. I urge you: this is the crisis. This is our hour.</p>
+
+    <p class="attribution">Carrie Chapman Catt, "The Crisis," Emergency Convention of the National American Woman Suffrage Association, September 1916 (public domain representative excerpt)</p>
+  </div>
+
+  <div class="rubric-box">
+    <p><strong>Assignment: 8-Minute Plan + 32-Minute Essay</strong></p>
+    <ul>
+      <li><strong>0-8 min (strict timer):</strong> Write your 8-minute plan. Must include: thesis, 3 body claims, evidence for each, sophistication move (type + location). Use the model plan above as a template.</li>
+      <li><strong>8-40 min:</strong> Write the full essay. Introduction (4 min), Body 1 (9 min), Body 2 (9 min), Body 3 with sophistication (9 min), Conclusion (1 min). Follow your plan—don't improvise new arguments mid-essay.</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Planning Checkpoint (At 8 Minutes)</div>
+    <p><strong>Before you start writing, check your plan:</strong></p>
+    <ul>
+      <li>Is your thesis a complete sentence (not "I'll analyze ethos")?</li>
+      <li>Do your 3 body claims each name a specific strategy or rhetorical move?</li>
+      <li>Does your evidence include passage references or quotable phrases (not "use an example")?</li>
+      <li>Have you identified sophistication move type and location?</li>
+    </ul>
+    <p>If any answer is no, spend 1-2 more minutes completing your plan. A good plan saves time in writing.</p>
+  </div>
+
+  <p><strong>Write your 8-minute plan now, then your 32-minute essay. Set strict timers.</strong></p>
+
+  <p style="margin-top: 2rem; padding: 1rem; background: #fff3e0; border-left: 4px solid #fd7e14; border-radius: 0 6px 6px 0;">
+    <strong>When complete:</strong> Proceed to self-scoring and plan review below.
+  </p>
+</div>
+
+<h2>Phase 4: Self-Score + Plan Review (5 min)</h2>
+<div class="phase-card practice-card">
+  <h3>AP Rubric Self-Scoring + Plan-to-Essay Alignment</h3>
+
+  <div class="rubric-box">
+    <p><strong>Row A: Thesis (0-1 point)</strong></p>
+    <ul>
+      <li><strong>1 point:</strong> Responds to the prompt with a defensible thesis analyzing rhetorical choices.</li>
+      <li><strong>0 points:</strong> No defensible thesis.</li>
+    </ul>
+
+    <p style="margin-top: 1rem;"><strong>Row B: Evidence and Commentary (0-4 points)</strong></p>
+    <ul>
+      <li><strong>4 points:</strong> Specific evidence from the passage + explains how strategies serve Catt's purpose. S-F-E analysis throughout.</li>
+      <li><strong>3 points:</strong> Evidence + explanation in most cases, minor underdevelopment.</li>
+      <li><strong>2 points:</strong> Some evidence, but analysis is superficial or inconsistent.</li>
+      <li><strong>1 point:</strong> Evidence with little explanation (feature-spotting).</li>
+      <li><strong>0 points:</strong> No meaningful evidence.</li>
+    </ul>
+
+    <p style="margin-top: 1rem;"><strong>Row C: Sophistication (0-1 point)</strong></p>
+    <ul>
+      <li><strong>1 point:</strong> Demonstrates sophistication through broader context, alternative interpretation, tension/complexity, or vivid style.</li>
+      <li><strong>0 points:</strong> Does not meet criteria.</li>
+    </ul>
+  </div>
+
+  <table>
+    <tr>
+      <th>Row</th>
+      <th>Your Score</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td><strong>Row A (Thesis)</strong></td>
+      <td><em>0 or 1</em></td>
+      <td><em>Did your thesis name specific rhetorical choices and Catt's purpose?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Row B (Evidence)</strong></td>
+      <td><em>0-4</em></td>
+      <td><em>Did you analyze strategies (S-F-E) or just identify them?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Row C (Sophistication)</strong></td>
+      <td><em>0 or 1</em></td>
+      <td><em>Did your sophistication move appear where planned?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td><em>0-6</em></td>
+      <td><em>Target: 5+</em></td>
+    </tr>
+  </table>
+
+  <div class="self-check">
+    <div class="q-label">Plan-to-Essay Alignment Check</div>
+    <p><strong>Compare your plan to your finished essay. For each component, mark: Followed / Deviated</strong></p>
+    <ul>
+      <li><strong>Thesis:</strong> Did you use the thesis from your plan, or did you change it while writing? If changed, was the new version stronger or weaker?</li>
+      <li><strong>Body 1 claim:</strong> Followed / Deviated. If deviated, why?</li>
+      <li><strong>Body 2 claim:</strong> Followed / Deviated. If deviated, why?</li>
+      <li><strong>Body 3 claim:</strong> Followed / Deviated. If deviated, why?</li>
+      <li><strong>Sophistication move:</strong> Did it appear where planned? If no, where did it go (or did it disappear)?</li>
+    </ul>
+
+    <p><strong>Evaluate your deviations:</strong> Most deviations are losses of focus—you improvised mid-essay and weakened your argument. Occasionally, a deviation is an improvement—you saw a better move while writing. The key question: <strong>Was the deviation planned (you saw something better) or reactive (you forgot your plan)?</strong> Planned deviations can strengthen essays. Reactive deviations almost always weaken them.</p>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>Plan-to-Essay Bridge 1 Complete.</strong> You've now practiced the 8-minute planning structure with rhetorical analysis. If your plan was solid, writing felt faster—you weren't composing and deciding simultaneously.</p>
+
+    <p><strong>Key insight:</strong> "Every minute saved in planning costs 2 minutes in writing." If you spend 3 minutes planning, you'll spend 37 minutes writing—and much of that time will be wasted figuring out what to say next. If you spend 8 minutes planning, you'll spend 32 minutes writing—and all of that time will be productive transcription of pre-decided ideas.</p>
+
+    <p><strong>Next lesson (L12): Plan-to-Essay Bridge 2.</strong> You'll apply the same 8-minute structure to an argument essay. The challenge: your plan must include specific evidence from knowledge, not sources. During planning, brainstorm AND select evidence—don't just list topics.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B2 L11 • Plan-to-Essay Bridge 1 • 8-Minute Planning Protocol • ~45 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L10_Speed_Run_3_Synthesis.html">← Previous: L10 Speed Run 3 (Synthesis)</a>
+  <a href="B2_L12_Plan_to_Essay_Bridge_2.html">Next: L12 Plan-to-Essay Bridge 2 →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

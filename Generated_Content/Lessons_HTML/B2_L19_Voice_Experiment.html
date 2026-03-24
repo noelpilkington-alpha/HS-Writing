@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L19: Voice Experiment</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent; }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.voice-excerpt {
+  background: #f0f4f8; border: 1px solid #c8d6e5; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 19</span>
+  <h1>Voice Experiment</h1>
+  <p class="subtitle">Writing the Same Analytical Paragraph in Two Different Voices</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: D.9.03 (applied)</span>
+    <span>🧠 Mental Model: M1</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>The Voice Experiment:</strong> Write the SAME analytical paragraph in TWO different voices. Same passage, same analytical point, same thesis—but different diction, syntax, register, and rhythm. This experiment proves that voice is a choice (M1), not fixed. Once you demonstrate control over voice, you can never again claim "that's just how I write." You write the way you CHOOSE to write.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Voice as Variable, Not Constant</h3>
+
+  <p>In L18, you analyzed three different analytical voices. You identified your current voice. Now comes the critical move: <strong>you will write the same paragraph in two different voices.</strong></p>
+
+  <p>This experiment has one purpose: to prove that voice is controllable. Most students believe their voice is fixed—"This is just how I write." But that's false. Your current voice is the result of choices you made unconsciously (template language, default sentence structure, generic academic diction). Once you make those choices <em>consciously</em>, you control your voice.</p>
+
+  <p><strong>The Task:</strong> You'll write a body paragraph analyzing a rhetorical move in Frederick Douglass's "Fourth of July" speech. You'll make the same analytical point—but you'll write it twice, in two different voices. Then you'll evaluate: which voice is more effective for this task?</p>
+
+  <p><strong>The Dimensions to Vary:</strong></p>
+  <ul>
+    <li><strong>Sentence Length:</strong> One version uses short sentences (10-15 words average). The other uses longer sentences (20-30 words).</li>
+    <li><strong>Diction:</strong> One version uses plain Anglo-Saxon verbs. The other uses more Latinate abstractions.</li>
+    <li><strong>Syntax:</strong> One version uses simple declarative sentences. The other uses subordination and embedding.</li>
+    <li><strong>Rhythm:</strong> One version is punchy and staccato. The other flows and accumulates.</li>
+  </ul>
+
+  <p>You will discover that some voices fit certain passages better than others. A passage with sharp irony might demand a spare voice. A passage with layered complexity might demand an elaborate voice. Adaptability IS sophistication.</p>
+</div>
+
+<h2>Phase 2: Model (5 min)</h2>
+<div class="phase-card model-card">
+  <h3>Two Voices, Same Analysis</h3>
+
+  <p>Below is the passage you'll analyze, followed by two versions of the same body paragraph—written in Voice A (spare/direct) and Voice B (elaborate/layered). Both make the identical analytical point. But they sound completely different.</p>
+
+  <div class="passage-box">
+    <h3>Excerpt: Frederick Douglass, "What to the Slave Is the Fourth of July?" (1852)</h3>
+    <p>What, to the American slave, is your 4th of July? I answer: a day that reveals to him, more than all other days in the year, the gross injustice and cruelty to which he is the constant victim. To him, your celebration is a sham; your boasted liberty, an unholy license; your national greatness, swelling vanity; your sounds of rejoicing are empty and heartless.</p>
+    <p class="attribution">Frederick Douglass, "What to the Slave Is the Fourth of July?", Rochester, NY, July 5, 1852 (public domain excerpt)</p>
+  </div>
+
+  <h3>Voice A: Spare and Direct (~60 words)</h3>
+
+  <div class="voice-excerpt">
+    <p>Douglass weaponizes the second person. Every "your" lands like an accusation. Your celebration. Your liberty. Your greatness. The anaphora builds a wall between Douglass and his audience. He's no longer asking for inclusion. He's judging from outside. The repetition hammers the point: this is THEIR hypocrisy, not a shared American problem. The distance that might weaken his authority becomes moral high ground.</p>
+  </div>
+
+  <h3>Voice B: Elaborate and Layered (~120 words)</h3>
+
+  <div class="voice-excerpt">
+    <p>Douglass's strategic deployment of second-person pronouns throughout the paragraph functions not as a gesture of inclusion but as a systematic distancing mechanism that repositions the speaker-audience relationship. The anaphoric repetition of "your"—appearing six times in three sentences—constructs a rhetorical wall that separates Douglass from his listeners, transforming what might have been a shared national reckoning into an indictment delivered from the position of moral outsider. By claiming the role of excluded observer rather than petitioning for inclusion within the celebratory community, Douglass converts his marginalization from a weakness into an authoritative vantage point: the distance that could undermine his credibility instead becomes the very source of his moral clarity, enabling him to render judgment on American hypocrisy from a position untainted by complicity.</p>
+  </div>
+
+  <p><strong>Analysis of the Two Versions:</strong></p>
+  <ul>
+    <li><strong>Same Analytical Point:</strong> Both versions argue that Douglass uses "your" to create distance, transforming exclusion into authority.</li>
+    <li><strong>Voice A:</strong> Short sentences. Plain verbs ("weaponizes," "lands," "builds," "hammers"). Staccato rhythm. 60 words. Effect: immediate, forceful.</li>
+    <li><strong>Voice B:</strong> Long cumulative sentences. Latinate abstractions ("strategic deployment," "distancing mechanism," "anaphoric repetition"). Embedded clauses. 120 words. Effect: comprehensive, dense.</li>
+    <li><strong>Which Is Better?</strong> Neither. Both are effective analytical writing. Voice A is more accessible. Voice B is more comprehensive. The question is: which is more effective FOR THIS PASSAGE? Douglass's language is sharp and accusatory. Voice A mirrors that sharpness. Voice B provides scholarly distance. Both are defensible choices.</li>
+  </ul>
+</div>
+
+<h2>Phase 3: Supported Practice (10 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Write the Same Paragraph in Two Voices</h3>
+
+  <p><strong>Your Task:</strong> Write a body paragraph analyzing Ida B. Wells's rhetorical strategy in the excerpt below. Write the paragraph TWICE—once in a spare/direct voice, once in an elaborate/layered voice. Make the same analytical point both times.</p>
+
+  <div class="passage-box">
+    <h3>Excerpt: Ida B. Wells, "Lynch Law in All Its Phases" (1893)</h3>
+    <p>From 1882 to 1891, over 1,400 men, women, and children were lynched in this country. It has been claimed that the Negro in America is especially given to rape. This charge is refuted by the facts. Out of every 100 lynchings, less than 30 are for the charge of rape. The remainder are for such charges as "attempted rape," "race prejudice," "making threats," "quarreling with white men," "being saucy," and other equally trivial offenses.</p>
+    <p class="attribution">Ida B. Wells, "Lynch Law in All Its Phases," excerpt, 1893 (public domain representative excerpt)</p>
+  </div>
+
+  <p><strong>Analytical Point to Make (same in both versions):</strong> Wells uses statistical evidence and then lists "trivial offenses" to expose the gap between the stated justification for lynching (rape) and the actual reasons (racial control). The list of charges reveals that lynching is not about justice but about maintaining white supremacy through terror.</p>
+
+  <h3>Version 1: Spare/Direct Voice</h3>
+  <p><strong>Constraints:</strong> Average sentence length 10-15 words. Plain verbs. Simple syntax. Punchy rhythm. Target ~60-80 words.</p>
+  <div style="border: 1px solid var(--border); border-radius: 4px; padding: 1rem; background: white; min-height: 100px; margin: 1rem 0;">
+    <em>Write your spare/direct version here.</em>
+  </div>
+
+  <h3>Version 2: Elaborate/Layered Voice</h3>
+  <p><strong>Constraints:</strong> Average sentence length 20-30 words. Some Latinate vocabulary. Subordinate clauses. Cumulative rhythm. Target ~100-120 words.</p>
+  <div style="border: 1px solid var(--border); border-radius: 4px; padding: 1rem; background: white; min-height: 100px; margin: 1rem 0;">
+    <em>Write your elaborate/layered version here.</em>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Evaluate Your Two Versions</div>
+    <p><strong>Answer these questions:</strong></p>
+    <ol>
+      <li>Did both versions make the same analytical point? (If not, revise until they do.)</li>
+      <li>Which version is more effective for Wells's strategy? (The list of "trivial offenses" is devastating in its specificity—does spare or elaborate voice better capture that effect?)</li>
+      <li>Which version sounds more like YOUR natural voice?</li>
+      <li>Which version was harder to write? (Usually, the voice that's NOT your default feels more difficult.)</li>
+    </ol>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (6 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Write in Your Chosen Voice</h3>
+
+  <p><strong>Your Task:</strong> Now that you've experimented with two voices, choose ONE—the voice you think is most effective for analytical writing. Write a body paragraph about a passage of your choice in YOUR chosen voice. This is your voice going forward.</p>
+
+  <p><strong>Passage Options (choose one):</strong></p>
+  <ul>
+    <li>Frederick Douglass, "Fourth of July" (any section not yet analyzed)</li>
+    <li>Ida B. Wells, "Lynch Law" (any section not yet analyzed)</li>
+    <li>Sojourner Truth, "Ain't I a Woman?" (any section)</li>
+    <li>Or: any passage from your Speed Run essays (L08-L10)</li>
+  </ul>
+
+  <p><strong>Write ONE body paragraph (80-120 words) in the voice you've chosen. Then apply the "Read Aloud Test."</strong></p>
+
+  <div class="rubric-box">
+    <p><strong>The Read Aloud Test:</strong></p>
+    <ul>
+      <li>Read your paragraph aloud (silently, but as if speaking).</li>
+      <li>Does it sound like YOU, or like a template?</li>
+      <li>If any sentence sounds like it came from an essay-writing robot, revise it.</li>
+      <li>Target: every sentence should sound like something a smart human being would actually say when explaining an idea.</li>
+    </ul>
+  </div>
+
+  <div style="border: 1px solid var(--border); border-radius: 4px; padding: 1rem; background: white; min-height: 120px; margin: 1rem 0;">
+    <em>Write your paragraph in your chosen voice here.</em>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Post-Writing Reflection</div>
+    <p><strong>After applying the Read Aloud Test, answer:</strong> Did you revise any sentences to sound more like you? Which ones? What specific changes did you make (word choice, sentence structure, eliminating template phrases)?</p>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>You Have Proven Voice Is a Choice:</strong> You wrote the same paragraph in two voices. You evaluated which was more effective. You chose a voice and wrote in it deliberately. This means you can never again say "I don't have a voice" or "That's just how I write."</p>
+    <p><strong>For the AP exam and beyond:</strong> Write in the voice that's most effective for each passage. You might use a different voice for rhetorical analysis (where precision matters) than for argument (where conviction matters). That adaptability—choosing your voice to match your task—is itself a form of sophistication.</p>
+    <p><strong>Next lesson (L20):</strong> You'll practice maintaining your voice under time pressure. When the clock is ticking, students revert to template language. Your final challenge: keep your voice when it matters most.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Final Reflection</div>
+    <p><strong>How does the Voice Experiment change your understanding of what it means to "write well"?</strong> Before this lesson, you might have thought good writing meant using sophisticated vocabulary or complex sentences. After experimenting with voice, what do you think good writing means now?</p>
+  </div>
+
+  <details>
+    <summary>Click to reveal model response</summary>
+    <div class="model-answer">
+      <p>Before the Voice Experiment, I thought good writing meant sounding "academic"—using big words, long sentences, and formal tone. After writing the same point in two voices, I realize good writing means making CONSCIOUS CHOICES about diction, syntax, register, and rhythm to match your purpose and passage. "Sophisticated vocabulary" isn't sophisticated if it obscures your point. A short, sharp sentence can be more powerful than a long, elaborate one—it depends on the rhetorical task. Good writing now means: clear, precise, and deliberately voiced. It means sounding like a person who thought carefully about how to say what they mean, not like a template.</p>
+    </div>
+  </details>
+</div>
+
+<div class="footnote">
+  <p>B2 L19 • Voice Experiment • D.9.03 (applied) • ~25 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L18_Voice_Analysis.html">← Previous: L18 Voice Analysis</a>
+  <a href="B2_L20_Voice_Under_Pressure.html">Next: L20 Voice Under Pressure + Gate Prep →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

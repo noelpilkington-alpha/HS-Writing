@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L08: Speed Run 1 - Rhetorical Analysis</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+.timer-box {
+  background: #fff3cd; border: 1px solid #ffc107; border-left: 4px solid #ffc107; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.scoring-table {
+  background: #f8f9fa; border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.scoring-table table { margin: 0; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 8</span>
+  <h1>Speed Run 1: Rhetorical Analysis</h1>
+  <p class="subtitle">Full Timed Essay with Sophistication + Quality Tracking</p>
+  <div class="meta-bar">
+    <span>⏱ ~50 min</span>
+    <span>📍 KCs: C.HS.04 (Sustain Quality Under Time Pressure)</span>
+    <span>🧠 Mental Models: All (M1-M6)</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Speed Run Protocol:</strong> Full AP essay at full AP timing. The difference from B1L: you MUST include a sophistication move planned during your 5-minute prep. New focus: <span class="vocab-term">Quality Drop-Off Tracking</span>. Where does your essay weaken? Final paragraph? Third body paragraph? Identifying the drop-off point is as important as your score—it tells you what to fix.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Speed Runs with Row C Integration</h3>
+
+  <p>You've written full timed rhetorical analysis essays in B1L. You can hit Rows A and B reliably. <strong>B2's new challenge: sustain Row C quality under time pressure.</strong></p>
+
+  <p>Speed Run protocol:</p>
+  <ul>
+    <li><strong>5 minutes:</strong> Reading + planning (includes sophistication move: type, location, content)</li>
+    <li><strong>30 minutes:</strong> Writing (execute your plan, including the sophistication move)</li>
+    <li><strong>5 minutes:</strong> Review (check: did sophistication appear? did quality drop?)</li>
+    <li><strong>Total: 40 minutes</strong></li>
+  </ul>
+
+  <p><span class="vocab-term">Quality Drop-Off Tracker</span> is new. After writing, you'll mark the exact moment where your essay's quality started to decline. For most students, it's the third body paragraph or conclusion. That's your timing target for Speed Run 2—you need to adjust pacing to sustain quality longer.</p>
+
+  <div class="timer-box">
+    <p><strong>Before You Begin:</strong> Set three timers or mark three timestamps:</p>
+    <ul>
+      <li><strong>Timer 1:</strong> 5 minutes (planning phase ends)</li>
+      <li><strong>Timer 2:</strong> 35 minutes (30 min writing complete, review begins)</li>
+      <li><strong>Timer 3:</strong> 40 minutes (essay complete)</li>
+    </ul>
+    <p>When time expires in each phase, STOP and move to the next phase. This simulates AP exam conditions.</p>
+  </div>
+</div>
+
+<h2>Phase 2: Independent Practice (40 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Full Rhetorical Analysis Essay: Wendell Phillips</h3>
+
+  <div class="passage-box">
+    <h3>Wendell Phillips, "The Philosophy of the Abolition Movement" (1853)</h3>
+
+    <p>The Anti-Slavery Movement, from the beginning, has placed itself on this broad ground: that the slave is a man, and therefore has human rights. The moment you deprive a man of the right to his body, to the fruit of his own labor, to protect his wife and child, to make a contract or acquire property, that moment you deprive him of the attributes of manhood.</p>
+
+    <p>Men say to us, "You are too radical; you are hurting your own cause; you are driving away those who would be your friends." Let me assure them that we know what we are about. If we would free the slave, we must agitate. Slavery will not come to an end of itself. "Eternal vigilance is the price of liberty." Power concedes nothing without a demand. It never did and it never will.</p>
+
+    <p>But how shall we agitate? By proclaiming the truth. Error may be pardoned, but sin never. You do not argue about a self-evident thing. When a man steals, you do not say to him, "I think you are wrong; I believe that is my purse." You say, "Give me back my purse!" I shall never claim sympathy for the slave, as if his skin made any difference. I claim his liberty because he is a man.</p>
+
+    <p>It is said that our continual agitation—our constant warfare—has made the South more determined, has riveted the chains of the slave more firmly. Sir, when I see a great evil, I cannot calculate whether my opposition to it will increase or diminish its power. I shall oppose it. The only question I ask is, "Is it wrong?" If it is, I will oppose it, though the whole world stand against me.</p>
+
+    <p>Men tell us we must argue gently, politely. But this is not a question for the calm, marble intellect. It is a question for the heart and the conscience. We live in a country where every sixth man is a slave—where the right to hold property in man is the great question—and shall I be patient? Mr. Chairman, I am afraid I shall forget I am a man, if I try to be patient about this matter. There are moments when I cannot be calm.</p>
+
+    <p class="attribution">Wendell Phillips, "The Philosophy of the Abolition Movement," address at the Massachusetts Anti-Slavery Society, Boston, January 27, 1853 (public domain excerpt, condensed for AP exam simulation)</p>
+  </div>
+
+  <div class="timer-box">
+    <p><strong>START TIMER: 40 minutes total</strong></p>
+    <p><strong>Phase 1 (5 min):</strong> Read the passage and plan your essay. Your plan must include: thesis, 3 body paragraph claims, sophistication move (type, location, content), key evidence.</p>
+    <p><strong>Phase 2 (30 min):</strong> Write your full rhetorical analysis essay. Execute your plan, including the sophistication move.</p>
+    <p><strong>Phase 3 (5 min):</strong> Review your essay. Check for errors, but more importantly: Did your sophistication move appear? Where did quality start to drop?</p>
+  </div>
+
+  <p><strong>Writing Space:</strong> Write your essay on separate paper or in a document. When time expires, STOP immediately.</p>
+</div>
+
+<h2>Phase 3: Self-Score (5 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Score Your Essay + Track Quality Drop-Off</h3>
+
+  <div class="rubric-box">
+    <p><strong>AP Rubric (Rows A, B, C):</strong></p>
+    <ul>
+      <li><strong>Row A (Thesis, 0-1 pt):</strong> Does your thesis name rhetorical strategies and explain how they serve the writer's purpose? (Not just "uses rhetorical devices")</li>
+      <li><strong>Row B (Evidence + Analysis, 0-4 pts):</strong> Do you provide specific evidence from the text AND analyze how it works (S-F-E)? 4 = consistent analysis throughout, 3 = mostly strong analysis, 2 = some analysis but also summary/feature-spotting, 1 = mostly summary</li>
+      <li><strong>Row C (Sophistication, 0-1 pt):</strong> Does your essay demonstrate sophistication via broader context, alternative reading, tension/complexity, or vivid style?</li>
+    </ul>
+  </div>
+
+  <div class="scoring-table">
+    <p><strong>Your Self-Score:</strong></p>
+    <table>
+      <tr>
+        <th style="width: 30%;">Row</th>
+        <th style="width: 20%;">Your Score</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td><strong>Row A (Thesis)</strong></td>
+        <td>___ / 1</td>
+        <td><em>Does your thesis defend a position about Phillips's strategies and purpose?</em></td>
+      </tr>
+      <tr>
+        <td><strong>Row B (Evidence + Analysis)</strong></td>
+        <td>___ / 4</td>
+        <td><em>Did you analyze HOW strategies work (S-F-E) or just identify WHAT he does?</em></td>
+      </tr>
+      <tr>
+        <td><strong>Row C (Sophistication)</strong></td>
+        <td>___ / 1</td>
+        <td><em>Did your planned sophistication move appear? Is it organic or tacked on?</em></td>
+      </tr>
+      <tr style="background: var(--accent-light);">
+        <td><strong>TOTAL</strong></td>
+        <td><strong>___ / 6</strong></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Quality Drop-Off Tracker</div>
+    <p><strong>Critical question: Where did your essay's quality start to drop?</strong></p>
+    <ul>
+      <li>Mark the paragraph where your analysis weakened (less specific evidence, more summary, weaker S-F-E)</li>
+      <li>Mark the paragraph where your sophistication move was supposed to appear—did it?</li>
+      <li>Mark any paragraph where you rushed or ran out of things to say</li>
+    </ul>
+    <p><strong>Typical drop-off points:</strong></p>
+    <ul>
+      <li><strong>Third body paragraph:</strong> You spent too much time on BP1 and BP2, so BP3 is rushed</li>
+      <li><strong>Conclusion:</strong> You ran out of time or energy</li>
+      <li><strong>Second body paragraph:</strong> Your planning was too shallow, so you ran out of analysis early</li>
+    </ul>
+    <p><em>Write a 2-sentence diagnosis: "My quality dropped at [specific paragraph] because [specific reason]. For Speed Run 2, I need to [specific adjustment]."</em></p>
+  </div>
+</div>
+
+<h2>Phase 4: Debrief (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>The Drop-Off Point Is Your Target</strong></p>
+
+    <p>Your score tells you WHERE you are. Your drop-off point tells you WHAT TO FIX.</p>
+
+    <p>If you scored Row A = 1, Row B = 3, Row C = 0 (total 4/6), you know two things:</p>
+    <ol>
+      <li>You can write a thesis and sustain analysis (that's B1L-level work)</li>
+      <li>Your sophistication move didn't appear (that's the B2 gap)</li>
+    </ol>
+
+    <p>If your quality dropped in the third body paragraph, that's a PACING problem, not a skill problem. You know how to analyze—you just need to allocate time differently. Speed Run 2 target: push the drop-off point LATER into your essay.</p>
+
+    <p><strong>Mark the exact moment in your essay where quality started to drop.</strong> That's your timing target for Speed Run 2. Can you sustain quality 30 seconds longer? One more paragraph? That incremental progress is how you reach 5+.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>Compare this Speed Run to your B1L Speed Runs.</strong> Did adding the sophistication requirement change your pacing? Did you sacrifice Row B quality to pursue Row C? Or did you skip Row C to ensure Row B? What's your strategy adjustment for Speed Run 2?</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B2 L08 • Speed Run 1: Rhetorical Analysis • C.HS.04 (Sustain Quality) • ~50 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L07_Sophistication_in_Full_Essay.html">← Previous: L07 Sophistication in Full Essay</a>
+  <a href="B2_L09_Speed_Run_2_Argument.html">Next: L09 Speed Run 2: Argument →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

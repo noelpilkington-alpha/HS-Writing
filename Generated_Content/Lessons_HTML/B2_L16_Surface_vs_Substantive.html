@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L16: Surface vs. Substantive Revision</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.version-box {
+  background: #f8f9fa; border: 1px solid var(--border); border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.sort-item {
+  background: #fff9e6; border: 1px solid #ffc107; border-radius: 8px;
+  padding: 1rem; margin: 1rem 0;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 16</span>
+  <h1>Surface vs. Substantive Revision</h1>
+  <p class="subtitle">Editing vs. Revising — What Actually Changes Scores</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: D.11.01 (Distinguish Surface from Substantive)</span>
+    <span>🧠 Mental Model: M1</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Editing Makes It Cleaner. Revision Makes It Better.</strong> Most students think they're revising when they're just editing. Surface editing = fixing errors (spelling, grammar, word choice, fluency). Substantive revision = changing IDEAS (thesis, evidence, argument structure, analytical depth, sophistication). Editing makes a 4 into a cleaner 4. Revision makes a 4 into a 5.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Two Types of Revision</h3>
+
+  <p><strong>Surface editing:</strong> Correcting errors in spelling, grammar, punctuation, word choice, and sentence fluency. Surface editing makes your writing clearer, more polished, and easier to read. It matters for credibility and professionalism. But it doesn't change your THINKING or improve your SCORE on the AP rubric.</p>
+
+  <p><strong>Substantive revision:</strong> Changing ideas, arguments, evidence, analysis, and structure. Substantive revision transforms WHAT you're saying and HOW you're arguing. It improves thesis quality, analytical depth, evidence selection, and sophistication. This is what changes scores.</p>
+
+  <div class="rubric-box">
+    <p><strong>The Revision Test:</strong> Ask yourself: "If I made this change, would my Row A, B, or C score improve?"</p>
+    <ul>
+      <li><strong>If NO →</strong> You're surface editing (still valuable, but not score-changing)</li>
+      <li><strong>If YES →</strong> You're substantively revising (this is what raises scores)</li>
+    </ul>
+  </div>
+
+  <p><strong>Why students confuse them:</strong> Both feel like "improving" your writing. Both require effort. But only substantive revision addresses the rubric criteria. An essay with perfect grammar and weak analysis still scores low. An essay with minor surface errors but strong analysis scores high.</p>
+
+  <p><strong>Key insight:</strong> You need BOTH. Surface editing is necessary but insufficient. Revision is what changes scores. Always revise BEFORE you edit—don't polish sentences you might delete.</p>
+</div>
+
+<h2>Phase 2: Model (3 min)</h2>
+<div class="phase-card model-card">
+  <h3>Before/After Comparison</h3>
+
+  <p><strong>Original paragraph (from a rhetorical analysis essay):</strong></p>
+
+  <div class="version-box">
+    <p>Patrick Henry's speech contains many rhetorical questions. These questions force the audience to agree with him. For example, he asks, "Is life so dear, or peace so sweet, as to be purchased at the price of chains and slavery?" This makes neutrality impossible. Henry is using questions to make people support his position.</p>
+  </div>
+
+  <p><strong>Version A: Surface Editing</strong></p>
+
+  <div class="version-box">
+    <p>Patrick Henry's speech contains numerous rhetorical questions that compel audience agreement. For instance, he asks, "Is life so dear, or peace so sweet, as to be purchased at the price of chains and slavery?" This rhetorical move makes neutrality impossible. Henry employs questions to persuade his listeners to support his position.</p>
+  </div>
+
+  <p><strong>What changed:</strong> "Many" → "numerous," "these questions force" → "rhetorical questions that compel," "for example" → "for instance," "is using" → "employs," "make people" → "persuade his listeners." The paragraph is now more polished and formal.</p>
+
+  <p><strong>What DIDN'T change:</strong> The analysis. The writer still just identifies a rhetorical question and says it "forces agreement" without explaining HOW or WHY. The paragraph follows the same formulaic pattern (identify device → provide example → state effect). <strong>Score: unchanged. Still feature-spotting without deep analysis.</strong></p>
+
+  <hr style="margin: 1.5rem 0;">
+
+  <p><strong>Version B: Substantive Revision</strong></p>
+
+  <div class="version-box">
+    <p>Patrick Henry makes neutrality impossible through rhetorical questions that corner his audience. When he asks, "Is life so dear, or peace so sweet, as to be purchased at the price of chains and slavery?" he forces listeners to either endorse resistance or admit they value comfort over freedom. Henry doesn't ask whether war is wise or winnable—he asks whether his audience has courage or cowardice. By framing the issue as a moral test rather than a practical decision, he makes any position other than immediate military action seem shameful. The questions don't invite deliberation; they coerce agreement.</p>
+  </div>
+
+  <p><strong>What changed:</strong> The IDEAS. The revision:</p>
+  <ul>
+    <li>Reorganizes to foreground the rhetorical effect ("makes neutrality impossible") rather than the device</li>
+    <li>Explains the false choice Henry creates: "either endorse resistance or admit they value comfort over freedom"</li>
+    <li>Shows WHY the question works: it frames the issue as "moral test rather than practical decision"</li>
+    <li>Adds the final insight: "don't invite deliberation; they coerce agreement"</li>
+  </ul>
+
+  <p><strong>Result:</strong> This is no longer feature-spotting. This is analysis—explaining HOW the strategy functions and WHY it's effective for THIS audience. <strong>Score: improved. This could move Row B from 2 to 3.</strong></p>
+
+  <div class="coping-model">
+    <p><strong>Teacher thinking:</strong></p>
+    <p><span class="false-start">I should make my writing sound more sophisticated. I'll change "many" to "numerous" and "force" to "compel."</span></p>
+    <p><span class="correction">Wait—that's just surface editing. Does changing "many" to "numerous" improve my ANALYSIS? No. It makes the sentence sound fancier, but it doesn't explain HOW Henry's question works. That's the revision I actually need.</span></p>
+    <p><span class="strong">To revise substantively, I need to ask: What am I NOT explaining yet? I said the question "forces agreement," but I didn't explain HOW. Let me add: the question creates a false choice between courage and cowardice, making disagreement seem shameful. THAT changes the analysis quality.</span></p>
+  </div>
+</div>
+
+<h2>Phase 3: Supported Practice (10 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Surface vs. Substantive Sort</h3>
+
+  <p><strong>Instructions:</strong> For each revision action below, classify it as <strong>Surface Editing</strong> or <strong>Substantive Revision</strong>. Then, if it's surface editing, describe what a substantive revision would look like instead.</p>
+
+  <div class="sort-item">
+    <p><strong>Item 1:</strong> Changed "Between you and I, this argument is unconvincing" to "Between you and me, this argument is unconvincing."</p>
+    <div class="check-question">
+      <div class="q-label">Classification</div>
+      <p><strong>Is this Surface Editing or Substantive Revision?</strong></p>
+      <ol type="A">
+        <li>Surface Editing</li>
+        <li>Substantive Revision</li>
+      </ol>
+      <details style="margin-top: 1rem;">
+        <summary>Show Answer & Explanation</summary>
+        <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+          <p><strong>Answer: A — Surface Editing</strong></p>
+          <p><strong>Why:</strong> This corrects a grammatical error (object pronoun after preposition) without changing meaning, structure, or argument quality. The sentence communicates the same idea before and after.</p>
+          <p><strong>Substantive version:</strong> Reconsider whether this informal, confidential tone ("between you and me") is appropriate for academic writing. Replace with "This argument fails to convince for three reasons," which removes the colloquial framing and leads directly into analysis. The substantive revision addresses rhetorical choice, not just correctness.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="sort-item">
+    <p><strong>Item 2:</strong> In a sentence analyzing Douglass, changed "Douglass uses patriotic language to make his audience feel guilty" to "Douglass uses patriotic language to implicate his audience in slavery's continuation."</p>
+    <div class="check-question">
+      <div class="q-label">Classification</div>
+      <p><strong>Is this Surface Editing or Substantive Revision?</strong></p>
+      <ol type="A">
+        <li>Surface Editing</li>
+        <li>Substantive Revision</li>
+      </ol>
+      <details style="margin-top: 1rem;">
+        <summary>Show Answer & Explanation</summary>
+        <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+          <p><strong>Answer: B — Substantive Revision</strong></p>
+          <p><strong>Why:</strong> This looks like word substitution but actually represents substantive revision because it sharpens the analysis. "Make his audience feel guilty" suggests emotional manipulation. "Implicate his audience in slavery's continuation" identifies a more specific rhetorical strategy—establishing complicity and responsibility. The revision shows clearer thinking about what Douglass is doing rhetorically. This changes the quality of analysis, not just surface expression.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="sort-item">
+    <p><strong>Item 3:</strong> Added "Furthermore," to the beginning of the third body paragraph, which previously started with "Wells uses statistical evidence."</p>
+    <div class="check-question">
+      <div class="q-label">Classification</div>
+      <p><strong>Is this Surface Editing or Substantive Revision?</strong></p>
+      <ol type="A">
+        <li>Surface Editing</li>
+        <li>Substantive Revision</li>
+      </ol>
+      <details style="margin-top: 1rem;">
+        <summary>Show Answer & Explanation</summary>
+        <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+          <p><strong>Answer: A — Surface Editing</strong></p>
+          <p><strong>Why:</strong> This improves flow and readability without changing content or analytical quality. The transition word helps the reader track structure, but it doesn't alter the argument or deepen the analysis. The paragraph makes the same points before and after.</p>
+          <p><strong>Substantive version:</strong> Reconsider the paragraph's relationship to what comes before. Instead of just adding "Furthermore" (parallel addition), restructure to show how Wells's statistical evidence builds on or contrasts with the previous paragraph's strategy. For example: "While her testimony establishes emotional urgency, Wells reinforces her case with statistical evidence that makes lynching impossible to dismiss as rare or justified." This creates a clearer logical relationship between ideas rather than just signaling sequence.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="sort-item">
+    <p><strong>Item 4:</strong> Changed entire paragraph structure from "Patrick Henry uses rhetorical questions. These questions force agreement. For example, he asks [quote]. This makes neutrality impossible" to "Patrick Henry makes neutrality impossible through rhetorical questions that corner his audience. When he asks [quote], he forces listeners to either endorse resistance or admit they value comfort over freedom."</p>
+    <div class="check-question">
+      <div class="q-label">Classification</div>
+      <p><strong>Is this Surface Editing or Substantive Revision?</strong></p>
+      <ol type="A">
+        <li>Surface Editing</li>
+        <li>Substantive Revision</li>
+      </ol>
+      <details style="margin-top: 1rem;">
+        <summary>Show Answer & Explanation</summary>
+        <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+          <p><strong>Answer: B — Substantive Revision</strong></p>
+          <p><strong>Why:</strong> This reorganizes ideas to foreground rhetorical effect rather than device. The original follows a formulaic pattern (identify → example → effect). The revision leads with effect and shows HOW the device accomplishes it, creating more sophisticated analysis. Additionally, the revision specifies the false choice Henry creates ("endorse resistance or admit they value comfort"), showing deeper thinking about how the rhetoric functions. The structure now reflects better analysis, not just better sentence variety.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="sort-item">
+    <p><strong>Item 5:</strong> Changed citation from (Douglass 1852) to (Douglass, 1852) to add the comma required by MLA format.</p>
+    <div class="check-question">
+      <div class="q-label">Classification</div>
+      <p><strong>Is this Surface Editing or Substantive Revision?</strong></p>
+      <ol type="A">
+        <li>Surface Editing</li>
+        <li>Substantive Revision</li>
+      </ol>
+      <details style="margin-top: 1rem;">
+        <summary>Show Answer & Explanation</summary>
+        <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+          <p><strong>Answer: A — Surface Editing</strong></p>
+          <p><strong>Why:</strong> This corrects formatting to match style guide without affecting content, analysis, or argument. The citation communicates the same information before and after—the change is purely mechanical. While proper citation format is important for academic credibility, this revision doesn't engage with the thinking or rhetorical choices in the essay.</p>
+          <p><strong>Substantive version:</strong> Instead of just fixing citation format, revise the sentence containing the citation to more clearly connect evidence to analytical claim. For example, if the original read "Douglass calls the Fourth of July 'bombast, fraud, and hypocrisy' (Douglass 1852)," a substantive revision might be: "Douglass's choice of terms—'bombast, fraud, and hypocrisy'—escalates from exaggeration to deception to moral violation, intensifying his indictment with each word (Douglass, 1852)." This revision improves the analysis, not just the citation format.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (8 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Revise Your Own Paragraph</h3>
+
+  <p><strong>Task:</strong> Take your weakest Speed Run paragraph (from any of your three Speed Run essays). You'll revise it twice: once with surface editing (2 min), once with substantive revision (5 min).</p>
+
+  <div class="self-check">
+    <div class="q-label">Step 1: Surface Edit (2 minutes)</div>
+    <p><strong>Make surface edits to your paragraph:</strong></p>
+    <ul>
+      <li>Fix any grammar, spelling, or punctuation errors</li>
+      <li>Replace weak or vague words with stronger, more precise vocabulary</li>
+      <li>Improve sentence fluency (combine choppy sentences, break up run-ons)</li>
+      <li>Add transitions if needed</li>
+    </ul>
+    <p><strong>After editing, ask:</strong> Did these changes improve my Row A, B, or C score? (Probably not—you made it cleaner but didn't change the thinking.)</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Step 2: Substantive Revision (5 minutes)</div>
+    <p><strong>Now make substantive revisions:</strong></p>
+    <ul>
+      <li><strong>If weak thesis:</strong> Revise to add line of reasoning. Preview HOW your strategies work, not just WHAT they are.</li>
+      <li><strong>If feature-spotting analysis:</strong> Add S-F-E Effect step. After identifying strategy, explain impact on audience.</li>
+      <li><strong>If vague evidence:</strong> Replace with specific, precise evidence. Add context or explanation.</li>
+      <li><strong>If missing sophistication:</strong> Add one sophistication sentence (broader context, alternative reading, or tension).</li>
+      <li><strong>If weak structure:</strong> Reorganize to foreground your analytical claim rather than the device name.</li>
+    </ul>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Compare Versions</div>
+    <p><strong>After both revisions, answer:</strong></p>
+    <ol>
+      <li><strong>Which version (surface edit or substantive revision) changed your score?</strong> If you scored the edited version and the revised version, which one improved?</li>
+      <li><strong>Was the substantive revision harder than surface editing?</strong> Why or why not?</li>
+      <li><strong>If you only had time for ONE type of revision before the AP exam, which should you choose?</strong></li>
+    </ol>
+  </div>
+
+  <div class="rubric-box">
+    <p><strong>Key Insight:</strong> Substantive revision takes longer and requires deeper thinking than surface editing. But the time investment pays off—substantive revision changes scores. Surface editing just makes low-scoring work look cleaner.</p>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>From now on, when you "revise," ask: Am I editing or revising?</strong></p>
+
+    <ul style="margin-top: 1rem;">
+      <li><strong>If you're fixing errors:</strong> You're editing (necessary, but not score-changing)</li>
+      <li><strong>If you're changing ideas:</strong> You're revising (this is what raises scores)</li>
+    </ul>
+
+    <p style="margin-top: 1rem;"><strong>Best practice:</strong> Always revise BEFORE you edit. Don't waste time polishing a sentence you might delete during substantive revision. Sequence: (1) Write rough draft, (2) Substantive revision (change ideas), (3) Surface editing (clean up), (4) Proofread.</p>
+
+    <p><strong>AP exam application:</strong> During your 5-minute review at the end of each FRQ, you don't have time for substantive revision—the essay is already written. But you DO have time for quick surface edits (fix obvious errors, add a missing word, clarify a vague phrase). For substantive revision, you need your planning time. That's when you decide WHAT to argue and HOW to structure it.</p>
+
+    <p><strong>Next lesson:</strong> Multi-Pass Revision Protocol. You'll learn a 4-pass system that separates substantive revision (Passes 1-3) from surface editing (Pass 4).</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B2 L16 • Surface vs. Substantive Revision • D.11.01 (Distinguish Editing from Revision) • ~25 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L15_Diagnose_Your_Own_Work.html">← Previous: L15 Diagnose Your Own Work</a>
+  <a href="B2_L17_Multi_Pass_Revision.html">Next: L17 Multi-Pass Revision Protocol →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

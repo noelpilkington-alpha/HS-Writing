@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L13: Recovery Drill</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.timer-box {
+  background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0; text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 13</span>
+  <h1>Recovery Drill</h1>
+  <p class="subtitle">Writing the Minimum Viable Essay in 30 Minutes</p>
+  <div class="meta-bar">
+    <span>⏱ ~45 min</span>
+    <span>📍 KCs: C.HS.04 (Sustained Quality Under Constraint)</span>
+    <span>🧠 Mental Models: M1-M6</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Recovery Scenario:</strong> You start an AP essay 10 minutes late. You have 30 minutes instead of 40. What's your move? Panic leads to incomplete essays. Strategy leads to passing scores. This lesson teaches triage: write a COMPLETE essay that earns the points available, not a perfect essay that runs out mid-paragraph.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>The Minimum Viable Essay</h3>
+
+  <p><strong>Recovery scenario:</strong> You spent too long on a previous FRQ, you misread the clock, or you lost track of time. However it happened, you have 30 minutes instead of 40 to write a rhetorical analysis essay.</p>
+
+  <p><strong>Wrong response:</strong> Write as much as you can, hoping to finish. Result: a strong thesis, two excellent body paragraphs, and a third paragraph that stops mid-sentence. Score: probably 2-3 (incomplete work). The AP rubric penalizes incompleteness severely.</p>
+
+  <p><strong>Right response:</strong> Write a COMPLETE essay scaled to 30 minutes. Sacrifice sophistication and the third body paragraph. Prioritize completeness over complexity.</p>
+
+  <div class="rubric-box">
+    <p><strong>The 30-Minute Minimum Viable Essay Structure:</strong></p>
+    <ul>
+      <li><strong>Thesis with line of reasoning (Row A):</strong> 2 minutes. Clear thesis previewing TWO body paragraphs, not three.</li>
+      <li><strong>Two body paragraphs with S-F-E analysis (Row B):</strong> 22 minutes (11 min each). Strategy-Function-Effect, clear evidence, specific analysis.</li>
+      <li><strong>Brief conclusion:</strong> 3 minutes. Restate significance without adding new analysis.</li>
+      <li><strong>Quick review:</strong> 3 minutes. Fix obvious errors, ensure readability.</li>
+    </ul>
+  </div>
+
+  <p><strong>Expected score:</strong> Row A = 1 (clear thesis), Row B = 2-3 (adequate analysis in two paragraphs), Row C = 0 (no time for sophistication) = Total 3-4. <strong>That's passing.</strong></p>
+
+  <p><strong>Key insight:</strong> A 250-word essay with complete analysis beats a 400-word essay that ends abruptly. The worst outcome on the AP exam isn't a mediocre essay—it's an unfinished one.</p>
+
+  <p><strong>Bonus move:</strong> If you finish the minimum viable essay with 2-3 minutes remaining, add ONE sophistication sentence. That single sentence can raise your score from 4 to 5.</p>
+</div>
+
+<h2>Phase 2: Model (3 min)</h2>
+<div class="phase-card model-card">
+  <h3>Example: Minimum Viable Essay (250 words, 30 minutes)</h3>
+
+  <p><strong>Prompt:</strong> Analyze the rhetorical strategies Frederick Douglass uses in "What to the Slave Is the Fourth of July?" to persuade his audience of American hypocrisy regarding slavery.</p>
+
+  <div class="model-answer">
+    <p>In "What to the Slave Is the Fourth of July?" Frederick Douglass uses bitter irony and strategic second-person address to force his white abolitionist audience to confront the hypocrisy of celebrating freedom while tolerating slavery.</p>
+
+    <p>Douglass's central strategy is irony. He opens by acknowledging the significance of Independence Day and praising the founders' achievements, establishing common ground with his audience. This seeming agreement disarms resistance before he pivots sharply: "What, to the American slave, is your Fourth of July?" The question devastates because Douglass has first validated his audience's patriotism. He answers his own question by calling the celebration "bombast, fraud, deception, impiety, and hypocrisy." The accumulated terms escalate from exaggeration to moral violation, making dismissal impossible. By praising before condemning, Douglass creates cognitive dissonance his audience cannot ignore.</p>
+
+    <p>Douglass reinforces this effect through strategic second-person address. He shifts from "the Fourth of July" to "YOUR Fourth of July," from "this celebration" to "YOUR celebration." The repeated "your" pronouns position Douglass as an outsider judging his audience's complicity. They cannot claim neutral observation—Douglass names them as participants in the hypocrisy he condemns. This direct address transforms abstract wrongdoing into personal accountability, making moral distance impossible.</p>
+
+    <p>Through irony and direct address, Douglass achieves his purpose: his audience cannot celebrate American independence without confronting American slavery.</p>
+
+    <p><strong>[Word count: ~250. Score estimate: 4/6. Row A = 1 (clear thesis), Row B = 3 (adequate S-F-E analysis across two strategies), Row C = 0 (no sophistication move).]</strong></p>
+  </div>
+
+  <p><strong>Note:</strong> This isn't brilliant work. It's COMPLETE work written in 30 minutes. Two body paragraphs, clear S-F-E analysis, finished conclusion. Compare to a partial essay with three body paragraphs where the third stops mid-sentence—that scores lower despite potentially stronger analysis.</p>
+
+  <p><strong>Bonus insight:</strong> If this writer had 30 seconds left, they could add ONE sophistication sentence: "Douglass's approach mirrors a pattern throughout 19th-century reform rhetoric—rather than rejecting American values, reformers held America accountable to its own founding principles." That single sentence adds Row C credit, raising the score from 4 to 5.</p>
+</div>
+
+<h2>Phase 3: Independent — Recovery Drill (30 min TIMED)</h2>
+<div class="phase-card independent-card">
+  <h3>Write a Minimum Viable Essay in 30 Minutes</h3>
+
+  <div class="passage-box">
+    <h3>William Lloyd Garrison, "To the Public" (1831)</h3>
+
+    <p>In the month of August, I issued proposals for publishing "THE LIBERATOR" in Washington city; but the enterprise, though hailed in different sections of the country, was deemed inexpedient. Since that time, the removal of the Genius of Universal Emancipation to the Seat of Government has rendered less imperious the establishment of a similar periodical in that quarter.</p>
+
+    <p>During my recent tour for the purpose of exciting the minds of the people by a series of discourses on the subject of slavery, every place that I visited gave fresh evidence of the fact, that a greater revolution in public sentiment was to be effected in the free states—and particularly in New England—than at the south. I found contempt more bitter, opposition more active, detraction more relentless, prejudice more stubborn, and apathy more frozen, than among slave owners themselves. Of course, there were individual exceptions to the contrary.</p>
+
+    <p>I determined, at every hazard, to lift up the standard of emancipation in the eyes of the nation, within sight of Bunker Hill and in the birth place of liberty. That standard is now unfurled; and long may it float, unhurt by the spoliations of time or the missiles of a desperate foe—yea, till every chain be broken, and every bondman set free! Let southern oppressors tremble—let their secret abettors tremble—let their northern apologists tremble—let all the enemies of the persecuted blacks tremble.</p>
+
+    <p>I am aware, that many object to the severity of my language; but is there not cause for severity? I will be as harsh as truth, and as uncompromising as justice. On this subject, I do not wish to think, or speak, or write, with moderation. No! no! Tell a man whose house is on fire, to give a moderate alarm; tell him to moderately rescue his wife from the hands of the ravisher; tell the mother to gradually extricate her babe from the fire into which it has fallen;—but urge me not to use moderation in a cause like the present. I am in earnest—I will not equivocate—I will not excuse—I will not retreat a single inch—AND I WILL BE HEARD.</p>
+
+    <p class="attribution">William Lloyd Garrison, first editorial in <em>The Liberator</em>, January 1, 1831 (public domain)</p>
+  </div>
+
+  <div class="timer-box">
+    <p>⏱ YOU HAVE 30 MINUTES (NOT 40)</p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem; font-weight: normal;">2 min: Thesis | 22 min: Two body paragraphs | 3 min: Conclusion | 3 min: Review</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Write a rhetorical analysis essay analyzing Garrison's strategies in "To the Public." You have 30 minutes total. Your essay MUST include:</p>
+  <ul>
+    <li>A thesis that establishes a line of reasoning (Row A)</li>
+    <li>TWO body paragraphs with S-F-E analysis (Row B)</li>
+    <li>A brief conclusion</li>
+  </ul>
+
+  <p><strong>Do NOT attempt:</strong></p>
+  <ul>
+    <li>Three body paragraphs (no time)</li>
+    <li>Sophisticated context or complexity moves (sacrifice Row C to complete Row B)</li>
+    <li>Long introduction or conclusion (keep both under 75 words combined)</li>
+  </ul>
+
+  <p><strong>If time remains:</strong> Add ONE sophistication sentence anywhere in your essay. A single sentence can add Row C credit.</p>
+
+  <div class="rubric-box">
+    <p><strong>Success = Completeness, not brilliance.</strong> A finished 250-word essay scores higher than an unfinished 400-word essay.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Self-Score (4 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Score Your Recovery Essay</h3>
+
+  <div class="self-check">
+    <div class="q-label">Self-Scoring Checklist</div>
+    <p><strong>Answer these questions about your essay:</strong></p>
+    <ol>
+      <li><strong>Did you finish?</strong> Complete means: thesis + 2 body paragraphs + conclusion. If you stopped mid-paragraph, you didn't finish.</li>
+      <li><strong>Row A (Thesis):</strong> Does your thesis establish a line of reasoning? Does it preview the strategies you analyze in your two body paragraphs? (Score 0 or 1)</li>
+      <li><strong>Row B (Evidence & Commentary):</strong> Do both body paragraphs include S-F-E analysis? Do you explain how strategies function and what effects they create? (Score 0-4)</li>
+      <li><strong>Row C (Sophistication):</strong> Did you add any sophistication move? If not, score = 0. If yes, is it organic or tacked on? (Score 0 or 1)</li>
+      <li><strong>Did you sacrifice the right things?</strong> You should have sacrificed: third body paragraph, sophistication (unless time remained), elaborate intro/conclusion. You should NOT have sacrificed: complete sentences, S-F-E analysis, finishing the essay.</li>
+    </ol>
+  </div>
+
+  <p><strong>Target score for recovery essay: 3-4/6.</strong> If you scored 3-4 AND finished, you executed the recovery successfully. If you scored 5-6, excellent—but check that you actually had only 30 minutes. If you scored 0-2, the issue is likely incompleteness or weak analysis, not time management.</p>
+
+  <div class="check-question">
+    <div class="q-label">Reflection</div>
+    <p><strong>Compare your recovery essay to essays you've written with full 40-minute timing. What did you sacrifice? Was the sacrifice strategic (gave up sophistication to ensure completion) or panicked (gave up analysis quality because you rushed)?</strong></p>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>When to use the recovery strategy:</strong></p>
+    <ul>
+      <li><strong>On AP exam day:</strong> If you realize you have less than 40 minutes remaining for any FRQ, switch to the minimum viable essay structure immediately. Don't hope you'll speed up—plan for the time you actually have.</li>
+      <li><strong>Practice insight:</strong> If you consistently run out of time on essays, your planning phase is too short. Students who spend 5 minutes planning write faster and more clearly than students who spend 2 minutes planning and "figure it out" while writing.</li>
+      <li><strong>The sophistication bonus:</strong> Row C credit doesn't require a full paragraph. One well-placed sentence that provides broader context, explores tension, or offers an alternative reading can earn the sophistication point. Don't skip it if you have 30 seconds remaining.</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Gate Preparation</div>
+    <p><strong>How does this recovery drill prepare you for the B2 gate?</strong> You'll write three essays in the gate assessment: synthesis (55 min), rhetorical analysis (40 min), and argument (40 min). If any one essay falls behind schedule, you now have a recovery protocol. The minimum viable essay is your insurance policy against incomplete work.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B2 L13 • Recovery Drill • C.HS.04 (Sustained Quality Under Constraint) • ~45 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L12_Plan_to_Essay_Bridge_2.html">← Previous: L12 Plan-to-Essay Bridge 2</a>
+  <a href="B2_L14_Expert_Calibration.html">Next: L14 Expert Calibration →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

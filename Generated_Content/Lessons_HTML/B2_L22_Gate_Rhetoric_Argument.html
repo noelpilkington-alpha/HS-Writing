@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L22: Gate Assessment — Rhetorical Analysis + Argument</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+  --danger: #dc3545;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: #6f42c1; color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+.timer-box {
+  background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px;
+  padding: 1rem; margin: 1rem 0; text-align: center;
+}
+.timer-box h3 {
+  color: var(--warning); margin: 0 0 0.5rem 0; font-size: 1.2rem;
+}
+.gate-box {
+  background: #f8d7da; border: 2px solid var(--danger); border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+  font-weight: 600; color: #842029;
+}
+.gate-success {
+  background: #d1e7dd; border: 2px solid #a3cfbb; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+  font-weight: 600; color: #0a3622;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 22 · GATE ASSESSMENT (2 of 2) — FINAL</span>
+  <h1>Gate Assessment — Rhetorical Analysis + Argument</h1>
+  <p class="subtitle">Chief Joseph's Rhetoric + Certainty & Understanding (80 min back-to-back)</p>
+  <div class="meta-bar">
+    <span>⏱ ~90 min</span>
+    <span>📍 All rhetoric and argument KCs + C.HS.04 assessed</span>
+    <span>🎯 Gate Assessment 2 of 2 — FINAL</span>
+  </div>
+</div>
+
+<div class="gate-box">
+  ⚠️ <strong>GATE ASSESSMENT SESSION 2 (FINAL):</strong> This is your final B2 lesson. Today you complete Rhetorical Analysis (40 min) + Argument (40 min). Combined with yesterday's Synthesis, you'll have 3 scored essays. To pass the B2 gate: <strong>5+ points on at least 2 of 3 essays, with no essay below 4</strong>. If you pass, you've completed Course B2 and achieved AP exam readiness at the 5+ level.
+</div>
+
+<div class="key-concept">
+  <strong>Today's Challenge:</strong> Execute two full AP essays back-to-back with only a 3-minute break. You'll analyze Chief Joseph's rhetoric (passage you've never seen) and argue your position on certainty and understanding (prompt you've never seen). Apply all six Mental Models. Maintain voice under pressure. Include sophistication moves in both essays. This is the culmination of your B2 training.
+</div>
+
+<h2>Phase 1: Warm-Up (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Timing Review: Two Essays, One Session</h3>
+
+  <table>
+    <tr>
+      <th style="width: 30%;">Essay</th>
+      <th style="width: 25%;">Timing</th>
+      <th>Strategy Reminder</th>
+    </tr>
+    <tr>
+      <td><strong>Rhetorical Analysis</strong></td>
+      <td>40 min total</td>
+      <td><strong>5 min:</strong> Read passage + map rhetorical situation (speaker/audience/purpose/context) + identify 2-3 strategies<br>
+      <strong>30 min:</strong> Write (5 intro/thesis, 21 body, 4 conclusion)<br>
+      <strong>5 min:</strong> Review + add sophistication if missing</td>
+    </tr>
+    <tr>
+      <td><strong>Break</strong></td>
+      <td>3 min</td>
+      <td>Stand up. Breathe deeply. Shake out your hands. Let the rhetorical analysis go—you cannot change it. Reset for argument.</td>
+    </tr>
+    <tr>
+      <td><strong>Argument</strong></td>
+      <td>40 min total</td>
+      <td><strong>5 min:</strong> Deconstruct prompt + brainstorm 3-4 specific examples + outline thesis/body claims + plan sophistication move<br>
+      <strong>30 min:</strong> Write (5 intro, 24 body, 1 conclusion)<br>
+      <strong>5 min:</strong> Review + check evidence specificity</td>
+    </tr>
+  </table>
+
+  <p><strong>Your weakest row reminder:</strong> Before you begin, recall your pattern diagnosis from L15. If Row B is consistently weak, monitor your analysis—are you reaching Effect or stopping at Feature? If Row C is weak, plan your sophistication moves during planning, not while writing. If Row A is weak, ensure your thesis includes a line of reasoning, not just a list of strategies or a vague claim.</p>
+</div>
+
+<h2>Phase 2: Independent — Rhetorical Analysis (40 min)</h2>
+<div class="phase-card independent-card" data-min-words="400" data-rubric="B2_gate_rhetoric">
+  <h3>FRQ 2: Rhetorical Analysis</h3>
+
+  <div style="background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+    <p><strong>Directions:</strong> Read the passage carefully. Then, in a well-written essay, analyze the rhetorical choices Chief Joseph makes to convey his argument about justice for Native Americans.</p>
+    <p style="margin-bottom: 0;"><strong>In your response you should do the following:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Respond to the prompt with a thesis that analyzes the writer's rhetorical choices</li>
+      <li>Select and use evidence to support your line of reasoning</li>
+      <li>Explain how the evidence supports your line of reasoning</li>
+      <li>Demonstrate an understanding of the rhetorical situation</li>
+      <li>Use appropriate grammar and punctuation in communicating your argument</li>
+    </ul>
+  </div>
+
+  <div class="passage-box">
+    <h3>Chief Joseph, "An Indian's View of Indian Affairs" (excerpt)</h3>
+
+    <p>My friends, I have been asked to show you my heart. I am glad to have a chance to do so. I want the white people to understand my people. Some of you think an Indian is like a wild animal. This is a great mistake. I will tell you all about our people, and then you can judge whether an Indian is a man or not. I believe much trouble and blood would be saved if we opened our hearts more.</p>
+
+    <p>I will tell you in my way how the Indian sees things. The white man has more words to tell you how they look to him, but it does not require many words to speak the truth. What I have to say will come from my heart, and I will speak with a straight tongue. The Great Spirit is looking at me, and will hear me.</p>
+
+    <p>My name is In-mut-too-yah-lat-lat (Thunder-traveling-over-the-Mountains). I am chief of the Wal-lam-wat-kin band of Chute-pa-lu, or Nez Percés (nose-pierced Indians). I was born in eastern Oregon, thirty-eight winters ago. My father was chief before me. When a young man he was called Joseph by Mr. Spaulding, a missionary. He died a few years ago. He left a good name on the earth. He advised me well for my people.</p>
+
+    <p>Our fathers gave us many laws, which they had learned from their fathers. These laws were good. They told us to treat all men as they treated us; that we should never be the first to break a bargain; that it was a disgrace to tell a lie; that we should speak only the truth; that it was a shame for one man to take from another his wife, or his property without paying for it. We were taught to believe that the Great Spirit sees and hears everything, and that he never forgets; that hereafter he will give every man a spirit-home according to his desserts: if he has been a good man, he will have a good home; if he has been a bad man, he will have a bad home. This I believe, and all my people believe the same.</p>
+
+    <p>We did not know there were other people besides the Indian until about one hundred winters ago, when some men with white faces came to our country. They brought many things with them to trade for furs and skins. They brought tobacco, which was new to us. They brought guns with flint stones on them, which frightened our women and children. Our people could not talk with these white-faced men, but they used signs which all people understood. These men were Frenchmen, and they called our people "Nez Percés," because they wore rings in their noses for ornaments. Although very few of our people wear them now, we are still called by the same name. These French trappers said a great many things to our fathers, which have been planted in our hearts. Some were good for us, but some were bad.</p>
+
+    <p>The first white men of your people who came to our country were named Lewis and Clark. They also brought many things that our people had never seen. They talked straight, and our people gave them a great feast, as a proof that their hearts were friendly. These men were very kind. They made presents to our chiefs and our people made presents to them. We had a great many horses, of which we gave them what they needed, and they gave us guns and tobacco in return. All the Nez Percés made friends with Lewis and Clark, and agreed to let them pass through their country, and never to make war on white men. This promise the Nez Percés have never broken.</p>
+
+    <p class="attribution">Chief Joseph (In-mut-too-yah-lat-lat), "An Indian's View of Indian Affairs," <em>North American Review</em>, 1879. Chief Joseph (1840-1904) was a leader of the Nez Perce tribe who resisted forced relocation. After military conflict and a dramatic retreat toward Canada, Chief Joseph and his people were captured and confined to a reservation. This excerpt is from a published essay written to advocate for Native American rights and counter prevailing stereotypes.</p>
+  </div>
+
+  <div class="timer-box">
+    <p><strong>⏱ BEGIN RHETORICAL ANALYSIS (40 minutes)</strong></p>
+    <p>5 min: Read passage + map rhetorical situation + identify strategies<br>
+    30 min: Write essay<br>
+    5 min: Review</p>
+  </div>
+
+  <div style="background: #f8f9fa; border: 2px solid var(--border); border-radius: 8px; padding: 1.25rem; margin: 1rem 0; min-height: 250px;">
+    <p style="color: var(--muted); font-style: italic;">[Write your rhetorical analysis essay here or on paper. Remember: Analyze HOW Chief Joseph's strategies serve his purpose for his audience. Use M5 (Reverse Engineering) to identify what he's trying to accomplish. Apply S-F-E to reach Effect. Include a sophistication move—M6 framing analysis ("How does Chief Joseph frame Native Americans vs. how does dominant culture frame them?") works exceptionally well here.]</p>
+  </div>
+</div>
+
+<h2>Phase 3: Break (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>3-Minute Break</h3>
+  <p>Stand up. Walk around. Breathe deeply. Shake out your hands. Drink water.</p>
+  <p><strong>Mental reset:</strong> The rhetorical analysis is complete. You cannot change it. Let it go entirely. Focus only on the argument essay ahead. You're generating evidence from knowledge—your strength from A2 and B1L. You know how to build sophisticated arguments. You have M6 as an analytical lens. You're ready.</p>
+</div>
+
+<h2>Phase 4: Independent — Argument Essay (40 min)</h2>
+<div class="phase-card independent-card" data-min-words="450" data-rubric="B2_gate_argument">
+  <h3>FRQ 3: Argument</h3>
+
+  <div style="background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+    <p><strong>Directions:</strong> The following prompt is based on an accompanying quotation. Read the quotation carefully. Then, write an essay that argues your position on the claim.</p>
+    <p style="margin-bottom: 0;"><strong>In your response you should do the following:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Respond to the prompt with a thesis that presents a defensible position</li>
+      <li>Provide evidence to support your line of reasoning</li>
+      <li>Explain how the evidence supports your line of reasoning</li>
+      <li>Use appropriate grammar and punctuation in communicating your argument</li>
+    </ul>
+  </div>
+
+  <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0;">
+    <h3 style="margin: 0 0 0.75rem 0; color: var(--primary);">Argument Prompt</h3>
+    <p>The philosopher Bertrand Russell wrote: <strong>"The whole problem with the world is that fools and fanatics are always so certain of themselves, and wiser people so full of doubts."</strong></p>
+
+    <p>In many domains—science, ethics, politics, personal life—we seek certainty: definitive answers, clear principles, reliable predictions. Some argue that the pursuit of certainty drives rigorous inquiry, decisiveness, and confidence. Others contend that certainty is the enemy of understanding: it closes inquiry prematurely, creates dogmatism, and ignores complexity. Still others suggest the relationship between certainty and understanding varies by domain or that both certainty and doubt play essential roles.</p>
+
+    <p style="margin-bottom: 0;"><strong>Assignment:</strong> Write an essay that argues your position on whether pursuing certainty helps or hinders understanding. Use appropriate evidence from your reading, experience, or observations to support your argument.</p>
+  </div>
+
+  <div class="timer-box">
+    <p><strong>⏱ BEGIN ARGUMENT ESSAY (40 minutes)</strong></p>
+    <p>5 min: Deconstruct prompt + brainstorm evidence + outline + plan sophistication<br>
+    30 min: Write essay (intro + 3-4 body paragraphs + conclusion)<br>
+    5 min: Review + check evidence specificity and sophistication</p>
+  </div>
+
+  <div style="background: #f8f9fa; border: 2px solid var(--border); border-radius: 8px; padding: 1.25rem; margin: 1rem 0; min-height: 250px;">
+    <p style="color: var(--muted); font-style: italic;">[Write your argument essay here or on paper. Remember: Generate specific evidence from knowledge (history, literature, science, current events, personal observation). Explain how your evidence supports your position—don't assume the connection is obvious. Consider complicating the binary: perhaps certainty-seeking (methodological rigor) differs from certainty-claiming (premature closure). Include a sophistication move—precise distinctions, broader context, or tension/complexity.]</p>
+  </div>
+</div>
+
+<h2>Phase 5: Self-Score Both Essays (5 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Score Your Rhetorical Analysis & Argument Essays</h3>
+
+  <div class="rubric-box">
+    <p><strong>AP Rubric (Both Essays):</strong></p>
+    <table style="font-size: 0.85rem;">
+      <tr>
+        <th style="width: 20%;">Row</th>
+        <th style="width: 20%;">Points</th>
+        <th>Criteria</th>
+      </tr>
+      <tr>
+        <td><strong>Row A<br>Thesis</strong></td>
+        <td>0 or 1</td>
+        <td>Defensible claim + line of reasoning</td>
+      </tr>
+      <tr>
+        <td><strong>Row B<br>Evidence</strong></td>
+        <td>0-4</td>
+        <td><strong>Rhetorical Analysis:</strong> S-F-E analysis of strategies (explaining HOW they serve purpose), not feature-spotting<br>
+        <strong>Argument:</strong> Specific evidence from knowledge with explanation of how it supports your position</td>
+      </tr>
+      <tr>
+        <td><strong>Row C<br>Sophistication</strong></td>
+        <td>0 or 1</td>
+        <td>Demonstrates complexity via precise distinctions, broader context, M6 framing, tension, or consistently vivid style</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Your L22 Scores</div>
+    <p><strong>Rhetorical Analysis (Chief Joseph):</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Row A: ___ / 1</li>
+      <li>Row B: ___ / 4</li>
+      <li>Row C: ___ / 1</li>
+      <li><strong>Total:</strong> ___ / 6</li>
+    </ul>
+
+    <p style="margin-top: 1rem;"><strong>Argument (Certainty & Understanding):</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Row A: ___ / 1</li>
+      <li>Row B: ___ / 4</li>
+      <li>Row C: ___ / 1</li>
+      <li><strong>Total:</strong> ___ / 6</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 6: Combined Gate Assessment (5 min)</h2>
+<div class="phase-card independent-card">
+  <h3>B2 Gate Check: L21 + L22 (All 3 Essays)</h3>
+
+  <p>You've now completed all 3 AP essays for the B2 gate. Calculate your combined performance across Synthesis (L21) + Rhetorical Analysis (L22) + Argument (L22).</p>
+
+  <div class="rubric-box">
+    <p><strong>B2 Gate Threshold:</strong> Pass = <strong>5+ points on at least 2 of 3 essays, no essay below 4</strong></p>
+    <table style="font-size: 0.9rem; margin-top: 1rem;">
+      <tr>
+        <th style="width: 35%;">Essay</th>
+        <th style="width: 20%;">Your Score</th>
+        <th style="width: 20%;">Pass? (5+)</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td><strong>L21 Synthesis</strong><br>(Healthcare Access & Equity)</td>
+        <td>___ / 6</td>
+        <td>Y / N</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>L22 Rhetorical Analysis</strong><br>(Chief Joseph)</td>
+        <td>___ / 6</td>
+        <td>Y / N</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>L22 Argument</strong><br>(Certainty & Understanding)</td>
+        <td>___ / 6</td>
+        <td>Y / N</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Gate Result</div>
+    <p><strong>How many essays earned 5+ points?</strong> ___ / 3</p>
+    <p><strong>Did any essay score below 4?</strong> Yes / No</p>
+    <p><strong>B2 Gate Status:</strong> PASS (2+ essays at 5+, none below 4) / NOT YET</p>
+
+    <p style="margin-top: 1rem;"><strong>If you passed:</strong> Congratulations! You've completed Course B2 and achieved AP exam readiness at the 5+ level. Your weakest essay and weakest row pattern indicate what to review before the real AP exam, but you've demonstrated mastery across all three FRQ types at the sophistication level required for top scores.</p>
+
+    <p><strong>If you didn't pass yet:</strong> Identify your weakest essay type and weakest row across all three essays. Review the relevant B2 lessons (L01-L03 for sophistication moves, L08-L13 for timed performance, L14-L17 for self-diagnosis and revision, L18-L20 for voice). You have the skills—you need targeted practice on your specific weakness.</p>
+  </div>
+
+  <div class="self-check" style="margin-top: 1.5rem;">
+    <div class="q-label">Reflection: Pattern Analysis Across 3 Essays</div>
+    <p><strong>Across all 3 essays, which row was consistently weakest?</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Row A (Thesis): ___ / 3 points earned across essays</li>
+      <li>Row B (Evidence): ___ / 12 points earned across essays</li>
+      <li>Row C (Sophistication): ___ / 3 points earned across essays</li>
+    </ul>
+    <p style="margin-top: 0.75rem;"><strong>Your weakest row pattern is:</strong> A / B / C (circle one)</p>
+    <p><strong>Before the AP exam, your practice priority is:</strong> [Write one specific action based on your weakest row—e.g., "Plan sophistication moves during 5-minute outline phase" or "Drill S-F-E analysis to ensure I reach Effect in every paragraph"]</p>
+  </div>
+</div>
+
+<h2>Phase 7: Course Completion (3 min)</h2>
+<div class="gate-success" style="margin-top: 2rem;">
+  <p><strong>🎓 COURSE B2 COMPLETE</strong></p>
+
+  <p><strong>You have completed all four high school writing courses in the Alpha School 2 Hour Learning system:</strong></p>
+  <ul style="margin-left: 2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+    <li><strong>A1 (Grade 9):</strong> Analytical Foundations — learned M1 (Everything Is a Choice) and M2 (Structure-Feature-Effect), built argument essays from knowledge</li>
+    <li><strong>A2 (Grade 10):</strong> College-Ready Writing — learned M3 (Force Field) and M4 (Claim Hierarchy), synthesized sources, prepared for ACT Writing</li>
+    <li><strong>B1L (Grade 11):</strong> AP Language Essays — learned M5 (Reverse Engineering), wrote rhetorical analysis, synthesis, and argument essays at AP level (4+)</li>
+    <li><strong>B2 (Grade 12):</strong> AP Mastery & Sophistication — learned M6 (Who Benefits?), mastered Row C sophistication moves, achieved 5+ readiness</li>
+  </ul>
+
+  <p><strong>You now have all six Mental Models operating simultaneously:</strong></p>
+  <ul style="margin-left: 2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+    <li><strong>M1:</strong> Everything Is a Choice — you see writers as decision-makers, not decorators</li>
+    <li><strong>M2:</strong> Structure-Feature-Effect — you analyze HOW strategies work, not just WHAT they are</li>
+    <li><strong>M3:</strong> Force Field — you map competing forces to generate positions, not just pick sides</li>
+    <li><strong>M4:</strong> Claim Hierarchy — you structure arguments as cascading reasoning, not topic lists</li>
+    <li><strong>M5:</strong> Reading as Reverse Engineering — you infer purpose from choices, working backward from text to intent</li>
+    <li><strong>M6:</strong> Who Benefits? — you ask whose interests are served by framings, making visible what's obscured</li>
+  </ul>
+
+  <p><strong>You can:</strong></p>
+  <ul style="margin-left: 2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+    <li>Write rhetorical analysis, synthesis, and argument essays at AP level (targeting 5+)</li>
+    <li>Self-diagnose your writing with 80%+ calibration accuracy against AP rubrics</li>
+    <li>Execute multi-pass substantive revision that transforms ideas, not just surface edits</li>
+    <li>Maintain quality under time pressure with consistent sophistication moves</li>
+    <li>Write with a distinctive analytical voice that's clear, precise, and engaging</li>
+    <li>Apply M6 framing analysis to recognize whose perspective shapes arguments and what's excluded</li>
+  </ul>
+
+  <p style="margin-top: 1rem;"><strong>If you passed the gate:</strong> You're ready for the AP Language and Composition exam at the 5+ level. Your pattern diagnosis tells you what to review, but you've demonstrated mastery. Continue practicing targeted weak spots (your weakest row or essay type) and maintain your sophistication toolkit. On exam day, trust your training—you've written dozens of timed essays and calibrated against AP standards repeatedly.</p>
+
+  <p><strong>What comes next:</strong> The AP exam is not the end of analytical writing—it's a checkpoint. College writing, graduate study, professional communication, and civic engagement all demand the skills you've built: analyzing complex arguments, synthesizing multiple perspectives, constructing evidence-based positions, and recognizing whose interests shape discourse. The six Mental Models are tools for life, not just exam preparation. You're not just AP-ready—you're ready to think critically about any text in any context.</p>
+</div>
+
+<div class="footnote">
+  <p>B2 L22 • Gate Assessment — Rhetorical Analysis + Argument • All rhetoric and argument KCs + C.HS.04 assessed • ~90 min • Gate Session 2 of 2 — FINAL • Course B2 Complete</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="B2_L21_Gate_Synthesis.html" class="prev">← L21: Gate — Synthesis</a>
+  <span style="color: var(--muted); font-style: italic;">Course B2 Complete — AP Exam Ready (5+)</span>
+</nav>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L06: Tension/Complexity Drill</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.warning-box {
+  background: #fff3cd; border: 1px solid #ffc107; border-left: 4px solid #ffc107; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 6</span>
+  <h1>Tension/Complexity Drill</h1>
+  <p class="subtitle">Writing Sophistication Move 3: Exploring Unresolved Tensions</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.HS.03 (Tension/Complexity)</span>
+    <span>🧠 Mental Model: M6</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Tension/Complexity:</strong> The most challenging sophistication move. You identify a moment where the text resists simple resolution—where contradictory impulses coexist productively. The sophistication comes from EXPLORING the tension without resolving it. Format: "The tension between [X] and [Y] resists simple resolution, instead pointing to..." This shows you understand that great writing often holds contradictions in productive balance.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Sit with Complexity</h3>
+
+  <p>Most academic writing trains you to RESOLVE contradictions: "Although X seems true, actually Y is correct." That's useful for argument. But <span class="vocab-term">Tension/Complexity</span> sophistication does something different: it identifies contradictions that DON'T resolve—and explains why the unresolved tension is itself meaningful.</p>
+
+  <p><strong>The counterintuitive move:</strong> Don't fix the contradiction. Explore it.</p>
+
+  <p>This is the hardest sophistication type because it requires you to resist the urge to tidy things up. You must recognize that some tensions are PRODUCTIVE—they generate the text's power precisely because they refuse easy answers.</p>
+
+  <div class="warning-box">
+    <p><strong>Important:</strong> Not every passage contains a productive tension. If you force a tension that isn't there, you weaken your analysis. Use this move only when you genuinely see contradictory impulses that the text holds in balance. When you do find a real tension, it's the most impressive sophistication move you can make.</p>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>Which of these explores tension without resolving it?</strong></p>
+    <ol type="A">
+      <li>"Douglass seems to reject his audience, but actually he's inviting them to join his cause."</li>
+      <li>"The tension between Douglass's address to 'fellow-citizens' and his accusation of their complicity doesn't resolve—it's the engine of the speech's power, holding inclusion and indictment in productive friction."</li>
+      <li>"Douglass addresses his audience as both insiders and outsiders, which is confusing."</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> B identifies the tension (inclusion vs. indictment) and explains that it DOESN'T resolve—and that the unresolved tension is productive. A resolves the tension ("actually he's inviting them"), which eliminates the complexity. C identifies the tension but dismisses it as "confusing" rather than exploring its rhetorical purpose. Tension/complexity sophistication sits with the contradiction and explains its function.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (5 min)</h2>
+<div class="phase-card model-card">
+  <h3>Modeling Tension Exploration: Douglass</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Frederick Douglass, "What to the Slave Is the Fourth of July?" (1852)</h3>
+
+    <p><strong>[Opening]</strong> Fellow-citizens, pardon me, allow me to ask, why am I called upon to speak here today? What have I, or those I represent, to do with your national independence?</p>
+
+    <p><strong>[Later]</strong> What, to the American slave, is your 4th of July? I answer: a day that reveals to him, more than all other days in the year, the gross injustice and cruelty to which he is the constant victim. To him, your celebration is a sham; your boasted liberty, an unholy license; your national greatness, swelling vanity.</p>
+
+    <p class="attribution">Frederick Douglass, "What to the Slave Is the Fourth of July?", Rochester, NY, July 5, 1852 (public domain excerpt)</p>
+  </div>
+
+  <p><strong>Watch a writer identify and explore a productive tension, including the false start.</strong></p>
+
+  <div class="coping-model">
+    <p><strong>Writer's thinking process:</strong></p>
+
+    <p><span class="false-start">Douglass addresses the audience as "fellow-citizens" at the start, but then later condemns their celebration as a "sham." This seems contradictory. Actually, Douglass uses the "fellow-citizens" opening strategically to establish common ground before pivoting to condemnation, which makes his criticism more effective because the audience feels included at first.</span></p>
+
+    <p><span class="correction">Wait—I just resolved the tension by explaining it away ("actually it's strategic"). But what if the tension between inclusion and accusation is ITSELF the point? Let me try not resolving it.</span></p>
+
+    <p><span class="strong">The tension between Douglass's inclusive opening—his address to "fellow-citizens"—and his later accusation that "your celebration is a sham" resists simple resolution. He neither fully includes himself in American citizenship nor fully positions himself as an outsider condemning from beyond the nation's boundaries. This unresolved tension is the engine of the speech's rhetorical power. By sustaining the contradiction between "fellow" and "your," Douglass forces the audience to inhabit the paradox he experiences daily: simultaneous insider and exile, citizen and non-person. The speech doesn't resolve this tension because American society hasn't resolved it. A version of the speech that moved cleanly from "we" to "you" or from "you" to "we" would lose the productive friction that makes the hypocrisy visible. The sophistication here is that Douglass's rhetoric PERFORMS the contradiction it critiques—it holds the audience in the same impossible position that slavery creates.</span></p>
+  </div>
+
+  <p><strong>Key insight:</strong> Notice the writer doesn't say "Douglass ultimately chooses X" or "this contradiction is resolved by Y." The tension REMAINS. The analysis explains why the unresolved tension is rhetorically powerful.</p>
+</div>
+
+<h2>Phase 3: Supported Practice (10 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Identify and Explore Tensions</h3>
+
+  <p><strong>Your Task:</strong> For each of the 2 passages below, identify a central tension. Then write 3 sentences exploring the tension WITHOUT resolving it. Use the frame: "The tension between [X] and [Y] resists simple resolution, instead..."</p>
+
+  <div class="passage-box">
+    <h3>Passage 1: Sojourner Truth, "Ain't I a Woman?" (1851)</h3>
+    <p>That man over there says that women need to be helped into carriages, and lifted over ditches, and to have the best place everywhere. Nobody ever helps me into carriages, or over mud-puddles, or gives me any best place! And ain't I a woman? Look at me! Look at my arm! I have ploughed and planted, and gathered into barns, and no man could head me! And ain't I a woman?</p>
+    <p class="attribution">Sojourner Truth, Women's Rights Convention, Akron, Ohio, 1851 (public domain excerpt)</p>
+  </div>
+
+  <p><strong>Identify a tension:</strong> What contradictory impulses or positions does Truth hold simultaneously? (Hint: Think about her claim to womanhood vs. her rejection of feminine fragility.)</p>
+
+  <p><strong>Explore it in 3 sentences:</strong></p>
+  <textarea style="width: 100%; min-height: 120px; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; font-family: inherit; font-size: 0.9rem; margin-bottom: 1.5rem;" placeholder="The tension between [X] and [Y] resists simple resolution, instead..."></textarea>
+
+  <div class="passage-box">
+    <h3>Passage 2: Ida B. Wells, "Lynch Law in All Its Phases" (1893)</h3>
+    <p>I am before the American people today through no inclination of my own, but because of a deep-seated conviction that the country at large does not know the extent to which lynch law prevails in parts of the Republic. [...] Out of every 100 lynchings, less than 30 are for the charge of rape. The remainder are for such charges as "attempted rape," "race prejudice," "making threats," "quarreling with white men," "being saucy," and other equally trivial offenses.</p>
+    <p class="attribution">Ida B. Wells, "Lynch Law in All Its Phases," 1893 (public domain excerpt)</p>
+  </div>
+
+  <p><strong>Identify a tension:</strong> What about Wells's rhetorical stance contains contradictory impulses? (Hint: Think about her claim to speak reluctantly vs. her exhaustive documentation.)</p>
+
+  <p><strong>Explore it in 3 sentences:</strong></p>
+  <textarea style="width: 100%; min-height: 120px; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; font-family: inherit; font-size: 0.9rem; margin-bottom: 1.5rem;" placeholder="The tension between [X] and [Y] resists simple resolution, instead..."></textarea>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p><strong>After writing your tension explorations, ask:</strong></p>
+    <ul>
+      <li>Did I RESOLVE the tension (e.g., "Although X seems true, actually Y is the real point")? If yes, revise—let the tension stand.</li>
+      <li>Did I explain WHY the unresolved tension is productive or meaningful?</li>
+      <li>Does my exploration feel organic to the passage, or am I forcing a contradiction that isn't really there?</li>
+    </ul>
+  </div>
+
+  <details>
+    <summary>Model explorations for both passages</summary>
+    <div class="model-answer">
+      <p><strong>Passage 1 (Truth):</strong> The tension between Truth's insistence "Ain't I a woman?" and her systematic refutation of every marker of femininity her audience associates with womanhood (fragility, domesticity, protected status) resists simple resolution. She doesn't resolve this by proposing a new definition of womanhood—instead, she exposes the contradiction at the heart of gender ideology itself. By holding these incompatible claims in tension (I am a woman / I possess none of your criteria for womanhood), Truth reveals that "womanhood" as her audience understands it is a race- and class-specific category that excludes most women. The unresolved tension is the argument: if womanhood is fragility, then working-class Black women aren't women; if womanhood includes Truth, then fragility isn't its essence. The refusal to resolve this forces the audience to see their definition as the problem, not Truth's embodiment.</p>
+
+      <p><strong>Passage 2 (Wells):</strong> The tension between Wells's claim to speak only from "deep-seated conviction" and her exhaustive statistical documentation creates a contradiction between reluctant witness and determined investigator. She frames herself as an unwilling speaker compelled by conscience, yet the precision of her evidence (specific numbers, itemized charges, systematic refutation) reveals a meticulously constructed case. This tension resists resolution: Wells needs the ethos of reluctant testimony (which signals authenticity and moral authority) but also needs the credibility of empirical documentation (which counters dismissal of her claims as emotion). The unresolved tension between these two rhetorical stances—personal conviction and impersonal data—allows Wells to occupy both positions simultaneously, making her argument emotionally urgent AND rationally unimpeachable. A version that resolved toward pure testimony would lose evidential force; a version that resolved toward pure statistics would lose moral urgency.</p>
+    </div>
+  </details>
+</div>
+
+<h2>Phase 4: Independent Practice (6 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Return to a Prior Passage with Fresh Eyes</h3>
+
+  <p><strong>Your Task:</strong> Choose ONE of these passages you've analyzed before (in B1L or earlier in B2):</p>
+  <ul>
+    <li>SP-001 (Frederick Douglass, "Fourth of July")</li>
+    <li>SP-013 (Ida B. Wells, full speech)</li>
+    <li>SP-017 (Emma Goldman, "The Tragedy of Woman's Emancipation")</li>
+    <li>SP-024 (Frances Harper, "We Are All Bound Up Together")</li>
+  </ul>
+
+  <p>Find a <strong>tension you missed</strong> in your previous analysis. Write 3-4 sentences exploring it without resolving it.</p>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li>Identifies a genuine tension (contradictory impulses that coexist in the text)</li>
+      <li>Explores the tension without resolving it ("resists simple resolution")</li>
+      <li>Explains why the unresolved tension is productive or meaningful</li>
+      <li>Shows deeper understanding than your initial analysis of this passage</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection</div>
+    <p><strong>How does identifying this tension change your understanding of the passage?</strong> Does seeing the unresolved contradiction make the writer's rhetorical choices more complex or impressive? What did you miss by trying to resolve everything in your first reading?</p>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>When to Use Tension/Complexity:</strong> This is the rarest and most impressive sophistication move. Use it when you genuinely see contradictory impulses that the text holds in productive balance. Don't force it. Many strong passages DON'T have a meaningful unresolved tension—and that's fine. Broader context, alternative reading, or vivid style might be more appropriate.</p>
+
+    <p><strong>But when you DO find a real tension:</strong> This is 6-level sophistication. It shows you understand that great writing often refuses to resolve complexity. You're thinking at the highest AP level when you can explore tension without the impulse to fix it.</p>
+
+    <p>Tension/complexity is the sophistication move that says: "This writer is smarter than simple resolution. The contradiction is the point."</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Final Reflection</div>
+    <p><strong>Compare the three sophistication moves you've practiced:</strong> Broader Context (L04), Alternative Reading (L05), and Tension/Complexity (L06). Which feels most natural to you? Which is hardest? When you plan your next essay, which move do you think the passage best supports?</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B2 L06 • Tension/Complexity Drill • C.HS.03 (Tension/Complexity) • ~25 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L05_Alternative_Reading_Drill.html">← Previous: L05 Alternative Reading Drill</a>
+  <a href="B2_L07_Sophistication_in_Full_Essay.html">Next: L07 Sophistication in Full Essay →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

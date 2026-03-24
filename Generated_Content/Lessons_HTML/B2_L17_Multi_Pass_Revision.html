@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L17: Multi-Pass Revision Protocol</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  background: #fff; border: 1px solid var(--border); border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 17</span>
+  <h1>Multi-Pass Revision Protocol</h1>
+  <p class="subtitle">Substantive Revision in Four Focused Passes</p>
+  <div class="meta-bar">
+    <span>⏱ ~30 min</span>
+    <span>📍 KCs: C.HS.06, D.11.02</span>
+    <span>🧠 Mental Model: M6</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>The 4-Pass Revision Protocol:</strong> Most students edit when they think they're revising. Editing fixes surface errors. Revision transforms ideas. The 4-pass protocol separates these tasks: Pass 1 (Thesis & Structure), Pass 2 (Evidence & Analysis), Pass 3 (Sophistication), Pass 4 (Style & Concision). Each pass has one focus. You cannot fix everything at once. Each pass makes the essay substantively better, not just cleaner.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>What Makes Revision Substantive?</h3>
+
+  <p>You learned the difference between surface editing and substantive revision in L16. Now you learn the system that makes substantive revision reliable: the <span class="vocab-term">4-Pass Revision Protocol</span>.</p>
+
+  <p><strong>The Problem:</strong> When you "revise" an essay by reading it once and fixing whatever catches your eye, you default to surface editing. You fix comma splices, improve word choice, smooth awkward sentences. These are useful corrections, but they don't change your <em>score</em>. A cleaner 4 is still a 4.</p>
+
+  <p><strong>The Solution:</strong> Separate revision into four distinct passes, each with a single focus. Don't try to fix everything simultaneously. The protocol forces you to look at different dimensions of your essay systematically.</p>
+
+  <div class="rubric-box">
+    <p><strong>The 4 Passes:</strong></p>
+    <ul>
+      <li><strong>Pass 1 — Thesis & Structure (3 min):</strong> Is my thesis defensible with a line of reasoning? Does each body paragraph serve the thesis? Are paragraphs in the right order?</li>
+      <li><strong>Pass 2 — Evidence & Analysis (5 min):</strong> Does every piece of evidence have S-F-E analysis? Am I analyzing or summarizing? Is my analysis reaching Effect, or stopping at Function?</li>
+      <li><strong>Pass 3 — Sophistication via M6 (3 min):</strong> Where can I add one M6-driven sophistication move? Is it organic to my argument, or tacked on? Does it deepen my analysis?</li>
+      <li><strong>Pass 4 — Style & Concision (3 min):</strong> Can I cut 10% without losing meaning? Are my sentences varied? Does my voice hold throughout, or do I drift into template language?</li>
+    </ul>
+  </div>
+
+  <p><strong>The Key Principle:</strong> Each pass changes the essay's <em>ideas</em>, not just its polish. Pass 1 might change your thesis entirely. Pass 2 might add new analysis where you were summarizing. Pass 3 adds a sophistication move that wasn't there before. Pass 4 tightens your voice. These are meaning transformations, not error corrections.</p>
+
+  <p><strong>The Order Matters:</strong> You start with the biggest structural questions (thesis) and move toward the smallest refinements (word choice). If you discover in Pass 3 that your thesis is wrong, the entire protocol resets. Fix the thesis first. Then rerun the other passes.</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>A student completes one read-through of their essay, fixing spelling errors, adding transition words, and correcting a misplaced comma. They call this "revising." What did they actually do?</strong></p>
+    <ol type="A">
+      <li>Substantive revision — they improved the essay's clarity</li>
+      <li>Multi-pass revision — they looked at multiple dimensions</li>
+      <li>Surface editing — they fixed errors but didn't change ideas</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> C</p>
+        <p><strong>Why:</strong> The student fixed surface-level errors (spelling, transitions, punctuation). These corrections are necessary, but they don't constitute substantive revision because they don't transform the essay's ideas, thesis, evidence, analysis, or sophistication. Surface editing makes writing cleaner. Substantive revision makes writing better. The 4-pass protocol ensures you do both—but revision comes first.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <h3>Watching the 4-Pass Protocol in Action</h3>
+
+  <p>Below is a paragraph from a rhetorical analysis essay about Frederick Douglass's "Fourth of July" speech, scored as a 4. Watch a writer apply the first two passes of the protocol—including the false start.</p>
+
+  <div class="passage-box">
+    <h3>Original Paragraph (Score: 4)</h3>
+    <p>In the opening of his speech, Douglass uses rhetorical questions to engage his audience. He asks, "What have I, or those I represent, to do with your national independence?" This strategy is effective because it makes the audience think about the hypocrisy of celebrating freedom while slavery exists. Douglass also uses second-person pronouns like "your" to create distance between himself and the audience. This helps him position himself as an outsider who is judging their actions. The use of these strategies demonstrates Douglass's skill as a rhetorician and his understanding of how to reach his audience.</p>
+  </div>
+
+  <div class="coping-model">
+    <p><strong>Writer applying Pass 1 (Thesis & Structure):</strong></p>
+
+    <p><span class="false-start">Pass 1 — This paragraph is fine. The thesis is clear, and the paragraph supports it. Moving to Pass 2.</span></p>
+
+    <p><span class="correction">Wait. What IS the thesis this paragraph is supposed to support? I re-read my essay's thesis: "Douglass uses rhetorical questions and pronouns to criticize American hypocrisy." That's not a defensible thesis—it's just a list of strategies. Pass 1 reveals the problem: my thesis doesn't specify the rhetorical problem Douglass faced or the effect he achieved. The paragraph lists strategies but doesn't explain what problem they solve. I need to revise my thesis FIRST, then return to this paragraph.</span></p>
+
+    <p><span class="strong">Revised Thesis (after Pass 1): "Faced with the challenge of condemning American slavery without alienating his abolitionist audience, Douglass uses ironic rhetorical questions and distancing pronouns to force his listeners to articulate the hypocrisy themselves, positioning them as complicit judges rather than allies."</span></p>
+
+    <p><span class="strong">Now Pass 1 on the paragraph: Does this paragraph serve my revised thesis? It mentions the strategies but doesn't connect them to the rhetorical problem (alienating the audience) or the specific effect (making them complicit). Pass 1 diagnosis: the paragraph needs restructuring to foreground the problem-solution frame. The current version is strategy-spotting, not reverse engineering.</span></p>
+  </div>
+
+  <div class="coping-model">
+    <p><strong>Writer applying Pass 2 (Evidence & Analysis):</strong></p>
+
+    <p><span class="strong">Pass 2 Focus: Does every piece of evidence have S-F-E analysis? Am I analyzing or summarizing?</span></p>
+
+    <p><span class="strong">Check sentence 3: "This strategy is effective because it makes the audience think about the hypocrisy of celebrating freedom while slavery exists." This is Function (what it does) but not Effect (what impact it creates). I'm saying the questions make people think, but I'm not saying what HAPPENS when they think. Pass 2 diagnosis: I need to reach Effect. Revised: "This strategy disarms resistance by shifting the burden of recognition—rather than accusing the audience of hypocrisy, Douglass makes them articulate it themselves, which is harder to dismiss than an external accusation."</span></p>
+
+    <p><span class="strong">Check sentence 5: "This helps him position himself as an outsider who is judging their actions." This describes what Douglass does (judgment) but not the rhetorical effect on the audience. Pass 2 diagnosis: This is summary of content, not analysis of effect. Revised: "By positioning himself as an outsider using 'your celebration,' 'your boasted liberty,' Douglass weaponizes his exclusion—the distance that might weaken his authority instead becomes moral high ground, casting the audience's celebration as something he observes and judges from a position of superior moral clarity."</span></p>
+
+    <p><span class="strong">Pass 2 Result: The paragraph now has S-F-E analysis that reaches Effect. The score potential moves from 4 to 5.</span></p>
+  </div>
+
+  <p><strong>Notice:</strong> Pass 1 revealed that the thesis itself needed revision. Once the thesis changed, the paragraph's purpose shifted. Pass 2 then focused solely on deepening the analysis from Function to Effect. Each pass has one job. Together, they transform the essay.</p>
+</div>
+
+<h2>Phase 3: Supported Practice (14 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Apply the 4-Pass Protocol to Your Own Essay</h3>
+
+  <p><strong>Your Task:</strong> Select the strongest Speed Run essay you wrote in B2 (from L08, L09, or L10). Apply the full 4-Pass Revision Protocol. Time each pass to prevent yourself from trying to fix everything at once.</p>
+
+  <p><strong>Setup:</strong> Have your original essay visible. Create space to write revision notes. Set a timer for each pass.</p>
+
+  <h3>Pass 1: Thesis & Structure (3 minutes, timed)</h3>
+
+  <div class="rubric-box">
+    <p><strong>Questions to Ask:</strong></p>
+    <ul>
+      <li>Does my thesis include a line of reasoning (not just a list of strategies)?</li>
+      <li>Is my thesis defensible, or is it obviously true?</li>
+      <li>Does each body paragraph serve the thesis, or do any paragraphs drift?</li>
+      <li>Are my body paragraphs in the most logical order, or would reordering strengthen the argument?</li>
+      <li>Does my conclusion return to the thesis with added depth, or just restate it?</li>
+    </ul>
+  </div>
+
+  <p><strong>Write:</strong> Note any thesis or structure revisions needed. If you change your thesis, mark which paragraphs need to be revised to align with it.</p>
+
+  <h3>Pass 2: Evidence & Analysis (5 minutes, timed)</h3>
+
+  <div class="rubric-box">
+    <p><strong>Questions to Ask:</strong></p>
+    <ul>
+      <li>Does every piece of evidence have S-F-E analysis (Strategy-Function-Effect)?</li>
+      <li>Am I reaching Effect, or stopping at Function?</li>
+      <li>Am I analyzing (explaining how/why choices create impact) or summarizing (describing what the author says)?</li>
+      <li>Where do I feature-spot (name a strategy without analyzing it)?</li>
+      <li>Are my evidence choices the strongest available, or did I pick them because they were easy to spot?</li>
+    </ul>
+  </div>
+
+  <p><strong>Write:</strong> Mark every sentence where you stop at Function. Revise to reach Effect. Highlight any place where you summarize content instead of analyzing strategy.</p>
+
+  <h3>Pass 3: Sophistication via M6 (3 minutes, timed)</h3>
+
+  <div class="rubric-box">
+    <p><strong>Questions to Ask:</strong></p>
+    <ul>
+      <li>Did I include a sophistication move (broader context, alternative reading, tension/complexity, or vivid style)?</li>
+      <li>If yes, is it organic (deepens my analysis) or tacked on (feels like an afterthought)?</li>
+      <li>If no, where is the best place to add one? (Usually end of 2nd body paragraph or start of 3rd.)</li>
+      <li>Can I apply M6 to add a sophistication move? What does my analysis NOT account for? Whose perspective is missing? What alternative interpretation exists?</li>
+    </ul>
+  </div>
+
+  <p><strong>Write:</strong> If you lack a sophistication move, add one. If you have one but it's tacked on, revise it to integrate with your analysis. Use M6: ask what your framing makes visible and what it obscures.</p>
+
+  <h3>Pass 4: Style & Concision (3 minutes, timed)</h3>
+
+  <div class="rubric-box">
+    <p><strong>Questions to Ask:</strong></p>
+    <ul>
+      <li>Can I cut 10% of my words without losing meaning? (Eliminate redundancy, filler, unnecessary qualifiers.)</li>
+      <li>Are my sentences varied in length and structure, or monotonous?</li>
+      <li>Do I use template language ("This demonstrates..." "However, it is important to note..."), or does my voice sound like a human being?</li>
+      <li>Does my word choice match my voice, or do I default to generic academic prose?</li>
+      <li>Read one paragraph aloud (silently). Does it sound like you, or like an essay-writing robot?</li>
+    </ul>
+  </div>
+
+  <p><strong>Write:</strong> Mark template phrases for revision. Cut 10% of your words. Revise one sentence to sound more like your voice.</p>
+
+  <div class="self-check">
+    <div class="q-label">Before-and-After Comparison</div>
+    <p><strong>After completing all 4 passes:</strong> Write a brief note (3-4 sentences) describing what changed. Which pass had the biggest impact? Did you change ideas (substantive revision), or just clean up prose (surface editing)? Compare your revised essay to the original: would the score improve?</p>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (7 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Apply the Protocol to a Different Essay (Untimed)</h3>
+
+  <p><strong>Your Task:</strong> Choose a different Speed Run essay from B2 (one you didn't revise in Supported Practice). Apply the full 4-Pass Revision Protocol again, but this time <strong>without timing</strong>. Focus on quality rather than speed.</p>
+
+  <p>Follow the same sequence:</p>
+  <ol>
+    <li><strong>Pass 1:</strong> Thesis & Structure</li>
+    <li><strong>Pass 2:</strong> Evidence & Analysis</li>
+    <li><strong>Pass 3:</strong> Sophistication via M6</li>
+    <li><strong>Pass 4:</strong> Style & Concision</li>
+  </ol>
+
+  <p>After completing all passes, write a final revised version of one body paragraph that reflects all four passes. This paragraph should show substantial transformation from the original.</p>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria for Revised Paragraph:</strong></p>
+    <ul>
+      <li>Serves a clear, defensible thesis with line of reasoning (Pass 1)</li>
+      <li>Every piece of evidence has S-F-E analysis that reaches Effect (Pass 2)</li>
+      <li>Includes or contributes to a sophistication move (Pass 3)</li>
+      <li>Written in your voice, varied sentences, no template language, 10% leaner than original (Pass 4)</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>The Before/After Test:</strong> Score your revised essay using the AP rubric (Rows A, B, C). Compare it to your original self-score from the Speed Run.</p>
+    <ul>
+      <li>If your score increased by 1+ point, the protocol worked. You transformed ideas, not just fixed errors.</li>
+      <li>If your score stayed the same, check: did you actually change IDEAS (thesis, evidence, analysis depth, sophistication), or did you just edit surface errors?</li>
+      <li>If you're unsure whether your score improved, that signals a calibration issue. Return to L14 (Expert Calibration) and re-score sample essays to recalibrate your standards.</li>
+    </ul>
+    <p><strong>From here forward:</strong> The 4-Pass Revision Protocol is your system for substantive revision. Every essay you write can improve through this process. The protocol doesn't require more time than random revision—it just requires <em>focused</em> time. Fifteen minutes of targeted revision beats 30 minutes of unfocused tinkering.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>Which pass revealed the biggest problem in your essay?</strong> Was it Pass 1 (thesis/structure), Pass 2 (analysis depth), Pass 3 (missing sophistication), or Pass 4 (voice/concision)? Your answer reveals your consistent revision priority. If Pass 2 always reveals the biggest problems, you need to focus on deepening analysis <em>during</em> drafting, not just during revision. Revision should refine, not rescue.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B2 L17 • Multi-Pass Revision Protocol • C.HS.06, D.11.02 • ~30 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L16_Surface_vs_Substantive.html">← Previous: L16 Surface vs. Substantive</a>
+  <a href="B2_L18_Voice_Analysis.html">Next: L18 Voice Analysis →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

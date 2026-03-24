@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L21: Gate Assessment — AP Synthesis</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+  --danger: #dc3545;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: #6f42c1; color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+.timer-box {
+  background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px;
+  padding: 1rem; margin: 1rem 0; text-align: center;
+}
+.timer-box h3 {
+  color: var(--warning); margin: 0 0 0.5rem 0; font-size: 1.2rem;
+}
+.gate-box {
+  background: #f8d7da; border: 2px solid var(--danger); border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+  font-weight: 600; color: #842029;
+}
+.gate-success {
+  background: #d1e7dd; border: 2px solid #a3cfbb; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+  font-weight: 600; color: #0a3622;
+}
+.source-box {
+  background: #f8f9fa; border: 1px solid var(--border); border-radius: 8px;
+  padding: 1rem; margin: 1rem 0; font-size: 0.9rem;
+}
+.source-box h4 {
+  color: var(--primary); margin: 0 0 0.5rem 0; font-size: 0.95rem;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 21 · GATE ASSESSMENT (1 of 2)</span>
+  <h1>Gate Assessment — AP Synthesis Essay</h1>
+  <p class="subtitle">Healthcare Access and Equity (55 min under full AP timing)</p>
+  <div class="meta-bar">
+    <span>⏱ ~65 min</span>
+    <span>📍 All synthesis KCs + C.HS.04 assessed</span>
+    <span>🎯 Gate Assessment 1 of 2</span>
+  </div>
+</div>
+
+<div class="gate-box">
+  ⚠️ <strong>GATE ASSESSMENT SESSION 1:</strong> This is the first of two gate assessment sessions. Today you write your AP Synthesis essay (55 min). Tomorrow (L22) you'll complete Rhetorical Analysis (40 min) + Argument (40 min). To pass the B2 gate and complete the course: earn <strong>5+ points on at least 2 of 3 essays, with no essay below 4</strong>. This is a higher standard than B1L—you're targeting AP exam scores of 5+.
+</div>
+
+<div class="key-concept">
+  <strong>Today's Challenge:</strong> Write a full AP Synthesis essay on a source set you've never seen (Healthcare Access and Equity, 6 sources). You must synthesize at least 3 sources, develop a defensible position, and include a sophistication move. Your B2 training—M6 framing analysis, multi-pass revision, voice under pressure—culminates here.
+</div>
+
+<h2>Phase 1: Timing Strategy (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Gate Timing Strategy for Synthesis</h3>
+
+  <p><strong>Why synthesis first?</strong> It has the most reading (6 sources = 1,200-1,500 words). If you start with rhetoric or argument, you'll be mentally fatigued when you hit the densest reading task. Front-load the hardest work.</p>
+
+  <table>
+    <tr>
+      <th style="width: 25%;">Phase</th>
+      <th style="width: 20%;">Time</th>
+      <th>Strategy</th>
+    </tr>
+    <tr>
+      <td><strong>Reading</strong></td>
+      <td>15 min</td>
+      <td>Read prompt first (2 min). Then read all 6 sources (13 min). As you read, mark 3-4 sources you'll use. Note key evidence with source labels (A, B, C...).</td>
+    </tr>
+    <tr>
+      <td><strong>Planning</strong></td>
+      <td>5 min<br>(included in 15)</td>
+      <td>After reading 4-5 sources, start planning your position. Don't wait until you've read all 6—your brain can process while reading. Write thesis + 3 body claims + sophistication move location.</td>
+    </tr>
+    <tr>
+      <td><strong>Writing</strong></td>
+      <td>35 min</td>
+      <td><strong>5 min:</strong> Intro + thesis<br><strong>27 min:</strong> Body paragraphs (9 min per paragraph, 3 paragraphs)<br><strong>3 min:</strong> Conclusion</td>
+    </tr>
+    <tr>
+      <td><strong>Review</strong></td>
+      <td>5 min</td>
+      <td>Check: thesis has line of reasoning, every source is cited, analysis reaches Effect, sophistication move is present. Add sophistication if missing—one sentence in conclusion suffices.</td>
+    </tr>
+  </table>
+
+  <p><strong>Your recovery plan (if you fall behind):</strong> Cut to 3 sources instead of 4. If writing takes too long, sacrifice the conclusion but NOT your analysis. A complete body paragraph with S-F-E beats a rushed paragraph that ends mid-sentence.</p>
+
+  <p><strong>Sophistication in synthesis:</strong> Apply M6—ask whose perspective the source set represents and whose is missing. This isn't a criticism of the sources; it's an analytical move that demonstrates you think beyond what's given.</p>
+</div>
+
+<h2>Phase 2: Independent — Full AP Synthesis Essay (55 min)</h2>
+<div class="phase-card independent-card" data-min-words="500" data-rubric="B2_gate_synthesis">
+  <h3>FRQ 1: Synthesis Essay</h3>
+
+  <div style="background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+    <p><strong>Directions:</strong> The following prompt is based on the accompanying six sources. This question requires you to synthesize a variety of sources into a coherent, well-written essay. When you synthesize sources, you refer to them to develop your position and cite them accurately. Your argument should be central; the sources should support this argument. Avoid merely summarizing sources.</p>
+
+    <p style="margin-bottom: 0;"><strong>In your response you should do the following:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Respond to the prompt with a thesis that presents a defensible position</li>
+      <li>Select and use evidence from at least 3 of the provided sources to support your line of reasoning</li>
+      <li>Indicate clearly the sources used through direct quotation, paraphrase, or summary</li>
+      <li>Explain how the evidence supports your line of reasoning</li>
+      <li>Use appropriate grammar and punctuation in communicating your argument</li>
+    </ul>
+  </div>
+
+  <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0;">
+    <h3 style="margin: 0 0 0.75rem 0; color: var(--primary);">Assignment</h3>
+    <p style="margin-bottom: 0;"><strong>Write an essay that synthesizes material from at least three of the provided sources and develops your position on how to balance healthcare access with healthcare quality in the United States.</strong></p>
+  </div>
+
+  <h3 style="margin-top: 1.5rem;">The Sources</h3>
+
+  <div class="source-box">
+    <h4>Source A</h4>
+    <p><strong>Morrison, Ellen and David Park. "Universal Coverage vs. Market Innovation: International Healthcare Systems Compared." <em>Health Policy Journal</em>, vol. 89, no. 4, 2024, pp. 201-229.</strong></p>
+
+    <p>Comparative analysis of healthcare systems in 15 developed nations, evaluating trade-offs between access and quality. Morrison and Park find that single-payer systems (UK, Canada) achieve near-universal coverage with lower per-capita costs but face longer wait times for non-emergency procedures—UK patients wait an average of 18 weeks for elective surgeries versus 3 weeks in the U.S. Multi-payer universal systems (Germany, Switzerland) mandate insurance while preserving competition, achieving both broad access and shorter wait times, but at higher costs than single-payer models. The U.S. market-based system leads in medical innovation (48% of new drugs developed in U.S. vs. 25% in Europe) and offers fastest access for insured patients, but leaves 8% uninsured and faces highest costs globally. "There is no free lunch," the authors conclude. "Systems optimizing for access sacrifice some degree of innovation or speed; systems prioritizing innovation tolerate access gaps." They note that outcomes (life expectancy, infant mortality) correlate more strongly with public health investments and lifestyle factors than with system structure, complicating simple rankings.</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source B</h4>
+    <p><strong>Martinez, Ana. "The View from Rural America: Where Healthcare Isn't a Debate, It's a Lifeline." <em>The Atlantic</em>, 8 Mar. 2025.</strong></p>
+
+    <p>Personal narrative from family physician serving 12,000 patients across three rural counties in Montana. Martinez describes "healthcare deserts" where the nearest specialist is 200 miles away and emergency care requires helicopter airlift. She recounts patients skipping prescriptions due to cost, diabetics rationing insulin, and cancer diagnoses delayed by inability to afford screening. "In my exam room, debates about market efficiency versus government overreach sound like discussions from another planet. My patients need care, period." Martinez argues that rural areas demonstrate market failure: low population density makes clinics unprofitable, so private providers exit, leaving residents with no options. She supports federal funding for rural health clinics and loan forgiveness for physicians serving underserved areas—programs that "keep places like mine from becoming medical wastelands." Martinez notes that her wealthiest patients fly to Mayo Clinic for complex care, while working-class families "go without or go bankrupt." She concludes: "Healthcare quality is irrelevant if you can't access healthcare at all."</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source C</h4>
+    <p><strong>Patel, Rajiv and Sarah Thompson. "The Cost of Coverage: Economic Realities of Healthcare Expansion." <em>American Economic Review</em>, vol. 114, no. 6, 2024, pp. 1456-1489.</strong></p>
+
+    <p>Economic modeling of universal coverage proposals, estimating costs and trade-offs. Patel and Thompson calculate that Medicare-for-All would cost $3.2-3.8 trillion annually (vs. current $4.1 trillion total spending), reducing overall costs through administrative efficiencies and negotiating power. However, they identify significant transition challenges: 2 million health insurance jobs eliminated, rural hospitals facing reimbursement cuts (many currently rely on private insurance overpayments to subsidize Medicare/Medicaid losses), and potential physician shortages if reimbursement rates drop. The authors project 15% reduction in medical school applications if physician incomes fall. Alternative models (public option, subsidized marketplace expansion) cost less and avoid disruption but leave 2-4% uninsured. Patel and Thompson emphasize that "expanding access requires either higher taxes, reduced provider compensation, or both—politically difficult choices that advocates often minimize." They conclude that all pathways to universal coverage involve "real economic sacrifices," and honest debate requires acknowledging these costs rather than promising "healthcare for all at lower cost with no downsides."</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source D</h4>
+    <p><strong>Jackson, Michael et al. "Health Outcomes and Access Disparities: A Public Health Crisis." <em>American Journal of Public Health</em>, vol. 115, no. 3, 2025, pp. 412-428.</strong></p>
+
+    <p>Public health research documenting mortality and morbidity differences linked to healthcare access gaps. Jackson's team analyzed death records and insurance data for 2.4 million Americans, finding that uninsured individuals die an average of 8.2 years younger than insured peers with similar demographics. The disparity stems from delayed diagnoses (uninsured 3x more likely to present with late-stage cancer), untreated chronic conditions (uninsured diabetics face amputation rates 5x higher), and avoidance of preventive care. Even among the insured, outcomes vary: Medicaid patients experience worse outcomes than privately insured patients for many conditions, likely due to lower provider reimbursement limiting access to specialists. "Healthcare access is not merely an economic or political issue—it is a public health emergency," Jackson writes. The study estimates that closing access gaps could prevent 45,000 deaths annually. Critics note that outcomes correlate with factors beyond insurance (income, education, environment), but Jackson counters that "insurance is the most policy-amenable lever for reducing disparities."</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source E</h4>
+    <p><strong>Heritage Foundation. "Patient-Centered Healthcare: Why Markets Work Better Than Mandates." Policy Report, 2024.</strong></p>
+
+    <p>Conservative think tank position paper advocating market-based reforms over government expansion. The Heritage report argues that healthcare costs and access problems stem from government distortions: Medicare and Medicaid price controls force providers to shift costs to private payers, employer-based insurance tax exemptions inflate premiums, and Certificate of Need laws restrict competition. "The solution to healthcare's failures is not more government, but less," the report states. Proposed reforms include: (1) Health savings accounts with tax-free contributions, empowering consumers to shop for value. (2) Association health plans allowing small businesses to pool risk. (3) Interstate insurance sales to increase competition. (4) Malpractice reform to reduce defensive medicine costs. The Heritage analysis projects these reforms could reduce premiums by 30% and expand coverage to 5 million currently uninsured, all "without a single new dollar of government spending or mandate." Critics argue the proposals would help healthy, wealthy individuals while leaving chronically ill and low-income populations worse off, exacerbating disparities rather than solving them.</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source F</h4>
+    <p><strong>Community Health Partnership. "Grassroots Healthcare: Lessons from Community-Led Initiatives." Research Report, 2025.</strong></p>
+
+    <p>Analysis of community health center (CHC) models serving low-income and uninsured populations in 24 cities. The report documents innovative approaches: sliding-scale fees based on income, integrated mental health and substance abuse services, community health workers conducting home visits, and partnerships with social service agencies addressing housing and food insecurity. "Clinical care alone cannot overcome health disparities rooted in poverty and marginalization," the report states. Featured programs include Denver's culturally tailored diabetes prevention for Latino immigrants (reducing complications by 40%), Detroit's mobile clinics bringing prenatal care to underserved neighborhoods (cutting infant mortality by 25%), and Seattle's pharmacist-led medication management for elderly homeless populations. CHCs cost 30-40% less per patient than emergency departments while achieving better chronic disease outcomes. The report argues that "healthcare equity requires meeting people where they are, both literally and culturally, rather than expecting vulnerable populations to navigate systems designed for middle-class insured patients." Federal CHC funding reaches only 60% of eligible populations, and the report advocates for tripling investment.</p>
+  </div>
+
+  <div class="timer-box" style="margin-top: 1.5rem;">
+    <p><strong>⏱ BEGIN SYNTHESIS ESSAY (55 minutes total)</strong></p>
+    <p>15 min: Read all sources + plan position<br>
+    35 min: Write essay (intro + 3 body paragraphs + conclusion)<br>
+    5 min: Review + ensure sophistication move is present</p>
+  </div>
+
+  <div style="background: #f8f9fa; border: 2px solid var(--border); border-radius: 8px; padding: 1.25rem; margin: 1rem 0; min-height: 300px;">
+    <p style="color: var(--muted); font-style: italic;">[Write your synthesis essay here or on paper. Remember: Your argument should be central. Use at least 3 sources as evidence. Cite clearly (Source A, Source B, etc.). Apply S-F-E analysis to show HOW your evidence supports your position. Include a sophistication move—M6 framing analysis works well in synthesis.]</p>
+  </div>
+</div>
+
+<h2>Phase 3: Self-Score (5 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Score Your Synthesis Essay</h3>
+
+  <div class="rubric-box">
+    <p><strong>AP Synthesis Rubric:</strong></p>
+    <table style="font-size: 0.85rem;">
+      <tr>
+        <th style="width: 20%;">Row</th>
+        <th style="width: 20%;">Points</th>
+        <th>Criteria</th>
+      </tr>
+      <tr>
+        <td><strong>Row A<br>Thesis</strong></td>
+        <td>0 or 1</td>
+        <td>Defensible position + line of reasoning about balancing access and quality</td>
+      </tr>
+      <tr>
+        <td><strong>Row B<br>Evidence & Commentary</strong></td>
+        <td>0-4</td>
+        <td><strong>1-2 pts:</strong> Summarizes sources or features evidence without analysis<br>
+        <strong>3-4 pts:</strong> Uses at least 3 sources with S-F-E analysis showing HOW evidence supports your position (not just THAT it does)</td>
+      </tr>
+      <tr>
+        <td><strong>Row C<br>Sophistication</strong></td>
+        <td>0 or 1</td>
+        <td>Demonstrates complexity: M6 framing analysis (whose perspective is represented/missing?), broader context, tension, or consistently vivid style</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Your L21 Score</div>
+    <p><strong>Synthesis Essay (Healthcare Access and Equity):</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Row A (Thesis): ___ / 1</li>
+      <li>Row B (Evidence): ___ / 4</li>
+      <li>Row C (Sophistication): ___ / 1</li>
+      <li><strong>Total:</strong> ___ / 6</li>
+    </ul>
+
+    <p style="margin-top: 1rem;"><strong>Self-Check Questions:</strong></p>
+    <ul style="margin-left: 1.5rem;">
+      <li>Did I use at least 3 sources? Which sources did I cite?</li>
+      <li>Did my analysis reach Effect (explaining HOW evidence supports my position), or did I stop at Feature?</li>
+      <li>Is my sophistication move present? Where? What type (M6 framing, broader context, tension, style)?</li>
+      <li>If I scored below 5, what is my weakest row? What would I revise first?</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 4: Gate Transition (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Your Synthesis Is Complete</h3>
+
+  <p><strong>Bank this score.</strong> Your synthesis essay is finished. Whatever you scored, that's your baseline. Tomorrow (L22) you'll write two more essays—Rhetorical Analysis and Argument—to complete the gate.</p>
+
+  <p><strong>Gate reminder:</strong> To pass B2 and complete the course, you need <strong>5+ points on at least 2 of 3 essays, with no essay below 4</strong>. If your synthesis scored 5+, you've already secured one qualifying essay. If it scored 4, you're still in range—you need two strong essays tomorrow. If it scored below 4, you need both tomorrow's essays to score 5+ (challenging but achievable with focus).</p>
+
+  <p><strong>Before L22:</strong> Review your weakest row pattern from B2 training (L08-L10, L15). If Row B is consistently weak, remind yourself to reach Effect in every paragraph. If Row C is weak, plan your sophistication moves during your 5-minute planning phase, not during writing. If Row A is weak, write your thesis last after you've generated your body paragraph claims.</p>
+
+  <p><strong>Tomorrow's timing:</strong> Rhetorical Analysis (40 min) + 3-minute break + Argument (40 min). Total ~90 min with breaks and scoring. Come ready to execute under pressure. You have all six Mental Models. You know how to write sophistication. You can self-diagnose. You're ready.</p>
+</div>
+
+<div class="footnote">
+  <p>B2 L21 • Gate Assessment — AP Synthesis Essay • All synthesis KCs + C.HS.04 assessed • ~65 min • Gate Session 1 of 2 • Course B2</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="B2_L20_Voice_Under_Pressure_Gate_Prep.html" class="prev">← L20: Voice Under Pressure + Gate Prep</a>
+  <a href="B2_L22_Gate_Rhetoric_Argument.html" class="next">L22: Gate — Rhetorical Analysis + Argument →</a>
+</nav>
+</body>
+</html>

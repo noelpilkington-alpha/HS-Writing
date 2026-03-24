@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 L15: Diagnose Your Own Work</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.protocol-box {
+  background: #fff9e6; border: 2px solid #ffc107; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #6f42c1;">Course B2 · Lesson 15</span>
+  <h1>Diagnose Your Own Work</h1>
+  <p class="subtitle">Self-Diagnosis Protocol for Pattern Recognition</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.HS.05 (Self-Diagnose at 80%+ Accuracy)</span>
+    <span>🧠 Metacognition</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Self-Diagnosis = Expert-Level Metacognition.</strong> AP tutors don't just score your essay and say "that's a 4." They identify the SPECIFIC problem causing the 4 and prescribe targeted practice. Now you can do this yourself. The 5-step protocol transforms scoring into diagnosis: not just "what's my score?" but "what exactly is broken, and how do I fix it?"
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>The Self-Diagnosis Protocol</h3>
+
+  <p>Scoring your own essay tells you where you are. Diagnosing your own essay tells you how to improve. There's a crucial difference.</p>
+
+  <p><strong>Scoring:</strong> "My Speed Run 2 essay scored 4/6. Row A = 1, Row B = 2, Row C = 1."</p>
+
+  <p><strong>Diagnosis:</strong> "My Speed Run 2 essay scored 4/6 because my second body paragraph feature-spots without reaching Effect—I identify strategies but don't explain their impact on the audience. Prescription: drill S-F-E commentary, focusing on completing the Effect step."</p>
+
+  <div class="protocol-box">
+    <p><strong>The 5-Step Self-Diagnosis Protocol:</strong></p>
+    <ol>
+      <li><strong>Score your essay</strong> on Rows A, B, C (use calibrated judgment from L14)</li>
+      <li><strong>Identify the weakest row</strong> (where did you lose the most points?)</li>
+      <li><strong>Identify the SPECIFIC problem</strong> within that row:
+        <ul style="margin-top: 0.5rem;">
+          <li><em>Row A weakness:</em> No line of reasoning? Vague thesis? Mismatch between thesis and body paragraphs?</li>
+          <li><em>Row B weakness:</em> Feature-spotting without analysis? No S-F-E Effect step? Vague evidence? Summary instead of analysis?</li>
+          <li><em>Row C weakness:</em> No sophistication move attempted? Sophistication tacked on (not organic)? Historical fact mistaken for broader context?</li>
+        </ul>
+      </li>
+      <li><strong>Write a 2-sentence diagnosis:</strong> "My essay scored [X] because [specific problem in specific location]. This prevents me from earning [next score point] because [what the rubric requires]."</li>
+      <li><strong>Prescribe ONE practice target:</strong> "To fix this, I need to practice [specific skill]."</li>
+    </ol>
+  </div>
+
+  <p><strong>Example diagnosis (strong):</strong> "My essay scored 4 because my thesis previews strategies but doesn't preview reasoning—it lists 'irony and contrast' without explaining how these strategies achieve the writer's purpose. This prevents me from earning full Row A credit because the AP rubric requires a line of reasoning, not just a strategy list. To fix this, I need to practice thesis revision: for each strategy, add 'to [purpose] by [how it works].'"</p>
+
+  <p><strong>Example diagnosis (weak):</strong> "My essay scored 4 because Row B is weak. I need to practice analysis." <em>← Too vague. What SPECIFICALLY is weak in Row B? Where in the essay? What type of practice?</em></p>
+
+  <p><strong>Key insight:</strong> A single essay's diagnosis might be unreliable (maybe you had a bad day). A pattern diagnosis across THREE essays reveals your consistent weakness—that's what you practice.</p>
+</div>
+
+<h2>Phase 2: Supported Practice (10 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Diagnose Your Speed Run 2 Essay</h3>
+
+  <p><strong>Task:</strong> Apply the 5-step self-diagnosis protocol to your Speed Run 2 essay (Argument, from Lesson 9).</p>
+
+  <div class="self-check">
+    <div class="q-label">Step 1-2: Score & Identify Weakest Row</div>
+    <p><strong>Score your Speed Run 2 essay using calibrated judgment:</strong></p>
+    <ul>
+      <li>Row A: __</li>
+      <li>Row B: __</li>
+      <li>Row C: __</li>
+      <li>Total: __/6</li>
+      <li><strong>Weakest row:</strong> (Circle one: A / B / C)</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Step 3: Identify the SPECIFIC Problem</div>
+    <p><strong>Within your weakest row, what is the specific problem?</strong> Don't write "my analysis is weak." Write: "my second body paragraph identifies counterarguments but doesn't explain why they're insufficient" OR "my thesis lists evidence but has no line of reasoning."</p>
+    <p style="margin-top: 1rem;"><strong>Specific problem:</strong> _______________________________________________</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Step 4-5: Write Diagnosis + Prescription</div>
+    <p><strong>Write your 2-sentence diagnosis:</strong></p>
+    <p style="margin-top: 0.5rem; font-style: italic;">"My essay scored ___ because [specific problem in specific location]. This prevents me from earning [next score point] because [what rubric requires]."</p>
+    <p style="margin-top: 1rem;"><strong>Your diagnosis:</strong></p>
+    <textarea style="width: 100%; min-height: 80px; padding: 0.5rem; font-family: inherit; border: 1px solid var(--border); border-radius: 4px; margin-top: 0.5rem;"></textarea>
+
+    <p style="margin-top: 1rem;"><strong>Prescription (ONE practice target):</strong></p>
+    <p style="margin-top: 0.5rem; font-style: italic;">"To fix this, I need to practice ______________"</p>
+    <textarea style="width: 100%; min-height: 60px; padding: 0.5rem; font-family: inherit; border: 1px solid var(--border); border-radius: 4px; margin-top: 0.5rem;"></textarea>
+  </div>
+
+  <p><strong>Now compare:</strong> Return to your Speed Run 1 essay (Rhetorical Analysis, from Lesson 8). Look at the diagnosis you wrote then (or write one now if you didn't). <strong>Is the same weakness appearing?</strong></p>
+
+  <div class="check-question">
+    <div class="q-label">Pattern Check</div>
+    <p><strong>Compare Speed Run 1 and Speed Run 2 diagnoses. Is your weakest row the same in both essays?</strong></p>
+    <ol type="A">
+      <li>Yes — the same row is weak in both essays (pattern detected)</li>
+      <li>No — different rows are weak (weakness is essay-type-specific or inconsistent)</li>
+    </ol>
+    <p style="margin-top: 0.75rem;"><strong>If yes:</strong> You've identified your practice priority. That row is your consistent weakness across essay types.</p>
+    <p><strong>If no:</strong> You need the 3-essay pattern diagnosis (next phase) to see if a pattern emerges.</p>
+  </div>
+</div>
+
+<h2>Phase 3: Independent Practice (10 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Pattern Diagnosis Across 3 Speed Runs</h3>
+
+  <p><strong>Task:</strong> Apply the self-diagnosis protocol to your Speed Run 3 essay (Synthesis, from Lesson 10). Then complete the pattern diagnosis across all three Speed Run essays.</p>
+
+  <div class="self-check">
+    <div class="q-label">Diagnose Speed Run 3</div>
+    <p><strong>Complete the 5-step protocol for Speed Run 3:</strong></p>
+    <ul>
+      <li>Score (A/B/C): __ / __ / __ = __/6</li>
+      <li>Weakest row: (Circle: A / B / C)</li>
+      <li>Specific problem: _____________________________________________</li>
+    </ul>
+    <p style="margin-top: 1rem;"><strong>2-sentence diagnosis:</strong></p>
+    <textarea style="width: 100%; min-height: 80px; padding: 0.5rem; font-family: inherit; border: 1px solid var(--border); border-radius: 4px; margin-top: 0.5rem;"></textarea>
+
+    <p style="margin-top: 1rem;"><strong>Prescription:</strong></p>
+    <textarea style="width: 100%; min-height: 60px; padding: 0.5rem; font-family: inherit; border: 1px solid var(--border); border-radius: 4px; margin-top: 0.5rem;"></textarea>
+  </div>
+
+  <div class="protocol-box">
+    <p><strong>Pattern Diagnosis Across All 3 Speed Runs</strong></p>
+
+    <table>
+      <tr>
+        <th>Essay</th>
+        <th>Score</th>
+        <th>Row A</th>
+        <th>Row B</th>
+        <th>Row C</th>
+        <th>Weakest Row</th>
+      </tr>
+      <tr>
+        <td>Speed Run 1 (Rhetoric)</td>
+        <td>__/6</td>
+        <td>__</td>
+        <td>__</td>
+        <td>__</td>
+        <td style="font-weight: 600;">__</td>
+      </tr>
+      <tr>
+        <td>Speed Run 2 (Argument)</td>
+        <td>__/6</td>
+        <td>__</td>
+        <td>__</td>
+        <td>__</td>
+        <td style="font-weight: 600;">__</td>
+      </tr>
+      <tr>
+        <td>Speed Run 3 (Synthesis)</td>
+        <td>__/6</td>
+        <td>__</td>
+        <td>__</td>
+        <td>__</td>
+        <td style="font-weight: 600;">__</td>
+      </tr>
+    </table>
+
+    <p style="margin-top: 1rem;"><strong>Pattern Questions:</strong></p>
+    <ol>
+      <li><strong>Which ROW is consistently weakest across all 3 essays?</strong> (If 2 or 3 essays have the same weakest row, that's your pattern)</li>
+      <li><strong>Which ESSAY TYPE scored lowest?</strong> (If one essay type is significantly weaker, that's format-specific weakness)</li>
+      <li><strong>Did you improve from Speed Run 1 to Speed Run 3?</strong> (If scores increased, you're already self-correcting)</li>
+    </ol>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Write Your 3-Sentence Pattern Diagnosis</div>
+    <p><strong>Synthesize across all 3 Speed Runs:</strong></p>
+    <p style="margin-top: 0.5rem; font-style: italic;">"Across my three Speed Run essays, my consistent weakness is [Row A/B/C] because [pattern you observed]. This appears as [specific manifestation] in rhetorical analysis, [manifestation] in argument, and [manifestation] in synthesis. My practice priority is [the ONE thing that would fix this pattern]."</p>
+
+    <textarea style="width: 100%; min-height: 120px; padding: 0.5rem; font-family: inherit; border: 1px solid var(--border); border-radius: 4px; margin-top: 1rem;"></textarea>
+  </div>
+
+  <div class="rubric-box">
+    <p><strong>Common Patterns & Prescriptions:</strong></p>
+    <ul>
+      <li><strong>Pattern: Row A consistently 0-1, Row B strong →</strong> Practice thesis writing with line of reasoning. Your analysis is good but your thesis doesn't preview it.</li>
+      <li><strong>Pattern: Row B consistently 1-2 →</strong> Practice S-F-E commentary. You're feature-spotting without reaching Effect. Drill: for every strategy, write 2 sentences explaining impact on audience.</li>
+      <li><strong>Pattern: Row C consistently 0 →</strong> Practice sophistication moves. Plan one sophistication move (broader context, alternative reading, or tension) during your 5-minute planning phase.</li>
+      <li><strong>Pattern: Synthesis scores 2+ points lower than other types →</strong> Practice source integration and synthesis planning. You may be summarizing sources instead of synthesizing them.</li>
+      <li><strong>Pattern: Quality drops in third body paragraph across all essays →</strong> Practice timing allocation. You're spending too long on early paragraphs. Set 11-minute timers for each body paragraph.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 4: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>Your pattern diagnosis is your practice plan.</strong> You now know exactly what to practice between now and the B2 gate. Not "get better at writing"—that's too vague. Practice the specific skill that fixes your pattern weakness.</p>
+
+    <ul style="margin-top: 1rem;">
+      <li><strong>If Row A is your pattern weakness:</strong> Write 10 thesis statements this week, each with a clear line of reasoning. Score each one. Revise until you consistently earn Row A = 1.</li>
+      <li><strong>If Row B is your pattern weakness:</strong> Write 10 body paragraphs with S-F-E analysis. For each, check: did I reach Effect? Did I explain impact on audience, not just identify strategy?</li>
+      <li><strong>If Row C is your pattern weakness:</strong> Read 5 essays (from L14 calibration or online sample essays). Identify the sophistication move in each. Then write 5 sophistication moves for passages you've analyzed before.</li>
+      <li><strong>If one essay TYPE is consistently weak:</strong> Write 3 additional timed essays in that format before the gate.</li>
+    </ul>
+
+    <p style="margin-top: 1rem;"><strong>Key insight:</strong> The pattern diagnosis you wrote today is more valuable than any single essay score. It identifies what you need to practice—and that knowledge is what allows independent improvement.</p>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Gate Preparation</div>
+    <p><strong>How will you use your pattern diagnosis to prepare for the B2 gate assessment?</strong> Write a specific practice plan: "Between now and the gate, I will practice [specific skill] by [specific method] to fix my [pattern weakness]."</p>
+    <textarea style="width: 100%; min-height: 80px; padding: 0.5rem; font-family: inherit; border: 1px solid var(--border); border-radius: 4px; margin-top: 0.5rem;"></textarea>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B2 L15 • Diagnose Your Own Work • C.HS.05 (Self-Diagnosis Protocol) • ~25 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B2_L14_Expert_Calibration.html">← Previous: L14 Expert Calibration</a>
+  <a href="B2_L16_Surface_vs_Substantive.html">Next: L16 Surface vs. Substantive →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>
