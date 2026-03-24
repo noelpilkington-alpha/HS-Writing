@@ -68,7 +68,7 @@ New analytical lenses that deepen M1 and M2. Force Field (M3) reveals WHY author
   - Supported: Map the Claim Hierarchy of Elizabeth Cady Stanton's "Declaration of Sentiments" (SP-004). Use the Claim Hierarchy Outline template. Identify: thesis, 2 main claims, evidence for each, one counterclaim addressed. (8 min)
   - Independent: Map the Claim Hierarchy of Thomas Paine's "Common Sense" excerpt (ES-009). No scaffold. Then evaluate: which claim has the strongest evidence? Which has the weakest? (7 min)
   - Transfer: "Take your A1 gate essay. Could you map its claim hierarchy? If your essay was flat, how would M4 help you restructure it?" (3 min)
-- **Passages:** SP-003 (Lincoln, Second Inaugural), SP-004 (Stanton, Declaration of Sentiments), ES-009 (Paine, Common Sense)
+- **Passages:** SP-003 (Lincoln, Second Inaugural), SP-009 (Stanton, Declaration of Sentiments), ES-009 (Paine, Common Sense)
 - **Content Files:** Claim Hierarchy Outline template (new), Coping model for Hierarchy
 - **Notes:** M4 gives students the vocabulary to SEE argument structure. This is prerequisite for They Say/I Say (Unit 2), synthesis (Unit 3), and ACT perspective analysis (Unit 6). The key insight: arguments have LEVELS, and strong writers make the connections between levels explicit.
 
@@ -438,9 +438,9 @@ A2 requires 7 ACT-style prompts (issue + 3 perspectives). Some may come from exi
 | SP-001 (Douglass, "Fourth of July") | L01, L03 | Force Field model + combined analysis |
 | SP-002 (Sojourner Truth, "Ain't I a Woman?") | L01 | Force Field practice |
 | SP-003 (Lincoln, Second Inaugural) | L02 | Claim Hierarchy model |
-| SP-004 (Stanton, Declaration of Sentiments) | L02, L03 | Claim Hierarchy practice + Hierarchy to Plan |
-| SP-014 (Patrick Henry, "Give Me Liberty") | L01, L03 | Force Field independent + Force Field to Choices |
-| ES-009 (Paine, Common Sense excerpt) | L02 | Claim Hierarchy independent |
+| SP-009 (Stanton, Declaration of Sentiments) | L02, L03 | Claim Hierarchy practice + Hierarchy to Plan |
+| SP-008 (Patrick Henry, "Give Me Liberty") | L01, L03 | Force Field independent + Force Field to Choices |
+| SP-029 (Paine, Common Sense excerpt) | L02 | Claim Hierarchy independent |
 | Source Set A (education policy, 4 sources) | L08-L11 | Synthesis training |
 | Source Set B (technology/society, 4 sources) | L08, L11 | Synthesis practice |
 | Source Set C (fresh topic, 4 sources) | L12 | Gateway synthesis essay |
