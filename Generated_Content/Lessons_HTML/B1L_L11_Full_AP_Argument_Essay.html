@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L11: Full AP Argument Essay</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+.lesson-tag.gateway { background: #dc3545; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.phase-card.gateway-card { border-left: 4px solid #dc3545; background: #fff5f5; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.gateway-box {
+  background: #fff5f5; border: 2px solid #dc3545; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.gateway-box h4 {
+  color: #dc3545; margin-top: 0; margin-bottom: 0.5rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.9rem;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag gateway" style="background: #dc3545;">Course B1L · Lesson 11 · GATEWAY</span>
+  <h1>Full AP Argument Essay</h1>
+  <p class="subtitle">Timed Essay + Self-Score + Gateway Check</p>
+  <div class="meta-bar">
+    <span>⏱ ~55 min</span>
+    <span>📍 KCs: C.AP.L.09 (GATEWAY)</span>
+    <span>🧠 Mental Models: M4, M5</span>
+  </div>
+</div>
+
+<div class="gateway-box">
+  <h4>⚠️ Gateway Lesson</h4>
+  <p><strong>This is a GATEWAY assessment.</strong> You must earn <strong>Row A = 1</strong> and <strong>Row B ≥ 2</strong> to pass. You'll write a full AP Argument essay under timed conditions (30 min writing after 10 min planning), then self-score using the AP rubric.</p>
+</div>
+
+<div class="key-concept">
+  <strong>Full AP Argument Timing (40 minutes total):</strong> Deconstruct prompt + map positions (3 min) → Brainstorm evidence + rank (4 min) → Write thesis + line of reasoning (3 min) → Write 3 body paragraphs including counterargument (25 min) → Conclusion (3 min) → Review (2 min).
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Putting It All Together</h3>
+
+  <p>You've practiced the building blocks:</p>
+  <ul>
+    <li><strong>L08:</strong> Prompt deconstruction—identifying claim, complexity, and possible positions</li>
+    <li><strong>L09:</strong> Evidence brainstorm sprint + line of reasoning</li>
+    <li><strong>L10:</strong> Body paragraphs with specific evidence, commentary, and counterarguments</li>
+  </ul>
+
+  <p>Now you'll execute the full sequence under AP timing. Here's the breakdown:</p>
+
+  <table>
+    <tr>
+      <th style="width: 25%;">Phase</th>
+      <th style="width: 15%;">Time</th>
+      <th>What to Do</th>
+    </tr>
+    <tr>
+      <td><strong>Planning</strong></td>
+      <td>10 min</td>
+      <td>Deconstruct prompt (3 min) → Evidence sprint + rank (4 min) → Thesis + 3 topic sentences (3 min)</td>
+    </tr>
+    <tr>
+      <td><strong>Introduction</strong></td>
+      <td>5 min</td>
+      <td>Hook + context + thesis (place thesis as last sentence)</td>
+    </tr>
+    <tr>
+      <td><strong>Body ¶ 1</strong></td>
+      <td>6 min</td>
+      <td>Claim → Evidence → Commentary → Connection</td>
+    </tr>
+    <tr>
+      <td><strong>Body ¶ 2</strong></td>
+      <td>6 min</td>
+      <td>Claim → Evidence → Commentary → Connection</td>
+    </tr>
+    <tr>
+      <td><strong>Body ¶ 3</strong></td>
+      <td>6 min</td>
+      <td>Counterargument: Naysayer → Concession → Rebuttal → Evidence</td>
+    </tr>
+    <tr>
+      <td><strong>Body ¶ 4</strong></td>
+      <td>6 min</td>
+      <td>Strongest claim (often includes sophistication move)</td>
+    </tr>
+    <tr>
+      <td><strong>Conclusion</strong></td>
+      <td>3 min</td>
+      <td>Broader significance or complexity (opportunity for Row C)</td>
+    </tr>
+    <tr>
+      <td><strong>Review</strong></td>
+      <td>2 min</td>
+      <td>Check thesis, fix obvious errors, ensure you've addressed the prompt</td>
+    </tr>
+  </table>
+
+  <p><strong>Key insight:</strong> You have 6 minutes per body paragraph. That's your pace. If you go over on one paragraph, you'll run out of time. Practice the rhythm: 6 minutes, next paragraph, 6 minutes, next paragraph.</p>
+</div>
+
+<h2>Phase 2: Model (3 min)</h2>
+<div class="phase-card model-card">
+  <h3>Annotated Model Essay</h3>
+
+  <p>Read this annotated model AP Argument essay. Notice the Row A thesis, Row B evidence + commentary, and Row C sophistication move.</p>
+
+  <details>
+    <summary>Click to view model essay with annotations</summary>
+    <div class="model-answer">
+      <p><strong>Prompt:</strong> Many educators argue that failure is essential to learning. Others contend that repeated failure undermines confidence and that success, not failure, is the best teacher. Write an essay arguing your position on whether failure is necessary for meaningful achievement.</p>
+
+      <hr style="margin: 1rem 0;">
+
+      <p><strong>[Introduction + Thesis]</strong></p>
+      <p>American culture celebrates redemption narratives—stories of entrepreneurs who failed spectacularly before succeeding, athletes who overcame injuries, scientists who persisted through countless setbacks. These stories are compelling precisely because they feel true to human experience: achievement rarely arrives through smooth, linear progress. Yet beneath the celebration lies a harder question: is failure merely an unfortunate obstacle we sometimes overcome, or is it a necessary mechanism for genuine learning? <span style="background: #c8e6c9;"><strong>[Row A Thesis]</strong> Failure is essential to meaningful achievement because it reveals flaws that success conceals, forcing the iterative refinement that produces breakthrough innovations while building the psychological resilience required to persist when easy answers prove insufficient.</span></p>
+
+      <p><strong>[Body ¶1: Cognitive/Epistemological Claim]</strong></p>
+      <p><span style="background: #c8e6c9;"><strong>[Row B: Evidence + Commentary]</strong></span> Failure exposes what success obscures—the hidden vulnerabilities in our methods and assumptions. Thomas Edison's systematic testing of over 10,000 filament materials before developing a viable incandescent lightbulb demonstrates this principle. Edison wasn't randomly guessing; he was methodically eliminating what didn't work, each failure revealing information about conductivity, durability, and heat resistance that success would never have taught. When he finally identified carbonized bamboo fiber as viable, that success was built on a foundation of 10,000 articulated failures. This process—what scientists now call "falsification"—is fundamental to the scientific method: we cannot know what works until we rigorously test what doesn't. Education researcher Carol Dweck's findings reinforce this cognitive necessity. Students praised for intelligence ("You're so smart!") tend to avoid challenges that might reveal limitations, while students praised for effort ("You worked hard!") embrace difficult tasks, understanding that struggle generates learning. The difference lies in whether failure is framed as revealing inadequacy (threatening) or revealing opportunity (productive). When failure is metabolized as information rather than judgment, it becomes the engine of iterative improvement.</p>
+
+      <p><strong>[Body ¶2: Historical/Practical Application]</strong></p>
+      <p><span style="background: #c8e6c9;"><strong>[Row B: Evidence + Commentary]</strong></span> This cognitive principle translates into practical breakthrough across domains. The Wright Brothers' path to powered flight illustrates how failure drives innovation through iteration. Between 1900 and 1903, they conducted over 1,000 glider flights, each crash or instability revealing aerodynamic principles that existing theory hadn't captured. Their competitors—many with greater funding and prestige—relied on mathematical models and avoided the messy work of trial-and-error testing. The Wrights embraced it, building a wind tunnel to test wing designs systematically, documenting each failure, refining based on data. Their December 1903 success at Kitty Hawk wasn't a lucky breakthrough; it was the 1,001st iteration in a carefully documented series of productive failures. Contrast this with the fate of Samuel Langley, whose heavily funded Aerodrome crashed twice in 1903 because he had invested in a single, untested design rather than iterating through failure. The Wright Brothers understood what Langley didn't: complex problems cannot be solved through pure theory. They require confronting real-world resistance, failing, adjusting, and testing again.</p>
+
+      <p><strong>[Body ¶3: Counterargument]</strong></p>
+      <p><span style="background: #c8e6c9;"><strong>[Row C: Sophistication via Complexity]</strong></span> Critics reasonably point out that this celebration of failure privileges those who can afford it. Students who fail repeatedly in school don't develop resilience—they drop out. Entrepreneurs who fail often lack the safety net to try again. Failure builds capacity only when it's followed by opportunity to iterate, and that opportunity is not equally distributed. This critique is vital: failure without resources or support is simply failure, not pedagogy. Yet this objection actually reinforces rather than refutes the central claim. What it reveals is that the problem isn't whether failure is necessary for learning—it's whether we provide the conditions (time, resources, psychological safety, feedback) that make failure productive rather than destructive. The solution isn't to eliminate difficulty but to ensure all learners have access to what Edison, the Wrights, and well-supported students possess: the ability to fail, learn, and try again. The equity issue is real, but it's an argument for democratizing the conditions of productive failure, not for pretending that success can emerge without struggle.</p>
+
+      <p><strong>[Body ¶4: Psychological Dimension]</strong></p>
+      <p><span style="background: #c8e6c9;"><strong>[Row B: Evidence + Commentary]</strong></span> Beyond generating better solutions, failure builds the psychological resilience—what Angela Duckworth calls "grit"—required for long-term achievement in any domain. Consider the training principles in elite athletics or music conservatories: skills are developed not through comfortable repetition of what you've mastered but through deliberately practicing at the edge of your ability, where failure is frequent. Violinists don't improve by playing pieces they've perfected; they improve by tackling passages that exceed their current skill, failing repeatedly, and adjusting technique in response. Olympic athletes structure training to push past previous limits, knowing that progress lives on the other side of current capacity. This principle—"desirable difficulties" in learning science—applies across domains. The psychological benefit isn't just skill acquisition but the internalized understanding that failure is temporary and surmountable. Students who have navigated productive failure develop what psychologists call "self-efficacy": confidence rooted not in avoiding challenge but in having survived it before. This is perhaps failure's deepest gift—not the specific lessons learned from any particular setback, but the meta-lesson that setbacks are navigable.</p>
+
+      <p><strong>[Conclusion with Sophistication]</strong></p>
+      <p><span style="background: #c8e6c9;"><strong>[Row C: Broader Context]</strong></span> The question, ultimately, is not whether failure is necessary—the evidence across domains suggests it is—but how we structure environments to make failure productive rather than destructive. In a culture that often equates failure with personal inadequacy, reframing it as information represents both a cognitive and moral challenge. Edison's 10,000 experiments, the Wright Brothers' 1,000 glider flights, and Dweck's growth mindset research converge on a hard truth: meaningful achievement requires confronting what doesn't work, learning from it, and persisting. The alternative—avoiding difficulty, seeking only comfortable success—produces neither innovation nor resilience. It produces stagnation dressed as safety.</p>
+    </div>
+  </details>
+
+  <p><strong>Notice:</strong></p>
+  <ul>
+    <li><strong>Row A:</strong> Thesis takes a position + previews line of reasoning (cognitive, practical, psychological)</li>
+    <li><strong>Row B:</strong> Specific evidence with details (Edison 10,000 filaments, Wright Brothers 1,000 flights, Dweck's research) + developed commentary explaining HOW evidence supports claims</li>
+    <li><strong>Row C:</strong> Counterargument acknowledges equity tension (sophistication via complexity), conclusion places argument in broader context</li>
+  </ul>
+</div>
+
+<h2>Phase 3: Planning (10 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Plan Your Essay</h3>
+
+  <div class="passage-box">
+    <strong>Prompt 3: Individual Freedom and Community Obligation</strong><br><br>
+    In an influential essay on democratic society, a political theorist argues: "The individual who demands absolute personal freedom while contributing nothing to the common good is not a citizen but a parasite. True liberty exists only within a framework of mutual obligation and shared sacrifice."
+    <br><br>
+    This view suggests that individual freedom must be balanced against—or perhaps even depends upon—responsibility to community. Yet others maintain that individual rights are fundamental and must be protected from collective demands, arguing that society flourishes most when individuals are free to pursue their own interests.
+    <br><br>
+    <strong>Write an essay that argues your position on the tension between individual freedom and community obligation.</strong>
+  </div>
+
+  <p><strong>Planning Tasks (10 minutes):</strong></p>
+  <ol>
+    <li><strong>3 min:</strong> Deconstruct prompt. What's the core tension? What are 3 possible positions (agree/disagree/complicate)?</li>
+    <li><strong>4 min:</strong> Evidence brainstorm sprint. Generate 8+ pieces. Rank top 3-4 by strength.</li>
+    <li><strong>3 min:</strong> Write thesis + 3 topic sentences. Ensure they BUILD (line of reasoning).</li>
+  </ol>
+
+  <p>Use scratch paper or type your planning notes. You'll have access to them during writing.</p>
+</div>
+
+<h2>Phase 4: Independent Writing (30 min)</h2>
+<div class="phase-card independent-card gateway-card">
+  <h3>Write Your Full AP Argument Essay</h3>
+
+  <p><strong>Time Limit: 30 minutes. Start your timer NOW.</strong></p>
+
+  <p>Write a complete argument essay responding to the prompt above. Include:</p>
+  <ul>
+    <li>Introduction with thesis (Row A)</li>
+    <li>3-4 body paragraphs with evidence from knowledge + commentary (Row B)</li>
+    <li>At least one counterargument paragraph</li>
+    <li>Conclusion</li>
+  </ul>
+
+  <div class="rubric-box">
+    <strong>Writing Pace Reminders:</strong>
+    <ul>
+      <li>Introduction + thesis: 5 min (ends at 5:00)</li>
+      <li>Body paragraphs: 6 min each × 3-4 = 18-24 min (ends at 23:00-29:00)</li>
+      <li>Conclusion: 3 min (ends at 26:00-32:00, but aim for 30:00 total)</li>
+      <li>Save 2 min at the end for review if possible</li>
+    </ul>
+  </div>
+
+  <p><strong>Write your essay below or in a separate document.</strong></p>
+</div>
+
+<h2>Phase 5: Self-Score (5 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Score Your Essay on the AP Rubric</h3>
+
+  <p>Use the AP Argument Rubric to score your essay on Rows A, B, and C.</p>
+
+  <div class="rubric-box">
+    <h4>AP Argument Rubric (Scoring Guide)</h4>
+
+    <p><strong>Row A: Thesis (0-1 point)</strong></p>
+    <ul>
+      <li><strong>0 points:</strong> No thesis, OR thesis restates prompt without taking a position, OR thesis lacks line of reasoning</li>
+      <li><strong>1 point:</strong> Thesis takes a defensible position AND establishes a line of reasoning (previews how the argument will develop)</li>
+    </ul>
+
+    <p><strong>Row B: Evidence & Commentary (0-4 points)</strong></p>
+    <ul>
+      <li><strong>0 points:</strong> No evidence or commentary</li>
+      <li><strong>1 point:</strong> Evidence without commentary OR commentary without evidence</li>
+      <li><strong>2 points:</strong> Evidence + commentary, but commentary is thin or doesn't fully explain how evidence supports claims</li>
+      <li><strong>3 points:</strong> Specific evidence from knowledge with consistent commentary explaining HOW evidence supports claims</li>
+      <li><strong>4 points:</strong> Multiple pieces of well-chosen, specific evidence with insightful commentary that explains implications</li>
+    </ul>
+
+    <p><strong>Row C: Sophistication (0-1 point)</strong></p>
+    <ul>
+      <li><strong>0 points:</strong> Competent but not sophisticated; analysis stays on the surface</li>
+      <li><strong>1 point:</strong> Demonstrates sophistication through: (1) broader context, (2) tension/complexity within position, (3) alternative interpretation, OR (4) vivid/persuasive style</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Scoring</div>
+    <p><strong>Row A Score: ____</strong> (0 or 1)</p>
+    <p>Does your thesis take a defensible position AND preview your line of reasoning?</p>
+
+    <p><strong>Row B Score: ____</strong> (0-4)</p>
+    <p>Did you provide specific evidence with commentary explaining HOW it supports your claims?</p>
+
+    <p><strong>Row C Score: ____</strong> (0 or 1)</p>
+    <p>Did you include a sophistication move (broader context, complexity, alternative interpretation, or vivid style)?</p>
+
+    <p><strong>Total Score: ____ / 6</strong></p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection</div>
+    <p><strong>Identify your weakest row.</strong> Which row earned the lowest score? That's your revision target for L12 and future essays.</p>
+    <ul>
+      <li>If Row A = 0: Your thesis needs a line of reasoning (preview 2-3 claims that BUILD)</li>
+      <li>If Row B = 0-2: Your evidence is vague OR your commentary doesn't explain HOW evidence supports claims</li>
+      <li>If Row C = 0: You need to add complexity, broader context, or acknowledge tensions</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 6: Gateway Check (2 min)</h2>
+<div class="phase-card gateway-card">
+  <h3>Gateway Assessment</h3>
+
+  <div class="gateway-box">
+    <h4>Gateway Criteria</h4>
+    <p>To pass this gateway, you must earn:</p>
+    <ul>
+      <li><strong>Row A = 1</strong> (defensible thesis with line of reasoning)</li>
+      <li><strong>Row B ≥ 2</strong> (evidence with at least some commentary)</li>
+    </ul>
+    <p><strong>Did you meet the gateway criteria?</strong></p>
+    <ul>
+      <li>✅ <strong>YES:</strong> You're ready for L12 (Sophistication Moves) and Unit 3 (Synthesis)</li>
+      <li>❌ <strong>NO:</strong> Identify your gap (Row A or Row B) and revise before moving forward. You need these skills for the gate assessment in L20.</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">If You Didn't Pass</div>
+    <p><strong>Row A Issue:</strong> Rewrite your thesis using this formula: "[Your position] because [reason 1], [reason 2], and [reason 3]." Make sure each reason BUILDS on the previous one.</p>
+    <p><strong>Row B Issue:</strong> Choose one body paragraph. Revise it to include SPECIFIC evidence (names, dates, details) and 2-3 sentences of commentary explaining HOW the evidence supports your claim. Practice the question: "How does this evidence demonstrate my claim?"</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B1L L11 • Full AP Argument Essay • KC C.AP.L.09 (GATEWAY) • ~55 min • M4, M5 Applied</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B1L_L10_AP_Argument_Body_Paragraphs.html" class="prev">← L10: Body Paragraphs</a>
+  <a href="B1L_L12_Sophistication_Moves.html" class="next">L12: Sophistication Moves →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

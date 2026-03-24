@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L02: Rhetorical Situation Mapping</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.timer-box {
+  background: #fff3e0; border: 2px solid #ff9800; border-radius: 8px;
+  padding: 1rem; margin: 1rem 0; text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course B1L · Lesson 2</span>
+  <h1>Rhetorical Situation Mapping (Timed)</h1>
+  <p class="subtitle">M3 Force Field Under AP Time Pressure</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.AP.L.01</span>
+    <span>🧠 Mental Models: M3, M5</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>AP Rhetorical Situation Mapping = Force Field Under Time Pressure.</strong> In A2, you had 8 minutes to map a full Force Field. On the AP exam, you have 3 minutes maximum. You need to identify the ESSENTIAL forces that explain the writer's key choices. Focus on: What is the exigence? Who is the audience, and what do they resist? What position does the writer occupy? What constraints does this create?
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>From Thorough to Essential</h3>
+
+  <p>You learned <strong>M3 (Force Field)</strong> in A2: map Audience, Exigence, Writer's Position, and Context to understand the constraints shaping a writer's choices. This skill is critical for AP rhetorical analysis.</p>
+
+  <p><strong>The AP challenge:</strong> You don't have time for a thorough Force Field map. You have 5 minutes total to read the passage AND plan your essay. That means your rhetorical situation map must be <strong>rapid and strategic</strong> — not exhaustive, but focused on the forces that explain the passage's BIG moves.</p>
+
+  <p><span class="vocab-term">AP Rhetorical Situation Mapping</span> asks: Which forces create the constraints that MATTER MOST for this passage? Often, it's one or two forces that explain most of the writer's strategic choices.</p>
+
+  <p><strong>Three-Minute Map Process:</strong></p>
+  <ol>
+    <li><strong>Exigence</strong> (30 sec): What occasion or problem prompted this? What urgency does the writer face?</li>
+    <li><strong>Audience</strong> (60 sec): Who is listening? What do they believe or resist that constrains the writer?</li>
+    <li><strong>Speaker</strong> (45 sec): What's the writer's position/authority? What credibility must they establish?</li>
+    <li><strong>Key Constraint</strong> (45 sec): Which force explains the passage's major strategic choices? Focus here.</li>
+  </ol>
+
+  <p>Your map doesn't need to be beautiful. It needs to be <strong>usable</strong> — sufficient to write your thesis and body paragraphs.</p>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <h3>Timed Mapping: Patrick Henry</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Patrick Henry, "Give Me Liberty, or Give Me Death!" (1775)</h3>
+
+    <p>Mr. President, it is natural to man to indulge in the illusions of hope. We are apt to shut our eyes against a painful truth, and listen to the song of that siren till she transforms us into beasts. Is this the part of wise men, engaged in a great and arduous struggle for liberty? Are we disposed to be of the number of those who, having eyes, see not, and, having ears, hear not, the things which so nearly concern their temporal salvation?</p>
+
+    <p>Gentlemen may cry, Peace, Peace—but there is no peace. The war is actually begun! The next gale that sweeps from the north will bring to our ears the clash of resounding arms! Our brethren are already in the field! Why stand we here idle? What is it that gentlemen wish? What would they have? Is life so dear, or peace so sweet, as to be purchased at the price of chains and slavery? Forbid it, Almighty God! I know not what course others may take; but as for me, give me liberty or give me death!</p>
+
+    <p class="attribution">Patrick Henry, Virginia Convention, March 23, 1775 (public domain excerpt)</p>
+  </div>
+
+  <div class="timer-box">TIMED MAPPING: 3 MINUTES</div>
+
+  <p><strong>Watch the writer complete a 3-minute rhetorical situation map. This is messy-but-sufficient — the goal is usability, not perfection.</strong></p>
+
+  <div class="coping-model">
+    <p><strong>Writer's rapid map (3 min):</strong></p>
+
+    <p><span class="strong">EXIGENCE: March 1775, fighting already started at Lexington/Concord (north). Virginia Convention debating whether to arm militia. Urgency = decision point. Can't delay.</span></p>
+
+    <p><span class="strong">AUDIENCE: Virginia delegates, mixed views. Some want armed resistance, some want continued negotiation with Britain. Moderate/cautious faction is strong. Key resistance: fear of war, hope for peace, worry about treason charges.</span></p>
+
+    <p><span class="strong">SPEAKER: Patrick Henry = known radical, passionate, sometimes seen as reckless. Risk = audience dismisses him as extremist. Needs to frame radicalism as realism, not hysteria.</span></p>
+
+    <p><span class="strong">KEY CONSTRAINT: Audience's HOPE FOR COMPROMISE is the main obstacle. Henry can't just argue for war — he has to eliminate the middle ground. His strategies must make compromise seem impossible/cowardly. That's why rhetorical questions, binary framing ("liberty or death"), urgency language ("war is actually begun").</span></p>
+  </div>
+
+  <p><strong>Notice:</strong> The map took 3 minutes and is rough (incomplete sentences, abbreviations). But it's sufficient to write a thesis: "Through urgent language, rhetorical questions, and stark binary framing, Henry eliminates the possibility of compromise and compels his audience to see armed resistance as the only honorable choice." The KEY CONSTRAINT (audience hope for compromise) explains most of his strategies.</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>What's the difference between this 3-minute AP map and the full A2 Force Field map you learned last course?</strong></p>
+    <ol type="A">
+      <li>The AP map is shorter but covers the same information</li>
+      <li>The AP map focuses on the forces that explain the passage's key strategies, not every detail</li>
+      <li>The AP map doesn't use M3 at all</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> The AP map is strategic, not comprehensive. You don't map every force in equal detail — you identify the KEY CONSTRAINT (in Henry's case: audience hope for compromise) that explains the passage's major rhetorical moves. The A2 Force Field map was training you to see all the forces. The AP map is deploying that training under time pressure to focus on what matters most.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 3: Supported Practice #1 (6 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Timed Mapping: Susan B. Anthony</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Susan B. Anthony, "On Women's Right to Vote" (1873)</h3>
+
+    <p>Friends and fellow citizens: I stand before you tonight under indictment for the alleged crime of having voted at the last presidential election, without having a lawful right to vote. It shall be my work this evening to prove to you that in thus voting, I not only committed no crime, but, instead, simply exercised my citizen's rights, guaranteed to me and all United States citizens by the National Constitution, beyond the power of any state to deny.</p>
+
+    <p>The preamble of the Federal Constitution says: "We, the people of the United States, in order to form a more perfect union, establish justice, insure domestic tranquility, provide for the common defense, promote the general welfare, and secure the blessings of liberty to ourselves and our posterity, do ordain and establish this Constitution for the United States of America." It was we, the people; not we, the white male citizens; nor yet we, the male citizens; but we, the whole people, who formed the Union.</p>
+
+    <p class="attribution">Susan B. Anthony, speech in Monroe County, New York, 1873 (public domain excerpt)</p>
+  </div>
+
+  <div class="timer-box">YOUR TURN: 3 MINUTES TO MAP</div>
+
+  <p><strong>Your Task:</strong> Set a timer for 3 minutes. Complete the rapid rhetorical situation map below. Focus on identifying the KEY CONSTRAINT that explains Anthony's main strategic choice (using constitutional language to reframe her illegal act).</p>
+
+  <table>
+    <tr>
+      <th style="width: 25%;">Force</th>
+      <th>Notes (rapid, messy OK)</th>
+    </tr>
+    <tr>
+      <td><strong>Exigence</strong></td>
+      <td><em>What occasion/problem prompted this speech? Why is she speaking now?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Audience</strong></td>
+      <td><em>Who is listening? What do they believe about women voting? What resistance must she overcome?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Speaker</strong></td>
+      <td><em>What's Anthony's position? What credibility does she need to establish? What risk does she face?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Key Constraint</strong></td>
+      <td><em>Which force explains her main strategic choice? Why does she use constitutional language instead of moral appeals?</em></td>
+    </tr>
+  </table>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p><strong>After completing your 3-minute map, ask:</strong> Did I identify the key constraint that explains Anthony's strategy? She's on trial for voting illegally — she can't just say "women deserve equality." She needs to reframe the act as constitutional, not criminal. That constraint (legal jeopardy + audience belief that she broke the law) explains why she uses constitutional language and why she focuses on "we, the people" interpretation.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Supported Practice #2 (6 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Timed Mapping: Benjamin Franklin</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Benjamin Franklin, Speech at the Constitutional Convention (1787)</h3>
+
+    <p>Mr. President, I confess that there are several parts of this constitution which I do not at present approve, but I am not sure I shall never approve them: For having lived long, I have experienced many instances of being obliged by better information, or fuller consideration, to change opinions even on important subjects, which I once thought right, but found to be otherwise. It is therefore that the older I grow, the more apt I am to doubt my own judgment, and to pay more respect to the judgment of others.</p>
+
+    <p>In these sentiments, Sir, I agree to this Constitution with all its faults, if they are such; because I think a general Government necessary for us, and there is no form of Government but what may be a blessing to the people if well administered. I doubt too whether any other Convention we can obtain may be able to make a better Constitution. Thus I consent, Sir, to this Constitution because I expect no better, and because I am not sure that it is not the best.</p>
+
+    <p class="attribution">Benjamin Franklin, Constitutional Convention, Philadelphia, September 17, 1787 (public domain excerpt)</p>
+  </div>
+
+  <div class="timer-box">YOUR TURN: 3 MINUTES TO MAP</div>
+
+  <p><strong>Your Task:</strong> Set a timer for 3 minutes. Complete the rapid rhetorical situation map. Focus on: Why does Franklin open by admitting he has doubts about the Constitution? What constraint does this choice respond to?</p>
+
+  <table>
+    <tr>
+      <th style="width: 25%;">Force</th>
+      <th>Notes (rapid, messy OK)</th>
+    </tr>
+    <tr>
+      <td><strong>Exigence</strong></td>
+      <td><em>Convention ending, need approval. What's at stake?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Audience</strong></td>
+      <td><em>Delegates with reservations/doubts. What do they believe? What are they resisting?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Speaker</strong></td>
+      <td><em>Franklin's position/authority? Why does his age/experience matter here?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Key Constraint</strong></td>
+      <td><em>Why admit doubts instead of making a confident appeal? What problem does this solve?</em></td>
+    </tr>
+  </table>
+</div>
+
+<h2>Phase 5: Independent Practice (5 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Timed Mapping: Wendell Phillips</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Wendell Phillips, "The Philosophy of the Abolition Movement" (1853)</h3>
+
+    <p>The Reformer is careless of numbers, disregards popularity, and deals only with ideas, conscience, and common sense. He feels, with Copernicus, that as God waited long for an interpreter, so he can wait for his followers. He neither expects nor is overanxious for immediate success. The politician dwells in an everlasting now. His motto is, "Success — today." The Reformer works for the distant future, and is satisfied if he can convince a few, a very few, thinking men.</p>
+
+    <p>How can any earnest person devote himself to the politics of the day when he sees clearly that the political parties of the day are constructed on a basis of injustice? When a man feels that every compromise is an impurity, he cannot tamely commit his conscience to the keeping of others.</p>
+
+    <p class="attribution">Wendell Phillips, speech, 1853 (public domain representative excerpt)</p>
+  </div>
+
+  <div class="timer-box">YOUR TURN: 3 MINUTES TO MAP (NO TEMPLATE)</div>
+
+  <p><strong>Your Task:</strong> Set a timer for 3 minutes. Map the rhetorical situation for Phillips's speech. No template provided — use your own format (bullets, table, notes — whatever works). Focus on identifying the key constraint. After 3 minutes, write one sentence: "The key constraint that explains Phillips's strategy is ___."</p>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li>Completes map in 3 minutes (messy is fine; usability is the goal)</li>
+      <li>Identifies exigence, audience, speaker position</li>
+      <li>Names the KEY CONSTRAINT that explains Phillips's choice to distinguish "Reformer" vs. "Politician"</li>
+      <li>Final sentence clearly states what constraint the passage responds to</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 6: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>You now have 3 timed reps on AP rhetorical situation mapping.</strong> Are you getting faster? What do you map FIRST? Most students find that identifying the <strong>exigence</strong> first makes everything else fall into place — once you know what prompted the writing, you can infer audience resistance and speaker position more quickly.</p>
+
+    <p><strong>Speed Tips:</strong></p>
+    <ul>
+      <li>Use abbreviations and shorthand (notes, not sentences)</li>
+      <li>Focus on CONSTRAINTS, not just characteristics (what couldn't the writer do?)</li>
+      <li>Identify the ONE force that explains the most strategic choices (key constraint)</li>
+      <li>Stop at "good enough to write a thesis" — perfection wastes time</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>Compare your three maps (Anthony, Franklin, Phillips).</strong> Which took you longest? Which force do you find easiest to identify? Which is hardest? The goal is to reach automatic speed on exigence and audience by the time you take the AP exam. What do you need to practice?</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B1L L02 • Rhetorical Situation Mapping • C.AP.L.01 • ~25 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B1L_L01_Reverse_Engineering.html">← Previous: L01 Reverse Engineering</a>
+  <a href="B1L_L03_Identifying_Rhetorical_Strategies.html">Next: L03 Identifying Strategies →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

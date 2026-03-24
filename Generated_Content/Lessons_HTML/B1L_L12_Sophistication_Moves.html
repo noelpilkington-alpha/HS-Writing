@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L12: Sophistication Moves</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.before-box {
+  background: #ffe8e8;
+  border: 1px solid #ffcccc;
+  border-radius: 6px;
+  padding: 1rem;
+}
+.after-box {
+  background: #e8f5e9;
+  border: 1px solid #c8e6c9;
+  border-radius: 6px;
+  padding: 1rem;
+}
+.before-box h4, .after-box h4 {
+  margin-top: 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.before-box h4 { color: #c0392b; }
+.after-box h4 { color: #155724; }
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course B1L · Lesson 12</span>
+  <h1>Sophistication Moves (Row C Preview)</h1>
+  <p class="subtitle">The Difference Between a 4 and a 5</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.AP.L.09 (deepened), Row C preview</span>
+    <span>🧠 Mental Models: M4, M6 (preview)</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Row C (Sophistication):</strong> Worth 1 point (0 or 1). Rewards: (1) situating the argument in broader context, (2) acknowledging tension or complexity within your own position, (3) considering alternative interpretations of evidence, or (4) using vivid, persuasive style. You don't bolt sophistication onto a finished essay—you BUILD it into your line of reasoning from the start.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>What Is Sophistication?</h3>
+
+  <p>Row C is the hardest point to earn on the AP rubric, but it's also the most straightforward conceptually: <strong>sophistication = depth of thought</strong>. An essay that stays on the surface earns Row C 0. An essay that demonstrates genuine intellectual complexity earns Row C 1.</p>
+
+  <p>There are <strong>four main ways</strong> to demonstrate sophistication. You only need ONE done well—not all four.</p>
+
+  <div class="rubric-box">
+    <h4>Four Row C Sophistication Moves</h4>
+    <table>
+      <tr>
+        <th style="width: 30%;">Move Type</th>
+        <th>What It Does</th>
+        <th>Example Signal</th>
+      </tr>
+      <tr>
+        <td><strong>1. Broader Context</strong></td>
+        <td>Places the argument in a larger historical trend, philosophical debate, or ongoing conversation</td>
+        <td>"This debate echoes earlier tensions between..." / "Historically, societies have struggled with..."</td>
+      </tr>
+      <tr>
+        <td><strong>2. Tension/Complexity</strong></td>
+        <td>Acknowledges genuine trade-offs or limits within your OWN position (not just counterarguments)</td>
+        <td>"This position requires confronting an uncomfortable tension..." / "Even granting this, we must acknowledge..."</td>
+      </tr>
+      <tr>
+        <td><strong>3. Alternative Interpretation</strong></td>
+        <td>Offers a second, reasonable reading of evidence; shows evidence isn't univocal</td>
+        <td>"Skeptics might reasonably interpret this differently..." / "This same data could suggest..."</td>
+      </tr>
+      <tr>
+        <td><strong>4. Vivid/Persuasive Style</strong></td>
+        <td>Prose that is precise, rhetorically controlled, and purposefully crafted</td>
+        <td>Purposeful verbs, sentence variety, metaphor, rhetorical devices</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3>M6 Preview: "Who Benefits?"</h3>
+  <p>You'll learn <span class="vocab-term">M6: Who Benefits?</span> fully in Course B2, but it's useful for Row C now. When you ask "Who benefits from this policy/argument?" you often uncover:</p>
+  <ul>
+    <li><strong>Hidden tensions:</strong> A policy that helps one group might harm another (Type 2 sophistication)</li>
+    <li><strong>Alternative interpretations:</strong> Different stakeholders read the same evidence differently (Type 3)</li>
+    <li><strong>Broader context:</strong> Patterns of who benefits reveal historical trends (Type 1)</li>
+  </ul>
+
+  <p><strong>Key insight:</strong> Sophistication isn't decoration—it's what happens when you think deeply enough to see complexity that simpler analysis misses.</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>A student writes: "While social media has benefits, it also has drawbacks. Therefore, we need balance." Is this sophistication?</strong></p>
+    <ol type="A">
+      <li>Yes—it acknowledges complexity by noting both benefits and drawbacks</li>
+      <li>No—it states the obvious without exploring WHY the tension exists or what "balance" would require</li>
+      <li>Yes—it takes a nuanced position</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> Acknowledging that an issue has "pros and cons" is not sophistication—it's stating the obvious. Sophistication would involve exploring WHY the benefits and drawbacks are in tension (e.g., "Social media's design rewards engagement, which means platforms profit from addictive features that harm users—a structural incentive that 'balance' rhetoric fails to address"). Simply saying "we need balance" without defending what that means or how to achieve it is surface-level thinking.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <h3>Identify Row C in Model Essay</h3>
+
+  <p>Reread this paragraph from the L11 model essay. Identify where Row C sophistication appears and what type it is.</p>
+
+  <div class="passage-box">
+    <p><strong>[Body ¶3: Counterargument with Sophistication]</strong></p>
+    <p>Critics reasonably point out that this celebration of failure privileges those who can afford it. Students who fail repeatedly in school don't develop resilience—they drop out. Entrepreneurs who fail often lack the safety net to try again. Failure builds capacity only when it's followed by opportunity to iterate, and that opportunity is not equally distributed. <strong>This critique is vital: failure without resources or support is simply failure, not pedagogy. Yet this objection actually reinforces rather than refutes the central claim. What it reveals is that the problem isn't whether failure is necessary for learning—it's whether we provide the conditions (time, resources, psychological safety, feedback) that make failure productive rather than destructive.</strong> The solution isn't to eliminate difficulty but to ensure all learners have access to what Edison, the Wrights, and well-supported students possess: the ability to fail, learn, and try again. The equity issue is real, but it's an argument for democratizing the conditions of productive failure, not for pretending that success can emerge without struggle.</p>
+  </div>
+
+  <div class="coping-model">
+    <p><strong>Analysis of sophistication:</strong></p>
+    <p><span class="strong">Row C Move Type: Tension/Complexity Within Position (Type 2)</span></p>
+    <p><span class="strong">What makes this sophisticated: The writer doesn't just dismiss the counterargument—they acknowledge it's VITAL and then show how it reveals a deeper tension within their own position. The problem isn't the necessity of failure; it's the unequal distribution of resources that make failure productive vs. destructive. This is genuine complexity, not just "here's a counterargument, but I'm still right."</span></p>
+    <p><span class="strong">Also note: The writer uses M6 implicitly—asking "Who benefits from narratives that celebrate failure?" reveals that those with safety nets benefit, while those without suffer. That question surfaces the equity issue.</span></p>
+  </div>
+
+  <h3>Before/After: Adding Sophistication to a Paragraph</h3>
+
+  <p>Here's the same claim written two ways—without and with Row C sophistication.</p>
+
+  <div class="before-after">
+    <div class="before-box">
+      <h4>Before (Row C 0)</h4>
+      <p><strong>Topic:</strong> Schools should adopt four-day weeks.</p>
+      <p>Schools should adopt four-day weeks because they save money, improve teacher retention, and give students more time for deep learning. The research shows that four-day weeks work in rural districts. While some critics worry about childcare disruptions, schools can partner with community organizations to provide supervision on the fifth day. Therefore, the benefits outweigh the costs.</p>
+    </div>
+    <div class="after-box">
+      <h4>After (Row C 1)</h4>
+      <p><strong>Topic:</strong> Schools should adopt four-day weeks.</p>
+      <p>Schools should adopt four-day weeks because they save money, improve teacher retention, and give students more time for deep learning. Yet this position requires confronting an uncomfortable tension: <strong>the families most harmed by childcare disruptions—low-income, single-parent households—are precisely those who most need the cost savings and teacher stability that four-day weeks provide.</strong> Policymakers must navigate this trade-off rather than pretend it doesn't exist, perhaps by phasing in four-day weeks with targeted support for affected families. The question isn't whether four-day weeks work—pilot programs demonstrate they can—but whether we can implement them without exacerbating the inequities that already divide American education.</p>
+    </div>
+  </div>
+
+  <p><strong>What changed?</strong> The "After" version acknowledges a genuine tension WITHIN the position (helping some while harming others), names who is affected, and reframes the question from "do they work?" to "can we implement them equitably?" That's Type 2 sophistication.</p>
+</div>
+
+<h2>Phase 3: Supported Practice (8 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Add Sophistication to Given Paragraphs</h3>
+
+  <p>Below are two competent body paragraphs (Row B 3) that lack sophistication. Your task: Add 2-3 sentences that incorporate a Row C move. Choose the sophistication type that fits best.</p>
+
+  <h4>Paragraph 1: Technology and Employment</h4>
+  <div class="passage-box" style="background: #f8f9fa; border: 1px solid #dee2e6;">
+    <p><strong>Position:</strong> Automation will displace workers, requiring government intervention to retrain affected populations.</p>
+    <p>Automation inevitably displaces workers in sectors where tasks are routine and predictable. The Industrial Revolution displaced agricultural workers; computerization displaced manufacturing jobs; now AI threatens white-collar work in fields like law, medicine, and finance. History suggests that new jobs eventually emerge, but the transition period creates genuine suffering. Economists estimate that 47% of current jobs face automation risk within two decades (Frey and Osborne, 2013). Without proactive retraining programs funded by government, displaced workers—particularly older workers with industry-specific skills—face prolonged unemployment and downward mobility.</p>
+    <p><strong>[This paragraph needs Row C sophistication added. Write 2-3 sentences below it using one of the four moves.]</strong></p>
+  </div>
+
+  <p><strong>Your Task:</strong> Add sophistication. Consider:</p>
+  <ul>
+    <li><strong>Type 1 (Broader context):</strong> Connect to historical patterns of technological displacement</li>
+    <li><strong>Type 2 (Tension):</strong> Acknowledge a tension (e.g., retraining costs vs. innovation speed, or who pays for retraining)</li>
+    <li><strong>Type 3 (Alternative interpretation):</strong> Note how tech optimists interpret the same data differently</li>
+  </ul>
+
+  <h4>Paragraph 2: Free Speech on Campus</h4>
+  <div class="passage-box" style="background: #f8f9fa; border: 1px solid #dee2e6;">
+    <p><strong>Position:</strong> Universities should protect controversial speech, even when it offends, because intellectual growth requires exposure to challenging ideas.</p>
+    <p>Universities exist to develop critical thinking, and critical thinking requires encountering ideas that challenge settled beliefs. When campuses disinvite controversial speakers or create speech codes that restrict debate, they undermine their core mission. Students who graduate having heard only viewpoints they already agree with are intellectually unprepared for a pluralistic society. The marketplace of ideas functions through competition: bad ideas are defeated through argument, not suppression. As John Stuart Mill argued in <em>On Liberty</em>, even false ideas serve the purpose of forcing us to defend and refine true ones. Censorship, however well-intentioned, produces intellectual fragility.</p>
+    <p><strong>[This paragraph needs Row C sophistication added. Write 2-3 sentences below it using one of the four moves.]</strong></p>
+  </div>
+
+  <p><strong>Your Task:</strong> Add sophistication. Consider:</p>
+  <ul>
+    <li><strong>Type 2 (Tension):</strong> Acknowledge tension between free speech and creating inclusive learning environment</li>
+    <li><strong>Type 3 (Alternative interpretation):</strong> Note how marginalized students might interpret "controversial speech" as targeted harassment</li>
+    <li><strong>M6 application:</strong> Ask "Who benefits from absolute free speech protections? Who is harmed?"</li>
+  </ul>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p>After adding sophistication, ask yourself:</p>
+    <ul>
+      <li>Did I just add a generic "there are pros and cons" sentence? (Not sophisticated)</li>
+      <li>Or did I identify a SPECIFIC tension, complexity, or alternative reading that reveals depth? (Sophisticated)</li>
+      <li>Would my addition force a reader to think differently about the issue? (Good test for Row C)</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (7 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Revise Your Own L11 Essay</h3>
+
+  <p>Return to the essay you wrote in L11 (Full AP Argument Essay). Identify your weakest paragraph—the one that feels most surface-level or predictable.</p>
+
+  <p><strong>Your Task (7 minutes):</strong></p>
+  <ol>
+    <li>Reread the paragraph. What claim does it make?</li>
+    <li>Add 2-3 sentences that incorporate Row C sophistication. Choose from:
+      <ul>
+        <li><strong>Type 1:</strong> Place the claim in broader historical/philosophical context</li>
+        <li><strong>Type 2:</strong> Acknowledge a tension or trade-off within your own position</li>
+        <li><strong>Type 3:</strong> Offer an alternative interpretation of your evidence</li>
+        <li><strong>Type 4:</strong> Revise 2-3 sentences for vivid, precise style (purposeful verbs, varied syntax)</li>
+      </ul>
+    </li>
+    <li>Re-score the paragraph: Does it now demonstrate Row C sophistication?</li>
+  </ol>
+
+  <div class="rubric-box">
+    <strong>Sophistication Revision Checklist:</strong>
+    <ul>
+      <li>I identified a SPECIFIC tension, complexity, or alternative reading (not just "it's complicated")</li>
+      <li>My addition reveals something that wasn't obvious in the original paragraph</li>
+      <li>I avoided generic hedging ("While there are pros and cons..." / "It depends...")</li>
+      <li>My revision demonstrates genuine thinking, not just fancier wording</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Assessment</div>
+    <p><strong>Before vs. After:</strong> Compare your original paragraph to the revised version. What's the difference?</p>
+    <ul>
+      <li><strong>If the difference is just length:</strong> You added words, not sophistication. Try again.</li>
+      <li><strong>If the difference is acknowledgment of complexity:</strong> You're on the right track. Make sure the complexity is SPECIFIC.</li>
+      <li><strong>If the revised version would make a reader pause and reconsider:</strong> That's Row C 1.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>Row C Is the Difference Between a 5 and a 6</strong></p>
+    <p>AP essays are scored 0-6. Here's the typical distribution:</p>
+    <ul>
+      <li><strong>Row A = 0, Row B = 0-2:</strong> Essays scoring 0-2 overall (thesis weak or missing, thin evidence)</li>
+      <li><strong>Row A = 1, Row B = 2-3:</strong> Essays scoring 3-4 overall (competent thesis and evidence, but surface-level)</li>
+      <li><strong>Row A = 1, Row B = 3-4, Row C = 0:</strong> Essays scoring 4-5 (strong but not sophisticated)</li>
+      <li><strong>Row A = 1, Row B = 4, Row C = 1:</strong> Essays scoring 6 (sophisticated insight)</li>
+    </ul>
+    <p>Row C is hard to earn, but it's the difference between "good" and "excellent." Your L11 essay likely earned 4-5. Adding Row C sophistication moves it toward 5-6.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>Which sophistication move feels most natural to you?</strong></p>
+    <ul>
+      <li><strong>Type 1 (Broader context):</strong> If you like history and connecting ideas across time</li>
+      <li><strong>Type 2 (Tension/complexity):</strong> If you think in terms of trade-offs and costs</li>
+      <li><strong>Type 3 (Alternative interpretation):</strong> If you naturally see multiple perspectives</li>
+      <li><strong>Type 4 (Vivid style):</strong> If you enjoy crafting sentences and using precise language</li>
+    </ul>
+    <p>Focus on YOUR strength. You only need ONE sophistication move to earn Row C 1—so lean into the type that fits your thinking style.</p>
+  </div>
+
+  <div class="transfer-prompt">
+    <p><strong>M6 Preview: "Who Benefits?" as a Sophistication Tool</strong></p>
+    <p>One reliable way to generate sophistication: ask <strong>"Who benefits from this policy/argument/framing, and who doesn't?"</strong> This question often reveals:</p>
+    <ul>
+      <li>Hidden tensions (one group gains, another loses)</li>
+      <li>Alternative interpretations (stakeholders read evidence differently)</li>
+      <li>Broader patterns (historical trends in who holds power)</li>
+    </ul>
+    <p>You'll learn M6 fully in Course B2, but start practicing the question now. It's a shortcut to Row C.</p>
+  </div>
+
+  <div class="transfer-prompt">
+    <p><strong>Looking Ahead:</strong> In L13, you'll begin Unit 3: AP Synthesis Essay. You'll apply Row C sophistication there too—synthesizing 6-7 sources requires seeing complexity across multiple perspectives. The sophistication skills you practiced today transfer directly to synthesis writing.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B1L L12 • Sophistication Moves (Row C Preview) • KCs: C.AP.L.09 (deepened), Row C preview • ~25 min • M4, M6 Preview</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B1L_L11_Full_AP_Argument_Essay.html" class="prev">← L11: Full AP Argument Essay</a>
+  <a href="B1L_L13_Rapid_Source_Analysis.html" class="next">L13: Rapid Source Analysis →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

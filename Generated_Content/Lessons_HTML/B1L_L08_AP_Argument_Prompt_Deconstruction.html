@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L08: AP Argument Prompt Deconstruction</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.prompt-box {
+  background: #fff8e1; border: 2px solid #ffb74d; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.prompt-box h4 { margin-top: 0; color: #e65100; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.position-box {
+  background: #f8f9fa; border-left: 3px solid #6c757d;
+  padding: 0.75rem 1rem; margin: 0.75rem 0; font-size: 0.95rem;
+}
+.position-box .label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem;
+  font-weight: 700; text-transform: uppercase; color: #495057;
+  margin-bottom: 0.25rem;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course B1L · Lesson 8</span>
+  <h1>AP Argument Prompt Deconstruction</h1>
+  <p class="subtitle">Mapping the Argument Space Before Writing</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.AP.L.07</span>
+    <span>🧠 Mental Model: M4</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Prompt Deconstruction</strong> is understanding the argument space before entering it. You identify: (1) the core claim being debated, (2) what makes it complex, and (3) three possible positions (agree, disagree, complicate). The strongest essays usually choose Position #3—complicating the debate rather than taking a simple side.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>AP Argument Prompts Have a Structure</h3>
+
+  <p>Unlike rhetorical analysis (where you analyze someone else's writing), the AP Argument essay asks you to construct your own argument in response to a prompt. AP prompts follow a predictable pattern:</p>
+
+  <div class="key-concept">
+    <h4>AP Argument Prompt Structure</h4>
+    <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>A quotation or claim:</strong> Someone's position on a debatable issue</li>
+      <li><strong>Context or complication:</strong> Why this is contested or what others might say</li>
+      <li><strong>A task:</strong> "Write an essay that argues your position on..."</li>
+    </ol>
+  </div>
+
+  <p>Your job <strong>BEFORE planning</strong> is to deconstruct the prompt:</p>
+
+  <div class="rubric-box">
+    <h4>Prompt Deconstruction (3 Steps)</h4>
+    <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Identify the core claim:</strong> What position is being argued? What's the central tension?</li>
+      <li><strong>Identify the complexity:</strong> What makes this debatable? What's at stake? Why might reasonable people disagree?</li>
+      <li><strong>Map 3 possible positions using M4 (Claim Hierarchy):</strong>
+        <ul style="margin-left: 1.5rem; margin-top: 0.25rem;">
+          <li><strong>Position 1 (Agree):</strong> Support the claim</li>
+          <li><strong>Position 2 (Disagree):</strong> Reject the claim</li>
+          <li><strong>Position 3 (Complicate):</strong> Show why the binary is false or introduce a higher-order framework</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <p><strong>Key insight:</strong> The strongest position is usually #3 (complicate) because it demonstrates the nuanced thinking that Row C (sophistication) rewards. Instead of defending one side of a binary, you show that the binary itself is the problem.</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Question</div>
+    <p><strong>Why is "complicating" often stronger than "agreeing" or "disagreeing" for AP essays?</strong></p>
+    <ol type="A">
+      <li>Because it's easier to write</li>
+      <li>Because it allows you to use evidence from both sides and demonstrate sophisticated thinking</li>
+      <li>Because AP readers prefer neutral positions</li>
+      <li>Because you don't have to take a position</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div class="model-answer">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> Complicating the prompt allows you to use evidence from multiple perspectives, acknowledge genuine tensions, and demonstrate the claim hierarchy (M4) that Row C rewards. You're not being neutral—you're taking a MORE sophisticated position by showing why the either/or framing is insufficient. This opens space for broader context, complexity, and alternative interpretations (all Row C sophistication moves).</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <h3>Deconstructing an AP-Style Prompt</h3>
+
+  <div class="prompt-box">
+    <h4>AP-Style Argument Prompt #1: The Nature of Progress</h4>
+    <p>In his essay "The Cost of Change," a contemporary social critic writes: "All genuine progress is built upon the ruins of what came before. We cannot create the new without destroying the old; meaningful change always requires sacrifice and disruption."</p>
+    <p>This perspective suggests that progress and destruction are inseparable—that society cannot move forward without leaving something valuable behind. Yet others argue that the most enduring advances come through careful preservation and gradual evolution, not through radical upheaval.</p>
+    <p><strong>Write an essay that argues your position on whether significant progress requires sacrifice or disruption.</strong></p>
+  </div>
+
+  <p>Watch how a writer deconstructs this prompt using the three-step process:</p>
+
+  <div class="coping-model">
+    <p><strong>Step 1: Identify the Core Claim</strong></p>
+    <p><span class="strong">The quotation argues that meaningful progress necessarily involves sacrifice and disruption—you cannot advance without destroying what existed before. The central tension: Is destruction a necessary condition for progress, or can we preserve while improving?</span></p>
+
+    <p style="margin-top: 1rem;"><strong>Step 2: Identify the Complexity</strong></p>
+    <p><span class="strong">This is genuinely debatable because history shows both revolutionary breakthroughs (often destructive: Industrial Revolution, political revolutions) and evolutionary progress (building incrementally: medical research, legal reforms). The complexity lies in defining "genuine progress" and determining whether disruption is necessary or merely frequent. Different domains might have different answers.</span></p>
+
+    <p style="margin-top: 1rem;"><strong>Step 3: Map 3 Positions (M4 Claim Hierarchy)</strong></p>
+
+    <div class="position-box">
+      <div class="label">Position 1: Agree</div>
+      <p><strong>Claim:</strong> Significant progress does require sacrifice and disruption.</p>
+      <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>Evidence:</strong> Industrial Revolution destroyed artisan economies but created modern prosperity; Civil Rights Movement disrupted social order but achieved justice; scientific paradigm shifts (Copernicus, Darwin) overturned established beliefs.</p>
+      <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #6c757d;"><strong>Why limited:</strong> Doesn't account for incremental progress or the costs of unnecessary destruction. Risks romanticizing upheaval.</p>
+    </div>
+
+    <div class="position-box">
+      <div class="label">Position 2: Disagree</div>
+      <p><strong>Claim:</strong> Enduring progress comes through preservation and gradual evolution, not destruction.</p>
+      <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>Evidence:</strong> Medical advances build on previous research; constitutional amendments preserve framework while improving; educational reforms work best when they respect institutional knowledge; successful companies iterate rather than burn it all down.</p>
+      <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #6c757d;"><strong>Why limited:</strong> Doesn't explain revolutionary moments when gradual change failed. Some systems need dismantling, not tweaking.</p>
+    </div>
+
+    <div class="position-box" style="border-left-color: #28a745;">
+      <div class="label" style="color: #28a745;">Position 3: Complicate (Strongest for AP)</div>
+      <p><strong>Claim:</strong> The question isn't whether progress requires disruption, but <em>what kind</em> of progress, <em>who</em> defines what's sacrificed, and <em>who benefits</em> from disruption vs. preservation.</p>
+      <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>Evidence:</strong> Progress for whom? Industrial Revolution = progress for capitalists, destruction for artisans. Different types of progress work differently: technological innovation may require disruption, but moral progress often requires preserving principles while transforming application. The debate itself assumes progress is always good—but whose progress? At whose expense?</p>
+      <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #155724;"><strong>Why strongest:</strong> Uses claim hierarchy (M4) to move from "which side?" to "what does this question assume?" Enables Row C sophistication through M6 lens (Who Benefits?), broader context, and exploration of complexity. Allows using evidence from BOTH sides productively.</p>
+    </div>
+  </div>
+
+  <div class="key-concept">
+    <p><strong>Notice:</strong> Position 3 doesn't refuse to take a stance—it takes a MORE sophisticated stance by reframing the question. This is M4 in action: moving up the claim hierarchy from surface debate to underlying assumptions.</p>
+  </div>
+</div>
+
+<h2>Phase 3: Supported Practice (8 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Deconstruct Two Prompts</h3>
+
+  <h4>Prompt #1: Knowledge and Certainty</h4>
+  <div class="prompt-box">
+    <h4>AP-Style Argument Prompt #2</h4>
+    <p>The philosopher Bertrand Russell observed: "The whole problem with the world is that fools and fanatics are always so certain of themselves, and wiser people so full of doubts."</p>
+    <p>Russell's observation suggests that intellectual humility and doubt are marks of true wisdom, while certainty often accompanies shallow thinking. Yet others contend that doubt can paralyze action, and that some degree of certainty is necessary for moral courage, scientific progress, and effective leadership.</p>
+    <p><strong>Write an essay that argues your position on the relationship between knowledge and certainty.</strong></p>
+  </div>
+
+  <p><strong>Your Task:</strong> Complete the three-step deconstruction.</p>
+
+  <div style="background: #e3f2fd; border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0;">
+    <p style="margin-bottom: 0.5rem; font-size: 0.85rem; color: #0d6efd;"><strong>Deconstruction Template:</strong></p>
+    <ol style="margin-left: 1.5rem; font-size: 0.9rem;">
+      <li><strong>Core Claim:</strong> What is Russell arguing? What's the central tension?</li>
+      <li><strong>Complexity:</strong> Why is this debatable? What makes both sides credible?</li>
+      <li><strong>3 Positions:</strong>
+        <ul style="margin-left: 1.5rem; margin-top: 0.25rem;">
+          <li><strong>Agree:</strong> Support Russell (doubt = wisdom)</li>
+          <li><strong>Disagree:</strong> Reject Russell (certainty necessary for action/leadership)</li>
+          <li><strong>Complicate:</strong> Reframe the debate (domain-specific? confidence vs. closed-mindedness?)</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <h4 style="margin-top: 2rem;">Prompt #2: Individual vs. Institutional Responsibility</h4>
+  <div class="prompt-box">
+    <h4>AP-Style Argument Prompt #3</h4>
+    <p>In a 1963 letter from Birmingham Jail, Dr. Martin Luther King Jr. wrote: "Injustice anywhere is a threat to justice everywhere. We are caught in an inescapable network of mutuality." King argued that individuals have a moral obligation to confront injustice directly, even when doing so means breaking unjust laws.</p>
+    <p>However, the sociologist C. Wright Mills argued that social problems require institutional solutions: "Neither the life of an individual nor the history of a society can be understood without understanding both." Mills contended that personal troubles become public issues only when we address them through systemic change—reforming laws, institutions, and power structures rather than relying on individual moral action.</p>
+    <p><strong>Write an essay that argues your position on the responsibility of individuals versus institutions for creating social change.</strong></p>
+  </div>
+
+  <p><strong>Your Task:</strong> Complete the three-step deconstruction for this prompt. Focus especially on Position 3 (Complicate)—how could you reframe this debate to avoid the either/or trap?</p>
+</div>
+
+<h2>Phase 4: Independent Practice (7 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Deconstruct a Fresh Prompt + Choose Your Position</h3>
+
+  <div class="prompt-box">
+    <h4>Fresh AP-Style Argument Prompt</h4>
+    <p>In his 1928 book <em>Disenchantment</em>, the social critic Charles Delisle wrote: "Every new technology promises to revolutionize education, yet the essential relationship between teacher and student remains unchanged. We mistake novelty for progress and gadgets for wisdom."</p>
+    <p>Nearly a century later, schools invest billions in educational technology, from interactive whiteboards to artificial intelligence tutors. Advocates argue that technology personalizes learning and prepares students for a digital world. Critics worry that screens replace human connection and that educational technology primarily serves corporate interests rather than student needs.</p>
+    <p><strong>Write an essay that argues your position on the role of technology in education.</strong></p>
+  </div>
+
+  <p><strong>Your Task:</strong> Complete the full deconstruction (core claim, complexity, 3 positions), then do something new: <strong>choose your strongest position and explain why using M4.</strong></p>
+
+  <div class="rubric-box">
+    <h4>Extended Task: Position Selection</h4>
+    <p>After mapping all three positions, answer:</p>
+    <ul>
+      <li><strong>Which position would you choose?</strong> (Agree, Disagree, or Complicate?)</li>
+      <li><strong>Why is this position strongest for an AP essay?</strong> Think about:
+        <ul style="margin-left: 1.5rem; margin-top: 0.25rem;">
+          <li>Evidence range (can you use diverse evidence?)</li>
+          <li>Claim hierarchy (does it move to a higher-order framework?)</li>
+          <li>Sophistication potential (does it enable Row C moves?)</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <details>
+    <summary>Show Model Deconstruction (after you've done yours)</summary>
+    <div class="model-answer">
+      <p><strong>Core Claim:</strong> Delisle argues that educational technology is superficial—new tools don't change the fundamental teacher-student relationship, which is what really matters for learning.</p>
+      <p style="margin-top: 0.75rem;"><strong>Complexity:</strong> Technology clearly enables things impossible before (access, personalization, adaptive practice), yet student outcomes haven't dramatically improved despite massive tech investment. Both sides have evidence.</p>
+      <p style="margin-top: 0.75rem;"><strong>3 Positions:</strong></p>
+      <ul style="margin-left: 1.5rem; font-size: 0.9rem;">
+        <li><strong>Agree:</strong> Teacher quality matters most; tech is overrated (research shows teacher quality predicts outcomes more than resources)</li>
+        <li><strong>Disagree:</strong> Technology IS transforming education (personalized learning, access, digital literacy preparation)</li>
+        <li><strong>Complicate (STRONGEST):</strong> The question isn't "technology or not" but "which technologies, used how, in whose interest?" Technology as tool (teacher-controlled) vs. technology as replacement (algorithm-driven). Apply M6: who benefits from different tech approaches? Corporations selling subscriptions? Students gaining access? Teachers losing autonomy?</li>
+      </ul>
+      <p style="margin-top: 0.75rem; color: #155724;"><strong>Why Complicate is strongest:</strong> Allows evidence from both sides, applies M4 (moves from surface debate to questions about purpose and power), enables M6 sophistication (Who Benefits?), and avoids the trap of defending a binary position.</p>
+    </div>
+  </details>
+</div>
+
+<h2>Phase 5: Transfer (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <h3>Compare AP Prompt Deconstruction to ACT Perspective Analysis</h3>
+    <p>In A2 L16, you learned to analyze ACT Writing prompts by mapping the three given perspectives and finding your position within or beyond them. <strong>AP Argument prompt deconstruction uses the same skill</strong>—mapping the argument space before writing.</p>
+
+    <p>The key difference:</p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>ACT:</strong> Gives you 3 perspectives; you map them and position yourself</li>
+      <li><strong>AP:</strong> Gives you one claim; you must generate your own perspectives</li>
+    </ul>
+
+    <p>Both require understanding the argument space BEFORE committing to a position. You're using the same analytical skill—it's just a different format.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection</div>
+    <p><strong>When you mapped 3 positions for the prompts today, which was hardest to generate: Agree, Disagree, or Complicate?</strong></p>
+    <p style="margin-top: 0.75rem;">Most students find "Complicate" hardest because it requires moving up the M4 hierarchy—questioning the framing of the debate rather than just picking a side. That difficulty is also why it's the most sophisticated move. If you struggled with Position 3, that's your practice focus.</p>
+  </div>
+
+  <div class="key-concept">
+    <p><strong>Looking Ahead:</strong> In L09, you'll learn to generate evidence from knowledge (not sources) and build a line of reasoning. You'll take the "Complicate" position you identified today and develop it into a full argument with historical, literary, and logical evidence.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B1L L08 • AP Argument Prompt Deconstruction • KC C.AP.L.07 • ~25 min • M4 (Claim Hierarchy)</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B1L_L07_Full_Rhetorical_Analysis_Essay.html">← L07: Full Rhetorical Analysis Essay</a>
+  <a href="B1L_L09_Evidence_from_Knowledge.html">L09: Evidence from Knowledge + Line of Reasoning →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

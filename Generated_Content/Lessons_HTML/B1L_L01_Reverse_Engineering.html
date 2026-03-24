@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L01: Reverse Engineering</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course B1L · Lesson 1</span>
+  <h1>Reverse Engineering</h1>
+  <p class="subtitle">Introducing M5: Reading as Reverse Engineering</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: M5 introduced, C.AP.L.01 (preview)</span>
+    <span>🧠 Mental Model: M5</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Mental Model 5: Reading as Reverse Engineering.</strong> The writer started with a purpose, chose a structure, selected evidence, crafted style, and produced a text. Your job: start with the finished text and RECOVER the decisions that built it. Ask: "If I were writing this, why would I have made this move at this point?" This converts reading comprehension into writing empathy.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>M5: "If I Were Writing This"</h3>
+
+  <p>You've spent A1 and A2 learning <strong>M1 (Everything Is a Choice)</strong>, <strong>M2 (Structure-Function-Effect)</strong>, <strong>M3 (Force Field)</strong>, and <strong>M4 (Claim Hierarchy)</strong>. These are powerful tools for analyzing writing. Now you learn the mental model that deploys all four simultaneously.</p>
+
+  <p><span class="vocab-term">M5: Reading as Reverse Engineering</span> changes how you read AP passages. Instead of asking "What does this passage say?" you ask: <strong>"What problems did the writer face at each moment, and how did they solve them?"</strong></p>
+
+  <p>Think of it this way: the writer didn't begin with a finished text. They began with a rhetorical situation (M3 force field) and a purpose. They faced problems:</p>
+  <ul>
+    <li>How do I hook this skeptical audience?</li>
+    <li>How do I establish credibility when they might dismiss me?</li>
+    <li>How do I address the counterargument before they think of it?</li>
+    <li>How do I shift from concession back to my main claim?</li>
+    <li>How do I leave a lasting impression?</li>
+  </ul>
+
+  <p>Each paragraph is a SOLUTION to a rhetorical problem. M5 asks you to reconstruct the problem-solution pairs. This is reverse engineering.</p>
+
+  <p><strong>The Key Question:</strong> "If I were writing this, why would I have made this move at this point?"</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>A student writes: "In paragraph 3, Douglass describes the horrors of slavery." Is this reverse engineering?</strong></p>
+    <ol type="A">
+      <li>Yes — they identified what Douglass does in paragraph 3</li>
+      <li>No — they described content, not the rhetorical problem Douglass was solving</li>
+      <li>Yes — they used M5 to reconstruct Douglass's choice</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> The student described WHAT Douglass writes about (content: horrors of slavery) but not WHY he chose to write about it at this moment. Reverse engineering asks: "What rhetorical problem was Douglass facing in paragraph 3, and how did describing slavery's horrors solve that problem?" Maybe he needed to escalate emotional urgency, or refute a counterargument, or establish the stakes. Until you identify the PROBLEM, you're summarizing content, not reverse engineering choices.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (5 min)</h2>
+<div class="phase-card model-card">
+  <h3>Decision Reconstruction: Douglass's "Fourth of July" Speech</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Frederick Douglass, "What to the Slave Is the Fourth of July?" (1852)</h3>
+
+    <p><strong>[Opening, ¶1-2]</strong> Fellow-citizens, pardon me, allow me to ask, why am I called upon to speak here today? What have I, or those I represent, to do with your national independence? Are the great principles of political freedom and of natural justice, embodied in that Declaration of Independence, extended to us?</p>
+
+    <p><strong>[Body, ¶3]</strong> What, to the American slave, is your 4th of July? I answer: a day that reveals to him, more than all other days in the year, the gross injustice and cruelty to which he is the constant victim. To him, your celebration is a sham; your boasted liberty, an unholy license; your national greatness, swelling vanity; your sounds of rejoicing are empty and heartless.</p>
+
+    <p><strong>[Body, ¶4]</strong> There is not a nation on the earth guilty of practices more shocking and bloody than are the people of these United States, at this very hour. Go where you may, search where you will, roam through all the monarchies and despotisms of the old world, travel through South America, search out every abuse, and when you have found the last, lay your facts by the side of the everyday practices of this nation, and you will say with me, that for revolting barbarity and shameless hypocrisy, America reigns without a rival.</p>
+
+    <p class="attribution">Frederick Douglass, "What to the Slave Is the Fourth of July?", Rochester, NY, July 5, 1852 (public domain excerpt)</p>
+  </div>
+
+  <p><strong>Watch a writer apply M5 (Decision Reconstruction) to these three sections — including the false start.</strong></p>
+
+  <div class="coping-model">
+    <p><strong>Writer's thinking process:</strong></p>
+
+    <p><span class="false-start">Paragraph 1-2: Douglass opens by questioning why he's been invited to speak on Independence Day. He asks rhetorical questions about whether the principles of freedom apply to enslaved people.</span></p>
+
+    <p><span class="correction">Wait — I'm summarizing what he says, not reconstructing WHY he chose to say it this way. What problem was he facing?</span></p>
+
+    <p><span class="strong">Paragraph 1-2 — Writer's Problem: Douglass faces a hostile rhetorical situation. He's been invited to celebrate American freedom, but he's speaking as a formerly enslaved Black man to a white abolitionist audience that is proud of American ideals. He can't simply condemn the holiday without losing his audience. Writer's Solution: He addresses them as "Fellow-citizens" (establishing common ground) but immediately deploys irony by asking why HE — someone excluded from citizenship — should celebrate THEIR independence. The rhetorical questions force the audience to confront the contradiction before Douglass states it directly. This disarms resistance by making the audience articulate the hypocrisy themselves.</span></p>
+
+    <p><span class="strong">Paragraph 3 — Writer's Problem: Having planted doubt in the opening, Douglass now needs to invert the meaning of July 4th without alienating his audience. He must transform a symbol of American pride into evidence of American evil. Writer's Solution: He uses second-person pronouns ("YOUR celebration," "YOUR boasted liberty") to position himself as an outsider judging their hypocrisy. The anaphora (repetition of "your") hammers the point: this is THEIR holiday, THEIR sham, THEIR fraud. The accumulation of charged terms (sham, unholy license, swelling vanity, empty, heartless) systematically dismantles each element of the celebration. This strategy allows him to condemn the holiday while maintaining the stance of moral authority.</span></p>
+
+    <p><span class="strong">Paragraph 4 — Writer's Problem: The audience might dismiss his condemnation as exaggeration or emotion. Douglass needs to establish that American slavery is uniquely evil, not just one injustice among many. Writer's Solution: He uses a global comparison structure ("Go where you may... search where you will... roam through all the monarchies and despotisms...") that systematically eliminates every possible rival for moral depravity. The geographic sweep (old world, South America, every abuse) creates the rhetorical effect of exhaustive proof. The conclusion — "America reigns without a rival" — weaponizes patriotic language (reigns, without rival) against the nation itself. This forces the audience to see American exceptionalism as exceptional EVIL, not exceptional virtue.</span></p>
+  </div>
+
+  <p><strong>Notice:</strong> M5 asks "What problem?" and "What solution?" for each section. This is how you deploy M1 (choices), M2 (S-F-E), M3 (force field constraints), and M4 (argument structure) simultaneously.</p>
+</div>
+
+<h2>Phase 3: Supported Practice (8 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Decision Reconstruction: Sojourner Truth</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Sojourner Truth, "Ain't I a Woman?" (1851)</h3>
+
+    <p><strong>[Section 1]</strong> That man over there says that women need to be helped into carriages, and lifted over ditches, and to have the best place everywhere. Nobody ever helps me into carriages, or over mud-puddles, or gives me any best place! And ain't I a woman?</p>
+
+    <p><strong>[Section 2]</strong> Look at me! Look at my arm! I have ploughed and planted, and gathered into barns, and no man could head me! And ain't I a woman? I could work as much and eat as much as a man—when I could get it—and bear the lash as well! And ain't I a woman?</p>
+
+    <p><strong>[Section 3]</strong> I have borne thirteen children, and seen most all sold off to slavery, and when I cried out with my mother's grief, none but Jesus heard me! And ain't I a woman?</p>
+
+    <p><strong>[Section 4]</strong> Then they talk about this thing in the head; what's this they call it? [A member of the audience whispers, "Intellect."] That's it, honey. What's that got to do with women's rights or negroes' rights? If my cup won't hold but a pint, and yours holds a quart, wouldn't you be mean not to let me have my little half measure full?</p>
+
+    <p class="attribution">Sojourner Truth, Women's Rights Convention, Akron, Ohio, 1851 (as recorded by Frances Gage; public domain excerpt)</p>
+  </div>
+
+  <p><strong>Your Task:</strong> For each of the 4 sections, complete the Decision Reconstruction template: "The writer's problem at this point was ___, and they solved it by ___."</p>
+
+  <table>
+    <tr>
+      <th style="width: 20%;">Section</th>
+      <th>Writer's Problem</th>
+      <th>Writer's Solution</th>
+    </tr>
+    <tr>
+      <td><strong>Section 1</strong></td>
+      <td><em>What rhetorical problem was Truth facing? (Hint: What did her audience believe about women that excluded her?)</em></td>
+      <td><em>How did she use the contrast between "that man's" vision of womanhood and her own experience to solve it?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Section 2</strong></td>
+      <td><em>What problem does the physical evidence of her labor solve?</em></td>
+      <td><em>How does the anaphora "And ain't I a woman?" function here?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Section 3</strong></td>
+      <td><em>What additional dimension does motherhood add to her argument?</em></td>
+      <td><em>Why does she reference bearing thirteen children and losing them to slavery?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Section 4</strong></td>
+      <td><em>What objection is Truth addressing here? (Hint: What did some claim women lacked?)</em></td>
+      <td><em>How does the cup metaphor reframe the debate about intellect?</em></td>
+    </tr>
+  </table>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p><strong>After completing your Decision Reconstruction, ask:</strong> Did I describe WHAT Truth says (summary), or did I identify the rhetorical PROBLEM she faced and explain HOW her choices solved it (reverse engineering)? If you wrote "She talks about being strong" instead of "She needed to refute the idea that women are fragile, so she used physical evidence to demonstrate her strength matches men's labor," revise toward the problem-solution frame.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (6 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Decision Reconstruction: Ida B. Wells</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Ida B. Wells, "Lynch Law in All Its Phases" (1893)</h3>
+
+    <p><strong>[Opening]</strong> I am before the American people today through no inclination of my own, but because of a deep-seated conviction that the country at large does not know the extent to which lynch law prevails in parts of the Republic.</p>
+
+    <p><strong>[Evidence Section]</strong> The student of American sociology will find the year 1894 marked by a pronounced awakening of the public conscience to a system of anarchy and outlawry which has grown during the past ten years to be so common, that scenes of unusual brutality failed to have any visible effect upon the humane sentiments of the people of our land. From 1882 to 1891, over 1,400 men, women, and children were lynched in this country.</p>
+
+    <p><strong>[Refutation]</strong> It has been claimed that the Negro in America is especially given to rape. This charge is refuted by the facts. Out of every 100 lynchings, less than 30 are for the charge of rape. The remainder are for such charges as "attempted rape," "race prejudice," "making threats," "quarreling with white men," "being saucy," and other equally trivial offenses.</p>
+
+    <p class="attribution">Ida B. Wells, "Lynch Law in All Its Phases," excerpt, 1893 (public domain representative excerpt)</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Choose 3 of the 4 moments below. For each, write 2-3 sentences using the Decision Reconstruction frame: "The writer's problem was ___, and they solved it by ___." Be specific about the rhetorical problem and the strategic solution.</p>
+
+  <ol>
+    <li><strong>Opening move:</strong> Why does Wells emphasize she speaks "through no inclination of my own"?</li>
+    <li><strong>Statistics:</strong> Why does she provide the specific number "over 1,400 men, women, and children"?</li>
+    <li><strong>Refutation structure:</strong> Why does she state the rape justification before refuting it?</li>
+    <li><strong>List of "trivial offenses":</strong> Why does she include the specific charges like "being saucy" and "quarreling with white men"?</li>
+  </ol>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li>Identifies a RHETORICAL problem (about persuading this audience), not just a content problem</li>
+      <li>Names the specific STRATEGY Wells uses (ethos move, statistical evidence, refutation structure, accumulation, etc.)</li>
+      <li>Explains HOW the strategy solves the problem (uses S-F-E: what it does and what effect it creates)</li>
+      <li>Avoids summary ("She talks about statistics") in favor of analysis ("She needed to establish scale, so she used...")</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>M5 Integration:</strong> M5 (Reverse Engineering) is the integration model. Here's how it deploys M1-M4:</p>
+    <ul>
+      <li><strong>M1 (Everything Is a Choice)</strong> — M5 asks: What choice did the writer make at this moment?</li>
+      <li><strong>M2 (S-F-E)</strong> — M5 asks: What strategy did they choose, what function does it serve, what effect does it create?</li>
+      <li><strong>M3 (Force Field)</strong> — M5 asks: What constraint or pressure in the rhetorical situation created the problem this choice solves?</li>
+      <li><strong>M4 (Claim Hierarchy)</strong> — M5 asks: How does this choice build or advance the argument's structure?</li>
+    </ul>
+    <p>When you reverse engineer a passage, you're using all four models simultaneously. M5 is the "If I Were Writing This" question that activates the others.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>How does M5 change the way you read AP passages?</strong> Before M5, you might have read Douglass's speech and thought "He's angry about slavery." After M5, what do you see instead? How does reverse engineering help you prepare to write a rhetorical analysis essay?</p>
+  </div>
+
+  <details>
+    <summary>Click to reveal model response</summary>
+    <div class="model-answer">
+      <p>Before M5, I read passages as arguments about topics. After M5, I read them as sequences of strategic choices responding to rhetorical problems. When I ask "If I were writing this, what problem would I face at this point?" I start thinking like the writer, not just reading their words. This is exactly what AP rhetorical analysis requires: explaining HOW the writer's choices serve their purpose. M5 gives me a method for reverse engineering those choices. Instead of seeing "Douglass is angry," I see "Douglass faced the problem of condemning July 4th without alienating his abolitionist audience, so he used irony to make them articulate the contradiction." That's analysis, not summary.</p>
+    </div>
+  </details>
+</div>
+
+<div class="footnote">
+  <p>B1L L01 • Reverse Engineering • M5 Introduction • ~25 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <span style="color: var(--muted);">← Previous: A2 Gate</span>
+  <a href="B1L_L02_Rhetorical_Situation_Mapping.html">Next: L02 Rhetorical Situation Mapping →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

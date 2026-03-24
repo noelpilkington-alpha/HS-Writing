@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L07: Full Rhetorical Analysis Essay</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+  --gateway: #dc3545;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.gateway { background: var(--gateway); }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.phase-card.gateway-card { border-left: 4px solid var(--gateway); }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.gateway-box {
+  background: #fff5f5; border: 2px solid var(--gateway); border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.gateway-box h4 {
+  color: var(--gateway); margin-bottom: 0.5rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; text-transform: uppercase;
+  font-size: 0.85rem; letter-spacing: 0.05em;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.timer-box {
+  background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0; text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.timer-box .time { font-size: 1.5rem; font-weight: 700; color: #856404; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag gateway" style="background: #dc3545;">Course B1L · Lesson 7 · GATEWAY</span>
+  <h1>Full Rhetorical Analysis Essay</h1>
+  <p class="subtitle">First Timed AP Essay: 40 Minutes</p>
+  <div class="meta-bar">
+    <span>⏱ ~55 min</span>
+    <span>📍 KCs: C.AP.L.06 (GATEWAY)</span>
+    <span>🧠 Mental Model: M5</span>
+  </div>
+</div>
+
+<div class="gateway-box">
+  <h4>⚠️ Gateway Lesson</h4>
+  <p><strong>Gateway Requirements:</strong> You must earn <strong>Row A = 1</strong> (thesis with line of reasoning) AND <strong>Row B ≥ 2</strong> (some analysis with evidence) to proceed to L08.</p>
+  <p style="margin-bottom: 0; margin-top: 0.5rem;">This is your first complete AP essay. The gateway threshold ensures you can write a defensible thesis and provide analytical commentary before moving to argument writing.</p>
+</div>
+
+<div class="key-concept">
+  <strong>Essay Structure:</strong> Rhetorical situation map (5 min) → Select strategies (2 min) → Write thesis (3 min) → Write 2-3 body paragraphs with S-F-E (25 min) → Conclusion (3 min) → Review (2 min) = 40 minutes total.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Putting It All Together</h3>
+
+  <p>You've learned thesis writing (L05) and body paragraph writing (L06). Now you'll combine them under timed conditions. Here's the AP rhetorical analysis essay sequence:</p>
+
+  <div class="key-concept">
+    <h4>40-Minute AP Rhetorical Analysis Timeline</h4>
+    <table>
+      <tr>
+        <th style="width: 25%;">Time</th>
+        <th>Task</th>
+      </tr>
+      <tr>
+        <td><strong>0-5 min</strong></td>
+        <td>Read passage + map rhetorical situation (quick Force Field: audience, exigence, writer, context)</td>
+      </tr>
+      <tr>
+        <td><strong>5-7 min</strong></td>
+        <td>Select 2-3 key strategies that matter most (L03 criteria: serve purpose, address resistance, appear at structural moments)</td>
+      </tr>
+      <tr>
+        <td><strong>7-10 min</strong></td>
+        <td>Write thesis with line of reasoning + outline body paragraphs</td>
+      </tr>
+      <tr>
+        <td><strong>10-35 min</strong></td>
+        <td>Write 2-3 body paragraphs with S-F-E analysis (~8 min per paragraph)</td>
+      </tr>
+      <tr>
+        <td><strong>35-38 min</strong></td>
+        <td>Write brief conclusion (connect to larger significance, don't just summarize)</td>
+      </tr>
+      <tr>
+        <td><strong>38-40 min</strong></td>
+        <td>Review: check for thesis clarity, add transitions if needed</td>
+      </tr>
+    </table>
+  </div>
+
+  <p><strong>Key insight:</strong> You don't have time to analyze every strategy in the passage. Choose 2-3 that are most important and analyze them deeply. Quality over quantity.</p>
+</div>
+
+<h2>Phase 2: Model (3 min)</h2>
+<div class="phase-card model-card">
+  <h3>Annotated Model Essay</h3>
+
+  <p>Below is a model rhetorical analysis essay scored at Row A = 1, Row B = 3, Row C = 0 (total: 4/6). Notice how the thesis establishes line of reasoning, body paragraphs use S-F-E, and the conclusion avoids mere summary.</p>
+
+  <details>
+    <summary>Show Model Essay (Frederick Douglass, "What to the Slave Is the Fourth of July?")</summary>
+    <div class="model-answer">
+      <p><strong>[THESIS - Row A]</strong> In his 1852 Fourth of July address, Frederick Douglass uses ironic juxtaposition, accusatory direct address, and biblical allusion to expose the hypocrisy of American independence celebrations, building from a shared religious foundation to an indictment his white abolitionist audience cannot dismiss without rejecting their own principles.</p>
+
+      <p style="margin-top: 1rem;"><strong>[BODY PARAGRAPH 1 - Row B]</strong> Douglass's ironic use of the second-person pronoun "your" throughout the speech—"your celebration," "your boasted liberty," "your national greatness"—transforms what should be a unifying national holiday into an exclusionary ritual that exposes moral hypocrisy. By refusing to claim ownership of Independence Day, Douglass positions himself as an outsider looking in, forcing his audience to see the celebration through the eyes of the enslaved. Each repetition of "your" followed by a damning descriptor ("sham," "unholy license," "hollow mockery") creates a rhetorical accumulation that makes the hypocrisy impossible to ignore. This strategy works because Douglass's audience—white abolitionists who pride themselves on supporting freedom—cannot comfortably own a celebration that excludes four million people. The accusatory "your" implicates them not just as witnesses to injustice but as participants in a national delusion.</p>
+
+      <p style="margin-top: 1rem;"><strong>[BODY PARAGRAPH 2 - Row B]</strong> Douglass deploys biblical allusion strategically, invoking shared religious values to create a moral standard his audience cannot reject. When he references scriptural principles of justice and human dignity, he leverages the very foundation his Christian abolitionist audience claims as their moral authority. This move is rhetorically powerful because it traps the audience: to dismiss Douglass's argument, they would have to reject the biblical principles they publicly espouse. The allusions function not as decorative references but as an inescapable moral framework that transforms the slavery debate from a political disagreement into a test of religious integrity. By building his indictment on their own professed values, Douglass makes hypocrisy the only alternative to action.</p>
+
+      <p style="margin-top: 1rem;"><strong>[CONCLUSION - avoids mere summary]</strong> Douglass's rhetorical choices reveal a sophisticated understanding of his audience: he knows they already oppose slavery intellectually, but he forces them to confront their complicity emotionally. By using their own language, their own values, and their own celebrations against them, he creates a cognitive dissonance that transforms passive sympathy into moral crisis. The speech works not by providing new information but by making the familiar unbearable.</p>
+
+      <hr style="margin: 1rem 0; border: none; border-top: 1px solid #dee2e6;">
+
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: #6c757d;"><strong>Scoring Annotation:</strong></p>
+      <ul style="font-size: 0.85rem; color: #6c757d; margin-left: 1.5rem;">
+        <li><strong>Row A = 1:</strong> Thesis names strategies (ironic juxtaposition, accusatory address, biblical allusion), states purpose (expose hypocrisy), and includes line of reasoning ("building from shared religious foundation to indictment they cannot dismiss").</li>
+        <li><strong>Row B = 3:</strong> Both body paragraphs provide evidence and reach S-F-E analysis. They explain FUNCTION (what the strategy does) and EFFECT (how it impacts audience). Consistent analysis throughout.</li>
+        <li><strong>Row C = 0:</strong> The essay is competent but doesn't demonstrate sophistication. It doesn't situate Douglass in broader historical context, doesn't explore tensions within the argument, and doesn't use vivid/persuasive style beyond functional prose.</li>
+      </ul>
+    </div>
+  </details>
+
+  <p><strong>What to notice:</strong> The essay is only ~400 words but earns Row A and Row B scores because it completes the required moves. You don't need a long essay—you need one that meets the rubric requirements.</p>
+</div>
+
+<h2>Phase 3: Planning (10 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Plan Your Essay: Frances Harper</h3>
+
+  <div class="passage-box">
+    <h3>Frances E.W. Harper, "We Are All Bound Up Together" (1866)</h3>
+    <p>We are all bound up together in one great bundle of humanity, and society cannot trample on the weakest and feeblest of its members without receiving the curse in its own soul. You tried that in the case of the Negro. You pressed him down for two centuries; and in so doing you crippled the moral strength and paralyzed the spiritual energies of the white men of the country. When the hands of the black were fettered, white men were deprived of the liberty of speech and the freedom of the press. While the Negroes of the South are plundered of their rights, poor white men, North and South, are also deprived of theirs. What in this country shall have the benefit of democratic institutions, it must be the democracy which is willing that all men shall have justice.</p>
+
+    <p>You white women speak here of rights. I speak of wrongs. I, as a colored woman, have had in this country an education which has made me feel as if I were in the situation of Ishmael, my hand against every man, and every man's hand against me. Let me go tomorrow morning and take my seat in one of your street cars—I do not know that they will do it in New York, but they will in Philadelphia—and the conductor will put up his hand and stop the car rather than let me ride. Going from Washington to Baltimore this Spring, they put me in the smoking car. Aye, in the capital of the nation, where the black man consecrated himself to the nation's defense, faithful when the white man was faithless, they put me in the smoking car!</p>
+
+    <p>We are all bound up together in one great bundle of humanity. The white man's happiness cannot be purchased by the black man's misery. I do not believe the freedom of women can be purchased by the degradation of the black race.</p>
+    <p class="attribution">SP-024: Frances E.W. Harper, Eleventh National Woman's Rights Convention, New York, May 1866</p>
+  </div>
+
+  <div class="timer-box">
+    <div class="time">⏱ 10 MINUTES: PLANNING ONLY</div>
+    <p style="margin-bottom: 0;">Complete the planning sequence before writing.</p>
+  </div>
+
+  <h4>Step 1: Map Rhetorical Situation (3 min)</h4>
+  <p><strong>Quick Force Field:</strong> Who is Harper's audience? What is the exigence (occasion/problem)? What is her position as a speaker? What constraints does this create?</p>
+
+  <div style="background: #f8f9fa; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+    <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Rhetorical Situation Notes:</strong></p>
+    <ul style="font-size: 0.85rem; margin-left: 1.5rem;">
+      <li><strong>Audience:</strong> White suffragists at women's rights convention (mostly focused on gender, not race)</li>
+      <li><strong>Exigence:</strong> Post-Civil War debate about prioritizing Black male suffrage vs. women's suffrage</li>
+      <li><strong>Writer:</strong> Black woman (faces both racism and sexism; has authority from lived experience)</li>
+      <li><strong>Constraints:</strong> Must address her white audience's concerns without alienating them, while insisting on the intersection of race and gender</li>
+    </ul>
+  </div>
+
+  <h4>Step 2: Select Strategies (2 min)</h4>
+  <p><strong>Identify 2-3 strategies that matter most.</strong> Consider: What can't Harper ignore given her rhetorical situation? What appears at key structural moments? What most clearly serves her purpose?</p>
+
+  <h4>Step 3: Write Thesis + Outline (5 min)</h4>
+  <p><strong>Write your thesis:</strong> Name strategies, state purpose, include line of reasoning.</p>
+  <p style="margin-top: 0.75rem;"><strong>Outline body paragraphs:</strong> For each strategy, note what evidence you'll use and what S-F-E point you'll make.</p>
+</div>
+
+<h2>Phase 4: Independent Writing (30 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Write Your Full Rhetorical Analysis Essay</h3>
+
+  <div class="timer-box">
+    <div class="time">⏱ 30 MINUTES: TIMED WRITING</div>
+    <p style="margin-bottom: 0;">Write introduction + thesis, 2-3 body paragraphs, conclusion. Full AP conditions.</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Write the complete essay analyzing Frances Harper's rhetorical choices. Use your planning notes, but write under timed conditions (30 minutes).</p>
+
+  <div class="rubric-box">
+    <h4>Essay Structure Reminder</h4>
+    <ul>
+      <li><strong>Introduction + Thesis (5 min):</strong> Context + thesis with line of reasoning</li>
+      <li><strong>Body Paragraph 1 (8 min):</strong> Claim → Evidence → S-F-E Analysis → Connection to purpose</li>
+      <li><strong>Body Paragraph 2 (8 min):</strong> Claim → Evidence → S-F-E Analysis → Connection to purpose</li>
+      <li><strong>Body Paragraph 3 (optional, 8 min):</strong> Third strategy OR deeper analysis</li>
+      <li><strong>Conclusion (3 min):</strong> Larger significance, don't just summarize</li>
+      <li><strong>Review (3 min):</strong> Read through, check thesis clarity, add transitions</li>
+    </ul>
+  </div>
+
+  <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #856404;"><strong>Start your timer now. Write for 30 minutes.</strong></p>
+</div>
+
+<h2>Phase 5: Self-Score (5 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Score Your Essay on AP Rubric</h3>
+
+  <div class="self-check">
+    <div class="q-label">Self-Assessment: Row A (Thesis)</div>
+    <p><strong>Score your thesis: 0 or 1 point</strong></p>
+    <p>Give yourself 1 point ONLY if your thesis has ALL THREE:</p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Named at least 2 specific rhetorical strategies</li>
+      <li>Stated Harper's purpose or argument</li>
+      <li>Established a line of reasoning (showed HOW strategies work together)</li>
+    </ul>
+    <p style="margin-top: 0.75rem;"><strong>Row A Score: ___ / 1</strong></p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Assessment: Row B (Evidence & Commentary)</div>
+    <p><strong>Score your body paragraphs: 0-4 points</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Row B 1:</strong> Little or no evidence, or commentary without evidence</li>
+      <li><strong>Row B 2:</strong> Evidence + feature-spotting (named strategies but didn't explain function/effect)</li>
+      <li><strong>Row B 3:</strong> Evidence + consistent S-F-E analysis (explained FUNCTION and EFFECT in most paragraphs)</li>
+      <li><strong>Row B 4:</strong> Evidence + sophisticated S-F-E analysis (consistently insightful, connected to rhetorical situation)</li>
+    </ul>
+    <p style="margin-top: 0.75rem;"><strong>Critical question:</strong> Did your paragraphs reach EFFECT, or stop at naming strategies?</p>
+    <p style="margin-top: 0.5rem;"><strong>Row B Score: ___ / 4</strong></p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Assessment: Row C (Sophistication)</div>
+    <p><strong>Score your essay: 0 or 1 point</strong></p>
+    <p>Give yourself 1 point ONLY if your essay demonstrates sophistication through one of these:</p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Broader context (historical, philosophical, social implications)</li>
+      <li>Tension/complexity within your analysis</li>
+      <li>Alternative interpretation of strategies or evidence</li>
+      <li>Vivid, persuasive style with rhetorical control</li>
+    </ul>
+    <p style="margin-top: 0.75rem;"><strong>Row C Score: ___ / 1</strong></p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #6c757d;"><em>Note: Most first AP essays earn Row C = 0. That's expected. You'll work on sophistication in later lessons.</em></p>
+  </div>
+
+  <div class="rubric-box">
+    <h4>Total Score: ___ / 6</h4>
+    <p><strong>Identify your weakest row:</strong> Which row (A, B, or C) has the lowest score? That's your focus area for revision and future essays.</p>
+  </div>
+</div>
+
+<h2>Phase 6: Gateway Check (2 min)</h2>
+<div class="phase-card gateway-card">
+  <div class="gateway-box">
+    <h4>⚠️ Gateway Assessment</h4>
+    <p><strong>Did you meet the gateway threshold?</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Row A = 1:</strong> Thesis with defensible claim and line of reasoning</li>
+      <li><strong>Row B ≥ 2:</strong> At least some evidence with analysis (even if feature-spotting)</li>
+    </ul>
+
+    <div style="margin-top: 1rem; padding: 1rem; background: white; border-radius: 6px;">
+      <p style="margin-bottom: 0.5rem;"><strong>If YES (Row A = 1 AND Row B ≥ 2):</strong> You've passed the gateway. Proceed to L08.</p>
+      <p style="margin-bottom: 0;"><strong>If NO:</strong> Revise your essay before moving on. Focus on the missing element:</p>
+      <ul style="margin-left: 1.5rem; margin-top: 0.5rem; font-size: 0.9rem;">
+        <li>If Row A = 0: Rewrite your thesis to include line of reasoning</li>
+        <li>If Row B = 0-1: Revise one body paragraph to include evidence + commentary</li>
+      </ul>
+    </div>
+  </div>
+
+  <p style="margin-top: 1rem;"><strong>The gateway ensures you can write a complete analytical essay before moving to argument writing in Unit 2.</strong> Row A and Row B are the foundation; Row C (sophistication) will develop through practice.</p>
+</div>
+
+<div class="footnote">
+  <p>B1L L07 • Full Rhetorical Analysis Essay (GATEWAY) • KC C.AP.L.06 • ~55 min • M5 (Reverse Engineering)</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B1L_L06_Body_Paragraph_Sprint.html">← L06: Body Paragraph Sprint</a>
+  <a href="B1L_L08_AP_Argument_Prompt_Deconstruction.html">L08: AP Argument Prompt Deconstruction →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

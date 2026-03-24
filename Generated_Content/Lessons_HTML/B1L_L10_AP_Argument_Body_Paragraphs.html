@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L10: AP Argument Body Paragraphs</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course B1L · Lesson 10</span>
+  <h1>AP Argument Body Paragraphs</h1>
+  <p class="subtitle">Structure, Evidence, Commentary, Counterarguments</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.AP.L.08 (applied), C.AP.L.09 (preview)</span>
+    <span>🧠 Mental Model: M4</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>AP Argument Body Paragraph Structure:</strong> Claim (topic sentence that advances your line of reasoning) → Evidence (specific example from knowledge) → Commentary (explain HOW the evidence supports the claim—don't just drop it) → Connection (link to thesis and next paragraph). The key difference from rhetorical analysis: you're building YOUR argument, not analyzing someone else's.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Building vs. Analyzing</h3>
+
+  <p>You've written body paragraphs analyzing rhetorical strategies (L06). Now you're writing body paragraphs to BUILD your own argument. The structure is similar, but the purpose is different:</p>
+
+  <table>
+    <tr>
+      <th style="width: 30%;">Element</th>
+      <th>Rhetorical Analysis</th>
+      <th>Argument Essay</th>
+    </tr>
+    <tr>
+      <td><strong>Claim</strong></td>
+      <td>What the strategy DOES</td>
+      <td>Your position on the issue</td>
+    </tr>
+    <tr>
+      <td><strong>Evidence</strong></td>
+      <td>Quote from passage</td>
+      <td>Example from YOUR knowledge</td>
+    </tr>
+    <tr>
+      <td><strong>Commentary</strong></td>
+      <td>S-F-E: How strategy works</td>
+      <td>HOW evidence supports your claim</td>
+    </tr>
+    <tr>
+      <td><strong>Connection</strong></td>
+      <td>Link to writer's purpose</td>
+      <td>Link to thesis + next claim</td>
+    </tr>
+  </table>
+
+  <p><strong>Common mistake:</strong> Dropping evidence without commentary. A student writes: "Throughout history, many people have failed before succeeding. For example, Thomas Edison failed thousands of times before inventing the lightbulb. This shows that failure is important." This is WEAK because the commentary is generic ("failure is important"). You need to explain HOW Edison's process demonstrates your specific claim.</p>
+
+  <div class="rubric-box">
+    <strong>Strong Commentary Must:</strong>
+    <ul>
+      <li>Explain HOW the evidence supports THIS specific claim (not just "this shows I'm right")</li>
+      <li>Include details from the evidence (names, dates, specifics—not vague generalities)</li>
+      <li>Connect to the broader argument (why this claim matters for your thesis)</li>
+      <li>Demonstrate thinking (analysis, not just assertion)</li>
+    </ul>
+  </div>
+
+  <h3>The Counterargument Paragraph</h3>
+  <p>You learned <strong>They Say / I Say</strong> in A2. AP Argument rewards it. A strong argument essay includes ONE paragraph that addresses a counterargument:</p>
+
+  <p><strong>Structure:</strong> Naysayer ("Some argue that...") → Concession ("It's true that...") → Rebuttal ("However, this overlooks..." / "Yet this misses...") → Evidence for your rebuttal</p>
+
+  <p>This is a <strong>sophistication move</strong> that can help you earn Row C. It shows you understand the debate's complexity.</p>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <h3>Coping Model: Vague Evidence</h3>
+
+  <div class="passage-box">
+    <strong>Prompt:</strong> Write an essay arguing your position on whether significant progress requires sacrifice or disruption.
+    <br><br>
+    <strong>Claim:</strong> Meaningful social progress requires disrupting entrenched power structures, as incremental reform often fails to address systemic inequities.
+  </div>
+
+  <p>Watch a writer draft a body paragraph—including a false start.</p>
+
+  <div class="coping-model">
+    <p><strong>Writer's first attempt:</strong></p>
+
+    <p><span class="false-start">Meaningful social progress requires disrupting entrenched power structures, as incremental reform often fails to address systemic inequities. Throughout history, many movements have fought for change and faced resistance from those in power. For example, civil rights activists had to protest and challenge unjust laws. This shows that you can't make progress without disrupting the existing system. The people in charge don't want to give up power, so change requires disruption.</span></p>
+
+    <p><span class="correction">Wait—I'm not using SPECIFIC evidence. "Many movements" and "civil rights activists" are vague. I need names, dates, details. Also, my commentary is just asserting my claim again ("this shows disruption is needed") without explaining HOW the evidence demonstrates that. Let me revise with specific evidence and real commentary.</span></p>
+
+    <p><span class="strong">Revised paragraph:</span></p>
+
+    <p><span class="strong">Meaningful social progress requires disrupting entrenched power structures, as incremental reform often fails to address systemic inequities. The Civil Rights Movement of the 1950s-60s demonstrates this necessity. Despite decades of legal challenges through the NAACP and incremental court victories like Brown v. Board of Education (1954), actual integration remained glacially slow because local authorities simply refused to comply. It was not until activists—through the Montgomery Bus Boycott, the Freedom Rides, the Birmingham Campaign—created visible, disruptive crises that forced federal intervention that real change accelerated. The disruption was not incidental to the progress; it was the mechanism. By making the cost of maintaining segregation higher than the cost of dismantling it, activists transformed a legal victory into lived reality. This pattern reveals a hard truth: those who benefit from existing systems rarely relinquish power through gentle persuasion alone. Disruption shifts the calculus.</span></p>
+
+    <p><span class="correction">See the difference? The revised paragraph has SPECIFIC evidence (names of campaigns, Brown v. Board date, NAACP), and the commentary explains HOW the evidence supports the claim: incremental legal wins weren't enough until disruption changed the cost-benefit calculation. That's analysis, not just assertion.</span></p>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>What makes the revised paragraph stronger than the first draft?</strong></p>
+    <ol type="A">
+      <li>It's longer</li>
+      <li>It uses specific historical evidence with details (names, dates, events)</li>
+      <li>It explains HOW the evidence demonstrates the claim (disruption changed the cost-benefit calculus)</li>
+      <li>Both B and C</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> D (Both B and C)</p>
+        <p><strong>Why:</strong> Length alone doesn't make a paragraph stronger—development does. The revised paragraph is stronger because (B) it uses specific evidence (NAACP, Brown v. Board, Montgomery Bus Boycott, etc.) instead of vague references ("many movements"), AND (C) it explains the mechanism (disruption shifted the cost-benefit calculus, transforming legal victory into reality). That's Row B 3-4 commentary.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 3: Supported Practice (10 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Write 2 Body Paragraphs</h3>
+
+  <div class="passage-box">
+    <strong>Prompt:</strong> The philosopher Bertrand Russell observed: "The whole problem with the world is that fools and fanatics are always so certain of themselves, and wiser people so full of doubts." Write an essay arguing your position on the relationship between knowledge and certainty.
+  </div>
+
+  <p><strong>Task 1: Write one paragraph using your STRONGEST evidence (5 minutes)</strong></p>
+
+  <p>Use the structure template below. Focus on SPECIFIC evidence and DEVELOPED commentary.</p>
+
+  <div class="rubric-box">
+    <strong>Paragraph Structure Template:</strong>
+    <p><strong>Topic Sentence (Claim):</strong> [State your claim—one part of your line of reasoning]</p>
+    <p><strong>Evidence Introduction:</strong> [Introduce your specific example: "The scientific revolution of the 17th century illustrates this..." / "Consider the example of..."]</p>
+    <p><strong>Evidence (Specific):</strong> [Provide details: names, dates, events, data]</p>
+    <p><strong>Commentary (HOW it supports your claim):</strong> [2-3 sentences explaining the mechanism, significance, or implications]</p>
+    <p><strong>Connection:</strong> [Link back to thesis OR forward to next claim]</p>
+  </div>
+
+  <p><strong>Task 2: Write a COUNTERARGUMENT paragraph (5 minutes)</strong></p>
+
+  <p>Use the They Say / I Say structure you learned in A2. Address an opposing view, concede what's valid, then rebut.</p>
+
+  <div class="rubric-box">
+    <strong>Counterargument Paragraph Template:</strong>
+    <p><strong>Naysayer:</strong> Some might argue that [opposing view]...</p>
+    <p><strong>Concession:</strong> It's true that [acknowledge what's valid in the opposing view]...</p>
+    <p><strong>Rebuttal (with "However," "Yet," "But"):</strong> However, this [overlooks / misses / fails to account for] [your rebuttal point]...</p>
+    <p><strong>Evidence for Rebuttal:</strong> [Specific example supporting your rebuttal]</p>
+    <p><strong>Commentary:</strong> [Explain why your rebuttal is stronger]</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check After Writing</div>
+    <p><strong>For Paragraph 1:</strong> Underline your evidence. Is it SPECIFIC (names, dates, details)? Or is it vague ("throughout history," "many people," "studies show")? If it's vague, revise with specifics.</p>
+    <p><strong>For Paragraph 2:</strong> Did you genuinely CONCEDE something valid in the opposing view, or did you set up a weak version just to knock it down? Strong counterargument paragraphs acknowledge real tensions.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (12 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Timed Writing: 2 Paragraphs in 12 Minutes</h3>
+
+  <div class="passage-box">
+    <strong>Prompt:</strong> In an influential essay on democratic society, a political theorist argues: "The individual who demands absolute personal freedom while contributing nothing to the common good is not a citizen but a parasite. True liberty exists only within a framework of mutual obligation and shared sacrifice." Write an essay that argues your position on the tension between individual freedom and community obligation.
+  </div>
+
+  <p><strong>Your Task (12 minutes total):</strong></p>
+  <ol>
+    <li><strong>1 body paragraph with your strongest claim (6 min):</strong> Topic sentence → Specific evidence → Commentary → Connection</li>
+    <li><strong>1 counterargument paragraph (6 min):</strong> Naysayer → Concession → Rebuttal → Evidence → Commentary</li>
+  </ol>
+
+  <p><strong>No template visible. Apply the structure you've practiced.</strong></p>
+
+  <div class="rubric-box">
+    <strong>Success Criteria:</strong>
+    <ul>
+      <li><strong>Row B 3-4 Evidence:</strong> Specific, detailed examples from knowledge (not vague generalities)</li>
+      <li><strong>Row B 3-4 Commentary:</strong> Explains HOW evidence supports claim (not just "this proves I'm right")</li>
+      <li><strong>Counterargument Sophistication:</strong> Genuine concession + strong rebuttal (not a strawman)</li>
+      <li><strong>Connection:</strong> Each paragraph links to thesis or advances the line of reasoning</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Assessment</div>
+    <p>After writing, score your own paragraphs on Row B (Evidence & Commentary):</p>
+    <ul>
+      <li><strong>Row B 2:</strong> I provided evidence but my commentary is thin or just restates my claim</li>
+      <li><strong>Row B 3:</strong> I provided specific evidence with commentary that explains HOW it supports my claim</li>
+      <li><strong>Row B 4:</strong> My evidence is well-chosen and varied, and my commentary is insightful and develops implications</li>
+    </ul>
+    <p>Which score did you earn? What would you revise to move up one level?</p>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>The 6-Minute Paragraph Is Your Building Block</strong></p>
+    <p>You just wrote 2 paragraphs in 12 minutes (6 min each). A full AP Argument essay = intro + thesis (5 min) + 3-4 body paragraphs (6 min each = 18-24 min) + conclusion (3 min) + review (2 min) = 40 minutes total.</p>
+    <p>If you can write ONE strong paragraph in 6 minutes, you can write the full essay. The challenge is maintaining quality under time pressure across multiple paragraphs. That's what L11 (Full AP Argument Essay) will test.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>What slowed you down most today?</strong></p>
+    <ul>
+      <li>Thinking of specific evidence? (Solution: Build your evidence bank by reading more widely)</li>
+      <li>Knowing what to say in commentary? (Solution: Practice the "HOW does this support my claim?" question after every piece of evidence)</li>
+      <li>Managing time? (Solution: Set 6-minute timers for each paragraph and practice until you internalize the pace)</li>
+    </ul>
+    <p>Identify your bottleneck. That's what to practice before the full essay.</p>
+  </div>
+
+  <div class="transfer-prompt">
+    <p><strong>Counterargument = Sophistication</strong></p>
+    <p>A2 taught you They Say / I Say. AP Argument rewards you for using it. The counterargument paragraph is often the difference between a 4 and a 5—it demonstrates that you understand the debate's complexity, not just your own position. In tomorrow's full essay (L11), make sure to include one strong counterargument paragraph.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B1L L10 • AP Argument Body Paragraphs • KCs: C.AP.L.08 (applied), C.AP.L.09 (preview) • ~25 min • M4 Applied</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B1L_L09_Evidence_and_Line_of_Reasoning.html" class="prev">← L09: Evidence + Line of Reasoning</a>
+  <a href="B1L_L11_Full_AP_Argument_Essay.html" class="next">L11: Full AP Argument Essay →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

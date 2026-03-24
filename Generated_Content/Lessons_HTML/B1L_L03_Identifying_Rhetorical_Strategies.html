@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L03: Identifying Rhetorical Strategies</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course B1L · Lesson 3</span>
+  <h1>Identifying Rhetorical Strategies</h1>
+  <p class="subtitle">Selecting Strategies That Matter Most</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.AP.L.02</span>
+    <span>🧠 Mental Model: M1</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Strategy Selection Principle:</strong> AP rhetorical analysis doesn't reward listing every device. It rewards explaining HOW a few key strategies work together to serve the writer's purpose. Your job: identify the 2-3 strategies that MATTER MOST, then analyze them deeply using S-F-E.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Five Categories, Strategic Selection</h3>
+
+  <p>AP Lang passages use dozens of rhetorical strategies. You cannot analyze all of them in 40 minutes. The skill is <strong>strategic selection</strong>: identifying the 2-3 strategies that do the most important rhetorical work.</p>
+
+  <p><span class="vocab-term">Five Strategy Categories</span> help you organize what you see:</p>
+
+  <table>
+    <tr>
+      <th style="width: 25%;">Category</th>
+      <th>Examples</th>
+    </tr>
+    <tr>
+      <td><strong>Appeals</strong></td>
+      <td>Ethos (credibility), Pathos (emotion), Logos (logic/evidence)</td>
+    </tr>
+    <tr>
+      <td><strong>Diction</strong></td>
+      <td>Connotation, tone, register (formal/informal), imagery, concrete vs. abstract</td>
+    </tr>
+    <tr>
+      <td><strong>Syntax</strong></td>
+      <td>Parallelism, antithesis, anaphora, rhetorical questions, short vs. long sentences</td>
+    </tr>
+    <tr>
+      <td><strong>Figurative Language</strong></td>
+      <td>Metaphor, simile, irony, allusion, personification, hyperbole</td>
+    </tr>
+    <tr>
+      <td><strong>Structure</strong></td>
+      <td>Juxtaposition, shift/turn, repetition, contrast, narrative vs. argument structure</td>
+    </tr>
+  </table>
+
+  <p><strong>Strategic Selection Criteria:</strong> Choose strategies that:</p>
+  <ol>
+    <li>Directly serve the writer's stated purpose</li>
+    <li>Address the audience's specific resistance</li>
+    <li>Appear at key structural moments (opening, shift, climax, closing)</li>
+    <li>Are distinctive or unusual enough to generate deep analysis</li>
+  </ol>
+
+  <p>A weak essay lists 7 strategies briefly. A strong essay analyzes 2-3 strategies deeply.</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>A student writes: "The author uses ethos, pathos, and logos in this passage." What's the problem with this analysis?</strong></p>
+    <ol type="A">
+      <li>It's wrong — not all passages use all three appeals</li>
+      <li>It's too broad — almost every passage uses all three appeals; this doesn't identify what's distinctive</li>
+      <li>It's correct — naming the three appeals is sufficient analysis</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> Nearly every persuasive passage uses ethos, pathos, and logos to some degree. Saying "the author uses all three appeals" is like saying "the author uses words." It's not wrong, but it's not analysis — it doesn't identify what's DISTINCTIVE about this passage or explain HOW the strategies serve the writer's purpose. Strategic selection means identifying WHICH appeal dominates, or HOW the writer builds ethos in an unusual way, or WHAT specific emotional appeal the pathos creates. Depth beats breadth.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <h3>Strategy Identification: Emma Goldman</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Emma Goldman, "The Tragedy of Woman's Emancipation" (1906)</h3>
+
+    <p>Woman's demand for equal suffrage is based largely on the contention that woman must have the equal right in all affairs of society. No one could, possibly, refute that, if suffrage were a guarantee of political freedom. Alas, for the dream of that fallacy! The race for economic, social, and political equality has been pursued with such tremendous speed that it has obliterated the most important and vital element in woman's life: the capacity for individual choice.</p>
+
+    <p>The tragedy of woman's emancipation is that she has attained external freedom — political rights, economic independence — yet her internal world remains shackled by the very traditions she believed she had left behind. She has gained a seat at the table but internalized the voice that tells her she does not deserve to speak. She has won the right to work but carries the ancestral burden of believing her value lies in servitude. This is not emancipation; it is exile wearing the mask of freedom.</p>
+
+    <p class="attribution">Emma Goldman, "The Tragedy of Woman's Emancipation," 1906 (public domain representative excerpt)</p>
+  </div>
+
+  <p><strong>Watch a writer identify strategies, then select the 2-3 that matter most for Goldman's purpose.</strong></p>
+
+  <div class="coping-model">
+    <p><strong>Writer's identification process:</strong></p>
+
+    <p><span class="strong">Strategy scan (all 5 categories):</span></p>
+    <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+      <li><strong>Appeals:</strong> Some logos (suffrage doesn't guarantee freedom), minimal pathos</li>
+      <li><strong>Diction:</strong> Formal register, abstract terms (emancipation, freedom, servitude), loaded words (tragedy, shackled, exile)</li>
+      <li><strong>Syntax:</strong> Parallelism in "political rights, economic independence," antithesis in "external freedom... internal world remains shackled"</li>
+      <li><strong>Figurative Language:</strong> Extended metaphor (exile wearing mask of freedom), personification (emancipation as tragedy)</li>
+      <li><strong>Structure:</strong> Problem-problem structure (external success → internal failure), key shift from paragraph 1 to 2</li>
+    </ul>
+
+    <p><span class="strong">Selection decision (which 2-3 matter MOST?):</span></p>
+    <p>Goldman's purpose: challenge suffragists who think political/economic rights = true liberation. Audience resistance: they believe external rights ARE emancipation. Key strategies:</p>
+    <ol style="margin-left: 2rem;">
+      <li><strong>Redefinition of "emancipation"</strong> (diction/concept) — shifts meaning from external to internal freedom</li>
+      <li><strong>Antithesis structure</strong> (syntax) — "external freedom... internal world remains shackled" makes the gap visible</li>
+      <li><strong>Metaphor of exile</strong> (figurative) — "exile wearing the mask of freedom" captures her central claim that apparent success hides continued oppression</li>
+    </ol>
+
+    <p><span class="strong">Why these three?</span> They directly address Goldman's rhetorical problem: how to convince feminists that they haven't achieved what they think they've achieved. The redefinition reframes the debate, the antithesis makes the internal/external split concrete, and the exile metaphor makes the tragedy visceral. These are the strategies that DO THE MOST WORK.</p>
+  </div>
+</div>
+
+<h2>Phase 3: Supported Practice (8 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Strategy Identification: Frances Harper</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Frances E.W. Harper, "We Are All Bound Up Together" (1866)</h3>
+
+    <p>I do not believe that giving the woman the ballot is immediately going to cure all the ills of life. I do not believe that white women are dew-drops just exhaled from the skies. I think that like men they may be divided into three classes, the good, the bad, and the indifferent. The good would vote according to their convictions and principles; the bad, as dictated by prejudice or malice; and the indifferent will vote on the strongest side of the question, with the winning party.</p>
+
+    <p>You white women speak here of rights. I speak of wrongs. I, as a colored woman, have had in this country an education which has made me feel as if I were in the situation of Ishmael, my hand against every man, and every man's hand against me. Let me go tomorrow morning and take my seat in one of your street cars — I do not know that they will do it in New York, but they will in Philadelphia — and the conductor will put up his hand and stop the car rather than let me ride.</p>
+
+    <p class="attribution">Frances E.W. Harper, Eleventh National Woman's Rights Convention, 1866 (public domain excerpt)</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Complete the strategy identification and selection process.</p>
+
+  <h4>Step 1: Identify Strategies (One from Each Category)</h4>
+
+  <table>
+    <tr>
+      <th style="width: 25%;">Category</th>
+      <th>Strategy You Identified</th>
+    </tr>
+    <tr>
+      <td><strong>Appeals</strong></td>
+      <td><em>Which appeal does Harper emphasize? (Ethos, pathos, logos?)</em></td>
+    </tr>
+    <tr>
+      <td><strong>Diction</strong></td>
+      <td><em>What word choices stand out? (Connotation, tone, imagery?)</em></td>
+    </tr>
+    <tr>
+      <td><strong>Syntax</strong></td>
+      <td><em>Any structural patterns? (Parallelism, contrast, questions?)</em></td>
+    </tr>
+    <tr>
+      <td><strong>Figurative Language</strong></td>
+      <td><em>Any metaphors, allusions, irony?</em></td>
+    </tr>
+    <tr>
+      <td><strong>Structure</strong></td>
+      <td><em>How is the passage organized? Any shifts?</em></td>
+    </tr>
+  </table>
+
+  <h4>Step 2: Select the 2-3 Strategies That Matter MOST</h4>
+
+  <p><strong>Harper's purpose:</strong> To convince white suffragists that gender equality alone won't help Black women; racial justice must be included.</p>
+
+  <p><strong>Audience resistance:</strong> White suffragists may see women's rights and racial justice as separate issues, or prioritize gender over race.</p>
+
+  <p><strong>Which 2-3 strategies best address this rhetorical problem? Explain your selection (3-4 sentences):</strong></p>
+
+  <div style="background: #f8f9fa; padding: 1rem; margin: 1rem 0; border-radius: 4px; min-height: 100px;">
+    <em>Write your selection justification here. For each strategy, explain: (1) What it is, (2) Why it matters for Harper's purpose, (3) How it addresses audience resistance.</em>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p><strong>After completing your selection, ask:</strong> Did I choose strategies that directly serve Harper's purpose? The strongest selections will be: (1) the "rights vs. wrongs" contrast (diction/structure), (2) the personal testimony about the streetcar (pathos + ethos), and (3) possibly the Ishmael allusion (figurative). These strategies make the intersection of race and gender VISIBLE to an audience that might see only gender.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (7 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Strategy Identification: William Apess</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: William Apess, "An Indian's Looking-Glass for the White Man" (1833)</h3>
+
+    <p>I would ask you if you would like to be disfranchised from all your rights, merely because your skin is white, and for no other crime. I'll venture to say, these very characters who hold the skin to be such a barrier in the way would be the first to cry out, "injustice! awful injustice!" But, reader, I acknowledge that this is a confused world, and I am not seeking for office, but merely placing before you the black inconsistency that you place before me.</p>
+
+    <p>By what you read, you may learn how deep your principles are. I should say they were skin-deep. I should not wonder if some of the most selfish and ignorant would cry out, "The skin was not good enough," but stop, friends — I am not talking about the skin but about principles. Now let me ask you, white man, if it is a disgrace for to eat, drink, and sleep with the image of God, or sit, or walk and talk with them. Or have you the folly to think that the white man, being one in fifteen or sixteen, are the only beloved images of God?</p>
+
+    <p class="attribution">William Apess, "An Indian's Looking-Glass for the White Man," 1833 (public domain excerpt)</p>
+  </div>
+
+  <p><strong>Your Task (No Scaffold):</strong> Identify and select 2-3 key rhetorical strategies. For each, write one sentence that:</p>
+  <ol>
+    <li>Names the strategy and locates it in the passage</li>
+    <li>Explains why it matters for Apess's purpose (to expose racial hypocrisy in white Christians)</li>
+  </ol>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li>Identifies 2-3 specific strategies from different categories</li>
+      <li>Explains why each strategy serves Apess's purpose (expose hypocrisy, challenge audience)</li>
+      <li>Strategies are well-chosen (not generic like "uses logos")</li>
+      <li>Each strategy is named precisely (e.g., "rhetorical question in paragraph 2" not just "rhetorical questions")</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>Key Insight:</strong> The AP exam doesn't reward listing 10 devices. It rewards explaining how a FEW strategies work together. Students who identify 8 strategies and analyze none score lower than students who identify 3 strategies and explain them deeply using S-F-E.</p>
+
+    <p><strong>What criteria helped you decide which strategies "matter most"?</strong> Most strong writers use some version of these filters:</p>
+    <ul>
+      <li>Does it appear at a key structural moment? (opening, shift, climax, closing)</li>
+      <li>Does it address the audience's specific resistance?</li>
+      <li>Is it distinctive enough to generate interesting analysis?</li>
+      <li>Can I explain its function and effect using S-F-E?</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>Compare your strategy selections for Harper and Apess.</strong> Did you choose strategies from different categories, or did you find that certain categories (like diction or structure) appear more often in your selections? There's no right answer — but noticing your pattern helps you see what you attend to naturally and what you might be overlooking.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B1L L03 • Identifying Rhetorical Strategies • C.AP.L.02 • ~25 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B1L_L02_Rhetorical_Situation_Mapping.html">← Previous: L02 Rhetorical Situation Mapping</a>
+  <a href="B1L_L04_Feature_Spotting_vs_Analysis.html">Next: L04 Feature-Spotting vs Analysis →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

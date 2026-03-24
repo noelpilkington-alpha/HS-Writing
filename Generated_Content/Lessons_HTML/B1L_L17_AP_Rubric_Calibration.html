@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L17: AP Rubric Calibration</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.essay-box {
+  background: #ffffff; border: 2px solid var(--border); border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem; line-height: 1.7;
+}
+.essay-box h4 {
+  color: var(--primary); margin-bottom: 0.75rem; font-size: 1rem;
+  border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;
+}
+.scoring-reveal {
+  background: #f8f9fa; border: 2px solid #0d6efd; border-radius: 8px;
+  padding: 1rem; margin: 1rem 0; display: none;
+}
+.scoring-reveal.show { display: block; }
+.scoring-reveal h4 { color: #0d6efd; margin-bottom: 0.5rem; }
+.score-button {
+  background: #0d6efd; color: white; border: none; border-radius: 4px;
+  padding: 0.5rem 1rem; font-size: 0.9rem; font-weight: 600;
+  cursor: pointer; margin: 0.5rem 0.5rem 0.5rem 0;
+}
+.score-button:hover { background: #0b5ed7; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course B1L · Lesson 17</span>
+  <h1>AP Rubric Calibration</h1>
+  <p class="subtitle">Scoring Essays on the AP Language Rubric (Rows A, B, C)</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.AP.L.13</span>
+    <span>🧠 Calibration</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Today's Goal:</strong> You've been self-scoring your AP essays after each lesson. Now you'll calibrate your scoring against official AP standards by practicing on three sample essays (rhetorical analysis, argument, synthesis). The question: When YOU say "Row B = 3," does the AP exam agree?
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>The AP Rubric: Three Rows</h3>
+
+  <p>Every AP Language FRQ is scored on a 6-point rubric with three rows:</p>
+
+  <table>
+    <tr>
+      <th style="width: 20%;">Row</th>
+      <th style="width: 25%;">Component</th>
+      <th style="width: 20%;">Points</th>
+      <th>What It Measures</th>
+    </tr>
+    <tr>
+      <td><strong>Row A</strong></td>
+      <td>Thesis</td>
+      <td>0 or 1</td>
+      <td>Defensible claim + line of reasoning</td>
+    </tr>
+    <tr>
+      <td><strong>Row B</strong></td>
+      <td>Evidence & Commentary</td>
+      <td>0-4</td>
+      <td>Support + analysis (NOT feature-spotting)</td>
+    </tr>
+    <tr>
+      <td><strong>Row C</strong></td>
+      <td>Sophistication</td>
+      <td>0 or 1</td>
+      <td>Complexity, context, insight, or style</td>
+    </tr>
+  </table>
+
+  <p><strong>The Calibration Challenge:</strong> Most students over-score Row B (they think feature-spotting earns a 3) and under-score Row C (they miss sophistication moves). Today you'll practice scoring three essays—one of each FRQ type—and compare your scores to the official scoring.</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>Which row is typically the hardest to score accurately?</strong></p>
+    <ol type="A">
+      <li>Row A (Thesis) — because thesis quality is subjective</li>
+      <li>Row B (Evidence & Commentary) — because distinguishing feature-spotting from analysis is difficult</li>
+      <li>Row C (Sophistication) — because sophistication is rare and hard to identify</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> Row B is the hardest to score because the line between Row B 2 (feature-spotting) and Row B 3 (analysis) is subtle. Students often think naming a device and providing a quote counts as analysis, but the AP rubric requires explaining FUNCTION and EFFECT. Row A is relatively straightforward (does the thesis take a position and preview reasoning?), and Row C is rare enough that most essays score 0, making it easier to identify when it's present.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (5 min)</h2>
+<div class="phase-card model-card">
+  <h3>Scoring Essay 1: Rhetorical Analysis (Ida B. Wells)</h3>
+
+  <div class="essay-box">
+    <h4>Prompt: Analyze the rhetorical choices Wells makes to convey her argument about racial violence in America.</h4>
+
+    <p><strong>Student Essay:</strong></p>
+
+    <p>In her speech "Lynch Law in All Its Phases," Ida B. Wells argues against the practice of lynching in America and exposes the false justifications used to defend it. Wells uses several rhetorical strategies to make her case, including appeals to emotion, factual evidence, and powerful language.</p>
+
+    <p>One strategy Wells uses is emotional appeal. She describes the brutal violence of lynching in graphic detail, which makes the audience feel shocked and horrified. For example, she talks about how victims were burned alive and tortured. This pathos makes readers sympathize with the victims and feel angry about the injustice. Wells also uses statistics and facts to support her claims. She provides specific numbers about lynching cases and shows that the reasons given for these murders were often false. This logos helps establish her credibility because she is not just speaking from emotion but from real evidence.</p>
+
+    <p>Another strategy is her use of direct, accusatory language. Wells doesn't soften her message or try to be diplomatic. She directly calls out white Americans and challenges their lies about why lynching happens. This bold approach shows her courage and forces the audience to confront uncomfortable truths. The tone is serious and urgent, which matches the gravity of her subject. By using these different strategies together, Wells creates a powerful argument that is both emotionally moving and logically sound, making it difficult for her audience to dismiss her claims.</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Before revealing the official score, try scoring this essay yourself:</p>
+
+  <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+    <p><strong>Row A (Thesis):</strong> 0 or 1? <em>Does it state a defensible claim with a line of reasoning?</em></p>
+    <p><strong>Row B (Evidence & Commentary):</strong> 0, 1, 2, 3, or 4? <em>Does it analyze HOW strategies work, or just name them?</em></p>
+    <p><strong>Row C (Sophistication):</strong> 0 or 1? <em>Does it demonstrate complexity, broader context, or insight?</em></p>
+  </div>
+
+  <button class="score-button" onclick="document.getElementById('scoring1').classList.add('show'); this.style.display='none';">Reveal Official Score & Rationale</button>
+
+  <div id="scoring1" class="scoring-reveal">
+    <h4>Official Score: 3/6</h4>
+    <p><strong>Row A: 1 point</strong> — The thesis appears in the first paragraph: "Wells uses several rhetorical strategies to make her case, including appeals to emotion, factual evidence, and powerful language." This establishes a defensible claim and previews a line of reasoning.</p>
+
+    <p><strong>Row B: 2 points</strong> — The essay provides evidence from Wells's text (graphic descriptions, statistics, direct language) and explains what these choices do. However, the analysis is inconsistent. The second body paragraph reaches some analysis ("bold approach shows her courage and forces the audience to confront uncomfortable truths"), but the first paragraph mostly feature-spots by naming devices (pathos, logos) without deeply analyzing HOW or WHY Wells's specific choices achieve their effect for THIS audience in THIS rhetorical situation. This is the trap: naming techniques isn't analysis.</p>
+
+    <p><strong>Row C: 0 points</strong> — The essay does not demonstrate sophistication. It lacks complexity in reasoning, doesn't situate Wells's argument in broader context (speaking to white Northern audiences in 1893), and doesn't explore tensions or alternative interpretations.</p>
+
+    <p><strong>Weakest Row:</strong> Row B (and C). To reach Row B = 3, the essay needs to consistently analyze the effect and significance of each choice rather than just naming devices. To earn Row C, it could explore Wells's rhetorical situation (the constraints she faced) or examine tensions in her approach (balancing moral outrage with factual evidence).</p>
+  </div>
+
+  <p style="margin-top: 1rem;"><strong>Key Takeaway:</strong> This essay NAMES strategies but doesn't fully explain their FUNCTION (what rhetorical work they do) or EFFECT (how they impact the specific audience). That's the difference between Row B 2 and Row B 3.</p>
+</div>
+
+<h2>Phase 3: Supported Practice #1 (7 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Score Essay 2: Argument (The Value of Failure)</h3>
+
+  <div class="essay-box">
+    <h4>Prompt: Write an essay that argues your position on the value of failure in personal and professional development.</h4>
+
+    <p><strong>Student Essay:</strong></p>
+
+    <p>While society often romanticizes failure as a necessary stepping stone to success, this perspective oversimplifies a more complex reality: failure's value depends entirely on whether individuals have the resources and support systems to learn from it rather than be crushed by it.</p>
+
+    <p>For many successful people, failure indeed served as a powerful teacher. J.K. Rowling, before publishing Harry Potter, faced rejection from twelve publishers and struggled as a single mother on welfare. However, she had several crucial advantages: she had completed her education at Exeter, she lived in a country with social safety nets, and she had family support for childcare. Her failure taught her resilience, but only because she had resources to survive it. Similarly, Steve Jobs's ousting from Apple in 1985 is often celebrated as the failure that humbled him and made him a better leader when he returned. Yet Jobs had wealth, connections, and a track record that allowed him to start NeXT and Pixar. His failure came with a safety net that most people don't have.</p>
+
+    <p>In contrast, failure without resources often compounds disadvantage rather than building character. A student who fails out of college due to working full-time to support their family doesn't gain wisdom from that experience—they gain debt and lost opportunity. A small business owner whose restaurant fails during an economic downturn doesn't emerge stronger; they emerge bankrupt, possibly losing their home and retirement savings. The difference isn't in the individual's character or willingness to learn—it's in their circumstances.</p>
+
+    <p>This means we need a more nuanced view of failure. It can be valuable, but only when failure is survivable and when systems exist to help people recover and learn. Celebrating failure without acknowledging this reality is simply a way to justify inequality.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Your Scoring Task</div>
+    <p><strong>Score this argument essay on all three rows. Write your scores and brief reasoning:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Row A (Thesis):</strong> 0 or 1? Why?</li>
+      <li><strong>Row B (Evidence & Commentary):</strong> 0-4? Why? (Look for: Does the essay provide specific evidence? Does it explain how evidence supports the claim?)</li>
+      <li><strong>Row C (Sophistication):</strong> 0 or 1? Why? (Look for: broader context, tension/complexity, alternative interpretation, vivid style)</li>
+      <li><strong>Total:</strong> ___/6</li>
+      <li><strong>Weakest Row:</strong> Which row could be improved and how?</li>
+    </ul>
+  </div>
+
+  <button class="score-button" onclick="document.getElementById('scoring2').classList.add('show'); this.style.display='none';">Reveal Official Score & Compare</button>
+
+  <div id="scoring2" class="scoring-reveal">
+    <h4>Official Score: 4/6</h4>
+    <p><strong>Row A: 1 point</strong> — The thesis is clear and sophisticated: "failure's value depends entirely on whether individuals have the resources and support systems to learn from it rather than be crushed by it." This goes beyond simple agree/disagree to complicate the prompt. Line of reasoning is established.</p>
+
+    <p><strong>Row B: 3 points</strong> — The essay provides specific, relevant evidence (Rowling, Jobs, hypothetical struggling student and business owner) and consistently explains how these examples support the argument. The analysis is strong—explaining not just what happened but WHY it matters to the argument about resources. Each example is paired with explicit reasoning about safety nets, privilege, and circumstances. This is genuine commentary, not feature-spotting.</p>
+
+    <p><strong>Row C: 0 points</strong> — While the essay takes a sophisticated position (complicating the prompt), it doesn't demonstrate sophistication as defined by the rubric. It lacks a broader context move (historical/philosophical implications) or exploration of tensions within the reasoning itself. It comes close with "celebrating failure without acknowledging this reality is simply a way to justify inequality," but this needs more development to earn Row C.</p>
+
+    <p><strong>Weakest Row:</strong> Row C. To earn Row C, the essay could add analysis of whose interests are served by the "failure is valuable" narrative (M6), explore historical context about American myths of self-reliance, or examine a tension within the argument itself (perhaps acknowledging that some individuals DO overcome failure without resources, but this shouldn't be the expected norm).</p>
+
+    <p><strong>Calibration Check:</strong> Did you score Row B accurately? Many students would give this essay Row B = 4, but the official score is 3 because the analysis, while consistent, isn't deeply insightful throughout. Row B = 4 requires analysis that goes beyond competent to sophisticated.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Supported Practice #2 (7 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Score Essay 3: Synthesis (Space Exploration Funding)</h3>
+
+  <div class="essay-box">
+    <h4>Prompt: Develop your position on whether governments should increase funding for space exploration. Use at least three of the provided sources.</h4>
+
+    <p><em>(Hypothetical source set included NASA innovations, economic analysis, philosophical essay on curiosity, climate/poverty data, private space companies, astronaut interview)</em></p>
+
+    <p><strong>Student Essay:</strong></p>
+
+    <p>Governments should maintain moderate funding for space exploration, not because space represents an escape from Earth's problems, but because the capacity for long-term thinking required by space programs is the same capacity we need to solve terrestrial crises. However, this funding must be justified by demonstrable returns to addressing Earth-based challenges.</p>
+
+    <p>The practical innovations from space programs support this measured investment approach. Source A documents how NASA research produced technologies we now consider essential, from GPS navigation to water purification systems used in developing nations to medical devices that monitor heart function. These weren't incidental byproducts—they emerged because space exploration demands solutions to extreme problems (communication across vast distances, survival in hostile environments), and these solutions often translate to Earth applications. This suggests that space funding can be justified when it's explicitly directed toward research with terrestrial applications, not merely for exploration's own sake.</p>
+
+    <p>However, Source B's economic analysis provides necessary perspective: space programs' return on investment is modest compared to direct funding of medical research, education, or infrastructure. A dollar spent on cancer research yields more immediate health benefits than a dollar spent on Mars exploration. This doesn't invalidate space funding, but it demands that we be honest about trade-offs. Source D's data on underfunded climate research and healthcare gaps makes these trade-offs concrete—we're not choosing between space and nothing; we're choosing between space and addressing urgent crises.</p>
+
+    <p>The key is recognizing what Source E's discussion of private space companies reveals: we're asking the wrong question. The debate shouldn't be whether to fund space exploration, but who should fund it and for what purpose. Billionaire-funded space tourism is vanity; government-funded research with climate monitoring applications is investment. Perhaps the most honest justification comes from Source C's philosophical argument about human curiosity, but with a caveat: curiosity is a luxury that requires we first ensure human survival.</p>
+
+    <p>Ultimately, the space exploration debate reveals our society's priorities. As Source F's astronaut eloquently argues, space programs inspire young people toward science—but one must ask which young people have access to that inspiration, and whether the same investment in their schools might inspire them more directly. Moderate space funding is defensible, but only when it serves Earth's needs and doesn't become an excuse to avoid urgent problems by dreaming of distant planets.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Your Scoring Task</div>
+    <p><strong>Score this synthesis essay on all three rows:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Row A (Thesis):</strong> 0 or 1?</li>
+      <li><strong>Row B (Evidence & Commentary):</strong> 0-4? (Count sources used. Are they integrated or just listed? Is there commentary?)</li>
+      <li><strong>Row C (Sophistication):</strong> 0 or 1? (This is the hardest to spot—look carefully!)</li>
+      <li><strong>Total:</strong> ___/6</li>
+    </ul>
+  </div>
+
+  <button class="score-button" onclick="document.getElementById('scoring3').classList.add('show'); this.style.display='none';">Reveal Official Score & Compare</button>
+
+  <div id="scoring3" class="scoring-reveal">
+    <h4>Official Score: 5/6</h4>
+    <p><strong>Row A: 1 point</strong> — Clear, defensible thesis with line of reasoning: "Governments should maintain moderate funding for space exploration, not because space represents an escape from Earth's problems, but because the capacity for long-term thinking required by space programs is the same capacity we need to solve terrestrial crises."</p>
+
+    <p><strong>Row B: 3 points</strong> — The essay effectively uses four sources (A, B, D, E, plus brief references to C and F) with proper citations. Sources are integrated smoothly into the argument rather than listed. Each source is paired with commentary explaining its relevance. For example, Source A isn't just mentioned—the essay explains how NASA innovations support "measured investment" and then qualifies this with "when it's explicitly directed toward research with terrestrial applications." The synthesis is genuine, with sources in conversation (Source B provides "necessary perspective" to Source A; Source D makes Source B's trade-offs "concrete").</p>
+
+    <p><strong>Row C: 1 point</strong> — The essay demonstrates sophistication through multiple moves: (1) <strong>Broader context</strong> in the final paragraph (situating the debate within questions about societal priorities and whose interests are served), (2) <strong>Complexity</strong> throughout (navigating tensions: practical benefits vs. opportunity costs, curiosity as value vs. survival as priority), (3) <strong>Alternative perspectives</strong> (consistently acknowledging counterarguments while maintaining reasoning). The M6 lens (Who Benefits?) appears explicitly: "one must ask which young people have access to that inspiration."</p>
+
+    <p><strong>Why Not 6/6?</strong> To reach Row B = 4, the essay could engage one more source in depth or provide additional analysis. The sophistication is strong, but Row B could be even more developed.</p>
+
+    <p><strong>Calibration Check:</strong> Did you identify the Row C sophistication? Many students miss it because they expect sophistication to be a single "move" in the conclusion, but this essay weaves sophistication throughout via complexity, M6 analysis, and alternative perspectives.</p>
+  </div>
+</div>
+
+<h2>Phase 5: Independent Practice (4 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Re-Score Your Own Essays</h3>
+
+  <p>Now return to your OWN essays from earlier B1L lessons. Re-score each using what you've learned from calibration:</p>
+
+  <div class="rubric-box">
+    <p><strong>Re-Score These Essays:</strong></p>
+    <ul>
+      <li><strong>L07 (Rhetorical Analysis):</strong> Row A ___, Row B ___, Row C ___, Total ___/6</li>
+      <li><strong>L11 (Argument):</strong> Row A ___, Row B ___, Row C ___, Total ___/6</li>
+      <li><strong>L16 (Synthesis):</strong> Row A ___, Row B ___, Row C ___, Total ___/6</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection</div>
+    <p><strong>Compare your original self-scores to your calibrated scores. Answer these questions:</strong></p>
+    <ol>
+      <li>Which row did you originally over-score? (Most students over-score Row B.)</li>
+      <li>Which row did you originally under-score? (Most students under-score Row C.)</li>
+      <li>For Row B specifically: How many of your body paragraphs reached S-F-E analysis vs. feature-spotting? Be honest.</li>
+      <li>What is your consistent weakness across all three essays? (Thesis? Evidence? Sophistication?)</li>
+      <li>Before the gate assessment (L19-L20), what ONE thing will you focus on improving?</li>
+    </ol>
+  </div>
+</div>
+
+<div class="transfer-prompt" style="margin-top: 2rem;">
+  <p><strong>Looking Ahead to L18:</strong> Now that you've calibrated your scoring, you know your weakest row. Tomorrow you'll learn targeted revision strategies: how to fix a weak thesis (Row A), convert feature-spotting to analysis (Row B), and add sophistication moves (Row C). You'll revise your own essays using these strategies.</p>
+</div>
+
+<div class="footnote">
+  <p>B1L L17 • AP Rubric Calibration • KC C.AP.L.13 • ~25 min • Calibration practice</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="B1L_L16_Full_Synthesis_Essay.html" class="prev">← L16: Full Synthesis Essay</a>
+  <a href="B1L_L18_Weakest_Row_Revision.html" class="next">L18: Weakest Row Revision →</a>
+</nav>
+</body>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L04: Feature-Spotting vs. Analysis</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent; }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.comparison-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.comparison-item {
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+.comparison-item.spotting {
+  background: #ffebee;
+  border: 2px solid #ef5350;
+}
+.comparison-item.analysis {
+  background: #e8f5e9;
+  border: 2px solid #66bb6a;
+}
+.comparison-item h4 {
+  margin-top: 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.comparison-item.spotting h4 { color: #c62828; }
+.comparison-item.analysis h4 { color: #2e7d32; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course B1L · Lesson 4</span>
+  <h1>Feature-Spotting vs. Analysis</h1>
+  <p class="subtitle">The #1 AP Lang Mistake and How to Fix It</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.AP.L.03</span>
+    <span>🧠 Mental Models: M2, M3</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Feature-Spotting vs. Analysis:</strong> Feature-spotting names a device ("The author uses a metaphor"). Analysis explains function and effect using S-F-E ("The author's metaphor comparing X to Y serves to make the abstract concept visceral, thereby overcoming audience skepticism"). The AP rubric (Row B) REQUIRES analysis. Naming is not enough.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>The Critical Distinction</h3>
+
+  <p>The #1 mistake on AP Lang rhetorical analysis essays is <span class="vocab-term">feature-spotting</span>: identifying what the author does without explaining HOW it works or WHY it matters.</p>
+
+  <p><strong>Feature-Spotting (Row B Score: 2 points max):</strong></p>
+  <ul>
+    <li>"The author uses a metaphor in paragraph 3."</li>
+    <li>"Douglass employs irony throughout the speech."</li>
+    <li>"The writer uses parallelism and rhetorical questions."</li>
+  </ul>
+
+  <p>These sentences <strong>name devices</strong> but don't analyze them. They stop at identification. The AP rubric calls this "commentary without analysis."</p>
+
+  <p><strong>Analysis (Row B Score: 3-4 points):</strong></p>
+  <ul>
+    <li>Names the strategy (S)</li>
+    <li>Explains the rhetorical FUNCTION it serves (F)</li>
+    <li>Articulates the EFFECT on the audience within the rhetorical situation (E)</li>
+  </ul>
+
+  <p><strong>S-F-E Formula:</strong> "[Author]'s use of [strategy] in [moment] <strong>(S)</strong> serves to [function] <strong>(F)</strong>, thereby [effect on this audience given the rhetorical situation] <strong>(E)</strong>."</p>
+
+  <div class="comparison-box">
+    <div class="comparison-item spotting">
+      <h4>Feature-Spotting</h4>
+      <p>"Wells uses statistics in her speech about lynching."</p>
+      <p><strong>What's missing:</strong> No explanation of function or effect. Names WHAT but not HOW or WHY.</p>
+    </div>
+    <div class="comparison-item analysis">
+      <h4>Analysis (S-F-E)</h4>
+      <p>"Wells's systematic accumulation of documented evidence—specific names, dates, and newspaper accounts <strong>(S)</strong>—refutes the justification that lynching punished actual crimes <strong>(F)</strong>, forcing her Northern white audience to recognize that lynching functioned as racial terrorism rather than vigilante justice <strong>(E)</strong>."</p>
+    </div>
+  </div>
+
+  <p><strong>The Test:</strong> Does your sentence explain WHAT THE STRATEGY DOES and WHAT EFFECT IT CREATES? If not, you're feature-spotting.</p>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <h3>Three Pairs: Spotting vs. Analysis</h3>
+
+  <p><strong>Watch three pairs of sentences about the same passage. One feature-spots, one analyzes. Notice the S-F-E structure in the analytical versions.</strong></p>
+
+  <h4>Pair 1: Patrick Henry</h4>
+
+  <div class="comparison-box">
+    <div class="comparison-item spotting">
+      <h4>Feature-Spotting</h4>
+      <p>"Patrick Henry uses rhetorical questions in his speech."</p>
+    </div>
+    <div class="comparison-item analysis">
+      <h4>Analysis (S-F-E)</h4>
+      <p>"Henry's barrage of rhetorical questions in the climactic section—'Is life so dear, or peace so sweet, as to be purchased at the price of chains and slavery?' <strong>(S)</strong>—systematically eliminates the possibility of compromise <strong>(F)</strong>, leaving his Virginia Convention audience facing the stark binary choice he demands: surrender to tyranny or fight for liberty <strong>(E)</strong>."</p>
+    </div>
+  </div>
+
+  <h4>Pair 2: Emma Goldman</h4>
+
+  <div class="comparison-box">
+    <div class="comparison-item spotting">
+      <h4>Feature-Spotting</h4>
+      <p>"Goldman uses a metaphor comparing emancipation to exile wearing a mask."</p>
+    </div>
+    <div class="comparison-item analysis">
+      <h4>Analysis (S-F-E)</h4>
+      <p>"Goldman's metaphor of 'exile wearing the mask of freedom' <strong>(S)</strong> reframes apparent feminist success as a form of continued oppression <strong>(F)</strong>, challenging her suffragist audience to recognize that women who have won political rights but internalized traditional gender roles have achieved only a false liberation <strong>(E)</strong>."</p>
+    </div>
+  </div>
+
+  <h4>Pair 3: Sojourner Truth</h4>
+
+  <div class="comparison-box">
+    <div class="comparison-item spotting">
+      <h4>Feature-Spotting</h4>
+      <p>"Truth repeats the phrase 'And ain't I a woman?' multiple times."</p>
+    </div>
+    <div class="comparison-item analysis">
+      <h4>Analysis (S-F-E)</h4>
+      <p>"Truth's anaphoric repetition of 'And ain't I a woman?' after each demonstration of her physical strength and maternal suffering <strong>(S)</strong> transforms a rhetorical question into an accusation <strong>(F)</strong>, forcing her white feminist audience to confront the contradiction between their idealized vision of delicate womanhood and their exclusion of Black women who embody strength and endurance <strong>(E)</strong>."</p>
+    </div>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>What do all three analytical examples have in common?</strong></p>
+    <ol type="A">
+      <li>They use longer sentences than the feature-spotting examples</li>
+      <li>They follow the S-F-E pattern: name strategy → explain function → articulate effect</li>
+      <li>They include quotes from the passage</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> All three analytical examples follow S-F-E: they name the specific strategy, explain what rhetorical function it serves, and articulate the effect on the audience. Length varies (answer A) and quotes are optional (answer C). The key is the S-F-E structure — moving from identification to function to effect. That's what distinguishes analysis from feature-spotting.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 3: Supported Practice (8 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Feature-Spotting vs. Analysis Sort</h3>
+
+  <p><strong>Your Task:</strong> Classify each of the 5 sentences below as <strong>Feature-Spotting</strong> or <strong>Analysis</strong>. For each sentence you classify as feature-spotting, revise it into analysis using S-F-E.</p>
+
+  <h4>Item 1</h4>
+  <div style="background: #f8f9fa; padding: 1rem; margin: 0.5rem 0; border-radius: 4px;">
+    <p><strong>Sentence:</strong> "Douglass uses irony in his speech."</p>
+    <p><strong>Classification:</strong> <em>(Feature-Spotting or Analysis?)</em></p>
+    <p><strong>If Feature-Spotting, Revise to Analysis:</strong></p>
+    <div style="background: white; padding: 0.75rem; margin-top: 0.5rem; border-left: 3px solid #0d6efd;">
+      <em>Rewrite using S-F-E: What's the specific ironic move? What function does it serve? What effect does it create for the audience?</em>
+    </div>
+  </div>
+
+  <h4>Item 2</h4>
+  <div style="background: #f8f9fa; padding: 1rem; margin: 0.5rem 0; border-radius: 4px;">
+    <p><strong>Sentence:</strong> "Henry's barrage of rhetorical questions in the speech's climactic section serves to eliminate alternative courses of action one by one, systematically foreclosing the possibility of compromise and leaving his audience with only the stark choice he presents: liberty or death."</p>
+    <p><strong>Classification:</strong> <em>(Feature-Spotting or Analysis?)</em></p>
+    <p><strong>Explanation:</strong> <em>If this is analysis, identify the S, F, and E components.</em></p>
+  </div>
+
+  <h4>Item 3</h4>
+  <div style="background: #f8f9fa; padding: 1rem; margin: 0.5rem 0; border-radius: 4px;">
+    <p><strong>Sentence:</strong> "Wells employs evidence accumulation throughout the speech."</p>
+    <p><strong>Classification:</strong> <em>(Feature-Spotting or Analysis?)</em></p>
+    <p><strong>If Feature-Spotting, Revise to Analysis:</strong></p>
+    <div style="background: white; padding: 0.75rem; margin-top: 0.5rem; border-left: 3px solid #0d6efd;">
+      <em>What TYPE of evidence does she accumulate? What does that accumulation DO rhetorically? What effect does it have on her audience's understanding?</em>
+    </div>
+  </div>
+
+  <h4>Item 4</h4>
+  <div style="background: #f8f9fa; padding: 1rem; margin: 0.5rem 0; border-radius: 4px;">
+    <p><strong>Sentence:</strong> "Goldman's redefinition of 'emancipation' at the essay's opening from merely political and economic rights to include psychological and sexual liberation reframes the entire feminist project as incomplete if it achieves only external legal changes, challenging her suffragist audience to recognize that women who win the vote but remain imprisoned by ideas of duty and self-sacrifice have not achieved true freedom."</p>
+    <p><strong>Classification:</strong> <em>(Feature-Spotting or Analysis?)</em></p>
+    <p><strong>Explanation:</strong> <em>If this is analysis, identify the S, F, and E components.</em></p>
+  </div>
+
+  <h4>Item 5</h4>
+  <div style="background: #f8f9fa; padding: 1rem; margin: 0.5rem 0; border-radius: 4px;">
+    <p><strong>Sentence:</strong> "Harper uses personal testimony in her speech."</p>
+    <p><strong>Classification:</strong> <em>(Feature-Spotting or Analysis?)</em></p>
+    <p><strong>If Feature-Spotting, Revise to Analysis:</strong></p>
+    <div style="background: white; padding: 0.75rem; margin-top: 0.5rem; border-left: 3px solid #0d6efd;">
+      <em>What specific testimony? What rhetorical function does sharing this experience serve? How does it affect the white suffragist audience's understanding?</em>
+    </div>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p><strong>After completing the sort, check your classifications:</strong></p>
+    <ul>
+      <li><strong>Items 1, 3, 5:</strong> Feature-Spotting (they name strategies but don't explain function or effect)</li>
+      <li><strong>Items 2, 4:</strong> Analysis (they follow S-F-E structure, explaining how strategies work and what effects they create)</li>
+    </ul>
+    <p>If you misclassified any, reread them and identify: Does the sentence explain FUNCTION and EFFECT, or just name a device?</p>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (7 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Analytical Sentence Drill</h3>
+
+  <p><strong>Context:</strong> You're analyzing Ida B. Wells's "Lynch Law in All Its Phases" (1893). Three strategies have been identified for you. Your task: write a full S-F-E analytical sentence for each strategy.</p>
+
+  <p><strong>Use this structure:</strong> "[Author]'s use of [strategy] in [moment] <strong>(S)</strong> serves to [function] <strong>(F)</strong>, thereby [effect on audience within rhetorical situation] <strong>(E)</strong>."</p>
+
+  <h4>Strategy 1: Opening Ethos Move</h4>
+  <div style="background: #f8f9fa; padding: 1rem; margin: 0.5rem 0; border-radius: 4px;">
+    <p><strong>Strategy Identified:</strong> Wells opens by stating she speaks "through no inclination of my own" but out of necessity because Americans don't know the extent of lynching.</p>
+    <p><strong>Your S-F-E Sentence:</strong></p>
+    <div style="background: white; padding: 0.75rem; margin-top: 0.5rem; min-height: 80px; border-left: 3px solid var(--accent);">
+      <em>Write your analytical sentence here. Include: (S) the specific ethos move, (F) what rhetorical function it serves, (E) what effect it creates for her Northern white audience.</em>
+    </div>
+  </div>
+
+  <h4>Strategy 2: Statistical Evidence</h4>
+  <div style="background: #f8f9fa; padding: 1rem; margin: 0.5rem 0; border-radius: 4px;">
+    <p><strong>Strategy Identified:</strong> Wells provides the statistic "From 1882 to 1891, over 1,400 men, women, and children were lynched in this country."</p>
+    <p><strong>Your S-F-E Sentence:</strong></p>
+    <div style="background: white; padding: 0.75rem; margin-top: 0.5rem; min-height: 80px; border-left: 3px solid var(--accent);">
+      <em>Write your analytical sentence here. What does providing this specific number DO? Why does she include "men, women, and children"? What effect on audience understanding?</em>
+    </div>
+  </div>
+
+  <h4>Strategy 3: List of "Trivial Offenses"</h4>
+  <div style="background: #f8f9fa; padding: 1rem; margin: 0.5rem 0; border-radius: 4px;">
+    <p><strong>Strategy Identified:</strong> Wells lists the actual charges for lynchings: "being saucy," "quarreling with white men," "making threats," etc.</p>
+    <p><strong>Your S-F-E Sentence:</strong></p>
+    <div style="background: white; padding: 0.75rem; margin-top: 0.5rem; min-height: 80px; border-left: 3px solid var(--accent);">
+      <em>Write your analytical sentence here. What does listing these specific charges DO? How does it refute the justification for lynching? What effect on the audience's view of lynching's purpose?</em>
+    </div>
+  </div>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria (for each sentence):</strong></p>
+    <ul>
+      <li>Names the strategy specifically (S) — not just "ethos" but "opens by emphasizing reluctance"</li>
+      <li>Explains the rhetorical FUNCTION (F) — what work does this strategy do? (establish credibility, refute claim, create urgency, etc.)</li>
+      <li>Articulates the EFFECT (E) — how does it change audience understanding or emotion given the rhetorical situation?</li>
+      <li>Uses causal language connecting S → F → E ("serves to," "thereby," "forcing," "enabling," etc.)</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>The Gap Exercise:</strong> Read your A2 L07 or A2 L12 essay (if available). Count:</p>
+    <ul>
+      <li>How many sentences are <strong>feature-spotting</strong>? (naming devices without explaining function/effect)</li>
+      <li>How many sentences reach full <strong>S-F-E analysis</strong>? (explaining how strategies work and what effects they create)</li>
+    </ul>
+    <p>The gap between those numbers is your growth edge. On AP rhetorical analysis essays, aim for <strong>zero feature-spotting sentences</strong>. Every sentence that names a strategy should explain its function and effect.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>Why is feature-spotting so tempting?</strong> Most students know they're supposed to identify rhetorical strategies, so they list them. But the AP rubric doesn't reward identification — it rewards EXPLANATION. What makes it hard to move from "The author uses X" to "The author's use of X serves to Y, thereby Z"? The hard part is explaining FUNCTION and EFFECT, not naming the device. That's where S-F-E helps.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B1L L04 • Feature-Spotting vs. Analysis • C.AP.L.03 • ~25 min</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B1L_L03_Identifying_Rhetorical_Strategies.html">← Previous: L03 Identifying Strategies</a>
+  <a href="B1L_L05_Rhetorical_Analysis_Thesis.html">Next: L05 Rhetorical Analysis Thesis →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

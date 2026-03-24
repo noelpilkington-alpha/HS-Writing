@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L20: AP Practice Exam — Rhetorical Analysis + Argument</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+.timer-box {
+  background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px;
+  padding: 1rem; margin: 1rem 0; text-align: center;
+}
+.timer-box h3 {
+  color: var(--warning); margin: 0 0 0.5rem 0; font-size: 1.2rem;
+}
+.gate-notice {
+  background: #f8d7da; border: 2px solid #f5c2c7; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+  font-weight: 600; color: #842029;
+}
+.gate-success {
+  background: #d1e7dd; border: 2px solid #a3cfbb; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+  font-weight: 600; color: #0a3622;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #dc3545;">Course B1L · Lesson 20 · GATE ASSESSMENT (FINAL)</span>
+  <h1>AP Practice Exam — Rhetorical Analysis + Argument</h1>
+  <p class="subtitle">Back-to-Back Essays Under AP Timing (80 min + breaks)</p>
+  <div class="meta-bar">
+    <span>⏱ ~90 min</span>
+    <span>📍 KCs: C.AP.L.06, C.AP.L.09, C.AP.L.15 (all assessed)</span>
+    <span>🎯 Gate Assessment (2 of 2 — FINAL)</span>
+  </div>
+</div>
+
+<div class="gate-notice">
+  ⚠️ <strong>GATE ASSESSMENT (FINAL SESSION):</strong> Today you complete your B1L gate by writing 2 more AP essays: Rhetorical Analysis (40 min) + Argument (40 min). Combined with yesterday's Synthesis, you'll have 3 scored essays. To pass the gate: earn 4+ points on at least 2 of 3 essays. This is the final lesson of B1L—AP exam readiness.
+</div>
+
+<div class="key-concept">
+  <strong>Today's Challenge:</strong> Write two full AP essays back-to-back with only a 3-minute break. You'll analyze Anna Julia Cooper's rhetoric (passage you've never seen) and then argue your position on difficulty and achievement (prompt you've never seen). This simulates AP exam endurance demands.
+</div>
+
+<h2>Phase 1: Warm-Up (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Timing Review: Two Essays, One Session</h3>
+
+  <table>
+    <tr>
+      <th style="width: 30%;">Essay</th>
+      <th style="width: 25%;">Timing</th>
+      <th>Quick Strategy Reminder</th>
+    </tr>
+    <tr>
+      <td><strong>Rhetorical Analysis</strong></td>
+      <td>40 min total</td>
+      <td><strong>5 min:</strong> Read + map rhetorical situation + identify 2-3 key strategies<br>
+      <strong>30 min:</strong> Write (5 intro/thesis, 21 body, 4 conclusion)<br>
+      <strong>5 min:</strong> Review</td>
+    </tr>
+    <tr>
+      <td><strong>Break</strong></td>
+      <td>3 min</td>
+      <td>Stand up. Breathe. Shake out your hands. Review your weakest row pattern from L17-L18.</td>
+    </tr>
+    <tr>
+      <td><strong>Argument</strong></td>
+      <td>40 min total</td>
+      <td><strong>5 min:</strong> Deconstruct prompt + brainstorm evidence + write thesis/outline<br>
+      <strong>30 min:</strong> Write (5 intro, 24 body, 1 conclusion)<br>
+      <strong>5 min:</strong> Review + add sophistication if missing</td>
+    </tr>
+  </table>
+
+  <p><strong>Your Weakest Row Pattern:</strong> Before you begin, remind yourself of your consistent weakness from L17-L18. Are you prone to weak theses (Row A)? Feature-spotting instead of analysis (Row B)? Missing sophistication (Row C)? Keep this in mind as you write.</p>
+</div>
+
+<h2>Phase 2: Independent — Rhetorical Analysis (40 min)</h2>
+<div class="phase-card independent-card" data-min-words="400" data-rubric="B1L_gate_rhetoric">
+  <h3>FRQ 2: Rhetorical Analysis</h3>
+
+  <div style="background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+    <p><strong>Directions:</strong> Read the passage carefully. Then, in a well-written essay, analyze the rhetorical choices Anna Julia Cooper makes to convey her argument about the role of women in shaping civilization.</p>
+    <p style="margin-bottom: 0;"><strong>In your response you should do the following:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Respond to the prompt with a thesis that analyzes the writer's rhetorical choices</li>
+      <li>Select and use evidence to support your line of reasoning</li>
+      <li>Explain how the evidence supports your line of reasoning</li>
+      <li>Demonstrate an understanding of the rhetorical situation</li>
+      <li>Use appropriate grammar and punctuation in communicating your argument</li>
+    </ul>
+  </div>
+
+  <div class="passage-box">
+    <h3>Anna Julia Cooper, "Womanhood: A Vital Element in the Regeneration and Progress of a Race" (1892)</h3>
+
+    <p>The race is just twenty-one years removed from the conception and experience of a chattel, just at the age of ruddy manhood. It is well enough to pause a moment for retrospection, introspection, and prospection. We look back, not to become inflated with conceit because of the depths from which we have arisen, but that we may learn wisdom from experience. We look within that we may gather together once more our forces, and, by improved and more practical methods, address ourselves to the tasks before us. We look forward with hope and trust that the same God whose guiding hand led our fathers through and out of the gall and bitterness of oppression, will still lead and direct their children.</p>
+
+    <p>Now the fundamental agency under God in the regeneration, the retraining of the race, as well as the groundwork and starting point of its progress upward, must be the black woman. I do not imagine that I can remotely fathom the responsibility that rests upon her, or that I can even suggest the weight and complexity of her situation. The race cannot be elevated faster or farther than its women are developed. With all the wrongs and neglects of her past, with all the weakness, the debasement, the moral thralldom of her present, the black woman of today stands mute and wondering at the Herculean task devolving upon her. But the cycles wait for her. No other hand can move the lever. She must be loosed from her bands and set to work.</p>
+
+    <p>Yet how can she set herself at work when she has been systematically degraded, her self-respect shattered, her aspirations crushed? Let our girls feel that we expect something more of them than that they merely look pretty and appear well in society. Teach them that there is a race with special needs which they and only they can help; that the world needs and is already asking for their trained, efficient forces. Finally, if there is an ambitious girl with pluck and brain to take the higher education, encourage her, and, if need be, support her. Let her know that your heart is following her, that your hand, though she sees it not, is ready to support her. Let her know that your prayer is that she may prove herself a genuine woman, scientifically, as well as emotionally, practically, as well as spiritually, a woman whom the world cannot do without.</p>
+
+    <p class="attribution">Anna Julia Cooper, speech delivered to the clergy of the Protestant Episcopal Church, Washington, D.C., 1892. Cooper, born enslaved in North Carolina, became one of the first African American women to earn a doctoral degree and a prominent educator and activist.</p>
+  </div>
+
+  <div class="timer-box">
+    <p><strong>⏱ BEGIN RHETORICAL ANALYSIS (40 minutes)</strong></p>
+    <p>5 min: Read passage + identify rhetorical situation + choose 2-3 strategies<br>
+    30 min: Write essay<br>
+    5 min: Review</p>
+  </div>
+
+  <div style="background: #f8f9fa; border: 2px solid var(--border); border-radius: 8px; padding: 1.25rem; margin: 1rem 0; min-height: 250px;">
+    <p style="color: var(--muted); font-style: italic;">[Write your rhetorical analysis essay here or on paper. Remember: Analyze HOW Cooper's strategies serve her purpose, not just what strategies she uses. Apply S-F-E.]</p>
+  </div>
+</div>
+
+<h2>Phase 3: Break (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>3-Minute Break</h3>
+  <p>Stand up. Walk around. Breathe deeply. Shake out your hands. Drink water.</p>
+  <p><strong>Quick mental reset:</strong> The rhetorical analysis is done. You cannot change it. Let it go. Focus on the argument essay ahead. You're generating evidence from knowledge—this is your strength from A2. You know how to build arguments with They Say/I Say. You've practiced sophistication moves. You're ready.</p>
+</div>
+
+<h2>Phase 4: Independent — Argument Essay (40 min)</h2>
+<div class="phase-card independent-card" data-min-words="450" data-rubric="B1L_gate_argument">
+  <h3>FRQ 3: Argument</h3>
+
+  <div style="background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+    <p><strong>Directions:</strong> The following prompt is based on an accompanying quotation. Read the quotation carefully. Then, write an essay that argues your position on the claim.</p>
+    <p style="margin-bottom: 0;"><strong>In your response you should do the following:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Respond to the prompt with a thesis that presents a defensible position</li>
+      <li>Provide evidence to support your line of reasoning</li>
+      <li>Explain how the evidence supports your line of reasoning</li>
+      <li>Use appropriate grammar and punctuation in communicating your argument</li>
+    </ul>
+  </div>
+
+  <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0;">
+    <h3 style="margin: 0 0 0.75rem 0; color: var(--primary);">Argument Prompt</h3>
+    <p>In her memoir of scientific discovery, a Nobel Prize-winning physicist writes: <strong>"Every breakthrough I achieved came through struggle. Easy problems taught me nothing; only when I was forced to confront challenges that seemed insurmountable did I develop the tools to think in genuinely new ways. We do students no favors when we smooth their path."</strong></p>
+
+    <p>This perspective suggests that difficulty and struggle are not merely obstacles to overcome but essential components of meaningful learning and achievement. However, others argue that unnecessary difficulty is simply inefficient, that removing barriers allows more people to achieve their potential, and that suffering is not a prerequisite for excellence.</p>
+
+    <p style="margin-bottom: 0;"><strong>Assignment:</strong> Write an essay that argues your position on whether difficulty and struggle are essential to meaningful achievement. Use appropriate evidence from your reading, experience, or observations to support your argument.</p>
+  </div>
+
+  <div class="timer-box">
+    <p><strong>⏱ BEGIN ARGUMENT ESSAY (40 minutes)</strong></p>
+    <p>5 min: Deconstruct prompt + brainstorm evidence + outline<br>
+    30 min: Write essay (intro + 3-4 body paragraphs + conclusion)<br>
+    5 min: Review + add sophistication if needed</p>
+  </div>
+
+  <div style="background: #f8f9fa; border: 2px solid var(--border); border-radius: 8px; padding: 1.25rem; margin: 1rem 0; min-height: 250px;">
+    <p style="color: var(--muted); font-style: italic;">[Write your argument essay here or on paper. Remember: Generate evidence from knowledge (history, literature, current events, science). Use They Say/I Say. Consider adding a sophistication move in your conclusion.]</p>
+  </div>
+</div>
+
+<h2>Phase 5: Self-Score Both Essays (5 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Score Your Rhetorical Analysis & Argument Essays</h3>
+
+  <div class="rubric-box">
+    <p><strong>AP Rubric (Both Essays):</strong></p>
+    <table style="font-size: 0.85rem;">
+      <tr>
+        <th style="width: 20%;">Row</th>
+        <th style="width: 20%;">Points</th>
+        <th>Criteria</th>
+      </tr>
+      <tr>
+        <td><strong>Row A<br>Thesis</strong></td>
+        <td>0 or 1</td>
+        <td>Defensible claim + line of reasoning</td>
+      </tr>
+      <tr>
+        <td><strong>Row B<br>Evidence</strong></td>
+        <td>0-4</td>
+        <td><strong>Rhetorical Analysis:</strong> S-F-E analysis of strategies (not feature-spotting)<br>
+        <strong>Argument:</strong> Specific evidence from knowledge with explanation</td>
+      </tr>
+      <tr>
+        <td><strong>Row C<br>Sophistication</strong></td>
+        <td>0 or 1</td>
+        <td>Demonstrates complexity via broader context, tension, alternative interpretation, or vivid style</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Your L20 Scores</div>
+    <p><strong>Rhetorical Analysis (Anna Julia Cooper):</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Row A: ___ / 1</li>
+      <li>Row B: ___ / 4</li>
+      <li>Row C: ___ / 1</li>
+      <li><strong>Total:</strong> ___ / 6</li>
+    </ul>
+
+    <p style="margin-top: 1rem;"><strong>Argument (Difficulty & Achievement):</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Row A: ___ / 1</li>
+      <li>Row B: ___ / 4</li>
+      <li>Row C: ___ / 1</li>
+      <li><strong>Total:</strong> ___ / 6</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 6: Gate Check (5 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Combined Gate Assessment: L19 + L20</h3>
+
+  <p>You've now written all 3 AP essays for the B1L gate. Calculate your combined performance:</p>
+
+  <div class="rubric-box">
+    <p><strong>Gate Threshold:</strong> Pass = 4+ points on at least 2 of 3 essays</p>
+    <table style="font-size: 0.9rem; margin-top: 1rem;">
+      <tr>
+        <th style="width: 35%;">Essay</th>
+        <th style="width: 20%;">Your Score</th>
+        <th style="width: 20%;">Pass? (4+)</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td><strong>L19 Synthesis</strong><br>(Universal Basic Income)</td>
+        <td>___ / 6</td>
+        <td>Y / N</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>L20 Rhetorical Analysis</strong><br>(Anna Julia Cooper)</td>
+        <td>___ / 6</td>
+        <td>Y / N</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>L20 Argument</strong><br>(Difficulty & Achievement)</td>
+        <td>___ / 6</td>
+        <td>Y / N</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Gate Result</div>
+    <p><strong>How many essays earned 4+ points?</strong> ___ / 3</p>
+    <p><strong>Gate Status:</strong> PASS (2+ essays at 4+) / NOT YET (fewer than 2 essays at 4+)</p>
+
+    <p style="margin-top: 1rem;"><strong>If you passed:</strong> Congratulations! You're AP Language exam-ready. Your weakest essay and weakest row pattern tell you what to review before the real AP exam, but you've demonstrated competence across all three FRQ types.</p>
+
+    <p><strong>If you didn't pass yet:</strong> Identify your weakest essay type and weakest row. Re-read the relevant lessons (L01-L07 for rhetorical analysis, L08-L12 for argument, L13-L16 for synthesis) and practice targeted revision using L18 strategies. You have the skills—refinement comes with practice.</p>
+  </div>
+
+  <div class="self-check" style="margin-top: 1.5rem;">
+    <div class="q-label">Reflection: Weakest Row Pattern</div>
+    <p><strong>Across all 3 essays, which row was consistently weakest?</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Row A (Thesis): ___ / 3 points earned across essays</li>
+      <li>Row B (Evidence): ___ / 12 points earned across essays</li>
+      <li>Row C (Sophistication): ___ / 3 points earned across essays</li>
+    </ul>
+    <p style="margin-top: 0.75rem;"><strong>Your weakest row pattern is: </strong> A / B / C (circle one)</p>
+    <p><strong>Before the AP exam, focus on:</strong> [Write one specific strategy you'll use to improve this row]</p>
+  </div>
+</div>
+
+<div class="gate-success" style="margin-top: 2rem;">
+  <p><strong>🎓 B1L COURSE COMPLETE</strong></p>
+  <p>You've completed Course B1L: AP Language Essay Writing. You've learned M5 (Reading as Reverse Engineering), practiced rhetorical analysis, developed sophisticated arguments from knowledge, synthesized multiple sources under time pressure, calibrated your scoring against AP standards, and written 3 full-length timed essays. You're ready for the AP Language and Composition exam.</p>
+  <p style="margin-top: 0.75rem;"><strong>Next Steps:</strong> If you continue to Course B2 (AP Mastery 5+), you'll deepen Row C sophistication, master M6 (Who Benefits?), study AP-level passages for deeper reverse engineering, and push toward consistent 5-6 scores on all FRQs. If you're taking the AP exam this year, review your weakest row pattern and practice targeted fixes from L18.</p>
+</div>
+
+<div class="footnote">
+  <p>B1L L20 • AP Practice Exam — Rhetorical Analysis + Argument • KC C.AP.L.06, C.AP.L.09, C.AP.L.15 (all assessed) • ~90 min • Gate Assessment (2 of 2 — FINAL) • Course B1L Complete</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="B1L_L19_AP_Practice_Exam_Synthesis.html" class="prev">← L19: AP Practice Exam — Synthesis</a>
+  <span style="color: var(--muted); font-style: italic;">Course B1L Complete</span>
+</nav>
+</body>
+</html>

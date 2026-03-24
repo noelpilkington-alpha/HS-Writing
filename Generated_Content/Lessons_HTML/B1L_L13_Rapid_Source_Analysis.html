@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L13: Rapid Source Analysis</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.source-box {
+  background: #f0f8ff; border: 1px solid #b0d4f1; border-radius: 8px;
+  padding: 1rem; margin: 1rem 0; font-size: 0.9rem;
+}
+.source-box .source-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course B1L · Lesson 13</span>
+  <h1>Rapid Source Analysis</h1>
+  <p class="subtitle">AP Synthesis Essay — 15-Minute Source Reading Strategy</p>
+  <div class="meta-bar">
+    <span>⏱ ~30 min</span>
+    <span>📍 KCs: C.AP.L.10</span>
+    <span>🧠 Mental Models: M3, M5, M6 (preview)</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>AP Synthesis Challenge:</strong> You have 6-7 sources and only 15 minutes to read them before writing. You CANNOT read every source carefully. The skill: triage sources quickly for position, key evidence, and usability. Build a Rapid Synthesis Matrix that captures what you need to write the essay.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>The 15-Minute Reading Strategy</h3>
+
+  <p>In A2 synthesis, you had 4 sources and plenty of time to read each carefully. AP gives you 6-7 sources and <strong>15 minutes total</strong>. That's about 2 minutes per source—not enough time to read deeply. You must learn to <span class="vocab-term">triage</span>.</p>
+
+  <p><strong>The Three-Step Reading Strategy:</strong></p>
+
+  <ol style="margin-left: 1.5rem; margin-bottom: 1rem;">
+    <li><strong>Read the prompt FIRST</strong> (1 min) — Know what question you're answering before you read sources. This tells you what to look for.</li>
+    <li><strong>Skim all sources for position and key evidence</strong> (8 min) — Don't read linearly. Scan for: What is this source's position? (For/Against/Complicates) What's the strongest piece of evidence? Is the source credible? (Expert/Study/Anecdote)</li>
+    <li><strong>Build a Rapid Synthesis Matrix</strong> (6 min) — Capture: Source, Position, Key Evidence, Credibility, Use? (Y/N). This becomes your map for writing.</li>
+  </ol>
+
+  <p><strong>What you're doing:</strong> This is Source Perspective Evaluation from A2 L08, but under extreme time pressure. Apply M6 (preview): note whose perspective each source represents. Apply M5: ask "If I were writing about this topic, which sources would give me the best material?"</p>
+
+  <div class="rubric-box">
+    <h4>Rapid Synthesis Matrix Template</h4>
+    <table>
+      <tr>
+        <th style="width: 12%;">Source</th>
+        <th style="width: 18%;">Position</th>
+        <th style="width: 30%;">Key Evidence/Data</th>
+        <th style="width: 18%;">Credibility</th>
+        <th style="width: 10%;">Use?</th>
+        <th style="width: 12%;">Notes</th>
+      </tr>
+      <tr>
+        <td>Source A</td>
+        <td>For/Against/Complicates</td>
+        <td>[Quote or paraphrase 1 key point]</td>
+        <td>Expert/Study/Anecdote</td>
+        <td>Y/N</td>
+        <td>[Quick note]</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>A student spends 5 minutes carefully reading Source A from beginning to end, taking detailed notes. They plan to do the same for all 7 sources. What's the problem with this approach?</strong></p>
+    <ol type="A">
+      <li>They're reading too slowly to finish all sources in 15 minutes</li>
+      <li>They're collecting too much detail instead of identifying position and key evidence</li>
+      <li>They'll have notes on sources they won't use in the essay</li>
+      <li>All of the above</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> D — All of the above</p>
+        <p><strong>Why:</strong> At 5 minutes per source, they'd need 35 minutes to read 7 sources (they only have 15). Detailed notes mean they're reading for comprehension, not triage. And they'll waste time on sources they won't use. The goal is to quickly identify which 3-4 sources are MOST useful, then focus on those.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (5 min)</h2>
+<div class="phase-card model-card">
+  <h3>Timed Source Analysis: SYN-07 Free Speech on Campuses</h3>
+
+  <p><strong>Prompt:</strong> Should colleges restrict certain types of speech on campus in order to create inclusive environments? Develop a position on this question, using at least three of the provided sources for support.</p>
+
+  <p><strong>Model: Watch a writer complete Rapid Source Analysis in real time (15 minutes shown, matrix created).</strong></p>
+
+  <div class="coping-model">
+    <p><strong>Writer's timing and thinking process:</strong></p>
+    <p><span class="strong">[0:00-1:00] Read prompt. Okay, the question is about restricting speech vs. inclusivity. I need sources that take positions on this debate. Looking for: legal perspective, student perspective, data on harm vs. censorship.</span></p>
+
+    <p><span class="strong">[1:00-3:00] Skim all 6 source titles and first paragraphs. Source A: ACLU lawyer, argues against restrictions (free speech absolutist). Source B: Student essay about hate speech harm. Source C: University policy data—schools with speech codes. Source D: Psychology study on "safe spaces." Source E: First Amendment scholar, nuanced. Source F: Political scientist on "chilling effect."</span></p>
+
+    <p><span class="false-start">[3:00-6:00] Starting to read Source A carefully... wait, I'm spending too long on this. I need to skim, not read deeply.</span></p>
+
+    <p><span class="correction">Reset. I'll scan each source for ONE key quote or statistic, note the position, move on. I can come back later if I decide to use it.</span></p>
+
+    <p><span class="strong">[6:00-12:00] Scanning all sources. Source A: "First Amendment protects offensive speech"—classic ACLU position. Source B: Personal story about racial slur, felt unsafe—emotional but anecdotal. Source C: Data—78% of colleges have speech policies, mixed results on campus climate. That's useful data. Source D: Study shows "trigger warnings" reduce anxiety—credible research. Source E: Distinguishes "speech" from "harassment"—that's a sophistication move I can use. Source F: Warns restrictions lead to self-censorship—empirical claim.</span></p>
+
+    <p><span class="strong">[12:00-15:00] Building matrix. I'll use Sources C (data), E (legal nuance), D (psychological research), and maybe F (chilling effect for counterargument). Source A is too absolutist—predictable. Source B is moving but anecdotal—weak for AP. Marking A and B as "N" for now.</span></p>
+  </div>
+
+  <div class="rubric-box">
+    <h4>Completed Rapid Synthesis Matrix: SYN-07</h4>
+    <table style="font-size: 0.85rem;">
+      <tr>
+        <th style="width: 12%;">Source</th>
+        <th style="width: 18%;">Position</th>
+        <th style="width: 30%;">Key Evidence</th>
+        <th style="width: 18%;">Credibility</th>
+        <th style="width: 10%;">Use?</th>
+        <th style="width: 12%;">Notes</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>Against restrictions</td>
+        <td>"First Amendment protects offensive speech"</td>
+        <td>ACLU lawyer (expert)</td>
+        <td>N</td>
+        <td>Too absolutist, predictable</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>For restrictions</td>
+        <td>Personal story—racial slur made student feel unsafe</td>
+        <td>Student (anecdote)</td>
+        <td>N</td>
+        <td>Moving but weak evidence</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>Complicates</td>
+        <td>78% of colleges have speech policies; mixed results on climate</td>
+        <td>University data (study)</td>
+        <td><strong>Y</strong></td>
+        <td>Strong data, shows complexity</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>For (limited restrictions)</td>
+        <td>Psych study: trigger warnings reduce anxiety without limiting speech</td>
+        <td>Research (study)</td>
+        <td><strong>Y</strong></td>
+        <td>Empirical, credible</td>
+      </tr>
+      <tr>
+        <td>E</td>
+        <td>Complicates</td>
+        <td>Distinguishes "protected speech" from "targeted harassment"—legal line</td>
+        <td>Constitutional scholar (expert)</td>
+        <td><strong>Y</strong></td>
+        <td>Nuance = sophistication</td>
+      </tr>
+      <tr>
+        <td>F</td>
+        <td>Against restrictions</td>
+        <td>Restrictions create "chilling effect"—students self-censor</td>
+        <td>Political scientist (expert)</td>
+        <td><strong>Y</strong></td>
+        <td>Good counterargument</td>
+      </tr>
+    </table>
+  </div>
+
+  <p><strong>Notice:</strong> The writer didn't read every source fully. They skimmed for position and key evidence, marked which sources to USE, and noted why. This matrix is messy but functional—exactly what you need in 15 minutes.</p>
+</div>
+
+<h2>Phase 3: Supported Practice (15 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Timed Rapid Source Analysis: SYN-04 Space Exploration</h3>
+
+  <p><strong>Prompt:</strong> Given competing demands on government resources, should the United States continue to invest heavily in space exploration? Develop a position, using at least three of the provided sources.</p>
+
+  <p><strong>Your Task:</strong> You have <strong>15 minutes</strong> to read the 6 sources below and complete the Rapid Synthesis Matrix. Time yourself. Use the three-step strategy: (1) Read prompt (done above), (2) Skim all sources for position/evidence (8 min), (3) Build matrix (6 min).</p>
+
+  <div class="source-box">
+    <div class="source-label">Source A: NASA Administrator Statement (2021)</div>
+    <p>"Space exploration drives technological innovation that benefits everyday life. GPS, weather satellites, medical imaging technology—all emerged from space research. The $25 billion NASA budget represents less than 0.5% of federal spending but yields discoveries that transform industries. We cannot afford to cede leadership in space to China and private companies while America stands still."</p>
+  </div>
+
+  <div class="source-box">
+    <div class="source-label">Source B: Economic Policy Institute Report (2022)</div>
+    <p>"Federal spending on space exploration diverts resources from urgent terrestrial needs. The U.S. faces crises in healthcare, infrastructure, education, and climate change. A cost-benefit analysis shows that redirecting NASA's budget to renewable energy research would create 3x more jobs and yield faster returns on investment. Space exploration is inspiring but economically inefficient."</p>
+  </div>
+
+  <div class="source-box">
+    <div class="source-label">Source C: Astrophysicist Interview, *Science Today* (2023)</div>
+    <p>"The search for life beyond Earth isn't just philosophical—it's scientific necessity. Studying Mars' atmosphere teaches us about climate change. Asteroid mining could provide rare earth elements critical for technology. The James Webb Space Telescope has already discovered exoplanets with potential biosignatures. These aren't luxuries; they're investments in understanding our place in the cosmos and securing resources for future generations."</p>
+  </div>
+
+  <div class="source-box">
+    <div class="source-label">Source D: Pew Research Survey (2023)</div>
+    <p>"Public opinion on space exploration is divided by age and priority. 61% of Americans support continued investment in space exploration, but only 32% rank it as a 'high priority' compared to healthcare (78%), education (71%), and infrastructure (68%). Among adults under 30, support rises to 72%, suggesting generational differences in how Americans value space investment."</p>
+  </div>
+
+  <div class="source-box">
+    <div class="source-label">Source E: Historian of Science Essay (2020)</div>
+    <p>"Every era of exploration—maritime, aerial, digital—has sparked debates about cost versus benefit. Critics of Columbus argued that resources should stay home; critics of the Apollo program called it a Cold War stunt. Yet both opened frontiers that reshaped civilization. The question isn't whether space exploration is expensive, but whether we can afford to abandon humanity's exploratory impulse at the moment when technology makes interplanetary presence possible."</p>
+  </div>
+
+  <div class="source-box">
+    <div class="source-label">Source F: Environmental Economist Analysis (2022)</div>
+    <p>"SpaceX, Blue Origin, and commercial space ventures have reduced launch costs by 90%, making government spending less critical. Private industry can fund exploration while public resources address climate emergency. The $25 billion NASA budget could fund 500,000 green jobs annually or accelerate carbon capture technology by a decade. We face an existential climate crisis—space can wait."</p>
+  </div>
+
+  <p><strong>Complete the Matrix:</strong> Write your analysis below. Remember: scan for position, key evidence, credibility. Mark which sources you'd use (Y/N).</p>
+
+  <div style="background: #f0f8ff; border: 1px solid #b0d4f1; border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+    <table style="font-size: 0.85rem;">
+      <tr>
+        <th style="width: 12%;">Source</th>
+        <th style="width: 18%;">Position</th>
+        <th style="width: 30%;">Key Evidence</th>
+        <th style="width: 18%;">Credibility</th>
+        <th style="width: 10%;">Use?</th>
+        <th style="width: 12%;">Notes</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td><em>[For/Against/Complicates?]</em></td>
+        <td><em>[Write key quote or stat]</em></td>
+        <td><em>[Expert/Study/Anecdote?]</em></td>
+        <td><em>[Y/N?]</em></td>
+        <td><em>[Why/why not?]</em></td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td><em>[Your analysis]</em></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>E</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>F</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p><strong>After completing your matrix, answer these questions:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Can you identify each source's position in one sentence?</li>
+      <li>Did you mark 3-4 sources as "Y" (use)?</li>
+      <li>Did you identify at least one source with DATA (not just opinion)?</li>
+      <li>Did you complete the matrix in 15 minutes or less?</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (5 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Source Selection Justification</h3>
+
+  <p><strong>Your Task:</strong> Review your SYN-04 matrix above. Choose 3-4 sources you would use if you were writing this synthesis essay. For each source, write one sentence explaining WHY you selected it.</p>
+
+  <p><strong>Selection Criteria Reminder:</strong></p>
+  <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+    <li>Does this source support my thesis?</li>
+    <li>Does it provide a counterargument I can address?</li>
+    <li>Is the evidence specific enough to quote or paraphrase?</li>
+    <li>Does it add a perspective the other sources don't?</li>
+  </ul>
+
+  <div style="background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+    <p><strong>Source 1 [Letter]:</strong> I would use this source because <em>[write your justification]</em></p>
+    <p><strong>Source 2 [Letter]:</strong> I would use this source because <em>[write your justification]</em></p>
+    <p><strong>Source 3 [Letter]:</strong> I would use this source because <em>[write your justification]</em></p>
+    <p><strong>Source 4 [Letter] (optional):</strong> I would use this source because <em>[write your justification]</em></p>
+  </div>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li>Selected 3-4 sources (not all 6)</li>
+      <li>Justified each selection with a strategic reason (supports claim, provides data, offers counterargument, adds perspective)</li>
+      <li>Identified at least one source with empirical evidence (data/study) rather than just opinion</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>Reflection:</strong> In A2, you had 4 sources and plenty of time. AP gives you 6-7 and 15 minutes. The skill is the SAME—source perspective evaluation—but the speed is different.</p>
+    <p><strong>What did you skip? What did you prioritize?</strong> Think about your SYN-04 reading process. Which sources did you read most carefully? Which did you skim or mark as "N" early? What made the difference?</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Looking Ahead</div>
+    <p>In L14, you'll practice <strong>source weaving</strong>—writing paragraphs that integrate multiple sources smoothly. You'll use the SYN-07 sources from today's model, so your Rapid Synthesis Matrix will become the foundation for actual paragraph writing.</p>
+    <p><strong>Before the next lesson:</strong> If you ran over 15 minutes today, practice the timing again with a new article or set of op-eds. The speed will feel unnatural at first, but it's the AP reality. Build the habit now.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B1L L13 • Rapid Source Analysis • KC C.AP.L.10 • ~30 min • M3, M5, M6 (preview)</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="B1L_L12_Sophistication_Moves.html" class="prev">← L12: Sophistication Moves</a>
+  <a href="B1L_L14_Source_Selection_and_Weaving.html" class="next">L14: Source Selection & Weaving →</a>
+</nav>
+</body>
+</html>

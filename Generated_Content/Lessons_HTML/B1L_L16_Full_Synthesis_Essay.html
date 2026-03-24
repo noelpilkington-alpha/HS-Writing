@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L16: Full AP Synthesis Essay</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+.lesson-tag.gateway { background: #dc3545; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.gateway-card { border-left: 4px solid #dc3545; background: #fff5f5; }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.gateway-box {
+  background: #fff5f5; border: 2px solid #dc3545; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.gateway-box h4 {
+  color: #dc3545; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag gateway" style="background: #dc3545;">Course B1L · Lesson 16 · GATEWAY</span>
+  <h1>Full AP Synthesis Essay</h1>
+  <p class="subtitle">55-Minute Timed Essay — GATEWAY LESSON</p>
+  <div class="meta-bar">
+    <span>⏱ ~65 min</span>
+    <span>📍 KCs: C.AP.L.12 (GATEWAY)</span>
+    <span>🧠 Mental Models: M4, M5</span>
+  </div>
+</div>
+
+<div class="gateway-box">
+  <h4>Gateway Lesson — Unit 3 Synthesis Essay</h4>
+  <p><strong>This is a gateway lesson.</strong> You must meet the following criteria to demonstrate synthesis competence:</p>
+  <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+    <li><strong>Row A = 1:</strong> Thesis with defensible claim and line of reasoning</li>
+    <li><strong>Row B ≥ 2:</strong> Evidence from sources with some commentary</li>
+    <li><strong>3+ sources cited:</strong> Must use at least three sources in your essay</li>
+  </ul>
+  <p style="margin-top: 0.5rem;"><strong>If you meet these criteria, you're ready for Unit 4 (AP Calibration & Revision).</strong> If not, revise and resubmit.</p>
+</div>
+
+<div class="key-concept">
+  <strong>AP Synthesis Essay Timing:</strong> 55 minutes total = 15 min reading sources + 5 min planning + 30 min writing + 5 min review. You completed planning in L15 on these sources. Today you may revise that plan OR start fresh (the real AP exam won't give you a preview).
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>55-Minute Timing Breakdown</h3>
+
+  <p>The AP Synthesis essay is the longest FRQ (55 minutes vs. 40 for Rhetorical Analysis and Argument) because you must READ sources before writing. Here's the timing strategy:</p>
+
+  <table>
+    <tr>
+      <th style="width: 25%;">Phase</th>
+      <th style="width: 15%;">Time</th>
+      <th>Task</th>
+    </tr>
+    <tr>
+      <td><strong>1. Read Prompt</strong></td>
+      <td>1 min</td>
+      <td>Understand the question before reading sources</td>
+    </tr>
+    <tr>
+      <td><strong>2. Rapid Source Analysis</strong></td>
+      <td>14 min</td>
+      <td>Skim all sources, build Rapid Synthesis Matrix (L13 strategy)</td>
+    </tr>
+    <tr>
+      <td><strong>3. Thesis + Outline</strong></td>
+      <td>5 min</td>
+      <td>Write thesis, outline 3 body paragraphs with source assignments</td>
+    </tr>
+    <tr>
+      <td><strong>4. Introduction</strong></td>
+      <td>5 min</td>
+      <td>Write intro paragraph + thesis</td>
+    </tr>
+    <tr>
+      <td><strong>5. Body Paragraphs</strong></td>
+      <td>22 min</td>
+      <td>3 body paragraphs (7-8 min each) with source integration</td>
+    </tr>
+    <tr>
+      <td><strong>6. Conclusion</strong></td>
+      <td>5 min</td>
+      <td>Closing paragraph (opportunity for Row C sophistication)</td>
+    </tr>
+    <tr>
+      <td><strong>7. Review</strong></td>
+      <td>3 min</td>
+      <td>Check: 3+ sources cited? Transitions? Obvious errors?</td>
+    </tr>
+  </table>
+
+  <p><strong>Note:</strong> You planned these sources in L15. You may use that plan or start fresh today—practice BOTH approaches because the AP exam won't give you a preview.</p>
+</div>
+
+<h2>Phase 2: Model (3 min)</h2>
+<div class="phase-card model-card">
+  <h3>Annotated Model Synthesis Essay</h3>
+
+  <p><strong>Prompt:</strong> Some argue that environmental protection and economic growth are fundamentally in conflict, while others contend they can coexist. Develop a position on this relationship, using at least three sources.</p>
+
+  <div class="model-answer">
+    <p><strong>[INTRODUCTION]</strong> For decades, policymakers have framed environmental protection and economic growth as competing priorities, as if choosing clean air meant accepting unemployment. This zero-sum framing is both inaccurate and dangerous. <span style="background: #ffffcc;"><strong>[THESIS — Row A]</strong> Environmental sustainability and economic prosperity are not only compatible but mutually reinforcing when policies prioritize long-term investment, account for the true costs of inaction, and ensure equitable transitions for affected workers.</span> The evidence demonstrates that green economies create jobs, climate inaction imposes catastrophic costs, and smart policy design can address legitimate concerns about worker displacement.</p>
+
+    <p><strong>[BODY ¶1: Economic Opportunity]</strong> <span style="background: #ffffcc;"><strong>[Row B: Sources + Commentary]</strong></span> Environmental investment generates substantial economic returns. According to a 2021 UN report, the global transition to renewable energy could create 24 million jobs by 2030, far exceeding the 6 million jobs lost in fossil fuel industries (Source A). This 4-to-1 job creation ratio challenges the assumption that environmental policy destroys employment. Moreover, Costa Rica's experience demonstrates that green economies can thrive: the country generates 99% of its electricity from renewables while maintaining 5% annual GDP growth and sustaining a robust ecotourism sector worth 10% of GDP (Source D). These examples reveal that the conflict between environment and economy is not inherent but results from short-term thinking that ignores long-term gains.</p>
+
+    <p><strong>[BODY ¶2: Cost of Inaction]</strong> Beyond job creation, the economic case for climate action rests on a stark reality: inaction costs more than action. A 2022 McKinsey analysis projects that unmitigated climate change could reduce global GDP by 11-14% by 2050 through agricultural collapse, infrastructure damage, and forced migration, while achieving net-zero emissions requires $9.2 trillion annually but yields $43 trillion in benefits over 30 years (Source F). <span style="background: #d4f1d4;"><strong>[Row C: Sophistication via Alternative Interpretation]</strong> Business interests like the Chamber of Commerce frame environmental regulations as imposing $14 billion in annual compliance costs (Source B), but this accounting omits the externalities—pollution-related healthcare costs, climate-driven agricultural losses, disaster recovery expenses—that dwarf regulatory costs.</span> As one economist notes, markets already favor clean energy because solar and wind are now cheaper than coal; what businesses need is policy certainty, not lax regulation (Source C). The question is not whether environmental action is expensive, but whether we can afford the alternative.</p>
+
+    <p><strong>[BODY ¶3: Just Transitions]</strong> Yet dismissing concerns about worker displacement would be both callous and politically unwise. Labor unions rightly argue that fossil fuel workers face real economic harm unless policymakers provide retraining, relocation support, and bridge income (Source E). The environment-economy debate too often ignores these human costs borne disproportionately by working-class communities. A credible climate policy must embed a "just transition" framework that protects livelihoods while advancing sustainability. Costa Rica's payment-for-ecosystem-services model demonstrates one approach: compensating affected parties creates buy-in rather than resistance (Source D). Environmental and economic goals align when policy includes rather than excludes vulnerable workers.</p>
+
+    <p><strong>[CONCLUSION]</strong> <span style="background: #d4f1d4;"><strong>[Row C: Broader Context]</strong> The environment-economy dichotomy persists because short-term electoral cycles reward politicians who defer costs, while the benefits of sustainability accrue over decades.</span> But this political convenience is economically irrational. Green investment creates jobs, inaction guarantees catastrophe, and just transitions address worker concerns. The real conflict is not environment versus economy—it is the present versus the future. And the future, whether we like it or not, has already begun to arrive.</p>
+  </div>
+
+  <p><strong>Scoring Annotations:</strong></p>
+  <ul style="margin-left: 1.5rem; margin-bottom: 0;">
+    <li><strong>Row A = 1:</strong> Thesis states position ("compatible but mutually reinforcing") + line of reasoning (long-term investment, true costs, equitable transitions)</li>
+    <li><strong>Row B = 4:</strong> Uses 6 sources (A, D, F, B, C, E) with S-F-E commentary throughout; sources serve the argument</li>
+    <li><strong>Row C = 1:</strong> Sophistication via alternative interpretation (¶2: reframes Chamber of Commerce costs) + broader context (conclusion: short-term politics vs. long-term rationality)</li>
+    <li><strong>Total: 6/6</strong></li>
+  </ul>
+</div>
+
+<h2>Phase 3: Planning (5 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Finalize Your Synthesis Plan</h3>
+
+  <p><strong>Your Task:</strong> You completed a full 15-minute planning session in L15 using the SYN-06 sources (Environment & Economic Growth). Review your plan from L15 now. You have <strong>5 minutes</strong> to:</p>
+
+  <ol style="margin-left: 1.5rem; margin-bottom: 1rem;">
+    <li>Review your L15 Rapid Synthesis Matrix and thesis</li>
+    <li>Decide: Will you use your L15 plan OR start fresh?</li>
+    <li>Finalize your outline: thesis + 3 body paragraph claims + source assignments</li>
+  </ol>
+
+  <p><strong>Strategy Tip:</strong> If your L15 plan felt solid, refine it (add specific quotes to use, strengthen thesis). If it felt weak, start fresh—but work fast. On the real AP exam, you won't have seen the sources before, so practice the cold-start approach too.</p>
+
+  <div style="background: #f0f8ff; border: 1px solid #b0d4f1; border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+    <p><strong>Quick Reference: SYN-06 Source Positions</strong></p>
+    <ul style="margin-left: 1.5rem; font-size: 0.88rem;">
+      <li><strong>Source A (UN Report):</strong> Green economy creates 24M jobs, saves $4-6 per $1 invested</li>
+      <li><strong>Source B (Chamber of Commerce):</strong> Regulations cost $14B annually, risk job losses</li>
+      <li><strong>Source C (Economist):</strong> False dichotomy; markets favor clean energy; need policy certainty</li>
+      <li><strong>Source D (Costa Rica):</strong> 99% renewables + 5% GDP growth—proof of compatibility</li>
+      <li><strong>Source E (Labor Union):</strong> Workers face real harm; need "just transition" support</li>
+      <li><strong>Source F (McKinsey):</strong> Inaction costs 11-14% GDP; action yields $43T in benefits</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Writing (40 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Write Your Full AP Synthesis Essay</h3>
+
+  <p><strong>Your Task:</strong> Write a complete synthesis essay in <strong>40 minutes</strong>. Use your finalized plan from Phase 3. Follow this timing:</p>
+
+  <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+    <li><strong>Introduction + thesis:</strong> 5 min</li>
+    <li><strong>Body paragraph 1:</strong> 7-8 min</li>
+    <li><strong>Body paragraph 2:</strong> 7-8 min</li>
+    <li><strong>Body paragraph 3:</strong> 7-8 min</li>
+    <li><strong>Conclusion:</strong> 5 min</li>
+    <li><strong>Review:</strong> 3 min (check sources cited, add transitions, fix errors)</li>
+  </ul>
+
+  <p><strong>Essay Requirements:</strong></p>
+  <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+    <li>Use <strong>at least 3 sources</strong> (4-5 is strategic)</li>
+    <li>Cite sources parenthetically: (Source A), (Source B), etc.</li>
+    <li>Sources must SERVE your argument, not drive it</li>
+    <li>Aim for 500-700 words total</li>
+  </ul>
+
+  <div style="background: #fff; border: 2px solid var(--accent); border-radius: 8px; padding: 1.5rem; margin: 1rem 0; min-height: 400px;">
+    <p style="text-align: center; color: var(--muted); font-style: italic;">[Write your full synthesis essay here. Set a timer for 40 minutes. Begin when ready.]</p>
+  </div>
+
+  <div class="rubric-box">
+    <p><strong>As You Write, Remember:</strong></p>
+    <ul>
+      <li>Start each body paragraph with YOUR claim, not "Source X says..."</li>
+      <li>Use varied attribution patterns (embedded credentials, cross-source synthesis, etc.)</li>
+      <li>Add S-F-E commentary after each source—explain the "So what?"</li>
+      <li>Consider a Row C sophistication move in paragraph 3 or conclusion</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Self-Score (5 min)</h2>
+<div class="phase-card gateway-card">
+  <h3>Score Your Synthesis Essay on AP Rubric</h3>
+
+  <p><strong>Your Task:</strong> Score your essay on Rows A, B, and C using the AP Synthesis rubric. Count how many sources you cited. Be honest—this is practice, not judgment.</p>
+
+  <div style="background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+    <h4>AP Synthesis Rubric Scoring</h4>
+
+    <p><strong>Row A: Thesis (0-1 point)</strong></p>
+    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+      <li><strong>0 points:</strong> No thesis, or thesis lacks defensible claim or line of reasoning</li>
+      <li><strong>1 point:</strong> Thesis with defensible claim AND line of reasoning</li>
+    </ul>
+    <p><strong>Your Row A Score:</strong> <em>[0 or 1]</em></p>
+    <p><strong>Why?</strong> <em>[Does your thesis take a position? Does it preview how you'll develop it?]</em></p>
+    <br>
+
+    <p><strong>Row B: Evidence & Commentary (0-4 points)</strong></p>
+    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+      <li><strong>0-1 points:</strong> Little to no evidence or commentary</li>
+      <li><strong>2 points:</strong> Evidence from sources but minimal commentary (serial summary)</li>
+      <li><strong>3 points:</strong> Evidence from 3+ sources with consistent S-F-E commentary</li>
+      <li><strong>4 points:</strong> Evidence from 3+ sources with sophisticated, insightful commentary</li>
+    </ul>
+    <p><strong>Your Row B Score:</strong> <em>[0, 1, 2, 3, or 4]</em></p>
+    <p><strong>Sources Cited:</strong> <em>[How many? List them: A, B, C, etc.]</em></p>
+    <p><strong>Why this score?</strong> <em>[Did you provide S-F-E commentary? Did sources serve your argument?]</em></p>
+    <br>
+
+    <p><strong>Row C: Sophistication (0-1 point)</strong></p>
+    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+      <li><strong>0 points:</strong> Competent but no sophistication</li>
+      <li><strong>1 point:</strong> Broader context, tension/complexity, alternative interpretation, OR vivid style</li>
+    </ul>
+    <p><strong>Your Row C Score:</strong> <em>[0 or 1]</em></p>
+    <p><strong>Why?</strong> <em>[Did you include a sophistication move? Where?]</em></p>
+    <br>
+
+    <p><strong>Total Score:</strong> <em>[Add Rows A + B + C = ___ out of 6]</em></p>
+  </div>
+
+  <p><strong>Identify Your Weakest Row:</strong> Which row (A, B, or C) scored lowest? That's your focus for revision in L18.</p>
+</div>
+
+<h2>Phase 6: Gateway Check (2 min)</h2>
+<div class="phase-card gateway-card">
+  <h3>Gateway Assessment — Did You Pass?</h3>
+
+  <div class="gateway-box">
+    <h4>Gateway Criteria for L16 Synthesis Essay</h4>
+    <p><strong>You must meet ALL three criteria:</strong></p>
+    <ol style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.75rem;">
+      <li><strong>Row A = 1:</strong> Thesis with defensible claim and line of reasoning</li>
+      <li><strong>Row B ≥ 2:</strong> Evidence from sources with at least minimal commentary</li>
+      <li><strong>3+ sources cited:</strong> Must use at least three sources</li>
+    </ol>
+    <p><strong>Gateway Result:</strong></p>
+    <p style="margin-left: 1.5rem;"><em>[Write PASS or REVISE based on your self-scoring above]</em></p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">If You Passed</div>
+    <p>Congratulations! You've demonstrated synthesis competence. You're ready for Unit 4 (AP Calibration & Revision, L17-L18), where you'll learn to score essays on the full AP rubric and revise strategically.</p>
+    <p><strong>Before L17:</strong> Re-read your essay. Note which sources you used, which you skipped, and why. Were your choices strategic?</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">If You Need to Revise</div>
+    <p>Identify which criterion you didn't meet:</p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Row A = 0?</strong> Revise your thesis to include line of reasoning. Use the formula: "[Position] because [reason 1], [reason 2], and [reason 3]."</li>
+      <li><strong>Row B = 0-1?</strong> Add S-F-E commentary after each source. Don't just summarize—explain how the source supports YOUR claim.</li>
+      <li><strong>Fewer than 3 sources?</strong> Go back and integrate 1-2 more sources into your existing paragraphs.</li>
+    </ul>
+    <p><strong>Revise and resubmit before continuing to L17.</strong></p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B1L L16 • Full AP Synthesis Essay • KC C.AP.L.12 (GATEWAY) • ~65 min • M4, M5</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="B1L_L15_Attribution_Fluency.html" class="prev">← L15: Attribution Fluency</a>
+  <a href="B1L_L17_AP_Rubric_Calibration.html" class="next">L17: AP Rubric Calibration →</a>
+</nav>
+</body>
+</html>

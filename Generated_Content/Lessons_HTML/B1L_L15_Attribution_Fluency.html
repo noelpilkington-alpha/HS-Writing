@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L15: Attribution Fluency</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: #fd7e14; }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid #fd7e14; }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.source-box {
+  background: #f0f8ff; border: 1px solid #b0d4f1; border-radius: 8px;
+  padding: 1rem; margin: 0.75rem 0; font-size: 0.88rem;
+}
+.source-box .source-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course B1L · Lesson 15</span>
+  <h1>Attribution Fluency + Full Synthesis Planning</h1>
+  <p class="subtitle">AP Attribution Patterns + 15-Minute Planning Practice</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.AP.L.11 (deepened), C.AP.L.12 (preview)</span>
+    <span>🧠 Mental Model: M4</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Attribution Fluency:</strong> AP synthesis requires smooth, varied attribution of sources. Avoid mechanical "Source A says..." repetition. Use 10+ AP-level patterns: embedded credentials, attribution while disagreeing, cross-source synthesis, and more. This lesson deepens L14's source weaving and adds a full planning session for tomorrow's timed essay.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>AP Attribution Patterns: Beyond "Source A Says"</h3>
+
+  <p>You learned attribution patterns in A2. AP Synthesis demands <span class="vocab-term">attribution fluency</span>—the ability to integrate sources smoothly and vary your language so the essay reads as sophisticated prose, not a list of source summaries.</p>
+
+  <p><strong>Three New AP-Level Attribution Patterns:</strong></p>
+
+  <table style="margin-top: 1rem;">
+    <tr>
+      <th style="width: 30%;">Pattern</th>
+      <th>Example</th>
+    </tr>
+    <tr>
+      <td><strong>Embedded Credentials</strong></td>
+      <td>"According to a 2022 Pew study (Source D), 68% of Americans prioritize infrastructure over space exploration." — The credential (Pew study, 2022) builds ethos.</td>
+    </tr>
+    <tr>
+      <td><strong>Attributing While Disagreeing</strong></td>
+      <td>"While Source B claims that space spending diverts resources from urgent needs, this framing assumes a zero-sum budget when history shows investment in exploration generates economic returns." — You cite and rebut simultaneously.</td>
+    </tr>
+    <tr>
+      <td><strong>Cross-Source Synthesis</strong></td>
+      <td>"Both Source A and Source C acknowledge the economic benefits of space research, yet they diverge on whether private industry or government should lead investment." — You synthesize agreement and disagreement across sources.</td>
+    </tr>
+  </table>
+
+  <p><strong>Why this matters:</strong> Varied attribution = sophisticated writing. Essays that use 5+ different attribution patterns score higher on Row B and often earn Row C (sophistication) because they demonstrate rhetorical control.</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>Which sentence demonstrates attribution fluency?</strong></p>
+    <ol type="A">
+      <li>"Source C says that space exploration is expensive."</li>
+      <li>"According to Source C, space exploration is expensive."</li>
+      <li>"NASA's $25 billion budget, while substantial in absolute terms, represents less than 0.5% of federal spending (Source C), challenging the notion that space investment crowds out other priorities."</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> C</p>
+        <p><strong>Why:</strong> Sentence C integrates the source smoothly into an analytical claim. It uses embedded data, parenthetical citation, and commentary ("challenging the notion...") rather than just reporting what the source says. Sentences A and B are mechanical attribution—they report but don't integrate or analyze.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Supported Practice — Attribution Drill (8 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Attribution Fluency Drill: Space Exploration Sources</h3>
+
+  <p><strong>Your Task:</strong> Using the SYN-04 sources from L13 (Space Exploration), write <strong>5 sentences</strong>, each using a DIFFERENT attribution pattern. Each sentence should integrate a source smoothly into an argument about space investment.</p>
+
+  <p><strong>Source Summaries (from L13):</strong></p>
+  <ul style="margin-left: 1.5rem; font-size: 0.9rem; margin-bottom: 1rem;">
+    <li><strong>Source A (NASA):</strong> Space exploration drives innovation; GPS, weather satellites, medical imaging from space research; $25B budget is 0.5% of federal spending</li>
+    <li><strong>Source B (Economic Policy Institute):</strong> Space spending diverts resources from urgent needs; redirecting NASA budget to renewable energy would create 3x more jobs</li>
+    <li><strong>Source C (Astrophysicist):</strong> Mars study teaches about climate change; asteroid mining provides rare earth elements; not luxury but investment in future</li>
+    <li><strong>Source D (Pew Survey):</strong> 61% support space exploration but only 32% rank it high priority; healthcare 78%, education 71%, infrastructure 68% ranked higher</li>
+    <li><strong>Source E (Historian):</strong> Every era of exploration (maritime, aerial, digital) sparked cost-benefit debates; critics wrong about Columbus and Apollo; can't abandon exploration now</li>
+    <li><strong>Source F (Environmental Economist):</strong> Private companies (SpaceX, Blue Origin) reduced launch costs 90%; government spending less critical; $25B could fund 500k green jobs or accelerate carbon capture</li>
+  </ul>
+
+  <p><strong>Required Patterns (use each once):</strong></p>
+  <ol style="margin-left: 1.5rem; margin-bottom: 1rem;">
+    <li><strong>Embedded credentials</strong> (e.g., "According to a 2023 Pew survey...")</li>
+    <li><strong>Parenthetical citation</strong> (e.g., "Space investment yields innovation (Source A).")</li>
+    <li><strong>Attributing while disagreeing</strong> (e.g., "While Source B claims..., this overlooks...")</li>
+    <li><strong>Cross-source synthesis</strong> (e.g., "Both Source C and Source E...")</li>
+    <li><strong>Attribution with commentary</strong> (e.g., "Source D's data reveals..., a finding that should alarm policymakers.")</li>
+  </ol>
+
+  <div style="background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+    <p><strong>Sentence 1 (Embedded Credentials):</strong></p>
+    <p><em>[Write your sentence here]</em></p>
+    <br>
+    <p><strong>Sentence 2 (Parenthetical Citation):</strong></p>
+    <p><em>[Write your sentence here]</em></p>
+    <br>
+    <p><strong>Sentence 3 (Attributing While Disagreeing):</strong></p>
+    <p><em>[Write your sentence here]</em></p>
+    <br>
+    <p><strong>Sentence 4 (Cross-Source Synthesis):</strong></p>
+    <p><em>[Write your sentence here]</em></p>
+    <br>
+    <p><strong>Sentence 5 (Attribution with Commentary):</strong></p>
+    <p><em>[Write your sentence here]</em></p>
+  </div>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li>5 sentences, each using a different attribution pattern</li>
+      <li>Each sentence makes an argument (not just "Source X says Y")</li>
+      <li>Sources are integrated smoothly with proper citation (Source letter)</li>
+      <li>At least 2 sentences synthesize or engage multiple sources</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 3: Supported Practice — Full Synthesis Planning (13 min)</h2>
+<div class="phase-card practice-card">
+  <h3>15-Minute Full Synthesis Planning: SYN-06 Environment & Economic Growth</h3>
+
+  <p><strong>Context:</strong> This is the full planning sequence you'll use tomorrow in L16 when you write the complete synthesis essay. You have <strong>15 minutes</strong> to: (1) Read 6 sources using Rapid Source Analysis (L13 strategy), (2) Build matrix, (3) Select sources, (4) Write thesis, (5) Outline 3 body paragraphs with source assignments.</p>
+
+  <p><strong>Prompt:</strong> Some argue that environmental protection and economic growth are fundamentally in conflict, while others contend they can coexist. Develop a position on the relationship between environmental sustainability and economic prosperity, using at least three of the provided sources.</p>
+
+  <div class="source-box">
+    <div class="source-label">Source A: UN Report on Green Economy (2021)</div>
+    <p>The transition to renewable energy could create 24 million jobs globally by 2030, offsetting the 6 million jobs lost in fossil fuel industries. Green infrastructure investment yields long-term economic returns: every $1 invested in climate resilience saves $4-6 in disaster recovery costs. The notion that environmental protection stifles growth rests on outdated models that ignore externalities like pollution-related healthcare costs and climate-driven agricultural losses.</p>
+  </div>
+
+  <div class="source-box">
+    <div class="source-label">Source B: Chamber of Commerce Position Paper (2022)</div>
+    <p>Aggressive environmental regulations impose compliance costs that reduce business competitiveness, particularly for small manufacturers. The 2021 EPA emissions standards cost U.S. businesses an estimated $14 billion annually in retrofitting expenses. While sustainability is important, policymakers must balance environmental goals with economic realities. Overly rapid transitions risk job losses in coal, oil, and gas sectors where workers lack retraining pathways.</p>
+  </div>
+
+  <div class="source-box">
+    <div class="source-label">Source C: Economist Interview, *The Atlantic* (2023)</div>
+    <p>The environment-economy dichotomy is false. Markets already favor clean energy because solar and wind are now cheaper than coal in most regions. What businesses need is policy certainty—not lax regulation or aggressive mandates, but consistent long-term frameworks. The real conflict isn't environment versus economy; it's short-term thinking versus long-term prosperity. Companies that invest in sustainability outperform competitors over 10-year periods.</p>
+  </div>
+
+  <div class="source-box">
+    <div class="source-label">Source D: Case Study — Costa Rica's Green Economy Model (2020)</div>
+    <p>Costa Rica generates 99% of its electricity from renewable sources while maintaining 5% annual GDP growth over the past decade. The country's "payment for ecosystem services" program pays landowners to preserve forests, which sustains biodiversity, ecotourism (10% of GDP), and carbon sequestration. This model demonstrates that environmental investment can drive economic growth when designed strategically, challenging the zero-sum framing common in U.S. debates.</p>
+  </div>
+
+  <div class="source-box">
+    <div class="source-label">Source E: Labor Union Statement on Energy Transition (2023)</div>
+    <p>Workers in fossil fuel industries face real economic harm from rapid energy transitions unless policymakers provide retraining, relocation support, and bridge income. The environment-economy debate ignores the human costs borne disproportionately by working-class communities. Any credible climate policy must include a "just transition" that protects livelihoods, not abstract arguments about long-term GDP growth that mean little to laid-off coal miners.</p>
+  </div>
+
+  <div class="source-box">
+    <div class="source-label">Source F: McKinsey Global Institute Report (2022)</div>
+    <p>Climate inaction costs more than climate action. By 2050, unmitigated climate change could reduce global GDP by 11-14% through agricultural collapse, infrastructure damage, and forced migration. In contrast, achieving net-zero emissions by 2050 requires $9.2 trillion in annual investment but yields $43 trillion in economic benefits over 30 years. The question isn't whether we can afford climate action, but whether we can afford inaction.</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Complete the planning sequence below. Use the Rapid Synthesis Matrix to guide your analysis, then develop thesis and outline. <strong>Time yourself: 15 minutes.</strong></p>
+
+  <div style="background: #f0f8ff; border: 1px solid #b0d4f1; border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+    <h4>Rapid Synthesis Matrix (6-8 minutes)</h4>
+    <table style="font-size: 0.85rem;">
+      <tr>
+        <th style="width: 10%;">Source</th>
+        <th style="width: 18%;">Position</th>
+        <th style="width: 35%;">Key Evidence</th>
+        <th style="width: 17%;">Credibility</th>
+        <th style="width: 8%;">Use?</th>
+        <th style="width: 12%;">Notes</th>
+      </tr>
+      <tr><td>A</td><td><em>[Fill in]</em></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>B</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>C</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>D</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>E</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>F</td><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div style="background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+    <h4>Synthesis Essay Plan (5-7 minutes)</h4>
+
+    <p><strong>My Position:</strong> <em>[One sentence: what's your thesis?]</em></p>
+    <br>
+
+    <p><strong>Thesis (with line of reasoning):</strong></p>
+    <p><em>[Write your thesis: position + preview of 2-3 key claims]</em></p>
+    <br>
+
+    <p><strong>Body Paragraph 1 Claim:</strong> <em>[What's your first claim?]</em></p>
+    <p><strong>Sources:</strong> <em>[Which sources support this? e.g., Source A + Source F]</em></p>
+    <br>
+
+    <p><strong>Body Paragraph 2 Claim:</strong> <em>[What's your second claim?]</em></p>
+    <p><strong>Sources:</strong> <em>[Which sources?]</em></p>
+    <br>
+
+    <p><strong>Body Paragraph 3 Claim (often counterargument or sophistication):</strong> <em>[What's your third claim?]</em></p>
+    <p><strong>Sources:</strong> <em>[Which sources?]</em></p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check After Planning</div>
+    <ul style="margin-left: 1.5rem;">
+      <li>Did you complete the plan in 15 minutes or less?</li>
+      <li>Have you selected 3-4 sources to use?</li>
+      <li>Does your thesis take a clear position with line of reasoning?</li>
+      <li>Do your 3 body paragraph claims BUILD an argument (M4) or just list points?</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 4: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>Reflection:</strong> You just completed the full 15-minute planning sequence. Tomorrow in L16, you'll do this same planning for real, then write the essay in 40 minutes.</p>
+    <p><strong>What part of the planning felt slowest?</strong> Identify your bottleneck: Was it reading sources? Building the matrix? Writing the thesis? Outlining paragraphs? That's where you need to speed up.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Looking Ahead to L16</div>
+    <p><strong>Tomorrow: Full AP Synthesis Essay (55 minutes total)</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>You'll use the <strong>SYN-06 sources (Environment & Economic Growth)</strong> from today's planning session</li>
+      <li>You may revise your plan from today OR start fresh—the AP exam won't give you a preview, so practice both approaches</li>
+      <li>The lesson includes a Model Essay, then 40 minutes timed writing, then self-scoring on Rows A/B/C</li>
+      <li><strong>Gateway threshold:</strong> Row A = 1, Row B ≥ 2, and 3+ sources cited</li>
+    </ul>
+    <p><strong>Before L16:</strong> Review your SYN-06 plan from today. Could you write body paragraph 1 right now using your outline? If not, add more detail to your source assignments.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B1L L15 • Attribution Fluency + Full Synthesis Planning • KCs: C.AP.L.11 (deepened), C.AP.L.12 (preview) • ~25 min • M4</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="B1L_L14_Source_Selection_and_Weaving.html" class="prev">← L14: Source Selection & Weaving</a>
+  <a href="B1L_L16_Full_Synthesis_Essay.html" class="next">L16: Full Synthesis Essay →</a>
+</nav>
+</body>
+</html>

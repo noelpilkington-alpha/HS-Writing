@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L18: Weakest Row Revision</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.fix-box {
+  background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+}
+.fix-box h4 { color: var(--primary); margin-bottom: 0.5rem; }
+.before-after {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;
+}
+.before-after > div {
+  background: #f8f9fa; padding: 1rem; border-radius: 6px; border: 1px solid var(--border);
+}
+.before-after h4 { font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--muted); }
+@media (max-width: 600px) {
+  .before-after { grid-template-columns: 1fr; }
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course B1L · Lesson 18</span>
+  <h1>Weakest Row Revision</h1>
+  <p class="subtitle">Targeted Strategies to Improve Your AP Essay Scores</p>
+  <div class="meta-bar">
+    <span>⏱ ~30 min</span>
+    <span>📍 KCs: C.AP.L.14</span>
+    <span>🧠 Mental Model: M2</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Today's Goal:</strong> You've identified your weakest row from yesterday's calibration. Today you'll learn targeted revision strategies for each row (A, B, C) and apply them to your own essays. You don't revise the WHOLE essay—you revise the WEAKEST ROW. One paragraph revision can raise your score from 4 to 5.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Targeted Revision by Row</h3>
+
+  <p>AP essays are scored holistically, but each row contributes points. If you consistently lose points in one row, target that weakness. Most students have a <strong>weakest row pattern</strong> that shows up across all three essay types.</p>
+
+  <table>
+    <tr>
+      <th style="width: 20%;">Row</th>
+      <th style="width: 30%;">Problem</th>
+      <th>Fix Strategy</th>
+    </tr>
+    <tr>
+      <td><strong>Row A<br>(Thesis)</strong></td>
+      <td>Thesis earns 0 points (no defensible claim or no line of reasoning)</td>
+      <td><strong>Rewrite thesis to include line of reasoning.</strong> Use formula: "[Position] because [reason 1], [reason 2], and [reason 3]." Preview how you'll develop the argument.</td>
+    </tr>
+    <tr>
+      <td><strong>Row B<br>(Evidence)</strong></td>
+      <td>Earns 2 points (feature-spotting) instead of 3-4 (S-F-E analysis)</td>
+      <td><strong>Convert feature-spotting to S-F-E analysis.</strong> After naming a strategy, add 2-3 sentences: "This strategy's FUNCTION is ___. Its EFFECT on this audience is ___."</td>
+    </tr>
+    <tr>
+      <td><strong>Row C<br>(Sophistication)</strong></td>
+      <td>Earns 0 points (competent but not sophisticated)</td>
+      <td><strong>Add ONE sophistication move.</strong> Easiest: Add 2-3 sentences to conclusion with broader context or tension/complexity within your position.</td>
+    </tr>
+  </table>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>A student's essay earns Row A = 1, Row B = 2, Row C = 0 (total 3/6). Which row should they focus on revising to maximize their score improvement?</strong></p>
+    <ol type="A">
+      <li>Row A — rewrite the thesis to make it stronger</li>
+      <li>Row B — convert feature-spotting to S-F-E analysis</li>
+      <li>Row C — add a sophistication move to the conclusion</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> Row B has the most upside potential. Moving from Row B = 2 to Row B = 3 adds 1 point and is achievable through targeted revision (converting feature-spotting to S-F-E). Row A already earns the point (1/1), so revising it won't add points. Row C is worth pursuing but is harder to earn and only adds 1 point. Focus on Row B first—it's the difference between a 3 and a 4, and with strong Row B revision, you might reach a 5.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <h3>Row B Revision: Feature-Spotting to S-F-E Analysis</h3>
+
+  <p>The most common weakness is Row B = 2 (feature-spotting instead of analysis). Watch how to fix it:</p>
+
+  <div class="coping-model">
+    <p><strong>Original Paragraph (Row B = 2 — Feature-Spotting):</strong></p>
+    <p><span class="false-start">"The author uses a metaphor comparing social media to a 'slot machine' in paragraph 4. This metaphor is effective because it helps readers understand the comparison. The author also uses statistics about teenage screen time, which adds credibility. By combining metaphor and statistics, the author makes a strong argument."</span></p>
+
+    <p><span class="correction">Wait—I named the strategies (metaphor, statistics) and said they're effective, but I didn't explain HOW they work or WHY they're effective for THIS audience. That's feature-spotting, not analysis. I need to add the FUNCTION and EFFECT.</span></p>
+
+    <p><strong>Revised Paragraph (Row B = 3 — S-F-E Analysis):</strong></p>
+    <p><span class="strong">"The author's metaphor comparing social media to a 'slot machine' (paragraph 4) renders the abstraction of 'addictive design' visceral and alarming. By evoking the image of gambling—an activity culturally coded as predatory—the author positions tech companies not as neutral platforms but as manipulators exploiting psychological vulnerabilities. For an audience of parents skeptical that apps could truly harm children, this metaphor reframes the issue from parental overreaction to corporate exploitation, making regulation seem not just justified but necessary. The author reinforces this with statistics showing that the average teenager checks social media 150 times daily, a frequency that validates the slot machine comparison and transforms parental concern from anecdotal worry to data-driven alarm."</span></p>
+  </div>
+
+  <p><strong>What Changed?</strong></p>
+  <ul style="margin-left: 1.5rem;">
+    <li><strong>Strategy:</strong> Named precisely (metaphor comparing X to Y; specific statistics)</li>
+    <li><strong>Function:</strong> What rhetorical WORK does it do? ("renders abstraction visceral," "positions tech companies as manipulators," "reframes the issue")</li>
+    <li><strong>Effect:</strong> How does it impact THIS AUDIENCE? ("for parents skeptical that apps could harm children," "transforms parental concern from anecdotal to data-driven")</li>
+  </ul>
+
+  <p>The revision went from 3 sentences of feature-spotting to 4 sentences of S-F-E analysis. That's the difference between Row B = 2 and Row B = 3.</p>
+</div>
+
+<h2>Phase 3: Supported Practice (12 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Revise Your Weakest Essay — First Revision</h3>
+
+  <p>Choose your weakest essay from L07 (Rhetorical Analysis), L11 (Argument), or L16 (Synthesis). Based on yesterday's calibration, identify the weakest row. Apply the targeted fix.</p>
+
+  <div class="fix-box">
+    <h4>Row A Fix (if Row A = 0)</h4>
+    <p><strong>Rewrite your thesis to include line of reasoning:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Rhetorical Analysis:</strong> "[Author] uses [strategy 1], [strategy 2], and [strategy 3] to [purpose] for [audience]."</li>
+      <li><strong>Argument:</strong> "[Position] because [reason 1], [reason 2], and [reason 3], despite [acknowledgment]."</li>
+      <li><strong>Synthesis:</strong> Same as argument, but preview which sources/perspectives you'll engage.</li>
+    </ul>
+  </div>
+
+  <div class="fix-box">
+    <h4>Row B Fix (if Row B = 1 or 2)</h4>
+    <p><strong>Convert feature-spotting to S-F-E analysis:</strong></p>
+    <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Find one paragraph where you named a strategy but didn't explain function/effect.</li>
+      <li>After the evidence, add 2-3 sentences using this structure:
+        <ul style="margin-top: 0.5rem;">
+          <li>"This strategy's <strong>function</strong> is to ___ [what rhetorical work does it do?]"</li>
+          <li>"Its <strong>effect</strong> on this audience is ___ [how does it change what they think/feel/believe?]"</li>
+          <li>"Given the rhetorical situation [audience/exigence/constraints], this choice ___"</li>
+        </ul>
+      </li>
+      <li>Revise 1-2 body paragraphs this way.</li>
+    </ol>
+  </div>
+
+  <div class="fix-box">
+    <h4>Row C Fix (if Row C = 0)</h4>
+    <p><strong>Add ONE sophistication move (choose the easiest for your essay):</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Broader Context:</strong> Add 2-3 sentences to conclusion connecting your argument to a historical pattern, philosophical debate, or ongoing conversation.</li>
+      <li><strong>Tension/Complexity:</strong> Acknowledge a genuine trade-off or cost within your own position (not just counterarguments).</li>
+      <li><strong>Alternative Interpretation:</strong> Offer a second reading of evidence, then explain why your interpretation is stronger.</li>
+      <li><strong>Vivid Style:</strong> Revise 3-4 key sentences for purposeful verbs, sentence variety, and rhetorical control.</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Your Revision Task</div>
+    <p><strong>Complete this revision process:</strong></p>
+    <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Essay chosen:</strong> L07 / L11 / L16 (circle one)</li>
+      <li><strong>Original score:</strong> Row A ___, Row B ___, Row C ___, Total ___/6</li>
+      <li><strong>Weakest row:</strong> A / B / C (circle one)</li>
+      <li><strong>Fix strategy applied:</strong> [Describe what you revised]</li>
+      <li><strong>Revised score (estimate):</strong> Row A ___, Row B ___, Row C ___, Total ___/6</li>
+      <li><strong>Did revision improve one row without weakening another?</strong> Check your work.</li>
+    </ol>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (8 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Revise a Different Essay — Second Revision</h3>
+
+  <p>Choose a DIFFERENT essay (one of your other two essays from L07, L11, L16). Identify its weakest row. Apply the targeted fix.</p>
+
+  <div class="rubric-box">
+    <p><strong>Second Revision Checklist:</strong></p>
+    <ul>
+      <li>If revising <strong>Row A</strong>: Does your new thesis preview 2-3 specific ideas/strategies that structure your argument?</li>
+      <li>If revising <strong>Row B</strong>: After the revision, do you explain FUNCTION (what the strategy does) and EFFECT (how it impacts the audience)?</li>
+      <li>If revising <strong>Row C</strong>: Does your sophistication move demonstrate complexity, context, or insight beyond the surface-level argument?</li>
+      <li><strong>Cross-check:</strong> Did revising one row accidentally weaken another? (Example: Adding Row C sophistication that contradicts your Row A thesis?)</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Your Second Revision</div>
+    <p><strong>Complete this revision process:</strong></p>
+    <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Essay chosen:</strong> L07 / L11 / L16 (circle one)</li>
+      <li><strong>Original score:</strong> Row A ___, Row B ___, Row C ___, Total ___/6</li>
+      <li><strong>Weakest row:</strong> A / B / C (circle one)</li>
+      <li><strong>Fix strategy applied:</strong> [Describe what you revised]</li>
+      <li><strong>Revised score (estimate):</strong> Row A ___, Row B ___, Row C ___, Total ___/6</li>
+    </ol>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>You've now revised 2 of your 3 AP essays using targeted row-specific strategies. What pattern do you see in your weakest row?</strong></p>
+    <p>Most students have a consistent weakness:</p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Weak Row A pattern:</strong> Your theses state positions but don't preview how you'll develop them. Before the gate, practice writing theses with clear line of reasoning.</li>
+      <li><strong>Weak Row B pattern:</strong> You name strategies/evidence but don't explain function and effect. During the gate, after each piece of evidence, ask: "So what? How does this support my claim?"</li>
+      <li><strong>Weak Row C pattern:</strong> Your essays are competent but stay on the surface. During the gate, save 2-3 minutes to add one sophistication move to your conclusion.</li>
+    </ul>
+  </div>
+
+  <details style="margin-top: 1rem;">
+    <summary>Click to reveal: Before-and-After Example (Row C Fix)</summary>
+    <div class="model-answer">
+      <div class="before-after">
+        <div>
+          <h4>BEFORE (Row C = 0)</h4>
+          <p style="font-size: 0.9rem;">"In conclusion, schools should adopt four-day weeks because they save money, retain teachers, and improve learning. These benefits outweigh the concerns about childcare disruptions."</p>
+        </div>
+        <div>
+          <h4>AFTER (Row C = 1)</h4>
+          <p style="font-size: 0.9rem;">"In conclusion, schools should adopt four-day weeks because they save money, retain teachers, and improve learning. This debate ultimately reflects competing values: efficiency versus equity, innovation versus stability. The question isn't whether four-day weeks work in theory—pilot programs have demonstrated their benefits—but whether we can implement them without exacerbating the inequities that already divide American education. The families most harmed by childcare disruptions are precisely those who most need the cost savings and teacher stability these reforms provide—a tension policymakers must navigate, not ignore."</p>
+        </div>
+      </div>
+      <p style="margin-top: 0.75rem; font-size: 0.9rem;"><strong>Why This Earns Row C:</strong> The revision adds broader context (competing values), acknowledges genuine tension within the position (helping some while harming others), and demonstrates nuanced thinking. This is sophistication.</p>
+    </div>
+  </details>
+
+  <div class="transfer-prompt" style="margin-top: 1.5rem;">
+    <p><strong>Looking Ahead to L19-L20 (Gate Assessment):</strong> You've identified your weakest row pattern and practiced targeted fixes. During the gate exam, you'll write 3 timed essays (synthesis, rhetorical analysis, argument). BEFORE you write, remind yourself of your weakest row. Build in 2-3 minutes to address that weakness—whether it's crafting a strong thesis, adding S-F-E analysis, or inserting a sophistication move.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B1L L18 • Weakest Row Revision • KC C.AP.L.14 • ~30 min • Targeted revision practice</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="B1L_L17_AP_Rubric_Calibration.html" class="prev">← L17: AP Rubric Calibration</a>
+  <a href="B1L_L19_AP_Practice_Exam_Synthesis.html" class="next">L19: AP Practice Exam — Synthesis →</a>
+</nav>
+</body>
+</html>

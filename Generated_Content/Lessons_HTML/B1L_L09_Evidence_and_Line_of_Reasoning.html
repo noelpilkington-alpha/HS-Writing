@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L09: Evidence and Line of Reasoning</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course B1L · Lesson 9</span>
+  <h1>Evidence from Knowledge + Line of Reasoning</h1>
+  <p class="subtitle">Building AP Arguments Without Sources</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.AP.L.08</span>
+    <span>🧠 Mental Model: M4</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>AP Argument Challenge:</strong> You have no source texts. All evidence must come from YOUR knowledge: history, literature, current events, science, and (sparingly) personal experience. Two skills matter: (1) Evidence Brainstorm Sprint—generating 8+ pieces quickly and ranking by strength, (2) Line of Reasoning—thesis + topic sentences that BUILD, not just list.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Evidence from Knowledge</h3>
+
+  <p>Unlike the Synthesis essay (which gives you 6-7 sources) and the Rhetorical Analysis essay (which gives you a passage), the AP Argument essay gives you NOTHING but a prompt. You must build your entire argument from <strong>evidence you already know</strong>.</p>
+
+  <p>This tests two things: (1) <strong>Breadth of knowledge</strong>—have you read widely across history, literature, science, current events? (2) <strong>Strategic selection</strong>—can you identify which pieces of evidence will be most persuasive for an AP audience?</p>
+
+  <h4>Skill 1: Evidence Brainstorm Sprint</h4>
+  <p>When you first read the prompt, spend 5 minutes generating AT LEAST 8 potential pieces of evidence. Don't filter yet—just brainstorm. Then RANK them using this hierarchy:</p>
+
+  <div class="rubric-box">
+    <strong>Evidence Strength Ranking (for AP Audience)</strong>
+    <ul>
+      <li><strong>Historical examples (specific, detailed):</strong> Shows knowledge depth and analytical thinking</li>
+      <li><strong>Scientific/research evidence:</strong> Objective, data-driven, credible for academic audience</li>
+      <li><strong>Literary references:</strong> Shows intellectual breadth; useful for exploring themes</li>
+      <li><strong>Current events:</strong> Timely and relatable, but can be superficial without depth</li>
+      <li><strong>Logical reasoning/hypotheticals:</strong> Useful for exploring consequences, but lacks empirical grounding</li>
+      <li><strong>Personal anecdotes (weakest):</strong> Shows authenticity but lacks broader applicability</li>
+    </ul>
+  </div>
+
+  <p><strong>Key insight:</strong> AP readers are academics. They value evidence that demonstrates intellectual range and analytical thinking. Personal stories aren't wrong, but they shouldn't be your ONLY or STRONGEST evidence.</p>
+
+  <h4>Skill 2: Line of Reasoning</h4>
+  <p>Your thesis should preview 2-3 claims. But those claims can't just be three random reasons—they need to BUILD on each other using <span class="vocab-term">M4: Claim Hierarchy</span>.</p>
+
+  <p><strong>Weak line of reasoning (listing):</strong> "Social media harms teenagers because it distracts them, creates social comparison, and exposes them to bullying."</p>
+
+  <p><strong>Strong line of reasoning (building):</strong> "Social media harms teenagers by fragmenting attention, which undermines the sustained focus required for deep learning. This cognitive disruption is compounded by social comparison mechanisms that distort self-perception. Most fundamentally, these platforms replace genuine connection with performative self-presentation, leaving teenagers isolated despite appearing hyperconnected."</p>
+
+  <p>Notice: Claim 1 establishes the cognitive problem. Claim 2 adds a psychological dimension. Claim 3 reaches the deepest insight—the existential consequence. Each claim ADVANCES the argument.</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>A student writes this thesis: "Progress requires sacrifice because history shows many examples of change requiring disruption, and people often resist new ideas." Is this a strong line of reasoning?</strong></p>
+    <ol type="A">
+      <li>Yes—it previews two reasons for the position</li>
+      <li>No—the two reasons don't build; they're just two separate points</li>
+      <li>Yes—it uses historical evidence</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> The thesis lists two reasons (history shows disruption + people resist change), but they don't BUILD on each other—they're parallel points. A stronger line of reasoning would establish a hierarchy: perhaps "disruption is necessary" leads to "resistance is inevitable," which leads to "sacrifice becomes the cost of overcoming that resistance." Each claim should deepen or complicate the previous one, not just add another angle.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (5 min)</h2>
+<div class="phase-card model-card">
+  <h3>Evidence Sprint: The Value of Failure</h3>
+
+  <div class="passage-box">
+    <strong>Prompt (Instructional Example):</strong> Many educators and business leaders argue that failure is essential to learning and growth. Others contend that repeated failure undermines confidence and that success, not failure, is the best teacher. Write an essay arguing your position on whether failure is necessary for meaningful achievement.
+  </div>
+
+  <p>Watch a writer complete the Evidence Brainstorm Sprint, then build a line of reasoning.</p>
+
+  <div class="coping-model">
+    <p><strong>Writer's process:</strong></p>
+
+    <p><span class="strong">BRAINSTORM (5 minutes—generating 8+ pieces of evidence):</span></p>
+    <p><span class="strong">1. Edison lightbulb experiments (10,000 failures before success)</span></p>
+    <p><span class="strong">2. Medical research—vaccines developed through trial and error</span></p>
+    <p><span class="strong">3. J.K. Rowling rejected by 12 publishers before Harry Potter accepted</span></p>
+    <p><span class="strong">4. Growth mindset research (Carol Dweck)—praising effort vs. ability</span></p>
+    <p><span class="strong">5. Athletic training—muscle growth through stress and recovery</span></p>
+    <p><span class="strong">6. My own experience failing a math test and then studying harder</span></p>
+    <p><span class="strong">7. Silicon Valley "fail fast" culture—iteration and pivoting</span></p>
+    <p><span class="strong">8. Counterclaim: students who fail repeatedly often drop out (need success to stay motivated)</span></p>
+    <p><span class="strong">9. Wright brothers—multiple failed flight attempts before Kitty Hawk</span></p>
+
+    <p><span class="correction">Now I need to RANK these by strength for an AP audience. Let me apply the hierarchy:</span></p>
+
+    <p><span class="strong">RANKING:</span></p>
+    <p><span class="strong">Strongest (use these): Growth mindset research (scientific), Edison/Wright brothers (historical + specific), Athletic training principles (scientific)</span></p>
+    <p><span class="strong">Medium (maybe use): Rowling story (known but somewhat cliché), Medical research (good but needs specificity), Silicon Valley culture (current events)</span></p>
+    <p><span class="strong">Weakest (avoid): My personal math test (too narrow, personal anecdote)</span></p>
+    <p><span class="strong">Save for counterargument paragraph: Repeated failure can demotivate (important tension to address)</span></p>
+
+    <p><span class="correction">Now I'll build my line of reasoning. I need 3 claims that BUILD:</span></p>
+
+    <p><span class="strong">THESIS: Failure is essential to meaningful achievement because it reveals what success conceals—the flaws in our methods—forcing the iterative refinement that transforms adequate solutions into breakthrough innovations, while simultaneously building the psychological resilience required to persist when easy answers prove insufficient.</span></p>
+
+    <p><span class="strong">Topic Sentence 1 (Cognitive): Failure exposes flaws that success obscures, making it epistemologically necessary for genuine learning.</span></p>
+    <p><span class="strong">Topic Sentence 2 (Practical): This cognitive insight translates into practical innovation through iterative refinement, as demonstrated by Edison's experimental method.</span></p>
+    <p><span class="strong">Topic Sentence 3 (Psychological): Beyond producing better solutions, failure builds the psychological resilience—what Dweck calls "growth mindset"—required to tackle problems that resist easy resolution.</span></p>
+
+    <p><span class="correction">See how each claim BUILDS? Claim 1 establishes WHY failure matters (cognitive/epistemological). Claim 2 shows HOW that translates to innovation (practical application). Claim 3 deepens to the psychological dimension (long-term capacity). This is M4 in action.</span></p>
+  </div>
+</div>
+
+<h2>Phase 3: Supported Practice (10 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Evidence Sprint + Line of Reasoning</h3>
+
+  <div class="passage-box">
+    <strong>Prompt 1: The Nature of Progress</strong><br>
+    In his essay "The Cost of Change," a contemporary social critic writes: "All genuine progress is built upon the ruins of what came before. We cannot create the new without destroying the old; meaningful change always requires sacrifice and disruption."
+    <br><br>
+    <strong>Write an essay that argues your position on whether significant progress requires sacrifice or disruption.</strong>
+  </div>
+
+  <p><strong>Your Task (10 minutes total):</strong></p>
+
+  <ol>
+    <li><strong>5 minutes:</strong> Generate 8+ pieces of evidence. Brainstorm freely—history, literature, science, current events, logical reasoning. List them.</li>
+    <li><strong>2 minutes:</strong> RANK your evidence. Which 3-4 are strongest for an AP audience? Mark your top choices.</li>
+    <li><strong>3 minutes:</strong> Write your thesis + 3 topic sentences. Make sure they BUILD using M4, not just list.</li>
+  </ol>
+
+  <div class="rubric-box">
+    <strong>Evidence Brainstorm Template (use or adapt):</strong>
+    <ol>
+      <li>_______________ (Historical example)</li>
+      <li>_______________ (Scientific/research)</li>
+      <li>_______________ (Literary reference)</li>
+      <li>_______________ (Current event)</li>
+      <li>_______________ (Logical reasoning)</li>
+      <li>_______________ (Another domain)</li>
+      <li>_______________ (Another domain)</li>
+      <li>_______________ (Counterargument to address)</li>
+    </ol>
+    <p><strong>Top 3 Ranked (circle these):</strong> _____, _____, _____</p>
+  </div>
+
+  <div style="background: #e3f2fd; border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0;">
+    <p><strong>Line of Reasoning Template:</strong></p>
+    <p><strong>Thesis:</strong> [Your position] because [preview 3 claims that build]</p>
+    <p><strong>Topic Sentence 1:</strong> [First claim—often foundational or definitional]</p>
+    <p><strong>Topic Sentence 2:</strong> [Second claim—builds on or applies the first]</p>
+    <p><strong>Topic Sentence 3:</strong> [Third claim—deepens to consequences or complications]</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p>Read your 3 topic sentences aloud. Do they BUILD (each advancing beyond the previous), or do they LIST (three separate reasons that could appear in any order)? If you can rearrange them without losing coherence, they're listing—revise to create hierarchy.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (6 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Fresh Prompt—No Scaffold</h3>
+
+  <div class="passage-box">
+    <strong>Prompt 2: Knowledge and Certainty</strong><br>
+    The philosopher Bertrand Russell observed: "The whole problem with the world is that fools and fanatics are always so certain of themselves, and wiser people so full of doubts."
+    <br><br>
+    Russell's observation suggests that intellectual humility and doubt are marks of true wisdom, while certainty often accompanies shallow thinking. Yet others contend that doubt can paralyze action, and that some degree of certainty is necessary for moral courage, scientific progress, and effective leadership.
+    <br><br>
+    <strong>Write your position on the relationship between knowledge and certainty.</strong>
+  </div>
+
+  <p><strong>Your Task (6 minutes):</strong></p>
+  <ol>
+    <li>Evidence Sprint: Generate 8+ pieces, rank top 3-4 (3 min)</li>
+    <li>Write thesis + 3 topic sentences with line of reasoning (3 min)</li>
+  </ol>
+
+  <p><strong>No template visible. Apply the process you practiced.</strong></p>
+
+  <div class="rubric-box">
+    <strong>Success Criteria:</strong>
+    <ul>
+      <li>Generated 8+ pieces of evidence from multiple domains</li>
+      <li>Identified 3-4 strongest pieces using the ranking hierarchy</li>
+      <li>Thesis takes a defensible position + previews line of reasoning</li>
+      <li>Topic sentences BUILD (test: can you rearrange them? If yes, they're not building)</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (2 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="transfer-prompt">
+    <p><strong>Your Evidence Bank = Your Reading</strong></p>
+    <p>The Evidence Sprint reveals what you know. If you struggled to generate 8 pieces of evidence, that's diagnostic: you need to READ MORE WIDELY. AP Argument rewards students who can draw on history, literature, science, and current events fluently.</p>
+    <p><strong>Action step:</strong> Start building a mental evidence bank NOW. When you read an article, watch a documentary, or study history, ask: "Could I use this as evidence in an argument essay?" Pay attention to specific names, dates, and details—vague references ("throughout history, people have...") earn weak scores.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>Compare your evidence quality across the two prompts today.</strong> Did you rely mostly on one type of evidence (all historical? all personal? all current events)? The strongest AP essays USE DIFFERENT DOMAINS—one historical example, one scientific study, one literary reference. Variety = sophistication. What's your weakest evidence domain? That's your reading priority.</p>
+  </div>
+
+  <div class="transfer-prompt">
+    <p><strong>Looking Ahead:</strong> In L10, you'll write body paragraphs using the evidence you generated today. The ranking you did matters—your STRONGEST evidence should become your longest, most developed paragraph. Your weakest evidence? Cut it. AP essays reward depth over breadth.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B1L L09 • Evidence from Knowledge + Line of Reasoning • KC C.AP.L.08 • ~25 min • M4 Applied</p>
+</div>
+
+<nav class="lesson-nav">
+  <a href="B1L_L08_AP_Argument_Prompt_Deconstruction.html" class="prev">← L08: Prompt Deconstruction</a>
+  <a href="B1L_L10_AP_Argument_Body_Paragraphs.html" class="next">L10: Body Paragraphs →</a>
+</nav>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

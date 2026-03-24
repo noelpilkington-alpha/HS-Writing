@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B1L L19: AP Practice Exam — Synthesis</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+.source-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 0.75rem 0; font-size: 0.9rem;
+}
+.source-box h4 {
+  color: var(--primary); margin-bottom: 0.5rem; font-size: 0.95rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.source-box .source-meta {
+  font-size: 0.8rem; color: var(--muted); font-style: italic; margin-bottom: 0.5rem;
+}
+.timer-box {
+  background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px;
+  padding: 1rem; margin: 1rem 0; text-align: center;
+}
+.timer-box h3 {
+  color: var(--warning); margin: 0 0 0.5rem 0; font-size: 1.2rem;
+}
+.gate-notice {
+  background: #f8d7da; border: 2px solid #f5c2c7; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+  font-weight: 600; color: #842029;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #dc3545;">Course B1L · Lesson 19 · GATE ASSESSMENT</span>
+  <h1>AP Practice Exam — Synthesis</h1>
+  <p class="subtitle">Full Synthesis Essay Under AP Timing (55 min)</p>
+  <div class="meta-bar">
+    <span>⏱ ~65 min</span>
+    <span>📍 KCs: C.AP.L.12 (assessed), C.AP.L.15</span>
+    <span>🎯 Gate Assessment (1 of 2)</span>
+  </div>
+</div>
+
+<div class="gate-notice">
+  ⚠️ <strong>GATE ASSESSMENT:</strong> This lesson begins your B1L gate assessment. You will write 3 full AP essays across 2 sessions (L19 + L20). To pass: earn 4+ points on at least 2 of 3 essays. This is your first exam session: Synthesis FRQ.
+</div>
+
+<div class="key-concept">
+  <strong>Today's Challenge:</strong> You'll write a full AP Synthesis essay on a fresh source set (Universal Basic Income) that you've never seen before. This simulates authentic AP exam conditions: cold sources, 55 minutes total (15 reading + 40 writing), no scaffolds. You'll self-score immediately after to gauge your performance before tomorrow's session.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>AP Timing Strategy for the Full Exam</h3>
+
+  <p>The AP Language exam includes three Free Response Questions (FRQs) written in 2 hours 15 minutes. Strategic order matters:</p>
+
+  <table>
+    <tr>
+      <th style="width: 30%;">FRQ Type</th>
+      <th style="width: 25%;">Timing</th>
+      <th>Why This Order?</th>
+    </tr>
+    <tr>
+      <td><strong>1. Synthesis</strong><br>(Today)</td>
+      <td>55 min<br>(15 read + 40 write)</td>
+      <td>Do FIRST — requires the most reading time and mental energy. Get it done while fresh.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Rhetorical Analysis</strong><br>(Tomorrow)</td>
+      <td>40 min<br>(5 read + 30 write + 5 review)</td>
+      <td>Do SECOND — moderate difficulty; passage reading is shorter than synthesis.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Argument</strong><br>(Tomorrow)</td>
+      <td>40 min<br>(5 plan + 30 write + 5 review)</td>
+      <td>Do LAST — generates own evidence; can write even if time is short. Most recoverable if you're running behind.</td>
+    </tr>
+  </table>
+
+  <p><strong>Recovery Strategy:</strong> If you run out of time on ANY essay, write a thesis + 2 body paragraphs with analysis. A short essay with analysis beats a long essay with summary. Don't panic—finish with quality.</p>
+
+  <div class="timer-box">
+    <h3>⏱ Today's Timing: 55 Minutes</h3>
+    <p><strong>15 min:</strong> Read sources + build matrix<br>
+    <strong>5 min:</strong> Plan thesis + outline<br>
+    <strong>30 min:</strong> Write essay (intro + 3-4 body paragraphs + conclusion)<br>
+    <strong>5 min:</strong> Review + self-score</p>
+  </div>
+</div>
+
+<h2>Phase 2: Independent — Synthesis Essay (55 min)</h2>
+<div class="phase-card independent-card" data-min-words="500" data-rubric="B1L_gate_synthesis">
+  <h3>AP Synthesis FRQ: Universal Basic Income</h3>
+
+  <div style="background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+    <p><strong>Directions:</strong> The following prompt is based on the accompanying seven sources. This question requires you to synthesize a variety of sources into a coherent, well-written essay. Refer to the sources to support your position; avoid mere paraphrase or summary. Your argument should be central; the sources should support this argument.</p>
+    <p style="margin-bottom: 0;"><strong>Remember to attribute both direct and indirect citations.</strong></p>
+  </div>
+
+  <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0;">
+    <h3 style="margin: 0 0 0.75rem 0; color: var(--primary);">Essay Prompt</h3>
+    <p>As automation and artificial intelligence transform labor markets, policymakers increasingly debate Universal Basic Income (UBI)—a system in which all citizens receive regular, unconditional cash payments from the government regardless of employment status. Advocates argue that UBI addresses technological unemployment, reduces poverty, and provides economic security. Critics contend that it discourages work, costs too much, and fails to address systemic inequities.</p>
+    <p style="margin-bottom: 0;"><strong>Assignment:</strong> Read the following sources carefully. Then, write an essay that develops your position on whether governments should implement Universal Basic Income. Use at least three of the sources to support your argument. Indicate clearly which sources you are drawing from, whether through direct quotation, paraphrase, or summary. You may cite sources as Source A, Source B, etc., or by the descriptions in parentheses.</p>
+  </div>
+
+  <h3>Source Materials (Read for 15 minutes)</h3>
+
+  <div class="source-box">
+    <h4>Source A (Economic Policy Institute Report)</h4>
+    <p class="source-meta">Excerpt from "Labor Market Impacts of Automation" (2024), Economic Policy Institute</p>
+    <p><strong>Summary:</strong> This report analyzes job displacement due to automation across sectors. Key findings: Manufacturing, retail, and transportation sectors face 35-40% job loss by 2035. However, new jobs emerge in healthcare, education, and technology maintenance. The report argues that UBI alone won't retrain displaced workers—we need targeted education and job transition programs. Cash payments without skills development leave workers dependent on government support rather than reintegrated into the economy.</p>
+    <p><strong>Key Data:</strong> 47% of current U.S. jobs are at high risk of automation within 20 years. But historical precedent shows technology creates as many jobs as it eliminates—just different ones requiring different skills.</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source B (Alaska Permanent Fund Case Study)</h4>
+    <p class="source-meta">Excerpt from "Alaska's Dividend: A UBI Model?" (2023), Journal of Public Economics</p>
+    <p><strong>Summary:</strong> Alaska has distributed annual payments (averaging $1,000-2,000) from oil revenues to all residents since 1982. This study finds NO decrease in work participation rates. Recipients use payments for necessities, savings, and education. Child poverty rates in Alaska are lower than national average. However, the Alaska dividend is small—not enough to live on—and funded by natural resource extraction, not taxation. Scaling this to full UBI ($12,000-15,000 annually) remains untested.</p>
+    <p><strong>Key Finding:</strong> Small unconditional payments don't discourage work. People want to work for income beyond basic survival, for social connection, and for purpose. But would larger UBI payments (enough to live on) have different effects? We don't know.</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source C (Fiscal Analysis)</h4>
+    <p class="source-meta">Excerpt from "The Price Tag of Universal Basic Income" (2025), Congressional Budget Office</p>
+    <p><strong>Summary:</strong> A UBI of $12,000/year for every U.S. adult would cost $3 trillion annually—nearly equal to current total federal spending. Even consolidating existing welfare programs (food stamps, housing assistance, etc.) saves only $700 billion. This leaves a $2.3 trillion funding gap requiring massive tax increases or deficit spending. A 25% value-added tax (VAT) could fund UBI, but regressive taxation (VAT) funding progressive policy (UBI) creates equity concerns. Wealthier nations (lower population, higher GDP per capita) may afford UBI; the U.S. scale is challenging.</p>
+    <p><strong>Key Data:</strong> UBI cost = $3T/year. Current welfare spending = $700B/year. Funding gap = $2.3T. For comparison, Medicare = $800B, Social Security = $1.3T, Defense = $750B.</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source D (Feminist Economics Perspective)</h4>
+    <p class="source-meta">Excerpt from "UBI and Unpaid Labor" by Dr. Sarah Martinez, Institute for Women's Policy Research (2024)</p>
+    <p><strong>Summary:</strong> UBI would, for the first time, compensate unpaid care work—disproportionately performed by women—that sustains society but is economically invisible. Childcare, elder care, household labor: these total 10 billion hours annually in the U.S., yet GDP ignores them. UBI acknowledges that this work has value, enabling caregivers to exit exploitative low-wage jobs and choose care work with dignity. Critics say UBI might trap women in traditional roles, but evidence suggests choice is empowering: Finland's UBI pilot showed women used payments to start businesses and pursue education while continuing care work.</p>
+    <p><strong>Key Argument:</strong> Current welfare systems penalize caregivers (benefits lost if income rises); UBI empowers them. This reframes work beyond market employment.</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source E (Philosophical/Ethical Essay)</h4>
+    <p class="source-meta">Excerpt from "The Right to Economic Security" by philosopher James Chen (2024)</p>
+    <p><strong>Summary:</strong> In affluent societies, poverty is a policy choice, not an inevitability. We have sufficient wealth; the question is distribution. UBI isn't charity—it's recognition that economic participation should guarantee dignity. The ethical case: (1) No one chooses the economic conditions they're born into; (2) Automation profits belong to society, not just capital owners; (3) Economic security is prerequisite for genuine freedom—no one is free when choosing between homelessness and exploitation. UBI's cost is irrelevant if the alternative is tolerating preventable suffering in an abundant society. The question isn't "Can we afford UBI?" but "Can we morally justify NOT implementing it?"</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source F (Behavioral Economics Critique)</h4>
+    <p class="source-meta">Excerpt from "UBI and Incentive Structures" (2025), Behavioral Economics Review</p>
+    <p><strong>Summary:</strong> Small UBI pilots show positive effects, but behavioral economics warns against generalizing. "Hawthorne effect": participants in studies alter behavior because they're observed. Also, pilot participants know payments are temporary—this creates different incentives than permanent UBI. Larger concern: meaning and structure. Work provides identity, routine, social connection—not just income. UBI proponents romanticize "freed" time for creativity, but research on unemployment shows deterioration in mental health, relationships, and purpose. Humans need structure and meaning; removing work obligation without replacing it with meaningful alternatives risks anomie and depression.</p>
+    <p><strong>Key Concern:</strong> We're testing UBI's income effects, not its social-psychological effects. Those may be larger and more concerning.</p>
+  </div>
+
+  <div class="source-box">
+    <h4>Source G (Tech Industry Perspective)</h4>
+    <p class="source-meta">Excerpt from interview with venture capitalist Maria Kowalski, TechFuture podcast (2024)</p>
+    <p><strong>Summary:</strong> "Silicon Valley supports UBI because it solves the problem we're creating. AI will displace millions of workers—that's not debatable. UBI is cheaper than social unrest. But here's what UBI critics miss: entrepreneurship. How many brilliant ideas die because people can't afford to quit their job and take a risk? UBI is venture capital for everyone—it funds the next generation of startups, artists, and inventors. The ROI on UBI isn't just poverty reduction; it's innovation unleashed. Of course, we should tax AI profits to fund it—the companies benefiting from automation should pay for the transition."</p>
+    <p><strong>Perspective:</strong> Pro-UBI from self-interest (reduces social friction from automation) AND idealism (enables risk-taking and creativity).</p>
+  </div>
+
+  <div class="timer-box" style="margin-top: 1.5rem;">
+    <p><strong>⏱ BEGIN WRITING (40 minutes)</strong></p>
+    <p>Write your synthesis essay below or on paper. Use at least 3 sources. Aim for 4-5 paragraphs (intro + thesis, 3 body paragraphs with source integration, conclusion).</p>
+  </div>
+
+  <div style="background: #f8f9fa; border: 2px solid var(--border); border-radius: 8px; padding: 1.25rem; margin: 1rem 0; min-height: 300px;">
+    <p style="color: var(--muted); font-style: italic;">[Write your essay here or on paper. Remember: Your argument should be central; sources support YOUR position. Don't just summarize sources—synthesize them into YOUR reasoning.]</p>
+  </div>
+</div>
+
+<h2>Phase 3: Self-Score (5 min)</h2>
+<div class="phase-card independent-card">
+  <h3>Score Your Synthesis Essay</h3>
+
+  <p>Immediately after finishing, score your essay on the AP rubric. Be honest—calibrate based on L17 practice.</p>
+
+  <div class="rubric-box">
+    <p><strong>AP Synthesis Rubric:</strong></p>
+    <table style="font-size: 0.85rem;">
+      <tr>
+        <th style="width: 20%;">Row</th>
+        <th style="width: 20%;">Points</th>
+        <th>Criteria</th>
+      </tr>
+      <tr>
+        <td><strong>Row A<br>Thesis</strong></td>
+        <td>0 or 1</td>
+        <td>Defensible claim + line of reasoning</td>
+      </tr>
+      <tr>
+        <td><strong>Row B<br>Evidence</strong></td>
+        <td>0-4</td>
+        <td><strong>0:</strong> No evidence or commentary<br>
+        <strong>1:</strong> Evidence without commentary OR commentary without evidence<br>
+        <strong>2:</strong> Some evidence with basic explanation<br>
+        <strong>3:</strong> Multiple pieces of evidence (3+ sources) with consistent explanation<br>
+        <strong>4:</strong> Multiple sources with sophisticated, well-developed explanation</td>
+      </tr>
+      <tr>
+        <td><strong>Row C<br>Sophistication</strong></td>
+        <td>0 or 1</td>
+        <td>Demonstrates complexity via broader context, tension, alternative interpretation, or vivid style</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Your Self-Score</div>
+    <p><strong>Score your L19 Synthesis essay:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Row A (Thesis):</strong> ___ / 1</li>
+      <li><strong>Row B (Evidence & Commentary):</strong> ___ / 4 (How many sources did you use? Did you integrate them or just list them? Did you explain how they support YOUR argument?)</li>
+      <li><strong>Row C (Sophistication):</strong> ___ / 1 (Did you demonstrate complexity, broader context, or M6 "Who benefits?" analysis?)</li>
+      <li><strong>Total Score:</strong> ___ / 6</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 4: Transition (2 min)</h2>
+<div class="phase-card transfer-card">
+  <h3>Rest and Review Timing</h3>
+
+  <p><strong>How did the timing feel?</strong></p>
+  <ul style="margin-left: 1.5rem;">
+    <li>Did you use all 55 minutes, or did you finish early?</li>
+    <li>Was 15 minutes enough to read 7 sources? Did you skim effectively?</li>
+    <li>Did you spend your 40 writing minutes wisely (5 intro, 25 body paragraphs, 5 conclusion, 5 review)?</li>
+    <li>If you ran short on time, where did you lose minutes? (Reading? Planning? Writing?)</li>
+  </ul>
+
+  <div class="transfer-prompt" style="margin-top: 1rem;">
+    <p><strong>Tomorrow (L20):</strong> You'll write TWO essays back-to-back—Rhetorical Analysis (40 min) + Argument (40 min). That's 80 minutes of writing with just a 3-minute break. Review your timing notes tonight. Eat something. Sleep well. You've practiced every skill you need; tomorrow is execution.</p>
+    <p><strong>Gate Reminder:</strong> You need 4+ points on at least 2 of 3 essays (L19 synthesis + L20 rhetorical analysis + L20 argument). Even if today's synthesis felt rough, you have two more chances tomorrow. Stay focused.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>B1L L19 • AP Practice Exam — Synthesis • KC C.AP.L.12 (assessed), C.AP.L.15 • ~65 min • Gate Assessment (1 of 2)</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="B1L_L18_Weakest_Row_Revision.html" class="prev">← L18: Weakest Row Revision</a>
+  <a href="B1L_L20_AP_Practice_Exam_Rhetoric_Argument.html" class="next">L20: AP Practice Exam — Rhetorical Analysis + Argument →</a>
+</nav>
+</body>
+</html>
