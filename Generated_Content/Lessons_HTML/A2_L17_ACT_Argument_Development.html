@@ -1,689 +1,452 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson 17: ACT Argument Development</title>
-    <link rel="stylesheet" href="lesson-engine.css">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-
-        .lesson-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        .lesson-header h1 {
-            margin: 0 0 10px 0;
-            font-size: 2em;
-        }
-
-        .lesson-meta {
-            font-size: 0.9em;
-            opacity: 0.95;
-        }
-
-        .phase {
-            background: white;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .phase-locked {
-            opacity: 0.6;
-            pointer-events: none;
-        }
-
-        .phase-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #667eea;
-        }
-
-        .phase-number {
-            background: #667eea;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-right: 15px;
-            font-size: 1.2em;
-        }
-
-        .phase-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .key-concept {
-            background: #e3f2fd;
-            border-left: 4px solid #2196F3;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-
-        .key-concept h3 {
-            margin-top: 0;
-            color: #1976D2;
-        }
-
-        .support-ranking {
-            background: white;
-            border: 2px solid #2196F3;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 6px;
-        }
-
-        .support-ranking h4 {
-            margin-top: 0;
-            color: #1976D2;
-            font-size: 1em;
-        }
-
-        .support-ranking ol {
-            margin: 8px 0;
-            padding-left: 25px;
-        }
-
-        .support-ranking li {
-            margin: 6px 0;
-            font-size: 0.95em;
-        }
-
-        .position-strategy {
-            background: #fff9c4;
-            border-left: 3px solid #fbc02d;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 6px;
-        }
-
-        .position-strategy h4 {
-            margin-top: 0;
-            color: #f57f17;
-            font-size: 1em;
-        }
-
-        .passage-box {
-            background: #f9f9f9;
-            border: 2px solid #ddd;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 6px;
-            font-family: Georgia, serif;
-            line-height: 1.8;
-        }
-
-        .passage-box h4 {
-            margin-top: 0;
-            color: #555;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1.1em;
-        }
-
-        .attribution {
-            font-style: italic;
-            color: #666;
-            font-size: 0.9em;
-            margin-top: 15px;
-            padding-top: 10px;
-            border-top: 1px solid #ddd;
-        }
-
-        .model-example {
-            background: #fafafa;
-            border: 2px solid #9e9e9e;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 6px;
-        }
-
-        .model-example h4 {
-            margin-top: 0;
-            color: #555;
-            font-size: 1em;
-        }
-
-        .support-example {
-            background: #e8f5e9;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 4px;
-            border-left: 3px solid #4CAF50;
-        }
-
-        .support-label {
-            font-weight: bold;
-            color: #2e7d32;
-            margin-bottom: 5px;
-        }
-
-        .check-question {
-            background: #fff3e0;
-            border-left: 4px solid #ff9800;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-
-        .check-question h4 {
-            margin-top: 0;
-            color: #e65100;
-        }
-
-        .check-question ol {
-            margin: 15px 0;
-        }
-
-        .check-question li {
-            margin: 8px 0;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 4px;
-            transition: background-color 0.2s;
-        }
-
-        .check-question li:hover {
-            background: #ffe0b2;
-        }
-
-        details {
-            margin-top: 15px;
-            padding: 12px;
-            background: white;
-            border-radius: 4px;
-        }
-
-        summary {
-            cursor: pointer;
-            font-weight: bold;
-            color: #e65100;
-        }
-
-        summary:hover {
-            color: #ff9800;
-        }
-
-        .self-check {
-            background: #f3e5f5;
-            border-left: 4px solid #9c27b0;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-
-        .self-check h4 {
-            margin-top: 0;
-            color: #6a1b9a;
-        }
-
-        .writing-task {
-            background: #e8f5e9;
-            border: 2px solid #4CAF50;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 6px;
-        }
-
-        .writing-task h4 {
-            margin-top: 0;
-            color: #2e7d32;
-        }
-
-        textarea {
-            width: 100%;
-            min-height: 150px;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 4px;
-            font-family: Georgia, serif;
-            font-size: 1em;
-            line-height: 1.6;
-            resize: vertical;
-            box-sizing: border-box;
-        }
-
-        textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .word-count {
-            text-align: right;
-            font-size: 0.9em;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        .rubric-box {
-            background: #fff8e1;
-            border: 2px solid #ffc107;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 6px;
-        }
-
-        .rubric-box h4 {
-            margin-top: 0;
-            color: #f57f17;
-        }
-
-        .rubric-box ul {
-            margin: 10px 0;
-            padding-left: 25px;
-        }
-
-        .rubric-box li {
-            margin: 8px 0;
-        }
-
-        button {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        button:hover {
-            background: #764ba2;
-        }
-
-        button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-
-        .next-phase-btn {
-            margin-top: 20px;
-            display: none;
-        }
-
-        .next-phase-btn.show {
-            display: inline-block;
-        }
-
-        .lock-icon {
-            float: right;
-            color: #999;
-            font-size: 1.5em;
-        }
-
-        .instruction-highlight {
-            background: #fffde7;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 15px 0;
-            border: 1px solid #fbc02d;
-        }
-
-        strong {
-            color: #333;
-        }
-
-        .prompt-label {
-            font-weight: bold;
-            color: #1976D2;
-            font-size: 0.95em;
-            margin-bottom: 8px;
-        }
-
-        .ranking-note {
-            font-style: italic;
-            color: #666;
-            font-size: 0.9em;
-            margin-top: 8px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L17: ACT Argument Development</title>
+  <style>
+    :root {
+      --primary: #1a1a2e;
+      --accent: #e94560;
+      --accent-light: #fce4ec;
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --text: #2d2d2d;
+      --muted: #6c757d;
+      --border: #dee2e6;
+      --success: #28a745;
+      --warning: #ffc107;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: var(--bg); color: var(--text); line-height: 1.7;
+      max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+    }
+    .lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+    .lesson-tag {
+      display: inline-block; background: var(--primary); color: white;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+    }
+    .lesson-tag.teach { background: #0d6efd; }
+    .lesson-tag.model { background: #6f42c1; }
+    .lesson-tag.practice { background: var(--success); }
+    .lesson-tag.independent { background: var(--accent); }
+    .lesson-tag.transfer { background: #fd7e14; }
+    h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+    .subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+    .meta-bar {
+      display: flex; gap: 1.5rem; margin-top: 0.75rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+    }
+    .meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+    h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+    h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+    h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; font-weight: 600; }
+    p { margin-bottom: 1rem; }
+    ul, ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    .phase-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+      padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .phase-card.teach-card { border-left: 4px solid #0d6efd; }
+    .phase-card.model-card { border-left: 4px solid #6f42c1; }
+    .phase-card.practice-card { border-left: 4px solid var(--success); }
+    .phase-card.independent-card { border-left: 4px solid var(--accent); }
+    .phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+    .key-concept {
+      background: #e8f4fd; border-left: 4px solid #0d6efd;
+      padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+    }
+    .coping-model {
+      background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+      padding: 1.25rem; margin: 1rem 0;
+      font-size: 0.95rem; line-height: 1.6;
+    }
+    .coping-model .false-start { color: #c0392b; font-style: italic; }
+    .coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+    .coping-model .strong { color: #155724; font-weight: 600; }
+    .passage-box {
+      background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+      padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+    }
+    .passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+    .check-question {
+      background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+      padding: 1.25rem; margin: 1.5rem 0;
+    }
+    .check-question .q-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+    }
+    .self-check {
+      background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+      padding: 1.25rem; margin: 1.5rem 0;
+    }
+    .self-check .q-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    th {
+      background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.03em;
+    }
+    td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+    tr:nth-child(even) { background: #f8f9fa; }
+    .transfer-prompt {
+      background: #fff3e0; border-left: 4px solid #fd7e14;
+      padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+    }
+    .rubric-box {
+      background: #f8f9fa; border: 2px solid var(--primary); border-radius: 8px;
+      padding: 1.25rem; margin: 1rem 0;
+    }
+    .writing-task { margin: 1.5rem 0; }
+    .writing-input { margin: 1rem 0; }
+    .model-answer {
+      background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+      padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+    }
+    .support-example {
+      background: #e8f5e9; border-left: 3px solid var(--success);
+      padding: 0.75rem 1rem; margin: 0.75rem 0; border-radius: 0 6px 6px 0; font-size: 0.9rem;
+    }
+    .support-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; color: #155724; margin-bottom: 0.3rem;
+    }
+    .position-box {
+      background: #fff9c4; border-left: 3px solid #fbc02d;
+      padding: 0.75rem 1rem; margin: 0.75rem 0; border-radius: 0 6px 6px 0;
+    }
+    details { margin: 0.75rem 0; }
+    details summary {
+      cursor: pointer; font-weight: 600; color: var(--primary);
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+      padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+    }
+    details summary:hover { background: #e0e0e0; }
+    details[open] summary { margin-bottom: 0.5rem; }
+    .footnote {
+      font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+      border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .lesson-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+    }
+    .lesson-nav a {
+      color: #0d6efd; text-decoration: none; font-weight: 600;
+    }
+    .lesson-nav a:hover { text-decoration: underline; }
+    .lesson-nav .prev::before { content: '\2190 '; }
+    .lesson-nav .next::after { content: ' \2192'; }
+  </style>
 </head>
 <body>
-    <div class="lesson-header">
-        <h1>Lesson 17: ACT Argument Development</h1>
-        <div class="lesson-meta">
-            Course A2 (Grade 10) | Time: ~25 minutes | KCs: C.10.17 (Develop Own Perspective), C.10.18 (Generate Reasoning & Examples) | Mental Model: M4 (Claim Hierarchy)
-        </div>
+
+<div class="lesson-header">
+  <div class="lesson-tag" style="background: #17a2b8;">Course A2 &bull; Lesson 17</div>
+  <h1>ACT Argument Development</h1>
+  <p class="subtitle">Develop your own position and construct support without source texts</p>
+  <div class="meta-bar">
+    <span>~25 min</span>
+    <span>C.10.17, C.10.18</span>
+    <span>M4 (Claim Hierarchy)</span>
+  </div>
+</div>
+
+<!-- ========== PHASE 1: TEACH (3 min) ========== -->
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <div class="lesson-tag teach">Teach</div>
+  <h3>Two New Skills for ACT Writing</h3>
+
+  <p>In L16, you learned to decompose and evaluate ACT perspectives. Now you need to <strong>develop your own position</strong> and <strong>support it without any source texts</strong>. Two distinct skills:</p>
+
+  <div class="key-concept">
+    <p><strong>Skill 1: Position Development</strong></p>
+  </div>
+
+  <p>Your position must RELATE to the given perspectives. You cannot ignore them. Three strategies:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Strategy</th>
+        <th>How It Works</th>
+        <th>Example Move</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Agree/Extend</strong></td>
+        <td>Choose one perspective as your starting point and push it further</td>
+        <td>"Perspective 2 is right about X, but it doesn't go far enough. We also need..."</td>
+      </tr>
+      <tr>
+        <td><strong>Synthesize</strong></td>
+        <td>Combine insights from two or more perspectives into a hybrid position</td>
+        <td>"The best approach uses P1's concern for X with P2's method of Y."</td>
+      </tr>
+      <tr>
+        <td><strong>Reframe</strong></td>
+        <td>Argue all perspectives share a flawed assumption or ask the wrong question</td>
+        <td>"All three assume X, but the real issue is Y."</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="key-concept">
+    <p><strong>Skill 2: Constructed Support</strong></p>
+  </div>
+
+  <p>ACT has NO source texts. You must build evidence from your own knowledge and reasoning. Four types, ranked by persuasive strength:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Strength</th>
+        <th>When to Use</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Real-World Example</strong></td>
+        <td>Specific events, policies, historical precedents</td>
+        <td>Strongest -- verifiable and concrete</td>
+        <td>Lead with this whenever possible</td>
+      </tr>
+      <tr>
+        <td><strong>Logical Reasoning</strong></td>
+        <td>Step-by-step causal chains, if-then arguments</td>
+        <td>Strong -- builds airtight case</td>
+        <td>When you need to explain WHY something works</td>
+      </tr>
+      <tr>
+        <td><strong>Hypothetical Scenario</strong></td>
+        <td>"Imagine if..." thought experiments</td>
+        <td>Moderate -- illustrative but debatable</td>
+        <td>When testing a principle or making abstract ideas concrete</td>
+      </tr>
+      <tr>
+        <td><strong>Analogy</strong></td>
+        <td>Comparisons to parallel situations</td>
+        <td>Useful but weakest alone -- can be challenged</td>
+        <td>When clarifying, not as primary evidence</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========== PHASE 2: MODEL (4 min) ========== -->
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <div class="lesson-tag model">Model</div>
+  <h3>Developing Positions and Generating Support: Social Media</h3>
+
+  <p>Returning to the Social Media Age Restrictions prompt from L16, I will develop three possible positions using the three strategies, then choose the strongest and generate all four types of support.</p>
+
+  <div class="passage-box">
+    <p><strong>Prompt Reminder:</strong> Social media platforms require users to be at least 13, but enforcement is minimal. Lawmakers propose raising the minimum to 16 with age verification.</p>
+    <p><strong>P1:</strong> Companies should enforce age 16+ with verification (protection).</p>
+    <p><strong>P2:</strong> Education over restriction (empowerment).</p>
+    <p><strong>P3:</strong> Parents should decide (family autonomy).</p>
+    <p class="attribution">ACT-style prompt: Social Media Age Restrictions (ACT-P01)</p>
+  </div>
+
+  <h4>Three Possible Positions</h4>
+
+  <div class="position-box">
+    <p><strong>Position 1 -- Agree/Extend P1:</strong> Companies should verify ages, AND design platforms that are less addictive for young users. Age gates plus safer design.</p>
+  </div>
+
+  <div class="position-box">
+    <p><strong>Position 2 -- Synthesize P1 + P2:</strong> Age restrictions combined with mandatory digital literacy education. Corporate regulation to fund the education that P2 calls for.</p>
+  </div>
+
+  <div class="position-box">
+    <p><strong>Position 3 -- Reframe:</strong> The real issue is not access but design. All three perspectives debate who controls access, but none questions whether the product itself should be allowed to exploit developing brains. Platforms should be required to eliminate features that exploit cognitive vulnerabilities.</p>
+  </div>
+
+  <div class="key-concept">
+    <p><strong>Choosing the strongest:</strong> Position 3 (Reframe) is the most intellectually interesting because it challenges the shared assumption of all three perspectives. It also creates the richest claim hierarchy (M4) -- a main claim with multiple supporting sub-claims.</p>
+  </div>
+
+  <h4>Four Types of Support for Position 3</h4>
+  <p>Claim: "Platforms should be required to eliminate design features that exploit developing brains."</p>
+
+  <div class="support-example">
+    <div class="support-label">1. Real-World Example</div>
+    <p>The UK's Age Appropriate Design Code required YouTube to disable autoplay for minors and Instagram to default under-18 accounts to private. These design changes reduced harmful exposure without requiring invasive age verification -- proving that regulating the product works better than restricting the user.</p>
+  </div>
+
+  <div class="support-example">
+    <div class="support-label">2. Logical Reasoning</div>
+    <p>If platform features are specifically designed to exploit cognitive vulnerabilities (infinite scroll, variable-ratio reinforcement, social comparison metrics), then removing those features targets the cause of harm rather than restricting the victims. Education cannot fully counteract design that teams of behavioral psychologists have optimized for addiction.</p>
+  </div>
+
+  <div class="support-example">
+    <div class="support-label">3. Hypothetical Scenario</div>
+    <p>Imagine if food companies were allowed to add chemicals specifically designed to be addictive, targeting children's developing taste buds. We would not debate whether parents should monitor meals or whether children need nutrition education -- we would regulate the product. Social media design deserves the same scrutiny.</p>
+  </div>
+
+  <div class="support-example">
+    <div class="support-label">4. Analogy</div>
+    <p>Requiring safer platform design is like requiring seat belts in cars rather than banning young drivers from the road. The fix targets the product, not the user -- and it protects everyone, not just one age group.</p>
+  </div>
+
+  <div class="key-concept">
+    <p><strong>Ranking:</strong> Real-World Example (most persuasive -- concrete, verifiable) > Logical Reasoning (strong causal chain) > Hypothetical (illustrative but debatable) > Analogy (clarifying but not proof). Lead with the strongest; use the others to reinforce.</p>
+  </div>
+</div>
+
+<!-- ========== PHASE 3: SUPPORTED PRACTICE (8 min) ========== -->
+<h2>Phase 3: Supported Practice (8 min)</h2>
+<div class="phase-card practice-card">
+  <div class="lesson-tag practice">Supported Practice</div>
+  <h3>Position Development: Homework Debate</h3>
+
+  <div class="passage-box">
+    <p><strong>Prompt Reminder -- Homework in Public Schools:</strong></p>
+    <p><strong>P1:</strong> Homework is essential -- builds discipline, reinforces instruction, prepares for college.</p>
+    <p><strong>P2:</strong> Homework should be reduced -- disproportionately harms disadvantaged students.</p>
+    <p><strong>P3:</strong> Real problem is quality, not quantity -- replace busywork with meaningful work.</p>
+    <p class="attribution">ACT-style prompt: Homework in Public Schools (ACT-P02)</p>
+  </div>
+
+  <p>Develop <strong>two different positions</strong> using two different strategies (Agree/Extend, Synthesize, or Reframe). For each, explain the position and how it relates to the perspectives.</p>
+
+  <h4>Position A</h4>
+  <p>Label your strategy (Agree/Extend Perspective ___, Synthesize P___ + P___, or Reframe).</p>
+  <div class="writing-task">
+    <div class="writing-input">
+      <textarea placeholder="Write Position A here. State your strategy, your claim, and how it relates to the given perspectives..."></textarea>
     </div>
+  </div>
 
-    <!-- PHASE 1: TEACH -->
-    <div class="phase" data-phase="1">
-        <div class="phase-header">
-            <div class="phase-number">1</div>
-            <div class="phase-title">Teach: Two Skills for ACT Argument Development</div>
-        </div>
-
-        <p>In Lesson 16, you learned how to analyze the three given perspectives. Now you need to <strong>develop your own position</strong>. But here's the challenge: <strong>you don't have any source texts</strong>. No articles, no data sets, no expert quotes. Just the issue and the three perspectives.</p>
-
-        <p>This means you need two distinct skills:</p>
-
-        <div class="key-concept">
-            <h3>Skill 1: Position Development Strategies</h3>
-            <p>Your position must <strong>relate to the given perspectives</strong>. You have three strategic options:</p>
-
-            <div class="position-strategy">
-                <h4>Strategy A: Agree and Extend</h4>
-                <p>Choose one perspective as your starting point and <strong>push it further</strong>. "Perspective 2 is right about X, but it doesn't go far enough. We also need to consider Y."</p>
-            </div>
-
-            <div class="position-strategy">
-                <h4>Strategy B: Synthesize</h4>
-                <p>Combine insights from two (or all three) perspectives to create a <strong>hybrid position</strong>. "The best approach uses Perspective 1's concern for X with Perspective 2's method of Y."</p>
-            </div>
-
-            <div class="position-strategy">
-                <h4>Strategy C: Reframe</h4>
-                <p>Argue that all three perspectives share a flawed assumption or are <strong>asking the wrong question</strong>. "All three perspectives assume X, but the real issue is Y."</p>
-            </div>
-
-            <p style="margin-top: 15px;"><strong>Key Point:</strong> You can't just ignore the perspectives and write your own opinion. The ACT specifically asks you to <em>"analyze the relationship between your perspective and at least one other perspective."</em> Your position must be <strong>in conversation with</strong> the given perspectives.</p>
-        </div>
-
-        <div class="key-concept">
-            <h3>Skill 2: Constructed Support (No Sources!)</h3>
-            <p>Since you have no source texts, you must build evidence from scratch. Four types of support, ranked by persuasiveness:</p>
-
-            <div class="support-ranking">
-                <h4>Ranked from Most to Least Persuasive:</h4>
-                <ol>
-                    <li><strong>Real-World Examples:</strong> Specific events, historical precedents, current policies (e.g., "When Finland eliminated standardized homework in 2016, student test scores remained stable while reported stress declined.")</li>
-                    <li><strong>Logical Reasoning:</strong> Step-by-step causal chains, if-then arguments (e.g., "If we increase age restrictions without enforcement mechanisms, we create a law that signals concern without changing behavior.")</li>
-                    <li><strong>Hypothetical Scenarios:</strong> "Imagine if..." thought experiments that test a principle (e.g., "Consider a rural student whose only internet access is the library. Under Perspective 2's approach, she would be...")</li>
-                    <li><strong>Analogies:</strong> Comparisons to parallel situations (e.g., "Banning social media for teens is like Prohibition—well-intentioned but unenforceable, breeding disrespect for the rule itself.")</li>
-                </ol>
-                <p class="ranking-note">Note: Real-world examples are strongest because they're <strong>verifiable and specific</strong>. Analogies are weakest because they can be challenged as imperfect comparisons. Use a mix, but lead with real-world evidence when possible.</p>
-            </div>
-        </div>
-
-        <p><strong>The Bottom Line:</strong> ACT Writing tests whether you can construct a persuasive argument <em>without the crutch of sources</em>. This is pure reasoning and synthesis.</p>
-
-        <button class="next-phase-btn show" onclick="unlockPhase(2)">Continue to Model</button>
+  <h4>Position B</h4>
+  <p>Use a DIFFERENT strategy from Position A.</p>
+  <div class="writing-task">
+    <div class="writing-input">
+      <textarea placeholder="Write Position B here. Use a different strategy. State your claim and how it relates to the perspectives..."></textarea>
     </div>
+  </div>
 
-    <!-- PHASE 2: MODEL -->
-    <div class="phase phase-locked" data-phase="2">
-        <div class="phase-header">
-            <div class="phase-number">2</div>
-            <div class="phase-title">Model: Developing Position + Generating Support</div>
-            <span class="lock-icon">🔒</span>
-        </div>
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p><strong>Which position has better claim hierarchy potential (M4)? Why?</strong></p>
+    <p>Consider: Which position generates more sub-claims? Which addresses more of the complexity? Which would produce a richer, more nuanced essay? Choose the stronger one and be ready to use it.</p>
+  </div>
+</div>
 
-        <p>Let's return to the Social Media Age Restrictions prompt and develop three possible positions using the three strategies. Then I'll choose the strongest and generate all four types of support.</p>
+<!-- ========== PHASE 4: INDEPENDENT PRACTICE (8 min) ========== -->
+<h2>Phase 4: Independent Practice (8 min)</h2>
+<div class="phase-card independent-card">
+  <div class="lesson-tag independent">Independent Practice</div>
+  <h3>Constructed Support Drill + Opposition Paragraph</h3>
 
-        <div class="passage-box">
-            <h4>Prompt Reminder: Social Media Age Restrictions</h4>
-            <p><strong>Perspective 1:</strong> Companies should enforce strict age verification and raise minimum age to 16 (protection approach)</p>
-            <p><strong>Perspective 2:</strong> Education, not restriction, is the solution (empowerment approach)</p>
-            <p><strong>Perspective 3:</strong> Parents, not companies/government, should control access (family authority approach)</p>
-        </div>
+  <p>Given the following claim from the homework debate, generate all four types of support and then write an opposition paragraph.</p>
 
-        <div class="model-example">
-            <h4>Possible Position A: Agree and Extend (from Perspective 1)</h4>
-            <p><strong>Claim:</strong> Perspective 1 is right that companies bear responsibility, but age verification is the wrong tool. Instead, platforms should be required to disable algorithmic recommendation feeds for all users under 18, allowing access but removing the addictive design.</p>
-            <p><strong>Relationship to Perspectives:</strong> Agrees with P1's corporate responsibility but addresses P2's concern about surveillance and P3's concern about blanket age bans.</p>
-        </div>
+  <div class="key-concept">
+    <p><strong>Your Claim:</strong> "Schools should replace traditional homework with in-class practice time and optional take-home enrichment projects."</p>
+  </div>
 
-        <div class="model-example">
-            <h4>Possible Position B: Synthesize (P1 + P2)</h4>
-            <p><strong>Claim:</strong> The strongest approach combines Perspective 1's insistence on corporate responsibility with Perspective 2's emphasis on education. Platforms should be required to fund digital literacy programs in schools as a condition of operating—making companies pay for the education that helps users navigate their products critically.</p>
-            <p><strong>Relationship to Perspectives:</strong> Uses P1's mechanism (corporate regulation) to achieve P2's goal (education). Sidesteps P3's family-centered approach by focusing on school-based education.</p>
-        </div>
+  <h4>Part 1: Generate All Four Types of Support</h4>
+  <p>Draft a real-world example, logical reasoning chain, hypothetical scenario, and analogy to support the claim above. Then rank them by persuasiveness.</p>
+  <div class="writing-task">
+    <p>Write all four types of constructed support for the claim. Label each type clearly.</p>
+    <div class="writing-input">
+      <textarea placeholder="Real-World Example: ...
 
-        <div class="model-example">
-            <h4>Possible Position C: Reframe</h4>
-            <p><strong>Claim:</strong> All three perspectives assume the problem is <em>who</em> controls access, but the real problem is the <em>design of the platforms themselves</em>. We don't need age restrictions, education programs, or parental controls—we need platforms engineered for well-being rather than engagement maximization. Regulate the algorithm, not the user.</p>
-            <p><strong>Relationship to Perspectives:</strong> Challenges the shared assumption of all three perspectives that access control is the solution. Offers a fourth option they all overlook.</p>
-        </div>
+Logical Reasoning: ...
 
-        <div class="instruction-highlight">
-            <p><strong>I'm choosing Position C (Reframe)</strong> because it offers the most intellectually interesting position—it challenges the terms of the debate itself. Now I'll generate support using all four types.</p>
-        </div>
+Hypothetical Scenario: ...
 
-        <div class="support-example">
-            <div class="support-label">Real-World Example:</div>
-            <p>In 2021, Frances Haugen's leaked documents revealed that Facebook's own research showed Instagram's algorithm amplified content that made teen girls feel worse about their bodies—and the company chose not to change the algorithm because it would reduce engagement. This proves the problem isn't whether teens have access, but what they're being shown when they do.</p>
-        </div>
+Analogy: ...
 
-        <div class="support-example">
-            <div class="support-label">Logical Reasoning:</div>
-            <p>If platforms are designed to maximize time-on-site through dopamine-triggering feedback loops, then no amount of user education or age restrictions will solve the problem. A 17-year-old with a digital literacy class is still up against algorithms designed by teams of psychologists. The only durable solution is to change the algorithms themselves—require platforms to offer chronological feeds, disable auto-play, and remove infinite scroll for young users.</p>
-        </div>
-
-        <div class="support-example">
-            <div class="support-label">Hypothetical Scenario:</div>
-            <p>Imagine two social media platforms: Platform A has no age restrictions but uses a chronological feed with no algorithmic amplification. Platform B requires age verification but uses an engagement-maximizing algorithm. Which would be healthier for a 15-year-old? Most experts would choose Platform A—proving that design matters more than access control.</p>
-        </div>
-
-        <div class="support-example">
-            <div class="support-label">Analogy:</div>
-            <p>Debating who should control teens' social media access is like debating who should supervise kids eating candy—when the real problem is that we've engineered candy to be as addictive as possible. The question isn't "who supervises?" but "why are we allowing this product design in the first place?"</p>
-        </div>
-
-        <p><strong>Notice:</strong> I used all four types, but I <strong>led with the real-world example</strong> (Frances Haugen) because it's the most concrete and verifiable. The logical reasoning builds the core argument. The hypothetical and analogy reinforce it.</p>
-
-        <button class="next-phase-btn show" onclick="unlockPhase(3)">Continue to Supported Practice</button>
+Ranking (most to least persuasive): ..."></textarea>
     </div>
+  </div>
 
-    <!-- PHASE 3: SUPPORTED PRACTICE -->
-    <div class="phase phase-locked" data-phase="3">
-        <div class="phase-header">
-            <div class="phase-number">3</div>
-            <div class="phase-title">Supported Practice: Position Development + Opposition Paragraph</div>
-            <span class="lock-icon">🔒</span>
-        </div>
+  <div class="rubric-box">
+    <h4>Success Criteria -- Part 1</h4>
+    <ul>
+      <li>Includes real-world example (specific, not vague)</li>
+      <li>Includes logical reasoning chain (if-then or causal)</li>
+      <li>Includes hypothetical scenario (tests the principle)</li>
+      <li>Includes analogy (parallel situation)</li>
+      <li>Ranks by persuasiveness with brief justification</li>
+    </ul>
+  </div>
 
-        <p>Now you'll practice position development and constructed support. You'll also write an <strong>opposition paragraph</strong>—a key ACT skill where you acknowledge the strongest challenge to your position and explain why your position still holds.</p>
+  <h4>Part 2: Opposition Paragraph</h4>
+  <p>Write an opposition paragraph: acknowledge the strongest point of an opposing perspective, explain why your position still holds. Use They Say / I Say moves from L04-L05.</p>
+  <div class="writing-task">
+    <p>Compose an opposition paragraph. Identify the strongest challenge to the claim, acknowledge its validity, then explain why the position holds despite this challenge.</p>
+    <div class="writing-input">
+      <textarea placeholder="Write your opposition paragraph here. Use They Say / I Say structure:
 
-        <div class="passage-box">
-            <h4>ACT Prompt: Homework in Public Schools</h4>
-
-            <p class="prompt-label">Issue:</p>
-            <p>The role of homework in education has become increasingly controversial. Some schools have dramatically reduced or eliminated homework, while others have doubled down on it as essential practice. The debate touches on questions about how students learn best, what schools owe to families' time, and whether homework deepens or merely reinforces inequality.</p>
-
-            <p class="prompt-label" style="margin-top: 20px;">Perspective One:</p>
-            <p>Homework is an essential part of learning because it builds discipline, reinforces classroom instruction, and prepares students for the independent work expectations of college and careers. Students who practice skills outside of class consistently outperform those who do not. Reducing homework may feel compassionate, but it ultimately lowers academic standards and leaves students unprepared.</p>
-
-            <p class="prompt-label" style="margin-top: 20px;">Perspective Two:</p>
-            <p>Homework should be significantly reduced because it disproportionately harms students who lack quiet study spaces, internet access, or parental support at home. What looks like a "study habit" gap is often a resource gap. Schools should focus on making the school day itself more effective rather than outsourcing learning to environments they cannot control.</p>
-
-            <p class="prompt-label" style="margin-top: 20px;">Perspective Three:</p>
-            <p>The real problem is not the quantity of homework but its quality. Most homework consists of repetitive busywork that does little to deepen understanding. Schools should assign less homework overall but ensure that what they do assign involves meaningful, creative application of ideas—projects, reflections, and real-world problem-solving rather than worksheets and drills.</p>
-
-            <p class="attribution">Write a unified, coherent essay in which you evaluate multiple perspectives on the role of homework in public schools.</p>
-        </div>
-
-        <div class="writing-task">
-            <h4>Your Task (Two Parts):</h4>
-
-            <p><strong>Part 1: Position Development (Choose Your Strategy)</strong></p>
-            <p>Develop TWO different positions on the homework issue using two different strategies (Agree/Extend, Synthesize, or Reframe). For each, write 2-3 sentences explaining the position and its relationship to the perspectives.</p>
-
-            <p style="margin-top: 15px;"><strong>Part 2: Choose Stronger Position Using M4</strong></p>
-            <p>Choose which of your two positions is stronger and explain why using <strong>Mental Model M4: Claim Hierarchy</strong>. Which position has a more sophisticated claim structure? Which addresses more of the complexity?</p>
-
-            <p style="margin-top: 15px;"><strong>Part 3: Opposition Paragraph</strong></p>
-            <p>Write an opposition paragraph for your chosen position: Acknowledge the <strong>strongest challenge</strong> to your position (from one of the perspectives or elsewhere), then explain why your position holds despite this challenge.</p>
-
-            <textarea
-                data-phase-gate="3"
-                data-min-words="80"
-                placeholder="Part 1: Write two positions using different strategies...
-
-Part 2: Choose stronger position and explain using M4...
-
-Part 3: Write opposition paragraph..."></textarea>
-            <div class="word-count">Word count: <span>0</span></div>
-        </div>
-
-        <button class="next-phase-btn" onclick="unlockPhase(4)">Continue to Independent Practice</button>
+They say: [strongest opposing point -- not a straw man]
+I acknowledge: [why this point has validity]
+But I maintain: [why your position still holds]..."></textarea>
     </div>
+  </div>
 
-    <!-- PHASE 4: INDEPENDENT PRACTICE -->
-    <div class="phase phase-locked" data-phase="4">
-        <div class="phase-header">
-            <div class="phase-number">4</div>
-            <div class="phase-title">Independent Practice: Generate All Four Support Types</div>
-            <span class="lock-icon">🔒</span>
-        </div>
+  <div class="rubric-box">
+    <h4>Success Criteria -- Part 2</h4>
+    <ul>
+      <li>Identifies strongest opposing point (not a straw man)</li>
+      <li>Acknowledges its validity genuinely</li>
+      <li>Explains why the position still holds despite the objection</li>
+      <li>Uses They Say / I Say structure</li>
+    </ul>
+  </div>
+</div>
 
-        <p>This time, you're generating <strong>all four types of constructed support</strong> for a claim, ranking them by persuasiveness, and drafting an opposition paragraph. No scaffold.</p>
+<!-- ========== PHASE 5: TRANSFER (3 min) ========== -->
+<h2>Phase 5: Transfer (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="lesson-tag transfer">Transfer</div>
+  <h3>Constructed Support vs. Textual Evidence</h3>
 
-        <div class="passage-box">
-            <h4>ACT Prompt: Standardized School Dress Codes</h4>
+  <div class="transfer-prompt">
+    <p><strong>How is constructed support different from textual evidence (A1)?</strong></p>
+    <p>In synthesis essays, you are a <em>curator</em> -- selecting, integrating, and attributing evidence from given sources. In ACT Writing, you are a <em>builder</em> -- generating reasoning and examples from your own knowledge. Both are essential college-level skills, but they exercise different muscles.</p>
+    <p>In ACT Writing, <strong>you are the evidence source</strong>. This means your general knowledge matters. The wider you read -- news, history, science, current events -- the richer your constructed support will be. Read widely.</p>
+  </div>
 
-            <p class="prompt-label">Issue:</p>
-            <p>Many public schools have implemented strict dress codes or uniform policies, arguing that they reduce distractions, minimize bullying over clothing, and create a more focused learning environment. Critics, however, argue that dress codes suppress individuality and are often enforced in ways that disproportionately target certain students. The debate reflects broader tensions between institutional order and personal expression.</p>
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p><strong>Looking ahead:</strong> In the next lessons, you will combine L16's perspective analysis with L17's argument development to write complete ACT essays under timed conditions. The formula:</p>
+    <ol>
+      <li>Analyze all three perspectives (L16)</li>
+      <li>Develop your own position in relationship to them (L17)</li>
+      <li>Support your position with constructed evidence (L17)</li>
+      <li>Write an opposition paragraph (L17)</li>
+      <li>Organize it all into a coherent, timed essay (L18-L19)</li>
+    </ol>
+    <p>You now have all the component skills. The next step is putting them together under time pressure.</p>
+  </div>
+</div>
 
-            <p class="prompt-label" style="margin-top: 20px;">Perspective One:</p>
-            <p>School dress codes and uniform policies benefit students by removing a major source of social comparison and distraction. When students are not competing over brands and fashion, they can focus on learning, and lower-income students are spared the pressure of keeping up with wealthier peers. Schools exist for education, and dress codes help maintain that focus.</p>
+<div class="footnote">
+  A2 L17 &bull; ACT Argument Development &bull; C.10.17, C.10.18 &bull; ~25 min
+</div>
 
-            <p class="prompt-label" style="margin-top: 20px;">Perspective Two:</p>
-            <p>Dress codes are more about control than education, and their enforcement consistently falls hardest on girls, students of color, and students who do not conform to traditional gender norms. What schools call "appropriate" dress often reflects narrow cultural standards rather than genuine educational needs. A policy that claims to treat everyone equally but punishes some groups more than others is not truly fair.</p>
+<nav class="lesson-nav">
+  <a href="A2_L16_ACT_Perspective_Analysis.html" class="prev">L16: ACT Perspective Analysis</a>
+  <a href="A2_L18_ACT_Essay_1.html" class="next">L18: ACT Essay 1</a>
+</nav>
 
-            <p class="prompt-label" style="margin-top: 20px;">Perspective Three:</p>
-            <p>Rather than imposing dress codes from above, schools should involve students in creating community standards for dress that balance self-expression with mutual respect. When students participate in making the rules, they develop ownership over their school culture and practice democratic decision-making. Top-down policies miss an opportunity to teach students how to negotiate shared norms.</p>
-
-            <p class="attribution">Write a unified, coherent essay in which you evaluate multiple perspectives on school dress codes.</p>
-        </div>
-
-        <div class="writing-task">
-            <h4>Your Task:</h4>
-
-            <p><strong>Step 1:</strong> Choose or develop a position on dress codes (use any strategy: Agree/Extend, Synthesize, or Reframe).</p>
-
-            <p style="margin-top: 15px;"><strong>Step 2:</strong> Generate all four types of support for your position:</p>
-            <ul style="margin-left: 25px; margin-top: 8px;">
-                <li>Real-World Example</li>
-                <li>Logical Reasoning</li>
-                <li>Hypothetical Scenario</li>
-                <li>Analogy</li>
-            </ul>
-
-            <p style="margin-top: 15px;"><strong>Step 3:</strong> Rank your four pieces of support from most to least persuasive. Briefly explain your ranking (1-2 sentences).</p>
-
-            <p style="margin-top: 15px;"><strong>Step 4:</strong> Draft an opposition paragraph: acknowledge the strongest objection to your position and explain why your position holds.</p>
-
-            <textarea
-                data-phase-gate="4"
-                data-rubric="L17_act_development"
-                data-min-words="80"
-                placeholder="My Position: [1-2 sentence claim + relationship to perspectives]
-
-Real-World Example: [...]
-Logical Reasoning: [...]
-Hypothetical Scenario: [...]
-Analogy: [...]
-
-Ranking (most to least persuasive): [...]
-Explanation: [...]
-
-Opposition Paragraph: [...]"></textarea>
-            <div class="word-count">Word count: <span>0</span></div>
-        </div>
-
-        <div class="rubric-box">
-            <h4>Success Criteria:</h4>
-            <ul>
-                <li>Position clearly relates to at least one of the three perspectives</li>
-                <li>All four support types generated and clearly labeled</li>
-                <li>Support is specific and developed (not vague assertions)</li>
-                <li>Ranking is justified with reasoning</li>
-                <li>Opposition paragraph acknowledges a <strong>strong</strong> challenge (not a weak strawman)</li>
-            </ul>
-        </div>
-
-        <button class="next-phase-btn" onclick="unlockPhase(5)">Continue to Transfer</button>
-    </div>
-
-    <!-- PHASE 5: TRANSFER -->
-    <div class="phase phase-locked" data-phase="5">
-        <div class="phase-header">
-            <div class="phase-number">5</div>
-            <div class="phase-title">Transfer: Constructed vs. Textual Evidence</div>
-            <span class="lock-icon">🔒</span>
-        </div>
-
-        <p>You've just practiced <strong>constructed support</strong>—building evidence from reasoning, examples, and logic rather than from source texts. This is a fundamentally different skill from synthesis writing (L09, L11-L15).</p>
-
-        <div class="self-check">
-            <h4>Self-Check:</h4>
-            <p><strong>How is constructed support different from textual evidence?</strong></p>
-
-            <p style="margin-top: 15px;"><strong>Textual Evidence (Synthesis Essays):</strong></p>
-            <ul style="margin-top: 10px;">
-                <li>You're given 6-7 sources and must <strong>select and integrate</strong> the strongest evidence</li>
-                <li>Your job is to <strong>synthesize existing arguments</strong> into a coherent position</li>
-                <li>You're evaluated on <strong>source selection, integration, and attribution</strong></li>
-                <li>The evidence already exists—you're curating and connecting it</li>
-            </ul>
-
-            <p style="margin-top: 15px;"><strong>Constructed Support (ACT Writing):</strong></p>
-            <ul style="margin-top: 10px;">
-                <li>You're given <strong>no sources</strong>—only three perspectives on an issue</li>
-                <li>Your job is to <strong>generate your own reasoning and examples</strong> from scratch</li>
-                <li>You're evaluated on <strong>logical coherence, specificity, and persuasiveness</strong></li>
-                <li>The evidence doesn't exist yet—you're constructing it from your own knowledge and reasoning</li>
-            </ul>
-
-            <p style="margin-top: 15px;"><strong>The Key Difference:</strong> In synthesis, you're a <em>curator</em>. In ACT Writing, you're a <em>builder</em>. Both are essential college-level skills.</p>
-        </div>
-
-        <div class="key-concept">
-            <h3>Why This Matters:</h3>
-            <p>Many students find ACT Writing harder than synthesis essays because there are <strong>no sources to lean on</strong>. You can't hide weak reasoning behind a strong quote. Everything in your essay has to come from your own thinking.</p>
-
-            <p style="margin-top: 15px;">But this is also why ACT Writing is such a powerful <strong>diagnostic</strong> of your argumentation skills. When you strip away sources, what's left is pure reasoning. Can you:</p>
-            <ul style="margin-top: 10px;">
-                <li>Generate specific, relevant examples from your knowledge base?</li>
-                <li>Build logical chains of reasoning that hold under scrutiny?</li>
-                <li>Construct hypotheticals that genuinely test your position?</li>
-                <li>Make analogies that illuminate rather than confuse?</li>
-            </ul>
-
-            <p style="margin-top: 15px;">These are the skills that <strong>every college essay</strong> requires—whether you have sources or not. The ACT is testing whether you can argue persuasively <em>with or without external support</em>.</p>
-        </div>
-
-        <div class="instruction-highlight">
-            <h4>Looking Ahead: Full ACT Essay Practice</h4>
-            <p>In the next lessons, you'll combine today's skills (argument development and constructed support) with L16's skills (perspective analysis) to write <strong>complete ACT Writing essays</strong> under timed conditions.</p>
-
-            <p style="margin-top: 10px;">The formula:</p>
-            <ol style="margin-left: 20px; margin-top: 8px;">
-                <li>Analyze all three perspectives (L16)</li>
-                <li>Develop your own position in relationship to them (L17)</li>
-                <li>Support your position with constructed evidence (L17)</li>
-                <li>Write an opposition paragraph acknowledging the strongest challenge (L17)</li>
-                <li>Organize it all into a coherent, timed essay (next lessons)</li>
-            </ol>
-
-            <p style="margin-top: 10px;">You now have all the component skills. The next step is putting them together under time pressure.</p>
-        </div>
-
-        <p style="margin-top: 30px; font-size: 1.1em; text-align: center;"><strong>Lesson Complete!</strong> You've learned how to develop your own ACT position and generate constructed support without source texts.</p>
-    </div>
-
-    <script src="lesson-engine.js"></script>
+<link rel="stylesheet" href="lesson-engine.css">
+<script src="lesson-engine.js"></script>
 </body>
 </html>
