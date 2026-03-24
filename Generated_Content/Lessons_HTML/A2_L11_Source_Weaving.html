@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A2 L11: Source Weaving Drill</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; font-weight: 600; }
+p { margin-bottom: 1rem; }
+ul, ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+li { margin-bottom: 0.5rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.rubric-box li { margin-bottom: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.pattern-box {
+  background: #f8f9fa; border: 2px solid var(--border); border-radius: 8px;
+  padding: 1rem; margin: 1rem 0;
+}
+.pattern-box h4 { margin-top: 0; font-size: 0.9rem; color: #6f42c1; }
+.pattern-box p { margin-bottom: 0.5rem; font-size: 0.9rem; }
+.scaffold-box {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.writing-input { margin: 1.5rem 0; }
+.writing-ta {
+  width: 100%; border: 2px solid var(--border); border-radius: 8px;
+  padding: 0.8rem; font-family: 'Georgia', serif; font-size: 0.95rem;
+  line-height: 1.7; resize: vertical; min-height: 120px;
+}
+.writing-ta:focus { border-color: #0d6efd; outline: none; box-shadow: 0 0 0 3px rgba(13,110,253,0.15); }
+.writing-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 0.5rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.wc { color: var(--muted); }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course A2 · Lesson 11</span>
+  <h1>Source Weaving Drill</h1>
+  <p class="subtitle">Making sources talk to each other</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KC: C.10.10</span>
+    <span>🧠 Mental Model: M4</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>The Core Skill:</strong> Source weaving means making sources <strong>converse with each other</strong> within your paragraphs. Instead of "Source A says X. Source B says Y," you write sentences where multiple sources appear together, supporting or complicating the same point. Your argument controls the paragraph; sources serve it.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card" data-phase="1">
+  <h3>Three Source Weaving Patterns</h3>
+
+  <p>You've learned to vary attribution (L10) and to organize by theme instead of source (L09). Now you'll practice the mechanical skill: how to integrate multiple sources into a single sentence or tightly connected group of sentences.</p>
+
+  <p>There are three core weaving patterns:</p>
+
+  <div class="pattern-box">
+    <h4>Pattern 1: Agreement Amplification</h4>
+    <p>Multiple sources support the same claim, building cumulative weight.</p>
+    <p style="font-style: italic; color: #555;">"Both Chen's quantitative data and Rodriguez's classroom observations confirm that standardized tests narrow the curriculum, forcing teachers to prioritize test preparation over deeper learning."</p>
+  </div>
+
+  <div class="pattern-box">
+    <h4>Pattern 2: Tension/Contrast</h4>
+    <p>Sources present competing views or different dimensions of the same issue.</p>
+    <p style="font-style: italic; color: #555;">"While Chen argues that tests provide objective accountability measures, Rodriguez's experience reveals that this 'objectivity' comes at the cost of creativity and critical thinking in the classroom."</p>
+  </div>
+
+  <div class="pattern-box">
+    <h4>Pattern 3: Synthesis</h4>
+    <p>Sources from different angles combine to reveal a larger insight.</p>
+    <p style="font-style: italic; color: #555;">"Chen's theory of habit formation, combined with Okafor's pre-registration data, reveals that the timing of first voting experiences matters more than the legal voting age itself."</p>
+  </div>
+
+  <div class="key-concept">
+    <p><strong>The Test:</strong> Can you remove the source names and still see your argument clearly? If yes, you're weaving. If the paragraph collapses into disconnected facts, you're summarizing.</p>
+  </div>
+
+  <button class="phase-next-btn">Continue to Model</button>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card phase-locked" data-phase="2">
+  <h3>Coping Model: Integrating Three Sources</h3>
+
+  <p><strong>Task:</strong> Write a paragraph integrating three sources on standardized testing. The sources are Chen (pro-testing researcher), Rodriguez (anti-testing teacher), and Owens (policy analyst proposing better assessments).</p>
+
+  <div class="coping-model">
+    <p><span class="false-start">"Dr. Chen says that standardized tests are the best predictor of college success and they prevent subjective bias in grading. Jennifer Rodriguez, a high school teacher, says that tests narrow the curriculum and cause anxiety. She also says teachers spend weeks on test prep instead of real learning. Dr. Owens proposes that we need performance-based assessments instead of multiple-choice tests, pointing to international models like Finland and Singapore."</span></p>
+
+    <p style="margin-top: 1rem;"><span class="correction">"Wait, I'm just listing what each source says in order. This is serial summarizing. My CLAIM should come first, and then the sources should work together to support or complicate that claim. Let me start with my argument."</span></p>
+
+    <p style="margin-top: 1rem;"><span class="strong">"The fundamental problem with standardized testing isn't whether tests provide useful data—Chen's research demonstrates they do predict certain academic outcomes—but whether that narrow predictive power justifies the curriculum distortion Rodriguez documents in her classroom. When teachers lose weeks of instruction to test preparation, students may score higher on assessments while learning less about literature, scientific inquiry, or historical reasoning. Owens's proposal for performance-based assessments addresses this tension directly: sophisticated evaluation tasks could provide the accountability data Chen values while preserving the rich learning experiences Rodriguez advocates. The question isn't 'tests or no tests' but rather 'what kinds of assessment capture complex learning without reducing education to test-taking skills.'"</span></p>
+  </div>
+
+  <p><strong>What changed?</strong></p>
+  <ul>
+    <li><strong>Structure:</strong> Started with my claim ("The fundamental problem..."), then used sources as evidence</li>
+    <li><strong>Weaving:</strong> Chen and Rodriguez appear in the same sentence, serving my point about trade-offs</li>
+    <li><strong>Integration:</strong> Owens isn't just "another source"—he provides a solution to the tension I identified</li>
+    <li><strong>Voice:</strong> MY argument drives the paragraph; sources support it</li>
+  </ul>
+
+  <button class="phase-next-btn">Continue to Supported Practice</button>
+</div>
+
+<h2>Phase 3: Supported Practice (10 min)</h2>
+<div class="phase-card practice-card phase-locked" data-phase="3">
+  <h3>Write Two Weaving Paragraphs</h3>
+
+  <p>You'll write two short paragraphs, each integrating 2-3 sources around one claim. Use the standardized testing source set (Chen, Rodriguez, Owens, Washington).</p>
+
+  <div class="scaffold-box">
+    <h4>Scaffold: Claim-First Structure</h4>
+    <ol>
+      <li><strong>State your claim first</strong> (one sentence)</li>
+      <li><strong>Weave in sources</strong> that support, complicate, or provide evidence for your claim</li>
+      <li><strong>Don't just list</strong> what sources say—show how they relate to each other and to your argument</li>
+    </ol>
+  </div>
+
+  <h4>Paragraph 1: Write about test validity (What do tests actually measure?)</h4>
+  <p style="font-size: 0.9rem; color: #555;">Integrate Chen's claims about prediction + Rodriguez's or Owens's concerns about what tests miss.</p>
+
+  <div class="writing-input">
+    <textarea
+      class="writing-ta"
+      data-phase-gate="3"
+      data-min-words="60"
+      placeholder="Write your first paragraph here (60+ words)..."></textarea>
+    <div class="writing-footer">
+      <span class="wc">Word count: <span>0</span></span>
+    </div>
+  </div>
+
+  <h4 style="margin-top: 2rem;">Paragraph 2: Write about equity concerns (Who benefits? Who is harmed?)</h4>
+  <p style="font-size: 0.9rem; color: #555;">Integrate at least 2 sources discussing fairness, bias, or differential impacts.</p>
+
+  <div class="writing-input">
+    <textarea
+      class="writing-ta"
+      data-phase-gate="3"
+      data-min-words="60"
+      placeholder="Write your second paragraph here (60+ words)..."></textarea>
+    <div class="writing-footer">
+      <span class="wc">Word count: <span>0</span></span>
+    </div>
+  </div>
+
+  <button class="phase-next-btn">Continue to Independent Practice</button>
+</div>
+
+<h2>Phase 4: Independent Practice (6 min)</h2>
+<div class="phase-card independent-card phase-locked" data-phase="4">
+  <h3>Source Weaving Without Scaffold</h3>
+
+  <p><strong>New topic:</strong> Social media and mental health. You have three sources:</p>
+
+  <div class="passage-box">
+    <p><strong>Source A (Henderson, researcher):</strong> Moderate social media use (1-2 hours daily) correlates with higher self-reported happiness and larger friend networks. Heavy use (3+ hours) correlates with increased anxiety and depression.</p>
+  </div>
+
+  <div class="passage-box">
+    <p><strong>Source B (Patel & Johnson, researchers):</strong> The content of social media use matters more than duration. Passive scrolling correlates with negative outcomes; active engagement (commenting, messaging) correlates with positive outcomes.</p>
+  </div>
+
+  <div class="passage-box">
+    <p><strong>Source C (Lee, psychologist):</strong> The direction of causation is unclear. Students who are already anxious may use social media as a coping mechanism, meaning social media use could be a symptom rather than a cause of poor mental health.</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Write ONE paragraph that integrates all three sources around a claim YOU generate about social media's relationship to adolescent wellbeing. No scaffold provided—you choose how to organize and weave the sources.</p>
+
+  <div class="writing-input">
+    <textarea
+      class="writing-ta"
+      data-phase-gate="4"
+      data-rubric="L11_source_weaving"
+      data-min-words="80"
+      placeholder="Write your paragraph here (80+ words)..."></textarea>
+    <div class="writing-footer">
+      <span class="wc">Word count: <span>0</span></span>
+    </div>
+  </div>
+
+  <div class="rubric-box">
+    <h4>Success Criteria:</h4>
+    <ul>
+      <li>Your claim comes FIRST, not source summary</li>
+      <li>At least 2 sources woven together (in same sentence or tightly connected sentences)</li>
+      <li>Varied attribution—not just "says" three times</li>
+      <li>Sources support YOUR argument; you're not serving the sources</li>
+      <li>Reader can follow your reasoning without getting lost in source-by-source summary</li>
+    </ul>
+  </div>
+
+  <button class="phase-next-btn">Continue to Transfer</button>
+</div>
+
+<h2>Phase 5: Transfer (3 min)</h2>
+<div class="phase-card transfer-card phase-locked" data-phase="5">
+  <h3>Apply to Your Next Essay</h3>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p><strong>Read your paragraph aloud. Can you hear the CONVERSATION between sources?</strong></p>
+
+    <p style="margin-top: 1rem;">If your paragraph sounds like: "Source A says... Source B says... Source C says..." — you're summarizing, not synthesizing.</p>
+
+    <p style="margin-top: 1rem;">If your paragraph sounds like: "The relationship between X and Y is complex because [claim]. While [Source A] shows [evidence], [Source B] complicates this by [evidence], suggesting that [your insight]." — you're weaving.</p>
+  </div>
+
+  <div class="key-concept" style="margin-top: 1.5rem;">
+    <h3>Why This Matters</h3>
+    <p>On AP exams and in college writing, graders distinguish between <strong>competent source use</strong> (citing accurately) and <strong>sophisticated synthesis</strong> (weaving sources into an argument). Source weaving is the clearest marker of advanced thinking.</p>
+
+    <p style="margin-top: 1rem;">When you make sources talk to each other—"While X argues A, Y's data suggests B, revealing C"—you're showing that you can hold multiple perspectives simultaneously and extract insight from their interaction. That's doctoral-level thinking, and you're practicing it now.</p>
+  </div>
+
+  <div style="background: #fff3e0; border-left: 4px solid #fd7e14; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0;">
+    <p><strong>Next Lesson:</strong> In L12, you'll write your first full synthesis essay under timed conditions. Everything you've learned—Rhetorical Force Field (L01), Claim Hierarchy (L02), source perspective mapping (L08), serial vs. synthesis (L09), attribution fluency (L10), and source weaving (L11)—will come together in one 40-minute assessment.</p>
+  </div>
+
+  <p style="margin-top: 2rem; text-align: center; font-size: 1.1em;"><strong>Lesson Complete!</strong></p>
+</div>
+
+<div class="footnote">
+  <p>A2 L11 • Source Weaving Drill • KC C.10.10 • ~25 min • M4</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="A2_L10_Attribution_Fluency.html" class="prev">← L10: Attribution Fluency</a>
+  <a href="A2_L12_Synthesis_Essay.html" class="next">L12: Full Synthesis Essay →</a>
+</nav>
+</body>
+</html>

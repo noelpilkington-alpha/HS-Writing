@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L03: Force Field to Choices + Hierarchy to Plan</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+.lesson-header {
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+.lesson-tag {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.bridge { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.bridge-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b3d9f2; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.rubric-box {
+  background: #f8f9fa; border: 2px solid var(--primary); border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+}
+.writing-task {
+  background: #fff3e0; border: 2px solid #fd7e14; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+details { margin: 1rem 0; }
+summary {
+  cursor: pointer; font-weight: 600; padding: 0.5rem;
+  background: #f8f9fa; border-radius: 4px; border: 1px solid var(--border);
+}
+summary:hover { background: #e9ecef; }
+
+/* ===== INTERACTIVE ENGINE =====*/
+/* ===== SCORE BAR ===== */
+#score-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--primary, #1a1a2e); color: #ffc107;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; font-weight: 700;
+  padding: 0.5rem 1.5rem; text-align: right;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+#score-bar .score-icon { font-size: 1.1rem; }
+body { padding-top: 3rem; }
+.score-bump { animation: bump 0.3s ease; }
+@keyframes bump { 0%{transform:scale(1)} 50%{transform:scale(1.4)} 100%{transform:scale(1)} }
+
+/* ===== MCQ BUTTONS ===== */
+.mcq-options { display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0; }
+.mcq-btn {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  background: #fff; border: 2px solid var(--border, #dee2e6); border-radius: 8px;
+  padding: 0.75rem 1rem; font-family: 'Georgia', serif; font-size: 0.95rem;
+  cursor: pointer; text-align: left; transition: all 0.2s;
+  line-height: 1.5; color: var(--text, #2d2d2d);
+}
+.mcq-btn:hover:not(:disabled) { border-color: #0d6efd; background: #f0f7ff; }
+.mcq-btn:disabled { cursor: default; opacity: 0.7; }
+.mcq-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  background: var(--primary, #1a1a2e); color: #fff;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  flex-shrink: 0; margin-top: 0.1rem;
+}
+.mcq-btn.mcq-correct { border-color: #28a745; background: #d4edda; }
+.mcq-btn.mcq-correct .mcq-letter { background: #28a745; }
+.mcq-btn.mcq-wrong { border-color: #dc3545; background: #f8d7da; }
+.mcq-btn.mcq-wrong .mcq-letter { background: #dc3545; }
+.mcq-feedback {
+  background: #e8f5e9; border-left: 4px solid #28a745;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ===== WRITING INPUT ===== */
+.writing-input { margin: 1.5rem 0; }
+.writing-ta, .practice-ta {
+  width: 100%; border: 2px solid var(--border, #dee2e6); border-radius: 8px;
+  padding: 0.8rem; font-family: 'Georgia', serif; font-size: 0.95rem;
+  line-height: 1.7; resize: vertical; min-height: 120px;
+}
+.writing-ta:focus, .practice-ta:focus { border-color: #0d6efd; outline: none; box-shadow: 0 0 0 3px rgba(13,110,253,0.15); }
+.writing-ta[readonly], .practice-ta[readonly] { background: #f8f9fa; }
+.writing-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 0.5rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.wc { color: var(--muted, #6c757d); }
+.writing-submit {
+  background: var(--accent, #e94560); color: #fff; border: none; border-radius: 6px;
+  padding: 0.5rem 1.25rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.writing-submit:hover:not(:disabled) { background: #d63050; }
+.writing-submit:disabled { background: #bbb; cursor: default; }
+.writing-submit.submitted { background: #28a745; }
+
+/* ===== PHASE GATING ===== */
+.phase-locked {
+  opacity: 0.35; pointer-events: none; position: relative;
+  filter: grayscale(40%);
+}
+.phase-locked::after {
+  content: '🔒 Complete the previous phase to unlock';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: rgba(26,26,46,0.9); color: #fff; padding: 0.75rem 1.5rem;
+  border-radius: 8px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem; font-weight: 600; white-space: nowrap; z-index: 10;
+  pointer-events: none;
+}
+.phase-active { opacity: 1; }
+.phase-done { opacity: 0.85; }
+.phase-done .phase-next-btn { display: none; }
+.phase-next-btn {
+  display: block; width: 100%; margin-top: 1.5rem;
+  background: #0d6efd; color: #fff; border: none; border-radius: 8px;
+  padding: 0.75rem; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.phase-next-btn:hover:not(:disabled) { background: #0b5ed7; }
+.phase-next-btn:disabled { background: #a0c4ff; cursor: default; }
+
+/* ===== LESSON COMPLETE OVERLAY ===== */
+.complete-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
+  z-index: 2000; animation: fadeIn 0.3s ease;
+}
+.complete-card {
+  background: #fff; border-radius: 16px; padding: 2.5rem; text-align: center;
+  max-width: 400px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+.complete-card h2 { color: var(--primary, #1a1a2e); margin-bottom: 0.5rem; }
+.complete-stars { font-size: 2.5rem; color: #ffc107; margin: 0.5rem 0; }
+.complete-score { font-size: 1.3rem; font-weight: 700; color: var(--primary, #1a1a2e); margin-bottom: 1rem; }
+.complete-close {
+  background: #0d6efd; color: #fff; border: none; border-radius: 8px;
+  padding: 0.6rem 2rem; font-size: 1rem; font-weight: 600; cursor: pointer;
+  margin-top: 0.5rem;
+}
+.complete-close:hover { background: #0b5ed7; }
+
+/* ===== AI GRADING FEEDBACK ===== */
+.grading-container { margin-top: 1rem; animation: fadeIn 0.3s ease; }
+.grading-loading {
+  padding: 1rem; background: #f8f9fa; border: 1px solid var(--border, #dee2e6);
+  border-radius: 8px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.9rem; color: var(--muted, #6c757d);
+}
+.grading-spinner {
+  display: inline-block; width: 14px; height: 14px; border: 2px solid #dee2e6;
+  border-top-color: #0d6efd; border-radius: 50%; animation: spin 0.6s linear infinite;
+  vertical-align: middle; margin-right: 0.5rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.grading-error {
+  padding: 1rem; background: #fff3cd; border: 1px solid #ffc107;
+  border-radius: 8px; font-size: 0.85rem; color: #856404;
+}
+.grading-feedback {
+  background: #fff; border: 2px solid var(--primary, #1a1a2e); border-radius: 8px;
+  padding: 1.25rem; font-size: 0.9rem;
+}
+.grading-title {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1rem;
+  font-weight: 700; color: var(--primary, #1a1a2e); margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent, #e94560);
+}
+.grading-criterion {
+  padding: 0.6rem 0.75rem; margin-bottom: 0.5rem; border-radius: 6px;
+  line-height: 1.5; font-size: 0.85rem;
+}
+.grading-met { background: #d4edda; border-left: 3px solid #28a745; }
+.grading-not-met { background: #f8d7da; border-left: 3px solid #dc3545; }
+.grading-icon { font-weight: 700; margin-right: 0.25rem; }
+.grading-met .grading-icon { color: #155724; }
+.grading-not-met .grading-icon { color: #842029; }
+.grading-score {
+  margin: 0.75rem 0; padding: 0.5rem 0.75rem; background: var(--primary, #1a1a2e);
+  color: #ffc107; border-radius: 6px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700; font-size: 0.9rem; text-align: center;
+}
+.grading-overall {
+  margin: 0.75rem 0; font-style: italic; color: var(--text, #2d2d2d);
+  line-height: 1.6;
+}
+.grading-next-step {
+  margin-top: 0.75rem; padding: 0.75rem; background: #e8f4fd;
+  border-left: 3px solid #0d6efd; border-radius: 0 6px 6px 0;
+  font-size: 0.85rem; line-height: 1.5;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+
+
+</style>
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag teach">Course A2 • Lesson 3</span>
+  <h1>Force Field to Choices + Hierarchy to Plan</h1>
+  <p class="subtitle">Connecting Mental Models M3 and M4 to build analytical depth</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📋 KC C.10.01, C.10.02</span>
+    <span>📖 Douglass, Henry, Stanton</span>
+  </div>
+</div>
+
+<h2>Lesson Overview</h2>
+<p>In Course A1, you learned four foundational mental models: M1 (Everything Is a Choice), M2 (Structure-Function-Effect), M3 (Force Field), and M4 (Claim Hierarchy). This lesson shows you how to use M3 and M4 <em>together</em> to deepen your analytical writing.</p>
+
+<div class="phase-card teach-card" data-phase="teach">
+  <span class="lesson-tag teach">Teach • 2 min</span>
+  <h3>Four Mental Models: Quick Bridge</h3>
+
+  <p>Here's how the four models work together:</p>
+
+  <div class="key-concept">
+    <p><strong>M1: Everything Is a Choice</strong> — Identifies WHAT the author chose (word, sentence structure, organization, detail)</p>
+    <p><strong>M2: Structure-Function-Effect</strong> — Describes HOW the choice works (what pattern it creates, what function it serves)</p>
+    <p><strong>M3: Force Field</strong> — Explains WHY the author made that choice (what rhetorical situation demanded it)</p>
+    <p><strong>M4: Claim Hierarchy</strong> — Shows WHERE the choice fits in the argument's architecture (thesis, claim, evidence, counterargument)</p>
+  </div>
+
+  <p>When you combine all four, you can trace a complete analytical path: "The author chose X (M1) using S-F-E pattern Y (M2) BECAUSE force Z demanded it (M3), and it fits in the hierarchy at level W (M4)."</p>
+
+  <button class="phase-next-btn">Continue to Model</button>
+</div>
+
+<div class="phase-card model-card" data-phase="model">
+  <span class="lesson-tag model">Model • 3 min</span>
+  <h3>Combined Analysis on Douglass</h3>
+
+  <div class="passage-box">
+    <p><strong>Context:</strong> Frederick Douglass addresses a white Northern audience on July 5, 1852, asking them to consider the meaning of Independence Day from the perspective of enslaved people.</p>
+    <p>"What, to the American slave, is your Fourth of July? I answer: a day that reveals to him, more than all other days in the year, the gross injustice and cruelty to which he is the constant victim. To him, your celebration is a sham; your boasted liberty, an unholy license; your national greatness, swelling vanity; your sounds of rejoicing are empty and heartless; your denunciations of tyrants, brass fronted impudence; your shouts of liberty and equality, hollow mockery..."</p>
+    <p class="attribution">Frederick Douglass, "What to the Slave Is the Fourth of July?" (1852)</p>
+  </div>
+
+  <p><strong>Let's trace ONE choice through all four models:</strong></p>
+
+  <table>
+    <tr>
+      <th>Model</th>
+      <th>Analysis</th>
+    </tr>
+    <tr>
+      <td><strong>M1: Choice</strong></td>
+      <td>Douglass uses the possessive pronoun "your" (not "our") repeatedly: "your Fourth of July," "your celebration," "your boasted liberty."</td>
+    </tr>
+    <tr>
+      <td><strong>M2: S-F-E</strong></td>
+      <td><strong>Structure:</strong> Repeated pronoun in parallel phrases. <strong>Function:</strong> Creates distance between speaker and audience. <strong>Effect:</strong> Emphasizes exclusion — the celebration does not belong to enslaved people.</td>
+    </tr>
+    <tr>
+      <td><strong>M3: Force Field</strong></td>
+      <td><strong>Audience:</strong> White abolitionists who celebrate July 4th. <strong>Purpose:</strong> Make them feel the hypocrisy of celebrating freedom while enslaving others. <strong>Constraints:</strong> Cannot attack audience too directly or lose their support. The "your" allows critique without personal accusation.</td>
+    </tr>
+    <tr>
+      <td><strong>M4: Hierarchy</strong></td>
+      <td><strong>Thesis:</strong> The Fourth of July is a hypocritical celebration for a nation that enslaves people. <strong>Claim:</strong> The celebration excludes enslaved people. <strong>Evidence:</strong> The repeated "your" demonstrates that exclusion linguistically.</td>
+    </tr>
+  </table>
+
+  <p>Notice how each model answers a different question, but together they create a complete analytical claim.</p>
+
+  <button class="phase-next-btn">Continue to Supported Practice</button>
+</div>
+
+<div class="phase-card practice-card" data-phase="practice">
+  <span class="lesson-tag practice">Supported Practice • 8 min</span>
+  <h3>Force Field → Choice Explanation</h3>
+
+  <div class="passage-box">
+    <p><strong>Context:</strong> Patrick Henry addresses the Virginia Convention in 1775, arguing that the colonies must prepare for war with Britain.</p>
+    <p>"Gentlemen may cry, Peace, Peace — but there is no peace. The war is actually begun! The next gale that sweeps from the north will bring to our ears the clash of resounding arms! Our brethren are already in the field! Why stand we here idle? What is it that gentlemen wish? What would they have? Is life so dear, or peace so sweet, as to be purchased at the price of chains and slavery? I know not what course others may take; but as for me, give me liberty or give me death!"</p>
+    <p class="attribution">Patrick Henry, "Give Me Liberty, or Give Me Death!" (1775)</p>
+  </div>
+
+  <p><strong>Your task:</strong> For each of the three authorial choices below, write a 2-3 sentence explanation that connects the choice to a <strong>Force Field demand</strong>. Use the scaffold: "The author chose X BECAUSE [audience/purpose/constraint] demanded it."</p>
+
+  <div class="writing-task">
+    <h4>Choice 1: Rhetorical questions</h4>
+    <p><em>"Why stand we here idle? What is it that gentlemen wish? What would they have?"</em></p>
+
+    <div class="writing-input">
+      <textarea class="writing-ta" data-min-words="30" placeholder="Explain why Henry chose to use rapid-fire rhetorical questions instead of declarative statements. What about his audience or purpose made this the right choice?"></textarea>
+      <div class="writing-footer">
+        <span class="wc">0 words</span>
+        <button class="writing-submit">Submit Response</button>
+      </div>
+    </div>
+
+    <h4>Choice 2: Short, urgent sentences</h4>
+    <p><em>"The war is actually begun!" (not "The war has begun" or "We are now at war")</em></p>
+
+    <div class="writing-input">
+      <textarea class="writing-ta" data-min-words="30" placeholder="Explain why Henry chose this specific sentence structure and diction. What force field demand made brevity and present tense crucial?"></textarea>
+      <div class="writing-footer">
+        <span class="wc">0 words</span>
+        <button class="writing-submit">Submit Response</button>
+      </div>
+    </div>
+
+    <h4>Choice 3: Binary choice ("liberty or give me death")</h4>
+    <p><em>Not "I prefer liberty but could accept a negotiated peace."</em></p>
+
+    <div class="writing-input">
+      <textarea class="writing-ta" data-min-words="30" placeholder="Explain why Henry framed his argument as an absolute binary instead of acknowledging middle-ground options. What about his rhetorical situation demanded this?"></textarea>
+      <div class="writing-footer">
+        <span class="wc">0 words</span>
+        <button class="writing-submit">Submit Response</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="phase-next-btn">Continue to Independent Practice</button>
+</div>
+
+<div class="phase-card independent-card" data-phase="independent">
+  <span class="lesson-tag independent">Independent Practice • 8 min</span>
+  <h3>Hierarchy to Plan: Build Your Argument Structure</h3>
+
+  <div class="passage-box">
+    <p><strong>Context:</strong> Elizabeth Cady Stanton addresses the first women's rights convention in 1848, modeling her "Declaration of Sentiments" after the Declaration of Independence.</p>
+    <p>"We hold these truths to be self-evident: that all men and women are created equal; that they are endowed by their Creator with certain inalienable rights; that among these are life, liberty, and the pursuit of happiness... The history of mankind is a history of repeated injuries and usurpations on the part of man toward woman, having in direct object the establishment of an absolute tyranny over her. To prove this, let facts be submitted to a candid world."</p>
+    <p class="attribution">Elizabeth Cady Stanton, "Declaration of Sentiments" (1848)</p>
+  </div>
+
+  <p><strong>Your task:</strong> Build a claim hierarchy outline for an analytical essay about Stanton's strategic choices. Your outline must include:</p>
+
+  <div class="rubric-box" data-rubric="L03_hierarchy_plan">
+    <h4>Success Criteria (Scored)</h4>
+    <ul>
+      <li>Thesis statement about Stanton's overall rhetorical strategy</li>
+      <li>Two distinct claims (body paragraph topics)</li>
+      <li>For each claim: at least one specific piece of textual evidence</li>
+      <li>One counterargument or limitation Stanton's strategy might face</li>
+      <li>Proper hierarchy: thesis → claims → evidence</li>
+    </ul>
+  </div>
+
+  <div class="writing-input">
+    <textarea class="writing-ta" data-min-words="100" data-rubric="L03_hierarchy_plan" placeholder="Write your claim hierarchy outline here. Start with your thesis, then list two claims with supporting evidence, and finally address one counterargument."></textarea>
+    <div class="writing-footer">
+      <span class="wc">0 words</span>
+      <button class="writing-submit">Submit for AI Grading</button>
+    </div>
+  </div>
+
+  <button class="phase-next-btn">Continue to Transfer</button>
+</div>
+
+<div class="phase-card bridge-card" data-phase="transfer">
+  <span class="lesson-tag bridge">Transfer • 3 min</span>
+  <h3>Comparing A2 Plans to A1 Plans</h3>
+
+  <div class="transfer-prompt">
+    <p><strong>Reflection:</strong> In Course A1, you planned argumentative essays from your own knowledge (no assigned texts). In Course A2, you're planning analytical essays <em>about</em> texts.</p>
+    <p>What's different about the planning process? What stays the same?</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check Reflection</div>
+    <p>Think about the hierarchy outlines you created in A1 L05 and A1 L13. Compare them to the outline you just created for Stanton.</p>
+    <p><strong>Consider:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+      <li>Where did your thesis come from in A1 vs. A2?</li>
+      <li>What counts as "evidence" in argumentative writing vs. analytical writing?</li>
+      <li>How does M3 (Force Field) change when you're analyzing someone else's rhetorical situation instead of navigating your own?</li>
+    </ul>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Check Question</div>
+    <p>Which mental model most clearly distinguishes analytical writing (A2) from argumentative writing (A1)?</p>
+    <ol type="A">
+      <li>M1 (Everything Is a Choice) — because in A2 you analyze the author's choices, not make your own</li>
+      <li>M2 (Structure-Function-Effect) — because analytical writing requires more sophisticated sentence structures</li>
+      <li>M3 (Force Field) — because in A2 you reconstruct the author's rhetorical situation instead of responding to your own</li>
+      <li>M4 (Claim Hierarchy) — because analytical essays have more complex hierarchies than argumentative essays</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> C</p>
+        <p><strong>Explanation:</strong> While all four models apply in both A1 and A2, M3 (Force Field) most clearly marks the shift. In A1, you identified your own audience, purpose, and constraints. In A2, you reconstruct the <em>author's</em> force field by analyzing their historical context, intended audience, and rhetorical constraints. This shift from "What do I need to do?" to "What did the author need to do, and why?" is the core difference between argumentative and analytical writing.</p>
+      </div>
+    </details>
+  </div>
+
+  <button class="phase-next-btn">Complete Lesson</button>
+</div>
+
+<div class="footnote">
+  <p><strong>Course A2, Lesson 3:</strong> Force Field to Choices + Hierarchy to Plan | Mental Models M1-M4 Applied | KC C.10.01, C.10.02</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<link rel="stylesheet" href="lesson-engine.css">
+
+</body>
+</html>

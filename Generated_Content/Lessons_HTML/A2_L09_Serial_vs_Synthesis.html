@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A2 L09: Serial vs. Synthesis + Synthesis Matrix</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; font-weight: 600; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.compare-box {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;
+}
+.compare-box > div {
+  background: #f8f9fa; border: 2px solid var(--border); border-radius: 8px; padding: 1rem;
+}
+.compare-box .serial { border-color: #dc3545; }
+.compare-box .synthesis { border-color: #28a745; }
+.compare-box h4 { margin-top: 0; font-size: 0.9rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course A2 · Lesson 9</span>
+  <h1>Serial vs. Synthesis + Synthesis Matrix</h1>
+  <p class="subtitle">Organizing by argument, not by source</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KC: C.10.08</span>
+    <span>🧠 Mental Model: M4</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>The Deadly Pattern:</strong> "Source A says... Source B says... Source C says..." This is <strong>serial summarizing</strong>, not synthesis. Synthesis organizes by THEME or ARGUMENT, not by source. Sources serve YOUR argument; you don't serve them.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Serial Summarizing vs. True Synthesis</h3>
+
+  <p>The most common mistake in synthesis writing is treating it like a book report on multiple books. Students write paragraphs like this:</p>
+
+  <p style="background: #ffebee; padding: 0.75rem; border-left: 3px solid #dc3545; margin: 1rem 0; font-style: italic;">"Dr. Chen argues that standardized tests predict college success. Rodriguez, a teacher, says that tests narrow the curriculum and cause student anxiety. Owens proposes that we need better tests, not no tests. Washington, a student, describes how test scores defined his senior year."</p>
+
+  <p>That's <span class="vocab-term">serial summarizing</span> — discussing sources one at a time, in sequence. The paragraph is organized by SOURCE, not by idea.</p>
+
+  <p>Synthesis is different. In synthesis writing:</p>
+  <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+    <li><strong>YOUR argument comes first</strong> — you make a claim</li>
+    <li><strong>Sources support your claims</strong> — they appear as evidence for YOUR points</li>
+    <li><strong>Multiple sources appear in the same sentence or paragraph</strong> — woven together around a theme</li>
+    <li><strong>Organization is by THEME</strong>, not by source (e.g., "validity concerns," "equity implications," "impact on teaching")</li>
+  </ul>
+
+  <p>Think back to <span class="vocab-term">M4: Claim Hierarchy</span>. In a synthesis essay, YOUR thesis sits at the top of the hierarchy. Each body paragraph builds one of your claims. Sources appear as EVIDENCE within that hierarchy — they don't create the hierarchy themselves.</p>
+
+  <div class="key-concept">
+    <p><strong>The Test:</strong> If you removed all the source citations, would your paragraph still make a clear argument? If yes, you're synthesizing. If no — if the paragraph becomes a disconnected list — you're serial summarizing.</p>
+  </div>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <h3>Serial vs. Synthesis: Side by Side</h3>
+
+  <p><strong>Topic:</strong> Should standardized tests remain the primary way schools measure student learning?</p>
+
+  <div class="compare-box">
+    <div class="serial">
+      <h4 style="color: #dc3545;">❌ Serial Summarizing</h4>
+      <p style="font-size: 0.9rem; line-height: 1.6;">Dr. Michael Chen argues that standardized tests are the single strongest predictor of college success, citing data from over 200,000 students. He believes tests provide objective measures that prevent subjective bias. In contrast, Jennifer Rodriguez, a high school teacher, argues that standardized testing transforms classrooms into test-prep factories and that her students lost three weeks that could have been spent studying literature. She thinks tests cause psychological harm and anxiety. Meanwhile, Dr. Patricia Owens takes a middle position, arguing that current tests are flawed but that we shouldn't abandon assessment altogether. She proposes performance-based tasks and points to international examples like Finland.</p>
+    </div>
+    <div class="synthesis">
+      <h4 style="color: #28a745;">✓ True Synthesis</h4>
+      <p style="font-size: 0.9rem; line-height: 1.6;">While standardized tests may correlate with college outcomes (Chen), this predictive power comes at a significant cost to the quality of education students receive. When schools devote resources and instructional time to test preparation, they necessarily reduce time available for deeper learning — Rodriguez reports losing three weeks of literary analysis to practice "bubbling answer sheets," and her experience reflects a national pattern of curriculum narrowing. The solution is not to eliminate accountability measures entirely, but to redesign assessment so it captures complex thinking rather than narrow recall (Owens). International models demonstrate that sophisticated performance tasks can provide system-level data without reducing education to test-taking skills.</p>
+    </div>
+  </div>
+
+  <p><strong>What's different?</strong></p>
+  <ul style="margin-left: 1.5rem;">
+    <li><strong>Organization:</strong> The serial version moves source-by-source ("Chen argues... In contrast, Rodriguez... Meanwhile, Owens..."). The synthesis version moves idea-by-idea, with sources appearing where relevant to the argument.</li>
+    <li><strong>Voice:</strong> The serial version has no authorial voice — it's a neutral report on what others said. The synthesis version has a clear thesis ("predictive power comes at a cost") that the writer is building.</li>
+    <li><strong>Integration:</strong> The serial version treats each source as a complete unit. The synthesis version breaks sources apart and recombines them — Chen and Rodriguez appear in the same sentence, serving the same point about trade-offs.</li>
+  </ul>
+
+  <h3 style="margin-top: 2rem;">The Synthesis Matrix</h3>
+
+  <p>How do you plan synthesis? Use a <strong>Synthesis Matrix</strong>. It's a table where:</p>
+  <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+    <li><strong>Rows = Sources</strong> (Chen, Rodriguez, Owens, Washington)</li>
+    <li><strong>Columns = Themes</strong> (Validity, Equity, Impact on Teaching, Alternatives)</li>
+    <li><strong>Cells = What each source says about each theme</strong></li>
+  </ul>
+
+  <p>Here's the matrix for Source Set A (Standardized Testing):</p>
+
+  <table style="font-size: 0.85rem;">
+    <tr>
+      <th style="width: 20%;">Source</th>
+      <th style="width: 20%;">Validity: Do tests measure what matters?</th>
+      <th style="width: 20%;">Equity: Fair or unfair?</th>
+      <th style="width: 20%;">Impact on Teaching</th>
+      <th style="width: 20%;">Solutions/Alternatives</th>
+    </tr>
+    <tr>
+      <td><strong>Chen (researcher)</strong></td>
+      <td>Tests predict college success; measure foundational skills</td>
+      <td>Tests promote equity by preventing subjective bias</td>
+      <td>[doesn't address]</td>
+      <td>Keep current tests; they're our best tool</td>
+    </tr>
+    <tr>
+      <td><strong>Rodriguez (teacher)</strong></td>
+      <td>Tests measure narrow slice; miss creativity, collaboration</td>
+      <td>Tests harm students with anxiety, processing differences, limited English</td>
+      <td>Tests force test-prep, reduce real learning time</td>
+      <td>Do better than current system [not specific]</td>
+    </tr>
+    <tr>
+      <td><strong>Owens (policy analyst)</strong></td>
+      <td>Current tests are flawed (multiple-choice, timed); better tests possible</td>
+      <td>Need data for equity, but current tests don't capture full range</td>
+      <td>Current tests narrow curriculum; performance tasks could enrich it</td>
+      <td>Performance-based assessments, portfolios, international models (Finland, Singapore)</td>
+    </tr>
+    <tr>
+      <td><strong>Washington (student)</strong></td>
+      <td>[doesn't address measurement validity directly]</td>
+      <td>Test scores become identity; access to test prep resources unequal</td>
+      <td>[doesn't address]</td>
+      <td>Test-optional admissions worked for him</td>
+    </tr>
+  </table>
+
+  <p><strong>Notice:</strong> The matrix is organized by <strong>themes</strong> (columns), not sources. This forces you to see where sources agree, disagree, or address different aspects of the issue. When you write, you'll organize by column (theme), not by row (source).</p>
+</div>
+
+<h2>Phase 3: Supported Practice (7 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Serial vs. Synthesis Detection</h3>
+
+  <p><strong>Your Task:</strong> Read each paragraph below. Classify it as <strong>Serial Summarizing</strong> or <strong>True Synthesis</strong>. Explain your reasoning.</p>
+
+  <div class="check-question">
+    <div class="q-label">Item 1</div>
+    <div class="passage-box">
+      <p>The relationship between screen time and adolescent wellbeing is complex and contested. Dr. Sarah Henderson's 2022 study of 1,500 teenagers found that moderate social media use (1-2 hours daily) correlated with higher self-reported happiness and larger friend networks compared to non-users. However, students who used social media for more than 3 hours daily showed increased rates of anxiety and depression. In contrast, the Patel and Johnson study from 2021 examined the content of social media use rather than just duration and concluded that passive scrolling was associated with negative outcomes while active engagement (commenting, messaging) was associated with positive ones. Meanwhile, Dr. Marcus Lee's longitudinal research spanning five years argues that the direction of causation remains unclear — students who are already anxious may seek out social media as a coping mechanism, meaning that social media use could be a symptom rather than a cause of poor mental health.</p>
+    </div>
+    <p><strong>Classification:</strong></p>
+    <ol type="A">
+      <li>Serial Summarizing</li>
+      <li>True Synthesis</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> A (Serial Summarizing)</p>
+        <p><strong>Why:</strong> The paragraph discusses three sources sequentially, using transition words like "In contrast" and "Meanwhile" to move from one source to the next. Each source is treated as a separate unit of information. The paragraph does not organize by THEME (e.g., "quantity vs. quality of use" or "the causation problem") but by SOURCE. The reader learns what Henderson says, then what Patel and Johnson say, then what Lee says, but the connections between these findings are left implicit. To synthesize, the writer should organize around themes: one section on how quantity vs. quality matters (Henderson vs. Patel/Johnson), another on the causation problem (Lee).</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 2</div>
+    <div class="passage-box">
+      <p>While automation is often framed as a threat to employment, the relationship between technology and jobs is more nuanced than simple displacement. Historically, technological revolutions have eliminated certain types of work while creating new categories of employment — the introduction of ATMs in the 1980s reduced the need for bank tellers per branch, yet the number of bank branches increased because lower operating costs made expansion feasible, ultimately leading to more teller jobs overall (Autor). Today's automation follows a similar pattern: jobs that consist of routine, predictable tasks are vulnerable to replacement, but roles requiring creativity, complex problem-solving, or human interaction remain difficult to automate (Brynjolfsson & McAfee). The challenge is not whether jobs will exist but whether workers displaced from routine roles can access the education and training necessary to transition into the emerging fields. As economist Daron Acemoglu argues, the question is not "Will robots take our jobs?" but "Who will benefit from automation, and what policies can ensure that gains are broadly shared?" (Acemoglu & Restrepo). The anxiety around automation is justified, but it is ultimately a problem of distribution and policy rather than a problem of technology itself.</p>
+    </div>
+    <p><strong>Classification:</strong></p>
+    <ol type="A">
+      <li>Serial Summarizing</li>
+      <li>True Synthesis</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B (True Synthesis)</p>
+        <p><strong>Why:</strong> The paragraph is organized around a unified argument: automation's effect on employment is not simple job loss but a distribution problem. Sources are integrated to build this argument rather than presented sequentially. Autor's historical example, Brynjolfsson and McAfee's distinction between routine and complex work, and Acemoglu's policy framing all work together to support the writer's central claim. The writer's own analytical voice ("the relationship is more nuanced," "the challenge is not whether but who") drives the paragraph, with sources serving that argument. This is synthesis.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 3</div>
+    <div class="passage-box">
+      <p>The debate over homework's effectiveness has generated significant research. A 2018 meta-analysis by Dr. Karen Ostroff examined 42 studies and concluded that homework has a positive but modest effect on academic achievement in high school, with an effect size of 0.28. Ostroff's research suggested that homework is most beneficial when it reinforces rather than introduces new material. Another major study, conducted by Lee and Ramirez in 2020, tracked 800 middle school students and found no significant correlation between time spent on homework and test performance, leading the researchers to question whether homework is effective at all for younger students. Meanwhile, Robert Chen's qualitative research involving interviews with 60 teachers revealed that educators assign homework primarily because they believe it builds discipline and responsibility rather than because it directly improves learning. Chen's findings suggest that the perceived benefits of homework may be about habit formation rather than academic skill development.</p>
+    </div>
+    <p><strong>Classification:</strong></p>
+    <ol type="A">
+      <li>Serial Summarizing</li>
+      <li>True Synthesis</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> A (Serial Summarizing)</p>
+        <p><strong>Why:</strong> The paragraph moves from Ostroff's study to Lee and Ramirez's study to Chen's study, using "Another major study" and "Meanwhile" as source-to-source transitions. Each study is presented as a standalone finding. The paragraph does not organize around themes (e.g., "Does homework actually improve learning?" vs. "Why do teachers assign it?") but around sources. The connections between these studies are left for the reader to infer. To synthesize, the writer should separate the evidence question (Does homework work? Ostroff says modest effects; Lee/Ramirez say unclear for middle school) from the practice question (Why is it assigned? Chen shows teachers value discipline over learning).</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 4</div>
+    <div class="passage-box">
+      <p>Urban tree canopy coverage offers multiple benefits that extend beyond aesthetics. Environmental scientists have demonstrated that trees in cities significantly reduce the urban heat island effect — neighborhoods with 30% or more tree coverage are on average 5-7 degrees cooler in summer than comparable areas with less than 10% coverage (Martinez et al.). This cooling effect is especially critical for low-income communities, which disproportionately experience heat-related illness and lack access to air conditioning (Reynolds). Trees also improve air quality by filtering pollutants; a single mature tree can absorb up to 48 pounds of carbon dioxide per year while releasing oxygen (Park Service Report). Beyond environmental impacts, urban greenery has measurable effects on human psychology and behavior. Neighborhoods with higher tree density report lower crime rates and higher levels of social cohesion, suggesting that natural environments encourage outdoor activity and community interaction (Thompson & Ward). Given these converging benefits — environmental, health-related, and social — investment in urban forestry should be understood not as a luxury but as essential infrastructure.</p>
+    </div>
+    <p><strong>Classification:</strong></p>
+    <ol type="A">
+      <li>Serial Summarizing</li>
+      <li>True Synthesis</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B (True Synthesis)</p>
+        <p><strong>Why:</strong> The paragraph is organized by TYPES OF BENEFITS (environmental, health, social) rather than by source. Sources are woven in to support points as needed, but the reader experiences a unified argument rather than a source-by-source tour. The writer's own analytical claim ("investment in urban forestry should be understood as essential infrastructure") frames the entire paragraph, and sources serve that claim. Multiple sources appear in service of the same point (e.g., Martinez + Reynolds both support the cooling/health claim). The writer's voice and argument are primary; sources are secondary support. This is synthesis.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (8 min)</h2>
+<div class="phase-card independent-card" data-min-words="30" data-rubric="L09_synthesis_matrix">
+  <h3>Complete Synthesis Matrix + Write Synthesis Sentence</h3>
+
+  <p><strong>Task 1:</strong> Complete the Synthesis Matrix below for Source Set A (Standardized Testing). You read all four sources in L08. Fill in what each source says about each theme.</p>
+
+  <table style="font-size: 0.85rem; margin: 1.5rem 0;">
+    <tr>
+      <th style="width: 22%;">Source</th>
+      <th style="width: 26%;">Theme 1: Test Validity (What do tests actually measure?)</th>
+      <th style="width: 26%;">Theme 2: Equity Concerns (Who benefits? Who is harmed?)</th>
+      <th style="width: 26%;">Theme 3: Solutions (What should we do?)</th>
+    </tr>
+    <tr>
+      <td><strong>Chen (researcher)</strong></td>
+      <td><em>[Fill in what Chen says about test validity]</em></td>
+      <td><em>[Fill in what Chen says about equity]</em></td>
+      <td><em>[Fill in Chen's proposed solution]</em></td>
+    </tr>
+    <tr>
+      <td><strong>Rodriguez (teacher)</strong></td>
+      <td><em>[Fill in what Rodriguez says about test validity]</em></td>
+      <td><em>[Fill in what Rodriguez says about equity]</em></td>
+      <td><em>[Fill in Rodriguez's proposed solution]</em></td>
+    </tr>
+    <tr>
+      <td><strong>Owens (policy analyst)</strong></td>
+      <td><em>[Fill in what Owens says about test validity]</em></td>
+      <td><em>[Fill in what Owens says about equity]</em></td>
+      <td><em>[Fill in Owens's proposed solution]</em></td>
+    </tr>
+    <tr>
+      <td><strong>Washington (student)</strong></td>
+      <td><em>[Fill in what Washington says about test validity, if anything]</em></td>
+      <td><em>[Fill in what Washington says about equity]</em></td>
+      <td><em>[Fill in Washington's experience with solutions]</em></td>
+    </tr>
+  </table>
+
+  <p><strong>Task 2:</strong> Now write ONE synthesis sentence that combines at least TWO sources around ONE theme. Use the matrix to see where sources intersect.</p>
+
+  <p style="background: #f0f4ff; padding: 1rem; border-radius: 6px; margin: 1rem 0;"><strong>Example structure:</strong> "While [Source A] argues [position], [Source B] points out [complicating factor], suggesting that [your analytical insight]."</p>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li>Matrix completed with specific information from each source</li>
+      <li>Synthesis sentence combines at least 2 sources</li>
+      <li>Sentence is organized by theme/argument, not "Source A says... Source B says..."</li>
+      <li>Sentence shows YOUR analytical thinking, not just summary</li>
+      <li>30+ words in synthesis sentence</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>Why is the Synthesis Matrix organized by THEMES (columns), not by SOURCES (rows)? What does this force you to do differently when you plan your essay?</strong></p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #555;">Think about: If you organized by sources (one row per source, listing everything it said), how would you write your essay? How does organizing by themes change your writing process?</p>
+  </div>
+
+  <div style="background: #fff3e0; border-left: 4px solid #fd7e14; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;">
+    <p><strong>Looking Ahead:</strong> In L10, you'll practice attribution fluency — the 10+ ways to bring a source into your writing. In L11, you'll practice source weaving — making sources "talk to each other" within your paragraphs. Both skills build on the foundation you just practiced: organizing by argument, not by source.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>A2 L09 • Serial vs. Synthesis + Synthesis Matrix • KC C.10.08 • ~25 min • M4</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="A2_L08_Source_Perspective.html" class="prev">L08: Source Perspective</a>
+  <a href="A2_L10_Attribution_Fluency.html" class="next">L10: Attribution Fluency</a>
+</nav>
+</body>
+</html>

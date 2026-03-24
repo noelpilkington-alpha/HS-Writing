@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 16: ACT Perspective Analysis</title>
+    <link rel="stylesheet" href="lesson-engine.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .lesson-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .lesson-header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2em;
+        }
+
+        .lesson-meta {
+            font-size: 0.9em;
+            opacity: 0.95;
+        }
+
+        .phase {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .phase-locked {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .phase-number {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .phase-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .key-concept {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .key-concept h3 {
+            margin-top: 0;
+            color: #1976D2;
+        }
+
+        .perspective-map {
+            background: white;
+            border: 2px solid #2196F3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .perspective-map h4 {
+            margin-top: 0;
+            color: #1976D2;
+            font-size: 1em;
+        }
+
+        .perspective-map ul {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+
+        .perspective-map li {
+            margin: 6px 0;
+            font-size: 0.95em;
+        }
+
+        .passage-box {
+            background: #f9f9f9;
+            border: 2px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            font-family: Georgia, serif;
+            line-height: 1.8;
+        }
+
+        .passage-box h4 {
+            margin-top: 0;
+            color: #555;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.1em;
+        }
+
+        .attribution {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .model-analysis {
+            background: #fafafa;
+            border: 2px solid #9e9e9e;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .model-analysis h4 {
+            margin-top: 0;
+            color: #555;
+            font-size: 1em;
+        }
+
+        .evaluation-example {
+            background: #fff9c4;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border-left: 3px solid #fbc02d;
+        }
+
+        .check-question {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .check-question h4 {
+            margin-top: 0;
+            color: #e65100;
+        }
+
+        .check-question ol {
+            margin: 15px 0;
+        }
+
+        .check-question li {
+            margin: 8px 0;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .check-question li:hover {
+            background: #ffe0b2;
+        }
+
+        details {
+            margin-top: 15px;
+            padding: 12px;
+            background: white;
+            border-radius: 4px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #e65100;
+        }
+
+        summary:hover {
+            color: #ff9800;
+        }
+
+        .self-check {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .self-check h4 {
+            margin-top: 0;
+            color: #6a1b9a;
+        }
+
+        .writing-task {
+            background: #e8f5e9;
+            border: 2px solid #4CAF50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .writing-task h4 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-family: Georgia, serif;
+            font-size: 1em;
+            line-height: 1.6;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .word-count {
+            text-align: right;
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .rubric-box {
+            background: #fff8e1;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .rubric-box h4 {
+            margin-top: 0;
+            color: #f57f17;
+        }
+
+        .rubric-box ul {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+
+        .rubric-box li {
+            margin: 8px 0;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #764ba2;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .next-phase-btn {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .next-phase-btn.show {
+            display: inline-block;
+        }
+
+        .lock-icon {
+            float: right;
+            color: #999;
+            font-size: 1.5em;
+        }
+
+        .instruction-highlight {
+            background: #fffde7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border: 1px solid #fbc02d;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        .prompt-label {
+            font-weight: bold;
+            color: #1976D2;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="lesson-header">
+        <h1>Lesson 16: ACT Perspective Analysis</h1>
+        <div class="lesson-meta">
+            Course A2 (Grade 10) | Time: ~25 minutes | KCs: C.10.15 (Analyze ACT Perspectives), C.10.16 (Evaluate Strengths/Limitations) | Mental Models: M3 (Force Field), M4 (Claim Hierarchy)
+        </div>
+    </div>
+
+    <!-- PHASE 1: TEACH -->
+    <div class="phase" data-phase="1">
+        <div class="phase-header">
+            <div class="phase-number">1</div>
+            <div class="phase-title">Teach: Understanding ACT Writing Format</div>
+        </div>
+
+        <p>The ACT Writing test gives you a controversial issue and <strong>three pre-written perspectives</strong>. Your job is NOT to pick a side and defend it blindly. Instead, you must:</p>
+
+        <ol>
+            <li><strong>Analyze what each perspective actually says</strong> (not just summarize it)</li>
+            <li><strong>Evaluate when each perspective is strongest and when it fails</strong></li>
+            <li><strong>Develop your own position</strong> in relationship to all three perspectives</li>
+        </ol>
+
+        <p>Most students rush through the perspectives to get to "their" argument. But the highest-scoring essays spend significant time <strong>unpacking the assumptions, values, and blind spots</strong> in each perspective.</p>
+
+        <div class="key-concept">
+            <h3>Key Concept: The Perspective Map</h3>
+            <p>Every ACT perspective has four layers you need to identify:</p>
+
+            <div class="perspective-map">
+                <h4>Layer 1: Core Claim</h4>
+                <ul>
+                    <li>What is the main position being taken?</li>
+                    <li>What specific action or judgment is being advocated?</li>
+                </ul>
+            </div>
+
+            <div class="perspective-map">
+                <h4>Layer 2: Underlying Assumption</h4>
+                <ul>
+                    <li>What must be true for this perspective to make sense?</li>
+                    <li>What is this perspective taking for granted?</li>
+                </ul>
+            </div>
+
+            <div class="perspective-map">
+                <h4>Layer 3: What It Values</h4>
+                <ul>
+                    <li>What does this perspective prioritize above all else?</li>
+                    <li>Justice? Efficiency? Freedom? Tradition? Innovation?</li>
+                </ul>
+            </div>
+
+            <div class="perspective-map">
+                <h4>Layer 4: What It Overlooks</h4>
+                <ul>
+                    <li>What concerns, complications, or counterarguments does this perspective ignore?</li>
+                    <li>Under what conditions would this perspective fail?</li>
+                </ul>
+            </div>
+        </div>
+
+        <p><strong>Mental Model M3: The Constraint Test.</strong> For each perspective, ask: "Under what conditions is this perspective strongest? Under what conditions does it break down?" This is how you move from summary to analysis.</p>
+
+        <div class="instruction-highlight">
+            <p><strong>Example Constraint Test:</strong></p>
+            <p>"Perspective 1 is strongest when dealing with <em>[specific scenario]</em>, but it fails to account for <em>[specific complication]</em>. In situations where <em>[condition]</em>, this perspective would lead to <em>[unintended consequence]</em>."</p>
+        </div>
+
+        <button class="next-phase-btn show" onclick="unlockPhase(2)">Continue to Model</button>
+    </div>
+
+    <!-- PHASE 2: MODEL -->
+    <div class="phase phase-locked" data-phase="2">
+        <div class="phase-header">
+            <div class="phase-number">2</div>
+            <div class="phase-title">Model: Mapping and Evaluating Three Perspectives</div>
+            <span class="lock-icon">🔒</span>
+        </div>
+
+        <p>Let's analyze all three perspectives from an ACT prompt on social media age restrictions. Watch how I unpack each perspective using the four-layer map and then evaluate its strengths and limitations.</p>
+
+        <div class="passage-box">
+            <h4>ACT Prompt: Social Media Age Restrictions</h4>
+            <p><strong>Issue:</strong> Many social media platforms officially require users to be at least 13 years old, but enforcement is minimal and millions of younger children use these platforms daily. Some lawmakers have proposed raising the minimum age to 16 and requiring platforms to verify users' ages.</p>
+
+            <p style="margin-top: 15px;"><strong>Perspective One:</strong> Social media companies should be required to enforce strict age verification and raise the minimum age to 16. Young people's brains are still developing, and exposure to social media during critical years has been linked to anxiety, depression, and shortened attention spans.</p>
+
+            <p style="margin-top: 15px;"><strong>Perspective Two:</strong> Age restrictions are the wrong approach because they treat all young people the same regardless of maturity, and they are nearly impossible to enforce without invasive surveillance. Rather than banning access, we should invest in digital literacy education.</p>
+
+            <p style="margin-top: 15px;"><strong>Perspective Three:</strong> The responsibility for children's social media use belongs primarily to parents and families, not to corporations or the government. Families understand their own children's maturity levels far better than any blanket policy can.</p>
+        </div>
+
+        <div class="model-analysis">
+            <h4>Perspective One: Map & Evaluation</h4>
+            <ul>
+                <li><strong>Core Claim:</strong> Companies should enforce age 16+ with verification</li>
+                <li><strong>Underlying Assumption:</strong> Age is a reliable proxy for developmental readiness; companies can effectively enforce restrictions</li>
+                <li><strong>What It Values:</strong> Youth safety, corporate responsibility</li>
+                <li><strong>What It Overlooks:</strong> Privacy concerns with age verification; assumes all 16-year-olds are mature enough while all 15-year-olds are not</li>
+            </ul>
+
+            <div class="evaluation-example">
+                <strong>Strength/Limitation Evaluation:</strong> Perspective 1 is strongest when addressing the documented harms of early social media exposure and the profit motive that drives companies to ignore age rules. However, it fails when confronted with the surveillance infrastructure required for real age verification—the cure may be worse than the disease. In situations where young activists use social media for organizing (climate protests, school safety campaigns), this perspective would exclude voices that deserve to be heard.
+            </div>
+        </div>
+
+        <div class="model-analysis">
+            <h4>Perspective Two: Map & Evaluation</h4>
+            <ul>
+                <li><strong>Core Claim:</strong> Education, not restriction, is the solution</li>
+                <li><strong>Underlying Assumption:</strong> Young people can be taught to resist psychologically manipulative platform design; education can counteract addictive algorithms</li>
+                <li><strong>What It Values:</strong> Skills, empowerment, avoiding surveillance</li>
+                <li><strong>What It Overlooks:</strong> The asymmetry between billion-dollar companies engineering addiction and 12-year-olds receiving a digital literacy lesson</li>
+            </ul>
+
+            <div class="evaluation-example">
+                <strong>Strength/Limitation Evaluation:</strong> Perspective 2 is strongest when pointing out the enforcement impossibility and the value of skills over rules. It fails, however, when it assumes that informed choice is always possible—no amount of education fully neutralizes algorithms designed by teams of psychologists to maximize engagement. In situations where the platform itself is the problem (algorithmically amplified hate, for instance), teaching users to navigate it better is insufficient.
+            </div>
+        </div>
+
+        <div class="model-analysis">
+            <h4>Perspective Three: Map & Evaluation</h4>
+            <ul>
+                <li><strong>Core Claim:</strong> Parents, not companies/government, should control children's access</li>
+                <li><strong>Underlying Assumption:</strong> All families have equal capacity, knowledge, and time to guide children's media use; family authority should be primary</li>
+                <li><strong>What It Values:</strong> Parental rights, individual family judgment, limited government</li>
+                <li><strong>What It Overlooks:</strong> Wildly unequal family resources and the collective action problem (one family's choice affects other children's social experience)</li>
+            </ul>
+
+            <div class="evaluation-example">
+                <strong>Strength/Limitation Evaluation:</strong> Perspective 3 is strongest when defending families' right to make different choices based on their own children's needs and when warning against government overreach. It fails when it ignores that not all families have the technical knowledge, time, or leverage to counteract peer pressure. In situations where social media use has become socially mandatory (group chats for homework, team communication), individual family opt-outs exact a real social cost on the child.
+            </div>
+        </div>
+
+        <p><strong>Notice:</strong> Each evaluation uses <strong>conditional language</strong>: "strongest when..." and "fails when..." This is how you demonstrate sophisticated thinking about perspectives.</p>
+
+        <button class="next-phase-btn show" onclick="unlockPhase(3)">Continue to Supported Practice</button>
+    </div>
+
+    <!-- PHASE 3: SUPPORTED PRACTICE -->
+    <div class="phase phase-locked" data-phase="3">
+        <div class="phase-header">
+            <div class="phase-number">3</div>
+            <div class="phase-title">Supported Practice: Map and Evaluate All Three Perspectives</div>
+            <span class="lock-icon">🔒</span>
+        </div>
+
+        <p>Now you'll practice the full analysis process on a new ACT prompt. Complete the Perspective Map for all three perspectives, then write a Strength/Limitation sentence for each.</p>
+
+        <div class="passage-box">
+            <h4>ACT Prompt: Homework in Public Schools</h4>
+
+            <p class="prompt-label">Issue:</p>
+            <p>The role of homework in education has become increasingly controversial. Some schools have dramatically reduced or eliminated homework, while others have doubled down on it as essential practice. The debate touches on questions about how students learn best, what schools owe to families' time, and whether homework deepens or merely reinforces inequality.</p>
+
+            <p class="prompt-label" style="margin-top: 20px;">Perspective One:</p>
+            <p>Homework is an essential part of learning because it builds discipline, reinforces classroom instruction, and prepares students for the independent work expectations of college and careers. Students who practice skills outside of class consistently outperform those who do not. Reducing homework may feel compassionate, but it ultimately lowers academic standards and leaves students unprepared.</p>
+
+            <p class="prompt-label" style="margin-top: 20px;">Perspective Two:</p>
+            <p>Homework should be significantly reduced because it disproportionately harms students who lack quiet study spaces, internet access, or parental support at home. What looks like a "study habit" gap is often a resource gap. Schools should focus on making the school day itself more effective rather than outsourcing learning to environments they cannot control.</p>
+
+            <p class="prompt-label" style="margin-top: 20px;">Perspective Three:</p>
+            <p>The real problem is not the quantity of homework but its quality. Most homework consists of repetitive busywork that does little to deepen understanding. Schools should assign less homework overall but ensure that what they do assign involves meaningful, creative application of ideas—projects, reflections, and real-world problem-solving rather than worksheets and drills.</p>
+
+            <p class="attribution">Write a unified, coherent essay in which you evaluate multiple perspectives on the role of homework in public schools.</p>
+        </div>
+
+        <div class="writing-task">
+            <h4>Your Task:</h4>
+            <p><strong>For each perspective (One, Two, and Three):</strong></p>
+            <ol>
+                <li>Identify the four layers: Core Claim, Underlying Assumption, What It Values, What It Overlooks</li>
+                <li>Write a Strength/Limitation evaluation using conditional language ("strongest when..." / "fails when...")</li>
+            </ol>
+
+            <div class="instruction-highlight">
+                <p><strong>Format your response like this:</strong></p>
+                <p><strong>Perspective One:</strong><br>
+                Core Claim: [...]<br>
+                Underlying Assumption: [...]<br>
+                What It Values: [...]<br>
+                What It Overlooks: [...]<br>
+                Strength/Limitation: [2-3 sentence evaluation]</p>
+                <p style="margin-top: 10px;"><em>(Repeat for Perspectives Two and Three)</em></p>
+            </div>
+
+            <textarea
+                data-phase-gate="3"
+                data-min-words="80"
+                placeholder="Write your analysis of all three perspectives here..."></textarea>
+            <div class="word-count">Word count: <span>0</span></div>
+        </div>
+
+        <button class="next-phase-btn" onclick="unlockPhase(4)">Continue to Independent Practice</button>
+    </div>
+
+    <!-- PHASE 4: INDEPENDENT PRACTICE -->
+    <div class="phase phase-locked" data-phase="4">
+        <div class="phase-header">
+            <div class="phase-number">4</div>
+            <div class="phase-title">Independent Practice: Full Perspective Analysis</div>
+            <span class="lock-icon">🔒</span>
+        </div>
+
+        <p>This time, you're on your own. No scaffold. Decompose all three perspectives and evaluate their strengths and limitations using the four-layer map and conditional language.</p>
+
+        <div class="passage-box">
+            <h4>ACT Prompt: Renewable Energy Transition</h4>
+
+            <p class="prompt-label">Issue:</p>
+            <p>Many governments have set ambitious targets to transition from fossil fuels to renewable energy sources like solar and wind within the next two decades. While most people agree that reducing carbon emissions is important, there is significant disagreement about how quickly this transition should happen and who should bear the costs. Communities that depend on fossil fuel industries for jobs and economic stability are especially affected by these decisions.</p>
+
+            <p class="prompt-label" style="margin-top: 20px;">Perspective One:</p>
+            <p>The transition to renewable energy must happen as quickly as possible, even if it causes short-term economic disruption. Climate change is an existential threat, and every year of delay makes the eventual consequences more severe and more costly. The jobs lost in fossil fuel industries will be replaced by new jobs in the growing clean energy sector, and governments should accelerate this shift with aggressive policy and investment.</p>
+
+            <p class="prompt-label" style="margin-top: 20px;">Perspective Two:</p>
+            <p>A rapid transition to renewable energy will devastate working-class communities that depend on fossil fuel industries, and the people making these policies rarely live in those communities. Any transition plan must prioritize the economic security of affected workers and towns first, moving at a pace that allows communities to adapt rather than collapse. Justice for the planet cannot come at the expense of justice for people.</p>
+
+            <p class="prompt-label" style="margin-top: 20px;">Perspective Three:</p>
+            <p>The best path forward is not choosing between fossil fuels and renewables but investing heavily in new technologies—like advanced nuclear power, carbon capture, and next-generation batteries—that could allow us to reduce emissions without forcing a disruptive either-or transition. Technological innovation has solved seemingly impossible problems before, and it is more realistic than asking entire economies to transform overnight.</p>
+
+            <p class="attribution">Write a unified, coherent essay in which you evaluate multiple perspectives on the transition to renewable energy.</p>
+        </div>
+
+        <div class="writing-task">
+            <h4>Your Task:</h4>
+            <p>Decompose and evaluate all three perspectives using the four-layer Perspective Map. For each perspective, write a Strength/Limitation evaluation that uses conditional language and identifies specific scenarios where the perspective succeeds or fails.</p>
+
+            <textarea
+                data-phase-gate="4"
+                data-rubric="L16_perspective_analysis"
+                data-min-words="80"
+                placeholder="Write your complete perspective analysis here..."></textarea>
+            <div class="word-count">Word count: <span>0</span></div>
+        </div>
+
+        <div class="rubric-box">
+            <h4>Success Criteria:</h4>
+            <ul>
+                <li>Each perspective's core claim identified accurately</li>
+                <li>Underlying assumptions made explicit (not just restating the claim)</li>
+                <li>Strength/limitation uses conditional language ("strongest when..." / "fails when...")</li>
+                <li>All three perspectives analyzed (not just your favorite)</li>
+            </ul>
+        </div>
+
+        <button class="next-phase-btn" onclick="unlockPhase(5)">Continue to Transfer</button>
+    </div>
+
+    <!-- PHASE 5: TRANSFER -->
+    <div class="phase phase-locked" data-phase="5">
+        <div class="phase-header">
+            <div class="phase-number">5</div>
+            <div class="phase-title">Transfer: Connection to Source Evaluation</div>
+            <span class="lock-icon">🔒</span>
+        </div>
+
+        <p>You've just learned how to analyze ACT perspectives systematically. But this skill isn't limited to the ACT test—it's the same skill you've been building all year.</p>
+
+        <div class="self-check">
+            <h4>Self-Check:</h4>
+            <p><strong>How is ACT perspective analysis like source evaluation (L08)?</strong></p>
+
+            <p style="margin-top: 15px;">Think about it: In L08, you learned to evaluate sources by identifying their <em>perspective, assumptions, and blind spots</em>. You asked: "What does this source value? What does it overlook? When is this source most credible and when should I be skeptical?"</p>
+
+            <p style="margin-top: 15px;">ACT perspectives are just <strong>pre-packaged sources</strong>. The four-layer map you used today is the same critical thinking you apply to any argument:</p>
+            <ul style="margin-top: 10px;">
+                <li>What is the claim? (Core Claim)</li>
+                <li>What assumptions make this claim possible? (Underlying Assumption)</li>
+                <li>What does this argument prioritize? (What It Values)</li>
+                <li>What complications does it ignore? (What It Overlooks)</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>The only difference:</strong> In synthesis essays, you read 6-7 sources and decide which perspectives to engage. In ACT essays, you're given exactly 3 perspectives and required to engage all of them. But the analytical skill is identical.</p>
+        </div>
+
+        <div class="key-concept">
+            <h3>Why This Matters:</h3>
+            <p>The highest-scoring ACT essays don't just <em>mention</em> the three perspectives—they demonstrate genuine understanding of <strong>the tensions between them</strong>. Graders are looking for writers who can:</p>
+            <ul style="margin-top: 10px;">
+                <li>Identify where two perspectives share common ground (even if they reach different conclusions)</li>
+                <li>Explain why intelligent people disagree (not just that they do)</li>
+                <li>Recognize when perspectives are answering different questions entirely</li>
+                <li>Evaluate perspectives fairly, even when disagreeing with them</li>
+            </ul>
+
+            <p style="margin-top: 15px;">This is <strong>Mental Model M3: Force Field Analysis</strong> applied to pre-written arguments. You're not picking a side—you're understanding the full intellectual landscape and then navigating it strategically.</p>
+        </div>
+
+        <p style="margin-top: 30px; font-size: 1.1em; text-align: center;"><strong>Lesson Complete!</strong> You've learned how to analyze ACT perspectives using the four-layer map and conditional evaluation.</p>
+    </div>
+
+    <script src="lesson-engine.js"></script>
+</body>
+</html>

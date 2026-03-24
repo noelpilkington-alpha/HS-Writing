@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L04: They Say/I Say — Move Identification</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+.lesson-header {
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+.lesson-tag {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.bridge { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; font-weight: 600; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.bridge-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b3d9f2; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.rubric-box {
+  background: #f8f9fa; border: 2px solid var(--primary); border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+}
+.practice-item {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.25rem; margin: 1rem 0;
+}
+details { margin: 1rem 0; }
+summary {
+  cursor: pointer; font-weight: 600; padding: 0.5rem;
+  background: #f8f9fa; border-radius: 4px; border: 1px solid var(--border);
+}
+summary:hover { background: #e9ecef; }
+
+/* ===== INTERACTIVE ENGINE =====*/
+/* ===== SCORE BAR ===== */
+#score-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--primary, #1a1a2e); color: #ffc107;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; font-weight: 700;
+  padding: 0.5rem 1.5rem; text-align: right;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+#score-bar .score-icon { font-size: 1.1rem; }
+body { padding-top: 3rem; }
+.score-bump { animation: bump 0.3s ease; }
+@keyframes bump { 0%{transform:scale(1)} 50%{transform:scale(1.4)} 100%{transform:scale(1)} }
+
+/* ===== MCQ BUTTONS ===== */
+.mcq-options { display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0; }
+.mcq-btn {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  background: #fff; border: 2px solid var(--border, #dee2e6); border-radius: 8px;
+  padding: 0.75rem 1rem; font-family: 'Georgia', serif; font-size: 0.95rem;
+  cursor: pointer; text-align: left; transition: all 0.2s;
+  line-height: 1.5; color: var(--text, #2d2d2d);
+}
+.mcq-btn:hover:not(:disabled) { border-color: #0d6efd; background: #f0f7ff; }
+.mcq-btn:disabled { cursor: default; opacity: 0.7; }
+.mcq-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  background: var(--primary, #1a1a2e); color: #fff;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  flex-shrink: 0; margin-top: 0.1rem;
+}
+.mcq-btn.mcq-correct { border-color: #28a745; background: #d4edda; }
+.mcq-btn.mcq-correct .mcq-letter { background: #28a745; }
+.mcq-btn.mcq-wrong { border-color: #dc3545; background: #f8d7da; }
+.mcq-btn.mcq-wrong .mcq-letter { background: #dc3545; }
+.mcq-feedback {
+  background: #e8f5e9; border-left: 4px solid #28a745;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ===== WRITING INPUT ===== */
+.writing-input { margin: 1.5rem 0; }
+.writing-ta, .practice-ta {
+  width: 100%; border: 2px solid var(--border, #dee2e6); border-radius: 8px;
+  padding: 0.8rem; font-family: 'Georgia', serif; font-size: 0.95rem;
+  line-height: 1.7; resize: vertical; min-height: 120px;
+}
+.writing-ta:focus, .practice-ta:focus { border-color: #0d6efd; outline: none; box-shadow: 0 0 0 3px rgba(13,110,253,0.15); }
+.writing-ta[readonly], .practice-ta[readonly] { background: #f8f9fa; }
+.writing-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 0.5rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.wc { color: var(--muted, #6c757d); }
+.writing-submit {
+  background: var(--accent, #e94560); color: #fff; border: none; border-radius: 6px;
+  padding: 0.5rem 1.25rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.writing-submit:hover:not(:disabled) { background: #d63050; }
+.writing-submit:disabled { background: #bbb; cursor: default; }
+.writing-submit.submitted { background: #28a745; }
+
+/* ===== PHASE GATING ===== */
+.phase-locked {
+  opacity: 0.35; pointer-events: none; position: relative;
+  filter: grayscale(40%);
+}
+.phase-locked::after {
+  content: '🔒 Complete the previous phase to unlock';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: rgba(26,26,46,0.9); color: #fff; padding: 0.75rem 1.5rem;
+  border-radius: 8px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem; font-weight: 600; white-space: nowrap; z-index: 10;
+  pointer-events: none;
+}
+.phase-active { opacity: 1; }
+.phase-done { opacity: 0.85; }
+.phase-done .phase-next-btn { display: none; }
+.phase-next-btn {
+  display: block; width: 100%; margin-top: 1.5rem;
+  background: #0d6efd; color: #fff; border: none; border-radius: 8px;
+  padding: 0.75rem; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.phase-next-btn:hover:not(:disabled) { background: #0b5ed7; }
+.phase-next-btn:disabled { background: #a0c4ff; cursor: default; }
+
+/* ===== LESSON COMPLETE OVERLAY ===== */
+.complete-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
+  z-index: 2000; animation: fadeIn 0.3s ease;
+}
+.complete-card {
+  background: #fff; border-radius: 16px; padding: 2.5rem; text-align: center;
+  max-width: 400px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+.complete-card h2 { color: var(--primary, #1a1a2e); margin-bottom: 0.5rem; }
+.complete-stars { font-size: 2.5rem; color: #ffc107; margin: 0.5rem 0; }
+.complete-score { font-size: 1.3rem; font-weight: 700; color: var(--primary, #1a1a2e); margin-bottom: 1rem; }
+.complete-close {
+  background: #0d6efd; color: #fff; border: none; border-radius: 8px;
+  padding: 0.6rem 2rem; font-size: 1rem; font-weight: 600; cursor: pointer;
+  margin-top: 0.5rem;
+}
+.complete-close:hover { background: #0b5ed7; }
+
+/* ===== HIDE ANSWERS BY DEFAULT ===== */
+.practice-item > details { display: none !important; }
+.practice-item > details.revealed { display: block !important; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+
+
+</style>
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag teach">Course A2 • Lesson 4</span>
+  <h1>They Say/I Say — Move Identification</h1>
+  <p class="subtitle">Recognizing three ways academic writers enter conversations</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📋 KC C.10.03, C.10.04, C.10.05</span>
+    <span>📖 Published arguments</span>
+  </div>
+</div>
+
+<h2>Lesson Overview</h2>
+<p>All academic writing enters a conversation. In Course A1 L04, you learned to address counterarguments. In this lesson, you'll learn three sophisticated moves for positioning your argument in relation to what others have said: (1) Agree with a Difference, (2) Disagree Diplomatically, and (3) Complicate the Debate.</p>
+
+<div class="phase-card teach-card" data-phase="teach">
+  <span class="lesson-tag teach">Teach • 3 min</span>
+  <h3>Three Conversational Moves</h3>
+
+  <p>Academic arguments rarely start from scratch. Writers respond to existing debates. Here are three classic moves for entering those conversations:</p>
+
+  <div class="key-concept">
+    <p><strong>Move 1: Agree with a Difference</strong> — "Yes, but..." You accept the basic premise but add a qualification, complication, or extension that changes the conclusion. Structure: validate the existing view, THEN introduce what it overlooks or oversimplifies.</p>
+  </div>
+
+  <div class="key-concept">
+    <p><strong>Move 2: Disagree Diplomatically</strong> — "I see why you'd think that, however..." You challenge the claim but do so respectfully by acknowledging its logic or appeal before presenting your counterargument. Structure: concede the appeal of the opposing view, THEN explain why it's wrong or incomplete.</p>
+  </div>
+
+  <div class="key-concept">
+    <p><strong>Move 3: Complicate the Debate</strong> — "The real question is..." You argue that BOTH sides are missing something crucial. You don't choose a side; you reframe the entire conversation by introducing a dimension neither side has addressed. Structure: identify the binary debate, THEN show what it ignores.</p>
+  </div>
+
+  <p><strong>Connection to A1 L04:</strong> In A1, you learned to address counterarguments within your own argument. These three moves show you how professional writers <em>position</em> their entire argument in relation to what "they say."</p>
+
+  <button class="phase-next-btn">Continue to Model</button>
+</div>
+
+<div class="phase-card model-card" data-phase="model">
+  <span class="lesson-tag model">Model • 3 min</span>
+  <h3>Identifying Moves in Published Arguments</h3>
+
+  <p><strong>Example 1: Agree with a Difference</strong></p>
+  <div class="passage-box">
+    <p>"Many educators argue that group projects teach collaboration skills essential for the workplace. While I agree that modern careers do require teamwork, I want to add that group projects in their current form often reward social skills over intellectual contribution. The student who speaks confidently in meetings may receive the same grade as the student who completes the most rigorous analytical work. True collaboration should involve structured roles and individual accountability, not just dividing tasks and hoping for the best."</p>
+    <p class="attribution">Sample argument opening (Agree with a Difference)</p>
+  </div>
+  <p><strong>Signal words:</strong> "While I agree that..." "I want to add that..." "True collaboration should..." (redefines rather than rejects)</p>
+
+  <p><strong>Example 2: Disagree Diplomatically</strong></p>
+  <div class="passage-box">
+    <p>"Critics of social media often claim that it isolates people and destroys genuine connection. I would argue, however, that social media is a tool whose effects depend entirely on how it is used. For people with disabilities, chronic illnesses, or social anxiety, online platforms can provide community and belonging that physical spaces do not. The problem is not the technology itself but the compulsive, performative ways many people engage with it. Blaming social media for loneliness is like blaming libraries for making people antisocial."</p>
+    <p class="attribution">Sample argument opening (Disagree Diplomatically)</p>
+  </div>
+  <p><strong>Signal words:</strong> "I would argue, however, that..." "The problem is not X but Y" (softens disagreement with nuance and analogy)</p>
+
+  <p><strong>Example 3: Complicate the Debate</strong></p>
+  <div class="passage-box">
+    <p>"The debate over school start times typically focuses on whether teenagers need more sleep or whether early start times prepare them for adult responsibilities. But we should also consider the structural inequalities this debate ignores. Later start times disproportionately benefit families with flexible work schedules and private transportation, while students who rely on district busing or have after-school jobs face new logistical burdens. The question is not just 'What time should school start?' but 'Whose needs are centered when we make that decision?'"</p>
+    <p class="attribution">Sample argument opening (Complicate the Debate)</p>
+  </div>
+  <p><strong>Signal words:</strong> "The debate typically focuses on... But we should also consider..." "The question is not just X but Y" (introduces new dimension)</p>
+
+  <button class="phase-next-btn">Continue to Supported Practice</button>
+</div>
+
+<div class="phase-card practice-card" data-phase="practice">
+  <span class="lesson-tag practice">Supported Practice • 8 min</span>
+  <h3>Classify Five Argument Openings</h3>
+
+  <p><strong>Instructions:</strong> Read each opening carefully. Identify the move (Agree with a Difference, Disagree Diplomatically, or Complicate the Debate) and pay attention to signal words.</p>
+
+  <div class="check-question">
+    <div class="q-label">Item 1</div>
+    <p><strong>Opening:</strong> "Proponents of universal basic income claim that automation will eliminate most jobs, making a guaranteed income necessary for economic survival. However, this argument overlooks the fact that technological revolutions have historically created more jobs than they destroyed — just in different sectors. The Industrial Revolution displaced agricultural workers, yet unemployment did not skyrocket; the workforce adapted. Rather than assuming catastrophic job loss, we should invest in education systems that prepare workers to transition into emerging fields."</p>
+    <p>Which move does this opening use?</p>
+    <ol type="A">
+      <li>Agree with a Difference</li>
+      <li>Disagree Diplomatically</li>
+      <li>Complicate the Debate</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Explanation:</strong> The writer challenges the foundational claim about automation but does so respectfully ("this argument overlooks") and provides an alternative explanation grounded in historical evidence. Signal words: "However, this argument overlooks..." and "Rather than assuming... we should..." This is genuine disagreement presented diplomatically.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 2</div>
+    <p><strong>Opening:</strong> "Environmentalists are correct that individual consumer choices — buying less, recycling more, choosing sustainable products — matter for the planet. Yet we must recognize that emphasizing individual responsibility can obscure the vastly larger impact of corporate and governmental policy. The average person's carbon footprint is dwarfed by emissions from industrial agriculture, energy production, and manufacturing. Personal lifestyle changes are important, but they should not distract us from demanding systemic change from the institutions that hold the most power."</p>
+    <p>Which move does this opening use?</p>
+    <ol type="A">
+      <li>Agree with a Difference</li>
+      <li>Disagree Diplomatically</li>
+      <li>Complicate the Debate</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> A</p>
+        <p><strong>Explanation:</strong> The writer validates the initial claim ("Environmentalists are correct that...") but immediately introduces a significant qualification ("Yet we must recognize that..."). This is the classic "Yes, and also..." structure. Signal words: "Environmentalists are correct that..." followed by "Yet we must recognize..." and "Personal lifestyle changes are important, but..."</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 3</div>
+    <p><strong>Opening:</strong> "Arguments about the ethics of artificial intelligence often pit those who fear job displacement against those who celebrate efficiency and innovation. What this binary misses is the deeper question of how AI systems are designed and who controls them. The real risk is not automation itself but the concentration of algorithmic power in the hands of a few corporations accountable to shareholders rather than to the public. Whether AI helps or harms society depends less on the technology than on the governance structures surrounding it."</p>
+    <p>Which move does this opening use?</p>
+    <ol type="A">
+      <li>Agree with a Difference</li>
+      <li>Disagree Diplomatically</li>
+      <li>Complicate the Debate</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> C</p>
+        <p><strong>Explanation:</strong> The writer identifies a binary debate ("those who fear... against those who celebrate") and argues that both sides are missing the crucial issue. The writer does not choose a side; instead, they introduce a third dimension — governance and power — that reframes the entire conversation. Signal words: "What this binary misses..." and "The real risk is not X but Y."</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 4</div>
+    <p><strong>Opening:</strong> "Advocates for banning cell phones in classrooms argue that devices create distractions and undermine learning. While it is true that misuse of phones disrupts focus, I believe that blanket bans ignore the educational potential of the very technology we are removing. Students can access primary sources, collaborate on shared documents, use specialized apps for math or language learning, and fact-check claims in real time. Instead of banning devices, we should teach students when and how to use them responsibly."</p>
+    <p>Which move does this opening use?</p>
+    <ol type="A">
+      <li>Agree with a Difference</li>
+      <li>Disagree Diplomatically</li>
+      <li>Complicate the Debate</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> A</p>
+        <p><strong>Explanation:</strong> The writer concedes the critics' point about distraction ("While it is true that...") but argues for a different conclusion by highlighting benefits the original argument did not consider. This is not a rejection of the problem but a reframing that shifts focus to solutions other than removal. Signal words: "While it is true that... I believe that..." and "Instead of... we should..."</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 5</div>
+    <p><strong>Opening:</strong> "Free speech advocates argue that college campuses must tolerate all viewpoints, even offensive ones, to preserve intellectual freedom. I agree that universities should be spaces for challenging ideas, but I would add that the principle of free speech does not require institutions to platform or fund speech that directly threatens the safety and dignity of marginalized students. There is a meaningful difference between permitting speech and endorsing it through institutional support. True intellectual freedom requires not just the absence of censorship but the presence of conditions where all students can participate in debate without fear."</p>
+    <p>Which move does this opening use?</p>
+    <ol type="A">
+      <li>Agree with a Difference</li>
+      <li>Disagree Diplomatically</li>
+      <li>Complicate the Debate</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> A</p>
+        <p><strong>Explanation:</strong> The writer accepts the premise that universities should be spaces for challenging ideas ("I agree that...") but draws a crucial distinction that the original argument does not make ("but I would add that..."). This is an extension, not a rejection. Signal words: "I agree that... but I would add that..." and "There is a meaningful difference between X and Y" and "True X requires not just A but B."</p>
+      </div>
+    </details>
+  </div>
+
+  <button class="phase-next-btn">Continue to Independent Practice</button>
+</div>
+
+<div class="phase-card independent-card" data-phase="independent">
+  <span class="lesson-tag independent">Independent Practice • 5 min</span>
+  <h3>Classify Five More Openings (Scored)</h3>
+
+  <p><strong>Instructions:</strong> Read each opening and select the correct move. These items are scored.</p>
+
+  <div class="check-question">
+    <div class="q-label">Item 6</div>
+    <p><strong>Opening:</strong> "Many reformers insist that the criminal justice system is fundamentally broken and beyond repair. This perspective, while understandable given the system's many injustices, may underestimate the progress that targeted reforms have already achieved. Sentencing reform, diversion programs, and bail reform have demonstrably reduced incarceration rates and recidivism in states that have adopted them. Abandoning the framework entirely risks discarding institutional knowledge and infrastructure that, with continued pressure and reform, could serve justice more effectively than starting from scratch."</p>
+    <p>Which move does this opening use?</p>
+    <ol type="A">
+      <li>Agree with a Difference</li>
+      <li>Disagree Diplomatically</li>
+      <li>Complicate the Debate</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Explanation:</strong> The writer acknowledges the validity of the reformers' frustration ("while understandable given the system's many injustices") but ultimately argues against their conclusion ("may underestimate the progress"). The writer does not dismiss the problem but disputes the solution, offering evidence of what reform has achieved. Signal words: "This perspective, while understandable... may underestimate..." and "Abandoning the framework entirely risks..."</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 7</div>
+    <p><strong>Opening:</strong> "The debate over homework's effectiveness has generated significant research, but most studies focus on the wrong question. Rather than asking whether homework improves test scores, we should examine whose students benefit from homework and whose are harmed by it. Students with stable home environments, reliable internet access, and parental support often complete homework successfully, while students facing housing insecurity, work obligations, or lack of resources struggle regardless of effort. The question is not 'Does homework work?' but 'For whom does it work, and at what cost to others?'"</p>
+    <p>Which move does this opening use?</p>
+    <ol type="A">
+      <li>Agree with a Difference</li>
+      <li>Disagree Diplomatically</li>
+      <li>Complicate the Debate</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> C</p>
+        <p><strong>Explanation:</strong> The writer does not take a side on whether homework is effective. Instead, they argue that the entire framing of the debate ("Does homework work?") is inadequate and should be replaced with a question about equity and differential impact. Signal words: "most studies focus on the wrong question" and "Rather than asking... we should examine..." and "The question is not X but Y."</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 8</div>
+    <p><strong>Opening:</strong> "Supporters of standardized testing claim that tests provide objective measures of student learning and hold schools accountable. This argument, however, assumes that what tests measure is the same as what we value in education. Standardized exams reward narrow forms of recall and procedural knowledge while marginalizing critical thinking, creativity, and the ability to tackle novel problems. Furthermore, 'objective' measures still reflect the biases of test designers, whose questions often assume cultural knowledge that is not universally shared. If we want accountability systems that reflect what learning truly looks like, we need assessments far more sophisticated than multiple-choice exams."</p>
+    <p>Which move does this opening use?</p>
+    <ol type="A">
+      <li>Agree with a Difference</li>
+      <li>Disagree Diplomatically</li>
+      <li>Complicate the Debate</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Explanation:</strong> The writer challenges the core claim of standardized testing advocates ("This argument, however, assumes...") and provides detailed evidence for why that assumption is flawed. The writer does not attack the advocates personally but dismantles the logic of their position while acknowledging their goal of accountability. Signal words: "This argument, however, assumes that..." and "Furthermore, 'objective' measures still reflect..." and "If we want X, we need Y."</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 9</div>
+    <p><strong>Opening:</strong> "Debates about college admissions often focus on whether merit-based or holistic admissions better serve fairness. But this framing assumes that 'merit' and 'holistic review' are opposing values, when in fact both approaches privilege students from wealthy backgrounds. Merit-based systems favor those with access to test prep, private tutoring, and advanced coursework, while holistic review rewards 'well-rounded' applicants whose families can afford to fund travel, sports, and extracurricular activities. The real issue is not which admissions philosophy to adopt but how to level the playing field so that talent from all economic backgrounds has an equal chance to be recognized."</p>
+    <p>Which move does this opening use?</p>
+    <ol type="A">
+      <li>Agree with a Difference</li>
+      <li>Disagree Diplomatically</li>
+      <li>Complicate the Debate</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> C</p>
+        <p><strong>Explanation:</strong> The writer identifies the binary debate (merit vs. holistic) and argues that both sides share a common flaw: they privilege wealth. The writer does not choose a side but reframes the conversation by introducing the dimension of economic access that neither approach adequately addresses. Signal words: "But this framing assumes..." and "The real issue is not which... but how to..."</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 10</div>
+    <p><strong>Opening:</strong> "Climate scientists warn that individual lifestyle changes alone cannot solve the climate crisis, and they are right. However, dismissing personal action entirely sends the wrong message. When individuals adopt sustainable practices — reducing meat consumption, using public transit, supporting renewable energy — they create cultural momentum that makes systemic policy changes politically feasible. Politicians respond to public demand. If voters signal that they care about the environment through their personal choices, elected officials are more likely to enact the bold policies scientists say we need. Individual action is not a substitute for policy, but it is a catalyst for it."</p>
+    <p>Which move does this opening use?</p>
+    <ol type="A">
+      <li>Agree with a Difference</li>
+      <li>Disagree Diplomatically</li>
+      <li>Complicate the Debate</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> A</p>
+        <p><strong>Explanation:</strong> The writer accepts the premise that individual action alone is insufficient ("they are right") but argues that dismissing it entirely misses its role as a political catalyst. This is the "Yes, and also..." structure — the writer extends the scientists' claim rather than rejecting it. Signal words: "and they are right. However, dismissing..." and "Individual action is not a substitute... but it is a catalyst."</p>
+      </div>
+    </details>
+  </div>
+
+  <button class="phase-next-btn">Continue to Transfer</button>
+</div>
+
+<div class="phase-card bridge-card" data-phase="transfer">
+  <span class="lesson-tag bridge">Transfer • 3 min</span>
+  <h3>Reflect on Personal Debate Habits</h3>
+
+  <div class="transfer-prompt">
+    <p><strong>Reflection:</strong> Think about how you typically respond when someone disagrees with you in conversation or online. Which of the three moves do you use most often? Which do you use least often? Why?</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check Reflection</div>
+    <p>Consider these questions:</p>
+    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+      <li>Do you tend to agree with differences, disagree diplomatically, or complicate debates?</li>
+      <li>When someone presents an argument you disagree with, do you look for common ground first, or do you focus on pointing out flaws?</li>
+      <li>Have you ever reframed a debate by introducing a dimension neither side had considered? What happened?</li>
+      <li>Which move feels most intellectually honest to you? Which feels most strategic?</li>
+    </ul>
+    <p><strong>Goal:</strong> Academic writing is not about "winning" arguments. It's about advancing understanding. The three moves in this lesson help you enter conversations in ways that build on what others have said rather than simply tearing it down.</p>
+  </div>
+
+  <button class="phase-next-btn">Complete Lesson</button>
+</div>
+
+<div class="footnote">
+  <p><strong>Course A2, Lesson 4:</strong> They Say/I Say — Move Identification | Three conversational moves for academic argument | KC C.10.03, C.10.04, C.10.05</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<link rel="stylesheet" href="lesson-engine.css">
+
+</body>
+</html>

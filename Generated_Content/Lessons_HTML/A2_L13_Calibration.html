@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L13: 3-Point Rubric Calibration</title>
+  <style>
+    :root {
+      --primary: #1a1a2e;
+      --accent: #e94560;
+      --accent-light: #fce4ec;
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --text: #2d2d2d;
+      --muted: #6c757d;
+      --border: #dee2e6;
+      --success: #28a745;
+      --warning: #ffc107;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: var(--bg); color: var(--text); line-height: 1.7;
+      max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+    }
+    .lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+    .lesson-tag {
+      display: inline-block; background: var(--primary); color: white;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+    }
+    .lesson-tag.teach { background: #0d6efd; }
+    .lesson-tag.model { background: #6f42c1; }
+    .lesson-tag.practice { background: var(--success); }
+    .lesson-tag.independent { background: var(--accent); }
+    .lesson-tag.bridge { background: #fd7e14; }
+    h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+    .subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+    .meta-bar {
+      display: flex; gap: 1.5rem; margin-top: 0.75rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+    }
+    .meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+    h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+    h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+    h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; font-weight: 600; }
+    p { margin-bottom: 1rem; }
+    ul, ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    .phase-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+      padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .phase-card.teach-card { border-left: 4px solid #0d6efd; }
+    .phase-card.model-card { border-left: 4px solid #6f42c1; }
+    .phase-card.practice-card { border-left: 4px solid var(--success); }
+    .phase-card.independent-card { border-left: 4px solid var(--accent); }
+    .phase-card.bridge-card { border-left: 4px solid #fd7e14; }
+    .key-concept {
+      background: #e8f4fd; border-left: 4px solid #0d6efd;
+      padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+    }
+    .coping-model {
+      background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+      padding: 1.25rem; margin: 1rem 0;
+      font-size: 0.95rem; line-height: 1.6;
+    }
+    .coping-model .false-start { color: #c0392b; font-style: italic; }
+    .coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+    .coping-model .strong { color: #155724; font-weight: 600; }
+    .passage-box {
+      background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+      padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+    }
+    .passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+    .check-question {
+      background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+      padding: 1.25rem; margin: 1.5rem 0;
+    }
+    .check-question .q-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+    }
+    .self-check {
+      background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+      padding: 1.25rem; margin: 1.5rem 0;
+    }
+    .self-check .q-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    th {
+      background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.03em;
+    }
+    td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+    tr:nth-child(even) { background: #f8f9fa; }
+    .vocab-term {
+      display: inline-block; background: var(--primary); color: white;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+      padding: 0.15rem 0.5rem; border-radius: 3px;
+    }
+    .transfer-prompt {
+      background: #fff3e0; border-left: 4px solid #fd7e14;
+      padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+    }
+    .footnote {
+      font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+      border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .gateway-badge {
+      display: inline-block; background: #dc3545; color: white;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      padding: 0.2rem 0.6rem; border-radius: 3px; margin-left: 0.5rem;
+    }
+    details { margin: 0.75rem 0; }
+    details summary {
+      cursor: pointer; font-weight: 600; color: var(--primary);
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+      padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+    }
+    details summary:hover { background: #e0e0e0; }
+    details[open] summary { margin-bottom: 0.5rem; }
+    .model-answer {
+      background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+      padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+    }
+    .paragraph-sample {
+      background: #fff; border: 1px solid var(--border); border-radius: 6px;
+      padding: 1rem; margin: 1rem 0; font-size: 0.9rem; line-height: 1.6;
+    }
+    .rubric-box {
+      background: #f8f9fa; border: 2px solid var(--primary); border-radius: 8px;
+      padding: 1.25rem; margin: 1rem 0;
+    }
+
+    .lesson-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+    }
+    .lesson-nav a {
+      color: #0d6efd; text-decoration: none; font-weight: 600;
+    }
+    .lesson-nav a:hover { text-decoration: underline; }
+    .lesson-nav .prev::before { content: '← '; }
+    .lesson-nav .next::after { content: ' →'; }
+  </style>
+  <link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <div class="lesson-tag">Course A2 • Lesson 13</div>
+  <h1>3-Point Rubric Calibration</h1>
+  <p class="subtitle">Learning to distinguish Weak, Adequate, and Strong argument writing</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>🎯 C.10.12</span>
+    <span>📖 Calibration Bank Items</span>
+  </div>
+</div>
+
+<h2>Overview</h2>
+<p>Self-assessment is a skill you must practice deliberately. In A1, you calibrated on a binary rubric (Analysis vs. Summary). In A2, you'll calibrate on a 3-point rubric that distinguishes Weak, Adequate, and Strong argument writing. The goal is not to get every score right—it's to learn what quality looks like so you can diagnose your own work accurately.</p>
+
+<div class="key-concept">
+  <p><strong>The 3-Point Rubric:</strong></p>
+  <ul style="margin-top: 0.5rem; margin-bottom: 0;">
+    <li><strong>Weak:</strong> Binary position, minimal or generic evidence, no engagement with counterarguments or only straw-man engagement</li>
+    <li><strong>Adequate:</strong> Clear position with adequate evidence, acknowledges other views, basic reasoning connects claims to evidence</li>
+    <li><strong>Strong:</strong> Nuanced position (qualified or contextualized), sophisticated evidence integration, genuinely engages opposing views, clear claim hierarchy</li>
+  </ul>
+</div>
+
+<!-- TEACH PHASE -->
+<div class="phase-card teach-card">
+  <div class="lesson-tag teach">Teach</div>
+  <h3>From Binary to 3-Point Calibration</h3>
+  <p><strong>Time:</strong> 3 minutes</p>
+
+  <p>In A1, you learned to distinguish analysis from summary—a binary distinction. Now you'll learn to see quality on a scale. The difference between Adequate and Strong is often subtle: both have clear positions and supporting evidence, but Strong writing demonstrates nuance and genuine intellectual engagement.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Level</th>
+        <th>Position</th>
+        <th>Evidence</th>
+        <th>Counterarguments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Weak</strong></td>
+        <td>Binary ("X is good/bad")</td>
+        <td>Minimal, generic, or vague</td>
+        <td>Ignored or straw-man version</td>
+      </tr>
+      <tr>
+        <td><strong>Adequate</strong></td>
+        <td>Clear but not nuanced</td>
+        <td>Adequate and mostly specific</td>
+        <td>Acknowledged, basic response</td>
+      </tr>
+      <tr>
+        <td><strong>Strong</strong></td>
+        <td>Nuanced (qualified, contextualized)</td>
+        <td>Sophisticated integration</td>
+        <td>Genuine engagement, responds to logic</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Key insight:</strong> Most student writing falls in the Adequate range. Moving from Adequate to Strong requires deliberate practice in nuance and genuine engagement with opposing views.</p>
+</div>
+
+<!-- MODEL PHASE -->
+<div class="phase-card model-card">
+  <div class="lesson-tag model">Model</div>
+  <h3>Score-Then-Compare: Model Paragraph</h3>
+  <p><strong>Time:</strong> 3 minutes</p>
+
+  <p><strong>Task:</strong> Read this argument paragraph about climate policy. Score it as Weak, Adequate, or Strong. Then compare your score to the model scoring.</p>
+
+  <div class="paragraph-sample">
+    <strong>Sample Paragraph:</strong><br>
+    "Many people argue that individual actions like recycling and using reusable bags are enough to address climate change, but this perspective ignores the systemic nature of the problem. Personal responsibility rhetoric distracts from the fact that 100 corporations produce 71% of global emissions, according to the Carbon Majors Report. Even if every individual made perfect environmental choices, we would not come close to the emission reductions necessary to limit warming to 1.5°C. The real question is not whether individuals should act responsibly—of course they should—but whether we can solve a structural problem with individual solutions. Framing climate change as a matter of personal virtue rather than corporate accountability allows the largest polluters to continue business as usual while ordinary people bear the psychological burden of a crisis they did not create."
+  </div>
+
+  <div class="coping-model">
+    <p><strong>Scoring process (thinking aloud):</strong></p>
+    <p><span class="false-start">This has evidence and mentions opposing views, so it's probably Adequate...</span></p>
+    <p><span class="correction">Wait—let me check for nuance. Does it take a binary position or a qualified one? The writer says "The real question is not whether individuals should act responsibly... but whether we can solve a structural problem with individual solutions." That's not binary—it's reframing the debate.</span></p>
+    <p><span class="correction">Evidence: specific statistic (71%, 100 corporations, 1.5°C target). Counterargument: acknowledges that individuals should act responsibly before arguing it's insufficient. That's genuine engagement—not a straw man.</span></p>
+    <p><span class="strong">Verdict: Strong. Nuanced position, specific evidence, genuine engagement with opposing view.</span></p>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>How would you score this paragraph?</strong></p>
+    <ol type="A">
+      <li>Weak</li>
+      <li>Adequate</li>
+      <li>Strong</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 0.75rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> C (Strong)</p>
+        <p><strong>Why:</strong> This paragraph demonstrates all three markers of Strong writing: (1) nuanced position that reframes the debate rather than taking a simple yes/no stance, (2) specific evidence integrated smoothly (not just dropped in), and (3) genuine engagement with the counterargument—it concedes that individuals should act responsibly before arguing that individual action alone is insufficient. The phrase "of course they should" shows the writer taking the opposing view seriously rather than dismissing it.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- SUPPORTED PHASE -->
+<div class="phase-card practice-card">
+  <div class="lesson-tag practice">Supported Practice</div>
+  <h3>Score 3 Sample Paragraphs</h3>
+  <p><strong>Time:</strong> 8 minutes</p>
+
+  <p><strong>Instructions:</strong> Read each paragraph carefully. Score it as Weak, Adequate, or Strong. After answering, compare your score to the model scoring and read the explanation.</p>
+
+  <h4>Item 1: Social Media Regulation</h4>
+  <div class="paragraph-sample">
+    "Social media companies should be regulated by the government because they have too much power and they spread misinformation. Platforms like Facebook and Twitter allow fake news to go viral, which is bad for democracy. Some people say regulation would violate free speech, but that argument doesn't make sense because companies already moderate content. If we don't regulate social media, misinformation will continue to spread and more people will believe false things. The government needs to step in and make rules about what can and cannot be posted online."
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 1</div>
+    <p><strong>Score this paragraph:</strong></p>
+    <ol type="A">
+      <li>Weak</li>
+      <li>Adequate</li>
+      <li>Strong</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 0.75rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> A (Weak)</p>
+        <p><strong>Why:</strong> This paragraph takes a binary position ("should be regulated") with minimal nuance. Evidence is generic ("allow fake news to go viral") without specific examples or data. The counterargument is mentioned but dismissed with "that argument doesn't make sense"—this is a weak straw-man response rather than genuine engagement. The paragraph lacks claim hierarchy and reads as a list of assertions.</p>
+      </div>
+    </details>
+  </div>
+
+  <h4>Item 2: Homework Equity</h4>
+  <div class="paragraph-sample">
+    "While homework serves important learning goals, schools must recognize that assigning substantial out-of-class work disproportionately burdens students without stable home environments or adequate resources. A 2021 study by the Brookings Institution found that low-income students spend an average of 2 hours more per week on homework than their wealthier peers—not because they're assigned more, but because they lack reliable internet, quiet study spaces, and parental support. Teachers should not abandon homework entirely, but they should ensure that essential learning can be completed during class time. Homework should extend learning, not determine whether students can access it in the first place."
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 2</div>
+    <p><strong>Score this paragraph:</strong></p>
+    <ol type="A">
+      <li>Weak</li>
+      <li>Adequate</li>
+      <li>Strong</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 0.75rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B (Adequate)</p>
+        <p><strong>Why:</strong> This paragraph has a clear position ("schools must recognize homework burdens some students") with specific supporting evidence (Brookings study, 2-hour disparity). It acknowledges the opposing view ("homework serves important learning goals") and offers a reasonable middle-ground response. However, it doesn't quite reach Strong because the position, while clear, is not deeply nuanced—it advocates a moderate reform without exploring the tension between equity and academic rigor in depth. It's solid, competent writing that meets expectations but doesn't demonstrate sophisticated thinking.</p>
+      </div>
+    </details>
+  </div>
+
+  <h4>Item 3: Public Libraries in the Digital Age</h4>
+  <div class="paragraph-sample">
+    "Critics argue that public libraries are obsolete in an era when information is freely available online, but this view fundamentally misunderstands what libraries provide. Yes, anyone with internet access can Google a fact or download a free ebook—but that 'anyone' excludes 14% of American adults who lack home broadband, according to Pew Research. More importantly, libraries offer what the internet cannot: librarians trained in information literacy, physical spaces free from the expectation that you purchase something, and community programming that builds social capital. The question is not whether the internet has made libraries unnecessary, but whether we value institutions that provide equal access to knowledge and public space in a society increasingly divided by who can afford to pay for them."
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 3</div>
+    <p><strong>Score this paragraph:</strong></p>
+    <ol type="A">
+      <li>Weak</li>
+      <li>Adequate</li>
+      <li>Strong</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 0.75rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> C (Strong)</p>
+        <p><strong>Why:</strong> This paragraph demonstrates nuanced thinking through reframing: "The question is not whether the internet has made libraries unnecessary, but whether we value institutions that provide equal access..." This moves beyond binary pro/con positions. Evidence is specific (14% lack broadband, Pew Research) and integrated smoothly. The counterargument is stated genuinely ("Critics argue...") and the response engages substantively by distinguishing between information access and institutional functions. The final sentence connects to larger values (equity, public goods), showing sophisticated thinking about stakes.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- INDEPENDENT PHASE -->
+<div class="phase-card independent-card">
+  <div class="lesson-tag independent">Independent Practice</div>
+  <h3>Score 3 More Paragraphs</h3>
+  <p><strong>Time:</strong> 6 minutes</p>
+
+  <p><strong>Instructions:</strong> Score each paragraph independently, then check the answers. You are calibrating your judgment—don't worry if you score differently from the model at first.</p>
+
+  <h4>Item 4: Paying College Athletes</h4>
+  <div class="paragraph-sample">
+    "The debate over paying college athletes often frames the issue as a choice between amateurism and professionalism, but this binary obscures a more fundamental injustice: universities profit enormously from athletes' labor while restricting those athletes' ability to benefit from their own talent. The NCAA generated $1.15 billion in revenue in 2021, primarily through broadcasting rights for March Madness and college football—events that would not exist without the athletes who receive no share of that revenue. Defenders of the current system argue that scholarships constitute fair compensation, and for many athletes, particularly those from low-income backgrounds, scholarships are indeed life-changing. However, this argument ignores the opportunity cost: athletes dedicate 30-40 hours per week to their sport, preventing them from holding jobs or pursuing paid internships, while their coaches and university administrators earn millions. The question is not whether athletes should be paid like professionals, but whether the people generating the revenue should have any control over how it's distributed."
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 4</div>
+    <p><strong>Score this paragraph:</strong></p>
+    <ol type="A">
+      <li>Weak</li>
+      <li>Adequate</li>
+      <li>Strong</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 0.75rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> C (Strong)</p>
+        <p><strong>Why:</strong> Nuanced position that reframes the debate ("not whether they should be paid like professionals, but whether..."). Specific evidence ($1.15 billion, 30-40 hours/week). Genuine engagement with counterargument—concedes that scholarships are life-changing before explaining why they're insufficient ("ignores opportunity cost"). Clear claim hierarchy builds toward the reframed question at the end.</p>
+      </div>
+    </details>
+  </div>
+
+  <h4>Item 5: Renewable Energy Transition</h4>
+  <div class="paragraph-sample">
+    "The world needs to switch to renewable energy as soon as possible. Climate change is getting worse every year and fossil fuels are the main cause. Solar and wind power are clean energy sources that don't produce pollution. Some people worry that renewable energy is expensive, but the cost of solar panels has gone down a lot in recent years. If we invest in renewable energy now, we can create jobs and save the planet. Countries that don't make this transition will fall behind economically and contribute to environmental disaster."
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 5</div>
+    <p><strong>Score this paragraph:</strong></p>
+    <ol type="A">
+      <li>Weak</li>
+      <li>Adequate</li>
+      <li>Strong</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 0.75rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> A (Weak)</p>
+        <p><strong>Why:</strong> Binary position ("needs to switch to renewable energy as soon as possible") with no nuance or qualification. Evidence is generic ("climate change is getting worse," "cost... has gone down a lot") without specific data or sources. The counterargument about cost is mentioned but dismissed superficially without genuine engagement. No claim hierarchy—just a series of loosely connected assertions.</p>
+      </div>
+    </details>
+  </div>
+
+  <h4>Item 6: School Dress Codes</h4>
+  <div class="paragraph-sample">
+    "School dress codes serve a legitimate purpose by maintaining a focused learning environment, but many such codes disproportionately target female students and enforce outdated gender norms. A 2020 study by the National Women's Law Center found that dress code violations were issued to girls at three times the rate of boys, with the majority of violations involving clothing deemed 'distracting.' Schools should maintain basic standards for appropriate attire, but these standards should be applied equally and should not place the burden of managing male students' attention on female students' clothing choices. Dress codes that ban tank tops, leggings, or shorts above a certain length while allowing boys to wear similar clothing send the message that girls' bodies are inherently problematic."
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 6</div>
+    <p><strong>Score this paragraph:</strong></p>
+    <ol type="A">
+      <li>Weak</li>
+      <li>Adequate</li>
+      <li>Strong</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 0.75rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B (Adequate)</p>
+        <p><strong>Why:</strong> Clear position with specific supporting evidence (National Women's Law Center study, 3:1 ratio). Acknowledges the purpose of dress codes before critiquing their implementation. The position is somewhat nuanced ("serve a legitimate purpose... but") but doesn't deeply explore the tension—it advocates for reform without grappling with the complexity of what "equal application" would mean in practice. Solid, competent argument that meets standards but doesn't demonstrate sophisticated engagement with competing values or structural issues.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- TRANSFER PHASE -->
+<div class="phase-card bridge-card">
+  <div class="lesson-tag bridge">Transfer</div>
+  <h3>Calibration Reflection</h3>
+  <p><strong>Time:</strong> 3 minutes</p>
+
+  <div class="self-check">
+    <div class="q-label">Reflection</div>
+    <p><strong>Answer these questions:</strong></p>
+    <ol>
+      <li>How many of the 6 paragraphs did you score correctly?</li>
+      <li>Which level is hardest for you to identify: Weak, Adequate, or Strong?</li>
+      <li>What patterns distinguish Adequate from Strong writing?</li>
+    </ol>
+
+    <p style="margin-top: 1rem;"><strong>Common calibration pattern:</strong> Most students confuse Adequate with Strong. Both have clear positions and supporting evidence—the difference is that Strong writing demonstrates <em>nuance</em> (reframing, qualifying) and <em>genuine engagement</em> (conceding valid points before responding) rather than just acknowledging other views.</p>
+
+    <div class="transfer-prompt">
+      <p><strong>Looking Ahead:</strong> In Lesson 14, you'll use this calibration skill to revise flat, binary arguments into nuanced ones. The ability to see the difference between Adequate and Strong is what makes that revision possible.</p>
+    </div>
+  </div>
+</div>
+
+<div class="footnote">
+  A2 L13 • 3-Point Rubric Calibration • C.10.12 • ~25 min
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="A2_L12.html" class="prev">L12: Previous Lesson</a>
+  <a href="A2_L14_Nuance_Revision.html" class="next">L14: Nuance Revision + Self-Score</a>
+</nav>
+</body>
+</html>

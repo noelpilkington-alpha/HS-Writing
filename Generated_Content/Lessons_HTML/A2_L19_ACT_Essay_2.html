@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A2 L19: ACT Essay #2 + ACT Self-Assessment</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem; flex-wrap: wrap;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.rubric-box {
+  background: #f8f9fa; border: 2px solid var(--primary); border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.warning-box {
+  background: #fff3e0; border: 2px solid #fd7e14; border-radius: 8px;
+  padding: 1rem; margin: 1rem 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem;
+}
+.warning-box strong {
+  color: #fd7e14;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+}
+.model-essay {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem; line-height: 1.6;
+}
+ol, ul { margin: 0.5rem 0 1rem 1.5rem; }
+li { margin-bottom: 0.4rem; }
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course A2 · Lesson 19</span>
+  <h1>ACT Essay #2 + ACT Self-Assessment</h1>
+  <p class="subtitle">Rubric calibration + second timed attempt</p>
+  <div class="meta-bar">
+    <span>⏱ ~55 min</span>
+    <span>📍 KCs: C.10.20, C.10.21</span>
+    <span>🎯 Goal: Improve weakest domain from Essay #1</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Today you calibrate your scoring eye, then write Essay #2.</strong> Same lesson arc as A1 L13: before you can self-assess accurately, you need to see what quality looks like. You'll score sample ACT essays, then write your own with your L18 weakness in mind.
+</div>
+
+<!-- PHASE 1: TEACH -->
+<div class="phase-card teach-card">
+  <span class="lesson-tag teach">Phase 1: Teach</span>
+  <h2>ACT Rubric Calibration</h2>
+
+  <p>The ACT essay rubric uses 4 domains scored 1-6. Before you can accurately self-assess, you need to calibrate your judgment by scoring real examples. This is the same principle from A1 L13 (thesis triage, self-assessment calibration) applied to ACT writing.</p>
+
+  <div class="key-concept">
+    <strong>Calibration Principle:</strong> You can't hit a target you can't see. By scoring sample essays, you internalize what "strong" and "weak" look like in each domain. Then you can diagnose your own work.
+  </div>
+</div>
+
+<!-- PHASE 2: ACT RUBRIC CALIBRATION -->
+<div class="phase-card model-card">
+  <span class="lesson-tag model">Phase 2: ACT Rubric Calibration</span>
+  <h2>Score Two Sample ACT Essays</h2>
+
+  <p>You'll see excerpts from two ACT essays on the <strong>Homework in Public Schools</strong> topic. For each essay, score all 4 domains: Ideas & Analysis, Development & Support, Organization, Language Use.</p>
+
+  <h3>Sample Essay A (excerpt)</h3>
+  <div class="passage-box">
+    <p>I think homework is good because it helps students practice what they learned in class. Without homework, students would forget everything. Some people say homework is bad because it's stressful, but stress is part of life and students need to learn to deal with it. Also, homework teaches responsibility and time management, which are important skills for college and jobs.</p>
+
+    <p>In conclusion, homework should not be eliminated because it has many benefits. Students who do homework get better grades and are more prepared for the future. Schools should keep homework even though some students don't like it.</p>
+    <p class="attribution">Sample ACT Essay A (excerpt, ~120 words)</p>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Question 1</div>
+    <p><strong>Sample Essay A — Ideas & Analysis:</strong> Does this essay state a clear position and analyze how it relates to multiple perspectives?</p>
+    <ol type="A">
+      <li>High (5-6): Nuanced position, analyzes relationships among perspectives</li>
+      <li>Mid (3-4): Clear position, engages 1-2 perspectives</li>
+      <li>Low (1-2): Position unclear or only restates one perspective</li>
+    </ol>
+    <details>
+      <summary>Show Answer & Explanation</summary>
+      <div class="model-answer">
+        <p><strong>Answer:</strong> C</p>
+        <p><strong>Explanation:</strong> The essay states a position ("homework is good") but does NOT engage with the ACT prompt's three perspectives. It presents a generic pro-homework argument without acknowledging the debate structure. This is a classic low-scoring move: writing a position essay without engaging the perspectives given. Score: 2/6.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Question 2</div>
+    <p><strong>Sample Essay A — Development & Support:</strong> Does this essay support its position with specific reasoning and examples?</p>
+    <ol type="A">
+      <li>High (5-6): Detailed reasoning and specific, relevant examples throughout</li>
+      <li>Mid (3-4): Some reasoning and examples, but underdeveloped</li>
+      <li>Low (1-2): Mostly assertions, few examples</li>
+    </ol>
+    <details>
+      <summary>Show Answer & Explanation</summary>
+      <div class="model-answer">
+        <p><strong>Answer:</strong> C</p>
+        <p><strong>Explanation:</strong> The essay is full of general claims ("homework teaches responsibility," "students need to learn to deal with stress") but has NO specific examples. No real-world evidence, no personal anecdotes, no data. All assertion, no support. Score: 2/6.</p>
+      </div>
+    </details>
+  </div>
+
+  <h3>Sample Essay B (excerpt)</h3>
+  <div class="passage-box">
+    <p>The debate over homework often pits those who see it as essential practice against those who argue it deepens inequality. Perspective Two makes a compelling point: homework punishes students who lack resources at home. I've watched my younger brother struggle with math homework in our noisy apartment while classmates with private tutors and quiet study rooms sail through the same assignments. The issue isn't whether practice matters—it's whether schools can fairly assign work that depends on resources they don't control.</p>
+
+    <p>However, Perspective Three's emphasis on quality over quantity offers a path forward. The problem isn't all homework; it's busywork. When my AP History teacher assigned us to research a local historical site and present our findings, I learned more in that one project than in a semester of textbook chapter questions. That kind of homework—creative, meaningful, connected to the real world—doesn't require expensive resources, just thoughtful design. Schools should assign less homework overall, but ensure that what they do assign is worth students' time regardless of what advantages they bring from home.</p>
+
+    <p>Perspective One argues that reducing homework lowers standards, but this assumes that quantity equals rigor. Finland, frequently cited as having one of the world's strongest education systems, assigns far less homework than the U.S. yet consistently outperforms us on international assessments. This suggests that what happens during the school day matters more than what happens after. The goal should be effectiveness, not exhaustion.</p>
+    <p class="attribution">Sample ACT Essay B (excerpt, ~260 words)</p>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Question 3</div>
+    <p><strong>Sample Essay B — Ideas & Analysis:</strong> Does this essay state a clear position and analyze how it relates to multiple perspectives?</p>
+    <ol type="A">
+      <li>High (5-6): Nuanced position, analyzes relationships among perspectives</li>
+      <li>Mid (3-4): Clear position, engages 1-2 perspectives</li>
+      <li>Low (1-2): Position unclear or only restates one perspective</li>
+    </ol>
+    <details>
+      <summary>Show Answer & Explanation</summary>
+      <div class="model-answer">
+        <p><strong>Answer:</strong> A</p>
+        <p><strong>Explanation:</strong> The essay engages all three perspectives explicitly: agrees with P2's equity concern, uses P3's quality framework to solve the problem, and counters P1's standards argument with evidence. The position is nuanced: not "eliminate homework" or "keep homework," but "reduce and redesign." This is sophisticated perspective analysis. Score: 5/6.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Question 4</div>
+    <p><strong>Sample Essay B — Development & Support:</strong> Does this essay support its position with specific reasoning and examples?</p>
+    <ol type="A">
+      <li>High (5-6): Detailed reasoning and specific, relevant examples throughout</li>
+      <li>Mid (3-4): Some reasoning and examples, but underdeveloped</li>
+      <li>Low (1-2): Mostly assertions, few examples</li>
+    </ol>
+    <details>
+      <summary>Show Answer & Explanation</summary>
+      <div class="model-answer">
+        <p><strong>Answer:</strong> A</p>
+        <p><strong>Explanation:</strong> The essay uses three types of support: personal experience (brother's struggle, AP History project), comparative evidence (Finland's education system), and reasoning (equity + quality framework). Each example is specific and tied to the argument. This is strong development. Score: 5/6.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="key-concept">
+    <strong>What you just learned:</strong> Essay A scored ~2/6 on both domains (low) because it ignored the perspectives and used only assertions. Essay B scored ~5/6 on both domains (high) because it explicitly engaged multiple perspectives and used specific, varied support. The difference between a weak ACT essay and a strong one is ENGAGEMENT + SPECIFICITY.
+  </div>
+</div>
+
+<!-- PHASE 3: PLANNING SPRINT -->
+<div class="phase-card practice-card">
+  <span class="lesson-tag practice">Phase 3: Planning Sprint</span>
+  <h2>5-Minute Plan for Essay #2</h2>
+
+  <div class="passage-box">
+    <h3>ACT-P06: Public Libraries in the Digital Age</h3>
+    <p><strong>Issue:</strong> As more information, entertainment, and services move online, some communities have questioned the role and funding of public libraries. Library supporters point to their expanding services—computer access, community programs, social services—while critics argue that limited public funds could be better spent elsewhere. The debate reflects larger questions about what communities owe their members and how public spaces should evolve.</p>
+
+    <p><strong>Perspective One:</strong> Public libraries are more essential than ever because they serve as equalizers in an increasingly digital world. Not everyone can afford internet access, computers, or e-books at home, and libraries provide these resources for free alongside job-search assistance, literacy programs, and safe community spaces. Reducing library funding would widen the gap between those who can pay for access to information and those who cannot.</p>
+
+    <p><strong>Perspective Two:</strong> While libraries once served a vital purpose, the digital age has made their core function—providing access to information—largely obsolete for most people. Public funds are limited, and communities should redirect library budgets toward services with broader impact, such as expanding broadband internet access to underserved areas. Investing in infrastructure that reaches people where they already are is smarter than maintaining buildings fewer people visit each year.</p>
+
+    <p><strong>Perspective Three:</strong> The future of libraries lies not in their traditional role as book repositories but in their transformation into multi-purpose community hubs—spaces for collaboration, maker labs, adult education, small business support, and civic gathering. Libraries should be reimagined and reinvested in, not as relics of the past but as adaptable institutions that serve whatever needs a community identifies. The building and the mission are assets, even if the specific services change entirely.</p>
+    <p class="attribution">ACT Writing Prompt (Practice)</p>
+  </div>
+
+  <div class="warning-box">
+    <strong>⏱ Set a 5-minute timer.</strong> Write your plan. Remember your L18 weak domain—target it in this plan. If Development was weak, plan more specific examples. If Ideas & Analysis was weak, plan explicit engagement with all 3 perspectives.
+  </div>
+
+  <div class="writing-task" data-min-words="30">
+    <h3>Your 5-Minute Plan</h3>
+    <p><em>Map perspectives, choose position, select examples, sketch structure.</em></p>
+  </div>
+</div>
+
+<!-- PHASE 4: INDEPENDENT PRACTICE -->
+<div class="phase-card independent-card" data-rubric="L19_act_essay">
+  <span class="lesson-tag independent">Phase 4: Independent Practice</span>
+  <h2>Full ACT Essay #2 (35 Minutes)</h2>
+
+  <div class="warning-box">
+    <strong>⏱ Time: 35 minutes to write.</strong> You already spent 5 minutes planning. Now write your essay (300+ words). Apply what you learned from scoring Sample Essays A and B. Target your L18 weak domain.
+  </div>
+
+  <div class="rubric-box">
+    <h3>ACT Essay Rubric (Same as L18)</h3>
+    <ul>
+      <li><strong>Clear position</strong> that relates to at least one given perspective</li>
+      <li><strong>Engages at least 2 of 3 perspectives</strong> (not just restating your own view)</li>
+      <li><strong>Support includes reasoning AND specific examples</strong> (not just assertions)</li>
+      <li><strong>Organized with clear paragraph transitions</strong></li>
+      <li><strong>Counterargument from opposing perspective addressed</strong></li>
+    </ul>
+  </div>
+
+  <p><strong>Write your essay below.</strong> Aim for 300+ words.</p>
+</div>
+
+<!-- PHASE 5: SELF-SCORE + COMPARISON -->
+<div class="phase-card transfer-card">
+  <span class="lesson-tag transfer">Phase 5: Self-Score + Comparison</span>
+  <h2>Compare Essay #2 to Essay #1</h2>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check: Rate Your Essay #2</div>
+
+    <h3>Domain 1: Ideas & Analysis</h3>
+    <p><strong>Did you state a clear position and analyze how it relates to multiple perspectives?</strong></p>
+    <ul>
+      <li><strong>Low (1-2):</strong> Position unclear or only restates one perspective</li>
+      <li><strong>Mid (3-4):</strong> Clear position, engages 1-2 perspectives</li>
+      <li><strong>High (5-6):</strong> Nuanced position, analyzes relationships among multiple perspectives</li>
+    </ul>
+    <p><em>Essay #2 rating: _____ (1-6)</em></p>
+
+    <h3>Domain 2: Development & Support</h3>
+    <p><strong>Did you support your position with specific reasoning and examples?</strong></p>
+    <ul>
+      <li><strong>Low (1-2):</strong> Mostly assertions, few examples</li>
+      <li><strong>Mid (3-4):</strong> Some reasoning and examples, but underdeveloped</li>
+      <li><strong>High (5-6):</strong> Detailed reasoning and specific, relevant examples throughout</li>
+    </ul>
+    <p><em>Essay #2 rating: _____ (1-6)</em></p>
+
+    <h3>Domain 3: Organization</h3>
+    <p><strong>Is your essay clearly organized with logical transitions?</strong></p>
+    <ul>
+      <li><strong>Low (1-2):</strong> Hard to follow, no clear structure</li>
+      <li><strong>Mid (3-4):</strong> Basic organization, some transitions</li>
+      <li><strong>High (5-6):</strong> Smooth flow, clear paragraph logic, strong transitions</li>
+    </ul>
+    <p><em>Essay #2 rating: _____ (1-6)</em></p>
+
+    <h3>Domain 4: Language Use</h3>
+    <p><strong>Is your writing clear and mostly error-free?</strong></p>
+    <ul>
+      <li><strong>Low (1-2):</strong> Frequent errors impede understanding</li>
+      <li><strong>Mid (3-4):</strong> Mostly clear, some errors</li>
+      <li><strong>High (5-6):</strong> Clear and precise, minimal errors</li>
+    </ul>
+    <p><em>Essay #2 rating: _____ (1-6)</em></p>
+
+    <hr style="margin: 1.5rem 0; border: none; border-top: 2px solid var(--border);">
+
+    <h3>Comparison to Essay #1</h3>
+    <p><strong>In L18, you identified your weakest domain. Did that domain improve in Essay #2?</strong></p>
+    <p><em>L18 weakest domain: _____________________</em></p>
+    <p><em>L18 score: _____ → L19 score: _____</em></p>
+    <p><em>Did it improve? (Yes/No): _____</em></p>
+
+    <p><strong>If YES:</strong> You successfully applied targeted revision. That's the power of calibration.</p>
+    <p><strong>If NO:</strong> That domain needs more focused practice. Revisit the Sample Essay B analysis to see what "high" looks like, then identify exactly what you're missing.</p>
+  </div>
+
+  <div class="key-concept">
+    <strong>Final Reflection:</strong> You've now written two complete ACT essays under time constraints and self-assessed on all four domains. You know your strengths and weaknesses. Before the L20 gate, review your scores and target any domain still scoring below 4. The gate essay is your proof of readiness—use these two practice essays to get there.
+  </div>
+</div>
+
+<div class="footnote">
+  <p>A2 L19 • ACT Essay #2 + ACT Self-Assessment • C.10.20, C.10.21 • ~55 min • Unit 6: ACT Writing</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+
+<nav class="lesson-nav">
+  <a href="A2_L18_ACT_Essay_1.html" class="prev">← L18: ACT Essay #1</a>
+  <a href="A2_L20_Gate_Assessment.html" class="next">L20: G10 Gate Assessment →</a>
+</nav>
+
+</body>
+</html>

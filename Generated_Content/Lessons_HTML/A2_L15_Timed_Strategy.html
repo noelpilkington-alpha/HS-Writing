@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L15: Time Allocation + "Good Enough" Plan</title>
+  <style>
+    :root {
+      --primary: #1a1a2e;
+      --accent: #e94560;
+      --accent-light: #fce4ec;
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --text: #2d2d2d;
+      --muted: #6c757d;
+      --border: #dee2e6;
+      --success: #28a745;
+      --warning: #ffc107;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: var(--bg); color: var(--text); line-height: 1.7;
+      max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+    }
+    .lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+    .lesson-tag {
+      display: inline-block; background: var(--primary); color: white;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+    }
+    .lesson-tag.teach { background: #0d6efd; }
+    .lesson-tag.model { background: #6f42c1; }
+    .lesson-tag.practice { background: var(--success); }
+    .lesson-tag.independent { background: var(--accent); }
+    .lesson-tag.bridge { background: #fd7e14; }
+    h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+    .subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+    .meta-bar {
+      display: flex; gap: 1.5rem; margin-top: 0.75rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+    }
+    .meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+    h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+    h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+    h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; font-weight: 600; }
+    p { margin-bottom: 1rem; }
+    ul, ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    .phase-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+      padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .phase-card.teach-card { border-left: 4px solid #0d6efd; }
+    .phase-card.model-card { border-left: 4px solid #6f42c1; }
+    .phase-card.practice-card { border-left: 4px solid var(--success); }
+    .phase-card.independent-card { border-left: 4px solid var(--accent); }
+    .phase-card.bridge-card { border-left: 4px solid #fd7e14; }
+    .key-concept {
+      background: #e8f4fd; border-left: 4px solid #0d6efd;
+      padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+    }
+    .coping-model {
+      background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+      padding: 1.25rem; margin: 1rem 0;
+      font-size: 0.95rem; line-height: 1.6;
+    }
+    .coping-model .false-start { color: #c0392b; font-style: italic; }
+    .coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+    .coping-model .strong { color: #155724; font-weight: 600; }
+    .passage-box {
+      background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+      padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+    }
+    .passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+    .check-question {
+      background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+      padding: 1.25rem; margin: 1.5rem 0;
+    }
+    .check-question .q-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+    }
+    .self-check {
+      background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+      padding: 1.25rem; margin: 1.5rem 0;
+    }
+    .self-check .q-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    th {
+      background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.03em;
+    }
+    td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+    tr:nth-child(even) { background: #f8f9fa; }
+    .vocab-term {
+      display: inline-block; background: var(--primary); color: white;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+      padding: 0.15rem 0.5rem; border-radius: 3px;
+    }
+    .transfer-prompt {
+      background: #fff3e0; border-left: 4px solid #fd7e14;
+      padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+    }
+    .footnote {
+      font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+      border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .gateway-badge {
+      display: inline-block; background: #dc3545; color: white;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      padding: 0.2rem 0.6rem; border-radius: 3px; margin-left: 0.5rem;
+    }
+    details { margin: 0.75rem 0; }
+    details summary {
+      cursor: pointer; font-weight: 600; color: var(--primary);
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+      padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+    }
+    details summary:hover { background: #e0e0e0; }
+    details[open] summary { margin-bottom: 0.5rem; }
+    .model-answer {
+      background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+      padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+    }
+    .paragraph-sample {
+      background: #fff; border: 1px solid var(--border); border-radius: 6px;
+      padding: 1rem; margin: 1rem 0; font-size: 0.9rem; line-height: 1.6;
+    }
+    .rubric-box {
+      background: #f8f9fa; border: 2px solid var(--primary); border-radius: 8px;
+      padding: 1.25rem; margin: 1rem 0;
+    }
+    .writing-task {
+      margin: 1.5rem 0;
+    }
+    .time-profile {
+      background: #fff3e0; border: 1px solid #ffc107; border-radius: 6px;
+      padding: 0.75rem; margin: 0.5rem 0; font-size: 0.9rem;
+    }
+
+    .lesson-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+    }
+    .lesson-nav a {
+      color: #0d6efd; text-decoration: none; font-weight: 600;
+    }
+    .lesson-nav a:hover { text-decoration: underline; }
+    .lesson-nav .prev::before { content: '← '; }
+    .lesson-nav .next::after { content: ' →'; }
+  </style>
+  <link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <div class="lesson-tag">Course A2 • Lesson 15</div>
+  <h1>Time Allocation + "Good Enough" Plan</h1>
+  <p class="subtitle">Learning to plan efficiently under time constraints</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>🎯 C.10.14</span>
+    <span>📖 Timed writing strategy</span>
+  </div>
+</div>
+
+<h2>Overview</h2>
+<p>The most common timed writing mistake is over-planning. Students spend 15-20 minutes crafting a perfect outline, then run out of time to write. This lesson teaches you to create a "good enough" plan in 5 minutes—sufficient structure to write from, but not so detailed that you sacrifice writing time.</p>
+
+<div class="key-concept">
+  <p><strong>Key Insight:</strong> A good enough plan in 5 minutes is worth more than a perfect plan in 15 minutes. You cannot revise a plan that never became a draft.</p>
+</div>
+
+<!-- TEACH PHASE -->
+<div class="phase-card teach-card">
+  <div class="lesson-tag teach">Teach</div>
+  <h3>Three Time Profiles</h3>
+  <p><strong>Time:</strong> 3 minutes</p>
+
+  <p>Different writing tasks require different time allocations. Here are three common profiles:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Task Type</th>
+        <th>Total Time</th>
+        <th>Plan</th>
+        <th>Write</th>
+        <th>Revise</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>40-min Argument Essay</strong></td>
+        <td>40 min</td>
+        <td>5 min</td>
+        <td>30 min</td>
+        <td>5 min</td>
+      </tr>
+      <tr>
+        <td><strong>55-min Synthesis Essay</strong></td>
+        <td>55 min</td>
+        <td>15 min</td>
+        <td>35 min</td>
+        <td>5 min</td>
+      </tr>
+      <tr>
+        <td><strong>40-min ACT Essay</strong></td>
+        <td>40 min</td>
+        <td>5 min</td>
+        <td>30 min</td>
+        <td>5 min</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Notice:</strong> Synthesis essays get more planning time because you must read and annotate sources first. Argument essays (from knowledge) get minimal planning time—just enough to structure your thinking.</p>
+
+  <div class="key-concept">
+    <p><strong>The "Good Enough" Standard:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0;">
+      <li>Your plan is good enough if you can START WRITING from it</li>
+      <li>Your plan is NOT good enough if you're still deciding your position or hunting for evidence after 5 minutes</li>
+      <li>You can refine your argument AS YOU WRITE—you don't need every detail mapped out in advance</li>
+    </ul>
+  </div>
+
+  <p><strong>Common mistake:</strong> Students over-plan because they're afraid of getting stuck. The solution is not more planning—it's practicing writing from minimal plans so you learn to develop ideas on the page.</p>
+</div>
+
+<!-- MODEL PHASE -->
+<div class="phase-card model-card">
+  <div class="lesson-tag model">Model</div>
+  <h3>5-Minute Planning Protocol</h3>
+  <p><strong>Time:</strong> 3 minutes</p>
+
+  <p>Watch a 5-minute planning process in action. Notice what gets captured and what gets left vague.</p>
+
+  <div class="passage-box">
+    <p><strong>Prompt:</strong> Many schools have implemented mandatory community service requirements for graduation. Supporters argue this builds civic responsibility; critics argue it turns volunteerism into a checkbox requirement. Where do you stand?</p>
+    <p class="attribution">Sample argument prompt</p>
+  </div>
+
+  <div class="coping-model">
+    <p><strong>Planning process—5 minutes total:</strong></p>
+    <p><span class="strong">0:30 — Read prompt, identify the debate:</span> "Supporters: builds civic responsibility. Critics: checkbox requirement. Both are kinda right..."</p>
+    <p><span class="strong">1:30 — Draft thesis (take a position):</span> "Mandatory service can build civic responsibility IF it's designed well—but most programs treat it as a checkbox, which defeats the purpose. The question isn't whether to require service but how to design requirements that don't just produce compliance."</p>
+    <p><span class="strong">2:30 — List claims (2-3 reasons):</span><br>
+      Claim 1: When done well (meaningful work, student choice, reflection), required service CAN build habits of civic engagement.<br>
+      Claim 2: But most programs = hour-logging without reflection = checkbox mentality.<br>
+      Counterargument: Some say any requirement kills intrinsic motivation.</p>
+    <p><span class="strong">4:00 — Note evidence (quick):</span><br>
+      - Own experience? Habitat for Humanity vs. random volunteer hours<br>
+      - Research? (vague memory of a study... mention if I remember details, skip if not)<br>
+      - Examples: contrast meaningful vs. checkbox programs</p>
+    <p><span class="strong">5:00 — Choose structure:</span> Intro (They Say/I Say), Claim 1 (done well), Claim 2 (but usually not done well), Counterargument (intrinsic motivation), Conclusion (stakes = civic engagement).</p>
+    <p><span class="strong">DONE. Start writing.</span></p>
+  </div>
+
+  <p><strong>Notice what's missing:</strong> Full sentences. Detailed evidence. Perfect organization. Those things develop as you write. The plan gives you enough structure to start—that's all you need.</p>
+</div>
+
+<!-- SUPPORTED PHASE -->
+<div class="phase-card practice-card">
+  <div class="lesson-tag practice">Supported Practice</div>
+  <h3>"Good Enough" Plan Drill #1</h3>
+  <p><strong>Time:</strong> 7 minutes</p>
+
+  <p><strong>Prompt:</strong> Some educators argue that financial literacy (budgeting, understanding credit, investing basics) should be a required high school course. Others argue that adding more requirements crowds out electives and that financial skills can be learned independently. Should schools require financial literacy courses?</p>
+
+  <div class="writing-task" data-min-words="40">
+    <p><strong>Your Task:</strong> Spend 5 minutes creating a "good enough" plan. Use the 5-minute protocol from the Model phase:</p>
+    <ol style="margin-left: 1.5rem; font-size: 0.9rem;">
+      <li>Read prompt (30 sec)</li>
+      <li>Draft thesis—take a position (60 sec)</li>
+      <li>List claims—2-3 reasons (60 sec)</li>
+      <li>Note evidence—quick, no details yet (90 sec)</li>
+      <li>Choose structure—intro, body order, conclusion (30 sec)</li>
+    </ol>
+    <p style="margin-top: 0.75rem;">Write your plan in the box below. It should be messy, abbreviated, and just detailed enough that you could write an essay from it.</p>
+  </div>
+
+  <div class="self-check" style="margin-top: 1.5rem;">
+    <div class="q-label">Self-Check</div>
+    <p><strong>After 5 minutes, ask yourself:</strong></p>
+    <ul style="margin-left: 1.5rem;">
+      <li>Can you start writing from this plan, or are you still deciding your position?</li>
+      <li>What's missing from your plan? Is it detail you need NOW, or detail you can develop while writing?</li>
+      <li>What was hardest: taking a position, finding claims, or limiting yourself to 5 minutes?</li>
+    </ul>
+  </div>
+</div>
+
+<!-- INDEPENDENT PHASE -->
+<div class="phase-card independent-card" data-rubric="L15_timed_plan" data-min-words="60">
+  <div class="lesson-tag independent">Independent Practice</div>
+  <h3>"Good Enough" Plan Drill #2 + First Paragraph</h3>
+  <p><strong>Time:</strong> 10 minutes</p>
+
+  <p><strong>Prompt:</strong> Many cities are considering bans on single-use plastics (straws, bags, takeout containers) to reduce pollution and waste. Supporters argue these bans are necessary to protect the environment. Critics argue they place unfair burdens on low-income residents and small businesses. Should cities ban single-use plastics?</p>
+
+  <p><strong>Your Task:</strong></p>
+  <ol style="margin-left: 1.5rem;">
+    <li><strong>Plan (5 min):</strong> Create a "good enough" plan using the 5-minute protocol</li>
+    <li><strong>Write (5 min):</strong> Write ONLY the first paragraph (introduction with thesis) from your plan</li>
+  </ol>
+
+  <div class="rubric-box">
+    <h4>Success Criteria</h4>
+    <ul>
+      <li>Plan completed in approximately 5 minutes (not 10+)</li>
+      <li>Plan includes: position/thesis, 2-3 claims, brief evidence notes, structure decision</li>
+      <li>First paragraph includes "They Say" (existing conversation) and "I Say" (your nuanced position)</li>
+      <li>First paragraph is complete and could lead into body paragraphs—it's not a fragment</li>
+      <li>Total writing: 60+ words</li>
+    </ul>
+  </div>
+
+  <p style="font-size: 0.9rem; color: var(--muted); font-style: italic; margin-top: 1rem;">Write your plan first, then your first paragraph. You can write both in the same text box, but label them clearly: "PLAN:" and "FIRST PARAGRAPH:"</p>
+</div>
+
+<!-- TRANSFER PHASE -->
+<div class="phase-card bridge-card">
+  <div class="lesson-tag bridge">Transfer</div>
+  <h3>Reflection: Your Enemy Is Over-Planning</h3>
+  <p><strong>Time:</strong> 2 minutes</p>
+
+  <div class="self-check">
+    <div class="q-label">Self-Check</div>
+    <p><strong>Think about your planning habits:</strong></p>
+    <ul style="margin-left: 1.5rem;">
+      <li>When you write timed essays, do you tend to over-plan (too much time on outline) or under-plan (start writing with no direction)?</li>
+      <li>What's the minimum you need in a plan to feel comfortable starting to write?</li>
+      <li>What happens if you run out of time before finishing? (Answer: you get a zero. An imperfect complete draft beats a perfect incomplete draft.)</li>
+    </ul>
+
+    <div class="key-concept" style="margin-top: 1rem;">
+      <p><strong>The Real Skill:</strong> Planning efficiency is not about writing faster—it's about <em>trusting yourself</em> to develop ideas on the page rather than mapping every sentence in advance. You've written enough essays by now to know you can generate reasoning and evidence as you go. The plan is a scaffold, not a script.</p>
+    </div>
+
+    <div class="transfer-prompt">
+      <p><strong>Looking Ahead:</strong> In upcoming lessons, you'll apply this planning protocol to synthesis essays (where you must also read and annotate sources) and ACT Writing prompts (where you must evaluate multiple perspectives). The 5-minute protocol adapts to all of these—you're learning a transferable skill, not just a trick for one assignment.</p>
+    </div>
+  </div>
+</div>
+
+<div class="footnote">
+  A2 L15 • Time Allocation + "Good Enough" Plan • C.10.14 • ~25 min
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="A2_L14_Nuance_Revision.html" class="prev">L14: Nuance Revision + Self-Score</a>
+  <a href="A2_L16.html" class="next">L16: Next Lesson</a>
+</nav>
+</body>
+</html>

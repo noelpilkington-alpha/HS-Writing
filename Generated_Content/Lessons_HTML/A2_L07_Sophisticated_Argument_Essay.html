@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L07: Full Sophisticated Argument Essay (Gateway)</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+.lesson-header {
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+.lesson-tag {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.bridge { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; font-weight: 600; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.bridge-card { border-left: 4px solid #fd7e14; }
+.phase-card.self-score-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b3d9f2; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.gateway-badge {
+  display: inline-block; background: #dc3545; color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem; border-radius: 3px; margin-left: 0.5rem;
+}
+.rubric-box {
+  background: #f8f9fa; border: 2px solid var(--primary); border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+}
+.practice-item {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.25rem; margin: 1rem 0;
+}
+details { margin: 1rem 0; }
+summary {
+  cursor: pointer; font-weight: 600; padding: 0.5rem;
+  background: #f8f9fa; border-radius: 4px; border: 1px solid var(--border);
+}
+summary:hover { background: #e9ecef; }
+
+/* ===== INTERACTIVE ENGINE =====*/
+/* ===== SCORE BAR ===== */
+#score-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--primary, #1a1a2e); color: #ffc107;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; font-weight: 700;
+  padding: 0.5rem 1.5rem; text-align: right;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+#score-bar .score-icon { font-size: 1.1rem; }
+body { padding-top: 3rem; }
+.score-bump { animation: bump 0.3s ease; }
+@keyframes bump { 0%{transform:scale(1)} 50%{transform:scale(1.4)} 100%{transform:scale(1)} }
+
+/* ===== MCQ BUTTONS ===== */
+.mcq-options { display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0; }
+.mcq-btn {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  background: #fff; border: 2px solid var(--border, #dee2e6); border-radius: 8px;
+  padding: 0.75rem 1rem; font-family: 'Georgia', serif; font-size: 0.95rem;
+  cursor: pointer; text-align: left; transition: all 0.2s;
+  line-height: 1.5; color: var(--text, #2d2d2d);
+}
+.mcq-btn:hover:not(:disabled) { border-color: #0d6efd; background: #f0f7ff; }
+.mcq-btn:disabled { cursor: default; opacity: 0.7; }
+.mcq-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  background: var(--primary, #1a1a2e); color: #fff;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  flex-shrink: 0; margin-top: 0.1rem;
+}
+.mcq-btn.mcq-correct { border-color: #28a745; background: #d4edda; }
+.mcq-btn.mcq-correct .mcq-letter { background: #28a745; }
+.mcq-btn.mcq-wrong { border-color: #dc3545; background: #f8d7da; }
+.mcq-btn.mcq-wrong .mcq-letter { background: #dc3545; }
+.mcq-feedback {
+  background: #e8f5e9; border-left: 4px solid #28a745;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ===== WRITING INPUT ===== */
+.writing-input { margin: 1.5rem 0; }
+.writing-ta, .practice-ta {
+  width: 100%; border: 2px solid var(--border, #dee2e6); border-radius: 8px;
+  padding: 0.8rem; font-family: 'Georgia', serif; font-size: 0.95rem;
+  line-height: 1.7; resize: vertical; min-height: 120px;
+}
+.writing-ta:focus, .practice-ta:focus { border-color: #0d6efd; outline: none; box-shadow: 0 0 0 3px rgba(13,110,253,0.15); }
+.writing-ta[readonly], .practice-ta[readonly] { background: #f8f9fa; }
+.writing-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 0.5rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.wc { color: var(--muted, #6c757d); }
+.writing-submit {
+  background: var(--accent, #e94560); color: #fff; border: none; border-radius: 6px;
+  padding: 0.5rem 1.25rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.writing-submit:hover:not(:disabled) { background: #d63050; }
+.writing-submit:disabled { background: #bbb; cursor: default; }
+.writing-submit.submitted { background: #28a745; }
+
+/* ===== PHASE GATING ===== */
+.phase-locked {
+  opacity: 0.35; pointer-events: none; position: relative;
+  filter: grayscale(40%);
+}
+.phase-locked::after {
+  content: '🔒 Complete the previous phase to unlock';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: rgba(26,26,46,0.9); color: #fff; padding: 0.75rem 1.5rem;
+  border-radius: 8px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem; font-weight: 600; white-space: nowrap; z-index: 10;
+  pointer-events: none;
+}
+.phase-active { opacity: 1; }
+.phase-done { opacity: 0.85; }
+.phase-done .phase-next-btn { display: none; }
+.phase-next-btn {
+  display: block; width: 100%; margin-top: 1.5rem;
+  background: #0d6efd; color: #fff; border: none; border-radius: 8px;
+  padding: 0.75rem; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.phase-next-btn:hover:not(:disabled) { background: #0b5ed7; }
+.phase-next-btn:disabled { background: #a0c4ff; cursor: default; }
+
+/* ===== LESSON COMPLETE OVERLAY ===== */
+.complete-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
+  z-index: 2000; animation: fadeIn 0.3s ease;
+}
+.complete-card {
+  background: #fff; border-radius: 16px; padding: 2.5rem; text-align: center;
+  max-width: 400px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+.complete-card h2 { color: var(--primary, #1a1a2e); margin-bottom: 0.5rem; }
+.complete-stars { font-size: 2.5rem; color: #ffc107; margin: 0.5rem 0; }
+.complete-score { font-size: 1.3rem; font-weight: 700; color: var(--primary, #1a1a2e); margin-bottom: 1rem; }
+.complete-close {
+  background: #0d6efd; color: #fff; border: none; border-radius: 8px;
+  padding: 0.6rem 2rem; font-size: 1rem; font-weight: 600; cursor: pointer;
+  margin-top: 0.5rem;
+}
+.complete-close:hover { background: #0b5ed7; }
+
+/* ===== HIDE ANSWERS BY DEFAULT ===== */
+.practice-item > details { display: none !important; }
+.practice-item > details.revealed { display: block !important; }
+
+/* ===== AI GRADING FEEDBACK ===== */
+.grading-container { margin-top: 1rem; animation: fadeIn 0.3s ease; }
+.grading-loading {
+  padding: 1rem; background: #f8f9fa; border: 1px solid var(--border, #dee2e6);
+  border-radius: 8px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.9rem; color: var(--muted, #6c757d);
+}
+.grading-spinner {
+  display: inline-block; width: 14px; height: 14px; border: 2px solid #dee2e6;
+  border-top-color: #0d6efd; border-radius: 50%; animation: spin 0.6s linear infinite;
+  vertical-align: middle; margin-right: 0.5rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.grading-error {
+  padding: 1rem; background: #fff3cd; border: 1px solid #ffc107;
+  border-radius: 8px; font-size: 0.85rem; color: #856404;
+}
+.grading-feedback {
+  background: #fff; border: 2px solid var(--primary, #1a1a2e); border-radius: 8px;
+  padding: 1.25rem; font-size: 0.9rem;
+}
+.grading-title {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1rem;
+  font-weight: 700; color: var(--primary, #1a1a2e); margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent, #e94560);
+}
+.grading-criterion {
+  padding: 0.6rem 0.75rem; margin-bottom: 0.5rem; border-radius: 6px;
+  line-height: 1.5; font-size: 0.85rem;
+}
+.grading-met { background: #d4edda; border-left: 3px solid #28a745; }
+.grading-not-met { background: #f8d7da; border-left: 3px solid #dc3545; }
+.grading-icon { font-weight: 700; margin-right: 0.25rem; }
+.grading-met .grading-icon { color: #155724; }
+.grading-not-met .grading-icon { color: #842029; }
+.grading-score {
+  margin: 0.75rem 0; padding: 0.5rem 0.75rem; background: var(--primary, #1a1a2e);
+  color: #ffc107; border-radius: 6px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700; font-size: 0.9rem; text-align: center;
+}
+.grading-overall {
+  margin: 0.75rem 0; font-style: italic; color: var(--text, #2d2d2d);
+  line-height: 1.6;
+}
+.grading-next-step {
+  margin-top: 0.75rem; padding: 0.75rem; background: #e8f4fd;
+  border-left: 3px solid #0d6efd; border-radius: 0 6px 6px 0;
+  font-size: 0.85rem; line-height: 1.5;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+
+
+</style>
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag teach">Course A2 • Lesson 7</span>
+  <h1>Full Sophisticated Argument Essay <span class="gateway-badge">Gateway</span></h1>
+  <p class="subtitle">Synthesizing Force Field, Claim Hierarchy, They Say/I Say, and genuine engagement</p>
+  <div class="meta-bar">
+    <span>⏱ ~50 min</span>
+    <span>📋 KC C.10.06 (GATEWAY)</span>
+    <span>🎯 Full argument essay with nuanced position</span>
+  </div>
+</div>
+
+<h2>Lesson Overview</h2>
+<p>This is your first A2 gateway lesson. You'll plan and write a complete sophisticated argument essay that demonstrates everything you've learned in Lessons 1-6: positioning your argument in a conversation (They Say/I Say), building hierarchical claims (M4), addressing counterarguments genuinely (no straw men), and taking a nuanced position (Nuance Ladder).</p>
+
+<div class="key-concept">
+  <p><strong>Gateway Criteria (C.10.06):</strong> To pass, your essay must score 4/6 or higher on the rubric AND genuinely engage with a counterargument (no straw men). This essay demonstrates that you can synthesize multiple A2 skills into a unified argument.</p>
+</div>
+
+<div class="phase-card teach-card" data-phase="teach">
+  <span class="lesson-tag teach">Teach • 3 min</span>
+  <h3>The Sophisticated Argument Essay Structure</h3>
+
+  <p>A sophisticated argument essay has five essential components:</p>
+
+  <div class="key-concept">
+    <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>They Say:</strong> What's the existing conversation? What do others argue about this issue?</li>
+      <li><strong>I Say:</strong> Your nuanced position (use one of the three moves: Agree with a Difference, Disagree Diplomatically, or Complicate the Debate)</li>
+      <li><strong>Claims with Evidence + Commentary:</strong> Build your argument using Claim Hierarchy (M4). Each claim supports your thesis; evidence supports each claim.</li>
+      <li><strong>Strongest Counterargument Addressed:</strong> Engage genuinely with the best opposing view (not a straw man), then respond.</li>
+      <li><strong>Why It Matters:</strong> What's at stake? Who benefits or is harmed? Connect to larger values or consequences.</li>
+    </ol>
+  </div>
+
+  <p><strong>This is NOT the same as A1's argument essay.</strong> The A1 essay was foundational—it taught you basic argument structure. This A2 essay is <em>sophisticated</em>—it positions you in an intellectual conversation and demonstrates nuanced thinking.</p>
+
+  <button class="phase-next-btn">Continue to Model</button>
+</div>
+
+<div class="phase-card model-card" data-phase="model">
+  <span class="lesson-tag model">Model • 3 min</span>
+  <h3>Annotated Model Essay</h3>
+
+  <p>Read this model essay about data privacy. Notice how each component is labeled.</p>
+
+  <div class="passage-box">
+    <p><strong>[THEY SAY]</strong> The debate over personal data privacy typically divides into two camps: tech companies argue that data collection enables personalized services and free platforms, while privacy advocates claim that companies exploit user data without meaningful consent. <strong>[I SAY — Complicate the Debate]</strong> What both sides overlook is that the current regulatory framework treats "consent" as a binary click on unreadable terms of service, when in reality most users have no practical ability to opt out of data collection and still participate in modern life. The question is not whether users "consent" but whether that consent is genuinely informed and freely given.</p>
+
+    <p><strong>[CLAIM 1 + EVIDENCE + COMMENTARY]</strong> Current consent mechanisms are designed to create the appearance of choice while making opting out functionally impossible. A 2022 study by the Norwegian Consumer Council found that accepting default privacy settings on major platforms takes seconds, while opting out of data sharing requires navigating an average of 15 screens and clicking through 40 pages of settings. This asymmetry is not accidental—it reflects a business model where user data is the product. When companies profit from data collection, they have every incentive to make privacy protection as burdensome as possible. Calling this "consent" is like calling a contract signed under duress "voluntary."</p>
+
+    <p><strong>[CLAIM 2 + EVIDENCE + COMMENTARY — M4 Hierarchy]</strong> Moreover, even users who do attempt to protect their privacy face network effects that make genuine opting out impossible. If your employer uses Slack, your school uses Google Classroom, or your family coordinates through WhatsApp, you cannot refuse these platforms without sacrificing your job, education, or social connections. Privacy advocates often focus on individual responsibility—"just delete social media"—but this advice ignores structural realities. For many people, particularly those in marginalized communities who rely on digital networks for mutual aid, refusing data-extractive platforms is not a viable option.</p>
+
+    <p><strong>[COUNTERARGUMENT + RESPONSE]</strong> Some argue that users benefit from data collection through free services and personalized experiences, and that prohibiting data use would require expensive subscription models that exclude low-income users. This concern is legitimate—free access to information and communication tools does matter for equity. However, this framing accepts a false trade-off. Countries with stronger data protection laws, such as those governed by the EU's GDPR, have not seen digital services disappear or become unaffordable; instead, companies have adapted by offering tiered services or shifting to less invasive revenue models. The choice is not between free-but-exploitative platforms and expensive-but-private ones; it is between a regulatory system that permits extractive business models and one that requires genuine user control.</p>
+
+    <p><strong>[WHY IT MATTERS]</strong> What is at stake is not just privacy but power. When companies control vast datasets about our behavior, preferences, and social connections, they shape what information we see, which job opportunities we access, and even how much we pay for goods and services. The question of data privacy is fundamentally a question of whether individuals have meaningful agency in the digital economy or whether we are subjects of algorithmic governance accountable to no one. Redefining consent to mean something more than clicking "I agree" on terms no one reads is not a technical fix—it is a shift in who holds power in our increasingly digital world.</p>
+
+    <p class="attribution">Sample A2 sophisticated argument essay (annotated)</p>
+  </div>
+
+  <h3>Mapping to M4 (Claim Hierarchy)</h3>
+  <p><strong>Thesis:</strong> The current regulatory framework treats consent as a binary click, but most users lack genuine ability to opt out.</p>
+  <ul style="margin-left: 1.5rem;">
+    <li><strong>Claim 1:</strong> Consent mechanisms are designed to appear voluntary while making opting out functionally impossible.</li>
+    <li><strong>Claim 2:</strong> Network effects mean even users who try to protect privacy cannot genuinely opt out.</li>
+    <li><strong>Counterargument:</strong> Users benefit from free services enabled by data collection (acknowledged as legitimate).</li>
+    <li><strong>Response:</strong> This assumes a false trade-off; stronger regulation hasn't made services unaffordable elsewhere.</li>
+  </ul>
+
+  <p>Notice: Every claim <em>builds</em> the thesis. They don't just sit next to it—they explain <em>how</em> and <em>why</em> the thesis is true.</p>
+
+  <button class="phase-next-btn">Continue to Planning</button>
+</div>
+
+<div class="phase-card practice-card" data-phase="practice">
+  <span class="lesson-tag practice">Supported Practice — Planning • 8 min</span>
+  <h3>Build Your Essay Plan</h3>
+
+  <p><strong>Prompt:</strong> Many educators argue that AI tools like ChatGPT should be banned from classrooms because they enable cheating and undermine genuine learning. Where do you stand in this conversation?</p>
+
+  <p><strong>Your task:</strong> Build a Claim Hierarchy outline that includes:</p>
+  <ul style="margin-left: 1.5rem;">
+    <li><strong>They Say:</strong> What's the existing debate? (1-2 sentences)</li>
+    <li><strong>I Say:</strong> Your position—choose Agree with a Difference, Disagree Diplomatically, or Complicate the Debate</li>
+    <li><strong>Claim 1 + evidence:</strong> Your first reason with supporting evidence</li>
+    <li><strong>Claim 2 + evidence:</strong> Your second reason with supporting evidence</li>
+    <li><strong>Counterargument:</strong> The strongest opposing view (stated genuinely, not as a straw man)</li>
+    <li><strong>Response:</strong> Why your position holds despite the counterargument</li>
+  </ul>
+
+  <div class="rubric-box">
+    <h4>Planning Success Criteria</h4>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>"They Say" identifies the existing conversation (not just "some people think...")</li>
+      <li>"I Say" uses one of the three moves and takes a nuanced position</li>
+      <li>Both claims clearly support the thesis (hierarchical, not flat)</li>
+      <li>Evidence is specific (not vague generalities)</li>
+      <li>Counterargument is stated fairly—opponent would recognize it</li>
+      <li>Response actually addresses the counterargument (doesn't just reassert thesis)</li>
+    </ul>
+  </div>
+
+  <div class="writing-input">
+    <textarea class="writing-ta" data-min-words="80" placeholder="Build your Claim Hierarchy outline here. Include: They Say, I Say, Claim 1 + evidence, Claim 2 + evidence, Counterargument, Response..."></textarea>
+    <div class="writing-footer">
+      <span class="wc">0 words</span>
+      <button class="writing-submit">Submit Plan</button>
+    </div>
+  </div>
+
+  <button class="phase-next-btn">Continue to Essay Writing</button>
+</div>
+
+<div class="phase-card independent-card" data-phase="independent">
+  <span class="lesson-tag independent">Independent Practice — Full Essay • 25 min</span>
+  <h3>Write Your Sophisticated Argument Essay</h3>
+
+  <p><strong>Instructions:</strong> Write the full essay from your plan. This is timed—you have approximately 25 minutes. Your essay should be 250-350 words and include all five components: They Say, I Say, Claims with evidence, Counterargument + Response, and Why It Matters.</p>
+
+  <div class="rubric-box">
+    <h4>Essay Success Criteria (6-Point Gateway Rubric)</h4>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>They Say/I Say (Positioning):</strong> Clear "They Say" that genuinely represents the opposing view. "I Say" uses one of the three sophisticated moves (not just "I think...")</li>
+      <li><strong>Nuanced Position:</strong> Thesis is NOT binary—it specifies conditions, context, or qualifications (Level 2+ on Nuance Ladder)</li>
+      <li><strong>Claims + Evidence + Commentary:</strong> At least 2 claims with specific evidence. Commentary explains HOW evidence supports the claim (not just "this shows...")</li>
+      <li><strong>Counterargument Addressed:</strong> Strongest opposing view stated genuinely (NOT a straw man). Response engages with the logic, not just reasserts thesis</li>
+      <li><strong>Claim Hierarchy (M4):</strong> Claims build/support the thesis rather than sitting beside it. Reader can see how claims connect back to main argument</li>
+      <li><strong>Why It Matters:</strong> Essay explains stakes—who benefits, who is harmed, what values are at play, or what consequences follow</li>
+    </ul>
+    <p style="margin-top: 0.75rem; font-weight: 600;">Gateway Pass: 4/6 criteria met + genuine counterargument engagement (no straw men)</p>
+  </div>
+
+  <div class="writing-input">
+    <textarea class="writing-ta" data-min-words="250" data-rubric="L07_argument_essay" placeholder="Write your full sophisticated argument essay here..." style="min-height: 300px;"></textarea>
+    <div class="writing-footer">
+      <span class="wc">0 words</span>
+      <button class="writing-submit">Submit Essay</button>
+    </div>
+  </div>
+
+  <button class="phase-next-btn">Continue to Self-Score</button>
+</div>
+
+<div class="phase-card self-score-card" data-phase="self-score">
+  <span class="lesson-tag bridge">Self-Score • 5 min</span>
+  <h3>Score Your Essay</h3>
+
+  <p><strong>Instructions:</strong> Read your essay and evaluate it against the 6-point rubric. For each criterion, mark whether you met it (1 point) or not (0 points). Be honest—this is for your learning, not for a grade.</p>
+
+  <div class="self-check">
+    <div class="q-label">Self-Scoring Checklist</div>
+    <p>For each item, ask: <strong>Did I do this?</strong></p>
+    <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>They Say/I Say positioning:</strong> Did I clearly represent what others say and position my argument using one of the three moves?</li>
+      <li><strong>Nuanced position:</strong> Is my thesis specific and qualified (not just "X is good/bad")?</li>
+      <li><strong>Claims + Evidence + Commentary:</strong> Do I have at least 2 claims with specific evidence AND commentary that explains how evidence supports the claim?</li>
+      <li><strong>Genuine counterargument:</strong> Did I state the strongest opposing view fairly (no straw man) AND respond to its logic?</li>
+      <li><strong>Claim Hierarchy:</strong> Do my claims clearly build/support the thesis (not just list reasons)?</li>
+      <li><strong>Why It Matters:</strong> Did I explain stakes, consequences, or values—not just what I think but why it matters?</li>
+    </ol>
+  </div>
+
+  <div class="writing-input">
+    <p><strong>Reflection:</strong> Count how many criteria you met (0-6). Then answer: <strong>What is the weakest part of your essay? What would you revise first?</strong></p>
+    <textarea class="writing-ta" data-min-words="40" placeholder="Self-score (how many criteria met?) and identify your weakest area..."></textarea>
+    <div class="writing-footer">
+      <span class="wc">0 words</span>
+      <button class="writing-submit">Submit Self-Score</button>
+    </div>
+  </div>
+
+  <button class="phase-next-btn">Continue to Gateway Check</button>
+</div>
+
+<div class="phase-card bridge-card" data-phase="gateway">
+  <span class="lesson-tag bridge">Gateway Check</span>
+  <h3>Gateway Status: C.10.06</h3>
+
+  <div class="key-concept">
+    <p><strong>Gateway Criteria Reminder:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Score 4/6 or higher on the rubric</li>
+      <li>Counterargument must be genuinely engaged (no straw man)</li>
+    </ul>
+    <p style="margin-top: 0.75rem;"><strong>If you scored 4+/6 AND engaged genuinely with a counterargument, you've passed the gateway.</strong> If not, you'll have opportunities to revise or demonstrate this skill in later lessons.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="q-label">Gateway Reflection</div>
+    <p><strong>Based on your self-score:</strong> Do you believe you met the gateway criteria (4/6 + genuine counterargument)? If not, what specific skill do you need to strengthen before the next gateway opportunity?</p>
+  </div>
+
+  <div class="writing-input">
+    <textarea class="writing-ta" data-min-words="30" placeholder="Reflect on your gateway status..."></textarea>
+    <div class="writing-footer">
+      <span class="wc">0 words</span>
+      <button class="writing-submit">Submit Reflection</button>
+    </div>
+  </div>
+
+  <button class="phase-next-btn">Complete Lesson</button>
+</div>
+
+<div class="footnote">
+  <p><strong>Next:</strong> In Lessons 8-9, you'll learn analytical reading skills (synthesis and serial summarizing) before moving into full source-based arguments. L07 is your first A2 gateway—well done for completing it!</p>
+  <p style="margin-top: 0.5rem;"><strong>Note:</strong> Your teacher may provide feedback on your essay using the 6-point rubric. Use that feedback to strengthen your argument skills in upcoming lessons.</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A2 L08: Source Perspective Evaluation</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; font-weight: 600; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.source-card {
+  background: #f0f4ff; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.source-card h4 { color: #0d6efd; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course A2 · Lesson 8</span>
+  <h1>Source Perspective Evaluation</h1>
+  <p class="subtitle">Understanding what sources reveal—and what they hide</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KC: C.10.07</span>
+    <span>🧠 Mental Models: M3, M6 preview</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Key Insight:</strong> Every source has a perspective — a point of view shaped by WHO wrote it, WHEN, and WHY. No source shows you the whole picture. Strong synthesis requires understanding what each source reveals AND what it obscures.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>Sources Have Perspectives</h3>
+
+  <p>When you read multiple sources for a synthesis essay, it's tempting to treat them all as equally valid "information" that you just need to combine. But sources aren't neutral windows onto reality — they're <strong>perspectives</strong> shaped by specific writers in specific contexts.</p>
+
+  <p>Remember <span class="vocab-term">M3: Rhetorical Force Field</span> from L01? The same forces that shape a writer's choices also shape what a source includes and excludes:</p>
+
+  <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+    <li><strong>WHO wrote it</strong> determines what expertise and biases they bring</li>
+    <li><strong>WHEN it was written</strong> determines what context shapes its claims</li>
+    <li><strong>WHY it was written</strong> determines what purpose it serves</li>
+  </ul>
+
+  <p>This connects to a new mental model we'll use in Track B: <span class="vocab-term">M6: Who Benefits?</span> When evaluating sources, always ask: Whose interests does this source serve? What does it prioritize? What does it downplay or ignore?</p>
+
+  <div class="key-concept">
+    <h4>Source Perspective Card Template</h4>
+    <p>For each source, identify:</p>
+    <table>
+      <tr>
+        <th style="width: 30%;">Element</th>
+        <th>Question to Ask</th>
+      </tr>
+      <tr>
+        <td><strong>Author</strong></td>
+        <td>Who wrote this? What's their position, expertise, or stake in the issue?</td>
+      </tr>
+      <tr>
+        <td><strong>Core Argument</strong></td>
+        <td>What is the source's main claim or position?</td>
+      </tr>
+      <tr>
+        <td><strong>Whose Perspective</strong></td>
+        <td>What group or viewpoint does this source represent?</td>
+      </tr>
+      <tr>
+        <td><strong>What It Reveals</strong></td>
+        <td>What does this source make visible or emphasize?</td>
+      </tr>
+      <tr>
+        <td><strong>What It Obscures</strong></td>
+        <td>What does this source downplay, ignore, or hide?</td>
+      </tr>
+      <tr>
+        <td><strong>Useful For</strong></td>
+        <td>What argument purpose could this source serve in YOUR essay?</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<h2>Phase 2: Model (3 min)</h2>
+<div class="phase-card model-card">
+  <h3>Evaluating Source Perspective: Standardized Testing</h3>
+
+  <p><strong>Context:</strong> Source Set A examines the debate over standardized testing in schools. Let's evaluate the first source.</p>
+
+  <div class="passage-box">
+    <h4>Source 1: "Tests Predict Student Success"</h4>
+    <p>After analyzing data from over 200,000 students across fifteen states, our research team has reached a clear conclusion: standardized test scores remain the single strongest predictor of college success and career readiness available to educators and policymakers. Students who score in the top quartile on state assessments are 3.2 times more likely to earn a four-year degree within six years compared to students in the bottom quartile, even when controlling for family income and parental education levels.</p>
+
+    <p>Critics often claim that standardized tests only measure test-taking ability, but this characterization ignores decades of validation research. These assessments measure foundational skills in reading comprehension, mathematical reasoning, and analytical thinking — skills that matter in college classrooms and professional workplaces. When we examined college transcripts, students with high standardized test scores in high school earned significantly higher GPAs in demanding courses like calculus, composition, and laboratory sciences.</p>
+
+    <p>Furthermore, standardized tests provide the only apples-to-apples comparison available to educators. A student earning an 'A' in Algebra II at one high school may have vastly different skills than a student earning the same grade at another school. Standardized assessments give us objective data to identify achievement gaps, evaluate curriculum effectiveness, and ensure all students are meeting rigorous standards regardless of their ZIP code.</p>
+
+    <p>Without standardized measures, we risk returning to an era where student achievement was determined entirely by subjective judgments that often reflected biases about race, class, and gender. Objective assessments, while imperfect, remain our best tool for ensuring equity and accountability in American education.</p>
+    <p class="attribution">Dr. Michael Chen, Educational Research Quarterly, 2024</p>
+  </div>
+
+  <div class="source-card">
+    <h4>Source Perspective Card: Dr. Chen</h4>
+    <p><strong>Author:</strong> Dr. Michael Chen, education researcher publishing in an academic journal</p>
+    <p><strong>Core Argument:</strong> Standardized tests are the most reliable predictor of student success and essential for educational equity</p>
+    <p><strong>Whose Perspective:</strong> Educational researchers and policymakers who value quantitative data and standardized measures</p>
+    <p><strong>What It Reveals:</strong> The source emphasizes predictive validity (tests correlate with college success), objectivity (standardized comparison across schools), and equity concerns (tests prevent subjective bias in assessment)</p>
+    <p><strong>What It Obscures:</strong> The source doesn't address test anxiety, cultural bias in test design, the impact of test prep resources on score differences, or how testing affects curriculum and teaching. It treats correlation (test scores and college success) as if it proves causation, without considering that both might be caused by a third factor (family resources, school quality)</p>
+    <p><strong>Useful For:</strong> This source is useful for representing the pro-testing research perspective, providing statistical evidence for the predictive power of tests, and establishing the equity argument that some testing advocates make</p>
+  </div>
+
+  <p><strong>Notice:</strong> We're not saying Dr. Chen is "wrong" or "biased" in a negative sense. We're identifying the PERSPECTIVE he represents and acknowledging that his position — as a quantitative researcher — shapes what he emphasizes (data, prediction, objectivity) and what he doesn't discuss (lived experience, teaching effects, access inequities).</p>
+</div>
+
+<h2>Phase 3: Supported Practice (8 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Evaluate Two More Sources from Set A</h3>
+
+  <p><strong>Your Task:</strong> Read Sources 2 and 3 below. Complete a Source Perspective Card for each source.</p>
+
+  <div class="passage-box">
+    <h4>Source 2: "What Tests Cost My Students"</h4>
+    <p>In my fourteen years as a high school English teacher, I've watched standardized testing transform my classroom from a place of intellectual curiosity into a test-preparation factory. The shift has been heartbreaking.</p>
+
+    <p>Last spring, I had to tell my juniors that we couldn't finish reading <em>Beloved</em> because we needed three more weeks to practice multiple-choice reading comprehension strategies for the state exam. We spent those weeks learning tricks: eliminate obviously wrong answers, look for context clues, manage your time. We did not spend those weeks discussing Morrison's use of magical realism, debating the ethics of Sethe's choice, or writing essays that grappled with the novel's profound questions about trauma and memory.</p>
+
+    <p>This pattern repeats across every subject. My colleagues in history reduce rich, complex events to bulleted facts that appear on tests. Math teachers drill procedures while abandoning deeper problem-solving. Art and music programs shrink as schools redirect resources toward tested subjects. One study found that teachers spend an average of 110 hours per year on test preparation — nearly three full weeks of instructional time lost to practicing bubbling answer sheets.</p>
+
+    <p>The psychological toll on students is equally damaging. I've watched confident learners become anxious test-takers, convinced they're "bad at school" because they struggle with timed, high-stakes exams. Students with testing anxiety, processing differences, or limited English proficiency face assessments that fundamentally misrepresent their abilities.</p>
+
+    <p>Standardized tests don't measure creativity, collaboration, persistence, or the kinds of complex thinking that matter most in the real world. They measure one narrow slice of human intelligence, then use that slice to make high-stakes decisions about students' futures. We can do better. We must do better.</p>
+    <p class="attribution">Jennifer Rodriguez, classroom teacher, Education Week, 2024</p>
+  </div>
+
+  <div class="passage-box">
+    <h4>Source 3: "The Case for Better Tests, Not No Tests"</h4>
+    <p>The debate over standardized testing has become unnecessarily polarized. Both abolishing all testing and maintaining the current system would be mistakes. The real question is not whether to test, but how to test in ways that genuinely measure what students know and can do.</p>
+
+    <p>Current standardized tests suffer from serious design flaws. Most rely heavily on multiple-choice questions that assess recall and recognition rather than deeper reasoning. They're typically administered once per year under artificial time pressure that disadvantages many capable students. And they focus narrowly on reading and math while ignoring critical competencies like written communication, research skills, and creative problem-solving.</p>
+
+    <p>But these flaws don't mean we should abandon assessment altogether. Schools need data to identify struggling students early, evaluate whether interventions work, and ensure educational equity. The solution is designing better assessments: performance-based tasks where students write essays, conduct research projects, or solve complex problems over multiple days. Several states have pioneered assessment systems that include portfolios, presentations, and collaborative projects alongside traditional tests.</p>
+
+    <p>International examples show what's possible. In Finland, national assessments use sample-based testing rather than testing every student, reducing pressure while still providing system-level data. Singapore's exams include extended written responses and practical applications, not just multiple choice. These approaches maintain accountability while better representing the full range of student capabilities.</p>
+
+    <p>Technology now enables more sophisticated assessment, including adaptive testing that adjusts difficulty in real-time and can measure growth rather than just proficiency. We need to invest in developing and validating these next-generation assessments. The choice isn't between testing and not testing — it's between testing that impoverishes education and testing that enriches it.</p>
+    <p class="attribution">Dr. Patricia Owens, Education Policy Center, 2023</p>
+  </div>
+
+  <div class="writing-task" data-min-words="60">
+    <h4>Complete Source Perspective Cards</h4>
+    <p>For <strong>Source 2 (Rodriguez)</strong>, identify:</p>
+    <ul style="margin-left: 1.5rem;">
+      <li>Author and position</li>
+      <li>Core argument</li>
+      <li>Whose perspective this represents</li>
+      <li>What it reveals</li>
+      <li>What it obscures</li>
+      <li>What it's useful for in a synthesis essay</li>
+    </ul>
+
+    <p style="margin-top: 1rem;">For <strong>Source 3 (Owens)</strong>, identify the same six elements.</p>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (8 min)</h2>
+<div class="phase-card independent-card" data-min-words="40" data-rubric="L08_source_perspective">
+  <h3>Evaluate Sources from a New Topic</h3>
+
+  <p><strong>Context:</strong> Source Set B examines the debate over social media regulation to protect teen mental health. Read the two sources below.</p>
+
+  <div class="passage-box">
+    <h4>Source 1: "Social Media Harms Teen Mental Health"</h4>
+    <p>The data linking social media use to adolescent mental health problems is now overwhelming. Our five-year longitudinal study tracking 12,000 teenagers found that those who spent more than three hours daily on social media platforms were 2.7 times more likely to experience clinical depression and 3.1 times more likely to report anxiety disorders compared to peers with minimal social media use.</p>
+
+    <p>The mechanisms of harm are well-documented. Social media platforms use sophisticated algorithms designed to maximize engagement — a business model that prioritizes keeping teens scrolling over their psychological well-being. These algorithms preferentially serve content that triggers strong emotional responses: social comparison, fear of missing out, and idealized images that distort reality. Teenage girls report constant pressure to present curated, filtered versions of themselves, leading to body image issues and disordered eating. Teenage boys encounter toxic masculinity content and are drawn into increasingly extreme online communities.</p>
+
+    <p>The timing of social media adoption makes these effects particularly concerning. The teen brain is still developing executive function and emotional regulation. Introducing addictive digital platforms during this critical developmental window appears to interfere with the development of healthy coping mechanisms. We're seeing unprecedented rates of adolescent depression, self-harm, and suicidal ideation — trends that parallel the rise of smartphone-based social media.</p>
+
+    <p>Industry documents revealed through recent lawsuits show that social media companies have long known about these harms. Internal research at major platforms documented the negative effects on teen mental health, yet companies continued designing features they knew were harmful. This is a public health crisis requiring government intervention. We regulate tobacco, alcohol, and other products that harm young people. Social media should be no different.</p>
+    <p class="attribution">Dr. Sarah Liang, Public Health Researcher, American Journal of Adolescent Health, 2024</p>
+  </div>
+
+  <div class="passage-box">
+    <h4>Source 2: "Digital Literacy Is the Real Solution"</h4>
+    <p>As a therapist who works with teenagers, I see the mental health effects of social media in my office every week. But I've also seen something else: teens who use social media in healthy, intentional ways and teens who don't. The difference isn't whether they're on social media — it's whether they understand how these platforms work and have developed critical consumption skills.</p>
+
+    <p>When I work with teens struggling with social media's effects, the problem is rarely the platforms themselves. It's that no one taught them to recognize manipulative design, question influencer motives, critically evaluate the content they consume, or set boundaries around their usage. These are teachable skills. Just like teaching teens about nutrition doesn't mean banning junk food, teaching digital literacy doesn't require banning platforms.</p>
+
+    <p>Consider what happens in schools that implement comprehensive digital literacy curricula. Students learn how algorithms work, why infinite scroll exists, how filters create false comparisons, and techniques for managing screen time. They discuss online drama and cyberbullying with trained educators. They practice identifying misinformation and understanding how their data is used. Research from schools with robust digital literacy programs shows students develop healthier relationships with technology and report better mental health outcomes.</p>
+
+    <p>Regulation sends the message that teens need to be protected from technology. Education sends the message that teens can learn to navigate technology wisely. The first creates dependency; the second builds capability. We're not going to uninvent social media, so we need to prepare young people to live in a world where these platforms exist.</p>
+
+    <p>Furthermore, education addresses what regulation cannot: the full complexity of digital life, including beneficial uses of social media for community-building, creative expression, and social justice organizing. Blanket regulations risk eliminating positive aspects along with negative ones. Teaching wisdom requires more effort than imposing rules, but it's the approach that will actually equip teens for lifelong wellbeing in our digital age.</p>
+    <p class="attribution">Dr. James Okonkwo, Adolescent Psychologist, Psychology Today, 2023</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Write one sentence for EACH source using this structure:</p>
+
+  <p style="background: #f0f4ff; padding: 1rem; border-radius: 6px; margin: 1rem 0;"><em>"This source represents [perspective/whose viewpoint] because [evidence from the text], and it obscures [what's missing or downplayed]."</em></p>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li>One sentence per source (two sentences total)</li>
+      <li>Identifies whose perspective the source represents</li>
+      <li>Provides specific evidence from the source</li>
+      <li>Names what the source obscures or doesn't address</li>
+      <li>40+ words total</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>If you ONLY read Source 1 on the social media topic (Dr. Liang's public health research), what would you MISS about the debate? Why does synthesis require reading MULTIPLE sources with different perspectives?</strong></p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #555;">Think about: What does Liang emphasize? What does she leave out? How does reading Okonkwo's perspective change what you understand about the issue?</p>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Check Your Understanding</div>
+    <p><strong>What is the MOST important question to ask when evaluating a source's perspective?</strong></p>
+    <ol type="A">
+      <li>Is the author credible and trustworthy?</li>
+      <li>What does this source reveal, and what does it obscure?</li>
+      <li>Does this source use statistics and research?</li>
+      <li>Which side of the debate does this source take?</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> The key to evaluating perspective is understanding that EVERY source reveals something and hides something. Credibility (A) matters, but even credible sources have perspectives. Using statistics (C) doesn't eliminate perspective — researchers choose what to measure and how to frame findings. Identifying "which side" (D) is important but shallow — you need to understand what each perspective brings to the conversation AND what it leaves out. Strong synthesis requires seeing what each source illuminates and what remains in shadow.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>A2 L08 • Source Perspective Evaluation • KC C.10.07 • ~25 min • M3 + M6 preview</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="A2_L07_Full_Argument_Essay.html" class="prev">L07: Full Argument Essay</a>
+  <a href="A2_L09_Serial_vs_Synthesis.html" class="next">L09: Serial vs. Synthesis</a>
+</nav>
+</body>
+</html>

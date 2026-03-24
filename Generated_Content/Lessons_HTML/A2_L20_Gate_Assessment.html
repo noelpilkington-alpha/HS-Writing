@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A2 L20: G10 Gate Assessment</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+  --gate-red: #dc3545;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--gate-red); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.assessment { background: var(--gate-red); }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem; flex-wrap: wrap;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.assessment-card { border-left: 4px solid var(--gate-red); }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.passage-box h4 {
+  font-size: 0.9rem; color: var(--primary); margin: 0 0 0.5rem 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.gateway-badge {
+  display: inline-block; background: var(--gate-red); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem; border-radius: 3px; margin-left: 0.5rem;
+}
+.rubric-box {
+  background: #f8f9fa; border: 2px solid var(--primary); border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.warning-box {
+  background: #fff3e0; border: 2px solid #fd7e14; border-radius: 8px;
+  padding: 1rem; margin: 1rem 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem;
+}
+.warning-box strong {
+  color: #fd7e14;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+}
+.item-box {
+  background: #ffffff; border: 1px solid var(--border); border-radius: 6px;
+  padding: 1rem; margin: 1rem 0;
+}
+.item-box h4 {
+  font-size: 0.9rem; color: var(--muted);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+ol, ul { margin: 0.5rem 0 1rem 1.5rem; }
+li { margin-bottom: 0.4rem; }
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+
+/* ===== INTERACTIVE ENGINE ===== */
+/* ===== SCORE BAR ===== */
+#score-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--primary, #1a1a2e); color: #ffc107;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; font-weight: 700;
+  padding: 0.5rem 1.5rem; text-align: right;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+#score-bar .score-icon { font-size: 1.1rem; }
+body { padding-top: 3rem; }
+.score-bump { animation: bump 0.3s ease; }
+@keyframes bump { 0%{transform:scale(1)} 50%{transform:scale(1.4)} 100%{transform:scale(1)} }
+
+/* ===== MCQ BUTTONS ===== */
+.mcq-options { display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0; }
+.mcq-btn {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  background: #fff; border: 2px solid var(--border, #dee2e6); border-radius: 8px;
+  padding: 0.75rem 1rem; font-family: 'Georgia', serif; font-size: 0.95rem;
+  cursor: pointer; text-align: left; transition: all 0.2s;
+  line-height: 1.5; color: var(--text, #2d2d2d);
+}
+.mcq-btn:hover:not(:disabled) { border-color: #0d6efd; background: #f0f7ff; }
+.mcq-btn:disabled { cursor: default; opacity: 0.7; }
+.mcq-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  background: var(--primary, #1a1a2e); color: #fff;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  flex-shrink: 0; margin-top: 0.1rem;
+}
+.mcq-btn.mcq-correct { border-color: #28a745; background: #d4edda; }
+.mcq-btn.mcq-correct .mcq-letter { background: #28a745; }
+.mcq-btn.mcq-wrong { border-color: #dc3545; background: #f8d7da; }
+.mcq-btn.mcq-wrong .mcq-letter { background: #dc3545; }
+.mcq-feedback {
+  background: #e8f5e9; border-left: 4px solid #28a745;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ===== WRITING INPUT ===== */
+.writing-input { margin: 1.5rem 0; }
+.writing-ta, .practice-ta {
+  width: 100%; border: 2px solid var(--border, #dee2e6); border-radius: 8px;
+  padding: 0.8rem; font-family: 'Georgia', serif; font-size: 0.95rem;
+  line-height: 1.7; resize: vertical; min-height: 120px;
+}
+.writing-ta:focus, .practice-ta:focus { border-color: #0d6efd; outline: none; box-shadow: 0 0 0 3px rgba(13,110,253,0.15); }
+.writing-ta[readonly], .practice-ta[readonly] { background: #f8f9fa; }
+.writing-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 0.5rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.wc { color: var(--muted, #6c757d); }
+.writing-submit {
+  background: var(--accent, #e94560); color: #fff; border: none; border-radius: 6px;
+  padding: 0.5rem 1.25rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.writing-submit:hover:not(:disabled) { background: #d63050; }
+.writing-submit:disabled { background: #bbb; cursor: default; }
+.writing-submit.submitted { background: #28a745; }
+
+/* ===== PHASE GATING ===== */
+.phase-locked {
+  opacity: 0.35; pointer-events: none; position: relative;
+  filter: grayscale(40%);
+}
+.phase-locked::after {
+  content: '🔒 Complete the previous phase to unlock';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: rgba(26,26,46,0.9); color: #fff; padding: 0.75rem 1.5rem;
+  border-radius: 8px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem; font-weight: 600; white-space: nowrap; z-index: 10;
+  pointer-events: none;
+}
+.phase-active { opacity: 1; }
+.phase-done { opacity: 0.85; }
+.phase-done .phase-next-btn { display: none; }
+.phase-next-btn {
+  display: block; width: 100%; margin-top: 1.5rem;
+  background: #0d6efd; color: #fff; border: none; border-radius: 8px;
+  padding: 0.75rem; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.phase-next-btn:hover:not(:disabled) { background: #0b5ed7; }
+.phase-next-btn:disabled { background: #a0c4ff; cursor: default; }
+
+/* ===== LESSON COMPLETE OVERLAY ===== */
+.complete-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
+  z-index: 2000; animation: fadeIn 0.3s ease;
+}
+.complete-card {
+  background: #fff; border-radius: 16px; padding: 2.5rem; text-align: center;
+  max-width: 400px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+.complete-card h2 { color: var(--primary, #1a1a2e); margin-bottom: 0.5rem; }
+.complete-stars { font-size: 2.5rem; color: #ffc107; margin: 0.5rem 0; }
+.complete-score { font-size: 1.3rem; font-weight: 700; color: var(--primary, #1a1a2e); margin-bottom: 1rem; }
+.complete-close {
+  background: #0d6efd; color: #fff; border: none; border-radius: 8px;
+  padding: 0.6rem 2rem; font-size: 1rem; font-weight: 600; cursor: pointer;
+  margin-top: 0.5rem;
+}
+.complete-close:hover { background: #0b5ed7; }
+
+/* ===== HIDE ANSWERS BY DEFAULT ===== */
+.check-question > details { display: none !important; }
+.check-question > details.revealed { display: block !important; }
+
+/* ===== AI GRADING FEEDBACK ===== */
+.grading-container { margin-top: 1rem; animation: fadeIn 0.3s ease; }
+.grading-loading {
+  padding: 1rem; background: #f8f9fa; border: 1px solid var(--border, #dee2e6);
+  border-radius: 8px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.9rem; color: var(--muted, #6c757d);
+}
+.grading-spinner {
+  display: inline-block; width: 14px; height: 14px; border: 2px solid #dee2e6;
+  border-top-color: #0d6efd; border-radius: 50%; animation: spin 0.6s linear infinite;
+  vertical-align: middle; margin-right: 0.5rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.grading-error {
+  padding: 1rem; background: #fff3cd; border: 1px solid #ffc107;
+  border-radius: 8px; font-size: 0.85rem; color: #856404;
+}
+.grading-feedback {
+  background: #fff; border: 2px solid var(--primary, #1a1a2e); border-radius: 8px;
+  padding: 1.25rem; font-size: 0.9rem;
+}
+.grading-title {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1rem;
+  font-weight: 700; color: var(--primary, #1a1a2e); margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent, #e94560);
+}
+.grading-criterion {
+  padding: 0.6rem 0.75rem; margin-bottom: 0.5rem; border-radius: 6px;
+  line-height: 1.5; font-size: 0.85rem;
+}
+.grading-met { background: #d4edda; border-left: 3px solid #28a745; }
+.grading-not-met { background: #f8d7da; border-left: 3px solid #dc3545; }
+.grading-icon { font-weight: 700; margin-right: 0.25rem; }
+.grading-met .grading-icon { color: #155724; }
+.grading-not-met .grading-icon { color: #842029; }
+.grading-score {
+  margin: 0.75rem 0; padding: 0.5rem 0.75rem; background: var(--primary, #1a1a2e);
+  color: #ffc107; border-radius: 6px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700; font-size: 0.9rem; text-align: center;
+}
+.grading-overall {
+  margin: 0.75rem 0; font-style: italic; color: var(--text, #2d2d2d);
+  line-height: 1.6;
+}
+.grading-next-step {
+  margin-top: 0.75rem; padding: 0.75rem; background: #e8f4fd;
+  border-left: 3px solid #0d6efd; border-radius: 0 6px 6px 0;
+  font-size: 0.85rem; line-height: 1.5;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+</style>
+</head>
+<body>
+
+  <div class="lesson-header">
+    <span class="lesson-tag assessment">Gate Assessment</span>
+    <h1>G10 Gate Assessment<span class="gateway-badge">Required</span></h1>
+    <p class="subtitle">Synthesis essay + ACT essay + conventions mastery</p>
+    <div class="meta-bar">
+      <span>⏱ ~100 min (can split)</span>
+      <span>📖 KCs: All A2 KCs</span>
+      <span>🎯 Pass: 4/6 each essay + conventions ≥10/15</span>
+    </div>
+  </div>
+
+  <div class="key-concept">
+    <strong>You've built everything needed for this gate.</strong> Over 19 lessons in A2, you've mastered Force Field analysis (L01), Claim Hierarchies (L02), They Say/I Say moves (L04-05), synthesis (L08-12), timed writing strategy (L17), and ACT Writing skills (L16-19). This gate has three parts: synthesis essay, ACT essay, and conventions. You must pass all three to advance.
+  </div>
+
+  <div class="key-concept">
+    <strong>Assessment Overview:</strong>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0;">
+      <li><strong>Part 1 (40 min):</strong> Synthesis essay on school start times (4 sources)</li>
+      <li><strong>Part 2 (40 min):</strong> ACT Writing essay on arts education (3 perspectives)</li>
+      <li><strong>Part 3 (20 min):</strong> Conventions (10 MCQ items)</li>
+    </ul>
+  </div>
+
+  <div class="warning-box">
+    <strong>⏱ Time Management Strategy:</strong>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Part 1 (40 min):</strong> 10 min to read sources + annotate, 5 min to plan, 22 min to write, 3 min to revise.</li>
+      <li><strong>Part 2 (40 min):</strong> 5 min to plan (map perspectives), 32 min to write, 3 min to revise.</li>
+      <li><strong>Part 3 (20 min):</strong> 10 items = ~2 min per item. If stuck, skip and return.</li>
+      <li><strong>Total:</strong> 100 minutes. You may take a break between parts, but treat each part as continuous.</li>
+    </ul>
+  </div>
+
+  <!-- PART 1: SYNTHESIS ESSAY -->
+  <div class="phase-card assessment-card" data-rubric="L20_gate_synthesis">
+    <span class="lesson-tag assessment">Part 1: Synthesis Essay</span>
+    <h2>40 Minutes — School Start Times</h2>
+
+    <h3>Topic & Task</h3>
+    <p>Many school districts are debating whether to shift middle and high school start times to later in the morning. Proponents argue that later start times align better with adolescent sleep patterns and improve academic performance and mental health. Opponents point to logistical challenges, including transportation costs, after-school activity scheduling, and impacts on working families.</p>
+
+    <p><strong>Your Task:</strong> Read the four sources below. Then write an essay in which you develop your position on whether school districts should shift to later start times. Use evidence from at least three sources to support your argument. Be sure to:</p>
+    <ul>
+      <li>State a clear thesis (your position)</li>
+      <li>Integrate evidence from at least 3 of 4 sources with proper attribution</li>
+      <li>Explain how your evidence supports your position (not just summarize sources)</li>
+      <li>Organize your essay logically</li>
+    </ul>
+
+    <h3>Source 1: Sleep Scientist Perspective</h3>
+    <div class="passage-box">
+      <h4>Source 1</h4>
+      <p>Adolescents experience a biological shift in their circadian rhythms during puberty, causing them to naturally fall asleep later and wake later than children or adults. The American Academy of Pediatrics recommends that middle and high schools start no earlier than 8:30 a.m. to allow students adequate sleep. Research from the University of Minnesota found that when schools shifted start times from 7:30 a.m. to 8:30 a.m., students averaged 50 more minutes of sleep per night, showed improved attendance and grades, and reported fewer symptoms of depression.</p>
+
+      <p>Chronic sleep deprivation among teenagers is not a matter of laziness or poor choices—it's a mismatch between biological development and institutional schedules. When we force adolescents to wake at 6:00 a.m. for a 7:15 a.m. school start, we are essentially asking them to function during what their bodies perceive as the middle of the night. The consequences extend beyond yawning in first period. Sleep-deprived teens have higher rates of car accidents, mental health crises, and academic struggles. Shifting start times is one of the most evidence-based interventions schools can make to improve student wellbeing.</p>
+      <p class="attribution">Dr. Maida Chen, sleep researcher, condensed from journal article (2023)</p>
+    </div>
+
+    <h3>Source 2: School Administrator Perspective</h3>
+    <div class="passage-box">
+      <h4>Source 2</h4>
+      <p>As a district superintendent, I understand the appeal of later start times in theory, but the practical realities are daunting. Our district operates a tiered bus system: the same buses serve elementary, middle, and high schools in sequence. Shifting high school start times later would require either purchasing dozens of additional buses—an expense of several million dollars—or starting elementary schools earlier, which no pediatrician recommends.</p>
+
+      <p>Furthermore, later dismissal times create conflicts with after-school activities. Athletic programs depend on shared facilities and daylight hours. When we piloted a later start time, our soccer teams were forced to practice in darkness, and students who work after-school jobs lost hours—often hours their families depend on. The students advocating loudest for later start times are often those whose families can afford to absorb these disruptions. For working-class families who rely on older siblings to care for younger children after school, the logistical consequences are real and immediate. Sleep science matters, but so does the reality of how families actually function.</p>
+      <p class="attribution">Robert Tran, Superintendent, Franklin School District, from interview (2024)</p>
+    </div>
+
+    <h3>Source 3: Policy Researcher Perspective</h3>
+    <div class="passage-box">
+      <h4>Source 3</h4>
+      <p>The debate over school start times is often framed as biology versus logistics, but this misses the point. The real question is: what are we willing to invest in to support adolescent development? Districts that have successfully implemented later start times—Seattle, Minneapolis, and dozens of others—faced the same transportation and scheduling challenges that administrators cite as barriers. They solved them through phased implementation, community partnerships, and, yes, budget reallocation.</p>
+
+      <p>It's worth noting that American high schools start earlier than schools in nearly every other developed nation, many of which begin at 9:00 a.m. or later without the logistical catastrophes predicted by opponents. When we argue that later start times are "too expensive" or "too complicated," we are really saying that adolescent health is not a budget priority. Meanwhile, we spend millions on standardized testing and security infrastructure. The question is not whether later start times are feasible—it's whether we believe student wellbeing is worth the inconvenience of changing a schedule we have simply become accustomed to.</p>
+      <p class="attribution">Dr. Aisha Patel, education policy researcher, from policy brief (2024)</p>
+    </div>
+
+    <h3>Source 4: Parent Testimony</h3>
+    <div class="passage-box">
+      <h4>Source 4</h4>
+      <p>When our district shifted to an 8:45 a.m. start time, I was skeptical. As a single parent working an 8:00 a.m. shift, I worried about how my daughter would get to school and whether I'd have to quit my job. But the district worked with the YMCA to offer a free early-morning program starting at 7:30 a.m., giving students a place to eat breakfast, finish homework, or just hang out until school started. My daughter goes three days a week, and she likes it.</p>
+
+      <p>More importantly, I've watched her transform. She used to come home exhausted, nap until dinner, and stay up past midnight doing homework—a brutal cycle that left her irritable and struggling in her classes. Now she sleeps until 7:30 a.m., arrives at school awake, and her grades have climbed from Cs to Bs. She's less anxious, more engaged, and actually enjoys learning again. I still think there are families for whom the logistics don't work, and the district needs to keep listening to them. But for us, the change has been worth the adjustment. Sleep isn't a luxury; it's a basic need, and it turns out that when teenagers get enough of it, they thrive.</p>
+      <p class="attribution">Maria Gonzalez, parent, from community forum (2024)</p>
+    </div>
+
+    <div style="background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+      <h3 style="margin-top: 0;">Synthesis Essay Reminders</h3>
+      <ul style="margin-bottom: 0;">
+        <li><strong>Thesis first:</strong> State your clear position in the introduction</li>
+        <li><strong>Integrate sources:</strong> Use They Say/I Say moves to bring sources into your argument (e.g., "While Tran raises concerns about..., Patel counters that...")</li>
+        <li><strong>Attribution required:</strong> Name sources when you use them ("Chen argues," "According to Gonzalez")</li>
+        <li><strong>3+ sources minimum:</strong> You must use at least 3 of the 4 sources</li>
+        <li><strong>Don't just summarize:</strong> Explain HOW each piece of evidence supports YOUR position</li>
+      </ul>
+    </div>
+
+    <div class="rubric-box">
+      <h3>Scoring Rubric (6-Point Scale)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%;">Dimension</th>
+            <th>0</th>
+            <th>1</th>
+            <th>2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Thesis</strong><br/>(0–1 points)</td>
+            <td>No thesis, or purely summary</td>
+            <td>Clear, arguable thesis stating position</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><strong>Source Integration</strong><br/>(0–2 points)</td>
+            <td>Fewer than 3 sources, or no attribution</td>
+            <td>3 sources cited with attribution, mostly integrated</td>
+            <td>3+ sources woven seamlessly with They Say/I Say moves</td>
+          </tr>
+          <tr>
+            <td><strong>Argument Sophistication</strong><br/>(0–2 points)</td>
+            <td>Only summarizes sources</td>
+            <td>Uses sources to support position, some analysis</td>
+            <td>Synthesizes sources into sophisticated argument with counterarguments</td>
+          </tr>
+          <tr>
+            <td><strong>Conventions</strong><br/>(0–1 points)</td>
+            <td>Frequent errors impede meaning</td>
+            <td>Mostly clear, minor errors only</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top: 1rem; padding: 0.75rem; background: var(--accent-light); border-radius: 6px;">
+        <p style="margin: 0; font-weight: 600; color: var(--gate-red);"><strong>Pass Threshold:</strong> 4/6 total</p>
+        <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;">You must earn at least 4 points across all dimensions to pass this part of the gate.</p>
+      </div>
+    </div>
+
+    <p><strong>Write your synthesis essay below.</strong> Target: 300-400 words.</p>
+  </div>
+
+  <!-- PART 2: ACT WRITING ESSAY -->
+  <div class="phase-card assessment-card" data-rubric="L20_gate_act">
+    <span class="lesson-tag assessment">Part 2: ACT Writing Essay</span>
+    <h2>40 Minutes — Arts Education Funding</h2>
+
+    <div class="passage-box">
+      <h3>ACT Writing Prompt: Arts Education in Public Schools</h3>
+      <p><strong>Issue:</strong> As school budgets face increasing pressure, many districts have reduced or eliminated funding for arts programs—music, theater, visual arts, and creative writing—in favor of core academic subjects and standardized test preparation. Supporters of arts education argue that creative disciplines are essential for developing critical thinking, cultural literacy, and student engagement. Critics argue that with limited resources, schools must prioritize subjects that directly prepare students for college admissions and career success. The debate reflects broader questions about what education is for and what students truly need.</p>
+
+      <p><strong>Perspective One:</strong> Arts education is not a luxury—it's a core component of a complete education. Creativity, collaboration, and self-expression are skills that matter in nearly every career, and students who participate in arts programs show higher engagement, better academic performance, and greater persistence through challenges. Cutting arts programs to make room for test prep is short-sighted. We are preparing students for a world that increasingly values innovation and creative problem-solving, and arts education cultivates exactly those capacities.</p>
+
+      <p><strong>Perspective Two:</strong> Schools have limited budgets, and when resources are scarce, they must be directed toward subjects that have the most measurable impact on students' futures. College admissions and scholarships are based on grades and test scores in core subjects like math, science, and English—not on pottery or drama. While arts may be valuable for some students, they should be treated as electives or extracurriculars, not budget priorities. Schools exist to give students the academic foundation they need to succeed, and that means focusing on what colleges and employers actually require.</p>
+
+      <p><strong>Perspective Three:</strong> The real problem is not choosing between arts and academics but the way we have structured education as a zero-sum competition for funding. Arts and academics reinforce each other—students who study music often excel in math, and creative writing strengthens analytical thinking. Rather than cutting arts programs, schools should integrate creative disciplines into core subjects and seek alternative funding through community partnerships and grants. The question should not be "Can we afford arts education?" but "How can we ensure that all students have access to both rigorous academics and creative opportunities?"</p>
+      <p class="attribution">ACT Writing Prompt (Gate Assessment)</p>
+    </div>
+
+    <div class="warning-box">
+      <strong>⏱ Time: 40 minutes total.</strong>
+      <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+        <li><strong>Minutes 0-5:</strong> Plan (map perspectives, state position, select examples, sketch structure)</li>
+        <li><strong>Minutes 5-35:</strong> Write (300+ words)</li>
+        <li><strong>Minutes 35-40:</strong> Revise (fix errors, strengthen transitions)</li>
+      </ul>
+    </div>
+
+    <div style="background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px; padding: 1.25rem; margin: 1rem 0;">
+      <h3 style="margin-top: 0;">ACT Essay Reminders</h3>
+      <ul style="margin-bottom: 0;">
+        <li><strong>State your position clearly</strong> in relation to at least one perspective</li>
+        <li><strong>Engage at least 2 of the 3 perspectives</strong> using They Say/I Say moves</li>
+        <li><strong>Support with reasoning + specific examples</strong> (personal, historical, current events, thoughtful hypotheticals)</li>
+        <li><strong>Address a counterargument</strong> from an opposing perspective</li>
+        <li><strong>Organize with clear transitions</strong> between paragraphs</li>
+      </ul>
+    </div>
+
+    <div class="rubric-box">
+      <h3>Scoring Rubric (6-Point Scale)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 30%;">Dimension</th>
+            <th>0</th>
+            <th>1</th>
+            <th>2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Ideas & Analysis</strong><br/>(0–2 points)</td>
+            <td>Position unclear or ignores perspectives</td>
+            <td>Clear position, engages 1-2 perspectives</td>
+            <td>Nuanced position analyzing relationships among perspectives</td>
+          </tr>
+          <tr>
+            <td><strong>Development & Support</strong><br/>(0–2 points)</td>
+            <td>Mostly assertions, few examples</td>
+            <td>Some reasoning and examples</td>
+            <td>Detailed reasoning with specific, relevant examples</td>
+          </tr>
+          <tr>
+            <td><strong>Organization</strong><br/>(0–1 points)</td>
+            <td>Hard to follow, unclear structure</td>
+            <td>Clear organization with logical transitions</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><strong>Language Use</strong><br/>(0–1 points)</td>
+            <td>Frequent errors impede clarity</td>
+            <td>Mostly clear and error-free</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top: 1rem; padding: 0.75rem; background: var(--accent-light); border-radius: 6px;">
+        <p style="margin: 0; font-weight: 600; color: var(--gate-red);"><strong>Pass Threshold:</strong> 4/6 total</p>
+        <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;">You must earn at least 4 points across all dimensions to pass this part of the gate.</p>
+      </div>
+    </div>
+
+    <p><strong>Write your ACT essay below.</strong> Target: 300-400 words.</p>
+  </div>
+
+  <!-- PART 3: CONVENTIONS -->
+  <div class="phase-card assessment-card">
+    <span class="lesson-tag assessment">Part 3: Conventions</span>
+    <h2>20 Minutes — 10 Items</h2>
+
+    <h3>Instructions</h3>
+    <p>For each item, select the best answer. Work carefully. You may skip and return to items if needed.</p>
+
+    <div class="item-box">
+      <h4>CONV-01 | Subject-verb agreement</h4>
+      <p><strong>Sentence:</strong> The collection of arguments presented in the sources _____ a complex picture of the issue.</p>
+      <div class="check-question">
+        <div class="q-label">Choose the correct verb:</div>
+        <ol type="A">
+          <li>present</li>
+          <li>presents</li>
+          <li>are presenting</li>
+        </ol>
+        <details>
+          <summary>Answer</summary>
+          <div class="model-answer">
+            <p><strong>Answer:</strong> B</p>
+            <p><strong>Explanation:</strong> "Collection" is singular (the subject), not "arguments," so the verb must be singular: "presents."</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="item-box">
+      <h4>CONV-02 | Pronoun-antecedent agreement</h4>
+      <p><strong>Sentence:</strong> Each of the perspectives offers _____ own rationale for the policy position.</p>
+      <div class="check-question">
+        <div class="q-label">Choose the correct pronoun:</div>
+        <ol type="A">
+          <li>their</li>
+          <li>its</li>
+          <li>his or her</li>
+        </ol>
+        <details>
+          <summary>Answer</summary>
+          <div class="model-answer">
+            <p><strong>Answer:</strong> B</p>
+            <p><strong>Explanation:</strong> "Each" is singular, so the pronoun must be singular: "its."</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="item-box">
+      <h4>CONV-03 | Comma usage — nonrestrictive clause</h4>
+      <p><strong>Sentence:</strong> The sleep researcher _____ conducted the Minnesota study _____ found significant improvements in student wellbeing.</p>
+      <div class="check-question">
+        <div class="q-label">Choose the correct punctuation:</div>
+        <ol type="A">
+          <li>who conducted the Minnesota study,</li>
+          <li>, who conducted the Minnesota study,</li>
+          <li>who conducted the Minnesota study</li>
+        </ol>
+        <details>
+          <summary>Answer</summary>
+          <div class="model-answer">
+            <p><strong>Answer:</strong> A</p>
+            <p><strong>Explanation:</strong> The clause "who conducted the Minnesota study" is restrictive (identifies WHICH researcher), so no comma before "who," but a comma is needed after "study" to separate it from the main verb "found."</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="item-box">
+      <h4>CONV-04 | Parallel structure</h4>
+      <p><strong>Sentence:</strong> The superintendent's concerns included _____ additional buses, scheduling conflicts with after-school programs, and the impact on working families.</p>
+      <div class="check-question">
+        <div class="q-label">Choose the parallel form:</div>
+        <ol type="A">
+          <li>the cost of purchasing</li>
+          <li>purchasing</li>
+          <li>to purchase</li>
+        </ol>
+        <details>
+          <summary>Answer</summary>
+          <div class="model-answer">
+            <p><strong>Answer:</strong> A</p>
+            <p><strong>Explanation:</strong> The list uses noun phrases ("scheduling conflicts," "the impact"), so the first item must also be a noun phrase: "the cost of purchasing."</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="item-box">
+      <h4>CONV-05 | Semicolon vs. comma</h4>
+      <p><strong>Sentence:</strong> Later start times improve student health _____ however, they require significant logistical changes.</p>
+      <div class="check-question">
+        <div class="q-label">Choose the correct punctuation:</div>
+        <ol type="A">
+          <li>health,</li>
+          <li>health;</li>
+          <li>health, and</li>
+        </ol>
+        <details>
+          <summary>Answer</summary>
+          <div class="model-answer">
+            <p><strong>Answer:</strong> B</p>
+            <p><strong>Explanation:</strong> Two independent clauses joined by the conjunctive adverb "however" require a semicolon before "however" and a comma after.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="item-box">
+      <h4>CONV-06 | Verb tense consistency</h4>
+      <p><strong>Sentence:</strong> The policy researcher argues that districts face challenges but _____ them successfully when they prioritize student wellbeing.</p>
+      <div class="check-question">
+        <div class="q-label">Choose the correct verb tense:</div>
+        <ol type="A">
+          <li>overcame</li>
+          <li>overcome</li>
+          <li>have overcome</li>
+        </ol>
+        <details>
+          <summary>Answer</summary>
+          <div class="model-answer">
+            <p><strong>Answer:</strong> B</p>
+            <p><strong>Explanation:</strong> The sentence is in present tense ("argues," "face"), so the verb must remain in present: "overcome."</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="item-box">
+      <h4>CONV-07 | Modifier placement</h4>
+      <p><strong>Original sentence:</strong> Advocating for later start times, the students' arguments were compelling to the school board.</p>
+      <div class="check-question">
+        <div class="q-label">Choose the best revision:</div>
+        <ol type="A">
+          <li>Advocating for later start times, the students made compelling arguments to the school board.</li>
+          <li>The students' arguments, advocating for later start times, were compelling to the school board.</li>
+          <li>The arguments made by students advocating for later start times were compelling to the school board.</li>
+        </ol>
+        <details>
+          <summary>Answer</summary>
+          <div class="model-answer">
+            <p><strong>Answer:</strong> A</p>
+            <p><strong>Explanation:</strong> The participial phrase "Advocating for later start times" must modify "students" (the ones doing the advocating), not "arguments." Option A places the correct subject immediately after the modifier.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="item-box">
+      <h4>CONV-08 | Wordiness / concision</h4>
+      <p><strong>Original sentence:</strong> It is important to consider the fact that the reason why sleep is essential is because it supports cognitive development.</p>
+      <div class="check-question">
+        <div class="q-label">Choose the most concise revision:</div>
+        <ol type="A">
+          <li>Sleep is essential because it supports cognitive development.</li>
+          <li>It is important to note that sleep is essential due to its support of cognitive development.</li>
+          <li>The fact that sleep supports cognitive development is why it is essential to consider it important.</li>
+        </ol>
+        <details>
+          <summary>Answer</summary>
+          <div class="model-answer">
+            <p><strong>Answer:</strong> A</p>
+            <p><strong>Explanation:</strong> Option A eliminates the wordy constructions ("it is important to consider the fact that," "the reason why... is because") while preserving the meaning clearly and directly.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="item-box">
+      <h4>CONV-09 | Run-on sentence</h4>
+      <p><strong>Original sentence:</strong> The parent testimony was powerful it illustrated the real impact of later start times on students and families.</p>
+      <div class="check-question">
+        <div class="q-label">Choose the best revision:</div>
+        <ol type="A">
+          <li>The parent testimony was powerful, it illustrated the real impact of later start times on students and families.</li>
+          <li>The parent testimony was powerful; it illustrated the real impact of later start times on students and families.</li>
+          <li>The parent testimony was powerful it illustrated the real impact, of later start times on students and families.</li>
+        </ol>
+        <details>
+          <summary>Answer</summary>
+          <div class="model-answer">
+            <p><strong>Answer:</strong> B</p>
+            <p><strong>Explanation:</strong> Two independent clauses require either a semicolon, a comma + coordinating conjunction, or a period. Option B correctly uses a semicolon; option A is a comma splice.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="item-box">
+      <h4>CONV-10 | Sentence fragment</h4>
+      <p><strong>Original sentence:</strong> The administrator's concerns are valid. Especially regarding transportation costs and scheduling conflicts.</p>
+      <div class="check-question">
+        <div class="q-label">Choose the best revision:</div>
+        <ol type="A">
+          <li>The administrator's concerns are valid, especially regarding transportation costs and scheduling conflicts.</li>
+          <li>The administrator's concerns are valid. Especially, regarding transportation costs and scheduling conflicts.</li>
+          <li>The administrator's concerns are valid; especially regarding transportation costs and scheduling conflicts.</li>
+        </ol>
+        <details>
+          <summary>Answer</summary>
+          <div class="model-answer">
+            <p><strong>Answer:</strong> A</p>
+            <p><strong>Explanation:</strong> "Especially regarding..." is a dependent phrase, not a complete sentence. It must be attached to the main clause with a comma, as in option A.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div style="margin-top: 1.5rem; padding: 1rem; background: var(--accent-light); border-radius: 6px;">
+      <p style="margin: 0; font-weight: 600; color: var(--gate-red);"><strong>Pass Threshold for Part 3:</strong> 7/10 correct</p>
+      <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;">You must answer at least 7 of 10 items correctly to pass the conventions portion of the gate.</p>
+    </div>
+  </div>
+
+  <!-- COMPLETION + A2 TRANSFER BRIDGE -->
+  <div class="phase-card" style="border-left: 4px solid #28a745;">
+    <span class="lesson-tag" style="background: #28a745;">Completion</span>
+    <h2>You've Completed the G10 Gate</h2>
+
+    <div class="key-concept">
+      <strong>What you've earned:</strong> Passing this gate means you've demonstrated college-ready writing skills. You can synthesize multiple sources into a unified argument, engage with complex perspectives in timed writing, and write with clarity and sophistication. You're prepared for college composition courses and for the ACT Writing test.
+    </div>
+
+    <h3>What Comes Next: Track B (AP Lang/Lit)</h3>
+    <p>If you're continuing to Track B, you'll build on everything from A1 and A2:</p>
+    <ul>
+      <li><strong>Course B1 (G11, AP Lang or Lit):</strong> Rhetorical analysis at AP depth, argument sophistication, close reading of complex texts</li>
+      <li><strong>Course B2 (G12, AP Mastery):</strong> Targeting score 5 on AP exams, advanced synthesis and rhetorical analysis</li>
+    </ul>
+
+    <p>The mental models you've learned—M1 (Everything Is a Choice), M2 (S-F-E), M3 (Force Field), M4 (Claim Hierarchy)—remain your tools. The skills deepen, the texts get harder, but the foundation you've built in A1 and A2 holds.</p>
+
+    <h3>What You've Built Over 19 A2 Lessons</h3>
+    <table style="margin-top: 1rem;">
+      <tr>
+        <th style="width: 35%;">Skill</th>
+        <th>How You Learned It</th>
+      </tr>
+      <tr>
+        <td><strong>Force Field Analysis</strong></td>
+        <td>L01 — Mapping constraints on author choices</td>
+      </tr>
+      <tr>
+        <td><strong>Claim Hierarchies</strong></td>
+        <td>L02 — Structuring nested arguments</td>
+      </tr>
+      <tr>
+        <td><strong>They Say/I Say Moves</strong></td>
+        <td>L04-05 — Entering academic conversations</td>
+      </tr>
+      <tr>
+        <td><strong>Source Integration</strong></td>
+        <td>L08-09 — Attribution and synthesis</td>
+      </tr>
+      <tr>
+        <td><strong>Synthesis Argumentation</strong></td>
+        <td>L10-12 — Multi-source essays</td>
+      </tr>
+      <tr>
+        <td><strong>3-Point Self-Assessment</strong></td>
+        <td>L13-15 — Calibrated self-scoring</td>
+      </tr>
+      <tr>
+        <td><strong>Timed Writing Strategy</strong></td>
+        <td>L17 — Planning under pressure</td>
+      </tr>
+      <tr>
+        <td><strong>ACT Writing Skills</strong></td>
+        <td>L16-19 — Perspective analysis + constructed support</td>
+      </tr>
+    </table>
+
+    <div class="key-concept" style="margin-top: 1.5rem;">
+      <strong>Final Reflection:</strong> Writing is not a skill you finish learning. It's a practice that deepens over time. You've built the foundation. Now you keep building. The difference between a G10 writer and a G12 writer is not that one knows secret techniques the other doesn't—it's that the G12 writer has had more practice making deliberate choices, revising with intention, and learning from their own work. That's the path forward. Keep writing.
+    </div>
+  </div>
+
+  <div class="footnote">
+    <p>A2 L20 • G10 Gate Assessment • All A2 KCs • ~100 min • Course Completion</p>
+  </div>
+
+<script src="lesson-engine.js"></script>
+
+<nav class="lesson-nav">
+  <a href="A2_L19_ACT_Essay_2.html" class="prev">← L19: ACT Essay #2</a>
+  <span style="color: var(--success); font-weight: 700;">Course A2 Complete ✓</span>
+</nav>
+
+</body>
+</html>

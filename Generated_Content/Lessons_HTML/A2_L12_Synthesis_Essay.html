@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A2 L12: Full Synthesis Essay (GATEWAY)</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+  --gateway: #dc3545;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 820px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--gateway); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.gateway-badge {
+  display: inline-block; background: var(--gateway); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem; border-radius: 3px; margin-left: 0.5rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; font-weight: 600; }
+p { margin-bottom: 1rem; }
+ul, ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+li { margin-bottom: 0.5rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box h4 {
+  margin-top: 0; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.95rem;
+  font-weight: 700; margin-bottom: 0.75rem;
+}
+.passage-box .attribution {
+  font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem;
+  padding-top: 0.75rem; border-top: 1px solid #e0e0e0;
+  font-style: italic; display: block;
+}
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box h4 { margin-top: 0; color: var(--success); }
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.rubric-box li { margin-bottom: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.writing-input { margin: 1.5rem 0; }
+.writing-ta {
+  width: 100%; border: 2px solid var(--border); border-radius: 8px;
+  padding: 0.8rem; font-family: 'Georgia', serif; font-size: 0.95rem;
+  line-height: 1.7; resize: vertical; min-height: 120px;
+}
+.writing-ta:focus { border-color: #0d6efd; outline: none; box-shadow: 0 0 0 3px rgba(13,110,253,0.15); }
+.writing-ta.essay-box { min-height: 300px; }
+.writing-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 0.5rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.wc { color: var(--muted); }
+.gateway-alert {
+  background: #fff3cd; border: 2px solid var(--warning); border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.gateway-alert h4 {
+  margin-top: 0; color: #856404; display: flex; align-items: center; gap: 0.5rem;
+}
+.gateway-alert p { margin-bottom: 0.5rem; }
+.rubric-table {
+  font-size: 0.85rem; margin: 1rem 0;
+}
+.rubric-table th {
+  background: var(--primary); color: white; padding: 0.5rem 0.6rem;
+  font-size: 0.7rem; text-align: center;
+}
+.rubric-table td {
+  padding: 0.5rem 0.6rem; font-size: 0.8rem; line-height: 1.4;
+}
+.rubric-table td:first-child {
+  font-weight: 600; background: #f8f9fa;
+}
+.model-example {
+  background: #f8f9fa; border-left: 4px solid #6f42c1; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.9rem; line-height: 1.8;
+}
+.model-example h4 {
+  margin-top: 0; color: #6f42c1;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.highlight-thesis { background: #ffe4b5; padding: 0.1rem 0.3rem; border-radius: 3px; }
+.highlight-weaving { background: #d4edda; padding: 0.1rem 0.3rem; border-radius: 3px; }
+.matrix-template {
+  background: #f0f0f0; border: 2px dashed var(--border); border-radius: 8px;
+  padding: 1rem; margin: 1rem 0; font-size: 0.85rem;
+}
+.matrix-template h4 { margin-top: 0; font-size: 0.9rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: var(--gateway);">Course A2 · Lesson 12</span>
+  <span class="gateway-badge">⚠️ GATEWAY</span>
+  <h1>Full Synthesis Essay</h1>
+  <p class="subtitle">Integrating multiple sources into a coherent argument</p>
+  <div class="meta-bar">
+    <span>⏱ ~55 min</span>
+    <span>📍 KC: C.10.11 (GATEWAY — gates Track B)</span>
+    <span>🧠 Mental Models: M3, M4</span>
+  </div>
+</div>
+
+<div class="gateway-alert">
+  <h4>🚨 Gateway Assessment</h4>
+  <p><strong>This lesson contains a GATEWAY knowledge component.</strong> To advance to Track B (AP Lang/Lit in Grade 11), you must demonstrate mastery of synthesis writing.</p>
+  <p><strong>Pass Criteria:</strong> Score 4/6 or higher on the Synthesis Essay rubric, with at least 1 point earned in Source Integration. Students who do not pass will revise and resubmit.</p>
+  <p><strong>Why this gates Track B:</strong> AP courses require you to read complex sources, evaluate competing perspectives, and build arguments that integrate evidence from multiple texts. If you can't synthesize sources, you're not ready for AP-level work.</p>
+</div>
+
+<div class="key-concept">
+  <strong>What Is Synthesis?</strong> Synthesis writing means building YOUR argument using evidence from multiple sources. You're not reporting what sources say (that's summary). You're not pasting quotes into your pre-written essay (that's cherry-picking). You're constructing an argument where sources serve as evidence, complicate your claims, and allow you to acknowledge counterarguments. Your thesis drives the essay; sources support it.
+</div>
+
+<h2>Phase 1: Teach (2 min)</h2>
+<div class="phase-card teach-card" data-phase="1">
+  <h3>The Synthesis Essay Plan</h3>
+
+  <p>Here's the process for writing a synthesis essay in 40-55 minutes:</p>
+
+  <ol>
+    <li><strong>Map source perspectives</strong> (3-5 min): Read each source. Who is the author? What's their stake in the issue? What do they want you to believe? (Use Rhetorical Force Field from L01 if helpful.)</li>
+    <li><strong>Complete Synthesis Matrix by theme</strong> (5-7 min): Organize sources by THEME (columns), not by source (rows). See where sources agree, disagree, or address different aspects of the question.</li>
+    <li><strong>Build Claim Hierarchy with sources as evidence</strong> (3-5 min): Write your thesis. Identify 2-3 supporting claims. Note which sources will support each claim. Remember M4: your thesis is the top of the hierarchy.</li>
+    <li><strong>Write—organize by argument, not source</strong> (25-35 min): Each body paragraph develops ONE of your claims. Weave multiple sources into each paragraph to support, complicate, or provide evidence for that claim.</li>
+    <li><strong>Revise</strong> (if time): Check for thesis clarity, source weaving, and attribution variety.</li>
+  </ol>
+
+  <div class="key-concept">
+    <p><strong>The Planning Payoff:</strong> Students who spend 10-15 minutes planning write better essays in less total time than students who start writing immediately. Why? Because planning prevents the "serial summary" trap. When you organize by theme BEFORE you write, your essay will organize by theme WHILE you write.</p>
+  </div>
+
+  <button class="phase-next-btn">Continue to Model</button>
+</div>
+
+<h2>Phase 2: Model (3 min)</h2>
+<div class="phase-card model-card phase-locked" data-phase="2">
+  <h3>Annotated Model: Synthesis Paragraph</h3>
+
+  <p>Here's a model synthesis essay paragraph on standardized testing. Notice how the thesis is the writer's OWN position, and sources are woven to support that position.</p>
+
+  <div class="model-example">
+    <h4>Model Paragraph (Body Paragraph 2: Addressing the Counterargument)</h4>
+    <p><span class="highlight-thesis">Proponents of standardized testing argue that tests provide objective accountability measures that prevent subjective bias in evaluation, and Chen's research supports this claim to an extent.</span> <span class="highlight-weaving">His longitudinal data demonstrates that test scores correlate with college completion rates, suggesting that tests do measure skills relevant to academic success.</span> However, this predictive power must be weighed against the curriculum distortion that testing produces. <span class="highlight-weaving">Rodriguez's classroom experience—where three weeks of literary analysis were replaced by practice "bubbling answer sheets"—illustrates how test preparation displaces deeper learning.</span> Even if tests predict college outcomes, <span class="highlight-weaving">they may be creating a circular system: students learn test-taking skills, score well on tests that measure test-taking skills, and succeed in college courses that use similar assessment formats, all while actual critical thinking and creativity remain unmeasured.</span> Owens proposes a solution: performance-based assessments that capture complex thinking while still providing system-level data. <span class="highlight-weaving">Her examples from Finland and Singapore show that sophisticated evaluation is possible without reducing education to multiple-choice exams.</span> The question isn't whether accountability matters—it does—but whether our current tests provide accountability or merely the illusion of it.</p>
+  </div>
+
+  <p><strong>What makes this synthesis?</strong></p>
+  <ul>
+    <li><strong>Writer's position is clear:</strong> The writer acknowledges Chen's point but ultimately argues tests cause curriculum distortion</li>
+    <li><strong>Sources woven together:</strong> Chen, Rodriguez, and Owens appear in service of the same argument about trade-offs</li>
+    <li><strong>Critical thinking visible:</strong> "Creating a circular system" is the writer's insight, not from any source</li>
+    <li><strong>Organized by argument:</strong> The paragraph develops one claim (counterargument acknowledgment + response), not one source</li>
+  </ul>
+
+  <div class="check-question">
+    <div class="q-label">Quick Check</div>
+    <p><strong>In the model paragraph above, whose argument controls the paragraph?</strong></p>
+    <ol type="A">
+      <li>Chen's, because he's cited first</li>
+      <li>Rodriguez's, because her classroom experience is the main evidence</li>
+      <li>The writer's, because sources serve the writer's claim about circular systems and trade-offs</li>
+      <li>All three equally—it's balanced</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <p><strong>Answer: C.</strong> The writer's argument controls the paragraph. Sources are evidence for the writer's claims, not separate arguments presented in sequence. Chen, Rodriguez, and Owens all serve the writer's larger point about weighing predictive power against curriculum distortion.</p>
+    </details>
+  </div>
+
+  <button class="phase-next-btn">Continue to Planning Phase</button>
+</div>
+
+<h2>Phase 3: Planning (15 min)</h2>
+<div class="phase-card practice-card phase-locked" data-phase="3">
+  <h3>Read Sources + Complete Synthesis Matrix</h3>
+
+  <p><strong>Source Set C: Youth Voting Age</strong></p>
+  <p><strong>Topic Question:</strong> Should cities lower the voting age to 16 for local elections?</p>
+
+  <p>Read all four sources below, then complete the Synthesis Matrix to organize your thinking.</p>
+
+  <div class="passage-box">
+    <h4>Source 1: "Early Voting Creates Lifelong Citizens"</h4>
+    <p style="font-style: italic; font-size: 0.85rem; margin-bottom: 0.75rem;">By Dr. Elena Martinez, Professor of Civic Engagement Studies, Journal of Democratic Participation, 2024</p>
+
+    <p>For the past decade, I've studied voter turnout patterns across multiple generations, and one finding stands out: people who vote in their first eligible election are three times more likely to become regular voters throughout their lives. This "habit formation" effect is powerful—but we're waiting too long to trigger it.</p>
+
+    <p>By age 18, many young people have already left their childhood communities for college, military service, or jobs in other cities. They find themselves navigating unfamiliar ballot measures in places they barely know. It's no wonder that only 39% of 18-year-olds vote in their first eligible election.</p>
+
+    <p>Compare this to Austria and Scotland, which lowered their voting ages to 16 for certain elections. In these places, young people cast their first votes while still embedded in their home communities, often still living with parents who can guide them through the process. Turnout among 16-17 year-olds in these regions regularly exceeds that of 18-24 year-olds elsewhere.</p>
+
+    <p>The argument isn't that 16-year-olds are more mature than 18-year-olds—it's that the social context matters enormously. A 16-year-old voting on local school budgets, park improvements, and municipal services is making decisions about issues that directly affect their daily lives. They're doing so with support systems intact: parents, teachers, and community members who can help them research candidates and understand ballot language.</p>
+
+    <p>Critics worry about maturity, but we already trust 16-year-olds to drive cars—a decision with immediate life-or-death consequences. Voting in a local election about library hours or bike lanes carries far less risk. More importantly, practicing democracy while still in school, surrounded by civic education resources, creates informed voters who carry that engagement into adulthood.</p>
+
+    <p class="attribution">Source: Dr. Elena Martinez, Journal of Democratic Participation, 2024</p>
+  </div>
+
+  <div class="passage-box">
+    <h4>Source 2: "Sixteen Is Too Young for the Ballot Box"</h4>
+    <p style="font-style: italic; font-size: 0.85rem; margin-bottom: 0.75rem;">By Marcus Thornton, Political Commentator, The National Review, 2025</p>
+
+    <p>Advocates for lowering the voting age claim that 16-year-olds are informed and engaged, but the evidence tells a different story. A 2023 study by the Civic Knowledge Foundation found that only 22% of high school sophomores could name their state's two U.S. senators, and fewer than one in three could explain the difference between local, state, and federal government responsibilities.</p>
+
+    <p>This isn't an attack on young people—it's a recognition that civic knowledge develops over time. The same study found that these numbers improve dramatically by age 18, when 58% could answer these basic questions correctly. Two additional years of education, life experience, and cognitive development make a measurable difference.</p>
+
+    <p>Proponents point to countries like Austria, but they ignore important context. Austria's civics education is far more robust than ours, with mandatory government courses continuing through age 18. American high schools typically offer one semester of civics, often in 9th or 10th grade. We're considering lowering the voting age without first ensuring young people have the knowledge base to participate effectively.</p>
+
+    <p>There's also the question of undue influence. Sixteen-year-olds are still legal dependents living under their parents' roofs. While we'd like to believe every family encourages independent thinking, the reality is more complicated. Many teenagers would face pressure—subtle or direct—to vote according to their parents' preferences. At 18, more young people have jobs, have traveled independently, and have begun forming their own political identities separate from their families.</p>
+
+    <p>Age requirements aren't arbitrary discrimination—they're recognition that certain responsibilities require a foundation of experience and knowledge. We don't allow 16-year-olds to serve on juries, sign contracts, or join the military for good reasons. Voting deserves the same thoughtful restrictions. Rather than lowering the voting age, we should focus on improving civic education so that when young people do reach 18, they're truly prepared to participate in democracy.</p>
+
+    <p class="attribution">Source: Marcus Thornton, The National Review, 2025</p>
+  </div>
+
+  <div class="passage-box">
+    <h4>Source 3: "Pre-Registration: A Better Path to Youth Engagement"</h4>
+    <p style="font-style: italic; font-size: 0.85rem; margin-bottom: 0.75rem;">By Dr. James Okafor, Director of Election Policy Institute, Policy Brief Series, 2024</p>
+
+    <p>The debate over lowering the voting age presents a false choice. We don't have to choose between maintaining current age requirements and opening the ballot box to 16-year-olds. There's a middle path that addresses the legitimate goals of youth engagement advocates while respecting concerns about civic readiness: robust pre-registration programs combined with systematic civic engagement opportunities.</p>
+
+    <p>Twenty-one states plus D.C. have already implemented pre-registration, allowing 16-17 year-olds to register to vote before their 18th birthday. When they turn 18, they're automatically added to active voter rolls. Research shows this simple change increases first-time voter turnout by 13 percentage points. Young people who pre-register are making a commitment to civic participation while still in high school, surrounded by teachers and peers who can discuss the importance of voting.</p>
+
+    <p>But pre-registration alone isn't enough. We should pair it with structured civic engagement programs that give young people real experience with democratic participation before they vote in binding elections. This could include youth advisory boards for city councils, student representation at school board meetings with speaking privileges, and mock elections that mirror real ballot measures. Let young people practice democracy with training wheels before they ride solo.</p>
+
+    <p>Consider Portland, Oregon's model. The city created a Youth Civic Engagement Program that includes pre-registration drives at every high school, mandatory voter education assemblies for juniors, and a youth council that presents formal recommendations to the city council quarterly. Portland now has the highest 18-19 year-old voter turnout in the nation—without lowering the voting age.</p>
+
+    <p>This approach respects both sides of the debate. It acknowledges that 16-year-olds care about their communities and deserve a voice, while also recognizing that effective democratic participation requires knowledge and practice. Rather than arguing about whether 16-year-olds are "ready" to vote, we should focus on building systems that ensure they definitely will be ready at 18.</p>
+
+    <p class="attribution">Source: Dr. James Okafor, Election Policy Institute, 2024</p>
+  </div>
+
+  <div class="passage-box">
+    <h4>Source 4: "When Cities Let Teenagers Vote: Lessons from Around the World"</h4>
+    <p style="font-style: italic; font-size: 0.85rem; margin-bottom: 0.75rem;">By Sarah Chen, International Elections Correspondent, Global Democracy Today, 2025</p>
+
+    <p>Walking through Takoma Park, Maryland, on election day, I watched 16-year-old Maya Johnson check in at her local polling place. She was voting on city council candidates and a measure about municipal composting. "I've been following this campaign for months," she told me. "I bike through this city every day. Why shouldn't I have a say in bike lane funding?"</p>
+
+    <p>Takoma Park was the first U.S. city to lower its voting age to 16 for local elections, joining a growing international movement. Scotland lowered its voting age to 16 for the 2014 independence referendum and saw remarkable results: 75% of registered 16-17 year-olds voted, compared to 54% of 18-24 year-olds. The age group that skeptics predicted would be least engaged actually showed the most enthusiasm.</p>
+
+    <p>I've reported on similar experiments across Europe and Latin America. In Norway, dozens of municipalities have lowered the voting age for local elections. In Argentina, 16-17 year-olds can vote nationally. The consistent finding: catastrophe doesn't strike. Democracy continues functioning. Young voters don't block-vote as a monolith or follow their parents blindly. They engage seriously with local issues.</p>
+
+    <p>But implementation matters enormously. In Hyattsville, Maryland, another city with 16-year-old voting, I observed something crucial: success depended on schools and community organizations mobilizing youth voters. When these support systems were absent, turnout plummeted. In one ward with limited outreach, only 12% of registered 16-17 year-olds voted.</p>
+
+    <p>The international evidence suggests that lowering the voting age works best when it's accompanied by robust civic education, active voter registration programs in schools, and a political culture that takes young people seriously. In Scotland, candidates held town halls specifically for young voters. In Takoma Park, city council candidates regularly visit high schools. These communities signal that teen votes matter—and young people respond.</p>
+
+    <p>Critics in these places initially raised the same concerns heard in the U.S.: immaturity, lack of knowledge, parental influence. But after implementation, opposition softened. A 2023 survey in Takoma Park found that 68% of residents now support keeping the voting age at 16, including many who initially opposed the change. Seeing 16-year-olds participate responsibly changed minds more effectively than any argument could.</p>
+
+    <p class="attribution">Source: Sarah Chen, Global Democracy Today, 2025</p>
+  </div>
+
+  <h3 style="margin-top: 2rem;">Complete Your Synthesis Matrix</h3>
+
+  <div class="matrix-template">
+    <h4>Synthesis Matrix Template</h4>
+    <p>Organize sources by THEME (not by source). Fill in what each source says about each theme. Leave cells blank if a source doesn't address that theme.</p>
+  </div>
+
+  <table style="margin: 1rem 0;">
+    <tr>
+      <th style="width: 18%;">Source</th>
+      <th style="width: 27%;">Theme 1: Civic Readiness<br>(Knowledge, maturity, competence)</th>
+      <th style="width: 27%;">Theme 2: Context & Support<br>(When/where voting happens)</th>
+      <th style="width: 28%;">Theme 3: Solutions/Implementation<br>(How to increase youth participation)</th>
+    </tr>
+    <tr>
+      <td><strong>Martinez (researcher)</strong></td>
+      <td><em>[What does Martinez say about readiness?]</em></td>
+      <td><em>[What does Martinez say about context/timing?]</em></td>
+      <td><em>[What solution does Martinez propose?]</em></td>
+    </tr>
+    <tr>
+      <td><strong>Thornton (commentator)</strong></td>
+      <td><em>[What does Thornton say about readiness?]</em></td>
+      <td><em>[What does Thornton say about context?]</em></td>
+      <td><em>[What solution does Thornton propose?]</em></td>
+    </tr>
+    <tr>
+      <td><strong>Okafor (policy director)</strong></td>
+      <td><em>[What does Okafor say about readiness?]</em></td>
+      <td><em>[What does Okafor say about context?]</em></td>
+      <td><em>[What solution does Okafor propose?]</em></td>
+    </tr>
+    <tr>
+      <td><strong>Chen (journalist)</strong></td>
+      <td><em>[What does Chen say about readiness?]</em></td>
+      <td><em>[What does Chen say about context?]</em></td>
+      <td><em>[What evidence does Chen provide?]</em></td>
+    </tr>
+  </table>
+
+  <div class="writing-input">
+    <p><strong>Write your Synthesis Matrix notes here (or use paper):</strong></p>
+    <textarea
+      class="writing-ta"
+      data-phase-gate="3"
+      data-min-words="80"
+      placeholder="Fill in the matrix cells. What does each source say about each theme? Be specific—pull quotes or key data points."></textarea>
+    <div class="writing-footer">
+      <span class="wc">Word count: <span>0</span></span>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 2rem;">Build Your Claim Hierarchy</h3>
+
+  <p>Now that you've organized sources by theme, build your argument:</p>
+  <ol>
+    <li><strong>What's YOUR position?</strong> (Thesis)</li>
+    <li><strong>What are 2-3 claims that support your thesis?</strong> (These become body paragraphs)</li>
+    <li><strong>Which sources support each claim?</strong> (Note specific evidence)</li>
+  </ol>
+
+  <button class="phase-next-btn">Continue to Essay Writing</button>
+</div>
+
+<h2>Phase 4: Independent Practice — Write Essay (25 min)</h2>
+<div class="phase-card independent-card phase-locked" data-phase="4">
+  <h3>Write Your Full Synthesis Essay</h3>
+
+  <p><strong>Prompt:</strong> Should cities lower the voting age to 16 for local elections? Write an essay that develops your position on this question. Use evidence from <strong>at least three of the four sources</strong> to support your argument. Be sure to acknowledge counterarguments.</p>
+
+  <div class="key-concept">
+    <p><strong>Essay Structure Reminder:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Introduction:</strong> Context + your thesis (defensible position)</li>
+      <li><strong>Body Paragraphs (2-3):</strong> Each develops one supporting claim; weave sources as evidence</li>
+      <li><strong>Counterargument:</strong> Acknowledge opposing view (using a source you disagree with) + respond</li>
+      <li><strong>Conclusion:</strong> Restate position + broader implications</li>
+    </ul>
+  </div>
+
+  <div class="writing-input">
+    <textarea
+      class="writing-ta essay-box"
+      data-phase-gate="4"
+      data-rubric="L12_synthesis_essay"
+      data-min-words="250"
+      placeholder="Write your synthesis essay here. Aim for 300-500 words. Remember: organize by argument, not by source. Weave sources together. Your thesis should be YOUR position, supported by evidence from sources."></textarea>
+    <div class="writing-footer">
+      <span class="wc">Word count: <span>0</span></span>
+    </div>
+  </div>
+
+  <div class="rubric-box">
+    <h4>Success Criteria (6-Point Synthesis Rubric):</h4>
+    <ul>
+      <li><strong>Defensible thesis</strong> stating YOUR position (not just summary of sources)</li>
+      <li><strong>At least 3 sources integrated</strong> meaningfully (not just mentioned)</li>
+      <li><strong>Organized by argument/theme</strong>, not by source (no serial summarizing)</li>
+      <li><strong>Counterargument addressed</strong> using a source you disagree with</li>
+      <li><strong>Proper attribution</strong> with varied signal phrases (not just "says" repeated)</li>
+      <li><strong>Source weaving:</strong> Multiple sources appear together in paragraphs, supporting the same claim</li>
+    </ul>
+  </div>
+
+  <button class="phase-next-btn">Continue to Self-Score</button>
+</div>
+
+<h2>Phase 5: Self-Score (5 min)</h2>
+<div class="phase-card transfer-card phase-locked" data-phase="5">
+  <h3>Score Your Essay Using the Synthesis Rubric</h3>
+
+  <p>Read through your essay and score it using the 6-point rubric below. Be honest—this is practice for understanding what strong synthesis looks like.</p>
+
+  <table class="rubric-table">
+    <tr>
+      <th style="width: 20%;">Criterion</th>
+      <th style="width: 40%;">Not Yet (0 pts)</th>
+      <th style="width: 40%;">Proficient (1 pt)</th>
+    </tr>
+    <tr>
+      <td><strong>Thesis</strong></td>
+      <td>Summary of sources, or no clear position</td>
+      <td>Defensible position stated clearly</td>
+    </tr>
+    <tr>
+      <td><strong>Source Integration</strong></td>
+      <td>Fewer than 3 sources, or sources just mentioned/listed</td>
+      <td>At least 3 sources woven meaningfully into argument</td>
+    </tr>
+    <tr>
+      <td><strong>Organization</strong></td>
+      <td>Serial summarizing (source-by-source)</td>
+      <td>Organized by argument/theme; clear line of reasoning</td>
+    </tr>
+    <tr>
+      <td><strong>Counterargument</strong></td>
+      <td>Ignores opposing views entirely</td>
+      <td>Acknowledges counterargument and responds</td>
+    </tr>
+    <tr>
+      <td><strong>Source Weaving</strong></td>
+      <td>Sources appear isolated; each source in separate sentence</td>
+      <td>Multiple sources woven together; sources "talk to each other"</td>
+    </tr>
+    <tr>
+      <td><strong>Conventions</strong></td>
+      <td>Serious errors that interfere with meaning</td>
+      <td>Minor errors; meaning is clear throughout</td>
+    </tr>
+  </table>
+
+  <div class="self-check">
+    <div class="q-label">Self-Assessment</div>
+    <p><strong>Total Score: _____ / 6</strong></p>
+
+    <p style="margin-top: 1rem;"><strong>Which criterion was your strongest? Why?</strong></p>
+
+    <p style="margin-top: 1rem;"><strong>Which criterion needs improvement? What would you change in revision?</strong></p>
+
+    <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #555;"><strong>Note:</strong> Your teacher will grade this essay using the same rubric. Gateway pass = 4/6 or higher, with at least 1 point in Source Integration.</p>
+  </div>
+
+  <button class="phase-next-btn">Complete Lesson</button>
+</div>
+
+<h2>Phase 6: Gateway Check</h2>
+<div class="phase-card phase-locked" data-phase="6" style="border-left: 4px solid var(--gateway);">
+  <h3>Gateway Assessment: Track B Readiness</h3>
+
+  <div class="gateway-alert">
+    <h4>⚠️ This KC Gates Track B (AP Lang/Lit)</h4>
+    <p><strong>Pass Criteria:</strong> Score 4/6 or higher on your synthesis essay, with at least 1 point earned in Source Integration.</p>
+
+    <p style="margin-top: 1rem;"><strong>Why this matters:</strong> AP Lang and AP Lit both require you to synthesize multiple texts—comparing arguments, integrating evidence from several sources, and building complex analyses. If you can't organize by theme, weave sources together, or maintain your own argumentative voice while integrating others' ideas, you're not ready for AP-level coursework.</p>
+
+    <p style="margin-top: 1rem;"><strong>What happens next:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Pass:</strong> Continue to ACT Writing unit (L13-L20)</li>
+      <li><strong>Not Yet:</strong> Conference with teacher, revise essay, resubmit for assessment</li>
+    </ul>
+  </div>
+
+  <div class="self-check" style="margin-top: 1.5rem;">
+    <div class="q-label">Reflection</div>
+    <p><strong>What was the hardest part of writing this synthesis essay?</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Organizing by theme instead of by source?</li>
+      <li>Weaving sources together in the same paragraph?</li>
+      <li>Coming up with my own thesis instead of summarizing sources?</li>
+      <li>Acknowledging counterarguments fairly while maintaining my position?</li>
+      <li>Managing time—planning vs. writing vs. revising?</li>
+    </ul>
+
+    <p style="margin-top: 1rem;">Understanding what's hard helps you improve. In L13-L20, you'll practice similar skills for ACT Writing, but the synthesis foundation you built here will transfer to every argument essay you write in high school and college.</p>
+  </div>
+
+  <p style="margin-top: 2rem; text-align: center; font-size: 1.1em;"><strong>Gateway Lesson Complete!</strong></p>
+</div>
+
+<div class="footnote">
+  <p>A2 L12 • Full Synthesis Essay (GATEWAY) • KC C.10.11 • ~55 min • M3, M4</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="A2_L11_Source_Weaving.html" class="prev">← L11: Source Weaving Drill</a>
+  <span style="color: #888;">L13: ACT Writing Introduction →</span>
+</nav>
+</body>
+</html>

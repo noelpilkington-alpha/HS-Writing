@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A2 L01: Rhetorical Force Field</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course A2 · Lesson 1</span>
+  <h1>Rhetorical Force Field</h1>
+  <p class="subtitle">Introducing M3: Rhetorical Situation as Forces</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.10.01</span>
+    <span>🧠 Mental Model: M3</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Mental Model 3: Rhetorical Force Field.</strong> A rhetorical situation isn't a checklist to fill in—it's a set of forces that constrain what a writer can do. Good analysis asks: "What COULDN'T the author do?" The four forces are: Audience, Exigence, Writer's Position, and Context.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>M3: Force Field, Not Checklist</h3>
+
+  <p>You've probably been taught to identify <strong>audience</strong>, <strong>purpose</strong>, and <strong>context</strong> when analyzing a text. That's not wrong—but it's also not enough. Listing "the audience is college-educated white men in 1852" doesn't tell you much. The real question is: <strong>What couldn't Douglass do because his audience was college-educated white men in 1852?</strong></p>
+
+  <p>This is <span class="vocab-term">M3: The Rhetorical Force Field</span>. Instead of identifying characteristics, you're mapping constraints. Every rhetorical situation creates a <strong>force field</strong> of pressures that shape what a writer can and can't do.</p>
+
+  <div class="key-concept">
+    <h4>The Four Forces</h4>
+    <table>
+      <tr>
+        <th style="width: 25%;">Force</th>
+        <th>Key Question</th>
+      </tr>
+      <tr>
+        <td><strong>Audience</strong></td>
+        <td>Who is listening, and what do they believe? What arguments would they reject immediately?</td>
+      </tr>
+      <tr>
+        <td><strong>Exigence</strong></td>
+        <td>What problem or moment demands this text? What urgency does the writer face?</td>
+      </tr>
+      <tr>
+        <td><strong>Writer's Position</strong></td>
+        <td>What authority does the writer have? What credibility do they need to establish or maintain?</td>
+      </tr>
+      <tr>
+        <td><strong>Context</strong></td>
+        <td>What historical, cultural, or situational factors limit what can be said or how it can be said?</td>
+      </tr>
+    </table>
+  </div>
+
+  <p><strong>The Constraint Test:</strong> If you can't answer "What couldn't the writer do because of this force?" then you're just describing, not analyzing.</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>A student writes: "The audience for Lincoln's Second Inaugural Address was Americans on both sides of the Civil War." Has the student identified a rhetorical force?</strong></p>
+    <ol type="A">
+      <li>Yes — they named the audience</li>
+      <li>No — they need to explain what Lincoln couldn't say because of this audience</li>
+      <li>Yes — they explained the context</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> Naming the audience is a start, but it's not analysis until you ask: "What couldn't Lincoln do?" He couldn't vilify the South without alienating half his audience. He couldn't promise revenge without undermining unity. The force field isn't WHO the audience is—it's what that audience prevents the writer from doing.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <h3>Mapping the Force Field: Douglass's July 4th Speech</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Frederick Douglass, "What to the Slave Is the Fourth of July?" (1852)</h3>
+    <p>What, to the American slave, is your 4th of July? I answer: a day that reveals to him, more than all other days in the year, the gross injustice and cruelty to which he is the constant victim. To him, your celebration is a sham; your boasted liberty, an unholy license; your national greatness, swelling vanity; your sounds of rejoicing are empty and heartless; your denunciations of tyrants, brass fronted impudence; your shouts of liberty and equality, hollow mockery; your prayers and hymns, your sermons and thanksgivings, with all your religious parade, and solemnity, are, to him, mere bombast, fraud, deception, impiety, and hypocrisy—a thin veil to cover up crimes which would disgrace a nation of savages.</p>
+
+    <p>There is not a nation on the earth guilty of practices, more shocking and bloody, than are the people of these United States, at this very hour. Go where you may, search where you will, roam through all the monarchies and despotisms of the old world, travel through South America, search out every abuse, and when you have found the last, lay your facts by the side of the everyday practices of this nation, and you will say with me, that, for revolting barbarity and shameless hypocrisy, America reigns without a rival.</p>
+    <p class="attribution">Frederick Douglass, "What to the Slave Is the Fourth of July?", Rochester, NY, July 5, 1852</p>
+  </div>
+
+  <p>Watch how a writer maps Douglass's Force Field—including the false starts.</p>
+
+  <div class="coping-model">
+    <p><strong>Writer's thinking process:</strong></p>
+    <p><span class="false-start">Okay, Audience: white abolitionists in Rochester. Exigence: July 4th. Writer's Position: formerly enslaved. Context: 1852.</span></p>
+    <p><span class="correction">Wait—I'm just listing facts. I need to ask: What COULDN'T Douglass do?</span></p>
+    <p><span class="strong">Audience force: White abolitionists who already oppose slavery BUT are proud Americans. Constraint: Douglass can't just tell them slavery is bad—they know that. He has to make them see their OWN hypocrisy, which risks alienating the only people willing to listen.</span></p>
+    <p><span class="strong">Exigence force: July 4th—a celebration of American freedom. Constraint: He can't ignore the holiday or he loses the entire rhetorical moment. He has to invert it: turn the symbol of American freedom into evidence of American evil. Risky move—could backfire if the audience feels attacked.</span></p>
+    <p><span class="strong">Writer's Position force: Formerly enslaved, now free and educated. Constraint: He has authority FROM lived experience BUT his audience could dismiss him as biased or emotional. He counters this by using THEIR language—"your celebration," "your boasted liberty"—to position himself as an outsider judging their hypocrisy.</span></p>
+    <p><span class="strong">Context force: 1852, Fugitive Slave Act just passed, abolition still a minority position. Constraint: He can't call for immediate violent uprising—that would get him and his audience arrested. He has to channel rage into moral indictment without crossing into illegality.</span></p>
+  </div>
+
+  <p><strong>Notice:</strong> Every force creates a WHAT COULDN'T HE DO constraint. That's the engine of M3.</p>
+</div>
+
+<h2>Phase 3: Supported Practice (8 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Map Sojourner Truth's Force Field</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Sojourner Truth, "Ain't I a Woman?" (1851)</h3>
+    <p>That man over there says that women need to be helped into carriages, and lifted over ditches, and to have the best place everywhere. Nobody ever helps me into carriages, or over mud-puddles, or gives me any best place! And ain't I a woman? Look at me! Look at my arm! I have ploughed and planted, and gathered into barns, and no man could head me! And ain't I a woman? I could work as much and eat as much as a man—when I could get it—and bear the lash as well! And ain't I a woman? I have borne thirteen children, and seen most all sold off to slavery, and when I cried out with my mother's grief, none but Jesus heard me! And ain't I a woman?</p>
+
+    <p>Then they talk about this thing in the head; what's this they call it? [A member of the audience whispers, "Intellect."] That's it, honey. What's that got to do with women's rights or negroes' rights? If my cup won't hold but a pint, and yours holds a quart, wouldn't you be mean not to let me have my little half measure full?</p>
+
+    <p>Then that little man in black there, he says women can't have as much rights as men, 'cause Christ wasn't a woman! Where did your Christ come from? Where did your Christ come from? From God and a woman! Man had nothing to do with Him.</p>
+    <p class="attribution">Sojourner Truth, Women's Rights Convention, Akron, Ohio, 1851 (as recorded by Frances Gage)</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Complete the Force Field Map below. For each force, identify the constraint: What couldn't Truth do because of this force? Write 2-3 sentences per force.</p>
+
+  <div class="writing-task" data-min-words="100">
+    <h4>Force Field Map for Truth</h4>
+    <table>
+      <tr>
+        <th style="width: 25%;">Force</th>
+        <th>What COULDN'T she do? (Constraint Analysis)</th>
+      </tr>
+      <tr>
+        <td><strong>Audience</strong><br><small>(Women's rights convention, mostly white women)</small></td>
+        <td><em>Write your answer here — what couldn't Truth do given this audience?</em></td>
+      </tr>
+      <tr>
+        <td><strong>Exigence</strong><br><small>(Convention debating whether women deserve equal rights)</small></td>
+        <td><em>Write your answer here — what couldn't Truth do given this moment?</em></td>
+      </tr>
+      <tr>
+        <td><strong>Writer's Position</strong><br><small>(Formerly enslaved Black woman)</small></td>
+        <td><em>Write your answer here — what couldn't Truth do given her position?</em></td>
+      </tr>
+      <tr>
+        <td><strong>Context</strong><br><small>(1851, women can't vote, slavery legal, Black women face both racism and sexism)</small></td>
+        <td><em>Write your answer here — what couldn't Truth do given this context?</em></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (7 min)</h2>
+<div class="phase-card independent-card" data-min-words="60" data-rubric="L01_force_field">
+  <h3>Patrick Henry's Force Field</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Patrick Henry, "Give Me Liberty, or Give Me Death!" (1775)</h3>
+    <p>Gentlemen may cry, Peace, Peace—but there is no peace. The war is actually begun! The next gale that sweeps from the north will bring to our ears the clash of resounding arms! Our brethren are already in the field! Why stand we here idle? What is it that gentlemen wish? What would they have? Is life so dear, or peace so sweet, as to be purchased at the price of chains and slavery? Forbid it, Almighty God! I know not what course others may take; but as for me, give me liberty or give me death!</p>
+    <p class="attribution">Patrick Henry, Virginia Convention, March 23, 1775</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Pick ONE force from Henry's rhetorical situation and write 2 sentences explaining how that force shaped a specific choice he made in the speech. Use this structure:</p>
+  <ol>
+    <li><strong>Sentence 1:</strong> Identify the force and the constraint it created (What couldn't he do?)</li>
+    <li><strong>Sentence 2:</strong> Explain how a specific choice in the text responds to that constraint.</li>
+  </ol>
+
+  <div style="background: #e3f2fd; border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0;">
+    <p style="margin-bottom: 0.5rem;"><strong>Force Options:</strong></p>
+    <ul style="margin-bottom: 0;">
+      <li><strong>Audience:</strong> Virginia Convention delegates, many cautious about war</li>
+      <li><strong>Exigence:</strong> War has essentially started, but Virginia hasn't committed</li>
+      <li><strong>Writer's Position:</strong> Known radical, risks sounding reckless</li>
+      <li><strong>Context:</strong> 1775, treason against Britain = death penalty</li>
+    </ul>
+  </div>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li>Names ONE force and explains what Henry COULDN'T do (the constraint)</li>
+      <li>Identifies a specific textual choice (word, phrase, structure, appeal)</li>
+      <li>Explains HOW that choice responds to or works within the constraint</li>
+      <li>60+ words total</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>How is M3 (Force Field) different from M1 (Everything Is a Choice)?</strong></p>
+    <p>Think about: M1 helped you analyze the choices a writer MADE. M3 helps you understand the choices they COULDN'T make. How do these two models work together?</p>
+  </div>
+
+  <details>
+    <summary>Click to reveal model response</summary>
+    <div class="model-answer">
+      <p>M1 asks: "What did the writer choose, and why?" M3 asks: "What couldn't the writer choose, and how did that limit their options?" M1 is about agency—what the writer DID. M3 is about constraint—what the situation WOULDN'T LET THEM do. Together, they give you the full picture: M3 maps the boundaries of the playing field, and M1 analyzes how the writer moved within those boundaries. You need both. Without M3, you don't understand why a writer made a "surprising" choice—it might have been the ONLY choice available.</p>
+    </div>
+  </details>
+
+  <div class="transfer-prompt">
+    <p><strong>Looking Ahead:</strong> In the next lesson (L02), you'll learn M4: Claim Hierarchy, which maps how arguments are structured. M3 told you what constraints shaped the argument; M4 will show you how the argument is built.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>A2 L01 • Rhetorical Force Field • KC C.10.01 • ~25 min • M3 Introduction</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="A1_L20_Gate_Assessment.html" class="prev">A1 Gate</a>
+  <a href="A2_L02_Claim_Hierarchy.html" class="next">L02: Claim Hierarchy</a>
+</nav>
+</body>
+</html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 10: Attribution Fluency Drill</title>
+    <link rel="stylesheet" href="lesson-engine.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .lesson-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .lesson-header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2em;
+        }
+
+        .lesson-meta {
+            font-size: 0.9em;
+            opacity: 0.95;
+        }
+
+        .phase {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .phase-locked {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .phase-number {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .phase-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .key-concept {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .key-concept h3 {
+            margin-top: 0;
+            color: #1976D2;
+        }
+
+        .signal-categories {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .signal-category {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #2196F3;
+        }
+
+        .signal-category h4 {
+            margin: 0 0 8px 0;
+            color: #1976D2;
+            font-size: 1em;
+        }
+
+        .signal-category ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .signal-category li {
+            margin: 4px 0;
+            font-size: 0.95em;
+        }
+
+        .passage-box {
+            background: #f9f9f9;
+            border: 2px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            font-family: Georgia, serif;
+            line-height: 1.8;
+        }
+
+        .passage-box h4 {
+            margin-top: 0;
+            color: #555;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.1em;
+        }
+
+        .attribution {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .integration-example {
+            margin: 15px 0;
+            padding: 12px;
+            background: white;
+            border-left: 3px solid #4CAF50;
+            border-radius: 4px;
+        }
+
+        .integration-label {
+            font-weight: bold;
+            color: #2e7d32;
+            margin-bottom: 5px;
+        }
+
+        .check-question {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .check-question h4 {
+            margin-top: 0;
+            color: #e65100;
+        }
+
+        .check-question ol {
+            margin: 15px 0;
+        }
+
+        .check-question li {
+            margin: 8px 0;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .check-question li:hover {
+            background: #ffe0b2;
+        }
+
+        details {
+            margin-top: 15px;
+            padding: 12px;
+            background: white;
+            border-radius: 4px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #e65100;
+        }
+
+        summary:hover {
+            color: #ff9800;
+        }
+
+        .self-check {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .self-check h4 {
+            margin-top: 0;
+            color: #6a1b9a;
+        }
+
+        .writing-task {
+            background: #e8f5e9;
+            border: 2px solid #4CAF50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .writing-task h4 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-family: Georgia, serif;
+            font-size: 1em;
+            line-height: 1.6;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .word-count {
+            text-align: right;
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .rubric-box {
+            background: #fff8e1;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .rubric-box h4 {
+            margin-top: 0;
+            color: #f57f17;
+        }
+
+        .rubric-box ul {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+
+        .rubric-box li {
+            margin: 8px 0;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #764ba2;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .next-phase-btn {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .next-phase-btn.show {
+            display: inline-block;
+        }
+
+        .lock-icon {
+            float: right;
+            color: #999;
+            font-size: 1.5em;
+        }
+
+        .evidence-box {
+            background: #fafafa;
+            border: 2px solid #9e9e9e;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            font-style: italic;
+        }
+
+        .evidence-label {
+            font-weight: bold;
+            font-style: normal;
+            color: #555;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .instruction-highlight {
+            background: #fffde7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border: 1px solid #fbc02d;
+        }
+
+        strong {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="lesson-header">
+        <h1>Lesson 10: Attribution Fluency Drill</h1>
+        <div class="lesson-meta">
+            Course A2 (Grade 10) | Time: ~20 minutes | KC: C.10.09 (Attribution and Citation Fluency)
+        </div>
+    </div>
+
+    <!-- PHASE 1: TEACH -->
+    <div class="phase" data-phase="1">
+        <div class="phase-header">
+            <div class="phase-number">1</div>
+            <div class="phase-title">Teach: Signal Phrases Carry Attitude</div>
+        </div>
+
+        <p>You already know how to cite a source. But <strong>how you bring that source into your writing</strong> is where the analysis happens. The signal phrase you choose—"argues," "suggests," "acknowledges," "overlooks"—tells your reader <em>what you think about the evidence</em> before they even read it.</p>
+
+        <p>Most students use the same 2-3 signal phrases over and over: "says," "states," "shows." But skilled writers have <strong>10+ ways</strong> to integrate sources, and each one frames the evidence differently.</p>
+
+        <div class="key-concept">
+            <h3>Key Concept: Signal Phrase Categories</h3>
+            <p>Your signal phrase IS analysis. It tells the reader your stance on the source's credibility, strength, and relevance.</p>
+
+            <div class="signal-categories">
+                <div class="signal-category">
+                    <h4>Neutral</h4>
+                    <ul>
+                        <li>notes</li>
+                        <li>observes</li>
+                        <li>states</li>
+                        <li>reports</li>
+                        <li>describes</li>
+                    </ul>
+                </div>
+
+                <div class="signal-category">
+                    <h4>Supportive</h4>
+                    <ul>
+                        <li>argues convincingly</li>
+                        <li>demonstrates</li>
+                        <li>confirms</li>
+                        <li>establishes</li>
+                        <li>reveals</li>
+                    </ul>
+                </div>
+
+                <div class="signal-category">
+                    <h4>Critical</h4>
+                    <ul>
+                        <li>claims</li>
+                        <li>insists</li>
+                        <li>overlooks</li>
+                        <li>fails to account for</li>
+                        <li>assumes without evidence</li>
+                    </ul>
+                </div>
+
+                <div class="signal-category">
+                    <h4>Tentative</h4>
+                    <ul>
+                        <li>suggests</li>
+                        <li>implies</li>
+                        <li>hints at</li>
+                        <li>raises the possibility</li>
+                        <li>indicates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <p><strong>The Bottom Line:</strong> Before you write "According to Smith," ask yourself: <em>Do I fully trust this source? Am I skeptical? Is this a strong claim or a weak possibility?</em> Then choose your signal phrase accordingly.</p>
+
+        <button class="next-phase-btn show" onclick="unlockPhase(2)">Continue to Model</button>
+    </div>
+
+    <!-- PHASE 2: MODEL -->
+    <div class="phase phase-locked" data-phase="2">
+        <div class="phase-header">
+            <div class="phase-number">2</div>
+            <div class="phase-title">Model: Five Ways to Frame the Same Evidence</div>
+            <span class="lock-icon">🔒</span>
+        </div>
+
+        <p>Let's take one piece of evidence and integrate it five different ways. Watch how the signal phrase changes the meaning—even though the data stays the same.</p>
+
+        <div class="passage-box">
+            <h4>Original Evidence:</h4>
+            <p>"A 2023 Gallup poll found that 67% of teachers reported spending more time on test preparation than on creative projects."</p>
+
+            <h4 style="margin-top: 25px;">Five Different Integrations:</h4>
+
+            <div class="integration-example">
+                <div class="integration-label">1. Neutral (just the facts)</div>
+                <p>According to a 2023 Gallup poll, 67% of teachers reported spending more time on test preparation than on creative projects.</p>
+            </div>
+
+            <div class="integration-example">
+                <div class="integration-label">2. Supportive (this evidence is strong)</div>
+                <p>A 2023 Gallup poll <strong>demonstrates</strong> the scope of the problem: 67% of teachers reported spending more time on test preparation than on creative projects.</p>
+            </div>
+
+            <div class="integration-example">
+                <div class="integration-label">3. Critical (I'm skeptical of this framing)</div>
+                <p>While a 2023 Gallup poll <strong>claims</strong> that 67% of teachers spend more time on test prep than creative projects, this data <strong>fails to account for</strong> how teachers define "creative" work.</p>
+            </div>
+
+            <div class="integration-example">
+                <div class="integration-label">4. Tentative (this suggests a pattern but isn't definitive)</div>
+                <p>A 2023 Gallup poll <strong>suggests</strong> a troubling trend: 67% of teachers reported spending more time on test preparation than on creative projects.</p>
+            </div>
+
+            <div class="integration-example">
+                <div class="integration-label">5. Revealing (this evidence uncovers something hidden)</div>
+                <p>A 2023 Gallup poll <strong>reveals</strong> the extent to which standardized testing has reshaped classroom practice: 67% of teachers now spend more time on test preparation than on creative projects.</p>
+            </div>
+
+            <p class="attribution"><strong>Notice:</strong> Same data, five different arguments. The signal phrase is doing the analytical work.</p>
+        </div>
+
+        <div class="check-question">
+            <h4>Check Your Understanding:</h4>
+            <p>A writer wants to use the Gallup poll data to argue that standardized testing has had a negative impact on education. Which signal phrase would be MOST effective?</p>
+            <ol type="A">
+                <li>states</li>
+                <li>suggests</li>
+                <li>reveals</li>
+                <li>claims</li>
+            </ol>
+            <details>
+                <summary>Show Answer</summary>
+                <p><strong>Answer: C.</strong> "Reveals" is the strongest supportive signal phrase—it suggests the evidence uncovers something important and troubling. "States" is too neutral, "suggests" is too tentative, and "claims" is critical (implying doubt).</p>
+            </details>
+        </div>
+
+        <button class="next-phase-btn show" onclick="unlockPhase(3)">Continue to Supported Practice</button>
+    </div>
+
+    <!-- PHASE 3: SUPPORTED PRACTICE -->
+    <div class="phase phase-locked" data-phase="3">
+        <div class="phase-header">
+            <div class="phase-number">3</div>
+            <div class="phase-title">Supported Practice: Attribution Pattern Drill</div>
+            <span class="lock-icon">🔒</span>
+        </div>
+
+        <p>Now it's your turn. You'll practice integrating the same piece of evidence five different ways, using five different signal phrases.</p>
+
+        <div class="evidence-box">
+            <span class="evidence-label">Evidence from Source Set A (Standardized Testing):</span>
+            "Between 2002 and 2022, the average American student took 112 standardized tests between kindergarten and 12th grade—more than double the number from a generation earlier." (Source: National Center for Fair and Open Testing, 2023)
+        </div>
+
+        <div class="writing-task">
+            <h4>Your Task:</h4>
+            <p><strong>Write five different integrations</strong> of this evidence, using five different signal phrases from five different categories (neutral, supportive, critical, tentative, and one of your choice).</p>
+
+            <div class="instruction-highlight">
+                <p><strong>Label each integration clearly:</strong></p>
+                <p>1. Neutral: [your integration]<br>
+                2. Supportive: [your integration]<br>
+                3. Critical: [your integration]<br>
+                4. Tentative: [your integration]<br>
+                5. Your choice: [your integration]</p>
+            </div>
+
+            <textarea
+                data-phase-gate="3"
+                data-min-words="60"
+                placeholder="Write your five integrations here..."></textarea>
+            <div class="word-count">Word count: <span>0</span></div>
+        </div>
+
+        <button class="next-phase-btn" onclick="unlockPhase(4)">Continue to Independent Practice</button>
+    </div>
+
+    <!-- PHASE 4: INDEPENDENT PRACTICE -->
+    <div class="phase phase-locked" data-phase="4">
+        <div class="phase-header">
+            <div class="phase-number">4</div>
+            <div class="phase-title">Independent Practice: Match Signal Phrase to Source Stance</div>
+            <span class="lock-icon">🔒</span>
+        </div>
+
+        <p>This time, you're choosing the <em>most appropriate</em> signal phrase for each piece of evidence based on <strong>how you want to use it in your argument</strong>.</p>
+
+        <div class="evidence-box">
+            <span class="evidence-label">Evidence A (from a pro-testing advocacy group):</span>
+            "Standardized tests provide the only consistent measure of student achievement across diverse school districts, ensuring accountability and equity."
+        </div>
+
+        <div class="evidence-box">
+            <span class="evidence-label">Evidence B (from a peer-reviewed education study):</span>
+            "A longitudinal study of 12,000 students found that test scores in grades 3-5 had no correlation with college graduation rates, creative problem-solving abilities, or career satisfaction."
+        </div>
+
+        <div class="evidence-box">
+            <span class="evidence-label">Evidence C (from a teacher interview):</span>
+            "I love teaching, but some days I feel like a test-prep coach rather than an educator. We've lost something important."
+        </div>
+
+        <div class="writing-task">
+            <h4>Your Task:</h4>
+            <p><strong>For each piece of evidence (A, B, and C):</strong></p>
+            <ol>
+                <li>Write an integration using the most appropriate signal phrase</li>
+                <li>Briefly explain (1-2 sentences) WHY you chose that signal phrase</li>
+            </ol>
+
+            <p style="margin-top: 15px;"><strong>Assume you are arguing AGAINST standardized testing.</strong> Choose signal phrases that support your position.</p>
+
+            <textarea
+                data-phase-gate="4"
+                data-rubric="L10_attribution_fluency"
+                data-min-words="50"
+                placeholder="Write your three integrations and explanations here...
+
+Evidence A: [integration + explanation]
+Evidence B: [integration + explanation]
+Evidence C: [integration + explanation]"></textarea>
+            <div class="word-count">Word count: <span>0</span></div>
+        </div>
+
+        <div class="rubric-box">
+            <h4>Success Criteria:</h4>
+            <ul>
+                <li>Uses at least 3 different signal phrases</li>
+                <li>Each signal phrase matches the source's stance and your argument's needs</li>
+                <li>Integration is grammatically smooth</li>
+                <li>Brief explanation of why each signal phrase was chosen</li>
+            </ul>
+        </div>
+
+        <button class="next-phase-btn" onclick="unlockPhase(5)">Continue to Transfer</button>
+    </div>
+
+    <!-- PHASE 5: TRANSFER -->
+    <div class="phase phase-locked" data-phase="5">
+        <div class="phase-header">
+            <div class="phase-number">5</div>
+            <div class="phase-title">Transfer: Apply to Your Own Writing</div>
+            <span class="lock-icon">🔒</span>
+        </div>
+
+        <p>Attribution fluency is one of the fastest ways to elevate your writing from "competent" to "sophisticated." Readers notice when you vary your signal phrases—it shows you're thinking critically about your sources, not just plugging them in.</p>
+
+        <div class="self-check">
+            <h4>Self-Check:</h4>
+            <p><strong>Look back at your L07 argument essay</strong> (or any recent essay where you used sources). How many different attribution patterns did you use?</p>
+
+            <p style="margin-top: 15px;">Most students use <strong>1-2 signal phrases</strong> throughout an entire essay (usually "states" and "shows"). Strong writers use <strong>4-6 different patterns</strong>, choosing each one strategically based on the source's credibility and their own argument's needs.</p>
+
+            <p style="margin-top: 15px;"><strong>Your goal for the next essay:</strong> Use at least 4 different signal phrases. Bonus points if you use one from each category (neutral, supportive, critical, tentative).</p>
+        </div>
+
+        <div class="key-concept">
+            <h3>Why This Matters:</h3>
+            <p>On the ACT Writing test and in college essays, graders are looking for <strong>source integration sophistication</strong>. Using varied, precise signal phrases is one of the clearest markers of advanced writing.</p>
+
+            <p style="margin-top: 15px;">Two students cite the same evidence. One writes: "The study shows that..." The other writes: "The study reveals that..." Same data, but the second student sounds like they're in control of their sources, not just summarizing them.</p>
+
+            <p style="margin-top: 15px;"><strong>That's the difference between a 4 and a 5 on the AP scale.</strong></p>
+        </div>
+
+        <p style="margin-top: 30px; font-size: 1.1em; text-align: center;"><strong>Lesson Complete!</strong> You've learned how to vary signal phrases strategically to strengthen your analysis.</p>
+    </div>
+
+    <script src="lesson-engine.js"></script>
+</body>
+</html>

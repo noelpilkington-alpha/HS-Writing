@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A2 L02: Claim Hierarchy</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+.lesson-header { border-bottom: 3px solid var(--accent); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.lesson-tag {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b8d4e8; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.rubric-box {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem 1.25rem; margin: 1rem 0;
+}
+.rubric-box ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+details { margin: 0.75rem 0; }
+details summary {
+  cursor: pointer; font-weight: 600; color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+  padding: 0.5rem; background: #f0f0f0; border-radius: 4px;
+}
+details summary:hover { background: #e0e0e0; }
+details[open] summary { margin-bottom: 0.5rem; }
+.model-answer {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1rem; margin: 0.5rem 0; font-size: 0.9rem;
+}
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+ol[type="A"] { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+.hierarchy-tree {
+  background: #f8f9fa; border: 2px solid var(--border); border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-family: 'Courier New', monospace; font-size: 0.85rem;
+  line-height: 1.8;
+}
+</style>
+<link rel="stylesheet" href="lesson-engine.css">
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag" style="background: #17a2b8;">Course A2 · Lesson 2</span>
+  <h1>Claim Hierarchy</h1>
+  <p class="subtitle">Introducing M4: Arguments as Nested Structures</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📍 KCs: C.10.02</span>
+    <span>🧠 Mental Model: M4</span>
+  </div>
+</div>
+
+<div class="key-concept">
+  <strong>Mental Model 4: Claim Hierarchy.</strong> Arguments aren't flat lists of points—they're nested structures where some claims support others. A strong argument has a clear hierarchy: Thesis at the top, Claims beneath it, Evidence and Commentary supporting each claim, and Counterclaims addressed strategically. Weak arguments feel flat because every point sits at the same level.
+</div>
+
+<h2>Phase 1: Teach (3 min)</h2>
+<div class="phase-card teach-card">
+  <h3>M4: Hierarchy, Not a List</h3>
+
+  <p>Most student arguments look like this:</p>
+  <ul>
+    <li>Thesis: Schools should keep letter grades.</li>
+    <li>Point 1: Grades motivate students.</li>
+    <li>Point 2: Grades help colleges compare applicants.</li>
+    <li>Point 3: Pass/fail doesn't give enough feedback.</li>
+    <li>Counterargument: Some say grades cause stress.</li>
+  </ul>
+
+  <p>That's not wrong—but it's FLAT. Every point sits at the same level. Strong arguments have <span class="vocab-term">hierarchy</span>: some claims are PRIMARY (they support the thesis directly), others are SUBORDINATE (they support or challenge primary claims), and evidence/commentary nest beneath claims.</p>
+
+  <div class="key-concept">
+    <h4>The Hierarchy Structure</h4>
+    <div class="hierarchy-tree">
+<strong>THESIS</strong> (top-level claim)
+├── <strong>Claim 1</strong> (supports thesis)
+│   ├── Evidence A (supports Claim 1)
+│   │   └── Commentary (explains why Evidence A matters)
+│   └── Evidence B (supports Claim 1)
+│       └── Commentary (explains why Evidence B matters)
+├── <strong>Claim 2</strong> (supports thesis)
+│   ├── Evidence C
+│   │   └── Commentary
+│   └── Evidence D
+│       └── Commentary
+└── <strong>Counterclaim</strong> (challenges thesis)
+    ├── Concession (what you grant)
+    └── Rebuttal (why thesis still holds)
+    </div>
+  </div>
+
+  <p><strong>Why hierarchy matters:</strong> It shows <em>logical dependency</em>. If Claim 1 collapses, does the whole thesis fall? Or do Claims 2 and 3 still hold it up? If the counterclaim is stronger than you thought, can you concede it without losing the thesis? Hierarchy makes these relationships visible.</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Yourself</div>
+    <p><strong>A student writes: "Lincoln argues for reconciliation. He mentions God multiple times. He doesn't blame either side for starting the war. He says both sides prayed to the same God." What's the problem with this analysis?</strong></p>
+    <ol type="A">
+      <li>It's inaccurate—Lincoln does blame the South</li>
+      <li>It's flat—all points sit at the same level, no hierarchy</li>
+      <li>It's too short—needs more evidence</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div style="padding: 1rem; background: #f8f9fa; margin-top: 0.5rem; border-radius: 4px;">
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Why:</strong> The student lists four points but doesn't show how they connect. Does the God reference SUPPORT the reconciliation argument? Does refusing to blame either side DEPEND ON the shared God? Without hierarchy, you can't see how the argument is built. A hierarchical version would say: "Lincoln argues for reconciliation (thesis) BY refusing to assign blame (Claim 1), which he justifies by invoking a shared God (Evidence/Commentary nested under Claim 1)."</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<h2>Phase 2: Model (4 min)</h2>
+<div class="phase-card model-card">
+  <h3>Mapping Lincoln's Claim Hierarchy</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Abraham Lincoln, Second Inaugural Address (1865)</h3>
+    <p>Neither party expected for the war the magnitude or the duration which it has already attained. Neither anticipated that the cause of the conflict might cease with or even before the conflict itself should cease. Each looked for an easier triumph, and a result less fundamental and astounding. Both read the same Bible and pray to the same God, and each invokes His aid against the other. It may seem strange that any men should dare to ask a just God's assistance in wringing their bread from the sweat of other men's faces, but let us judge not, that we be not judged. The prayers of both could not be answered. That of neither has been answered fully. The Almighty has His own purposes.</p>
+
+    <p>With malice toward none, with charity for all, with firmness in the right as God gives us to see the right, let us strive on to finish the work we are in, to bind up the nation's wounds, to care for him who shall have borne the battle and for his widow and his orphan, to do all which may achieve and cherish a just and lasting peace among ourselves and with all nations.</p>
+    <p class="attribution">Abraham Lincoln, Second Inaugural Address, March 4, 1865</p>
+  </div>
+
+  <p>Watch how a writer maps the hierarchy—and catches a false start.</p>
+
+  <div class="coping-model">
+    <p><strong>Writer's thinking process:</strong></p>
+    <p><span class="false-start">Okay, Lincoln's making a bunch of points: both sides prayed to God, neither expected the war to last this long, we shouldn't judge, we need to heal the nation. I'll just list them in order.</span></p>
+    <p><span class="correction">Wait—that's FLAT. I need to ask: which of these claims SUPPORTS which? What's the top-level thesis?</span></p>
+    <p><span class="strong">Top-level thesis: The nation must reconcile without malice.</span></p>
+    <p><span class="strong">Claim 1 (supports thesis): Neither side is fully to blame. Evidence: Both prayed to the same God. Both expected an easier war. Commentary: If both sides acted in good faith (even if one was wrong), then total condemnation is unjust.</span></p>
+    <p><span class="correction">Hmm, but "let us judge not" sounds like a concession—he's acknowledging the South WAS morally wrong (slavery = "wringing bread from sweat of other men's faces"). So this is a SUBORDINATE move: he concedes the South's guilt but argues we shouldn't let that prevent reconciliation.</span></p>
+    <p><span class="strong">Counterclaim (challenges thesis): The South deserves judgment for slavery. Concession: Yes, slavery was evil ("strange that any men should dare to ask a just God's assistance"). Rebuttal: But "let us judge not"—not because they weren't wrong, but because judgment prevents healing.</span></p>
+    <p><span class="strong">Claim 2 (supports thesis): Healing requires action, not blame. Evidence: "bind up the nation's wounds," "care for him who shall have borne the battle." Commentary: The work ahead is practical—widows, orphans, reconstruction—not moral scorekeeping.</span></p>
+  </div>
+
+  <p><strong>Notice:</strong> The hierarchy shows that "let us judge not" isn't a PRIMARY claim—it's a REBUTTAL nested under the counterclaim. That's why it works: Lincoln acknowledges the South's guilt (concession) but subordinates it to the need for peace (rebuttal).</p>
+</div>
+
+<h2>Phase 3: Supported Practice (8 min)</h2>
+<div class="phase-card practice-card">
+  <h3>Map Stanton's Claim Hierarchy</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Elizabeth Cady Stanton, Declaration of Sentiments (1848)</h3>
+    <p>We hold these truths to be self-evident: that all men and women are created equal; that they are endowed by their Creator with certain inalienable rights; that among these are life, liberty, and the pursuit of happiness; that to secure these rights governments are instituted, deriving their just powers from the consent of the governed. Whenever any form of government becomes destructive of these ends, it is the right of those who suffer from it to refuse allegiance to it, and to insist upon the institution of a new government, laying its foundation on such principles, and organizing its powers in such form, as to them shall seem most likely to effect their safety and happiness.</p>
+
+    <p>The history of mankind is a history of repeated injuries and usurpations on the part of man toward woman, having in direct object the establishment of an absolute tyranny over her. To prove this, let facts be submitted to a candid world. He has never permitted her to exercise her inalienable right to the elective franchise. He has compelled her to submit to laws, in the formation of which she had no voice. He has made her, if married, in the eye of the law, civilly dead.</p>
+    <p class="attribution">Elizabeth Cady Stanton, Declaration of Sentiments, Seneca Falls Convention, 1848</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Fill in the hierarchy outline below. Identify the thesis, the primary claims, and how evidence/commentary nest beneath each claim. Write 1-2 sentences per box.</p>
+
+  <div class="writing-task" data-min-words="80">
+    <h4>Claim Hierarchy Outline for Stanton</h4>
+    <table>
+      <tr>
+        <th style="width: 30%;">Level</th>
+        <th>Your Analysis</th>
+      </tr>
+      <tr>
+        <td><strong>THESIS</strong><br><small>(What is Stanton's top-level argument?)</small></td>
+        <td><em>Write your answer here...</em></td>
+      </tr>
+      <tr>
+        <td><strong>Claim 1</strong><br><small>(What's the first major claim supporting the thesis?)</small></td>
+        <td><em>Write your answer here...</em></td>
+      </tr>
+      <tr>
+        <td><strong>Evidence for Claim 1</strong><br><small>(What proof does she offer?)</small></td>
+        <td><em>Write your answer here...</em></td>
+      </tr>
+      <tr>
+        <td><strong>Claim 2 (if present)</strong><br><small>(Is there a second major claim?)</small></td>
+        <td><em>Write your answer here...</em></td>
+      </tr>
+      <tr>
+        <td><strong>How does the Declaration of Independence function?</strong><br><small>(Is it evidence? A framing device? A counterclaim she's co-opting?)</small></td>
+        <td><em>Write your answer here...</em></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<h2>Phase 4: Independent Practice (7 min)</h2>
+<div class="phase-card independent-card" data-min-words="75" data-rubric="L02_claim_hierarchy">
+  <h3>Evaluate Paine's Claim Hierarchy</h3>
+
+  <div class="passage-box">
+    <h3>Excerpt: Thomas Paine, Common Sense (1776)</h3>
+    <p>Society in every state is a blessing, but government even in its best state is but a necessary evil; in its worst state an intolerable one; for when we suffer, or are exposed to the same miseries by a government, which we might expect in a country without government, our calamity is heightened by reflecting that we furnish the means by which we suffer. Government, like dress, is the badge of lost innocence; the palaces of kings are built on the ruins of the bowers of paradise. For were the impulses of conscience clear, uniform, and irresistibly obeyed, man would need no other lawgiver; but that not being the case, he finds it necessary to surrender up a part of his property to furnish means for the protection of the rest.</p>
+
+    <p>But there is another and greater distinction for which no truly natural or religious reason can be assigned, and that is the distinction of men into KINGS and SUBJECTS. Male and female are the distinctions of nature, good and bad the distinctions of Heaven; but how a race of men came into the world so exalted above the rest, and distinguished like some new species, is worth inquiring into, and whether they are the means of happiness or of misery to mankind.</p>
+    <p class="attribution">Thomas Paine, Common Sense, 1776</p>
+  </div>
+
+  <p><strong>Your Task:</strong> Analyze Paine's hierarchy and evaluate its strength. Answer these two questions:</p>
+  <ol>
+    <li><strong>Which claim has the strongest evidence?</strong> Identify the claim and explain why its evidence is compelling.</li>
+    <li><strong>Which claim has the weakest evidence?</strong> Identify the claim and explain what evidence is missing or unconvincing.</li>
+  </ol>
+
+  <div class="rubric-box">
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li>Identifies at least TWO distinct claims in Paine's argument</li>
+      <li>Evaluates the STRENGTH of evidence for each (strongest and weakest)</li>
+      <li>Explains WHY the evidence is strong or weak (not just "it's convincing" but "it works because...")</li>
+      <li>75+ words total</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase 5: Transfer (3 min)</h2>
+<div class="phase-card transfer-card">
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>Look back at your A1 gate essay. Could you map its claim hierarchy?</strong></p>
+    <p>Try it: What was your thesis? What were your primary claims? Did any claims support OTHER claims (subordinate structure)? Did you address a counterclaim, and if so, where did it fit in the hierarchy?</p>
+  </div>
+
+  <details>
+    <summary>Click to reveal model response</summary>
+    <div class="model-answer">
+      <p>When I map my A1 essay, I realize it was mostly flat—my three body paragraphs all supported the thesis at the same level, like three pillars holding up a roof. My counterclaim was tacked on at the end, almost like a separate section, not integrated into the hierarchy. A stronger version would have nested the counterclaim UNDER one of my claims—for example, if my Claim 2 was about fairness, the counterclaim could challenge that claim specifically, and my rebuttal could defend Claim 2 without having to re-defend the whole thesis. That's what hierarchy does: it lets you handle objections at the RIGHT LEVEL instead of treating every challenge as a threat to the entire argument.</p>
+    </div>
+  </details>
+
+  <div class="transfer-prompt">
+    <p><strong>Looking Ahead:</strong> Now that you can map the hierarchy of an argument (M4) and the forces that shaped it (M3), you're ready to write analytical paragraphs that do more than summarize. In the next lessons, you'll learn to build arguments ABOUT arguments—using evidence from the text to support claims about how and why a text works.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>A2 L02 • Claim Hierarchy • KC C.10.02 • ~25 min • M4 Introduction</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+<nav class="lesson-nav">
+  <a href="A2_L01_Rhetorical_Force_Field.html" class="prev">L01: Rhetorical Force Field</a>
+  <a href="#" class="next">L03: Coming Soon</a>
+</nav>
+</body>
+</html>

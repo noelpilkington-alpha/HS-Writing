@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A2 L05: They Say/I Say — Template Practice</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+.lesson-header {
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+.lesson-tag {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.transfer { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; font-weight: 600; }
+p { margin-bottom: 1rem; }
+ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.transfer-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.gateway-badge {
+  display: inline-block; background: #dc3545; color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem; border-radius: 3px; margin-left: 0.5rem;
+}
+.rubric-box {
+  background: #f8f9fa; border: 2px solid var(--primary); border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+}
+.model-essay {
+  background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+details { margin: 1rem 0; }
+summary {
+  cursor: pointer; font-weight: 600; padding: 0.5rem;
+  background: #f8f9fa; border-radius: 4px; border: 1px solid var(--border);
+}
+summary:hover { background: #e9ecef; }
+.practice-item {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.25rem; margin: 1rem 0;
+}
+
+.lesson-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem; padding: 1rem 0; border-top: 2px solid var(--border);
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.lesson-nav a {
+  color: #0d6efd; text-decoration: none; font-weight: 600;
+}
+.lesson-nav a:hover { text-decoration: underline; }
+.lesson-nav .prev::before { content: '← '; }
+.lesson-nav .next::after { content: ' →'; }
+
+/* ===== INTERACTIVE ENGINE =====*/
+/* ===== SCORE BAR ===== */
+#score-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--primary, #1a1a2e); color: #ffc107;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; font-weight: 700;
+  padding: 0.5rem 1.5rem; text-align: right;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+#score-bar .score-icon { font-size: 1.1rem; }
+body { padding-top: 3rem; }
+.score-bump { animation: bump 0.3s ease; }
+@keyframes bump { 0%{transform:scale(1)} 50%{transform:scale(1.4)} 100%{transform:scale(1)} }
+
+/* ===== MCQ BUTTONS ===== */
+.mcq-options { display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0; }
+.mcq-btn {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  background: #fff; border: 2px solid var(--border, #dee2e6); border-radius: 8px;
+  padding: 0.75rem 1rem; font-family: 'Georgia', serif; font-size: 0.95rem;
+  cursor: pointer; text-align: left; transition: all 0.2s;
+  line-height: 1.5; color: var(--text, #2d2d2d);
+}
+.mcq-btn:hover:not(:disabled) { border-color: #0d6efd; background: #f0f7ff; }
+.mcq-btn:disabled { cursor: default; opacity: 0.7; }
+.mcq-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  background: var(--primary, #1a1a2e); color: #fff;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  flex-shrink: 0; margin-top: 0.1rem;
+}
+.mcq-btn.mcq-correct { border-color: #28a745; background: #d4edda; }
+.mcq-btn.mcq-correct .mcq-letter { background: #28a745; }
+.mcq-btn.mcq-wrong { border-color: #dc3545; background: #f8d7da; }
+.mcq-btn.mcq-wrong .mcq-letter { background: #dc3545; }
+.mcq-feedback {
+  background: #e8f5e9; border-left: 4px solid #28a745;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ===== CLASSIFY BUTTONS ===== */
+.classify-wrap { margin: 1rem 0; display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+.classify-btn {
+  background: #fff; border: 2px solid var(--border, #dee2e6); border-radius: 6px;
+  padding: 0.5rem 1.25rem; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.classify-btn:hover:not(:disabled) { border-color: #0d6efd; background: #f0f7ff; }
+.classify-btn:disabled { cursor: default; }
+.classify-btn.classify-correct { border-color: #28a745; background: #d4edda; color: #155724; }
+.classify-btn.classify-wrong { border-color: #dc3545; background: #f8d7da; color: #842029; }
+
+/* ===== STAGE 2 ===== */
+.stage2-block { margin: 0.75rem 0; animation: fadeIn 0.3s ease; }
+.stage2-input {
+  width: 100%; border: 2px solid var(--border, #dee2e6); border-radius: 6px;
+  padding: 0.6rem; font-family: 'Georgia', serif; font-size: 0.9rem;
+  resize: vertical; margin-top: 0.5rem; line-height: 1.6;
+}
+.stage2-input:focus { border-color: #0d6efd; outline: none; box-shadow: 0 0 0 3px rgba(13,110,253,0.15); }
+.stage2-submit {
+  margin-top: 0.5rem; background: #6f42c1; color: #fff; border: none; border-radius: 6px;
+  padding: 0.4rem 1rem; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.stage2-submit:hover:not(:disabled) { background: #5a32a3; }
+.stage2-submit:disabled { background: #bbb; cursor: default; }
+.stage2-submit.submitted { background: #28a745; }
+
+/* ===== WRITING INPUT ===== */
+.writing-input { margin: 1.5rem 0; }
+.writing-ta, .practice-ta {
+  width: 100%; border: 2px solid var(--border, #dee2e6); border-radius: 8px;
+  padding: 0.8rem; font-family: 'Georgia', serif; font-size: 0.95rem;
+  line-height: 1.7; resize: vertical; min-height: 120px;
+}
+.writing-ta:focus, .practice-ta:focus { border-color: #0d6efd; outline: none; box-shadow: 0 0 0 3px rgba(13,110,253,0.15); }
+.writing-ta[readonly], .practice-ta[readonly] { background: #f8f9fa; }
+.writing-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 0.5rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.wc { color: var(--muted, #6c757d); }
+.writing-submit {
+  background: var(--accent, #e94560); color: #fff; border: none; border-radius: 6px;
+  padding: 0.5rem 1.25rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.writing-submit:hover:not(:disabled) { background: #d63050; }
+.writing-submit:disabled { background: #bbb; cursor: default; }
+.writing-submit.submitted { background: #28a745; }
+
+/* ===== PHASE GATING ===== */
+.phase-locked {
+  opacity: 0.35; pointer-events: none; position: relative;
+  filter: grayscale(40%);
+}
+.phase-locked::after {
+  content: '🔒 Complete the previous phase to unlock';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: rgba(26,26,46,0.9); color: #fff; padding: 0.75rem 1.5rem;
+  border-radius: 8px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem; font-weight: 600; white-space: nowrap; z-index: 10;
+  pointer-events: none;
+}
+.phase-active { opacity: 1; }
+.phase-done { opacity: 0.85; }
+.phase-done .phase-next-btn { display: none; }
+.phase-next-btn {
+  display: block; width: 100%; margin-top: 1.5rem;
+  background: #0d6efd; color: #fff; border: none; border-radius: 8px;
+  padding: 0.75rem; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.phase-next-btn:hover:not(:disabled) { background: #0b5ed7; }
+.phase-next-btn:disabled { background: #a0c4ff; cursor: default; }
+
+/* ===== LESSON COMPLETE OVERLAY ===== */
+.complete-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
+  z-index: 2000; animation: fadeIn 0.3s ease;
+}
+.complete-card {
+  background: #fff; border-radius: 16px; padding: 2.5rem; text-align: center;
+  max-width: 400px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+.complete-card h2 { color: var(--primary, #1a1a2e); margin-bottom: 0.5rem; }
+.complete-stars { font-size: 2.5rem; color: #ffc107; margin: 0.5rem 0; }
+.complete-score { font-size: 1.3rem; font-weight: 700; color: var(--primary, #1a1a2e); margin-bottom: 1rem; }
+.complete-close {
+  background: #0d6efd; color: #fff; border: none; border-radius: 8px;
+  padding: 0.6rem 2rem; font-size: 1rem; font-weight: 600; cursor: pointer;
+  margin-top: 0.5rem;
+}
+.complete-close:hover { background: #0b5ed7; }
+
+/* ===== HIDE ANSWERS BY DEFAULT ===== */
+.practice-item > details { display: none !important; }
+.practice-item > details.revealed { display: block !important; }
+
+/* ===== AI GRADING FEEDBACK ===== */
+.grading-container { margin-top: 1rem; animation: fadeIn 0.3s ease; }
+.grading-loading {
+  padding: 1rem; background: #f8f9fa; border: 1px solid var(--border, #dee2e6);
+  border-radius: 8px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.9rem; color: var(--muted, #6c757d);
+}
+.grading-spinner {
+  display: inline-block; width: 14px; height: 14px; border: 2px solid #dee2e6;
+  border-top-color: #0d6efd; border-radius: 50%; animation: spin 0.6s linear infinite;
+  vertical-align: middle; margin-right: 0.5rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.grading-error {
+  padding: 1rem; background: #fff3cd; border: 1px solid #ffc107;
+  border-radius: 8px; font-size: 0.85rem; color: #856404;
+}
+.grading-feedback {
+  background: #fff; border: 2px solid var(--primary, #1a1a2e); border-radius: 8px;
+  padding: 1.25rem; font-size: 0.9rem;
+}
+.grading-title {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1rem;
+  font-weight: 700; color: var(--primary, #1a1a2e); margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent, #e94560);
+}
+.grading-criterion {
+  padding: 0.6rem 0.75rem; margin-bottom: 0.5rem; border-radius: 6px;
+  line-height: 1.5; font-size: 0.85rem;
+}
+.grading-met { background: #d4edda; border-left: 3px solid #28a745; }
+.grading-not-met { background: #f8d7da; border-left: 3px solid #dc3545; }
+.grading-icon { font-weight: 700; margin-right: 0.25rem; }
+.grading-met .grading-icon { color: #155724; }
+.grading-not-met .grading-icon { color: #842029; }
+.grading-score {
+  margin: 0.75rem 0; padding: 0.5rem 0.75rem; background: var(--primary, #1a1a2e);
+  color: #ffc107; border-radius: 6px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700; font-size: 0.9rem; text-align: center;
+}
+.grading-overall {
+  margin: 0.75rem 0; font-style: italic; color: var(--text, #2d2d2d);
+  line-height: 1.6;
+}
+.grading-next-step {
+  margin-top: 0.75rem; padding: 0.75rem; background: #e8f4fd;
+  border-left: 3px solid #0d6efd; border-radius: 0 6px 6px 0;
+  font-size: 0.85rem; line-height: 1.5;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+</style>
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag teach">A2 • Lesson 5</span>
+  <h1>They Say/I Say — Template Practice</h1>
+  <p class="subtitle">Mastering three essential moves for engaging with other perspectives</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📋 KC C.10.03, C.10.04, C.10.05</span>
+    <span>📖 No passages</span>
+  </div>
+</div>
+
+<h2>Lesson Overview</h2>
+<p>Gerald Graff and Cathy Birkenstein's <em>They Say / I Say</em> demonstrates that academic writing follows recognizable patterns. In this lesson, you'll practice three core conversational moves: agreeing with a difference, disagreeing diplomatically, and complicating the debate. These templates aren't formulas to memorize — they're moves that become instinctive with practice.</p>
+
+<div class="phase-card teach-card">
+  <span class="lesson-tag teach">Teach • 2 min</span>
+  <h3>Templates as Moves, Not Formulas</h3>
+
+  <p>Think about basketball footwork or guitar chord transitions. At first, you focus on where your feet or fingers go. With practice, the moves become automatic — you stop thinking about the steps and start focusing on the game or the music.</p>
+
+  <p>Writing moves work the same way. Templates give you starting points. As you practice, the templates fade into the background, but the <em>moves</em> — the intellectual gestures of engaging, qualifying, complicating — stay with you.</p>
+
+  <div class="key-concept">
+    <p><strong>Three Core Moves for Academic Conversation:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Agree with Difference (C.10.03):</strong> "While I agree with ___ that ___, I want to add that ___."</li>
+      <li><strong>Disagree Diplomatically (C.10.04):</strong> "___'s argument that ___ overlooks the fact that ___."</li>
+      <li><strong>Complicate the Debate (C.10.05):</strong> "The debate typically focuses on ___, but we should also consider ___."</li>
+    </ul>
+  </div>
+
+  <p style="margin-top: 1rem;">These moves signal to readers that you're engaging seriously with ideas, not just asserting your own opinion. They create space for nuance, which is what separates college-level writing from high school binary debates.</p>
+
+  <div class="check-question">
+    <div class="q-label">Check Your Understanding</div>
+    <p><strong>Which of the following represents a genuine engagement with an opposing view, rather than a straw man caricature?</strong></p>
+    <ol type="A">
+      <li>"Critics of renewable energy who just want to protect fossil fuel profits ignore climate science completely."</li>
+      <li>"Critics of rapid renewable energy transition raise legitimate concerns about grid reliability and worker displacement, but these challenges can be addressed through phased timelines and retraining programs."</li>
+      <li>"Anyone who disagrees with renewable energy is just too lazy to adapt to change."</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Explanation:</strong> Option B genuinely represents what critics actually argue (grid reliability, worker displacement) and then responds to those real concerns. Options A and C caricature opponents' positions by attributing bad motives (protecting profits, laziness) rather than engaging with actual arguments. Genuine engagement means accurately representing what the other side believes before responding to it.</p>
+      </div>
+    </details>
+  </div>
+
+  <button class="phase-next-btn">Continue to Model Phase</button>
+</div>
+
+<div class="phase-card model-card">
+  <span class="lesson-tag model">Model • 4 min</span>
+  <h3>Coping Model: Applying All Three Moves</h3>
+
+  <p><strong>Given position:</strong> "Schools should ban smartphones during the school day to improve student focus and reduce social media distraction."</p>
+
+  <p><strong>Task:</strong> Write responses using all three They Say/I Say moves.</p>
+
+  <div class="coping-model">
+    <p><strong>First attempt (straw man):</strong></p>
+    <p><span class="false-start">"People who disagree with smartphone bans are just addicted to their devices and can't handle being offline for a few hours. They're making excuses for poor self-control."</span></p>
+
+    <p style="margin-top: 1rem;"><span class="correction">Wait — that's not genuine engagement. I'm caricaturing the other side instead of representing what they actually believe. Let me think about what opponents of smartphone bans really argue: emergency contact with parents, educational apps, digital literacy, equity concerns. Now let me try each move while fairly representing those views.</span></p>
+
+    <p style="margin-top: 1rem;"><strong>Strong responses using all three moves:</strong></p>
+
+    <p style="margin-top: 0.75rem;"><span class="strong"><strong>Move 1: Agree with Difference</strong><br>
+    While I agree with opponents of smartphone bans that students need to develop self-regulation skills rather than having devices removed by force, I want to add that learning self-regulation works better when students aren't competing against algorithms designed by billion-dollar companies to maximize engagement. A phone-free environment during class creates space for students to practice focus without fighting that level of engineered distraction.</span></p>
+
+    <p style="margin-top: 0.75rem;"><span class="strong"><strong>Move 2: Disagree Diplomatically</strong><br>
+    The argument that students need smartphones for emergency parent contact overlooks the fact that schools have functioning offices and communication systems that worked for decades before smartphones existed. In genuine emergencies, front office staff can reach students faster than a text message can, and for routine check-ins ("Did you bring your lunch?"), waiting until after school doesn't create real harm.</span></p>
+
+    <p style="margin-top: 0.75rem;"><span class="strong"><strong>Move 3: Complicate the Debate</strong><br>
+    The debate about smartphone bans typically focuses on distraction versus access, but we should also consider what message schools send about sustained attention. When schools allow constant phone checking, they implicitly teach students that eight-second attention spans are acceptable. Banning phones during instruction isn't just about removing distraction — it's about valuing deep focus as a skill worth protecting and cultivating.</span></p>
+  </div>
+
+  <p style="margin-top: 1rem;"><strong>Notice:</strong> Each response fairly represents what opponents believe before responding. The correction shows the shift from attacking motives to engaging ideas. This is the move that makes your writing credible.</p>
+
+  <button class="phase-next-btn">Continue to Supported Practice</button>
+</div>
+
+<div class="phase-card practice-card">
+  <span class="lesson-tag practice">Supported Practice • 10 min</span>
+  <h3>Practice All Three Moves with Templates Visible</h3>
+
+  <p><strong>Instructions:</strong> For each debatable position below, write three short responses — one for each move. The templates are provided as scaffolds. Focus on making sure your "They Say" portion genuinely represents the opposing view, not a caricature.</p>
+
+  <div style="background: #e8f4fd; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+    <p style="margin-bottom: 0.5rem;"><strong>Templates (use these):</strong></p>
+    <ul style="margin-left: 1.5rem; font-size: 0.9rem;">
+      <li><strong>Agree with Difference:</strong> While I agree with ___ that ___, I want to add that ___.</li>
+      <li><strong>Disagree Diplomatically:</strong> ___'s argument that ___ overlooks the fact that ___.</li>
+      <li><strong>Complicate:</strong> The debate typically focuses on ___, but we should also consider ___.</li>
+    </ul>
+  </div>
+
+  <div class="practice-item">
+    <h4>Position A: Social Media Liability</h4>
+    <p><strong>Position:</strong> "Social media companies should be held legally responsible for content that harms minors."</p>
+    <p><strong>Your task:</strong> Write three responses (one per move) to this position. Each response should be 2-3 sentences.</p>
+
+    <div class="writing-task" data-min-words="60">
+      <div class="writing-input">
+        <textarea class="practice-ta" placeholder="Write your three responses here, clearly labeling each move (Agree with Difference, Disagree Diplomatically, Complicate)..."></textarea>
+        <div class="writing-footer">
+          <span class="wc">0 words</span>
+          <button class="writing-submit">Submit Responses</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="practice-item">
+    <h4>Position B: Standardized Testing</h4>
+    <p><strong>Position:</strong> "Standardized tests are the fairest way to compare students across different schools."</p>
+    <p><strong>Your task:</strong> Write three responses (one per move) to this position. Each response should be 2-3 sentences.</p>
+
+    <div class="writing-task" data-min-words="60">
+      <div class="writing-input">
+        <textarea class="practice-ta" placeholder="Write your three responses here, clearly labeling each move (Agree with Difference, Disagree Diplomatically, Complicate)..."></textarea>
+        <div class="writing-footer">
+          <span class="wc">0 words</span>
+          <button class="writing-submit">Submit Responses</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top: 1.5rem;"><strong>After writing:</strong> Reread each response and check: Did I fairly represent what the other side believes, or did I caricature their position? If you caught yourself creating a straw man, revise before moving on.</p>
+
+  <button class="phase-next-btn">Continue to Independent Practice</button>
+</div>
+
+<div class="phase-card independent-card">
+  <span class="lesson-tag independent">Independent Practice • 6 min</span>
+  <h3>Apply All Three Moves Without Templates</h3>
+
+  <p><strong>Instructions:</strong> Write responses using all three moves (Agree with Difference, Disagree Diplomatically, Complicate) to the position below. This time, the templates are NOT provided — you're applying the moves from memory. Each response should be 2-3 sentences.</p>
+
+  <div class="practice-item">
+    <h4>Position: College Athlete Compensation</h4>
+    <p><strong>Position:</strong> "College athletes should be paid as employees of their universities."</p>
+  </div>
+
+  <div class="rubric-box" style="margin-top: 1rem;">
+    <p><strong>Success Criteria:</strong></p>
+    <ul style="margin-left: 1.5rem;">
+      <li>Each response uses a different They Say/I Say move</li>
+      <li>The "They Say" portion genuinely represents the opposing view (not a straw man)</li>
+      <li>Each response includes specific reasoning, not just assertion</li>
+      <li>Responses are 2-3 sentences each</li>
+    </ul>
+  </div>
+
+  <div class="writing-task" data-min-words="80" data-rubric="L05_tsiy_practice">
+    <div class="writing-input">
+      <textarea class="practice-ta" placeholder="Write your three responses here. Label each move, but write them without looking at the templates..."></textarea>
+      <div class="writing-footer">
+        <span class="wc">0 words</span>
+        <button class="writing-submit">Submit Final Practice</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="phase-next-btn">Continue to Transfer</button>
+</div>
+
+<div class="phase-card transfer-card">
+  <span class="lesson-tag transfer">Transfer • 3 min</span>
+  <h3>Reflect on Your Process</h3>
+
+  <div class="transfer-prompt">
+    <p><strong>Self-check questions:</strong></p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Which of the three moves (Agree with Difference, Disagree Diplomatically, Complicate) felt most natural to you?</li>
+      <li>Which move was hardest? That's the one you need to practice more deliberately.</li>
+      <li>When you reread your responses, did you catch yourself creating any straw man arguments? What did you revise?</li>
+    </ul>
+    <p style="margin-top: 1rem;"><strong>Looking ahead:</strong> These three moves will appear throughout synthesis tasks, where you'll need to enter conversations between multiple sources. The templates will fade, but the habit of genuine engagement — representing others fairly before responding — stays with you. That's the intellectual move that makes synthesis work.</p>
+  </div>
+</div>
+
+<div class="footnote">
+  <p>A2 L05 • They Say/I Say Template Practice • KC C.10.03, C.10.04, C.10.05 • ~25 min</p>
+  <p style="margin-top: 0.5rem;"><em>These conversational moves form the foundation for synthesis writing in the upcoming lessons.</em></p>
+</div>
+
+<script src="lesson-engine.js"></script>
+
+</body>
+</html>

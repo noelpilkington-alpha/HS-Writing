@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L06: Straw Man Detection and the Nuance Ladder</title>
+  <style>
+:root {
+  --primary: #1a1a2e;
+  --accent: #e94560;
+  --accent-light: #fce4ec;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --success: #28a745;
+  --warning: #ffc107;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+.lesson-header {
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+.lesson-tag {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  margin-bottom: 0.75rem;
+}
+.lesson-tag.teach { background: #0d6efd; }
+.lesson-tag.model { background: #6f42c1; }
+.lesson-tag.practice { background: var(--success); }
+.lesson-tag.independent { background: var(--accent); }
+.lesson-tag.bridge { background: #fd7e14; }
+h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.25rem; line-height: 1.3; }
+.subtitle { font-size: 1rem; color: var(--muted); font-style: italic; }
+.meta-bar {
+  display: flex; gap: 1.5rem; margin-top: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem; color: var(--muted);
+}
+.meta-bar span { display: flex; align-items: center; gap: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.75rem 0; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; color: var(--primary); margin: 1.5rem 0 0.5rem 0; }
+h4 { font-size: 0.95rem; color: var(--primary); margin: 1rem 0 0.5rem 0; font-weight: 600; }
+p { margin-bottom: 1rem; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-card.teach-card { border-left: 4px solid #0d6efd; }
+.phase-card.model-card { border-left: 4px solid #6f42c1; }
+.phase-card.practice-card { border-left: 4px solid var(--success); }
+.phase-card.independent-card { border-left: 4px solid var(--accent); }
+.phase-card.bridge-card { border-left: 4px solid #fd7e14; }
+.key-concept {
+  background: #e8f4fd; border-left: 4px solid #0d6efd;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; font-weight: 500;
+}
+.coping-model {
+  background: #f3e8fd; border: 1px solid #d4b8f0; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.coping-model .false-start { color: #c0392b; font-style: italic; }
+.coping-model .correction { color: #6f42c1; font-weight: 600; font-style: italic; }
+.coping-model .strong { color: #155724; font-weight: 600; }
+.passage-box {
+  background: #fffde7; border: 1px solid #f0e68c; border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0; font-size: 0.95rem;
+}
+.passage-box .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.check-question {
+  background: var(--accent-light); border: 1px solid #f8bbd0; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.check-question .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem;
+}
+.self-check {
+  background: #e8f4fd; border: 1px solid #b3d9f2; border-radius: 8px;
+  padding: 1.25rem; margin: 1.5rem 0;
+}
+.self-check .q-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #0d6efd; margin-bottom: 0.5rem;
+}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th {
+  background: var(--primary); color: white; padding: 0.6rem 0.8rem; text-align: left;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f8f9fa; }
+.vocab-term {
+  display: inline-block; background: var(--primary); color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; font-weight: 600;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+}
+.transfer-prompt {
+  background: #fff3e0; border-left: 4px solid #fd7e14;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+}
+.footnote {
+  font-size: 0.8rem; color: var(--muted); margin-top: 3rem; padding-top: 1rem;
+  border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.rubric-box {
+  background: #f8f9fa; border: 2px solid var(--primary); border-radius: 8px;
+  padding: 1.25rem; margin: 1rem 0;
+}
+.practice-item {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.25rem; margin: 1rem 0;
+}
+.comparison-item {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.25rem; margin: 1rem 0;
+}
+details { margin: 1rem 0; }
+summary {
+  cursor: pointer; font-weight: 600; padding: 0.5rem;
+  background: #f8f9fa; border-radius: 4px; border: 1px solid var(--border);
+}
+summary:hover { background: #e9ecef; }
+
+/* ===== INTERACTIVE ENGINE =====*/
+/* ===== SCORE BAR ===== */
+#score-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--primary, #1a1a2e); color: #ffc107;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; font-weight: 700;
+  padding: 0.5rem 1.5rem; text-align: right;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+#score-bar .score-icon { font-size: 1.1rem; }
+body { padding-top: 3rem; }
+.score-bump { animation: bump 0.3s ease; }
+@keyframes bump { 0%{transform:scale(1)} 50%{transform:scale(1.4)} 100%{transform:scale(1)} }
+
+/* ===== MCQ BUTTONS ===== */
+.mcq-options { display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0; }
+.mcq-btn {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  background: #fff; border: 2px solid var(--border, #dee2e6); border-radius: 8px;
+  padding: 0.75rem 1rem; font-family: 'Georgia', serif; font-size: 0.95rem;
+  cursor: pointer; text-align: left; transition: all 0.2s;
+  line-height: 1.5; color: var(--text, #2d2d2d);
+}
+.mcq-btn:hover:not(:disabled) { border-color: #0d6efd; background: #f0f7ff; }
+.mcq-btn:disabled { cursor: default; opacity: 0.7; }
+.mcq-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  background: var(--primary, #1a1a2e); color: #fff;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 700;
+  flex-shrink: 0; margin-top: 0.1rem;
+}
+.mcq-btn.mcq-correct { border-color: #28a745; background: #d4edda; }
+.mcq-btn.mcq-correct .mcq-letter { background: #28a745; }
+.mcq-btn.mcq-wrong { border-color: #dc3545; background: #f8d7da; }
+.mcq-btn.mcq-wrong .mcq-letter { background: #dc3545; }
+.mcq-feedback {
+  background: #e8f5e9; border-left: 4px solid #28a745;
+  padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ===== WRITING INPUT ===== */
+.writing-input { margin: 1.5rem 0; }
+.writing-ta, .practice-ta {
+  width: 100%; border: 2px solid var(--border, #dee2e6); border-radius: 8px;
+  padding: 0.8rem; font-family: 'Georgia', serif; font-size: 0.95rem;
+  line-height: 1.7; resize: vertical; min-height: 120px;
+}
+.writing-ta:focus, .practice-ta:focus { border-color: #0d6efd; outline: none; box-shadow: 0 0 0 3px rgba(13,110,253,0.15); }
+.writing-ta[readonly], .practice-ta[readonly] { background: #f8f9fa; }
+.writing-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 0.5rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.wc { color: var(--muted, #6c757d); }
+.writing-submit {
+  background: var(--accent, #e94560); color: #fff; border: none; border-radius: 6px;
+  padding: 0.5rem 1.25rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.writing-submit:hover:not(:disabled) { background: #d63050; }
+.writing-submit:disabled { background: #bbb; cursor: default; }
+.writing-submit.submitted { background: #28a745; }
+
+/* ===== PHASE GATING ===== */
+.phase-locked {
+  opacity: 0.35; pointer-events: none; position: relative;
+  filter: grayscale(40%);
+}
+.phase-locked::after {
+  content: '🔒 Complete the previous phase to unlock';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: rgba(26,26,46,0.9); color: #fff; padding: 0.75rem 1.5rem;
+  border-radius: 8px; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem; font-weight: 600; white-space: nowrap; z-index: 10;
+  pointer-events: none;
+}
+.phase-active { opacity: 1; }
+.phase-done { opacity: 0.85; }
+.phase-done .phase-next-btn { display: none; }
+.phase-next-btn {
+  display: block; width: 100%; margin-top: 1.5rem;
+  background: #0d6efd; color: #fff; border: none; border-radius: 8px;
+  padding: 0.75rem; font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.phase-next-btn:hover:not(:disabled) { background: #0b5ed7; }
+.phase-next-btn:disabled { background: #a0c4ff; cursor: default; }
+
+/* ===== LESSON COMPLETE OVERLAY ===== */
+.complete-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
+  z-index: 2000; animation: fadeIn 0.3s ease;
+}
+.complete-card {
+  background: #fff; border-radius: 16px; padding: 2.5rem; text-align: center;
+  max-width: 400px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+.complete-card h2 { color: var(--primary, #1a1a2e); margin-bottom: 0.5rem; }
+.complete-stars { font-size: 2.5rem; color: #ffc107; margin: 0.5rem 0; }
+.complete-score { font-size: 1.3rem; font-weight: 700; color: var(--primary, #1a1a2e); margin-bottom: 1rem; }
+.complete-close {
+  background: #0d6efd; color: #fff; border: none; border-radius: 8px;
+  padding: 0.6rem 2rem; font-size: 1rem; font-weight: 600; cursor: pointer;
+  margin-top: 0.5rem;
+}
+.complete-close:hover { background: #0b5ed7; }
+
+/* ===== HIDE ANSWERS BY DEFAULT ===== */
+.practice-item > details,
+.comparison-item > details { display: none !important; }
+.practice-item > details.revealed,
+.comparison-item > details.revealed { display: block !important; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+
+
+</style>
+</head>
+<body>
+
+<div class="lesson-header">
+  <span class="lesson-tag teach">Course A2 • Lesson 6</span>
+  <h1>Straw Man Detection and the Nuance Ladder</h1>
+  <p class="subtitle">Engaging genuinely with opposing views and climbing toward nuance</p>
+  <div class="meta-bar">
+    <span>⏱ ~25 min</span>
+    <span>📋 KC C.10.05, C.10.13 (preview)</span>
+    <span>🎯 Genuine engagement, nuanced positions</span>
+  </div>
+</div>
+
+<h2>Lesson Overview</h2>
+<p>Strong arguments don't just refute the opposition—they engage with it fairly. In this lesson, you'll learn two critical skills: (1) detecting <strong>straw man</strong> arguments (distorted versions of opposing views), and (2) using the <strong>Nuance Ladder</strong> to move from flat, binary positions to sophisticated claims.</p>
+
+<div class="phase-card teach-card" data-phase="teach">
+  <span class="lesson-tag teach">Teach • 3 min</span>
+  <h3>Two Skills for Sophisticated Argument</h3>
+
+  <div class="key-concept">
+    <p><strong>Skill 1: Straw Man Detection.</strong> A straw man is a distorted, oversimplified version of the opposing view—one that's easier to defeat than the real argument. <strong>Genuine engagement</strong> means representing the STRONGEST version of the other side's position. If you can't state the opposition's argument in a way they would accept, you haven't understood it.</p>
+  </div>
+
+  <p><strong>The test:</strong> Would someone who holds that view say, "Yes, that's my position"? If not, it's a straw man.</p>
+
+  <div class="key-concept">
+    <p><strong>Skill 2: The Nuance Ladder.</strong> Most arguments start as binary positions: "X is good" or "X is bad." The Nuance Ladder has three levels:</p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li><strong>Level 1 (Flat):</strong> Binary claim with no conditions or context.</li>
+      <li><strong>Level 2 (Qualified):</strong> Add one condition, exception, or specification.</li>
+      <li><strong>Level 3 (Nuanced):</strong> Specify context, timing, trade-offs, or competing values.</li>
+    </ul>
+  </div>
+
+  <p><strong>Example:</strong></p>
+  <ul style="margin-left: 1.5rem;">
+    <li><strong>Level 1:</strong> "AI will take all jobs."</li>
+    <li><strong>Level 2:</strong> "AI will displace many routine jobs."</li>
+    <li><strong>Level 3:</strong> "AI will displace routine cognitive jobs faster than policy can adapt, requiring proactive retraining programs targeted at industries most vulnerable to automation."</li>
+  </ul>
+
+  <p>Level 3 is not longer for its own sake—it's <em>specific</em>. It tells you what kind of jobs, at what speed, and what response is needed.</p>
+
+  <button class="phase-next-btn">Continue to Model</button>
+</div>
+
+<div class="phase-card model-card" data-phase="model">
+  <span class="lesson-tag model">Model • 3 min</span>
+  <h3>Side-by-Side: Genuine vs. Straw Man</h3>
+
+  <p>Let's compare two versions of an argument about renewable energy. Watch how the straw man distorts the opposition.</p>
+
+  <div class="comparison-item">
+    <h4>Version A: Straw Man</h4>
+    <div class="passage-box">
+      <p>"Opponents of renewable energy think we should just burn coal forever and ignore climate change. They don't care about future generations or the environment. This selfish, short-sighted view ignores all the evidence about global warming."</p>
+    </div>
+    <p><strong>Why this is a straw man:</strong> No serious person argues for "burning coal forever" or claims to "not care about future generations." This version misrepresents the opposition as cartoonishly evil or ignorant, making them easy to dismiss.</p>
+  </div>
+
+  <div class="comparison-item">
+    <h4>Version B: Genuine Engagement</h4>
+    <div class="passage-box">
+      <p>"Critics of rapid renewable energy transitions argue that moving too quickly could destabilize the electrical grid, leave fossil fuel workers unemployed, and increase energy costs for low-income families. These concerns are legitimate. However, the evidence suggests that well-planned transitions can address these issues through grid modernization, retraining programs, and subsidies for vulnerable households—while the cost of inaction on climate change far exceeds the cost of transition."</p>
+    </div>
+    <p><strong>Why this is genuine engagement:</strong> The writer accurately represents what critics actually argue (grid stability, jobs, costs) and treats those concerns as legitimate before countering them. An opponent would recognize their own position in this description.</p>
+  </div>
+
+  <h3>Nuance Ladder Demonstration</h3>
+
+  <p>Let's take a flat position and climb the ladder.</p>
+
+  <table>
+    <tr>
+      <th style="width: 25%;">Level</th>
+      <th>Statement</th>
+    </tr>
+    <tr>
+      <td><strong>Level 1: Flat</strong></td>
+      <td>"Social media is harmful."</td>
+    </tr>
+    <tr>
+      <td><strong>Level 2: Qualified</strong></td>
+      <td>"Social media is harmful when used passively for extended periods."</td>
+    </tr>
+    <tr>
+      <td><strong>Level 3: Nuanced</strong></td>
+      <td>"Social media platforms designed to maximize engagement can harm adolescent mental health by encouraging comparison and passive scrolling, but active, intentional use—such as maintaining connections with distant friends or participating in communities of shared interest—can provide meaningful social support, particularly for marginalized users."</td>
+    </tr>
+  </table>
+
+  <p>Notice: Level 3 doesn't just add words. It specifies <em>which</em> kind of social media use causes harm, <em>which</em> populations are affected, and <em>under what conditions</em> social media can be beneficial.</p>
+
+  <button class="phase-next-btn">Continue to Supported Practice</button>
+</div>
+
+<div class="phase-card practice-card" data-phase="practice">
+  <span class="lesson-tag practice">Supported Practice • 8 min</span>
+  <h3>Straw Man Detection Practice</h3>
+
+  <p><strong>Instructions:</strong> Read each opening. Determine whether the writer is engaging genuinely with the opposing view or creating a straw man.</p>
+
+  <div class="check-question">
+    <div class="q-label">Item 1</div>
+    <p><strong>Opening:</strong> "Some people think that teenagers should have no restrictions on their freedom and should be allowed to do whatever they want. This naive view ignores the reality that adolescent brains are not fully developed, particularly in areas governing impulse control and long-term planning. Without parental guidance and societal boundaries, teenagers would make reckless choices with lifelong consequences. Clearly, some level of restriction is not just appropriate but necessary for young people's wellbeing."</p>
+    <p>Is this genuine engagement or a straw man?</p>
+    <ol type="A">
+      <li>Genuine Engagement</li>
+      <li>Straw Man</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Explanation:</strong> This is a straw man. The writer misrepresents the opposing view as an extreme position ("no restrictions... do whatever they want") that few people actually hold. Real advocates for teenage autonomy typically argue for <em>increased</em> freedom in specific areas or <em>age-appropriate</em> independence, not absolute freedom. The phrase "naive view" signals dismissiveness rather than genuine engagement.</p>
+        <p><strong>Revised version (genuine engagement):</strong> "Some advocates for teenage autonomy argue that adolescents are capable of making important decisions about their own lives and that overprotective parenting can hinder their development of responsibility. While it is true that adolescent brains are still developing, this does not mean teenagers are incapable of exercising judgment. The question is not whether teenagers need any boundaries but where we draw the line between protection and excessive control."</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 2</div>
+    <p><strong>Opening:</strong> "Critics of charter schools claim that allowing school choice will destroy public education and leave vulnerable students behind. However, the evidence suggests otherwise. Studies show that students in well-run charter schools often outperform their peers in traditional public schools, particularly in urban areas where district schools have struggled for decades. Parents in underserved communities consistently choose charters when given the option, demonstrating that school choice empowers families rather than abandoning them."</p>
+    <p>Is this genuine engagement or a straw man?</p>
+    <ol type="A">
+      <li>Genuine Engagement</li>
+      <li>Straw Man</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> A</p>
+        <p><strong>Explanation:</strong> This is genuine engagement. The writer fairly represents the critics' concern (that charter schools may harm public education and vulnerable students) and responds with evidence rather than caricature. The writer acknowledges the real stakes of the debate—the wellbeing of students in underserved communities—and offers data to counter the critics' position. While the phrase "empowers families rather than abandoning them" is somewhat charged, the writer has not distorted the opposing argument itself.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 3</div>
+    <p><strong>Opening:</strong> "Opponents of raising the minimum wage argue that higher wages will cause mass unemployment and destroy small businesses. But this doomsday scenario has been predicted every single time wage increases have been proposed, and it has never come true. Studies consistently show that modest minimum wage increases have little to no effect on employment levels, and in many cases they stimulate local economies by putting more money in workers' pockets. The real reason some business owners resist wage increases is not economics but the desire to maximize profits at workers' expense."</p>
+    <p>Is this genuine engagement or a straw man?</p>
+    <ol type="A">
+      <li>Genuine Engagement</li>
+      <li>Straw Man</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> B</p>
+        <p><strong>Explanation:</strong> This is a straw man. The writer characterizes the opposing view as a "doomsday scenario" and implies that all opponents are motivated by greed ("maximize profits at workers' expense"). While some opponents of minimum wage increases do predict dire consequences, many economists offer more nuanced concerns—for example, that wage increases may disproportionately affect certain industries, regions, or firm sizes, or that the effects vary depending on the size of the increase. By framing the entire opposition as alarmist and greedy, the writer avoids engaging with more sophisticated economic arguments.</p>
+        <p><strong>Revised version (genuine engagement):</strong> "Opponents of raising the minimum wage argue that higher wages could lead to job losses, particularly in industries with thin profit margins, and may force small businesses to reduce hours or automate positions. While these concerns are worth taking seriously, the evidence suggests they are overstated. Studies of minimum wage increases in cities like Seattle show that modest increases have had little measurable effect on overall employment."</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="check-question">
+    <div class="q-label">Item 4</div>
+    <p><strong>Opening:</strong> "Advocates for expanding mental health services in schools argue that emotional wellbeing is just as important as academic achievement and that schools are ideally positioned to provide support for students who might not access it elsewhere. While some worry that schools lack the resources or expertise to take on this role, this concern underestimates what trained school counselors and social workers can accomplish. Many students face anxiety, depression, trauma, or family instability that directly affects their ability to learn. Providing mental health support in schools does not distract from academics—it enables them."</p>
+    <p>Is this genuine engagement or a straw man?</p>
+    <ol type="A">
+      <li>Genuine Engagement</li>
+      <li>Straw Man</li>
+    </ol>
+    <details>
+      <summary>Show Answer</summary>
+      <div>
+        <p><strong>Answer:</strong> A</p>
+        <p><strong>Explanation:</strong> This is genuine engagement. The writer acknowledges a legitimate concern from those who might oppose expanding school-based mental health services ("schools lack the resources or expertise") and responds substantively rather than dismissively. The writer does not claim that opponents don't care about students' wellbeing; instead, they argue that the concern is based on an underestimation of what is possible. The response is evidence-based and respectful.</p>
+      </div>
+    </details>
+  </div>
+
+  <button class="phase-next-btn">Continue to Independent Practice</button>
+</div>
+
+<div class="phase-card independent-card" data-phase="independent">
+  <span class="lesson-tag independent">Independent Practice • 8 min</span>
+  <h3>Climb the Nuance Ladder</h3>
+
+  <p><strong>Task:</strong> Take the two flat positions below and revise each through all three levels of the Nuance Ladder. For each position, write:</p>
+  <ul style="margin-left: 1.5rem;">
+    <li><strong>Level 1:</strong> The flat position (already provided)</li>
+    <li><strong>Level 2:</strong> Add one condition, exception, or qualification</li>
+    <li><strong>Level 3:</strong> Specify context, timing, population, trade-offs, or competing values</li>
+  </ul>
+
+  <div class="rubric-box">
+    <h4>Success Criteria</h4>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Level 2 adds meaningful qualification (not just "sometimes" or "usually")</li>
+      <li>Level 3 is substantially more specific than Level 2</li>
+      <li>Level 3 identifies context, population, or conditions (not just longer phrasing)</li>
+      <li>Both positions completed</li>
+    </ul>
+  </div>
+
+  <div class="writing-input">
+    <p><strong>Position 1:</strong> "Social media is harmful to teenagers."</p>
+    <p><strong>Position 2:</strong> "Homework is a waste of time."</p>
+    <textarea class="writing-ta" data-min-words="60" data-rubric="L06_nuance_ladder" placeholder="Write your revised positions here. For each flat statement, provide Level 2 (qualified) and Level 3 (nuanced) versions..."></textarea>
+    <div class="writing-footer">
+      <span class="wc">0 words</span>
+      <button class="writing-submit">Submit Response</button>
+    </div>
+  </div>
+
+  <button class="phase-next-btn">Continue to Transfer</button>
+</div>
+
+<div class="phase-card bridge-card" data-phase="transfer">
+  <span class="lesson-tag bridge">Transfer • 3 min</span>
+  <h3>Self-Check: Did You Commit a Straw Man?</h3>
+
+  <div class="self-check">
+    <div class="q-label">Reflection Prompt</div>
+    <p><strong>Look back at your L05 response where you practiced "Disagree Diplomatically."</strong> Read the opening where you represented the opposing view.</p>
+    <p><strong>Ask yourself:</strong> Did you represent the strongest version of the other side's argument, or did you create a straw man? Would someone who holds that view say, "Yes, that's my position"?</p>
+    <p>If you realize you committed a straw man, briefly describe how you would revise it to engage more genuinely.</p>
+  </div>
+
+  <div class="writing-input">
+    <textarea class="writing-ta" data-min-words="30" placeholder="Reflect on your L05 response. Did you commit a straw man? If so, how would you revise it?"></textarea>
+    <div class="writing-footer">
+      <span class="wc">0 words</span>
+      <button class="writing-submit">Submit Reflection</button>
+    </div>
+  </div>
+
+  <button class="phase-next-btn">Complete Lesson</button>
+</div>
+
+<div class="footnote">
+  <p><strong>Next:</strong> In L07, you'll write a full sophisticated argument essay that synthesizes everything from A2 Lessons 1-6: Force Field, Claim Hierarchy, They Say/I Say moves, and genuine counterargument engagement.</p>
+</div>
+
+<script src="lesson-engine.js"></script>
+</body>
+</html>
