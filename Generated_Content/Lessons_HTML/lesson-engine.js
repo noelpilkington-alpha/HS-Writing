@@ -158,6 +158,7 @@
           btnWrap.querySelectorAll('.classify-btn').forEach(function(b) { b.disabled = true; });
           // Show answer via class (CSS hides by default)
           details.classList.add('revealed');
+          details.style.display = '';
           details.open = true;
           // Show Stage 2 if present
           showStage2(item);
@@ -238,6 +239,7 @@
           }
           btnWrap.querySelectorAll('.classify-btn').forEach(function(b) { b.disabled = true; });
           details.classList.add('revealed');
+          details.style.display = '';
           details.open = true;
           showStage2(item);
           item.dataset.done = '1';
@@ -655,14 +657,52 @@
     return null;
   }
 
+  // ===== HIDE ANSWERS (belt-and-suspenders with CSS) =====
+  function hideAnswers() {
+    document.querySelectorAll('.sort-item > details, .practice-item > details, .comparison-item > details').forEach(function(d) {
+      if (!d.classList.contains('revealed')) {
+        d.style.display = 'none';
+        d.removeAttribute('open');
+      }
+    });
+  }
+
+  // ===== SUCCESS CRITERIA CHECKBOXES =====
+  function initCheckboxes() {
+    document.querySelectorAll('.rubric-box').forEach(function(box) {
+      var ul = box.querySelector('ul');
+      if (!ul) return;
+      var items = ul.querySelectorAll('li');
+      if (items.length === 0) return;
+
+      var checkList = document.createElement('div');
+      checkList.className = 'checklist';
+      items.forEach(function(li) {
+        var label = document.createElement('label');
+        label.className = 'checklist-item';
+        var cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.className = 'checklist-cb';
+        label.appendChild(cb);
+        var span = document.createElement('span');
+        span.innerHTML = ' ' + li.innerHTML;
+        label.appendChild(span);
+        checkList.appendChild(label);
+      });
+      ul.replaceWith(checkList);
+    });
+  }
+
   // ===== INIT =====
   document.addEventListener('DOMContentLoaded', function() {
     initScoreBar();
+    hideAnswers();
     initMCQs();
     initSortItems();
     initTriageItems();
     initStage2();
     initWritingInputs();
+    initCheckboxes();
     initPhases();
   });
 
