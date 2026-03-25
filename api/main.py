@@ -1,9 +1,13 @@
 """
-A1 Course Grading API
+HS Writing Grading API
 
-Evaluates student free-response writing against lesson-specific rubrics
-using Claude, then returns structured feedback following best-practice
-principles (wise feedback, specific criteria, one next step).
+Evaluates student free-response writing across all 4 courses (A1, A2, B1L, B2)
+using Claude, then returns structured feedback.
+
+Supports multiple scoring models:
+- Criteria Checklist (Model A) -- existing, all courses
+- AP Rubric (Model B) -- B1L, B2 essays
+- Revision (Model F) -- planned
 
 Run locally: uvicorn main:app --reload --port 8000
 """
@@ -19,10 +23,21 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from grading_prompts import SYSTEM_PROMPT, build_grading_prompt
-from grading_rubrics import RUBRICS, get_rubric, get_rubrics_for_lesson
+from grading_rubrics import (
+    RUBRICS,
+    get_rubric,
+    get_rubrics_for_lesson,
+    get_rubrics_for_course,
+    get_gateway_rubrics,
+)
+from ap_scorer import score_ap_essay
+from consensus import grade_with_consensus
+from passage_bank import get_passage, get_passage_text, list_passages
+from models import FRQType
 
 load_dotenv()
 
+CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-20250514")
 client: anthropic.Anthropic | None = None
 
 
@@ -39,13 +54,12 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="A1 Course Grading API",
-    description="AI grading for free-response writing tasks in the A1 writing course",
-    version="1.0.0",
+    title="HS Writing Grading API",
+    description="AI grading for free-response writing across A1, A2, B1L, B2 courses",
+    version="2.0.0",
     lifespan=lifespan,
 )
 
-# Allow lesson HTML files to call this API from any origin (GitHub Pages, localhost, etc.)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -57,9 +71,33 @@ app.add_middleware(
 # ===== Request / Response Models =====
 
 class GradeRequest(BaseModel):
-    rubric_id: str  # e.g., "L01_independent_expository"
+    rubric_id: str
     student_text: str
-    lesson_id: str | None = None  # optional, for logging
+    passage_text: str | None = None
+    passage_id: str | None = None
+    lesson_id: str | None = None
+    course: str | None = None
+
+
+class APGradeRequest(BaseModel):
+    frq_type: str  # "rhetorical_analysis" | "argument" | "synthesis"
+    student_text: str
+    passage_text: str | None = None
+    passage_id: str | None = None
+    prompt_text: str | None = None
+    rubric_id: str | None = None
+    course: str | None = None
+    lesson_id: str | None = None
+    use_consensus: bool = True
+
+
+class RevisionGradeRequest(BaseModel):
+    rubric_id: str
+    original_text: str
+    revised_text: str
+    revision_target: str
+    course: str | None = None
+    lesson_id: str | None = None
 
 
 class CriterionResult(BaseModel):
@@ -70,6 +108,7 @@ class CriterionResult(BaseModel):
 
 class GradeResponse(BaseModel):
     rubric_id: str
+    scoring_model: str = "criteria"
     word_count: int
     word_count_met: bool
     criteria_results: list[CriterionResult]
@@ -79,75 +118,56 @@ class GradeResponse(BaseModel):
     next_step: str
 
 
-# ===== Endpoints =====
-
-@app.get("/")
-async def root():
-    return {"status": "ok", "service": "A1 Course Grading API"}
-
-
-@app.get("/rubrics")
-async def list_rubrics():
-    """List all available rubric IDs."""
-    return {
-        "rubrics": [
-            {"id": k, "lesson": v["lesson"], "task_type": v["task_type"], "description": v["description"]}
-            for k, v in RUBRICS.items()
-        ]
-    }
+class APGradeResponse(BaseModel):
+    scoring_model: str = "ap_rubric"
+    rubric_id: str | None = None
+    frq_type: str
+    row_a: dict
+    row_b: dict
+    row_c: dict
+    total: int
+    feedback: str
+    weakest_row: str
+    next_step: str
+    consensus_method: str | None = None
+    run_count: int | None = None
 
 
-@app.get("/rubrics/{lesson_id}")
-async def get_lesson_rubrics(lesson_id: str):
-    """Get all rubrics for a specific lesson."""
-    rubrics = get_rubrics_for_lesson(lesson_id.upper())
-    if not rubrics:
-        raise HTTPException(status_code=404, detail=f"No rubrics found for lesson {lesson_id}")
-    return {"lesson": lesson_id.upper(), "rubrics": rubrics}
+class GatewayCheckResponse(BaseModel):
+    passed: bool
+    rubric_id: str
+    score: int
+    threshold: dict
+    ap_result: APGradeResponse | None = None
+    criteria_result: GradeResponse | None = None
+    feedback: str
 
 
-@app.post("/grade", response_model=GradeResponse)
-async def grade_submission(req: GradeRequest):
-    """Grade a student writing submission against a rubric."""
+# ===== Helper Functions =====
 
+def _require_client():
     if not client:
         raise HTTPException(status_code=503, detail="Anthropic API key not configured")
+    return client
 
-    rubric = get_rubric(req.rubric_id)
-    if not rubric:
-        raise HTTPException(
-            status_code=404,
-            detail=f"Rubric '{req.rubric_id}' not found. Use GET /rubrics to see available rubrics.",
-        )
 
-    # Basic validation
-    text = req.student_text.strip()
-    if not text:
-        raise HTTPException(status_code=400, detail="Student text is empty")
+def _resolve_passage(passage_id: str | None, passage_text: str | None) -> str | None:
+    """Resolve passage text from ID or direct text."""
+    if passage_text:
+        return passage_text
+    if passage_id:
+        text = get_passage_text(passage_id)
+        if not text:
+            raise HTTPException(status_code=404, detail=f"Passage '{passage_id}' not found")
+        return text
+    return None
 
-    word_count = len(text.split())
-    if word_count < 5:
-        raise HTTPException(status_code=400, detail="Submission too short to grade (under 5 words)")
 
-    # Build prompt and call Claude
-    user_prompt = build_grading_prompt(text, rubric)
-
-    try:
-        message = client.messages.create(
-            model="claude-sonnet-4-20250514",
-            max_tokens=1024,
-            system=SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": user_prompt}],
-        )
-    except anthropic.APIError as e:
-        raise HTTPException(status_code=502, detail=f"Anthropic API error: {e}")
-
-    # Parse response
-    response_text = message.content[0].text.strip()
-
-    # Extract JSON from response (handle markdown code blocks)
-    if response_text.startswith("```"):
-        lines = response_text.split("\n")
+def _parse_response_json(response_text: str) -> dict:
+    """Parse JSON from Claude response, handling markdown fences."""
+    text = response_text.strip()
+    if text.startswith("```"):
+        lines = text.split("\n")
         json_lines = []
         in_block = False
         for line in lines:
@@ -158,32 +178,273 @@ async def grade_submission(req: GradeRequest):
                 break
             elif in_block:
                 json_lines.append(line)
-        response_text = "\n".join(json_lines)
+        text = "\n".join(json_lines)
 
     try:
-        result = json.loads(response_text)
+        return json.loads(text)
     except json.JSONDecodeError:
         raise HTTPException(
             status_code=502,
-            detail=f"Failed to parse grading response as JSON. Raw: {response_text[:500]}",
+            detail=f"Failed to parse grading response as JSON. Raw: {text[:500]}",
         )
+
+
+def _validate_student_text(text: str) -> str:
+    """Validate and clean student text."""
+    text = text.strip()
+    if not text:
+        raise HTTPException(status_code=400, detail="Student text is empty")
+    if len(text.split()) < 5:
+        raise HTTPException(status_code=400, detail="Submission too short to grade (under 5 words)")
+    return text
+
+
+def _get_course_system_prompt(course: str | None) -> str:
+    """Get the appropriate system prompt based on course."""
+    if course in ("B1L", "B2"):
+        grade = "Grade 11" if course == "B1L" else "Grade 12"
+        return SYSTEM_PROMPT.replace("Grade 9", grade)
+    if course == "A2":
+        return SYSTEM_PROMPT.replace("Grade 9", "Grade 10")
+    return SYSTEM_PROMPT
+
+
+# ===== Endpoints =====
+
+@app.get("/")
+async def root():
+    return {"status": "ok", "service": "HS Writing Grading API", "version": "2.0.0"}
+
+
+# ----- Rubric Endpoints -----
+
+@app.get("/rubrics")
+async def list_rubrics(course: str | None = None):
+    """List available rubrics, optionally filtered by course."""
+    if course:
+        rubrics = get_rubrics_for_course(course)
+    else:
+        rubrics = [
+            {"id": k, "lesson": v["lesson"], "course": v.get("course", "A1"),
+             "task_type": v["task_type"], "description": v["description"],
+             "scoring_model": v.get("scoring_model", "criteria")}
+            for k, v in RUBRICS.items()
+        ]
+    return {"rubrics": rubrics}
+
+
+@app.get("/rubrics/{course}/{lesson_id}")
+async def get_lesson_rubrics(course: str, lesson_id: str):
+    """Get all rubrics for a specific course and lesson."""
+    rubrics = get_rubrics_for_lesson(lesson_id.upper(), course.upper())
+    if not rubrics:
+        raise HTTPException(status_code=404, detail=f"No rubrics found for {course} {lesson_id}")
+    return {"course": course.upper(), "lesson": lesson_id.upper(), "rubrics": rubrics}
+
+
+@app.get("/rubrics/gateways")
+async def list_gateway_rubrics(course: str | None = None):
+    """List all gateway and gate rubrics."""
+    rubrics = get_gateway_rubrics(course)
+    return {"rubrics": rubrics}
+
+
+# ----- Passage Endpoints -----
+
+@app.get("/passages")
+async def list_all_passages():
+    """List available passages (metadata only)."""
+    return {"passages": list_passages()}
+
+
+@app.get("/passages/{passage_id}")
+async def get_passage_detail(passage_id: str):
+    """Get a specific passage with full text."""
+    p = get_passage(passage_id.upper())
+    if not p:
+        raise HTTPException(status_code=404, detail=f"Passage '{passage_id}' not found")
+    return p
+
+
+# ----- Criteria Grading (Model A) -----
+
+@app.post("/grade", response_model=GradeResponse)
+async def grade_submission(req: GradeRequest):
+    """Grade a student writing submission against a criteria rubric (Model A)."""
+    c = _require_client()
+
+    rubric = get_rubric(req.rubric_id)
+    if not rubric:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Rubric '{req.rubric_id}' not found. Use GET /rubrics to see available rubrics.",
+        )
+
+    # Route AP rubric tasks to /grade/ap
+    if rubric.get("scoring_model") == "ap_rubric":
+        raise HTTPException(
+            status_code=400,
+            detail=f"Rubric '{req.rubric_id}' uses AP rubric scoring. Use POST /grade/ap instead.",
+        )
+
+    text = _validate_student_text(req.student_text)
+    word_count = len(text.split())
+
+    system_prompt = _get_course_system_prompt(req.course or rubric.get("course"))
+    user_prompt = build_grading_prompt(text, rubric)
+
+    try:
+        message = c.messages.create(
+            model=CLAUDE_MODEL,
+            max_tokens=1024,
+            system=system_prompt,
+            messages=[{"role": "user", "content": user_prompt}],
+        )
+    except anthropic.APIError as e:
+        raise HTTPException(status_code=502, detail=f"Anthropic API error: {e}")
+
+    result = _parse_response_json(message.content[0].text)
 
     return GradeResponse(
         rubric_id=req.rubric_id,
+        scoring_model="criteria",
         word_count=result.get("word_count", word_count),
         word_count_met=result.get("word_count_met", word_count >= rubric["min_words"]),
         criteria_results=[
-            CriterionResult(
-                id=cr["id"],
-                met=cr["met"],
-                feedback=cr["feedback"],
-            )
+            CriterionResult(id=cr["id"], met=cr["met"], feedback=cr["feedback"])
             for cr in result.get("criteria_results", [])
         ],
         criteria_met=result.get("criteria_met", 0),
         criteria_total=result.get("criteria_total", len(rubric["criteria"])),
         overall_feedback=result.get("overall_feedback", ""),
         next_step=result.get("next_step", ""),
+    )
+
+
+# ----- AP Rubric Grading (Model B) -----
+
+@app.post("/grade/ap", response_model=APGradeResponse)
+async def grade_ap_submission(req: APGradeRequest):
+    """Grade an essay on the AP rubric (Row A/B/C). Uses 3-run consensus by default."""
+    c = _require_client()
+
+    text = _validate_student_text(req.student_text)
+    frq_type = FRQType(req.frq_type)
+
+    # Resolve passage and prompt from rubric if rubric_id provided
+    passage_text = req.passage_text
+    prompt_text = req.prompt_text
+    rubric = None
+
+    if req.rubric_id:
+        rubric = get_rubric(req.rubric_id)
+        if rubric:
+            if not passage_text and rubric.get("passage_id"):
+                passage_text = _resolve_passage(rubric["passage_id"], None)
+            if not prompt_text and rubric.get("prompt"):
+                prompt_text = rubric["prompt"]
+
+    # Resolve passage from passage_id
+    if not passage_text and req.passage_id:
+        passage_text = _resolve_passage(req.passage_id, None)
+
+    course = req.course or (rubric.get("course") if rubric else None)
+
+    score_kwargs = {
+        "frq_type": frq_type,
+        "student_text": text,
+        "passage_text": passage_text,
+        "prompt_text": prompt_text,
+        "course": course,
+    }
+
+    if req.use_consensus:
+        consensus = grade_with_consensus(
+            client=c,
+            model=CLAUDE_MODEL,
+            score_fn=score_ap_essay,
+            scoring_model="ap_rubric",
+            num_runs=3,
+            frq_type=frq_type.value,
+            **score_kwargs,
+        )
+        result = consensus["final_result"]
+        return APGradeResponse(
+            rubric_id=req.rubric_id,
+            frq_type=frq_type.value,
+            row_a=result.get("row_a", {"score": 0, "reasoning": ""}),
+            row_b=result.get("row_b", {"score": 0, "reasoning": ""}),
+            row_c=result.get("row_c", {"score": 0, "reasoning": ""}),
+            total=result.get("total", 0),
+            feedback=result.get("feedback", ""),
+            weakest_row=result.get("weakest_row", "B"),
+            next_step=result.get("next_step", ""),
+            consensus_method=consensus["consensus_method"],
+            run_count=consensus["run_count"],
+        )
+    else:
+        result = score_ap_essay(c, CLAUDE_MODEL, **score_kwargs)
+        return APGradeResponse(
+            rubric_id=req.rubric_id,
+            frq_type=frq_type.value,
+            row_a=result.get("row_a", {"score": 0, "reasoning": ""}),
+            row_b=result.get("row_b", {"score": 0, "reasoning": ""}),
+            row_c=result.get("row_c", {"score": 0, "reasoning": ""}),
+            total=result.get("total", 0),
+            feedback=result.get("feedback", ""),
+            weakest_row=result.get("weakest_row", "B"),
+            next_step=result.get("next_step", ""),
+        )
+
+
+# ----- Gateway / Gate Check -----
+
+@app.post("/grade/gateway")
+async def grade_gateway(req: APGradeRequest):
+    """Grade a gateway or gate essay and return pass/fail determination."""
+    c = _require_client()
+
+    if not req.rubric_id:
+        raise HTTPException(status_code=400, detail="rubric_id is required for gateway grading")
+
+    rubric = get_rubric(req.rubric_id)
+    if not rubric:
+        raise HTTPException(status_code=404, detail=f"Rubric '{req.rubric_id}' not found")
+
+    if not rubric.get("gateway") and not rubric.get("gate"):
+        raise HTTPException(status_code=400, detail=f"Rubric '{req.rubric_id}' is not a gateway or gate rubric")
+
+    # Force consensus for all gateway/gate assessments
+    req.use_consensus = True
+    ap_result = await grade_ap_submission(req)
+
+    # Check threshold
+    threshold = rubric.get("gateway_threshold") or rubric.get("gate_threshold", {})
+    passed = True
+    total = ap_result.total
+
+    if "min_score" in threshold:
+        passed = passed and total >= threshold["min_score"]
+    if "row_a" in threshold:
+        passed = passed and ap_result.row_a.get("score", 0) >= threshold["row_a"]
+    if "row_b" in threshold:
+        passed = passed and ap_result.row_b.get("score", 0) >= threshold["row_b"]
+    if "min_sources" in threshold:
+        # Source count check would need to be in the AP result; for now trust the Row B score
+        pass
+
+    if passed:
+        feedback = f"Gateway passed with a score of {total}/6. {ap_result.feedback}"
+    else:
+        feedback = f"Gateway not yet passed (score: {total}/6, threshold: {threshold}). {ap_result.feedback}"
+
+    return GatewayCheckResponse(
+        passed=passed,
+        rubric_id=req.rubric_id,
+        score=total,
+        threshold=threshold,
+        ap_result=ap_result,
+        feedback=feedback,
     )
 
 

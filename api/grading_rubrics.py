@@ -1023,6 +1023,282 @@ RUBRICS = {
         ],
         "min_words": 250,
     },
+
+    # ===================== B1L: AP Language Gateways & Gate =====================
+
+    "B1L_L07_gateway_essay": {
+        "task_type": "rhetorical_analysis_essay",
+        "lesson": "L07",
+        "course": "B1L",
+        "description": "Full rhetorical analysis essay on Frances Harper's 'We Are All Bound Up Together'",
+        "scoring_model": "ap_rubric",
+        "frq_type": "rhetorical_analysis",
+        "gateway": True,
+        "gateway_threshold": {"row_a": 1, "row_b": 2},
+        "passage_id": "SP-024",
+        "prompt": "Write an essay that analyzes the rhetorical choices Harper makes to argue for the interconnectedness of racial and gender justice.",
+        "min_words": 250,
+        "common_pitfalls": [
+            "Summarizing Harper's arguments instead of analyzing her rhetorical strategies",
+            "Feature-spotting: naming devices ('Harper uses pathos') without explaining function or effect",
+            "Thesis about what Harper says rather than how she says it",
+            "Ignoring the specific audience (white suffragists) and how Harper adapts her argument to them",
+            "Treating the personal anecdotes as mere examples rather than analyzing their rhetorical function",
+        ],
+    },
+
+    "B1L_L11_gateway_essay": {
+        "task_type": "argument_essay",
+        "lesson": "L11",
+        "course": "B1L",
+        "description": "Full AP argument essay from an original AP-style prompt",
+        "scoring_model": "ap_rubric",
+        "frq_type": "argument",
+        "gateway": True,
+        "gateway_threshold": {"row_a": 1, "row_b": 2},
+        "prompt": "In a well-written essay, develop your position on whether individuals have an obligation to challenge unjust laws or whether stability and order should take precedence.",
+        "min_words": 250,
+        "common_pitfalls": [
+            "Thesis that merely restates the prompt without taking a defensible position",
+            "Evidence from personal experience only, without specific historical or literary examples",
+            "Generic reasoning that could apply to any topic ('It is important because...')",
+            "No counterargument or dismissive counterargument (straw man)",
+            "Line of reasoning that lists reasons without connecting them to a throughline",
+        ],
+    },
+
+    "B1L_L16_gateway_essay": {
+        "task_type": "synthesis_essay",
+        "lesson": "L16",
+        "course": "B1L",
+        "description": "Full AP synthesis essay on Environment & Economic Growth (SYN-06)",
+        "scoring_model": "ap_rubric",
+        "frq_type": "synthesis",
+        "gateway": True,
+        "gateway_threshold": {"row_a": 1, "row_b": 2, "min_sources": 3},
+        "passage_id": "SYN-06",
+        "prompt": "Synthesize material from at least three of the provided sources and develop a position on the relationship between environmental protection and economic growth.",
+        "min_words": 250,
+        "common_pitfalls": [
+            "Using fewer than 3 sources",
+            "Summarizing sources sequentially rather than synthesizing them into an argument",
+            "Attributing evidence to sources but not explaining how it supports the argument",
+            "Thesis that simply says 'both sides have good points' without taking a position",
+            "Ignoring sources that complicate the argument",
+        ],
+    },
+
+    "B1L_L19_gate_synthesis": {
+        "task_type": "synthesis_essay",
+        "lesson": "L19",
+        "course": "B1L",
+        "description": "Gate: AP Synthesis Essay on Universal Basic Income (SYN-08, cold source set)",
+        "scoring_model": "ap_rubric",
+        "frq_type": "synthesis",
+        "gate": True,
+        "gate_threshold": {"min_score": 4},
+        "passage_id": "SYN-08",
+        "prompt": "Synthesize material from at least three of the provided sources and develop a position on whether universal basic income is a viable policy solution for economic insecurity.",
+        "min_words": 250,
+        "common_pitfalls": [
+            "Using fewer than 3 sources",
+            "Summarizing sources rather than synthesizing",
+            "No clear position — hedging without committing to a defensible thesis",
+            "Ignoring economic counterarguments or dismissing them without engagement",
+            "Citing sources without explaining their relevance to the argument",
+        ],
+    },
+
+    "B1L_L20_gate_rhetorical_analysis": {
+        "task_type": "rhetorical_analysis_essay",
+        "lesson": "L20",
+        "course": "B1L",
+        "description": "Gate: AP Rhetorical Analysis Essay on Anna Julia Cooper (SP-034, reserved)",
+        "scoring_model": "ap_rubric",
+        "frq_type": "rhetorical_analysis",
+        "gate": True,
+        "gate_threshold": {"min_score": 4},
+        "passage_id": "SP-034",
+        "prompt": "Write an essay that analyzes the rhetorical choices Cooper makes to argue for the centrality of Black womanhood to racial progress.",
+        "min_words": 250,
+        "common_pitfalls": [
+            "Summarizing Cooper's argument instead of analyzing her strategies",
+            "Feature-spotting without function/effect analysis",
+            "Missing the intersectional dimension of Cooper's rhetoric",
+            "Thesis about Cooper's topic rather than her rhetorical approach",
+        ],
+    },
+
+    "B1L_L20_gate_argument": {
+        "task_type": "argument_essay",
+        "lesson": "L20",
+        "course": "B1L",
+        "description": "Gate: AP Argument Essay (reserved prompt)",
+        "scoring_model": "ap_rubric",
+        "frq_type": "argument",
+        "gate": True,
+        "gate_threshold": {"min_score": 4},
+        "prompt": "Some people argue that progress requires individuals willing to disrupt the status quo, while others believe lasting change comes through working within existing systems. Write an essay that develops your position on which approach is more likely to achieve meaningful and lasting change.",
+        "min_words": 250,
+        "common_pitfalls": [
+            "Thesis that merely restates the prompt",
+            "Only abstract reasoning without specific evidence",
+            "No engagement with the opposing position",
+            "Line of reasoning that doesn't build toward a larger claim",
+        ],
+    },
+
+    # ===================== B2: AP Mastery Speed Runs & Gate =====================
+
+    "B2_L08_speed_run_ra": {
+        "task_type": "rhetorical_analysis_essay",
+        "lesson": "L08",
+        "course": "B2",
+        "description": "Speed Run 1: Rhetorical Analysis on Wendell Phillips (SP-027)",
+        "scoring_model": "ap_rubric",
+        "frq_type": "rhetorical_analysis",
+        "passage_id": "SP-027",
+        "prompt": "Write an essay that analyzes the rhetorical choices Phillips makes to defend harsh abolitionist language and justify confrontational reform tactics.",
+        "min_words": 250,
+        "common_pitfalls": [
+            "Summarizing Phillips's argument instead of analyzing his rhetoric",
+            "Missing the meta-rhetorical dimension (Phillips is defending rhetoric with rhetoric)",
+            "Feature-spotting without S-F-E analysis",
+            "No sophistication move despite B2-level expectation",
+        ],
+    },
+
+    "B2_L09_speed_run_arg": {
+        "task_type": "argument_essay",
+        "lesson": "L09",
+        "course": "B2",
+        "description": "Speed Run 2: Argument essay on knowledge and action",
+        "scoring_model": "ap_rubric",
+        "frq_type": "argument",
+        "prompt": "Some people believe that knowledge is most valuable when it leads to action, while others argue that the pursuit of knowledge is inherently worthwhile regardless of its practical applications. Write an essay that develops your position on the relationship between knowledge and action.",
+        "min_words": 250,
+        "common_pitfalls": [
+            "Vague thesis without clear position",
+            "Evidence that is generic rather than specific",
+            "No sophistication move",
+            "Counterargument that is dismissive rather than engaged",
+        ],
+    },
+
+    "B2_L10_speed_run_syn": {
+        "task_type": "synthesis_essay",
+        "lesson": "L10",
+        "course": "B2",
+        "description": "Speed Run 3: Synthesis on AI and Employment (SYN-09)",
+        "scoring_model": "ap_rubric",
+        "frq_type": "synthesis",
+        "passage_id": "SYN-09",
+        "prompt": "Synthesize material from at least three of the provided sources and develop a position on whether the benefits of AI-driven automation outweigh the risks to workers and communities.",
+        "min_words": 250,
+        "common_pitfalls": [
+            "Using fewer than 3 sources",
+            "Summarizing rather than synthesizing",
+            "No M6 perspective analysis (whose perspective is represented/missing)",
+            "No sophistication move despite B2-level expectation",
+        ],
+    },
+
+    "B2_L11_plan_to_essay_ra": {
+        "task_type": "rhetorical_analysis_essay",
+        "lesson": "L11",
+        "course": "B2",
+        "description": "Plan-to-Essay Bridge 1: Rhetorical Analysis on Carrie Chapman Catt (SP-015)",
+        "scoring_model": "ap_rubric",
+        "frq_type": "rhetorical_analysis",
+        "passage_id": "SP-015",
+        "prompt": "Write an essay that analyzes the rhetorical choices Catt makes to argue that the suffrage movement has reached a decisive crisis point requiring immediate action.",
+        "min_words": 250,
+        "common_pitfalls": [
+            "Summarizing Catt's argument rather than analyzing her strategies",
+            "Missing the urgency rhetoric and how Catt constructs a sense of crisis",
+            "Feature-spotting without reaching Effect",
+            "Plan not reflected in the actual essay",
+        ],
+    },
+
+    "B2_L12_plan_to_essay_arg": {
+        "task_type": "argument_essay",
+        "lesson": "L12",
+        "course": "B2",
+        "description": "Plan-to-Essay Bridge 2: Argument on tradition and progress",
+        "scoring_model": "ap_rubric",
+        "frq_type": "argument",
+        "prompt": "Many argue that traditions provide stability and continuity, while others contend that clinging to tradition impedes necessary progress. Write an essay that develops your position on the tension between tradition and progress.",
+        "min_words": 250,
+        "common_pitfalls": [
+            "Vague thesis that doesn't commit to a position",
+            "Evidence from personal experience only",
+            "Plan not reflected in the essay",
+            "No sophistication move",
+        ],
+    },
+
+    "B2_L21_gate_synthesis": {
+        "task_type": "synthesis_essay",
+        "lesson": "L21",
+        "course": "B2",
+        "description": "Gate: AP Synthesis Essay on Healthcare Access (SYN-10, reserved cold source set)",
+        "scoring_model": "ap_rubric",
+        "frq_type": "synthesis",
+        "gate": True,
+        "gate_threshold": {"min_score": 5, "floor_score": 4},
+        "passage_id": "SYN-10",
+        "prompt": "Synthesize material from at least three of the provided sources and develop a position on what approach to healthcare reform would best address both access and quality in the United States.",
+        "min_words": 250,
+        "common_pitfalls": [
+            "Using fewer than 3 sources",
+            "Binary framing (government vs. market) when sources suggest hybrid approaches",
+            "No sophistication move — required at B2 level for score 5+",
+            "Ignoring the rural/urban disparity raised in multiple sources",
+            "Summarizing rather than synthesizing",
+        ],
+    },
+
+    "B2_L22_gate_rhetorical_analysis": {
+        "task_type": "rhetorical_analysis_essay",
+        "lesson": "L22",
+        "course": "B2",
+        "description": "Gate: AP Rhetorical Analysis on Chief Joseph / William Apess (SP-035, reserved)",
+        "scoring_model": "ap_rubric",
+        "frq_type": "rhetorical_analysis",
+        "gate": True,
+        "gate_threshold": {"min_score": 5, "floor_score": 4},
+        "passage_id": "SP-035",
+        "prompt": "The following passages present two Native American speakers addressing white audiences about injustice. Write an essay that analyzes the rhetorical strategies each speaker uses and how those strategies reflect their different circumstances and purposes.",
+        "min_words": 250,
+        "common_pitfalls": [
+            "Analyzing only one speaker and neglecting the comparison",
+            "Summarizing what each speaker says rather than how they say it",
+            "Missing the contrast between Chief Joseph's restraint and Apess's confrontation",
+            "Feature-spotting without S-F-E analysis",
+            "No sophistication move",
+        ],
+    },
+
+    "B2_L22_gate_argument": {
+        "task_type": "argument_essay",
+        "lesson": "L22",
+        "course": "B2",
+        "description": "Gate: AP Argument Essay (reserved prompt)",
+        "scoring_model": "ap_rubric",
+        "frq_type": "argument",
+        "gate": True,
+        "gate_threshold": {"min_score": 5, "floor_score": 4},
+        "prompt": "Some people argue that the pursuit of certainty — in science, politics, or personal belief — leads to deeper understanding, while others contend that certainty closes the mind and hinders genuine inquiry. Write an essay that develops your position on whether the pursuit of certainty helps or hinders understanding.",
+        "min_words": 250,
+        "common_pitfalls": [
+            "Thesis that merely restates the prompt",
+            "Only abstract philosophical reasoning without concrete evidence",
+            "No engagement with the opposing position",
+            "No sophistication move — required at B2 level",
+            "Line of reasoning that lists reasons without building a throughline",
+        ],
+    },
 }
 
 
@@ -1031,10 +1307,30 @@ def get_rubric(rubric_id: str) -> dict | None:
     return RUBRICS.get(rubric_id)
 
 
-def get_rubrics_for_lesson(lesson: str) -> list[dict]:
-    """Get all rubrics for a given lesson (e.g., 'L01')."""
+def get_rubrics_for_lesson(lesson: str, course: str | None = None) -> list[dict]:
+    """Get all rubrics for a given lesson (e.g., 'L01'), optionally filtered by course."""
+    results = []
+    for k, v in RUBRICS.items():
+        if v["lesson"] == lesson:
+            if course is None or v.get("course", "A1") == course:
+                results.append({"id": k, **v})
+    return results
+
+
+def get_rubrics_for_course(course: str) -> list[dict]:
+    """Get all rubrics for a given course (e.g., 'B1L')."""
     return [
         {"id": k, **v}
         for k, v in RUBRICS.items()
-        if v["lesson"] == lesson
+        if v.get("course", "A1") == course
     ]
+
+
+def get_gateway_rubrics(course: str | None = None) -> list[dict]:
+    """Get all gateway rubrics, optionally filtered by course."""
+    results = []
+    for k, v in RUBRICS.items():
+        if v.get("gateway") or v.get("gate"):
+            if course is None or v.get("course", "A1") == course:
+                results.append({"id": k, **v})
+    return results
