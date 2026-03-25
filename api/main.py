@@ -7,7 +7,7 @@ using Claude, then returns structured feedback.
 Supports multiple scoring models:
 - Criteria Checklist (Model A) -- existing, all courses
 - AP Rubric (Model B) -- B1L, B2 essays
-- Revision (Model F) -- planned
+- Revision (Model F) -- B2 revision tasks
 
 Run locally: uvicorn main:app --reload --port 8000
 """
@@ -33,6 +33,7 @@ from grading_rubrics import (
 from ap_scorer import score_ap_essay
 from consensus import grade_with_consensus
 from passage_bank import get_passage, get_passage_text, list_passages
+from revision_scorer import score_revision
 from models import FRQType
 
 load_dotenv()
@@ -131,6 +132,18 @@ class APGradeResponse(BaseModel):
     next_step: str
     consensus_method: str | None = None
     run_count: int | None = None
+
+
+class RevisionGradeResponse(BaseModel):
+    scoring_model: str = "revision"
+    rubric_id: str
+    original_assessment: str
+    revision_assessment: str
+    changes_identified: list[str]
+    substantive: bool
+    improvement_score: int
+    feedback: str
+    next_step: str
 
 
 class GatewayCheckResponse(BaseModel):
@@ -445,6 +458,56 @@ async def grade_gateway(req: APGradeRequest):
         threshold=threshold,
         ap_result=ap_result,
         feedback=feedback,
+    )
+
+
+# ----- Revision Grading (Model F) -----
+
+@app.post("/grade/revision", response_model=RevisionGradeResponse)
+async def grade_revision_submission(req: RevisionGradeRequest):
+    """Grade a revision by comparing original and revised text."""
+    c = _require_client()
+
+    rubric = get_rubric(req.rubric_id)
+    if not rubric:
+        raise HTTPException(status_code=404, detail=f"Rubric '{req.rubric_id}' not found")
+
+    original = req.original_text.strip()
+    revised = req.revised_text.strip()
+    if not original or not revised:
+        raise HTTPException(status_code=400, detail="Both original and revised text are required")
+
+    if original == revised:
+        return RevisionGradeResponse(
+            rubric_id=req.rubric_id,
+            original_assessment="Original text provided.",
+            revision_assessment="No changes detected.",
+            changes_identified=[],
+            substantive=False,
+            improvement_score=0,
+            feedback="The original and revised text are identical. Revision requires making changes.",
+            next_step="Re-read the revision target and make at least one substantive change.",
+        )
+
+    course = req.course or rubric.get("course")
+    result = score_revision(
+        client=c,
+        model=CLAUDE_MODEL,
+        original_text=original,
+        revised_text=revised,
+        revision_target=req.revision_target,
+        course=course,
+    )
+
+    return RevisionGradeResponse(
+        rubric_id=req.rubric_id,
+        original_assessment=result.get("original_assessment", ""),
+        revision_assessment=result.get("revision_assessment", ""),
+        changes_identified=result.get("changes_identified", []),
+        substantive=result.get("substantive", False),
+        improvement_score=result.get("improvement_score", 0),
+        feedback=result.get("feedback", ""),
+        next_step=result.get("next_step", ""),
     )
 
 

@@ -1,5 +1,5 @@
 """
-Per-lesson, per-task grading rubrics for A1 Course.
+Per-lesson, per-task grading rubrics for all courses (A1, A2, B1L, B2).
 
 Each rubric defines:
 - task_type: what kind of writing task
@@ -8,6 +8,8 @@ Each rubric defines:
 - min_words: minimum word count for the task
 - max_score: maximum score for the task (number of criteria)
 """
+
+from course_rubrics import A2_RUBRICS, B1L_RUBRICS, B2_RUBRICS
 
 RUBRICS = {
 
@@ -1300,6 +1302,12 @@ RUBRICS = {
         ],
     },
 }
+
+
+# Merge course-specific rubrics
+RUBRICS.update(A2_RUBRICS)
+RUBRICS.update(B1L_RUBRICS)
+RUBRICS.update(B2_RUBRICS)
 
 
 def get_rubric(rubric_id: str) -> dict | None:
