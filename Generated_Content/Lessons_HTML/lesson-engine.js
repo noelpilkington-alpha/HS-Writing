@@ -8,8 +8,8 @@
   const SCORE_WRITE = 25;
   const SCORE_EXPLAIN = 10;
   const DEFAULT_MIN_WORDS = 30;
-  const GRADING_API_URL = localStorage.getItem('gradingApiUrl') || 'http://localhost:8003';
-  const GRADING_API_KEY = localStorage.getItem('gradingApiKey') || '';
+  const GRADING_API_URL = localStorage.getItem('gradingApiUrl') || 'https://hs-writing-grading.onrender.com';
+  const GRADING_API_KEY = localStorage.getItem('gradingApiKey') || 'IFyOA6KGkuZi6eQ7Ot952nfP9XMhjUuPb37HUT24YiM=';
   function gradingHeaders() {
     var h = { 'Content-Type': 'application/json' };
     if (GRADING_API_KEY) h['X-API-Key'] = GRADING_API_KEY;
