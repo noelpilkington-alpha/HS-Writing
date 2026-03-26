@@ -155,10 +155,37 @@
   <div class="back-link"><a href="index.html">&larr; Home</a></div>
 
   <h1>Grading Engine Setup</h1>
-  <p class="subtitle">Run the AI grading API locally so interactive lessons can score student writing.</p>
+  <p class="subtitle">Enable AI grading so interactive lessons can score student writing.</p>
+
+  <!-- ============ Hosted Option ============ -->
+  <h2>Option A: Use Hosted Grading (No Setup Required)</h2>
+  <p>The grading engine is already running as a hosted service. To connect your lessons to it, open your browser's developer console and paste these two lines:</p>
+
+  <h3>How to Open the Console</h3>
+  <ul>
+    <li><strong>Chrome / Edge:</strong> Press <code>F12</code> (or <code>Ctrl+Shift+J</code> on Windows, <code>Cmd+Option+J</code> on Mac), then click the <strong>Console</strong> tab.</li>
+    <li><strong>Firefox:</strong> Press <code>F12</code> (or <code>Ctrl+Shift+K</code>), then click the <strong>Console</strong> tab.</li>
+    <li><strong>Safari:</strong> Enable the Develop menu in Preferences &gt; Advanced, then press <code>Cmd+Option+C</code>.</li>
+  </ul>
+
+  <h3>Paste These Two Lines</h3>
+  <pre><code>localStorage.setItem('gradingApiUrl', 'https://hs-writing-grading.onrender.com');
+localStorage.setItem('gradingApiKey', 'IFyOA6KGkuZi6eQ7Ot952nfP9XMhjUuPb37HUT24YiM=');</code></pre>
+
+  <p>Press <strong>Enter</strong>. That's it &mdash; you only need to do this once per browser. The setting persists across sessions. All lessons will now grade student writing through the hosted server.</p>
+
+  <div class="callout">
+    <strong>Note:</strong> The hosted server runs on Render's free tier. The first grading request after 15 minutes of inactivity may take 30&ndash;60 seconds while the server wakes up. After that, responses are 5&ndash;15 seconds.
+  </div>
+
+  <hr style="margin:2.5rem 0;border:none;border-top:2px solid var(--border);">
+
+  <!-- ============ Local Option ============ -->
+  <h2>Option B: Run Locally (Advanced)</h2>
+  <p>If you prefer to run the grading engine on your own machine (for example, to use your own API key or work offline), follow the steps below.</p>
 
   <!-- ============ Section 1 ============ -->
-  <h2>1. What You Need</h2>
+  <h3>1. What You Need</h3>
   <ul>
     <li><strong>Python 3.10+</strong> &mdash; download from <a href="https://www.python.org/downloads/" target="_blank">python.org</a> if you don't have it. Verify with <code>python --version</code>.</li>
     <li><strong>An Anthropic API key</strong> &mdash; sign up at <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a> and create an API key. The grading engine uses Claude to evaluate student writing.</li>
@@ -166,7 +193,7 @@
   </ul>
 
   <!-- ============ Section 2 ============ -->
-  <h2>2. Download</h2>
+  <h3>2. Download</h3>
   <p>The grading engine lives in the <code>api/</code> folder of the course repository. You need all the files in that folder.</p>
 
   <h3>Option A: Clone the repo (recommended)</h3>
@@ -177,7 +204,7 @@
   <p>Go to the <a href="https://github.com/noelpilkington-alpha/HS-Writing" target="_blank">GitHub repository page</a>, click the green <strong>Code</strong> button, then <strong>Download ZIP</strong>. Extract the ZIP and locate the <code>api/</code> folder inside.</p>
 
   <!-- ============ Section 3 ============ -->
-  <h2>3. Setup Steps</h2>
+  <h3>3. Setup Steps</h3>
 
   <div class="step">
     <span class="step-num">1</span>
@@ -231,7 +258,7 @@
   </div>
 
   <!-- ============ Section 4 ============ -->
-  <h2>4. Files Included</h2>
+  <h3>4. Files Included</h3>
   <p>The <code>api/</code> folder contains the following files:</p>
   <table>
     <thead>
@@ -286,7 +313,7 @@
   </table>
 
   <!-- ============ Section 5 ============ -->
-  <h2>5. Easy Setup with Claude Code (Recommended for Non-Technical Users)</h2>
+  <h3>5. Easy Setup with Claude Code</h3>
   <p>If you're not comfortable with the command line, <strong>Claude Code</strong> can do all of the setup for you. Claude Code is an AI assistant that runs commands on your computer. It will install dependencies, create files, and start the server &mdash; you just approve each step.</p>
 
   <h3>What is Claude Code?</h3>
@@ -344,7 +371,7 @@
   </div>
 
   <!-- ============ Section 6 ============ -->
-  <h2>6. Troubleshooting</h2>
+  <h3>6. Troubleshooting</h3>
 
   <div class="troubleshoot-item">
     <strong>Port 8003 already in use</strong>
