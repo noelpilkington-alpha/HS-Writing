@@ -604,6 +604,9 @@
 
   // ===== AI GRADING =====
   function gradeSubmission(studentText, rubricId, feedbackContainer, submitBtn, scoringModel) {
+    // Store references for revision
+    var ta = submitBtn.closest('.writing-input').querySelector('.writing-ta');
+
     // Show loading state
     feedbackContainer.innerHTML =
       '<div class="grading-loading">' +
@@ -613,9 +616,7 @@
 
     var isAP = scoringModel === 'ap_rubric';
     var endpoint = isAP ? '/grade/ap' : '/grade';
-    var payload = isAP
-      ? { rubric_id: rubricId, student_text: studentText, lesson_id: document.title || '' }
-      : { rubric_id: rubricId, student_text: studentText, lesson_id: document.title || '' };
+    var payload = { rubric_id: rubricId, student_text: studentText, lesson_id: document.title || '' };
 
     fetch(GRADING_API_URL + endpoint, {
       method: 'POST',
@@ -632,6 +633,11 @@
       } else {
         renderFeedback(data, feedbackContainer);
       }
+      // Add revise button if not all criteria met
+      var allMet = data.criteria_met === data.criteria_total;
+      if (!allMet && ta && submitBtn) {
+        addReviseButton(feedbackContainer, submitBtn, ta, rubricId, scoringModel);
+      }
     })
     .catch(function(err) {
       feedbackContainer.innerHTML =
@@ -639,6 +645,24 @@
           '<strong>Grading unavailable:</strong> ' + err.message +
           '<br><small>Your writing has been submitted. Feedback will be available when the grading server is running.</small>' +
         '</div>';
+    });
+  }
+
+  function addReviseButton(feedbackContainer, submitBtn, ta, rubricId, scoringModel) {
+    var reviseBtn = document.createElement('button');
+    reviseBtn.className = 'writing-submit';
+    reviseBtn.style.cssText = 'margin-top:0.75rem;background:#0d6efd;';
+    reviseBtn.textContent = 'Revise & Resubmit';
+    feedbackContainer.appendChild(reviseBtn);
+
+    reviseBtn.addEventListener('click', function() {
+      ta.readOnly = false;
+      ta.focus();
+      submitBtn.textContent = 'Resubmit';
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('submitted');
+      feedbackContainer.style.display = 'none';
+      reviseBtn.remove();
     });
   }
 

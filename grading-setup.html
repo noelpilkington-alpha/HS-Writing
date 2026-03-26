@@ -286,7 +286,65 @@
   </table>
 
   <!-- ============ Section 5 ============ -->
-  <h2>5. Troubleshooting</h2>
+  <h2>5. Easy Setup with Claude Code (Recommended for Non-Technical Users)</h2>
+  <p>If you're not comfortable with the command line, <strong>Claude Code</strong> can do all of the setup for you. Claude Code is an AI assistant that runs commands on your computer. It will install dependencies, create files, and start the server &mdash; you just approve each step.</p>
+
+  <h3>What is Claude Code?</h3>
+  <p>Claude Code is a tool made by Anthropic (the same company behind the grading engine). You type what you want in plain English, and it runs the necessary terminal commands for you. You can review and approve every action before it happens.</p>
+
+  <h3>One-Time Setup</h3>
+
+  <div class="step">
+    <span class="step-num">1</span>
+    <div class="step-content">
+      <p><strong>Install Node.js</strong> (required to run Claude Code).</p>
+      <p>Download and install from <a href="https://nodejs.org/" target="_blank">nodejs.org</a>. Choose the LTS (Long Term Support) version. Run the installer and accept the defaults.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">2</span>
+    <div class="step-content">
+      <p><strong>Install Claude Code.</strong> Open a terminal (on Windows: search for "Terminal" or "Command Prompt" in the Start menu; on Mac: open "Terminal" from Applications &gt; Utilities) and paste this command:</p>
+      <pre><code>npm install -g @anthropic-ai/claude-code</code></pre>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">3</span>
+    <div class="step-content">
+      <p><strong>Get an Anthropic API key.</strong> Sign up at <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a> and create an API key. You will need this key for both Claude Code and the grading engine.</p>
+    </div>
+  </div>
+
+  <h3>Running the Grading Server</h3>
+  <p>Once Claude Code is installed, open a terminal, navigate to the repository folder, and type:</p>
+  <pre><code>claude</code></pre>
+  <p>This starts Claude Code. Then paste the following message:</p>
+
+  <div class="callout" style="background:#f0f4ff;border-left-color:#0d6efd;">
+    <p style="margin-bottom:0;font-family:Consolas,'Courier New',monospace;font-size:0.9rem;">Start the grading API server for me. The server code is in the api/ folder. Install the Python dependencies from requirements.txt if they aren't already installed. Create a .env file in the api/ folder with my Anthropic API key if one doesn't exist (ask me for the key). Then start the server with: python -m uvicorn main:app --host 127.0.0.1 --port 8003</p>
+  </div>
+
+  <p>Claude Code will walk you through each step. It will ask for your approval before running each command. Just type <strong>y</strong> (yes) to approve, or <strong>n</strong> (no) to skip a step.</p>
+
+  <h3>What to Expect</h3>
+  <ul>
+    <li>Claude Code will check if Python is installed and help you install it if not.</li>
+    <li>It will install the required Python packages (FastAPI, Uvicorn, etc.).</li>
+    <li>It will create the <code>.env</code> file with your API key.</li>
+    <li>It will start the grading server. You should see: <code>Uvicorn running on http://127.0.0.1:8003</code>.</li>
+    <li>Keep the terminal window open while you use the lessons.</li>
+  </ul>
+
+  <h3>Next Time</h3>
+  <p>After the first setup, you only need to start the server. Open a terminal, navigate to the repository, run <code>claude</code>, and type:</p>
+  <div class="callout" style="background:#f0f4ff;border-left-color:#0d6efd;">
+    <p style="margin-bottom:0;font-family:Consolas,'Courier New',monospace;font-size:0.9rem;">Start the grading server on port 8003.</p>
+  </div>
+
+  <!-- ============ Section 6 ============ -->
+  <h2>6. Troubleshooting</h2>
 
   <div class="troubleshoot-item">
     <strong>Port 8003 already in use</strong>

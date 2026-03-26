@@ -334,8 +334,8 @@ async def grade_submission(req: GradeRequest):
     return GradeResponse(
         rubric_id=req.rubric_id,
         scoring_model="criteria",
-        word_count=result.get("word_count", word_count),
-        word_count_met=result.get("word_count_met", word_count >= rubric["min_words"]),
+        word_count=word_count,
+        word_count_met=word_count >= rubric["min_words"],
         criteria_results=[
             CriterionResult(id=cr["id"], met=cr["met"], feedback=cr["feedback"])
             for cr in result.get("criteria_results", [])
