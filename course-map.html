@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Map -- HS Writing</title>
+  <style>
+    :root { --primary: #1a1a2e; --accent: #e94560; --accent-light: #fce4ec; --bg: #f8f9fa; --card: #ffffff; --text: #2d2d2d; --muted: #6c757d; --border: #dee2e6; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Georgia', 'Times New Roman', serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #16213e 100%);
+      color: #fff; padding: 2.5rem 1.5rem; text-align: center;
+    }
+    .hero h1 { font-size: 2rem; margin-bottom: 0.4rem; letter-spacing: -0.02em; }
+    .hero p { font-size: 0.95rem; color: #b0b8c8; max-width: 650px; margin: 0 auto; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    .back-link {
+      display: inline-block; font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.85rem; color: var(--accent); text-decoration: none;
+      margin-bottom: 1.5rem; transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--primary); }
+
+    /* Table of Contents */
+    .toc {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.5rem 2rem; margin-bottom: 2.5rem;
+    }
+    .toc h2 { font-size: 1.2rem; color: var(--primary); margin-bottom: 0.75rem; }
+    .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.5rem 2rem; }
+    .toc a {
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+      color: var(--text); text-decoration: none; padding: 0.25rem 0;
+      display: block; transition: color 0.2s;
+    }
+    .toc a:hover { color: var(--accent); }
+    .toc .track-label {
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; padding: 0.15rem 0.5rem; border-radius: 3px;
+      display: inline-block; margin-right: 0.4rem; vertical-align: middle;
+    }
+    .track-a { background: #0d6efd; color: #fff; }
+    .track-b { background: #6f42c1; color: #fff; }
+
+    /* Course sections */
+    .course-section { margin-bottom: 3rem; }
+    .course-header {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.5rem 2rem; margin-bottom: 1.5rem;
+    }
+    .course-header h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .course-meta {
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem;
+      color: var(--muted); line-height: 1.8;
+    }
+    .course-meta strong { color: var(--text); }
+
+    .unit-block { margin-bottom: 2rem; }
+    .unit-title {
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--accent); margin-bottom: 0.6rem; padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    /* Tables */
+    .lesson-table {
+      width: 100%; border-collapse: collapse; background: var(--card);
+      border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+      font-size: 0.88rem; margin-bottom: 0.5rem;
+    }
+    .lesson-table thead { background: var(--primary); color: #fff; }
+    .lesson-table th {
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.72rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 0.6rem 0.8rem; text-align: left; white-space: nowrap;
+    }
+    .lesson-table td {
+      padding: 0.55rem 0.8rem; border-top: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .lesson-table tbody tr:hover { background: #f1f3f5; }
+    .lesson-table .num { white-space: nowrap; font-weight: 600; color: var(--primary); }
+    .lesson-table .time {
+      white-space: nowrap; font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.8rem; color: var(--muted);
+    }
+    .lesson-table .kc-list { font-size: 0.82rem; line-height: 1.55; }
+    .lesson-table .kc-list .kc-code {
+      font-family: 'Courier New', monospace; font-size: 0.78rem;
+      background: var(--accent-light); padding: 0.1rem 0.35rem; border-radius: 3px;
+      white-space: nowrap;
+    }
+    .lesson-table .gateway { color: var(--accent); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; }
+    .lesson-table .mm {
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem;
+      color: var(--muted); white-space: nowrap;
+    }
+
+    /* Mental model key */
+    .mm-key {
+      background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+      padding: 1rem 1.5rem; margin-bottom: 2.5rem; font-size: 0.85rem;
+    }
+    .mm-key h3 { font-size: 0.95rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .mm-key-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 0.25rem 2rem;
+    }
+    .mm-key-grid span {
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem;
+    }
+    .mm-key-grid .mm-label {
+      font-weight: 700; color: var(--primary); margin-right: 0.3rem;
+    }
+
+    .footer {
+      text-align: center; padding: 2rem 1.5rem; font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 700px) {
+      .lesson-table { font-size: 0.82rem; }
+      .lesson-table th, .lesson-table td { padding: 0.4rem 0.5rem; }
+      .toc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Course Map</h1>
+  <p>Lesson maps and knowledge components for all 4 writing courses across 2 tracks</p>
+</div>
+
+<div class="container">
+  <a href="index.html" class="back-link">&larr; Back to Course Index</a>
+
+  <!-- Mental Model Key -->
+  <div class="mm-key">
+    <h3>Mental Models Key</h3>
+    <div class="mm-key-grid">
+      <span><span class="mm-label">M1:</span> Everything Is a Choice</span>
+      <span><span class="mm-label">M2:</span> Structure &rarr; Function &rarr; Effect (S-F-E)</span>
+      <span><span class="mm-label">M3:</span> Rhetorical Situation as Force Field</span>
+      <span><span class="mm-label">M4:</span> Claim Hierarchy</span>
+      <span><span class="mm-label">M5:</span> Reading as Reverse Engineering</span>
+      <span><span class="mm-label">M6:</span> Who Benefits?</span>
+    </div>
+  </div>
+
+  <!-- Table of Contents -->
+  <div class="toc">
+    <h2>Table of Contents</h2>
+    <div class="toc-grid">
+      <a href="#a1"><span class="track-label track-a">A</span> A1: G9 Analytical Writing Foundations</a>
+      <a href="#a2"><span class="track-label track-a">A</span> A2: G10 Sophisticated Argument &amp; Synthesis</a>
+      <a href="#b1l"><span class="track-label track-b">B</span> B1L: G11 AP Language Essay Writing</a>
+      <a href="#b2"><span class="track-label track-b">B</span> B2: G12 AP Mastery &amp; Sophistication</a>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- COURSE A1 -->
+  <!-- ============================================================ -->
+  <div class="course-section" id="a1">
+    <div class="course-header">
+      <h2>A1: G9 Analytical Writing Foundations</h2>
+      <div class="course-meta">
+        <strong>Track:</strong> A (Core) &bull;
+        <strong>Grade:</strong> 9 &bull;
+        <strong>Calibration:</strong> CCSS W.9-10 &bull;
+        <strong>Hours:</strong> ~10-12<br>
+        <strong>Mental Models Introduced:</strong> M1 (Everything Is a Choice), M2 (S-F-E)<br>
+        <strong>Gate:</strong> Analytical essay (40 min) + conventions (20 min), pass = 4/6
+      </div>
+    </div>
+
+    <!-- A1 Unit 1 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 1: Argumentative Essay Foundations (~2.5 hrs, 5 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L01</td>
+            <td>From Expository to Argumentative</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.B01</span> Distinguish Expository from Argumentative Writing</td>
+            <td class="mm">&mdash;</td>
+          </tr>
+          <tr>
+            <td class="num">L02</td>
+            <td>Taking a Position</td>
+            <td class="time">~20 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.B02</span> Take a Defensible Position on a Debatable Issue</td>
+            <td class="mm">&mdash;</td>
+          </tr>
+          <tr>
+            <td class="num">L03</td>
+            <td>Supporting with Evidence and Reasoning</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.B03</span> Support Claims with Evidence and Reasoning from Knowledge</td>
+            <td class="mm">&mdash;</td>
+          </tr>
+          <tr>
+            <td class="num">L04</td>
+            <td>Addressing Counterarguments</td>
+            <td class="time">~20 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.B04</span> Acknowledge and Respond to Counterarguments</td>
+            <td class="mm">&mdash;</td>
+          </tr>
+          <tr>
+            <td class="num">L05</td>
+            <td>Planning and Writing an Argument Essay</td>
+            <td class="time">~35 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.B05</span> Plan and Write a Complete Argument Essay from Knowledge</td>
+            <td class="mm">&mdash;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- A1 Unit 2 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 2: Bridge -- From Your Choices to the Author's Choices (~1.5 hrs, 3 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L06</td>
+            <td>You Already Make Choices (M1 Introduction)</td>
+            <td class="time">~20 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.01</span> Close Reading Protocol (preview)<br><span class="kc-code">C.9.02</span> Choice Audit (preview)</td>
+            <td class="mm">M1 intro</td>
+          </tr>
+          <tr>
+            <td class="num">L07</td>
+            <td>Close Reading Protocol</td>
+            <td class="time">~20 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.01</span> Close Reading Protocol<br><span class="kc-code">C.9.02</span> Perform Choice Audit</td>
+            <td class="mm">M1</td>
+          </tr>
+          <tr>
+            <td class="num">L08</td>
+            <td>Structure &rarr; Function &rarr; Effect (M2)</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.03</span> Produce S-F-E Chains</td>
+            <td class="mm">M2 intro</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- A1 Unit 3 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 3: Analytical Reading &amp; Writing (~1.5 hrs, 3 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L09</td>
+            <td>Analysis vs. Summary</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.09</span> Spot Analysis vs. Summary <span class="gateway">GATEWAY</span></td>
+            <td class="mm">M2</td>
+          </tr>
+          <tr>
+            <td class="num">L10</td>
+            <td>S-F-E Fluency Drill</td>
+            <td class="time">~20 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.03</span> S-F-E Chains (fluency building)</td>
+            <td class="mm">M2</td>
+          </tr>
+          <tr>
+            <td class="num">L11</td>
+            <td>Thesis Development</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.07</span> Spot Weak vs. Strong Thesis <span class="gateway">GATEWAY</span><br><span class="kc-code">C.9.08</span> Craft Arguable, Specific, Significant Thesis <span class="gateway">GATEWAY</span></td>
+            <td class="mm">&mdash;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- A1 Unit 4 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 4: Essay Architecture (~1 hr, 2 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L12</td>
+            <td>Essay Structures Beyond the 5-Paragraph</td>
+            <td class="time">~20 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.04</span> Spot Differences Between Essay Structures<br><span class="kc-code">C.9.05</span> Match Structure to Purpose</td>
+            <td class="mm">M4 preview</td>
+          </tr>
+          <tr>
+            <td class="num">L13</td>
+            <td>Architecture Sketch + Evidence Planning</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.06</span> Write Flexible Essay Structures<br><span class="kc-code">C.9.10</span> Write Evidence + Commentary Sentences <span class="gateway">GATEWAY</span></td>
+            <td class="mm">M2, M4 preview</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- A1 Unit 5 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 5: Paragraph Sprints &amp; Calibration (~1.5 hrs, 3 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L14</td>
+            <td>Body Paragraph Sprint</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.10</span> Evidence + Commentary (applied)<br><span class="kc-code">C.9.08</span> Thesis (applied)</td>
+            <td class="mm">M2</td>
+          </tr>
+          <tr>
+            <td class="num">L15</td>
+            <td>Analysis vs. Summary -- Calibration</td>
+            <td class="time">~20 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.11</span> Self-Assess: Analysis vs. Summary<br><span class="kc-code">C.9.12</span> Revise Summary into Analysis</td>
+            <td class="mm">M2</td>
+          </tr>
+          <tr>
+            <td class="num">L16</td>
+            <td>Revise Your Own Work (Three-Pass Protocol)</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.9.11</span> Self-Assess (applied)<br><span class="kc-code">C.9.12</span> Revise Summary into Analysis (applied)</td>
+            <td class="mm">M2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- A1 Unit 6 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 6: Integration &amp; Style (~1.5 hrs, 3 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L17</td>
+            <td>Style -- Rhythm, Parallelism &amp; Sentence Combining</td>
+            <td class="time">~30 min</td>
+            <td class="kc-list">
+              <span class="kc-code">M.9.01</span> Spot Stylistic Strengths<br>
+              <span class="kc-code">M.9.02</span> Sentence Imitation<br>
+              <span class="kc-code">M.9.03</span> Spot Wordiness<br>
+              <span class="kc-code">M.9.04</span> Revise for Concision<br>
+              <span class="kc-code">M.9.05</span> Parallelism<br>
+              <span class="kc-code">M.9.06</span> Sentence Combining
+            </td>
+            <td class="mm">M1</td>
+          </tr>
+          <tr>
+            <td class="num">L18</td>
+            <td>Pre-Gate Practice Essay</td>
+            <td class="time">~50 min</td>
+            <td class="kc-list">All A1 KCs integrated</td>
+            <td class="mm">M1, M2</td>
+          </tr>
+          <tr>
+            <td class="num">L19</td>
+            <td>Voice + Final Revision</td>
+            <td class="time">~20 min</td>
+            <td class="kc-list"><span class="kc-code">D.9.01</span> Spot Distinctive Voice<br><span class="kc-code">D.9.02</span> Develop Authentic Authorial Voice</td>
+            <td class="mm">M1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- A1 Gate -->
+    <div class="unit-block">
+      <div class="unit-title">Gate Assessment</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L20</td>
+            <td>G9 Gate Assessment</td>
+            <td class="time">~60 min</td>
+            <td class="kc-list">All A1 KCs assessed<br>Part 1: Analytical Essay (40 min)<br>Part 2: Conventions (20 min, 15 items)<br>Scoring: 6-point rubric, pass = 4/6, must earn &ge;1 on Commentary</td>
+            <td class="mm">All A1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- COURSE A2 -->
+  <!-- ============================================================ -->
+  <div class="course-section" id="a2">
+    <div class="course-header">
+      <h2>A2: G10 Sophisticated Argument, Synthesis &amp; ACT Writing</h2>
+      <div class="course-meta">
+        <strong>Track:</strong> A (Core) &bull;
+        <strong>Grade:</strong> 10 &bull;
+        <strong>Calibration:</strong> CCSS W.9-10 + ACT Writing &bull;
+        <strong>Hours:</strong> ~10-12<br>
+        <strong>Prerequisites:</strong> A1 Gate passed (4/6, &ge;1 on Commentary)<br>
+        <strong>Mental Models Introduced:</strong> M3 (Force Field), M4 (Claim Hierarchy), M5 (preview)<br>
+        <strong>Mental Models Continued:</strong> M1, M2<br>
+        <strong>Gate:</strong> Synthesis essay (40 min) + ACT Writing essay (40 min) + conventions (20 min), pass = 4/6 each
+      </div>
+    </div>
+
+    <!-- A2 Unit 1 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 1: Force Field &amp; Claim Hierarchy (~1.5 hrs, 3 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L01</td>
+            <td>Rhetorical Force Field (M3 Introduction)</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.01</span> Map Rhetorical Force Field</td>
+            <td class="mm">M3 intro</td>
+          </tr>
+          <tr>
+            <td class="num">L02</td>
+            <td>Claim Hierarchy (M4 Introduction)</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.02</span> Build Claim Hierarchy Outline</td>
+            <td class="mm">M4 intro</td>
+          </tr>
+          <tr>
+            <td class="num">L03</td>
+            <td>Force Field to Choices + Hierarchy to Plan</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.01</span> Force Field (applied)<br><span class="kc-code">C.10.02</span> Claim Hierarchy (applied)</td>
+            <td class="mm">M3, M4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- A2 Unit 2 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 2: Sophisticated Argument -- They Say / I Say (~2.5 hrs, 4 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L04</td>
+            <td>They Say / I Say -- Move Identification</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list">
+              <span class="kc-code">C.10.03</span> Agree with a Difference (preview)<br>
+              <span class="kc-code">C.10.04</span> Disagree Diplomatically (preview)<br>
+              <span class="kc-code">C.10.05</span> Complicate the Debate (preview)
+            </td>
+            <td class="mm">M4</td>
+          </tr>
+          <tr>
+            <td class="num">L05</td>
+            <td>They Say / I Say -- Template Practice</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list">
+              <span class="kc-code">C.10.03</span> Agree with a Difference<br>
+              <span class="kc-code">C.10.04</span> Disagree Diplomatically<br>
+              <span class="kc-code">C.10.05</span> Complicate the Debate
+            </td>
+            <td class="mm">M4</td>
+          </tr>
+          <tr>
+            <td class="num">L06</td>
+            <td>Straw Man Detection + Nuance Ladder</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.05</span> Complicate the Debate<br><span class="kc-code">C.10.13</span> Revise Flat Argument into Nuanced (preview)</td>
+            <td class="mm">M3, M4</td>
+          </tr>
+          <tr>
+            <td class="num">L07</td>
+            <td>Full Argument Essay</td>
+            <td class="time">~50 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.06</span> Write Sophisticated Academic Argument <span class="gateway">GATEWAY</span></td>
+            <td class="mm">M3, M4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- A2 Unit 3 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 3: Synthesis Writing (~3 hrs, 5 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L08</td>
+            <td>Source Perspective Evaluation</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.07</span> Evaluate Source Perspective</td>
+            <td class="mm">M3, M6 preview</td>
+          </tr>
+          <tr>
+            <td class="num">L09</td>
+            <td>Serial vs. Synthesis + Synthesis Matrix</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.08</span> Source Mapping and Synthesis Matrix</td>
+            <td class="mm">M4</td>
+          </tr>
+          <tr>
+            <td class="num">L10</td>
+            <td>Attribution Fluency Drill</td>
+            <td class="time">~20 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.09</span> Attribution and Citation Fluency</td>
+            <td class="mm">&mdash;</td>
+          </tr>
+          <tr>
+            <td class="num">L11</td>
+            <td>Source Weaving Drill</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.10</span> Weave Multiple Sources into Argument</td>
+            <td class="mm">M4</td>
+          </tr>
+          <tr>
+            <td class="num">L12</td>
+            <td>Full Synthesis Essay</td>
+            <td class="time">~55 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.11</span> Write Synthesis Essay <span class="gateway">GATEWAY</span><br>(gates Track B)</td>
+            <td class="mm">M3, M4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- A2 Unit 4 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 4: Self-Assessment &amp; Revision (~1 hr, 2 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L13</td>
+            <td>3-Point Rubric Calibration</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.12</span> Self-Assess on 3-Point Rubric</td>
+            <td class="mm">&mdash;</td>
+          </tr>
+          <tr>
+            <td class="num">L14</td>
+            <td>Nuance Revision + Self-Score</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.13</span> Revise Flat Argument into Nuanced<br><span class="kc-code">C.10.12</span> 3-Point Rubric (applied)</td>
+            <td class="mm">M3, M4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- A2 Unit 5 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 5: Timed Writing Strategy (~30 min, 1 lesson)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L15</td>
+            <td>Time Allocation + "Good Enough" Plan</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.14</span> Timed Writing Strategy</td>
+            <td class="mm">&mdash;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- A2 Unit 6 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 6: ACT Writing (~3 hrs, 4 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L16</td>
+            <td>ACT Perspective Analysis</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.15</span> Analyze ACT Perspectives<br><span class="kc-code">C.10.16</span> Evaluate Perspective Strengths &amp; Limitations</td>
+            <td class="mm">M3, M4</td>
+          </tr>
+          <tr>
+            <td class="num">L17</td>
+            <td>ACT Argument Development</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.17</span> Develop &amp; Position Own Perspective<br><span class="kc-code">C.10.18</span> Generate Reasoning &amp; Examples from Knowledge</td>
+            <td class="mm">M4</td>
+          </tr>
+          <tr>
+            <td class="num">L18</td>
+            <td>ACT Planning Sprint + Full ACT Essay #1</td>
+            <td class="time">~55 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.19</span> Plan ACT Essay Under Time Pressure<br><span class="kc-code">C.10.20</span> Write ACT Essay (first attempt)</td>
+            <td class="mm">M3, M4</td>
+          </tr>
+          <tr>
+            <td class="num">L19</td>
+            <td>ACT Essay #2 + ACT Self-Assessment</td>
+            <td class="time">~55 min</td>
+            <td class="kc-list"><span class="kc-code">C.10.20</span> Write ACT Essay (second attempt)<br><span class="kc-code">C.10.21</span> Self-Assess Against ACT Rubric</td>
+            <td class="mm">M3, M4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- A2 Gate -->
+    <div class="unit-block">
+      <div class="unit-title">Gate Assessment</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L20</td>
+            <td>G10 Gate Assessment</td>
+            <td class="time">~100 min</td>
+            <td class="kc-list">
+              All A2 KCs assessed<br>
+              Part 1: Synthesis Essay (40 min) -- 6-pt rubric, pass = 4/6<br>
+              Part 2: ACT Writing Essay (40 min) -- 6-pt rubric, pass = 4/6<br>
+              Part 3: Conventions (20 min, 22 items)
+            </td>
+            <td class="mm">All A2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- COURSE B1L -->
+  <!-- ============================================================ -->
+  <div class="course-section" id="b1l">
+    <div class="course-header">
+      <h2>B1L: G11 AP Language Essay Writing</h2>
+      <div class="course-meta">
+        <strong>Track:</strong> B (AP) &bull;
+        <strong>Grade:</strong> 11 &bull;
+        <strong>Calibration:</strong> AP Rubric (Rows A, B, C) -- target 4+ &bull;
+        <strong>Hours:</strong> ~10-12<br>
+        <strong>Prerequisites:</strong> A2 Gate passed (4/6 on both synthesis and ACT essays)<br>
+        <strong>Mental Model Introduced:</strong> M5 (Reading as Reverse Engineering)<br>
+        <strong>Mental Models Continued:</strong> M1, M2, M3, M4; M6 preview<br>
+        <strong>Gate:</strong> Full AP Practice Exam -- Synthesis (55 min) + Rhetorical Analysis (40 min) + Argument (40 min), pass = 4+ on at least 2 of 3
+      </div>
+    </div>
+
+    <!-- B1L Unit 1 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 1: Rhetorical Analysis (~3.5 hrs, 7 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L01</td>
+            <td>Reverse Engineering (M5 Introduction)</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list">M5 introduced<br><span class="kc-code">C.AP.L.01</span> Map Rhetorical Situation (preview)</td>
+            <td class="mm">M5 intro</td>
+          </tr>
+          <tr>
+            <td class="num">L02</td>
+            <td>Rhetorical Situation Mapping (Timed)</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.01</span> Map Rhetorical Situation for AP Passage</td>
+            <td class="mm">M3, M5</td>
+          </tr>
+          <tr>
+            <td class="num">L03</td>
+            <td>Identifying Rhetorical Strategies</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.02</span> Identify Rhetorical Strategies</td>
+            <td class="mm">M1</td>
+          </tr>
+          <tr>
+            <td class="num">L04</td>
+            <td>Feature-Spotting vs. Analysis</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.03</span> Explain How Strategies Serve Purpose</td>
+            <td class="mm">M2, M3</td>
+          </tr>
+          <tr>
+            <td class="num">L05</td>
+            <td>Rhetorical Analysis Thesis</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.04</span> Write Rhetorical Analysis Thesis</td>
+            <td class="mm">M4</td>
+          </tr>
+          <tr>
+            <td class="num">L06</td>
+            <td>Body Paragraph Sprint</td>
+            <td class="time">~30 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.05</span> Write Rhetorical Analysis Body Paragraph</td>
+            <td class="mm">M2</td>
+          </tr>
+          <tr>
+            <td class="num">L07</td>
+            <td>Full Rhetorical Analysis Essay</td>
+            <td class="time">~55 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.06</span> Write Complete Rhetorical Analysis Essay <span class="gateway">GATEWAY</span></td>
+            <td class="mm">M5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- B1L Unit 2 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 2: AP Argument Essay (~2.5 hrs, 5 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L08</td>
+            <td>AP Argument Prompt Deconstruction</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.07</span> Analyze an Argument Prompt</td>
+            <td class="mm">M4</td>
+          </tr>
+          <tr>
+            <td class="num">L09</td>
+            <td>Evidence from Knowledge + Line of Reasoning</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.08</span> Generate Evidence from Knowledge</td>
+            <td class="mm">M4</td>
+          </tr>
+          <tr>
+            <td class="num">L10</td>
+            <td>AP Argument Body Paragraphs</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.08</span> Evidence from Knowledge (applied)<br><span class="kc-code">C.AP.L.09</span> Write AP Argument Essay (preview)</td>
+            <td class="mm">M4</td>
+          </tr>
+          <tr>
+            <td class="num">L11</td>
+            <td>Full AP Argument Essay</td>
+            <td class="time">~55 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.09</span> Write AP Argument Essay <span class="gateway">GATEWAY</span></td>
+            <td class="mm">M4, M5</td>
+          </tr>
+          <tr>
+            <td class="num">L12</td>
+            <td>Sophistication Moves (Row C Preview)</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.09</span> Argument (deepened), Row C preview</td>
+            <td class="mm">M4, M6 preview</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- B1L Unit 3 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 3: AP Synthesis Essay (~2.5 hrs, 4 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L13</td>
+            <td>Rapid Source Analysis</td>
+            <td class="time">~30 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.10</span> Rapid Source Analysis</td>
+            <td class="mm">M3, M5, M6 preview</td>
+          </tr>
+          <tr>
+            <td class="num">L14</td>
+            <td>Strategic Source Selection + Source Weaving</td>
+            <td class="time">~30 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.11</span> Strategic Source Selection</td>
+            <td class="mm">M4, M6 preview</td>
+          </tr>
+          <tr>
+            <td class="num">L15</td>
+            <td>Attribution Fluency + Full Synthesis Planning</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.11</span> Source Selection (deepened)<br><span class="kc-code">C.AP.L.12</span> Write AP Synthesis Essay (preview)</td>
+            <td class="mm">M4</td>
+          </tr>
+          <tr>
+            <td class="num">L16</td>
+            <td>Full AP Synthesis Essay</td>
+            <td class="time">~65 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.12</span> Write AP Synthesis Essay <span class="gateway">GATEWAY</span></td>
+            <td class="mm">M4, M5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- B1L Unit 4 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 4: AP Calibration &amp; Revision (~1 hr, 2 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L17</td>
+            <td>AP Rubric Calibration</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.13</span> Self-Assess Against AP Rubric</td>
+            <td class="mm">&mdash;</td>
+          </tr>
+          <tr>
+            <td class="num">L18</td>
+            <td>Weakest Row Revision</td>
+            <td class="time">~30 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.14</span> Revise Essay Toward Higher Score</td>
+            <td class="mm">M2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- B1L Gate -->
+    <div class="unit-block">
+      <div class="unit-title">Gate: AP Practice Exam (~2.25 hrs, 2 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L19</td>
+            <td>AP Practice Exam -- Synthesis</td>
+            <td class="time">~65 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.12</span> Synthesis (assessed)<br><span class="kc-code">C.AP.L.15</span> AP Timing Strategy</td>
+            <td class="mm">All (M1-M5, M6 preview)</td>
+          </tr>
+          <tr>
+            <td class="num">L20</td>
+            <td>AP Practice Exam -- Rhetorical Analysis + Argument</td>
+            <td class="time">~90 min</td>
+            <td class="kc-list"><span class="kc-code">C.AP.L.06</span> Rhetorical Analysis (assessed)<br><span class="kc-code">C.AP.L.09</span> Argument (assessed)<br><span class="kc-code">C.AP.L.15</span> AP Timing (assessed)<br>Pass = 4+ on at least 2 of 3 essays</td>
+            <td class="mm">All (M1-M5, M6 preview)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- COURSE B2 -->
+  <!-- ============================================================ -->
+  <div class="course-section" id="b2">
+    <div class="course-header">
+      <h2>B2: G12 AP Mastery &amp; Sophistication</h2>
+      <div class="course-meta">
+        <strong>Track:</strong> B (AP) &bull;
+        <strong>Grade:</strong> 12 &bull;
+        <strong>Calibration:</strong> AP Rubric (Rows A, B, C) -- target 5+ &bull;
+        <strong>Hours:</strong> ~8-10<br>
+        <strong>Prerequisites:</strong> B1 Gate passed (4+ on at least 2 of 3 essays)<br>
+        <strong>Mental Model Introduced:</strong> M6 (Who Benefits?)<br>
+        <strong>Mental Models Continued:</strong> M1-M5 (all operating simultaneously)<br>
+        <strong>Gate:</strong> Full AP Practice Exam -- Synthesis (55 min) + Rhetorical Analysis (40 min) + Argument (40 min), pass = 5+ on at least 2 of 3, no essay below 4
+      </div>
+    </div>
+
+    <!-- B2 Unit 1 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 1: Who Benefits? &amp; Framing Analysis (~1.5 hrs, 3 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L01</td>
+            <td>Who Benefits? (M6 Introduction)</td>
+            <td class="time">~30 min</td>
+            <td class="kc-list">M6 introduced<br><span class="kc-code">C.HS.01</span> Framing Analysis (preview)</td>
+            <td class="mm">M6 intro</td>
+          </tr>
+          <tr>
+            <td class="num">L02</td>
+            <td>Framing Analysis</td>
+            <td class="time">~30 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.01</span> Framing Analysis</td>
+            <td class="mm">M6</td>
+          </tr>
+          <tr>
+            <td class="num">L03</td>
+            <td>Sophistication Move Identification</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.02</span> Identify Sophistication Moves in Published Analysis</td>
+            <td class="mm">M6</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- B2 Unit 2 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 2: Writing Sophistication (~2 hrs, 4 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L04</td>
+            <td>Broader Context Drill</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.03</span> Write Sophistication Moves -- Broader Context</td>
+            <td class="mm">M6</td>
+          </tr>
+          <tr>
+            <td class="num">L05</td>
+            <td>Alternative Reading Drill</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.03</span> Write Sophistication Moves -- Alternative Reading</td>
+            <td class="mm">M6</td>
+          </tr>
+          <tr>
+            <td class="num">L06</td>
+            <td>Tension / Complexity Drill</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.03</span> Write Sophistication Moves -- Tension / Complexity</td>
+            <td class="mm">M6</td>
+          </tr>
+          <tr>
+            <td class="num">L07</td>
+            <td>Sophistication in Full Essay Plan</td>
+            <td class="time">~30 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.03</span> Sophistication Moves (integrated)<br><span class="kc-code">C.HS.04</span> Sustain Quality Under Time Pressure (preview)</td>
+            <td class="mm">M6, all</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- B2 Unit 3 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 3: Timed Performance (~2.5 hrs, 6 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L08</td>
+            <td>Speed Run 1: Rhetorical Analysis</td>
+            <td class="time">~50 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.04</span> Sustain Quality Under Time Pressure</td>
+            <td class="mm">All (M1-M6)</td>
+          </tr>
+          <tr>
+            <td class="num">L09</td>
+            <td>Speed Run 2: Argument</td>
+            <td class="time">~50 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.04</span> Sustain Quality (continued)</td>
+            <td class="mm">All (M1-M6)</td>
+          </tr>
+          <tr>
+            <td class="num">L10</td>
+            <td>Speed Run 3: Synthesis</td>
+            <td class="time">~65 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.04</span> Sustain Quality (continued)</td>
+            <td class="mm">All (M1-M6)</td>
+          </tr>
+          <tr>
+            <td class="num">L11</td>
+            <td>Plan-to-Essay Bridge 1</td>
+            <td class="time">~45 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.04</span> Sustain Quality (deepened)</td>
+            <td class="mm">All</td>
+          </tr>
+          <tr>
+            <td class="num">L12</td>
+            <td>Plan-to-Essay Bridge 2</td>
+            <td class="time">~45 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.04</span> Sustain Quality (deepened)</td>
+            <td class="mm">All</td>
+          </tr>
+          <tr>
+            <td class="num">L13</td>
+            <td>Recovery Drill</td>
+            <td class="time">~45 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.04</span> Sustain Quality (extreme constraint)</td>
+            <td class="mm">All</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- B2 Unit 4 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 4: Self-Diagnosis &amp; Revision (~1.5 hrs, 4 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L14</td>
+            <td>Expert Calibration</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.05</span> Self-Diagnose Against AP Rubric</td>
+            <td class="mm">&mdash;</td>
+          </tr>
+          <tr>
+            <td class="num">L15</td>
+            <td>Diagnose Your Own Work</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.05</span> Self-Diagnose (applied)</td>
+            <td class="mm">&mdash;</td>
+          </tr>
+          <tr>
+            <td class="num">L16</td>
+            <td>Surface vs. Substantive Revision</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">D.11.01</span> Spot Surface Editing vs. Substantive Revision</td>
+            <td class="mm">M1</td>
+          </tr>
+          <tr>
+            <td class="num">L17</td>
+            <td>Multi-Pass Revision Protocol</td>
+            <td class="time">~30 min</td>
+            <td class="kc-list"><span class="kc-code">C.HS.06</span> Substantive Multi-Pass Revision<br><span class="kc-code">D.11.02</span> Revise for Meaning Transformation</td>
+            <td class="mm">M6</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- B2 Unit 5 -->
+    <div class="unit-block">
+      <div class="unit-title">Unit 5: Voice Development (~1 hr, 3 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L18</td>
+            <td>Voice Analysis in Published Criticism</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">D.9.03</span> Develop Voice Through Syntactic Choices</td>
+            <td class="mm">M1, M6</td>
+          </tr>
+          <tr>
+            <td class="num">L19</td>
+            <td>Voice Experiment</td>
+            <td class="time">~25 min</td>
+            <td class="kc-list"><span class="kc-code">D.9.03</span> Voice (applied)</td>
+            <td class="mm">M1</td>
+          </tr>
+          <tr>
+            <td class="num">L20</td>
+            <td>Voice Under Pressure + Gate Prep</td>
+            <td class="time">~30 min</td>
+            <td class="kc-list"><span class="kc-code">D.9.03</span> Voice (under pressure)<br><span class="kc-code">C.HS.04</span> Sustain Quality (integrated)<br>All KCs reviewed</td>
+            <td class="mm">All (M1-M6)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- B2 Gate -->
+    <div class="unit-block">
+      <div class="unit-title">Gate: AP Practice Exam (~2.25 hrs, 2 lessons)</div>
+      <table class="lesson-table">
+        <thead><tr><th>#</th><th>Title</th><th>Time</th><th>Knowledge Components</th><th>Models</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">L21</td>
+            <td>AP Practice Exam -- Synthesis</td>
+            <td class="time">~65 min</td>
+            <td class="kc-list">All synthesis KCs assessed<br><span class="kc-code">C.HS.04</span> Sustain Quality (assessed)</td>
+            <td class="mm">All (M1-M6)</td>
+          </tr>
+          <tr>
+            <td class="num">L22</td>
+            <td>AP Practice Exam -- Rhetorical Analysis + Argument</td>
+            <td class="time">~90 min</td>
+            <td class="kc-list">All rhetorical analysis and argument KCs assessed<br><span class="kc-code">C.HS.04</span> Sustain Quality (assessed)<br>Pass = 5+ on at least 2 of 3 essays, no essay below 4</td>
+            <td class="mm">All (M1-M6)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Alpha School &bull; 2 Hour Learning &bull; 4 courses &bull; 82 lessons &bull; 6 mental models
+</div>
+
+</body>
+</html>

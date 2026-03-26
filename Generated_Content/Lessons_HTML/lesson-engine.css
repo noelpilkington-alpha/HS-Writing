@@ -208,5 +208,46 @@ body { padding-top: 3rem; }
 .checklist-item:has(.checklist-cb:checked) { color: #155724; }
 .checklist-item:has(.checklist-cb:checked) span { text-decoration: line-through; opacity: 0.7; }
 
+/* ===== GATEWAY PASS/FAIL ===== */
+.gateway-banner {
+  padding: 1rem 1.25rem; border-radius: 8px; margin-bottom: 1rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.95rem;
+  animation: fadeIn 0.3s ease;
+}
+.gateway-passed {
+  background: #d4edda; border: 2px solid #28a745; color: #155724;
+}
+.gateway-failed {
+  background: #fff3cd; border: 2px solid #ffc107; color: #856404;
+}
+.gateway-retry-hint {
+  font-size: 0.85rem; font-style: italic; display: block; margin-top: 0.5rem;
+}
+.gateway-retry-btn {
+  background: #ffc107 !important; color: #1a1a2e !important;
+  animation: pulse 1.5s ease infinite;
+}
+.gateway-retry-btn:hover:not(:disabled) { background: #e0a800 !important; }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,193,7,0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(255,193,7,0); }
+}
+.gateway-pass-btn {
+  background: #28a745 !important; color: #fff !important; cursor: default;
+}
+
+/* Locked nav link */
+.nav-locked {
+  opacity: 0.4 !important; cursor: not-allowed !important;
+  pointer-events: none; text-decoration: line-through;
+  position: relative;
+}
+.nav-locked::after {
+  content: ' (locked)'; font-size: 0.8em; color: #dc3545;
+}
+.nav-unlocked {
+  animation: fadeIn 0.3s ease;
+}
+
 /* ===== ANIMATIONS ===== */
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

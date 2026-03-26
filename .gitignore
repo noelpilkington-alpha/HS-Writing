@@ -1,5 +1,10 @@
 # Environment / secrets
 .env
+api/.env
+
+# Python
+__pycache__/
+*.pyc
 
 # Copyrighted books / PDFs
 *.pdf

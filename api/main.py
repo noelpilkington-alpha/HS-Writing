@@ -18,8 +18,9 @@ from contextlib import asynccontextmanager
 
 import anthropic
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Security, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.security import APIKeyHeader
 from pydantic import BaseModel
 
 from grading_prompts import SYSTEM_PROMPT, build_grading_prompt
@@ -39,7 +40,18 @@ from models import FRQType
 load_dotenv()
 
 CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-20250514")
+GRADING_API_KEY = os.getenv("GRADING_API_KEY")
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "*").split(",")
 client: anthropic.Anthropic | None = None
+
+# API key auth — skipped when GRADING_API_KEY is not set (local dev)
+api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
+
+async def verify_api_key(api_key: str | None = Security(api_key_header)):
+    if not GRADING_API_KEY:
+        return  # No key configured = local dev, skip auth
+    if api_key != GRADING_API_KEY:
+        raise HTTPException(status_code=403, detail="Invalid or missing API key")
 
 
 @asynccontextmanager
@@ -59,11 +71,12 @@ app = FastAPI(
     description="AI grading for free-response writing across A1, A2, B1L, B2 courses",
     version="2.0.0",
     lifespan=lifespan,
+    dependencies=[Depends(verify_api_key)],
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_methods=["POST", "GET"],
     allow_headers=["*"],
 )
@@ -81,7 +94,7 @@ class GradeRequest(BaseModel):
 
 
 class APGradeRequest(BaseModel):
-    frq_type: str  # "rhetorical_analysis" | "argument" | "synthesis"
+    frq_type: str | None = None  # "rhetorical_analysis" | "argument" | "synthesis" (derived from rubric if omitted)
     student_text: str
     passage_text: str | None = None
     passage_id: str | None = None
@@ -342,9 +355,8 @@ async def grade_ap_submission(req: APGradeRequest):
     c = _require_client()
 
     text = _validate_student_text(req.student_text)
-    frq_type = FRQType(req.frq_type)
 
-    # Resolve passage and prompt from rubric if rubric_id provided
+    # Resolve rubric first so we can derive frq_type if needed
     passage_text = req.passage_text
     prompt_text = req.prompt_text
     rubric = None
@@ -356,6 +368,19 @@ async def grade_ap_submission(req: APGradeRequest):
                 passage_text = _resolve_passage(rubric["passage_id"], None)
             if not prompt_text and rubric.get("prompt"):
                 prompt_text = rubric["prompt"]
+
+    # Derive frq_type from rubric task_type if not explicitly provided
+    TASK_TYPE_TO_FRQ = {
+        "rhetorical_analysis_essay": "rhetorical_analysis",
+        "argument_essay": "argument",
+        "synthesis_essay": "synthesis",
+    }
+    if req.frq_type:
+        frq_type = FRQType(req.frq_type)
+    elif rubric and rubric.get("task_type") in TASK_TYPE_TO_FRQ:
+        frq_type = FRQType(TASK_TYPE_TO_FRQ[rubric["task_type"]])
+    else:
+        raise HTTPException(status_code=400, detail="frq_type is required when rubric_id is not provided or rubric has no task_type")
 
     # Resolve passage from passage_id
     if not passage_text and req.passage_id:
@@ -378,7 +403,6 @@ async def grade_ap_submission(req: APGradeRequest):
             score_fn=score_ap_essay,
             scoring_model="ap_rubric",
             num_runs=3,
-            frq_type=frq_type.value,
             **score_kwargs,
         )
         result = consensus["final_result"]
@@ -412,13 +436,19 @@ async def grade_ap_submission(req: APGradeRequest):
 
 # ----- Gateway / Gate Check -----
 
-@app.post("/grade/gateway")
-async def grade_gateway(req: APGradeRequest):
-    """Grade a gateway or gate essay and return pass/fail determination."""
-    c = _require_client()
+class GatewayGradeRequest(BaseModel):
+    rubric_id: str
+    student_text: str
+    lesson_id: str | None = None
 
-    if not req.rubric_id:
-        raise HTTPException(status_code=400, detail="rubric_id is required for gateway grading")
+
+@app.post("/grade/gateway")
+async def grade_gateway(req: GatewayGradeRequest):
+    """Grade a gateway or gate essay and return pass/fail determination.
+
+    Auto-detects scoring model (criteria vs AP) from the rubric and routes accordingly.
+    """
+    c = _require_client()
 
     rubric = get_rubric(req.rubric_id)
     if not rubric:
@@ -427,29 +457,54 @@ async def grade_gateway(req: APGradeRequest):
     if not rubric.get("gateway") and not rubric.get("gate"):
         raise HTTPException(status_code=400, detail=f"Rubric '{req.rubric_id}' is not a gateway or gate rubric")
 
-    # Force consensus for all gateway/gate assessments
-    req.use_consensus = True
-    ap_result = await grade_ap_submission(req)
-
-    # Check threshold
     threshold = rubric.get("gateway_threshold") or rubric.get("gate_threshold", {})
-    passed = True
-    total = ap_result.total
+    scoring_model = rubric.get("scoring_model", "criteria")
 
-    if "min_score" in threshold:
-        passed = passed and total >= threshold["min_score"]
-    if "row_a" in threshold:
-        passed = passed and ap_result.row_a.get("score", 0) >= threshold["row_a"]
-    if "row_b" in threshold:
-        passed = passed and ap_result.row_b.get("score", 0) >= threshold["row_b"]
-    if "min_sources" in threshold:
-        # Source count check would need to be in the AP result; for now trust the Row B score
-        pass
+    ap_result = None
+    criteria_result = None
+    passed = True
+    total = 0
+
+    if scoring_model == "ap_rubric":
+        # Route to AP grading
+        ap_req = APGradeRequest(
+            rubric_id=req.rubric_id,
+            student_text=req.student_text,
+            lesson_id=req.lesson_id,
+            use_consensus=True,
+        )
+        ap_result = await grade_ap_submission(ap_req)
+        total = ap_result.total
+
+        if "min_score" in threshold:
+            passed = passed and total >= threshold["min_score"]
+        if "row_a" in threshold:
+            passed = passed and ap_result.row_a.get("score", 0) >= threshold["row_a"]
+        if "row_b" in threshold:
+            passed = passed and ap_result.row_b.get("score", 0) >= threshold["row_b"]
+
+        detail_feedback = ap_result.feedback
+        score_label = f"{total}/6"
+    else:
+        # Route to criteria grading
+        criteria_req = GradeRequest(
+            rubric_id=req.rubric_id,
+            student_text=req.student_text,
+            lesson_id=req.lesson_id,
+        )
+        criteria_result = await grade_submission(criteria_req)
+        total = criteria_result.criteria_met
+
+        if "min_score" in threshold:
+            passed = passed and total >= threshold["min_score"]
+
+        detail_feedback = criteria_result.overall_feedback or ""
+        score_label = f"{total}/{criteria_result.criteria_total} criteria"
 
     if passed:
-        feedback = f"Gateway passed with a score of {total}/6. {ap_result.feedback}"
+        feedback = f"Gateway PASSED ({score_label}). {detail_feedback}"
     else:
-        feedback = f"Gateway not yet passed (score: {total}/6, threshold: {threshold}). {ap_result.feedback}"
+        feedback = f"Gateway not yet passed ({score_label}, threshold: {threshold}). {detail_feedback}"
 
     return GatewayCheckResponse(
         passed=passed,
@@ -457,6 +512,7 @@ async def grade_gateway(req: APGradeRequest):
         score=total,
         threshold=threshold,
         ap_result=ap_result,
+        criteria_result=criteria_result,
         feedback=feedback,
     )
 

@@ -205,7 +205,6 @@ def grade_with_consensus(
     score_fn,
     scoring_model: str,
     num_runs: int = 3,
-    frq_type: str | None = None,
     **score_kwargs,
 ) -> dict:
     """Run multiple grading calls and resolve via consensus.
@@ -216,12 +215,12 @@ def grade_with_consensus(
         score_fn: Callable that takes (client, model, **score_kwargs) and returns a dict
         scoring_model: "ap_rubric" | "criteria" | etc.
         num_runs: Number of parallel grading runs
-        frq_type: FRQ type (for AP rubric judge calls)
-        **score_kwargs: Additional kwargs passed to score_fn
+        **score_kwargs: Additional kwargs passed to score_fn (frq_type included for AP)
 
     Returns:
         dict with consensus_method, final_result, runs, judge_reasoning
     """
+    frq_type = score_kwargs.get("frq_type")
     runs: list[dict] = []
     with ThreadPoolExecutor(max_workers=num_runs) as pool:
         futures = [
@@ -280,7 +279,8 @@ def grade_with_consensus(
     # All differ -- judge call
     time.sleep(0.3)
     if scoring_model == "ap_rubric":
-        judge_result, reasoning = _judge_call_ap(client, model, valid_runs, frq_type or "unknown")
+        frq_str = frq_type.value if hasattr(frq_type, 'value') else (frq_type or "unknown")
+        judge_result, reasoning = _judge_call_ap(client, model, valid_runs, frq_str)
     else:
         judge_result, reasoning = _judge_call_criteria(client, model, valid_runs)
 

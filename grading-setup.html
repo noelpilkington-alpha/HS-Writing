@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grading Engine Setup</title>
+<style>
+  :root {
+    --primary: #1a1a2e;
+    --accent: #e94560;
+    --bg: #f8f8f8;
+    --card-bg: #ffffff;
+    --text: #1a1a2e;
+    --text-light: #555;
+    --border: #e0e0e0;
+    --code-bg: #1a1a2e;
+    --code-text: #e8e8e8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+  .back-link { margin-bottom: 1.5rem; }
+  .back-link a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: bold;
+  }
+  .back-link a:hover { text-decoration: underline; }
+  h1 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.3rem;
+  }
+  .subtitle {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+  h2 {
+    font-size: 1.35rem;
+    color: var(--primary);
+    margin-top: 2.2rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid var(--accent);
+  }
+  h3 {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-top: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+  p { margin-bottom: 0.9rem; }
+  ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+  li { margin-bottom: 0.5rem; }
+  code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    background: #eee;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 0.8rem 0 1.2rem 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+  .step-num {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    width: 1.7rem;
+    height: 1.7rem;
+    line-height: 1.7rem;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.2rem;
+  }
+  .step-content { flex: 1; }
+  .step-content p { margin-bottom: 0.4rem; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.8rem 0 1.2rem 0;
+    font-size: 0.92rem;
+  }
+  th {
+    background: var(--primary);
+    color: #fff;
+    text-align: left;
+    padding: 0.6rem 0.8rem;
+    font-weight: bold;
+  }
+  td {
+    padding: 0.5rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #f4f4f7; }
+  td code {
+    font-size: 0.85em;
+    white-space: nowrap;
+  }
+
+  .callout {
+    background: #fff3f5;
+    border-left: 4px solid var(--accent);
+    padding: 0.8rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout strong { color: var(--accent); }
+
+  .troubleshoot-item {
+    margin-bottom: 1rem;
+  }
+  .troubleshoot-item strong {
+    display: block;
+    color: var(--primary);
+    margin-bottom: 0.2rem;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="back-link"><a href="index.html">&larr; Home</a></div>
+
+  <h1>Grading Engine Setup</h1>
+  <p class="subtitle">Run the AI grading API locally so interactive lessons can score student writing.</p>
+
+  <!-- ============ Section 1 ============ -->
+  <h2>1. What You Need</h2>
+  <ul>
+    <li><strong>Python 3.10+</strong> &mdash; download from <a href="https://www.python.org/downloads/" target="_blank">python.org</a> if you don't have it. Verify with <code>python --version</code>.</li>
+    <li><strong>An Anthropic API key</strong> &mdash; sign up at <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a> and create an API key. The grading engine uses Claude to evaluate student writing.</li>
+    <li><strong>pip</strong> &mdash; comes with Python. Verify with <code>pip --version</code>.</li>
+  </ul>
+
+  <!-- ============ Section 2 ============ -->
+  <h2>2. Download</h2>
+  <p>The grading engine lives in the <code>api/</code> folder of the course repository. You need all the files in that folder.</p>
+
+  <h3>Option A: Clone the repo (recommended)</h3>
+  <pre><code>git clone https://github.com/noelpilkington-alpha/HS-Writing.git</code></pre>
+  <p>This downloads the entire repository. The grading engine files are in the <code>api/</code> subdirectory.</p>
+
+  <h3>Option B: Download as ZIP</h3>
+  <p>Go to the <a href="https://github.com/noelpilkington-alpha/HS-Writing" target="_blank">GitHub repository page</a>, click the green <strong>Code</strong> button, then <strong>Download ZIP</strong>. Extract the ZIP and locate the <code>api/</code> folder inside.</p>
+
+  <!-- ============ Section 3 ============ -->
+  <h2>3. Setup Steps</h2>
+
+  <div class="step">
+    <span class="step-num">1</span>
+    <div class="step-content">
+      <p><strong>Clone or download the repository</strong> (see above).</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">2</span>
+    <div class="step-content">
+      <p><strong>Open a terminal and navigate to the api folder:</strong></p>
+      <pre><code>cd HS-Writing/api</code></pre>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">3</span>
+    <div class="step-content">
+      <p><strong>Install dependencies:</strong></p>
+      <pre><code>pip install -r requirements.txt</code></pre>
+      <p>This installs FastAPI, Uvicorn, the Anthropic SDK, python-dotenv, and Pydantic.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">4</span>
+    <div class="step-content">
+      <p><strong>Create a <code>.env</code> file</strong> inside the <code>api/</code> folder with your API key:</p>
+      <pre><code>ANTHROPIC_API_KEY=your-key-here</code></pre>
+      <div class="callout">
+        <strong>Important:</strong> Replace <code>your-key-here</code> with your actual Anthropic API key. Never commit this file to version control.
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">5</span>
+    <div class="step-content">
+      <p><strong>Start the server:</strong></p>
+      <pre><code>python -m uvicorn main:app --host 127.0.0.1 --port 8003</code></pre>
+      <p>You should see output like <code>Uvicorn running on http://127.0.0.1:8003</code>. Keep this terminal window open.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">6</span>
+    <div class="step-content">
+      <p><strong>Open lessons in your browser.</strong> The interactive HTML lessons will automatically connect to the local grading API at <code>http://127.0.0.1:8003</code>. Student writing submissions will be scored in real time.</p>
+    </div>
+  </div>
+
+  <!-- ============ Section 4 ============ -->
+  <h2>4. Files Included</h2>
+  <p>The <code>api/</code> folder contains the following files:</p>
+  <table>
+    <thead>
+      <tr><th>File</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>main.py</code></td>
+        <td>FastAPI application entry point. Defines API endpoints for grading student writing across all 4 courses (A1, A2, B1L, B2).</td>
+      </tr>
+      <tr>
+        <td><code>models.py</code></td>
+        <td>Pydantic data models for all 6 scoring models: Criteria Checklist (A), AP Rubric (B), Hybrid (C), Discrimination (D), Planning (E), and Revision (F).</td>
+      </tr>
+      <tr>
+        <td><code>consensus.py</code></td>
+        <td>3-run consensus engine. Runs each grading call 3 times and resolves disagreements via unanimous, majority, or judge-call logic.</td>
+      </tr>
+      <tr>
+        <td><code>grading_rubrics.py</code></td>
+        <td>Per-lesson, per-task grading rubrics for all courses. Defines criteria, common pitfalls, word-count minimums, and max scores.</td>
+      </tr>
+      <tr>
+        <td><code>course_rubrics.py</code></td>
+        <td>Course-specific rubrics for A2, B1L, and B2. Merged into the main rubric registry at import time.</td>
+      </tr>
+      <tr>
+        <td><code>grading_prompts.py</code></td>
+        <td>Prompt templates sent to Claude for grading. Implements feedback principles: specific, no cheerleading, wise feedback, one concrete next step.</td>
+      </tr>
+      <tr>
+        <td><code>ap_scorer.py</code></td>
+        <td>AP Rubric scorer (Model B). Scores essays on the official AP English Language rubric: Thesis (0&ndash;1), Evidence &amp; Commentary (0&ndash;4), Sophistication (0&ndash;1).</td>
+      </tr>
+      <tr>
+        <td><code>revision_scorer.py</code></td>
+        <td>Revision scorer (Model F). Compares original and revised text to evaluate whether changes are substantive or surface-level.</td>
+      </tr>
+      <tr>
+        <td><code>passage_bank.py</code></td>
+        <td>Stores source passages by ID (SP-001, SYN-07, etc.) for grading prompts that need the original text as context.</td>
+      </tr>
+      <tr>
+        <td><code>course_review_agent.py</code></td>
+        <td>Standalone review tool. Reads lesson HTML, sends it to Claude for pedagogical evaluation, and generates a structured report.</td>
+      </tr>
+      <tr>
+        <td><code>requirements.txt</code></td>
+        <td>Python dependencies: FastAPI, Uvicorn, Anthropic SDK, python-dotenv, Pydantic.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ============ Section 5 ============ -->
+  <h2>5. Troubleshooting</h2>
+
+  <div class="troubleshoot-item">
+    <strong>Port 8003 already in use</strong>
+    <p>Another process is using the port. Either stop that process or run on a different port:</p>
+    <pre><code>python -m uvicorn main:app --host 127.0.0.1 --port 8004</code></pre>
+    <p>If you use a different port, open your browser console and run:</p>
+    <pre><code>localStorage.setItem('gradingApiUrl', 'http://localhost:8004')</code></pre>
+    <p>This overrides the default for all lessons without editing any files. The setting persists across browser sessions.</p>
+  </div>
+
+  <div class="troubleshoot-item">
+    <strong>ANTHROPIC_API_KEY not set / 401 Unauthorized</strong>
+    <p>Make sure the <code>.env</code> file exists inside the <code>api/</code> folder and contains a valid key. Double-check there are no extra spaces or quotes around the key value.</p>
+  </div>
+
+  <div class="troubleshoot-item">
+    <strong>ModuleNotFoundError</strong>
+    <p>Dependencies are not installed. Run <code>pip install -r requirements.txt</code> again. If you have multiple Python versions, try <code>pip3</code> or <code>python -m pip install -r requirements.txt</code>.</p>
+  </div>
+
+  <div class="troubleshoot-item">
+    <strong>Lessons don't connect to the grading API</strong>
+    <p>Make sure the server is running and accessible at <code>http://127.0.0.1:8003</code>. If you opened the HTML files directly from disk (via <code>file://</code>), some browsers block local API requests. Try serving the lesson files through a local HTTP server:</p>
+    <pre><code>python -m http.server 8080</code></pre>
+    <p>Then open <code>http://127.0.0.1:8080</code> in your browser.</p>
+  </div>
+
+  <div class="troubleshoot-item">
+    <strong>Slow responses</strong>
+    <p>The consensus engine makes 3 parallel Claude API calls per grading request (and sometimes a 4th judge call). Response times depend on Claude API latency. Typical turnaround is 5&ndash;15 seconds per submission.</p>
+  </div>
+
+  <div class="troubleshoot-item">
+    <strong>Python not recognized / command not found</strong>
+    <p>Python may not be in your system PATH. On Windows, re-run the Python installer and check "Add Python to PATH." On macOS/Linux, try <code>python3</code> instead of <code>python</code>.</p>
+  </div>
+
+</div>
+</body>
+</html>

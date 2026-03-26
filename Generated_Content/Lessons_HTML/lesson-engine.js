@@ -8,7 +8,13 @@
   const SCORE_WRITE = 25;
   const SCORE_EXPLAIN = 10;
   const DEFAULT_MIN_WORDS = 30;
-  const GRADING_API_URL = localStorage.getItem('gradingApiUrl') || 'http://localhost:8000';
+  const GRADING_API_URL = localStorage.getItem('gradingApiUrl') || 'http://localhost:8003';
+  const GRADING_API_KEY = localStorage.getItem('gradingApiKey') || '';
+  function gradingHeaders() {
+    var h = { 'Content-Type': 'application/json' };
+    if (GRADING_API_KEY) h['X-API-Key'] = GRADING_API_KEY;
+    return h;
+  }
 
   // ===== STATE =====
   let totalScore = 0;
@@ -112,6 +118,9 @@
     containers.forEach(function(item) {
       var details = item.querySelector('details');
       if (!details) return;
+      // Hide answer immediately
+      details.style.display = 'none';
+      details.removeAttribute('open');
       var txt = details.textContent;
 
       // Detect classification type
@@ -126,7 +135,7 @@
       if (!cats) return;
 
       // Parse correct answer
-      var cm = txt.match(/Classification:\s*([\w\s]+?)(?:\s*[\(<\n])/);
+      var cm = txt.match(/Classification:\s*(Expository|Argumentative|Analysis|Summary)(?:\s|\b)/i);
       if (!cm) return;
       var correctCat = cm[1].trim();
 
@@ -293,6 +302,21 @@
       });
 
       submitBtn.addEventListener('click', function() {
+        var text = ta.value.trim().toLowerCase();
+        var hasReasoning = /because|since|therefore|this (is|means|shows)|the topic sentence|it (states?|makes?|argues?|claims?)/.test(text);
+        if (!hasReasoning) {
+          ta.style.borderColor = '#dc3545';
+          var hint = wrapper.querySelector('.stage2-hint');
+          if (!hint) {
+            hint = document.createElement('div');
+            hint.className = 'stage2-hint';
+            hint.style.cssText = 'color:#dc3545;font-size:0.85rem;margin-top:0.25rem;';
+            hint.textContent = 'Your explanation should say WHY — use "because," "since," or describe what the topic sentence does.';
+            submitBtn.before(hint);
+          }
+          return;
+        }
+        ta.style.borderColor = '';
         submitBtn.textContent = 'Submitted ✓';
         submitBtn.disabled = true;
         submitBtn.classList.add('submitted');
@@ -336,19 +360,30 @@
     fbContainer.style.display = 'none';
     inputDiv.appendChild(fbContainer);
 
+    var isGateway = findIsGateway(container);
+    var scoreAwarded = false;
+
+    // Lock next lesson nav on page load if this is a gateway lesson
+    if (isGateway) lockNextLesson();
+
     btn.addEventListener('click', function() {
       btn.textContent = 'Submitted ✓';
       btn.disabled = true;
       btn.classList.add('submitted');
       ta.readOnly = true;
-      addScore(SCORE_WRITE);
+      if (!scoreAwarded) { addScore(SCORE_WRITE); scoreAwarded = true; }
       container.dataset.done = '1';
       if (phaseEl) recheckPhaseBtn(phaseEl);
 
       // Trigger AI grading if rubric ID is available
       var rubricId = findRubricId(container);
       if (rubricId) {
-        gradeSubmission(ta.value, rubricId, fbContainer, btn);
+        if (isGateway) {
+          gradeGatewaySubmission(ta.value, rubricId, fbContainer, btn, ta);
+        } else {
+          var scoringModel = findScoringModel(container);
+          gradeSubmission(ta.value, rubricId, fbContainer, btn, scoringModel);
+        }
       }
     });
   }
@@ -568,7 +603,7 @@
   }
 
   // ===== AI GRADING =====
-  function gradeSubmission(studentText, rubricId, feedbackContainer, submitBtn) {
+  function gradeSubmission(studentText, rubricId, feedbackContainer, submitBtn, scoringModel) {
     // Show loading state
     feedbackContainer.innerHTML =
       '<div class="grading-loading">' +
@@ -576,21 +611,27 @@
       '</div>';
     feedbackContainer.style.display = '';
 
-    fetch(GRADING_API_URL + '/grade', {
+    var isAP = scoringModel === 'ap_rubric';
+    var endpoint = isAP ? '/grade/ap' : '/grade';
+    var payload = isAP
+      ? { rubric_id: rubricId, student_text: studentText, lesson_id: document.title || '' }
+      : { rubric_id: rubricId, student_text: studentText, lesson_id: document.title || '' };
+
+    fetch(GRADING_API_URL + endpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        rubric_id: rubricId,
-        student_text: studentText,
-        lesson_id: document.title || ''
-      })
+      headers: gradingHeaders(),
+      body: JSON.stringify(payload)
     })
     .then(function(res) {
       if (!res.ok) return res.json().then(function(e) { throw new Error(e.detail || 'Grading failed'); });
       return res.json();
     })
     .then(function(data) {
-      renderFeedback(data, feedbackContainer);
+      if (isAP || data.scoring_model === 'ap_rubric') {
+        renderAPFeedback(data, feedbackContainer);
+      } else {
+        renderFeedback(data, feedbackContainer);
+      }
     })
     .catch(function(err) {
       feedbackContainer.innerHTML =
@@ -645,6 +686,66 @@
     container.innerHTML = html;
   }
 
+  function renderAPFeedback(data, container) {
+    var html = '<div class="grading-feedback">';
+    html += '<h4 class="grading-title">AP Rubric Feedback</h4>';
+
+    // Row A: Thesis (0-1)
+    var rowA = data.row_a || {};
+    var aClass = rowA.score > 0 ? 'grading-met' : 'grading-not-met';
+    var aIcon = rowA.score > 0 ? '&#10003;' : '&#10007;';
+    html += '<div class="grading-criterion ' + aClass + '">' +
+      '<span class="grading-icon">' + aIcon + '</span> ' +
+      '<strong>Row A — Thesis (' + (rowA.score || 0) + '/1):</strong> ' +
+      (rowA.feedback || '') +
+      '</div>';
+
+    // Row B: Evidence & Commentary (0-4)
+    var rowB = data.row_b || {};
+    var bClass = (rowB.score || 0) >= 3 ? 'grading-met' : 'grading-not-met';
+    html += '<div class="grading-criterion ' + bClass + '">' +
+      '<strong>Row B — Evidence &amp; Commentary (' + (rowB.score || 0) + '/4):</strong> ' +
+      (rowB.feedback || '') +
+      '</div>';
+
+    // Row C: Sophistication (0-1)
+    var rowC = data.row_c || {};
+    var cClass = rowC.score > 0 ? 'grading-met' : 'grading-not-met';
+    var cIcon = rowC.score > 0 ? '&#10003;' : '&#10007;';
+    html += '<div class="grading-criterion ' + cClass + '">' +
+      '<span class="grading-icon">' + cIcon + '</span> ' +
+      '<strong>Row C — Sophistication (' + (rowC.score || 0) + '/1):</strong> ' +
+      (rowC.feedback || '') +
+      '</div>';
+
+    // Total score
+    html += '<div class="grading-score">' +
+      'Total: ' + (data.total || 0) + ' / 6' +
+      '</div>';
+
+    // Weakest row callout
+    if (data.weakest_row) {
+      html += '<div class="grading-criterion grading-not-met" style="margin-top:0.5rem;">' +
+        '<strong>Focus area:</strong> ' + data.weakest_row +
+        '</div>';
+    }
+
+    // Overall feedback
+    if (data.feedback) {
+      html += '<div class="grading-overall">' + data.feedback + '</div>';
+    }
+
+    // Next step
+    if (data.next_step) {
+      html += '<div class="grading-next-step">' +
+        '<strong>Your next step:</strong> ' + data.next_step +
+        '</div>';
+    }
+
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
   // Look up rubric ID from HTML data attributes or infer from lesson + task context
   function findRubricId(taskEl) {
     // Check for explicit data-rubric attribute
@@ -655,6 +756,167 @@
     if (phase && phase.dataset.rubric) return phase.dataset.rubric;
 
     return null;
+  }
+
+  // Look up scoring model from HTML data attributes
+  function findScoringModel(taskEl) {
+    if (taskEl.dataset.scoringModel) return taskEl.dataset.scoringModel;
+
+    var phase = taskEl.closest('.phase-card');
+    if (phase && phase.dataset.scoringModel) return phase.dataset.scoringModel;
+
+    return 'criteria';
+  }
+
+  // Look up gateway flag from HTML data attributes
+  function findIsGateway(taskEl) {
+    if (taskEl.dataset.gateway === 'true') return true;
+    var phase = taskEl.closest('.phase-card');
+    if (phase && phase.dataset.gateway === 'true') return true;
+    return false;
+  }
+
+  // ===== GATEWAY GRADING =====
+  function gradeGatewaySubmission(studentText, rubricId, feedbackContainer, submitBtn, textArea) {
+    feedbackContainer.innerHTML =
+      '<div class="grading-loading">' +
+        '<span class="grading-spinner"></span> Grading gateway submission (this may take a moment)...' +
+      '</div>';
+    feedbackContainer.style.display = '';
+
+    fetch(GRADING_API_URL + '/grade/gateway', {
+      method: 'POST',
+      headers: gradingHeaders(),
+      body: JSON.stringify({
+        rubric_id: rubricId,
+        student_text: studentText,
+        lesson_id: document.title || ''
+      })
+    })
+    .then(function(res) {
+      if (!res.ok) return res.json().then(function(e) { throw new Error(e.detail || 'Grading failed'); });
+      return res.json();
+    })
+    .then(function(data) {
+      renderGatewayFeedback(data, feedbackContainer, submitBtn, textArea);
+    })
+    .catch(function(err) {
+      feedbackContainer.innerHTML =
+        '<div class="grading-error">' +
+          '<strong>Grading unavailable:</strong> ' + err.message +
+          '<br><small>Your writing has been submitted. Feedback will be available when the grading server is running.</small>' +
+        '</div>';
+    });
+  }
+
+  function renderGatewayFeedback(data, container, submitBtn, textArea) {
+    var passed = data.passed;
+    var html = '';
+
+    // Pass/fail banner
+    if (passed) {
+      html += '<div class="gateway-banner gateway-passed">' +
+        '<strong>GATEWAY PASSED</strong> — Score: ' + data.score +
+        (data.threshold ? ' (threshold: ' + JSON.stringify(data.threshold) + ')' : '') +
+        '</div>';
+    } else {
+      html += '<div class="gateway-banner gateway-failed">' +
+        '<strong>NOT YET PASSED</strong> — Score: ' + data.score +
+        (data.threshold ? ' (threshold: ' + JSON.stringify(data.threshold) + ')' : '') +
+        '<br><span class="gateway-retry-hint">Review the feedback below, revise your essay, and resubmit.</span>' +
+        '</div>';
+    }
+
+    // Render detailed feedback (AP or criteria)
+    if (data.ap_result) {
+      var ap = data.ap_result;
+      html += '<div class="grading-feedback">';
+      html += '<h4 class="grading-title">AP Rubric Feedback</h4>';
+      var rowA = ap.row_a || {};
+      var aClass = rowA.score > 0 ? 'grading-met' : 'grading-not-met';
+      html += '<div class="grading-criterion ' + aClass + '">' +
+        '<strong>Row A — Thesis (' + (rowA.score || 0) + '/1):</strong> ' + (rowA.reasoning || rowA.feedback || '') + '</div>';
+      var rowB = ap.row_b || {};
+      var bClass = (rowB.score || 0) >= 3 ? 'grading-met' : 'grading-not-met';
+      html += '<div class="grading-criterion ' + bClass + '">' +
+        '<strong>Row B — Evidence &amp; Commentary (' + (rowB.score || 0) + '/4):</strong> ' + (rowB.reasoning || rowB.feedback || '') + '</div>';
+      var rowC = ap.row_c || {};
+      var cClass = rowC.score > 0 ? 'grading-met' : 'grading-not-met';
+      html += '<div class="grading-criterion ' + cClass + '">' +
+        '<strong>Row C — Sophistication (' + (rowC.score || 0) + '/1):</strong> ' + (rowC.reasoning || rowC.feedback || '') + '</div>';
+      html += '<div class="grading-score">Total: ' + (ap.total || 0) + ' / 6</div>';
+      if (ap.next_step) {
+        html += '<div class="grading-next-step"><strong>Your next step:</strong> ' + ap.next_step + '</div>';
+      }
+      html += '</div>';
+    } else if (data.criteria_result) {
+      var cr = data.criteria_result;
+      html += '<div class="grading-feedback">';
+      html += '<h4 class="grading-title">Feedback</h4>';
+      (cr.criteria_results || []).forEach(function(c) {
+        var cls = c.met ? 'grading-met' : 'grading-not-met';
+        var icon = c.met ? '&#10003;' : '&#10007;';
+        html += '<div class="grading-criterion ' + cls + '"><span class="grading-icon">' + icon + '</span> ' +
+          '<strong>' + (c.id || '').replace(/_/g, ' ') + ':</strong> ' + c.feedback + '</div>';
+      });
+      html += '<div class="grading-score">' + cr.criteria_met + ' / ' + cr.criteria_total + ' criteria met</div>';
+      if (cr.next_step) {
+        html += '<div class="grading-next-step"><strong>Your next step:</strong> ' + cr.next_step + '</div>';
+      }
+      html += '</div>';
+    } else if (data.feedback) {
+      html += '<div class="grading-overall">' + data.feedback + '</div>';
+    }
+
+    container.innerHTML = html;
+
+    // Handle pass/fail consequences
+    if (passed) {
+      unlockNextLesson();
+      submitBtn.textContent = 'Passed ✓';
+      submitBtn.classList.remove('submitted');
+      submitBtn.classList.add('gateway-pass-btn');
+    } else {
+      // Enable retry
+      enableRetry(submitBtn, textArea);
+    }
+  }
+
+  function enableRetry(submitBtn, textArea) {
+    textArea.readOnly = false;
+    textArea.focus();
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Revise and Resubmit';
+    submitBtn.classList.remove('submitted');
+    submitBtn.classList.add('gateway-retry-btn');
+  }
+
+  function lockNextLesson() {
+    var nav = document.querySelector('.lesson-nav, nav');
+    if (!nav) return;
+    var links = nav.querySelectorAll('a');
+    links.forEach(function(a) {
+      var text = a.textContent || '';
+      // Lock only "next" links (contain → or are on the right side)
+      if (text.indexOf('→') !== -1 || text.indexOf('→') !== -1 || (!text.match(/←/) && a === links[links.length - 1])) {
+        a.dataset.originalHref = a.href;
+        a.removeAttribute('href');
+        a.classList.add('nav-locked');
+        a.title = 'Pass the gateway assessment to unlock';
+      }
+    });
+  }
+
+  function unlockNextLesson() {
+    var locked = document.querySelectorAll('.nav-locked');
+    locked.forEach(function(a) {
+      if (a.dataset.originalHref) {
+        a.href = a.dataset.originalHref;
+      }
+      a.classList.remove('nav-locked');
+      a.classList.add('nav-unlocked');
+      a.title = '';
+    });
   }
 
   // ===== HIDE ANSWERS (belt-and-suspenders with CSS) =====
