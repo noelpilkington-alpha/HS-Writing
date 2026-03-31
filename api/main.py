@@ -169,6 +169,18 @@ class GatewayCheckResponse(BaseModel):
     feedback: str
 
 
+class TimebackScoreRequest(BaseModel):
+    """Timeback QTI process-response format."""
+    identifier: str
+    response: str | list[str]
+
+
+class TimebackScoreResponse(BaseModel):
+    """Timeback QTI expected response format."""
+    score: float
+    feedback: dict
+
+
 # ===== Helper Functions =====
 
 def _require_client():
@@ -515,6 +527,96 @@ async def grade_gateway(req: GatewayGradeRequest):
         criteria_result=criteria_result,
         feedback=feedback,
     )
+
+
+# ----- Timeback External Grader Endpoint -----
+
+# Mapping from QTI item identifier patterns to rubric IDs.
+# When Timeback calls process-response, it sends the item identifier.
+# We use this to look up which rubric to grade against.
+TIMEBACK_ITEM_RUBRIC_MAP: dict[str, str] = {}
+
+
+@app.post("/timeback/score")
+async def timeback_score(req: TimebackScoreRequest):
+    """External grader endpoint for Timeback QTI integration.
+
+    Timeback calls this when a student submits an FRQ response.
+    Receives: {"identifier": "<qti-item-id>", "response": "<student text>"}
+    Returns: {"score": 0.0-1.0, "feedback": {"identifier": "...", "value": "..."}}
+    """
+    c = _require_client()
+
+    student_text = req.response if isinstance(req.response, str) else " ".join(req.response)
+    student_text = student_text.strip()
+    if not student_text:
+        return {"score": 0.0, "feedback": {"identifier": "incomplete", "value": "No response provided."}}
+
+    # Look up rubric from the item identifier
+    rubric_id = TIMEBACK_ITEM_RUBRIC_MAP.get(req.identifier)
+    if not rubric_id:
+        # Try to extract rubric_id from identifier pattern (e.g., "s4-L01-expository-abc123")
+        # Fallback: use a default rubric for testing
+        rubric_id = "L01_independent_expository"
+
+    rubric = get_rubric(rubric_id)
+    if not rubric:
+        return {"score": 0.0, "feedback": {"identifier": "error", "value": f"Unknown rubric: {rubric_id}"}}
+
+    # Check scoring model and grade accordingly
+    scoring_model = rubric.get("scoring_model", "criteria")
+
+    if scoring_model == "ap_rubric":
+        # AP scoring
+        from ap_scorer import score_ap_essay
+        from consensus import grade_with_consensus
+        try:
+            result = await grade_with_consensus(c, student_text, rubric, CLAUDE_MODEL)
+            total = result.get("total", 0)
+            max_score = 6  # AP max
+            score = min(total / max_score, 1.0)
+            feedback_text = result.get("feedback", "")
+            passed = total >= 4
+        except Exception as e:
+            return {"score": 0.0, "feedback": {"identifier": "error", "value": str(e)}}
+    else:
+        # Criteria scoring
+        word_count = len(student_text.split())
+        system_prompt = _get_course_system_prompt(rubric.get("course"))
+        user_prompt = build_grading_prompt(student_text, rubric)
+
+        try:
+            message = c.messages.create(
+                model=CLAUDE_MODEL,
+                max_tokens=1024,
+                system=system_prompt,
+                messages=[{"role": "user", "content": user_prompt}],
+            )
+        except Exception as e:
+            return {"score": 0.0, "feedback": {"identifier": "error", "value": str(e)}}
+
+        result = _parse_response_json(message.content[0].text)
+        criteria_met = result.get("criteria_met", 0)
+        criteria_total = result.get("criteria_total", len(rubric["criteria"]))
+        score = criteria_met / criteria_total if criteria_total > 0 else 0.0
+        passed = criteria_met == criteria_total
+
+        # Build feedback string from criteria results
+        feedback_parts = []
+        for cr in result.get("criteria_results", []):
+            icon = "PASS" if cr.get("met") else "NEEDS WORK"
+            feedback_parts.append(f"[{icon}] {cr.get('id', '')}: {cr.get('feedback', '')}")
+        if result.get("overall_feedback"):
+            feedback_parts.append(result["overall_feedback"])
+        feedback_text = "\n".join(feedback_parts)
+
+    return {
+        "score": round(score, 2),
+        "feedback": {
+            "identifier": "correct" if passed else "incorrect",
+            "value": feedback_text,
+        },
+    }
 
 
 # ----- Revision Grading (Model F) -----
