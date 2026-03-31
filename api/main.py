@@ -539,6 +539,14 @@ async def grade_gateway(req: GatewayGradeRequest):
 TIMEBACK_ITEM_RUBRIC_MAP: dict[str, str] = {}
 
 
+@app.post("/timeback/echo")
+async def timeback_echo(request: Request):
+    """Debug endpoint: logs and echoes whatever Timeback sends, returns a hardcoded score."""
+    body = await request.json()
+    print(f"TIMEBACK ECHO received: {json.dumps(body)[:500]}")
+    return {"score": 0.75, "feedback": {"identifier": "partial", "value": "Echo test successful."}}
+
+
 @app.post("/timeback/score", dependencies=[])  # Override global API key auth — Timeback calls this directly
 async def timeback_score(req: TimebackScoreRequest):
     """External grader endpoint for Timeback QTI integration.
