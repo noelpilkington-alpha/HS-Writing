@@ -537,7 +537,7 @@ async def grade_gateway(req: GatewayGradeRequest):
 TIMEBACK_ITEM_RUBRIC_MAP: dict[str, str] = {}
 
 
-@app.post("/timeback/score")
+@app.post("/timeback/score", dependencies=[])  # Override global API key auth — Timeback calls this directly
 async def timeback_score(req: TimebackScoreRequest):
     """External grader endpoint for Timeback QTI integration.
 
