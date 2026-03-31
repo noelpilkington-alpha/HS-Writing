@@ -18,7 +18,7 @@ from contextlib import asynccontextmanager
 
 import anthropic
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException, Security, Depends
+from fastapi import FastAPI, HTTPException, Security, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import APIKeyHeader
 from pydantic import BaseModel
@@ -47,7 +47,9 @@ client: anthropic.Anthropic | None = None
 # API key auth — skipped when GRADING_API_KEY is not set (local dev)
 api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
 
-async def verify_api_key(api_key: str | None = Security(api_key_header)):
+async def verify_api_key(request: Request, api_key: str | None = Security(api_key_header)):
+    if request.url.path.startswith("/timeback/"):
+        return  # Timeback calls this directly without our API key
     if not GRADING_API_KEY:
         return  # No key configured = local dev, skip auth
     if api_key != GRADING_API_KEY:
