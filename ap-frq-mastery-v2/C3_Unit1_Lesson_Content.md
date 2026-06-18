@@ -22,6 +22,16 @@
 
 **Cross-unit retrieval (Amendment 2):** flagged for later units (a U1 expository rep re-surfaces in U3/U5); within U1, 1.5 is the cumulative rep.
 
+**Voice contract (Rubric B-D7 — Yeager "wise feedback," house brainlift "Complete"):** every coach/feedback string follows one shape — **(1) name what's right first** (specific, not "good job"), **(2) name the exact move that's missing using the shared FACT/lever vocabulary** (never bare "wrong" / "add more detail"), **(3) the high-standards-plus-belief frame** ("you can make this stronger"). Forbidden: "This is wrong," "incorrect," "add more detail" (vague). Required: the named move + a concrete next step. The strings below are written to this contract; a build must not paraphrase them looser.
+
+| Lesson | On-the-right-track (✓) | Coach (needs the move) |
+|---|---|---|
+| **1.1** | "That's the Clarify move — you didn't just repeat the fact, you said *how* it supports the point. That's the single thing that moves a response from a 2 to a 3." | "You've got the fact down — now add the Clarify. Right now it *restates* what the text says; say *how* it supports your point (try 'which shows…' or 'this means…'). You're one move away." |
+| **1.2** | "You found the Focus — that's the controlling idea the whole passage is built around, in one sentence. That's exactly what you'll write toward." | "That's a true detail, but it's narrower than the Focus — it's one fact, not what the passage is mainly explaining. Zoom out: in one sentence, what's the big idea? You're close." |
+| **1.3** | "Strong cite-and-explain: you named a specific detail AND clarified how it supports your focus — no dropped quote. That's the paragraph engine working." | "You cited a real detail from the passage — good. But it's a *dropped quote* right now: it's sitting there without the Clarify. Add one sentence saying how it supports your focus, and it's a 3." |
+| **1.4** | "That's a controlling idea, not just a topic — it names what the passage explains *and* the specific point you'll develop. A reader knows exactly where you're headed." | "That names the topic but not your point yet — it's a label, not a controlling idea. Sharpen it: what specifically does the passage show about this? You've done the thinking; now make the sentence say it." |
+| **1.5 (gate, diagnostic only — no revision)** | "You assembled all four FACT moves cold, on a passage you'd never seen — Focus, Add details, Clarify, Tie up. That's the bridge: you carried the strategy in, no scaffold." | "Here's what was strong and what to carry into your next attempt: your [F/A] held, but your [C/T] [specific gap]. Next time, watch for [the named move]. You've got the pieces — this is about putting them together under your own steam." |
+
 ---
 
 ## Lesson 1.1 — Reason, not restate · ★ frontier · Heavy
@@ -134,5 +144,5 @@
 
 ## Open dependencies
 - **Passages:** fill the `[PASSAGE: …]` slots from `C4_U1_Expository_Passages.md` (verified, in progress). Confirm each against Rubric B-PASS (P1-P7) before it ships.
-- **D7 voice pass:** coach/feedback strings across all 5 lessons get one Yeager-voice + shared-vocabulary pass before build.
+- **D7 voice pass — DONE.** The unit-level Voice contract + per-lesson coach/feedback strings (✓ and coach) are written to the Yeager "wise feedback" shape; the build instantiates those strings verbatim. (Rubric B-D7 now PASS across 1.1–1.5.)
 - **Argument material relocation:** the argue-vs-persuade primer + UNC skeptic test + defensible-position content from the old L1 prototype → Unit 3 (C3 U3, not authored here).
