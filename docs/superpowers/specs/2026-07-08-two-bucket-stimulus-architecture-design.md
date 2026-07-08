@@ -22,8 +22,10 @@ Two problems with the current stimulus layer, both confirmed by inspection of th
   and reuse/rights. This is a genuine TWO-CONTRACT design, not one contract with a tag.
 - **Two buckets:** `lesson` stimuli and `test` stimuli, as first-class separated pools.
 - **Inexhaustible = on-demand generation.** Build a seed floor now; the machine mints QC-passed stimuli forever
-  whenever a student's unseen pool runs low. Consequence: **QC gates become the ONLY quality guarantee** (no
-  human in the loop at mint time). The gates are the product.
+  whenever a student's unseen pool runs low. Consequence: **QC gates are the quality guarantee at MINT time** (no
+  human reviews each minted stimulus). Humans stay in the loop at the STANDARD-SETTING layer instead: the
+  calibration anchor set defines "fair test difficulty" and the combinability-judge threshold is human-calibrated.
+  So humans define the standard once; the machine mints against it forever. The gates are the product.
 - **Contamination boundary = hard topic + text partition.** A student is never tested on a passage OR a topic
   they saw in lessons. Enforced per-student at serve time using Platform3 Events (topics-seen).
 - **Multi-source = compose from tagged singles** (both opposing and complementary). The ATOM is a single tagged
@@ -62,7 +64,7 @@ fact-sources anti-fabrication, Lexile band membership, content-appropriateness s
 | Lexile | band with tolerance (+/-1 sub-band ok; a slightly harder teaching text is fine with scaffolding) | **hard lock** to the exact on-grade band, no tolerance (fairness: test difficulty must not vary) |
 | Annotation / scaffold | **allowed** (teaching annotations, glossed terms, labeled before/after) | **forbidden** (clean passage; nothing that cues an answer) |
 | Source-config rule | full range `single | complementary | opposing`, chosen by the lesson type's staging ladder (KH single->complementary->opposing); a single-source stimulus is VALID even for a mode that tests as a pair | source-config must MATCH the target form's demand (opposing-pair for pick-a-side, complementary-pair for synthesis); gate enforces the match |
-| Equivalent-form calibration | n/a | **NEW test-only gate**: a test stimulus must be calibrated to its pool — same mode, same passage-count, Lexile within a tight window of its pool siblings, comparable length + task demand, so every retake form is genuinely equivalent (not "got an easier one") |
+| Equivalent-form calibration | n/a | **NEW test-only gate, calibrated against a HUMAN-SCORED ANCHOR SET** (not sibling-pool statistics): per {grade, mode, form} a human scores a small reference set of stimuli that DEFINE on-grade difficulty + task demand; a candidate test stimulus passes only if it falls inside the anchor-defined band (Lexile window, passage-count, task-demand profile). The anchors are the ground truth for "equivalent," so retake forms match a human standard, not just each other |
 | Topic reservation | must be a `lesson_pool` or `shared_ok` topic | must be a `test_pool` topic (never a lesson topic) |
 
 Note: source-configuration vocabulary (single/complementary/opposing) is SHARED. The profiles differ only in
@@ -93,7 +95,18 @@ Composition is never free-floating passage selection. A pair is only valid if it
 generator is forced to satisfy, same discipline as every other gate. Scale example: 20 pro + 20 con singles under
 one proposition = up to 400 valid opposing pairs from 40 authored passages.
 
-### E. On-demand generation loop (QC is the only guarantee)
+### D2. The calibration anchor set (human ground truth for "equivalent form")
+Test-form equivalence is anchored to HUMAN judgment, not sibling-pool statistics (a pool can drift as a whole).
+Per {grade, mode, form}, a human scores a small **anchor set** (~5-8 reference stimuli) that DEFINE on-grade
+difficulty and task demand: the anchors fix the acceptable Lexile window, passage-count, and a task-demand
+profile (e.g. how much inference, how many distinct claims, source density). We reuse the real published
+anchor papers already in the bank (`AnchorSets/` — MA/NJ hand-scored forms) as the seed anchors where they
+exist. The equivalent-form gate then admits a candidate test stimulus only if it falls inside the anchor-defined
+band. Anchors are versioned; re-calibrating is a deliberate human act, logged, not a silent drift. This keeps a
+human in the loop at the STANDARD-SETTING layer even though minting itself is unattended: humans define "fair,"
+the machine mints against that definition forever.
+
+### E. On-demand generation loop (gates guarantee mint-time quality; anchors set the standard)
 1. **Signal** (Platform3 Events): a student's unseen pool for {grade, mode, bucket, proposition/theme} is low,
    filtered against topics-seen.
 2. **Mint**: author a fresh single against the profile, tagged to the registries.
@@ -116,7 +129,8 @@ one proposition = up to 400 valid opposing pairs from 40 authored passages.
   gate (test), the annotation-allowance (lesson), and the topic-reservation gate. `gate_two_sidedness` is
   replaced by the composition gate operating on tagged singles.
 - New modules (later passes): `topic_registry.py`, `proposition_registry.py`, `theme_registry.py`,
-  `composition.py` (the composer + gate), and the on-demand `mint_loop` (wired to Events at push time).
+  `composition.py` (the composer + gate), `calibration_anchors.py` (the human-scored anchor set + the
+  equivalent-form gate that reads it), and the on-demand `mint_loop` (wired to Events at push time).
 - Existing 16 G10 stimuli: re-expressed as tagged singles (the 6 opposing pairs decompose into 12 stance-tagged
   singles under 6 propositions; the 6 explanatory singles + 4 analysis texts carry over directly). Migration is
   mechanical; QC must still pass. Note: this yields ~22 singles, a fraction of the ~200-250 seed-single floor
@@ -129,11 +143,50 @@ one proposition = up to 400 valid opposing pairs from 40 authored passages.
 - The grader / rc.* scoring (already deferred by decision; downstream of push format).
 - G9/G11/G12 generation (grade-agnostic design; G10 seeds first).
 
-## Open questions / risks to monitor
-- **Composed complementary weave quality** — the connection_point gate is a structural proxy for semantic
-  coherence; sample-audit composed complementary pairs and tune the gate if weave is thin.
-- **Equivalent-form calibration tightness** — the Lexile/length/demand window needs empirical tuning against real
-  retake fairness; start tight, loosen only with evidence.
-- **Topic exhaustion at the domain level** — hard topic partition means lesson and test compete for a finite topic
-  space; the topic registry must be sized so test_pool never starves. Monitor domain coverage as grades fan out.
-- **On-demand cost** — every mint is an LLM call + gate run; batch-mint during low-load windows where possible.
+## Risks + proposed solutions
+
+### 1. Composed complementary-pair weave quality
+**Risk:** the `connection_point` gate is a STRUCTURAL proxy (same theme + distinct facets + a declared shared
+thread). Two passages can pass it yet not genuinely engage each other, so a composed complementary pair can weave
+more loosely than a hand-crafted one. This is the one place composition is weaker than pre-authoring.
+**Proposed solution (three layers, cheapest-first):**
+1. **Combinability judge inside the composition gate.** After the structural checks pass, one adversarial LLM
+   pass reads only the two passages (blind to their tags) and must (a) state the single idea that joins them and
+   (b) rate whether a student could write ONE argument across both vs. two summaries side by side. Fail = the pair
+   is not admitted; the composer tries the next candidate. This turns the semantic question into a gate, not a hope.
+2. **Facet-distance rule.** Within a theme, tag each facet with a coarse "distance" so the composer prefers pairs
+   that are complementary-but-not-redundant (different facet) and complementary-but-not-disjoint (same theme). Reject
+   facet pairs that are too far apart to share a real thread.
+3. **Batch audit as a second net.** Sample N composed complementary pairs per generation window; a human rates
+   weave; if the pass-rate of the judge diverges from human rating, retune the judge prompt/threshold. The judge is
+   calibrated against humans, same philosophy as the anchor set.
+**Net:** opposing-pairs stay purely mechanical (pick-a-side needs no point-by-point rebuttal); complementary-pairs
+get an LLM combinability gate + a facet-distance rule + human-audited calibration of the judge.
+
+### 2. Anchor-band tightness (the calibration gate)
+**Risk (reframed, since anchors now define "equivalent"):** if the anchor-defined band is too tight, valid stimuli
+get rejected and minting churns; too loose, retake forms drift in difficulty and fairness erodes.
+**Proposed solution:** the band is expressed as an anchor-RELATIVE tolerance (candidate must sit within the min-max
+of the human-scored anchors on each axis: Lexile, passage-count, task-demand profile), not an absolute guess. Start
+at exactly the anchor min-max (tightest defensible). Widening the tolerance is a deliberate, LOGGED human action
+tied to evidence (observed over-rejection or a real fairness complaint), never a silent constant. Anchors are
+versioned, so a re-calibration is auditable. This removes "guess the window" entirely: humans set it by scoring.
+
+### 3. Topic exhaustion at the domain level
+**Risk:** hard topic+text partition means lesson and test compete for a finite topic space per domain; a heavily
+used domain could starve the `test_pool` (or vice versa), and on-demand minting cannot invent net-new *topics* as
+easily as net-new passages.
+**Proposed solution:**
+1. **Test-first reservation.** When a new domain is opened, the topic registry reserves `test_pool` topics FIRST
+   (test needs unseen-per-student depth and cannot borrow from lesson topics), then assigns the remainder to
+   `lesson_pool`/`shared_ok`. Test scarcity is the binding constraint, so it gets first claim.
+2. **Starvation alarm.** The registry tracks, per {grade, domain, bucket}, how many unused topics remain relative
+   to projected consumption (from the consumption model). It raises an alarm BEFORE a domain runs dry, so a human
+   can open a new domain deliberately rather than discover exhaustion at serve time.
+3. **Topic is coarser than passage.** One topic supports many passages (20 pro + 20 con singles under one
+   proposition = 400 pairs), so topic exhaustion is far slower than passage exhaustion. On-demand minting expands
+   passages within existing topics indefinitely; only NEW TOPICS need human seeding, which the alarm schedules.
+4. **Cross-grade topic isolation.** A topic used for test in G10 should not silently reappear as a lesson topic in
+   G11 for the same student cohort; the registry namespaces topic-use by student-cohort trajectory, not just grade.
+
+(On-demand generation cost is explicitly NOT a concern for this project — dropped from the risk list per Noel.)
