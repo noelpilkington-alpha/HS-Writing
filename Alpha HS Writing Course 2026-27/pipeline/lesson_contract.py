@@ -291,6 +291,111 @@ def gate_no_prior_work_reference(L: Lesson) -> tuple[bool, str]:
                            f"are stateless (retake is blank). Make the slot self-contained (write fresh), not a look-back.")
     return True, "no cross-item references to the student's prior work"
 
+# --- Direct-Instruction / completeness gates (Instructional_Design_KB rules 1,2,4 + Engelmann faultless
+#     communication). These enforce that a lesson is a FINISHED, teachable artifact, not a thin blueprint. ---
+
+# Technical terms a G10 writer does not already know: each must be DEFINED in a TEACH slot (in plain words)
+# before it appears in any student-facing body/feedback. Keyed term -> a short regex of its surface forms.
+_TECH_TERMS = {
+    "they-say/I-say": r"\bthey[- ]say\b|\bi[- ]say\b",
+    "controlling idea": r"\bcontrolling idea\b",
+    "thesis": r"\bthesis\b",
+    "claim (arguable)": r"\barguable claim\b",
+    "attributive tag": r"\battributive tag\b",
+    "appositive": r"\bappositive\b",
+    "because/but/so hinge": r"\bbecause/but/so\b|\bbecause-hinge\b",
+    "SPO": r"\bSPO\b|single-paragraph outline",
+    "counterclaim": r"\bcounterclaim\b",
+    "synthesis": r"\bsynthes(is|ize|ise)\b",
+    "rhetorical device": r"\brhetorical device\b",
+    "warrant": r"\bwarrant\b",
+    "rubric trait": r"\brubric trait\b",
+}
+_DEF_CUE = re.compile(r"\b(means|is when|is a|are the|refers to|that is,|in other words|put simply|"
+                      r"stands for|the (?:move|term|idea) here is|we call this|is called)\b", re.I)
+
+def _teach_defines(term_regex: str, teach_bodies: list[str]) -> bool:
+    """A term is 'defined' if a TEACH body contains the term AND a definitional cue near it."""
+    pat = re.compile(term_regex, re.I)
+    for b in teach_bodies:
+        for m in pat.finditer(b):
+            window = b[max(0, m.start() - 120): m.end() + 160]
+            if _DEF_CUE.search(window):
+                return True
+    return False
+
+def gate_define_before_use(L: Lesson) -> tuple[bool, str]:
+    """Engelmann faultless communication + KB Rule 1: no technical term may appear in student-facing text
+    unless a TEACH slot defines it in plain words first. Catches jargon like 'they-say' used cold."""
+    slots_in_order = L.slots
+    teach_bodies = [s.body for s in slots_in_order if s.role == "TEACH"]
+    for term, rgx in _TECH_TERMS.items():
+        pat = re.compile(rgx, re.I)
+        # first student-facing appearance (body OR feedback), in slot order
+        used = False
+        for s in slots_in_order:
+            if pat.search(f"{s.body} {s.feedback}"):
+                used = True
+                break
+        if used and not _teach_defines(rgx, teach_bodies):
+            return False, (f"technical term '{term}' is used in student-facing text but never defined in a "
+                           f"TEACH slot (faultless-communication / define-before-use). Add a plain-words definition.")
+    return True, "all technical terms defined before use"
+
+# substance floors (chars) - a finished slot's student-facing text, not a one-line gesture at content
+_DEPTH_FLOOR = {"teach_card": 200, "annotated_before_after": 220, "predict_the_fix": 120,
+                "production_frq": 90, "diagnosis_frq": 90, "discrimination": 90}
+
+def gate_content_depth(L: Lesson) -> tuple[bool, str]:
+    """KB completeness: teach/model/production bodies must carry REAL content, not a blueprint stub.
+    annotated_before_after must contain BOTH a BEFORE and an AFTER inline (the worked example, written out)."""
+    for s in L.slots:
+        floor = _DEPTH_FLOOR.get(s.kind)
+        if floor and len((s.body or "").strip()) < floor:
+            return False, (f"{s.role}/{s.kind} body is {len((s.body or '').strip())} chars (< {floor}); "
+                           f"looks like a blueprint stub, not finished student-facing content")
+        if s.kind == "annotated_before_after":
+            b = (s.body or "")
+            if not (re.search(r"\bBEFORE\b", b) and re.search(r"\bAFTER\b", b)):
+                return False, f"{s.role}/annotated_before_after must contain BOTH a BEFORE and an AFTER example inline"
+    return True, "all slots carry finished-depth content; worked examples show before+after"
+
+def gate_model_before_required(L: Lesson) -> tuple[bool, str]:
+    """KB Rule 2 (model before produce) + worked-example effect: any slot that asks the student to perform a
+    high-load move (diagnose / integrate / synthesize / analyze / revise) must be preceded by a MODEL of that
+    move, and a self-diagnosis slot must supply a scaffold (frames / a checklist / named steps) in its body."""
+    roles_seen = []
+    saw_model = False
+    for s in L.slots:
+        if s.role == "MODEL" or s.kind in ("annotated_before_after", "predict_the_fix"):
+            saw_model = True
+        if s.kind == "diagnosis_frq":
+            if not saw_model:
+                return False, f"{s.role}/diagnosis_frq asks students to diagnose before any MODEL of how to diagnose"
+            # scaffold present: sentence frames, a checklist, or named steps in the prompt
+            if not re.search(r"(frame|checklist|step 1|first,|use this|fill in|sentence starter|template|"
+                             r"name the|say what|then say|prompt:)", s.body or "", re.I):
+                return False, (f"{s.role}/diagnosis_frq gives no scaffold (frames/checklist/named steps) for HOW "
+                               f"to diagnose; novices need the move modeled + scaffolded, not a blank 'diagnose it'")
+    return True, "high-load moves are modeled before required; diagnosis is scaffolded"
+
+def gate_no_ambiguous_reference(L: Lesson) -> tuple[bool, str]:
+    """Faultless communication: a slot must not point at 'the summary / this version / that draft / the example'
+    unless that referent's text is present IN THE SAME slot body. Catches 'which summary?' ambiguity."""
+    deictic = re.compile(r"\b(the summary|this summary|that summary|this version|that version|the draft above|"
+                         r"the example above|the passage above|the sentence above)\b", re.I)
+    for s in L.slots:
+        b = s.body or ""
+        m = deictic.search(b)
+        if m:
+            # OK only if the slot itself shows the referent (a quoted example, a BEFORE/AFTER, or an option list)
+            shows_referent = ('"' in b or "BEFORE" in b or "AFTER" in b
+                              or re.search(r"\b(Option [AB]|\([AB]\))\b", b) or s.ref)
+            if not shows_referent:
+                return False, (f"{s.role}/{s.kind} references '{m.group(0)}' but shows no referent in the slot; "
+                               f"the student cannot tell WHICH one. Quote it inline or bind the source.")
+    return True, "no dangling references; every 'this/that X' shows its referent"
+
 def gate_mnemonic_status(L: Lesson) -> tuple[bool, str]:
     if L.lesson_type not in LESSON_TYPES:
         return False, f"unknown lesson_type {L.lesson_type}"
@@ -317,6 +422,10 @@ GATES = [
     ("timeback_native", gate_timeback_native),
     ("no_source_markup", gate_no_source_markup),
     ("no_prior_work_reference", gate_no_prior_work_reference),
+    ("define_before_use", gate_define_before_use),
+    ("content_depth", gate_content_depth),
+    ("model_before_required", gate_model_before_required),
+    ("no_ambiguous_reference", gate_no_ambiguous_reference),
     ("effect_size_honesty", gate_effect_size_honesty),
     ("mnemonic_status", gate_mnemonic_status),
     ("no_em_dash", gate_no_em_dash),
