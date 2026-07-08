@@ -62,6 +62,14 @@ LESSON_TYPES = {
     8: ("cross-source-synthesis", "WEAVE", "proposal"),
 }
 
+# Unit-of-production ladder (TWR Principle 2: begin at the sentence, then build to paragraphs, then
+# compositions; "a writer who cannot compose a decent sentence will never produce a decent essay",
+# TWR2.0 loc ~1343-1395). KH element-interactivity: do not compose the whole before the parts are fluent
+# (HLH Ch.17 blank-page fails novices; KB 00 §1.1/§1.2). The SPO explicitly scales sentence->paragraph->
+# multi-paragraph (TWR2.0 Ch.6). This is the settled developmental axis; ordered low->high.
+UNIT_LADDER = ["sentence", "paragraph", "multi_paragraph", "essay"]
+UNIT_RANK = {u: i for i, u in enumerate(UNIT_LADDER)}
+
 @dataclass
 class Slot:
     role: Role
@@ -74,6 +82,9 @@ class Slot:
     bank: str = ""           # content-bank/topic slug (for DI bank-partition on TRANSFER)
     scored: bool = False
     labeled_grade_c: bool = False  # discrimination slots must be LABELED a design bet
+    unit: str = ""           # production slots: the UNIT of production written here.
+                             # "" = not a sized production; else one of UNIT_LADDER (sentence..essay).
+                             # Enforces the TWR sentence->paragraph->composition scaffold (see gates below).
 
 @dataclass
 class Lesson:
@@ -396,6 +407,64 @@ def gate_no_ambiguous_reference(L: Lesson) -> tuple[bool, str]:
                                f"the student cannot tell WHICH one. Quote it inline or bind the source.")
     return True, "no dangling references; every 'this/that X' shows its referent"
 
+# The developmental TIER each lesson type is allowed to reach (its CEILING unit of production). Derived
+# from TWR (sentence-first) + KH (parts before whole) + the reconciled spine. Types that build components
+# top out lower; composite-essay types (essay-assembly, synthesis) are the only ones that reach "essay".
+#   sentence tier: claim (T2), editing sentences (T6)
+#   paragraph tier: source-reading (T1), evidence-integration (T3), analysis (T4), rubric-revision (T5)
+#   essay/composite tier: essay-assembly (T7), synthesis (T8)
+TYPE_CEILING_UNIT = {
+    1: "paragraph", 2: "sentence", 3: "paragraph", 4: "paragraph",
+    5: "paragraph", 6: "sentence", 7: "essay", 8: "essay",
+}
+
+def gate_unit_ladder(L: Lesson) -> tuple[bool, str]:
+    """Within-lesson: the UNIT of production must be NON-DECREASING across the shell (TWR sentence->
+    paragraph->composition; never drop back down). A lesson may hold one unit (a claim lesson stays at
+    'sentence') or climb, but a later production slot must not produce a SMALLER unit than an earlier one.
+    Also: every scored production_frq must declare a unit (so the ladder is auditable)."""
+    seq = []  # (slot_title, unit) for production slots that declare a unit, in order
+    for s in L.slots:
+        if s.kind == "production_frq" and s.scored:
+            if not s.unit:
+                return False, f"scored production '{s.title[:34]}' declares no unit (sentence|paragraph|multi_paragraph|essay)"
+            if s.unit not in UNIT_RANK:
+                return False, f"'{s.title[:30]}' has unknown unit '{s.unit}' (must be one of {UNIT_LADDER})"
+            seq.append((s.title, s.unit))
+    if not seq:
+        return True, "no scored sized production slots (n/a)"
+    max_so_far = -1
+    for title, unit in seq:
+        r = UNIT_RANK[unit]
+        if r < max_so_far:
+            prev = UNIT_LADDER[max_so_far]
+            return False, (f"unit ladder DROPS: '{title[:30]}' produces '{unit}' after the lesson already "
+                           f"reached '{prev}'. The scaffold must be non-decreasing (sentence->paragraph->essay).")
+        max_so_far = max(max_so_far, r)
+    ceiling = UNIT_LADDER[max_so_far]
+    return True, f"unit ladder non-decreasing; reaches '{ceiling}' ({' -> '.join(u for _t, u in seq)})"
+
+def gate_type_ceiling(L: Lesson) -> tuple[bool, str]:
+    """Course-level: a lesson's TOP production unit must not exceed the developmental ceiling for its type.
+    Composite-essay types (T7/T8) may reach 'essay'; component types top out at paragraph or sentence, so an
+    editing lesson (T6) cannot suddenly demand a full essay before the essay-assembly type teaches it. This
+    encodes the 4:2:1 / parts-before-whole ordering as a machine check (KH element-interactivity)."""
+    ceiling = TYPE_CEILING_UNIT.get(L.lesson_type)
+    if ceiling is None:
+        return True, "no ceiling defined for this type (n/a)"
+    top = -1
+    top_title = ""
+    for s in L.slots:
+        if s.kind == "production_frq" and s.scored and s.unit in UNIT_RANK:
+            if UNIT_RANK[s.unit] > top:
+                top, top_title = UNIT_RANK[s.unit], s.title
+    if top < 0:
+        return True, f"no sized production (n/a); type ceiling is '{ceiling}'"
+    if top > UNIT_RANK[ceiling]:
+        return False, (f"type {L.lesson_type} tops out at '{UNIT_LADDER[top]}' ('{top_title[:30]}') but its "
+                       f"developmental ceiling is '{ceiling}'; a composite-essay unit belongs in T7/T8, not here.")
+    return True, f"top production unit '{UNIT_LADDER[top]}' within type ceiling '{ceiling}'"
+
 def gate_mnemonic_status(L: Lesson) -> tuple[bool, str]:
     if L.lesson_type not in LESSON_TYPES:
         return False, f"unknown lesson_type {L.lesson_type}"
@@ -426,6 +495,8 @@ GATES = [
     ("content_depth", gate_content_depth),
     ("model_before_required", gate_model_before_required),
     ("no_ambiguous_reference", gate_no_ambiguous_reference),
+    ("unit_ladder", gate_unit_ladder),
+    ("type_ceiling", gate_type_ceiling),
     ("effect_size_honesty", gate_effect_size_honesty),
     ("mnemonic_status", gate_mnemonic_status),
     ("no_em_dash", gate_no_em_dash),
@@ -484,16 +555,17 @@ if __name__ == "__main__":
                  ref="ACC-W910-SR-EVID-0001", labeled_grade_c=True, bank="street_trees"),
             Slot("SUPPORTED", "production_frq", "Write one integrated PROVE sentence on the source",
                  body="Using the source, write ONE sentence that attributes a fact and ties it to a claim with a "
-                      "because/but/so hinge.", rubric_ref="rc.staar", scored=True, bank="coral_reefs"),
+                      "because/but/so hinge.", rubric_ref="rc.staar", scored=True, bank="coral_reefs",
+                 unit="sentence"),
             Slot("MODEL", "diagnosis_frq", "Diagnose your own sentence",
                  body="In one sentence: what was weak in a bare quote, how did you fix it, why is it stronger?",
                  scored=True, bank="coral_reefs"),
             Slot("INDEPENDENT", "production_frq", "Integrate evidence into a full PROVE paragraph",
                  body="Write a paragraph that states a claim and develops it with an integrated source quote.",
-                 rubric_ref="rc.staar", scored=True, bank="coral_reefs"),
+                 rubric_ref="rc.staar", scored=True, bank="coral_reefs", unit="paragraph"),
             Slot("TRANSFER", "production_frq", "Integrate evidence on a NEW topic (bank-partitioned)",
                  body="Now do the same with a source on a different topic you have not practiced.",
-                 rubric_ref="rc.ohio", scored=True, bank="nuclear_power"),
+                 rubric_ref="rc.ohio", scored=True, bank="nuclear_power", unit="paragraph"),
         ],
     )
     qc_lesson(demo)

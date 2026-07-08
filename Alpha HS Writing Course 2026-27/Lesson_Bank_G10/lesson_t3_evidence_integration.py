@@ -157,7 +157,7 @@ LESSON = Lesson(
                    "Option D attributes the figure but stops there, with no hinge tying it to a claim, so the "
                    "evidence still does no work.")),
         Slot("SUPPORTED", "production_frq", "Completion: fill the PROVE frame (fade rung 1)",
-             ref="", bank="wetlands_restoration", rubric_ref="rc.staar", scored=True,
+             ref="", bank="wetlands_restoration", rubric_ref="rc.staar", scored=True, unit="sentence",
              body=("Guided practice with the frame provided. Using ONE fact from the wetlands source, fill in each "
                    "blank, then read your sentences back as one integrated piece of evidence. "
                    "P (point): 'Wetlands are worth protecting because ____.' "
@@ -185,7 +185,7 @@ LESSON = Lesson(
 
         # ================= INDEPENDENT: full paragraph, AUTHORED production_frq (no test-pool item bound) ====
         Slot("INDEPENDENT", "production_frq", "Develop a full evidence paragraph on the wetlands source",
-             ref="", bank="wetlands_restoration", rubric_ref="rc.staar", scored=True,
+             ref="", bank="wetlands_restoration", rubric_ref="rc.staar", scored=True, unit="paragraph",
              body=("Independent performance: using the wetlands source, write a paragraph that (1) states a clear "
                    "claim (a controlling idea) about why wetlands are worth protecting or restoring, and (2) "
                    "develops it with at least one fully integrated piece of source evidence. Integrated means: "
@@ -199,16 +199,21 @@ LESSON = Lesson(
                    "Evidence/Development.")),
 
         # ================= TRANSFER: same move, bank-partitioned content (interstate highways) ===============
-        Slot("TRANSFER", "production_frq", "Integrate evidence on a NEW topic (bank-partitioned)",
+        Slot("TRANSFER", "production_frq", "Integrate evidence into a paragraph on a NEW topic (bank-partitioned)",
              ref="ACC-W910-INFO-LESSON-HIGHWAYS", bank="interstate_highways", rubric_ref="rc.ohio", scored=True,
-             body=("Transfer: do the same integration move on a source you have not practiced on. Read the "
-                   "interstate highways article, then write ONE integrated evidence sentence about the highway "
-                   "system. Pick a real figure, for example that the network runs about 48,890 miles, or that "
-                   "about one quarter of all the miles driven in the country happen on it, or that the federal "
-                   "government paid 90 percent of the construction cost. Integrate it: name who reported the "
-                   "figure with an attributive tag (for example, 'The Federal Highway Administration reports...'), "
-                   "and tie the figure to a claim with a because/but/so hinge (for example, '..., which matters "
-                   "because...'). Do not let the figure stand alone. Scored on Evidence/Development.")),
+             unit="paragraph",
+             body=("Transfer: do the same integration move on a source you have not practiced on, at the full "
+                   "paragraph you reached in the last step. Read the interstate highways article, then write a "
+                   "paragraph that states a claim about the highway system and develops it with at least one "
+                   "fully integrated source fact. Pick a real figure, for example that the network runs about "
+                   "48,890 miles, or that about one quarter of all the miles driven in the country happen on it, "
+                   "or that the federal government paid 90 percent of the construction cost. Integrate it: name "
+                   "who reported the figure with an attributive tag (for example, 'The Federal Highway "
+                   "Administration reports...'), and tie the figure to your claim with a because/but/so hinge "
+                   "(for example, '..., which matters because...'). Do not let any figure stand alone. Product "
+                   "goal, all required: a stated claim; one accurately reported source fact; an attributive tag; "
+                   "a because/but/so hinge tying the fact to the claim; a closing so-what sentence. Scored on "
+                   "Evidence/Development.")),
     ],
 )
 

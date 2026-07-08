@@ -171,7 +171,7 @@ LESSON = Lesson(
                    "so neither is even a full arguable claim. Top-band rubrics reward the claim that reaches "
                    "significance, not the one that just restates the prompt.")),
         Slot("SUPPORTED", "production_frq", "Guided: write ONE defensible STAND claim (frame provided)",
-             ref="", bank="longer_school_year", rubric_ref="rc.ohio", scored=True,
+             ref="", bank="longer_school_year", rubric_ref="rc.ohio", scored=True, unit="sentence",
              body=("Guided practice with a frame provided. Write ONE defensible claim on the longer-school-year "
                    "question. Fill in this frame, or write your own sentence that does the same jobs: 'The US "
                    "should ____ [Stance + an Assertion the other side could reject], because ____ [your I-say "
@@ -199,7 +199,7 @@ LESSON = Lesson(
 
         # ========== INDEPENDENT: full STAND claim + self-check on the current response ==========
         Slot("INDEPENDENT", "production_frq", "Write an independent STAND claim with stakes (no frame)",
-             ref="", bank="longer_school_year", rubric_ref="rc.ohio", scored=True,
+             ref="", bank="longer_school_year", rubric_ref="rc.ohio", scored=True, unit="sentence",
              body=("Independent performance, no frame provided: on the longer-school-year question, write a "
                    "defensible thesis. Product goal, all four required: (1) take a clear Stance; (2) make an "
                    "Assertion the other side could reject; (3) attach your I-say reason with a because/but/so "
@@ -216,7 +216,7 @@ LESSON = Lesson(
                    "(the position that side takes) so you have territory to answer. Both sources stay on "
                    "screen while you work.")),
         Slot("TRANSFER", "production_frq", "Build a STAND claim on the new topic (bank-partitioned)",
-             ref="", bank="congestion_pricing", rubric_ref="rc.ohio", scored=True,
+             ref="", bank="congestion_pricing", rubric_ref="rc.ohio", scored=True, unit="sentence",
              body=("Transfer to a topic you have not practiced: on the congestion-pricing question (should "
                    "cities charge tolls to drive downtown during the busiest hours?), write a defensible claim "
                    "using the same STAND moves. Product goal, all four required: take a clear Stance; make an "

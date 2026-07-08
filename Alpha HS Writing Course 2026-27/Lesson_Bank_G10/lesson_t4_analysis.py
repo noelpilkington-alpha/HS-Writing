@@ -170,7 +170,7 @@ LESSON = Lesson(
                    "is device-spotting with no effect at all. Only (B) reaches the WARRANT, why the effect serves "
                    "Chopin's purpose. This is the exact move that lifts a mid-band response into the top band.")),
         Slot("SUPPORTED", "production_frq", "Completion: the device is given, you supply Effect + Warrant",
-             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True,
+             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence",
              body=("Guided completion: the device is named for you, so you can spend your effort on the hard "
                    "part. DEVICE: Chopin shows Mrs. Mallard 'striving to beat it back with her will,' then, when "
                    "she gives in, whispering 'free, free, free' over and over under her breath. In TWO sentences, "
@@ -197,7 +197,7 @@ LESSON = Lesson(
 
         # ---------------- INDEPENDENT: full DEW analysis on the Chopin text (AUTHORED, not a bound CR item) --------
         Slot("INDEPENDENT", "production_frq", "Full DEW analysis of the Chopin excerpt (authored prompt)",
-             ref="", bank="story_of_an_hour", rubric_ref="rc.ohio", scored=True,
+             ref="", bank="story_of_an_hour", rubric_ref="rc.ohio", scored=True, unit="paragraph",
              body=("Independent performance, self-contained. Choose ONE of Chopin's choices in the excerpt: the "
                    "open-window imagery, the irony of Mrs. Mallard's reaction to the news, the repetition of "
                    "'free,' or the shift in how her face and eyes are described (from 'a dull stare' to eyes that "
@@ -212,7 +212,7 @@ LESSON = Lesson(
 
         # ---------------- TRANSFER: same DEW move, DIFFERENT author + genre, partitioned content bank ------------
         Slot("TRANSFER", "production_frq", "Analyze a DIFFERENT author's move (weather explanatory, partitioned)",
-             ref="ACC-W910-INFO-LESSON-WEATHER", bank="weather_science", rubric_ref="rc.mcas", scored=True,
+             ref="ACC-W910-INFO-LESSON-WEATHER", bank="weather_science", rubric_ref="rc.mcas", scored=True, unit="paragraph",
              body=("Transfer to a text you have not practiced on, in a different genre. The article 'How a "
                    "Weather Forecast Is Made' is not a story; it explains a process. Here the author's choices are "
                    "about STRUCTURE and SEQUENCE, not imagery. Analyze ONE such choice, for example the decision "

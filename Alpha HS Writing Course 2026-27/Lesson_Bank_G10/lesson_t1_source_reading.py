@@ -149,7 +149,7 @@ LESSON = Lesson(
                    "the point but has no quotation marks and is not the exact words, a dropped quote. Option D "
                    "fails the fairness test: it could describe any weather article. Only A is a true K.")),
         Slot("SUPPORTED", "production_frq", "Completion: fill the MARK frame (fade rung 1)",
-             bank="weather_science", rubric_ref="rc.mcas", scored=True,
+             bank="weather_science", rubric_ref="rc.mcas", scored=True, unit="paragraph",
              body=("Guided practice with the frame provided. Using the weather source, fill in each blank, then "
                    "read your sentences back as one paragraph. A (attribution): 'According to ____,'. M (main "
                    "idea): 'its main point is that ____.'. R (reasons): 'It supports this by ____.'. K (key "
@@ -170,7 +170,7 @@ LESSON = Lesson(
 
         # ================= INDEPENDENT: full they-say + fixed self-check with repair frames =================
         Slot("INDEPENDENT", "production_frq", "Write a full fair they-say, then run the self-check",
-             bank="weather_science", rubric_ref="rc.mcas", scored=True,
+             bank="weather_science", rubric_ref="rc.mcas", scored=True, unit="paragraph",
              body=("Independent performance: write a fair they-say of the weather article, 4 to 6 sentences, "
                    "using MARK. You may use these frames or your own: 'According to the NWS, ____.'; 'The NWS "
                    "reports that ____.'; 'The NWS bases this on ____.'; 'As the NWS puts it, \"____.\"'. Product "
@@ -189,7 +189,7 @@ LESSON = Lesson(
 
         # ================= TRANSFER: same MARK + self-check, bank-partitioned recycling source ==============
         Slot("TRANSFER", "production_frq", "Apply MARK to a NEW source (bank-partitioned)",
-             ref="ACC-W910-INFO-LESSON-RECYCLING", bank="recycling_recovery", rubric_ref="rc.mcas", scored=True,
+             ref="ACC-W910-INFO-LESSON-RECYCLING", bank="recycling_recovery", rubric_ref="rc.mcas", scored=True, unit="paragraph",
              body=("Transfer: apply MARK to a source you have not practiced on. Read the recycling article, then "
                    "write a fair they-say, 4 to 6 sentences, using the same MARK moves. You may use the frames: "
                    "'According to the source, ____.'; 'The source reports that ____.'; 'It bases this on ____.'; "

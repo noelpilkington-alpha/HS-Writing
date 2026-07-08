@@ -248,7 +248,7 @@ LESSON = Lesson(
 
         # ---------------- INDEPENDENT: STAAR SCR short production (revise, keep the meaning) ----------------
         Slot("INDEPENDENT", "production_frq", "Short revision: fix the modifier, keep the meaning (highways)",
-             ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True,
+             ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True, unit="sentence",
              body=("Independent performance (a STAAR short-constructed-response: a short, focused revision, not "
                    "a full essay). Here is a flawed sentence about the highway passage: 'Signed into law in "
                    "1956, the country began building a connected network of high-speed roads.' The opening "
@@ -263,7 +263,7 @@ LESSON = Lesson(
 
         # ---------------- TRANSFER: same move, bank-partitioned NEW passage (weather) -----------------
         Slot("TRANSFER", "production_frq", "Short revision on a NEW passage: fix the modifier, keep the meaning (weather)",
-             ref="ACC-W910-INFO-LESSON-WEATHER", bank="weather_science", rubric_ref="rc.staar", scored=True,
+             ref="ACC-W910-INFO-LESSON-WEATHER", bank="weather_science", rubric_ref="rc.staar", scored=True, unit="sentence",
              body=("Transfer to a passage you have not edited (how the National Weather Service makes a "
                    "forecast, a different topic). A flawed draft sentence reads: 'Rising above 35 kilometers, "
                    "forecasters use weather balloons to measure the upper air.' The opening phrase 'Rising "

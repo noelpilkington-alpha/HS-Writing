@@ -165,7 +165,7 @@ LESSON = Lesson(
                    "A. D reports that the sources disagree but never joins their ideas or states what YOU "
                    "conclude.")),
         Slot("SUPPORTED", "production_frq", "Combine two given facts into one attributed claim (claim provided)",
-             bank="longer_school_year", rubric_ref="rc.ohio", scored=True,
+             bank="longer_school_year", rubric_ref="rc.ohio", scored=True, unit="sentence",
              body=("Scaffolded synthesis. The CLAIM is given to you: 'The United States should fix the summer "
                    "slide with targeted summer programs rather than a longer year for everyone.' You are "
                    "given one fact from EACH source: "
@@ -198,9 +198,20 @@ LESSON = Lesson(
                    "Name which WEAVE letters you actually hit, name the one you most need to repair, and write "
                    "one repair sentence using a frame above.")),
 
-        # ---------------- INDEPENDENT: full synthesis-then-pick essay, AUTHORED (no CR item reuse) ----------
+        # ---------------- INDEPENDENT: paragraph rung, THEN the full synthesis-then-pick essay ----------
+        Slot("INDEPENDENT", "production_frq", "Write ONE synthesis paragraph from both sources (the paragraph rung)",
+             ref="", bank="longer_school_year", rubric_ref="rc.ohio", scored=True, unit="paragraph",
+             body=("Before the whole essay, build ONE synthesis paragraph, no scaffold this time. Using BOTH "
+                   "school-year sources, write a single paragraph that makes one claim and supports it by "
+                   "joining a fact from Source A and a fact from Source B on a shared thread. Name which source "
+                   "each fact comes from (do not blur them), connect the two facts so the reader sees why they "
+                   "point to your claim together, and do not write one sentence on A and a separate sentence "
+                   "on B. This is the sentences-to-paragraph step: you combined two given facts a moment ago, "
+                   "now build a full synthesized paragraph before you build a whole essay of them. Product "
+                   "goal: one paragraph, one claim, a fact from each source attributed, and a shared thread "
+                   "that joins them. Scored on Evidence/Development and Organization.")),
         Slot("INDEPENDENT", "production_frq", "Synthesize then pick: full school-year essay (authored)",
-             ref="", bank="longer_school_year", rubric_ref="rc.ohio", scored=True,
+             ref="", bank="longer_school_year", rubric_ref="rc.ohio", scored=True, unit="essay",
              body=("Independent performance (opposing sources, the hardest stage: synthesize, weigh, pick). "
                    "Weighing BOTH school-year passages you read at the start of the lesson, write an "
                    "argumentative essay stating your position on whether the United States should adopt a "
@@ -212,7 +223,7 @@ LESSON = Lesson(
 
         # ---------------- TRANSFER: same synthesis move, partitioned NEW paired topic ----------------------
         Slot("TRANSFER", "production_frq", "Synthesize on a NEW paired topic (bank-partitioned)",
-             ref="ACC-W910-ARG-OPP-LESSON-DST", bank="daylight_saving", rubric_ref="rc.ohio", scored=True,
+             ref="ACC-W910-ARG-OPP-LESSON-DST", bank="daylight_saving", rubric_ref="rc.ohio", scored=True, unit="essay",
              body=("Transfer to a paired source set you have not practiced on. Read the two opposing passages "
                    "on whether the United States should abolish daylight saving time and keep one clock year "
                    "round. Do the same WEAVE move: find the shared thread both sources circle, cite specific "

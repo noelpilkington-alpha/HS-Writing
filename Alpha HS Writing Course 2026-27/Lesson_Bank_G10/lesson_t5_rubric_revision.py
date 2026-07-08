@@ -146,7 +146,7 @@ LESSON = Lesson(
                    "judge the anchors first and predict our own second on purpose, because writers tend to "
                    "over-rate their own drafts, so we commit before the grader reveals the real score.")),
         Slot("SUPPORTED", "production_frq", "Write the paragraph you predicted, then see the gap",
-             ref="", bank="recycling_recovery", rubric_ref="rc.staar", scored=True,
+             ref="", bank="recycling_recovery", rubric_ref="rc.staar", scored=True, unit="paragraph",
              body=("Now write the paragraph you just predicted. Using the recycling source, write one body "
                    "paragraph that states a controlling idea and develops it with at least one specific figure "
                    "PLUS a sentence explaining how that figure supports your idea (the move that separates a 2 "
@@ -181,7 +181,7 @@ LESSON = Lesson(
                    "explain-the-evidence move on every figure. B is the surface trap again. Lock in your "
                    "prediction, then write and reveal, so you can measure how well-calibrated you are.")),
         Slot("INDEPENDENT", "production_frq", "Independent performance: write to a 3, then reveal",
-             ref="", bank="recycling_recovery", rubric_ref="rc.staar", scored=True,
+             ref="", bank="recycling_recovery", rubric_ref="rc.staar", scored=True, unit="paragraph",
              body=("Independent performance: write one full body paragraph on recycling and materials recovery "
                    "so that every figure you cite is followed by a sentence explaining how it supports your "
                    "controlling idea. Scored on the STAAR scale (Organization and Development scored first, then "
@@ -190,7 +190,7 @@ LESSON = Lesson(
 
         # ---------------- TRANSFER: same CHECK move, partitioned NEW topic + new scale ----------------
         Slot("TRANSFER", "production_frq", "Transfer the CHECK move to a NEW topic",
-             ref="", bank="wetlands_restoration", rubric_ref="rc.mcas", scored=True,
+             ref="", bank="wetlands_restoration", rubric_ref="rc.mcas", scored=True, unit="paragraph",
              body=("Transfer to a NEW topic you have not calibrated on. Write one body paragraph about wetlands "
                    "that states a controlling idea and develops it: cite at least one specific figure (for "
                    "example that one stretch of the Mississippi River's wetlands once stored at least 60 days of "

@@ -163,7 +163,7 @@ LESSON = Lesson(
                    "announces the topic but skips both context and a thesis; D is off-source and takes no "
                    "position.")),
         Slot("SUPPORTED", "production_frq", "Complete the partial SPO plan (scaffold)",
-             bank="congestion_pricing", rubric_ref="rc.4trait", scored=True,
+             bank="congestion_pricing", rubric_ref="rc.4trait", scored=True, unit="sentence",
              body=("Guided planning. Here is a partial SPO for the congestion-pricing essay with the thesis "
                    "and the first body line filled in for you. Thesis (given): cities should charge a "
                    "congestion toll, because a crowded free road is overused and the toll money can build the "
@@ -189,7 +189,7 @@ LESSON = Lesson(
 
         # ---------------- INDEPENDENT: plan from scratch, then the full authored essay ----------------
         Slot("INDEPENDENT", "production_frq", "Build the full SPO plan from scratch (scaffold faded)",
-             bank="congestion_pricing", rubric_ref="rc.4trait", scored=True,
+             bank="congestion_pricing", rubric_ref="rc.4trait", scored=True, unit="sentence",
              body=("Independent planning, no outline provided. For the congestion-pricing prompt, write your "
                    "own complete SPO. Give a one-line thesis that takes a defensible side, then list two or "
                    "three body points in order, each naming the specific source evidence it will use and how "
@@ -197,8 +197,18 @@ LESSON = Lesson(
                    "and how your conclusion will reach significance. Product goal: a thesis line plus ordered "
                    "body lines with named evidence, plus the two framing notes. This plan is the map you will "
                    "draft from next. Scored on organization and support.")),
+        Slot("INDEPENDENT", "production_frq", "Draft ONE body paragraph from your plan (the paragraph rung)",
+             bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             body=("Before you write the whole essay, turn ONE line of your plan into a full body paragraph. "
+                   "Pick your strongest body point from the SPO and draft it: a topic sentence that states the "
+                   "point, at least one piece of source evidence that names who reported it and is tied back to "
+                   "your thesis so the reader sees why it matters, and a sentence explaining its importance. "
+                   "This is the plan-to-paragraph step: you proved you can plan the whole essay, now prove you "
+                   "can build one of its paragraphs before you build all of them. Product goal: one focused "
+                   "body paragraph with a topic sentence, one piece of source evidence tied to the thesis, and "
+                   "an explanation of why it matters. Scored on Evidence/Development.")),
         Slot("INDEPENDENT", "production_frq", "Draft the full essay (authored, on the congestion sources)",
-             bank="congestion_pricing", rubric_ref="rc.staar", scored=True,
+             bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="essay",
              body=("Independent performance, timed. Write the full argumentative essay on whether cities "
                    "should charge tolls to drive downtown during the busiest hours, using the congestion-"
                    "pricing sources. Begin by jotting a quick one-line thesis and an ordered list of body "
@@ -213,7 +223,7 @@ LESSON = Lesson(
 
         # ---------------- TRANSFER: full timed essay, partitioned content bank ----------------
         Slot("TRANSFER", "production_frq", "Plan and draft a full timed essay on a NEW topic",
-             ref="ACC-W910-ARG-OPP-LESSON-DST", bank="daylight_saving", rubric_ref="rc.ohio", scored=True,
+             ref="ACC-W910-ARG-OPP-LESSON-DST", bank="daylight_saving", rubric_ref="rc.ohio", scored=True, unit="essay",
              body=("Transfer: run the whole BUILD process on a source you have not practiced, a different "
                    "topic (whether the United States should abolish daylight saving time and keep one clock "
                    "year round). Read the opposing pair, then under timed conditions and with no outline "
