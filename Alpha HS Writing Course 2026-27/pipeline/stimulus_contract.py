@@ -22,6 +22,7 @@ from typing import Literal
 # import the Lexile gate we already built + validated
 sys.path.insert(0, os.path.dirname(__file__))
 import readability_gate as rg
+import calibration_anchors as ca  # noqa: F401  (available for gate_equivalent_form callers)
 
 Mode = Literal["argument", "explanatory", "analysis"]
 Family = Literal["single", "complementary", "opposing"]
@@ -201,6 +202,33 @@ def gate_content(s: StimulusRecord) -> tuple[bool, str]:
         return True, f"content PASS-with-FLAGS (human review before ship): {why}"
     return True, "content clean (no bright-line, no flags)"
 
+def gate_bucket_profile(s: StimulusRecord) -> tuple[bool, str]:
+    """Profile rules that differ by bucket. Test: no annotation, must carry a form. Lesson: annotation allowed."""
+    if s.bucket not in ("lesson", "test"):
+        return False, f"bucket must be 'lesson' or 'test', got '{s.bucket}'"
+    if s.bucket == "test":
+        if s.annotated:
+            return False, "test bucket stimulus must not be annotated (annotation can cue the answer)"
+        if not s.form.strip():
+            return False, "test bucket stimulus must carry a form (staar|mcas|ohio|4trait) for calibration"
+    return True, f"{s.bucket} profile ok"
+
+def gate_equivalent_form(s: StimulusRecord, anchor_set=None) -> tuple[bool, str]:
+    """Test bucket only: the stimulus must sit inside the human-scored anchor band for {grade, mode, form}.
+    When no anchor_set is supplied, or it has no anchors for that form yet, pass as UNCERTIFIED so the seed pool
+    can be built before anchors are scored. Lesson bucket is n/a."""
+    if s.bucket != "test":
+        return True, "n/a (lesson bucket)"
+    if anchor_set is None:
+        return True, "no anchor set supplied; test form UNCERTIFIED (calibrate before go-live)"
+    passage_count = len(s.passages)
+    lexile = rg.analyze_text(s.passages[0].text)["lexile_estimate"] if s.passages else 0
+    band = anchor_set.band(s.grade, s.mode, s.form)
+    if band is None:
+        return True, f"no anchors for {s.grade}/{s.mode}/{s.form}; test form UNCERTIFIED (calibrate before go-live)"
+    ok, why = anchor_set.equivalent_form_ok(s.grade, s.mode, s.form, lexile, passage_count, s.task_demand or band.demand_min)
+    return ok, why
+
 GATES = [
     ("structure", gate_structure),
     ("provenance", gate_provenance),
@@ -209,6 +237,8 @@ GATES = [
     ("two_sidedness", gate_two_sidedness),
     ("lexile", gate_lexile),
     ("content", gate_content),
+    ("bucket_profile", gate_bucket_profile),
+    ("equivalent_form", gate_equivalent_form),
 ]
 
 # ---------------------------------------------------------------------------
@@ -299,5 +329,43 @@ if __name__ == "__main__":
                         bucket="test", topic_id="nuclear_power", form="staar", task_demand=3)
     assert _t.bucket == "test" and _t.topic_id == "nuclear_power" and _t.form == "staar"
     print("stimulus_contract two-bucket fields OK")
+
+    # profile gate: a TEST stimulus may not be annotated and must carry a form
+    _bad = StimulusRecord(id="B", grade="9-10", mode="argument", family="single", prompt="p",
+                          passages=[Passage("t", "w " * 500)], fact_sources=[], provenance={},
+                          bucket="test", annotated=True, form="staar")
+    ok, why = gate_bucket_profile(_bad)
+    assert not ok and "annotat" in why.lower(), "test bucket cannot be annotated"
+    _bad2 = StimulusRecord(id="B2", grade="9-10", mode="argument", family="single", prompt="p",
+                           passages=[Passage("t", "w " * 500)], fact_sources=[], provenance={},
+                           bucket="test", form="")
+    ok2, why2 = gate_bucket_profile(_bad2)
+    assert not ok2 and "form" in why2.lower(), "test bucket needs a form"
+    _lesson_annot = StimulusRecord(id="L", grade="9-10", mode="argument", family="single", prompt="p",
+                                   passages=[Passage("t", "w " * 500)], fact_sources=[], provenance={},
+                                   bucket="lesson", annotated=True)
+    ok3, _ = gate_bucket_profile(_lesson_annot)
+    assert ok3, "lesson bucket may be annotated"
+
+    # equivalent-form gate against an anchor set
+    aset = ca.AnchorSet()
+    aset.add(ca.Anchor("a1", "9-10", "argument", "staar", 1080, 1, 3))
+    aset.add(ca.Anchor("a2", "9-10", "argument", "staar", 1160, 1, 4))
+    _testfit = StimulusRecord(id="T", grade="9-10", mode="argument", family="single", prompt="p",
+                              passages=[Passage("t", "w " * 500)], fact_sources=[], provenance={},
+                              bucket="test", form="staar", task_demand=3)
+    # single passage -> passage_count 1 matches anchors; lexile of "w "*500 will be low, so expect a band failure msg
+    ok4, why4 = gate_equivalent_form(_testfit, anchor_set=aset)
+    assert ("lexile" in why4.lower()) or ok4, "equivalent-form gate consults the anchor band"
+    # no anchors for a different form -> uncertified pass (seed can be built pre-calibration)
+    ok5, why5 = gate_equivalent_form(
+        StimulusRecord(id="T2", grade="9-10", mode="argument", family="single", prompt="p",
+                       passages=[Passage("t", "w " * 500)], fact_sources=[], provenance={},
+                       bucket="test", form="ohio", task_demand=3), anchor_set=aset)
+    assert ok5 and "uncertified" in why5.lower()
+    # lesson bucket -> n/a pass
+    ok6, _ = gate_equivalent_form(_lesson_annot, anchor_set=aset)
+    assert ok6
+    print("stimulus_contract profile gates OK")
 
     sys.exit(0 if demo.qc["passed"] else 1)
