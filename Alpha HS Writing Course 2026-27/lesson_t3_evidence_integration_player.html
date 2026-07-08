@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integrate the Evidence: No Quote Stands Alone (PROVE) - student view</title>
+<style>
+:root{--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--bg:#f1f5f9;--card:#fff;--brand:#2563eb;
+--ok:#166534;--okbg:#dcfce7;--bad:#991b1b;--badbg:#fee2e2;--src:#0369a1;--srcbg:#f0f9ff;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+.banner{background:#0f172a;color:#cbd5e1;font-size:.72rem;padding:6px 16px;text-align:center}
+.banner b{color:#fff}
+.topbar{background:var(--card);border-bottom:1px solid var(--line);padding:12px 20px;position:sticky;top:0;z-index:5}
+.topbar .t{font-weight:800;font-size:1rem}
+.topbar .sub{color:var(--muted);font-size:.8rem;margin-top:2px}
+.progwrap{max-width:820px;margin:10px auto 0;padding:0 20px}
+.progbar{height:6px;background:var(--line);border-radius:6px;overflow:hidden}
+.progfill{height:100%;background:var(--brand);width:0;transition:width .25s}
+.progtext{font-size:.72rem;color:var(--muted);margin-top:4px}
+.stage{max-width:820px;margin:22px auto;padding:0 20px 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.phase{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--brand);background:#eff6ff;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+.qtitle{font-size:1.15rem;font-weight:800;margin:0 0 14px}
+.body{white-space:pre-wrap;font-size:.98rem}
+.stem{font-size:1rem;margin-bottom:14px;white-space:pre-wrap}
+.opts{display:flex;flex-direction:column;gap:10px;margin:8px 0 4px}
+.opt{border:2px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:flex-start;font-size:.95rem;background:#fff}
+.opt:hover{border-color:#93c5fd}
+.opt .let{font-weight:800;color:var(--brand);flex:none}
+.opt.sel{border-color:var(--brand);background:#eff6ff}
+.opt.correct{border-color:var(--ok);background:var(--okbg)}
+.opt.wrong{border-color:var(--bad);background:var(--badbg)}
+.opt.disabled{cursor:default;opacity:.85}
+.reveal{margin-top:16px;padding:13px 16px;border-radius:10px;font-size:.92rem;white-space:pre-wrap;display:none}
+.reveal.show{display:block}
+.reveal.rc{background:var(--okbg);border:1px solid #86efac}
+.reveal.rw{background:var(--badbg);border:1px solid #fca5a5}
+.reveal b{display:block;margin-bottom:4px}
+.srcpane{background:var(--srcbg);border:1px solid #bae6fd;border-radius:10px;padding:6px 18px;margin-top:12px;max-height:340px;overflow:auto}
+.srctitle{font-weight:800;color:var(--src);font-size:.9rem;margin:12px 0 4px}
+.srctext{white-space:pre-wrap;font-size:.9rem;line-height:1.55}
+textarea{width:100%;min-height:150px;border:2px solid var(--line);border-radius:10px;padding:12px;font-family:inherit;font-size:.95rem;resize:vertical}
+textarea:focus{border-color:var(--brand);outline:none}
+.goal{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;font-size:.86rem;margin:10px 0}
+.goal b{color:#92400e}
+.graderbox{margin-top:14px;padding:13px 16px;border-radius:10px;background:#f5f3ff;border:1px solid #ddd6fe;font-size:.9rem;display:none}
+.graderbox.show{display:block}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:22px}
+.btn{background:var(--brand);color:#fff;border:none;border-radius:10px;padding:11px 22px;font-size:.95rem;font-weight:700;cursor:pointer}
+.btn:disabled{background:#cbd5e1;cursor:not-allowed}
+.btn.ghost{background:#fff;color:var(--brand);border:2px solid var(--brand)}
+.qtimeta{font-size:.68rem;color:var(--muted);font-family:ui-monospace,Menlo,monospace;margin-top:14px;border-top:1px dashed var(--line);padding-top:8px}
+.done{text-align:center;padding:40px 20px}
+.done h2{color:var(--ok)}
+</style></head><body>
+<div class="banner">PREVIEW: a local simulation of the Timeback student player. Interaction model + content are faithful; this is <b>not</b> the QTI payload (Timeback strips JS from stimuli). One item per screen, exactly as a student would step through it.</div>
+<div class="topbar"><div class="t">Integrate the Evidence: No Quote Stands Alone (PROVE)</div><div class="sub">Integrate a source quote so it never stands alone: name who said it (an attributive tag) plus a because/but/so hinge that ties the fact to the claim. Trait: Evidence/Development.</div>
+  <div class="progwrap"><div class="progbar"><div class="progfill" id="pf"></div></div><div class="progtext" id="pt"></div></div>
+</div>
+<div class="stage"><div id="screen"></div>
+  <div class="nav"><button class="btn ghost" id="back" onclick="go(-1)">Back</button><button class="btn" id="next" onclick="advance()">Continue</button></div>
+</div>
+<script>
+const SCREENS = [{"n": 1, "role": "TEACH", "role_label": "Learn", "kind": "teach_card", "title": "What integrating a quote means (and what a dropped quote costs you)", "type": "read", "body": "When you use a source in an argument, the quote or figure cannot speak for itself. A dropped quote is a quotation dropped into your paragraph with no lead-in and no follow-up, as if the words explained themselves. They do not: the reader is left guessing who said it and why it matters. Integrating a quote is the opposite move: you frame the quote so it clearly supports the point you are making. That point is your claim. The controlling idea is a single sentence that states the point your whole paragraph is trying to prove; the words claim and controlling idea mean the same thing here. Everything else, including your evidence, exists to back it up. On state writing rubrics, evidence that is merely present but not explained sits in the middle band, while evidence that is named and tied to the claim earns the top band for the Evidence and Development trait. Our cue for the integration move is PROVE. Goal for today: use a source quote so that no quote ever stands alone."}, {"n": 2, "role": "TEACH", "role_label": "Learn", "kind": "teach_card", "title": "The PROVE strategy, letter by letter, with the terms defined", "type": "read", "body": "PROVE is how you build integrated evidence from one source. Each letter has one job. P = Point: state the claim first, the point this evidence will support. R = Reference: attribute and cite the source. This is where you use an attributive tag. An attributive tag is a short phrase that names who said something, such as 'According to the EPA' or 'The U.S. Geological Survey reports.' A fancier way to name the source is an appositive. An appositive is a noun phrase, set off with commas, that renames the noun beside it, as in 'the EPA, the nation's environmental agency, reports.' Right: 'According to the EPA...'. Wrong (bare figure, no source): 'Wetlands once stored 60 days of floodwater,' which never says who reported it. O = Observe: explain in your own words what the quote or figure shows. V = Verify: tie the evidence back to the claim with a because/but/so hinge. A because/but/so hinge is a joining word (because, but, or so) that links the evidence to your point, as in '..., which matters because towns downstream now get far less warning.' E = Extend: say why it matters beyond this one fact, the so-what. Your goal: evidence where the source is named (an attributive tag) and the fact is tied to the claim (a because/but/so hinge), so no quote stands alone."}, {"n": 3, "role": "TEACH", "role_label": "Learn", "kind": "stimulus_display", "title": "Read the source on wetlands", "type": "source", "body": "Read the source about wetlands and wetland restoration. As you read, note one fact you could use as evidence in an argument, and note who the source says reported it (the EPA or the U.S. Geological Survey). You will use one of these facts to practice integrating evidence. The article stays on screen while you work.", "passages": [{"title": "Why Wetlands Are Worth Saving", "text": "For most of American history, a swamp or marsh was seen as wasted ground. It was land to be drained, filled, and put to better use. Today, scientists see those same wet places very differently. A wetland is one of the hardest-working landscapes in nature. This passage explains what wetlands do, how much of them the country has lost, and how people are working to bring some of them back.\n\nFirst, what is a wetland, and why does it matter? A wetland is simply land where water covers the soil, or sits near the surface, for much of the year. Marshes, swamps, and bogs are all wetlands. They may look messy, but they do vital work. One of their most important jobs is to control floods. A healthy wetland acts like a giant sponge. It soaks up heavy rain and river overflow, then releases the water slowly. The U.S. Environmental Protection Agency offers a striking example. Along part of the Mississippi River, natural wetlands once stored at least 60 days of floodwater. After most were filled or drained, the same stretch could store only 12 days.\n\nWetlands also clean water. As water moves slowly through the plants and soil of a marsh, the plants take up pollution and the soil traps dirt. The water that leaves is cleaner than the water that came in. In this way, a wetland works like a natural filter for the streams and lakes downstream.\n\nPerhaps most important, wetlands are home to an astonishing amount of life. The EPA reports that more than one-third of the threatened and endangered species in the United States live only in wetlands. Nearly half of these at-risk species use wetlands at some point in their lives. Fish, birds, frogs, and countless insects depend on these wet places to feed, hide, and breed. A wetland is less like empty land and more like a crowded nursery.\n\nGiven all this value, the scale of the loss is sobering. Federal scientists have tracked how much wetland the country has drained over time. The U.S. Geological Survey reports that the lower 48 states once held about 221 million acres of wetlands. By the mid-1980s, only about 103 million acres remained. That is a loss of more than half the original total. The damage was not spread evenly. The Survey notes that 22 states had lost at least half of their original wetlands, and that some states had lost 85 percent or more. Much of this land was drained for farms, roads, and cities before people understood what wetlands do.\n\nThe good news is that the loss can be slowed and, in places, reversed. This work is called wetland restoration. To restore a wetland, workers try to undo the changes that drained it. They may break up old drainage pipes, fill in ditches, or knock down small dams so that water can spread across the land again. They then plant native grasses and trees suited to wet soil. Over time, birds and other animals return on their own. Federal and state agencies, along with many private groups, now run restoration projects across the country. Some rebuild coastal marshes that guard the shore from storms. Others restore inland marshes that store floodwater and clean it.\n\nTaken together, the evidence tells a clear story. Wetlands store floods, filter water, and shelter a large share of the nation's rarest wildlife. The country drained more than half of them before their value was widely understood. Now, through restoration, people are working to recover some of what was lost. Explaining what wetlands do, and how much has vanished, does not by itself refill a single marsh. But it shows why these soggy, once-scorned lands are now treated as treasures worth protecting."}], "source_id": "ACC-W910-INFO-LESSON-WETLANDS"}, {"n": 4, "role": "TEACH", "role_label": "Learn", "kind": "discrimination", "title": "Who reported it? (builds R, the Reference move)", "type": "choice", "stem": "Match the figure to who reported it, the first half of the Reference move. This is a labeled Grade-C discriminate-before-produce step. Which figure does the source attribute to the U.S. Geological Survey (not the EPA)?", "options": [{"letter": "A", "text": "more than one-third of the nation's threatened and endangered species live only in wetlands"}, {"letter": "B", "text": "one Mississippi River stretch went from storing at least 60 days of floodwater to only 12"}, {"letter": "C", "text": "the lower 48 states fell from about 221 million acres of wetlands to about 103 million by the mid-1980s"}, {"letter": "D", "text": "a healthy wetland works like a giant sponge"}], "correct": "C", "explanation": "Correct: C. The source credits the 221-million-to-103-million acreage figures to the U.S. Geological Survey. Options A and B are attributed to the EPA, and D is the source's own comparison, not a cited figure. Naming the right source is the R, Reference, in PROVE."}, {"n": 5, "role": "MODEL", "role_label": "Watch", "kind": "annotated_before_after", "title": "Watch a dropped quote become integrated (PROVE letters labeled)", "type": "read", "body": "BEFORE (drops the move, do NOT copy this): 'Wetlands stop floods. \"Along part of the Mississippi River, natural wetlands once stored at least 60 days of floodwater. After most were filled or drained, the same stretch could store only 12 days.\" This proves my point.' Why it is weak: the quote is dropped between two sentences. No attributive tag names who reported the figures, nothing explains what the drop from 60 to 12 shows, and 'This proves my point' never says what the point is. AFTER (integrated; each PROVE letter is labeled): 'Draining wetlands strips away a region's natural flood protection [P: the claim]. According to the EPA [R: who], one stretch of the Mississippi River once held wetlands that could store at least 60 days of floodwater, but after most were drained the same stretch could store only 12 [R: what]. That collapse from 60 days to 12 shows the land lost most of its power to soak up and slowly release floodwater [O: what it shows], which matters because towns downstream that once had two months of buffer now have less than two weeks [V: tied to the claim with a because-hinge]. Protecting the wetlands that remain is one of the cheapest forms of flood insurance a community has [E: the so-what].' Read the labels: the claim sentence is [P]; 'According to the EPA' is the attributive tag [R: who]; the 60-and-12 figures are [R: what]; the 'shows' sentence is [O]; the because-hinge is [V]; the so-what is [E]. The AFTER version never leaves the quote alone: an attributive tag introduces it and a because-hinge follows it."}, {"n": 6, "role": "MODEL", "role_label": "Watch", "kind": "predict_the_fix", "title": "Predict the one fix this draft needs", "type": "choice", "stem": "Diagnose this draft before we reveal the fix. Which single move would most improve it? Draft: 'Wetlands protect rare animals. \"More than one-third of the nation's threatened and endangered species live only in wetlands.\" So we should restore them.'", "options": [{"letter": "A", "text": "add an attributive tag (name who reported it) and a because/but/so hinge that ties the figure to the claim"}, {"letter": "B", "text": "add a second quote"}, {"letter": "C", "text": "make the sentences longer"}, {"letter": "D", "text": "move the quote to the end of the paragraph"}], "correct": null, "explanation": "The strongest fix is A. The figure is dropped: no one is named as its source, and nothing links it to the claim. Naming the source (for example, 'The EPA reports...') and adding a because-hinge (it matters because losing wetlands would leave those species with nowhere else to live) turns a bare figure into developed evidence. Those are the Reference and Verify moves in PROVE. A second quote (B) or a longer sentence (C) does not integrate the first one, and moving the quote (D) leaves it standing alone in a new spot."}, {"n": 7, "role": "SUPPORTED", "role_label": "Practice (guided)", "kind": "discrimination", "title": "Integrated vs dropped (minimal pair, mastery gate)", "type": "choice", "stem": "Discriminate before you produce (a labeled Grade-C design bet we are testing, not a proven law). All four drafts use a real wetlands figure. Pick the one that INTEGRATES its evidence, with an attributive tag AND a because/but/so hinge that ties the figure to a claim, so no quote stands alone.", "options": [{"letter": "A", "text": "'Wetlands are disappearing fast. \"The lower 48 states once held about 221 million acres of wetlands but had only about 103 million left by the mid-1980s.\" We should act.'"}, {"letter": "B", "text": "'The U.S. Geological Survey reports that the lower 48 states once held about 221 million acres of wetlands but had only about 103 million left by the mid-1980s, which matters because draining more than half of a flood-absorbing landscape leaves nearby towns far more exposed to flooding.'"}, {"letter": "C", "text": "'Wetlands cover about 221 million acres. That is a lot of land, so wetlands are big.'"}, {"letter": "D", "text": "'According to the U.S. Geological Survey, the lower 48 states once held about 221 million acres of wetlands and only about 103 million by the mid-1980s.'"}], "correct": "B", "explanation": "Correct: B. Only B does both moves: it names the source (an attributive tag) AND adds a because-hinge that tells the reader why the number matters to a claim. Option A drops the quote in with no lead-in and no follow-up. Option C names no source and its so-what is empty. Option D attributes the figure but stops there, with no hinge tying it to a claim, so the evidence still does no work."}, {"n": 8, "role": "SUPPORTED", "role_label": "Practice (guided)", "kind": "production_frq", "title": "Completion: fill the PROVE frame (fade rung 1)", "type": "frq", "prompt": "Guided practice with the frame provided. Using ONE fact from the wetlands source, fill in each blank, then read your sentences back as one integrated piece of evidence. P (point): 'Wetlands are worth protecting because ____.' R (reference, attributive tag): 'According to ____, ____' (state the fact in the source's words or numbers). V (verify, because/but/so hinge): '..., which matters because ____.' Product goal: the source is named with an attributive tag, the fact is stated accurately, and a because/but/so hinge ties the fact to the claim, so no quote stands alone. Scored on Evidence/Development.", "rubric": "rc.staar"}, {"n": 9, "role": "MODEL", "role_label": "Watch", "kind": "diagnosis_frq", "title": "Diagnose a flawed draft with the PROVE checklist (modeled, then you)", "type": "frq", "prompt": "First, watch the PROVE check run on a flawed draft, then run the same checklist yourself. Flawed draft: 'Wetlands help endangered animals. \"More than one-third of the nation's threatened and endangered species live only in wetlands.\" We should save them.' Step 1, R (Reference): does an attributive tag name who reported it? No, the figure is dropped in with no source named, so the repair frame is 'According to ____, ...'. Step 2, V (Verify): is there a because/but/so hinge tying the figure to the claim? No, the draft jumps straight to 'We should save them,' so add one: '..., which matters because ____.' Step 3, O and E (Observe and Extend): does it explain what the figure shows and why it matters beyond itself? No. Now you: write ONE corrected sentence that integrates that same one-third figure, then run this checklist on the sentence you just wrote. Did I name who reported it (an attributive tag)? Did I tie the figure to a claim with a because/but/so hinge? If you answer No to either, use a repair frame above and rewrite before you submit. Scored on Evidence/Development.", "rubric": ""}, {"n": 10, "role": "INDEPENDENT", "role_label": "Practice (on your own)", "kind": "production_frq", "title": "Develop a full evidence paragraph on the wetlands source", "type": "frq", "prompt": "Independent performance: using the wetlands source, write a paragraph that (1) states a clear claim (a controlling idea) about why wetlands are worth protecting or restoring, and (2) develops it with at least one fully integrated piece of source evidence. Integrated means: name who reported the fact (an attributive tag) and tie the fact to your claim with a because/but/so hinge. Do not let any quote or figure stand alone. Product goal, all required: a stated claim; one source fact quoted or paraphrased accurately; an attributive tag naming the source; a because/but/so hinge that explains why the fact supports the claim; and a closing so-what sentence. Before you submit, run this self-check on the paragraph in the box: did I name who reported every fact? Does every fact connect to my claim with a because/but/so hinge instead of just sitting there? If No, add the missing move. Scored on Evidence/Development.", "rubric": "rc.staar"}, {"n": 11, "role": "TRANSFER", "role_label": "Try it on something new", "kind": "production_frq", "title": "Integrate evidence on a NEW topic (bank-partitioned)", "type": "frq", "prompt": "Transfer: do the same integration move on a source you have not practiced on. Read the interstate highways article, then write ONE integrated evidence sentence about the highway system. Pick a real figure, for example that the network runs about 48,890 miles, or that about one quarter of all the miles driven in the country happen on it, or that the federal government paid 90 percent of the construction cost. Integrate it: name who reported the figure with an attributive tag (for example, 'The Federal Highway Administration reports...'), and tie the figure to a claim with a because/but/so hinge (for example, '..., which matters because...'). Do not let the figure stand alone. Scored on Evidence/Development.", "rubric": "rc.ohio"}];
+const TOTAL = 11;
+let idx = 0;
+const answered = {};  // screen index -> {picked, submitted}
+
+function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+function render(){
+  const s = SCREENS[idx];
+  document.getElementById("pf").style.width = ((idx)/TOTAL*100)+"%";
+  document.getElementById("pt").textContent = "Step "+(idx+1)+" of "+TOTAL+"  |  "+s.role_label;
+  let h = '<div class="card"><span class="phase">'+esc(s.role_label)+'</span><h2 class="qtitle">'+esc(s.title)+'</h2>';
+  const next = document.getElementById("next");
+  const back = document.getElementById("back");
+  back.style.visibility = idx===0 ? "hidden":"visible";
+
+  if(s.type==="read"){
+    h += '<div class="body">'+esc(s.body)+'</div>';
+    next.textContent = "Continue"; next.disabled=false; next.dataset.mode="advance";
+  }
+  else if(s.type==="source"){
+    h += '<div class="body">'+esc(s.body)+'</div>';
+    h += '<div class="srcpane">';
+    for(const p of s.passages){ h+='<div class="srctitle">'+esc(p.title)+'</div><div class="srctext">'+esc(p.text)+'</div>'; }
+    h += '</div>';
+    next.textContent = "Continue"; next.disabled=false; next.dataset.mode="advance";
+  }
+  else if(s.type==="choice"){
+    h += '<div class="stem">'+esc(s.stem)+'</div><div class="opts" id="opts">';
+    const st = answered[idx];
+    s.options.forEach(o=>{
+      let cls="opt";
+      if(st&&st.submitted){ cls+=" disabled";
+        if(o.letter===s.correct) cls+=" correct";
+        else if(o.letter===st.picked) cls+=" wrong";
+      } else if(st&&st.picked===o.letter){ cls+=" sel"; }
+      h+='<div class="'+cls+'" onclick="pick(\''+o.letter+'\')"><span class="let">'+o.letter+'</span><span>'+esc(o.text)+'</span></div>';
+    });
+    h += '</div>';
+    const rc = (st&&st.submitted&&st.picked===s.correct);
+    h += '<div class="reveal '+(rc?"rc":"rw")+(st&&st.submitted?" show":"")+'" id="reveal"><b>'+(rc?"Correct":"Not quite")+'</b>'+esc(s.explanation)+'</div>';
+    if(st&&st.submitted){ next.textContent="Continue"; next.disabled=false; next.dataset.mode="advance"; }
+    else { next.textContent="Submit"; next.disabled=!(st&&st.picked); next.dataset.mode="submit"; }
+  }
+  else if(s.type==="frq"){
+    h += '<div class="goal"><b>Your task.</b> '+esc(s.prompt)+'</div>';
+    h += '<textarea id="ta" placeholder="Write your response here..." oninput="onType()">'+(answered[idx]?esc(answered[idx].text||""):"")+'</textarea>';
+    h += '<div class="graderbox" id="gb"><b>Sent to the writing grader.</b> In Timeback this response goes to the external grader ('+(s.rubric?esc(s.rubric):"rubric")+'), which returns a score and feedback keyed to the goal above. (No live grader in this preview.)</div>';
+    const st = answered[idx];
+    if(st&&st.submitted){ next.textContent="Continue"; next.disabled=false; next.dataset.mode="advance"; }
+    else { next.textContent="Submit to grader"; next.disabled=!(st&&st.text&&st.text.trim().length>10); next.dataset.mode="submitfrq"; }
+  }
+  h += '<div class="qtimeta">item type: '+esc(s.kind)+'  |  QTI: '+(s.type==="choice"?"choice (select + feedback)":s.type==="frq"?"extended-text + ExternalApiScore":"stimulus (display-only)")+'</div>';
+  h += '</div>';
+  document.getElementById("screen").innerHTML = h;
+}
+
+function pick(letter){ const st=answered[idx]||{}; if(st.submitted) return; st.picked=letter; answered[idx]=st; render(); }
+function onType(){ const st=answered[idx]||{}; st.text=document.getElementById("ta").value; answered[idx]=st; const n=document.getElementById("next"); n.disabled=!(st.text.trim().length>10); }
+function advance(){
+  const mode=document.getElementById("next").dataset.mode;
+  if(mode==="submit"){ answered[idx].submitted=true; render(); return; }
+  if(mode==="submitfrq"){ answered[idx].submitted=true; document.getElementById("gb").classList.add("show"); render(); document.getElementById("gb").classList.add("show"); return; }
+  go(1);
+}
+function go(d){ idx+=d; if(idx>=TOTAL){ finish(); return; } if(idx<0) idx=0; render(); }
+function finish(){
+  document.getElementById("pf").style.width="100%";
+  document.getElementById("pt").textContent="Complete";
+  document.getElementById("screen").innerHTML='<div class="card done"><h2>Lesson complete</h2><p>You stepped through all '+TOTAL+' items, one at a time, the way a student would in the Timeback player.</p></div>';
+  document.querySelector(".nav").style.display="none";
+}
+render();
+</script></body></html>

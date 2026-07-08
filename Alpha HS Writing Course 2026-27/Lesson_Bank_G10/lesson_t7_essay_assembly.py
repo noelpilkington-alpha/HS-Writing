@@ -64,6 +64,17 @@ LESSON = Lesson(
                    "beyond the page. A conclusion that only restates the introduction stays mid-band. "
                    "Goal for today: plan first, draft from the plan, and frame the essay with a context "
                    "opening and a significance close.")),
+        Slot("TEACH", "teach_card", "The words this lesson uses (define them before you use them)",
+             body=("Four terms, in plain words, before we build with them. A thesis is the one sentence that "
+                   "states the position your whole essay defends, the claim every paragraph works to support. "
+                   "An SPO, or single-paragraph outline, is a short written plan that lists your thesis first "
+                   "and then your body points in the order you will make them, each with the evidence it will "
+                   "use; you scale it up to plan a multi-paragraph essay. A because/but/so hinge is a small "
+                   "connecting word (because, but, or so) that ties a piece of evidence to your claim, so the "
+                   "reader sees why the fact matters instead of guessing. Synthesis means combining more than "
+                   "one source into a single argument of your own, rather than reporting each source in turn. "
+                   "Keep these four in mind: you will plan with the SPO, defend a thesis, hinge each piece of "
+                   "evidence to it, and, when a prompt gives you more than one source, synthesize across them.")),
         Slot("TEACH", "stimulus_display", "Read both sides of the congestion-pricing source",
              ref="ACC-W910-ARG-OPP-LESSON-CONGESTION", bank="congestion_pricing",
              body=("Read the opposing pair on whether cities should charge tolls to drive downtown during "
@@ -143,11 +154,15 @@ LESSON = Lesson(
                    "and order them so the essay builds. You are only planning here, not drafting sentences.")),
         Slot("SUPPORTED", "diagnosis_frq", "Diagnose your own plan and framing",
              bank="congestion_pricing", scored=True,
-             body=("In two or three sentences, diagnose your own plan before you draft from it. Does your "
-                   "opening establish context before the thesis, or does it jump straight to the claim? Do "
-                   "your body points sit in an order that builds toward the thesis, or could they be shuffled "
-                   "with no loss? Does your planned conclusion reach significance (why the position matters), "
-                   "or would it only restate the introduction? Name one move you will change before drafting.")),
+             body=("First, here is the check run on a flawed plan so you see HOW, then you run it on your own. "
+                   "Flawed plan: 'Thesis: tolls are good. Body: traffic, money, air. End: tolls are good.' "
+                   "Step 1, opening: does it establish context before the thesis? No, it jumps to the claim; "
+                   "frame to fix: 'Every morning, ___ , so cities should ___.'. Step 2, order: do the body "
+                   "points build toward the thesis, or could they be shuffled with no loss? Here they are bare "
+                   "labels in no order; fix by naming the point AND its evidence per line. Step 3, conclusion: "
+                   "does it reach significance (why the position matters), or only restate the intro? Here it "
+                   "restates; frame to fix: 'This matters because ___.'. Now run the same three-step checklist "
+                   "on your own plan and name the one move you will change before drafting.")),
 
         # ---------------- INDEPENDENT: plan-then-draft, planning scaffold faded ----------------
         Slot("INDEPENDENT", "production_frq", "Build the full SPO plan from scratch (scaffold faded)",

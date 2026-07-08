@@ -40,11 +40,15 @@ LESSON = Lesson(
     slots=[
         # ---------------- TEACH: CHECK cue + substance vs surface + gating rule + GOAL/NOW/NEXT ----------------
         Slot("TEACH", "teach_card", "Substantive revision vs surface editing + the CHECK cue",
-             body=("Revising for substance means changing what your writing SAYS and how well it meets the "
-                   "rubric, not just tidying commas and spelling. Surface editing fixes the sentence: a typo, a "
-                   "run-on, a misused word. Substantive revision changes the score on the traits that carry the "
-                   "most weight: does the paragraph state a clear controlling idea, does it develop that idea "
-                   "with specific evidence, and does it EXPLAIN how the evidence supports the point. You can "
+             body=("Two terms first, in plain words. A rubric trait is a single quality the scorer rates on its "
+                   "own, such as Organization, Development, or Conventions, and each trait earns its own score. "
+                   "A controlling idea is a paragraph's one main point, the single claim that every sentence in "
+                   "the paragraph works to support. Now the core move. Revising for substance means changing what "
+                   "your writing SAYS and how well it meets those traits, not just tidying commas and spelling. "
+                   "Surface editing means fixing the sentence: a typo, a run-on, a misused word. Substantive "
+                   "revision means changing the score on the traits that carry the most weight: does the paragraph "
+                   "state a clear controlling idea, does it develop that idea with specific evidence, and does it "
+                   "EXPLAIN how the evidence supports the point. You can "
                    "proofread a thin paragraph until it is spotless and it will still sit in the middle band, "
                    "because clean commas do not add development. Our cue for the calibration move is CHECK: "
                    "Criteria (name the trait you are scoring), Hunt (find where the draft meets it and where it "
@@ -64,8 +68,8 @@ LESSON = Lesson(
              ref="ACC-W910-INFO-LESSON-RECYCLING", bank="recycling_recovery",
              body=("Read the source on recycling and materials recovery. You will score short paragraphs "
                    "written about this topic, so you need to know what the evidence actually says. Note two "
-                   "specific figures a strong paragraph could use, and beside each one ask: could I say in a "
-                   "sentence WHY that figure matters to a claim?")),
+                   "specific figures a strong paragraph could use, and beside each one ask one question: in a "
+                   "single sentence, WHY would that figure matter to a claim?")),
 
         # ---------------- MODEL: annotated over-rating reveal -> predict-the-fix boundary pair ----------------
         Slot("MODEL", "annotated_before_after", "A self-awarded 3 that the reveal shows is a 2",
@@ -96,15 +100,20 @@ LESSON = Lesson(
                    "more than 152 million Btu, which matters because that is about the same as 1,024 gallons of "
                    "gasoline, so every ton of cans recovered keeps a large amount of fuel from being burned to "
                    "make new metal from scratch.' "
-                   "(A) Draft P scores higher  (B) Draft Q scores higher  (C) they score the same"),
-             feedback=("Draft Q scores higher, and the single move that separates them is explanation. Both cite "
-                       "the same 152 million Btu figure, so they are level on evidence PRESENCE. GOAL: "
+                   "(A) Draft P scores higher, because it states the point more simply  "
+                   "(B) Draft Q scores higher, because it explains what the figure means  "
+                   "(C) they score the same, since both cite the same 152 million Btu figure  "
+                   "(D) Draft Q scores higher only because it uses more words"),
+             feedback=("Correct: B. Both drafts cite the same 152 million Btu figure, so they are level on "
+                       "evidence PRESENCE, and the single move that separates them is explanation. GOAL: "
                        "Development that ties evidence to a point. NOW: Draft P stops at 'that is a lot of "
-                       "energy,' which only restates the number, so it holds at a 2. Draft Q takes the same "
+                       "energy,' which only restates the number, so it holds at a 2; Draft Q takes the same "
                        "figure and explains what it means (152 million Btu equals about 1,024 gallons of "
-                       "gasoline saved per ton), reaching the 3. NEXT: whenever you keep a figure, add the "
-                       "because-clause that says what it proves. Length is not what earns the point, the "
-                       "explanation is.")),
+                       "gasoline saved per ton), reaching the 3. So C is wrong: citing the same figure does not "
+                       "make them equal, because only Q explains it. D is the trap: length is not what earns the "
+                       "point, the explanation is, and a longer draft that never explained the figure would still "
+                       "hold at a 2. NEXT: whenever you keep a figure, add the because-clause that says what it "
+                       "proves.")),
 
         # ---------------- SUPPORTED: boundary-pair discrimination -> calibration loop (predict THEN reveal) ----
         Slot("SUPPORTED", "discrimination", "Pick the 3 and name the one move (2 vs 3 boundary pair)",
@@ -119,14 +128,23 @@ LESSON = Lesson(
                    "blue bin is not just waste to be managed but a resource that pays people to recover it.' "
                    "The separating move: Option B EXPLAINS what the 681,000 jobs figure does (it shows recovery "
                    "is paid work, a resource and not just trash); Option A only labels it 'good.'")),
-        Slot("SUPPORTED", "self_score", "Predict your Development score BEFORE you write (Stage B)",
+        Slot("SUPPORTED", "self_score", "Predict the Development score BEFORE you write (Stage B)",
              bank="recycling_recovery",
-             body=("Stage B calibration: predict, THEN reveal. In the next step you will write one paragraph. "
-                   "First, before you see any scoring, predict on the 3-point Development scale what your "
-                   "paragraph will earn (1, 2, or 3), and write one sentence of trait evidence for it: 'I predict "
-                   "a __ because my paragraph ___.' You judged the anchors above first, then predict your own, "
-                   "on purpose: writers tend to over-rate their own drafts, so we always commit to a prediction "
-                   "before the grader reveals the real score.")),
+             body=("Stage B calibration: predict, THEN reveal. In the next step you will write one body paragraph "
+                   "on recycling that states a controlling idea, cites one specific figure, and adds a sentence "
+                   "explaining how that figure supports the idea. Commit NOW, before any scoring, to a prediction "
+                   "of the Development score that paragraph will earn on the 3-point scale, and pick the reason "
+                   "that matches your plan. "
+                   "(A) a 3, because I will cite a figure AND explain in a sentence how it supports my controlling "
+                   "idea  "
+                   "(B) a 3, because my paragraph will be long and my commas will be correct  "
+                   "(C) a 2, because I will cite a figure but I am not sure I will explain what it proves  "
+                   "(D) a 1, because I will state an idea but include no figure at all. "
+                   "There is no single right forecast here, it is yours to commit to. But notice which reason "
+                   "actually tracks the score: A names the substantive move that earns a 3, while B is the surface "
+                   "trap (length and clean commas do not add Development). Lock in your prediction, then write. We "
+                   "judge the anchors first and predict our own second on purpose, because writers tend to "
+                   "over-rate their own drafts, so we commit before the grader reveals the real score.")),
         Slot("SUPPORTED", "production_frq", "Write the paragraph you predicted, then see the gap",
              ref="", bank="recycling_recovery", rubric_ref="rc.staar", scored=True,
              body=("Now write the paragraph you just predicted. Using the recycling source, write one body "
@@ -137,20 +155,31 @@ LESSON = Lesson(
                    "one.")),
         Slot("SUPPORTED", "diagnosis_frq", "Diagnose the gap between predicted and revealed (CHECK)",
              bank="recycling_recovery", scored=True,
-             body=("Diagnose the gap in the CHECK format. In two or three sentences: GOAL (which trait were you "
-                   "scoring), NOW (what score did you predict, what did the grader give, and what specifically "
-                   "did the anchor-3 version do that yours did not), NEXT (the one substantive move you will add "
-                   "on your next paragraph to close the gap). Comment on the evidence and the explanation, not "
-                   "on yourself as a writer.")),
+             body=("Diagnose the gap in the CHECK format, the same way the reveal above diagnosed the self-awarded "
+                   "3 that was really a 2. Run this checklist and write two or three sentences using the frames. "
+                   "Step 1, GOAL: name the trait. Frame: 'I was scoring my paragraph on ____.' Step 2, NOW: state "
+                   "both scores and the gap. Frame: 'I predicted a __ and the grader gave a __, and the gap was "
+                   "that a 3 paragraph ____ while mine ____.' Step 3, NEXT: name the one substantive move. Frame: "
+                   "'On my next paragraph I will ____ so the score goes up.' Checklist before you submit: did I "
+                   "name the trait, did I give both numbers, did I name what the higher-scoring version does that "
+                   "mine did not, and did I name one fix? Comment on the evidence and the explanation, never on "
+                   "yourself as a writer.")),
 
         # ---------------- INDEPENDENT: self-score BEFORE, then graded reveal on the real scale ----------------
         Slot("INDEPENDENT", "self_score", "Predict the score of the paragraph you are about to write",
              bank="recycling_recovery",
-             body=("Independent calibration. In the next step you will write one full body paragraph on "
-                   "recycling in which every figure you cite is followed by a sentence explaining how it "
-                   "supports your controlling idea. First, predict the Development score that paragraph will "
-                   "earn on the 3-point scale, and name the one move you will make to earn it. Predict first, "
-                   "then write and reveal.")),
+             body=("Independent calibration, no scaffold this time. In the next step you will write one full body "
+                   "paragraph on recycling in which every figure you cite is followed by a sentence explaining "
+                   "how it supports your controlling idea. Commit now to a prediction of the Development score "
+                   "that paragraph will earn on the 3-point scale, and pick the reason that matches your plan. "
+                   "(A) a 3, because every figure I cite will be followed by a sentence explaining what it proves "
+                   "about my controlling idea  "
+                   "(B) a 3, because I will use a big vocabulary word and a longer paragraph  "
+                   "(C) a 2, because I will cite figures but explain only some of them  "
+                   "(D) a 2, because I will explain my idea well but forget to cite a specific figure. "
+                   "The forecast is yours to commit to, but the reason that tracks a real 3 is A: it names the "
+                   "explain-the-evidence move on every figure. B is the surface trap again. Lock in your "
+                   "prediction, then write and reveal, so you can measure how well-calibrated you are.")),
         Slot("INDEPENDENT", "production_frq", "Independent performance: write to a 3, then reveal",
              ref="", bank="recycling_recovery", rubric_ref="rc.staar", scored=True,
              body=("Independent performance: write one full body paragraph on recycling and materials recovery "

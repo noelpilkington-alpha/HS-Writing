@@ -1,28 +1,40 @@
 """
 lesson_t6_editing_in_context.py  -  G10 model lesson, TYPE 6: EDITING-IN-CONTEXT (SR / spacing vehicle).
 
-Assembles a Timeback assessment-test (ordered item sequence) that instantiates the council-adjudicated
-Type-6 shell (G10_Model_Lesson_Specs.md) against the REAL G10 banks. This is the LOWEST-load type and the
-spaced-retrieval vehicle: the sentence moves taught in Types 1-5 (sentence boundaries, because/but/so,
-appositives, sentence-combining, precise word choice) recur here as in-context editing, from the SAME
-passage. Fix mechanics/conventions AND style, select-then-produce, meaning preserved.
+FULLY CRAFTED to the 17-gate DI bar (copies the T1 precedent moves). Assembles a Timeback assessment-test
+(ordered item sequence) that instantiates the council-adjudicated Type-6 shell against the REAL G10 banks.
+This is the LOWEST-load type and the spaced-retrieval vehicle: the sentence moves taught in Types 1-5
+(sentence boundaries, because/but/so, appositives, sentence-combining, precise word choice) recur here as
+in-context editing, from the SAME passage. Fix mechanics/conventions AND style, select-then-produce, meaning
+preserved.
 
-CONTAMINATION-FREE REBUILD: this lesson binds ONLY a LESSON-pool stimulus for the passage context, so a
-student never edits inside the same passage they are later tested on. The old build bound a TEST-pool
-explanatory single and four TEST selected-response items (conventions, sentence-boundary, language/style,
-and modifier-repair); every one of those bindings is removed. The selected-response practice selects and the
-discrimination are AUTHORED INLINE (ref=""), because the real selected-response items are test-bank items and
-binding them would reintroduce item-level reuse (learn on what you test on).
+Four DI fixes now enforced as gates, applied to Type-6 content:
+  1. DEFINE-BEFORE-USE: a second TEACH card defines every convention term the lesson uses (complete sentence,
+     fragment, run-on, comma splice, modifier, appositive) in plain words + a definitional cue, BEFORE any
+     item asks the student to name or repair that error. Naming the error type IS the Pinpoint step of SPOT.
+  2. CONTENT DEPTH (no blueprint stubs): the annotated worked example is written out with a literal BEFORE and
+     a literal AFTER inline; every choice item embeds (A)-(D) plus "Correct: X." with the reasoning; the SCR
+     production prompts carry explicit product goals. No gestures at content.
+  3. MODEL BEFORE REQUIRED: the diagnosis is MODELED on a flawed edit first (the SPOT check run step by step),
+     then handed to the student as a numbered checklist on a self-contained sentence. No blank "diagnose it."
+  4. NO AMBIGUOUS REFERENT / STATELESS: every item quotes its own sentence inline; nothing points at "the
+     items above" or the student's earlier submission. Each production slot stands alone (QTI is stateless).
+
+CONTAMINATION-FREE: binds ONLY LESSON-pool stimuli for passage context (a student never edits inside a
+passage they are later tested on). Every selected-response practice and every discrimination is AUTHORED
+INLINE (ref=""), because the real selected-response items are test-bank items and binding them would
+reintroduce item-level reuse (learn on what you test on). INDEPENDENT + TRANSFER are authored SCR productions
+(ref="", rc.staar).
 
 Binds (LESSON-pool stimuli only, ids verified present):
   - stimulus  ACC-W910-INFO-LESSON-HIGHWAYS (Interstate Highway System, US-federal-sourced explanatory single)
-        -> the same-passage editing context (TEACH display; every edit rides on this one passage)
+        -> the same-passage editing context (TEACH display; every taught edit rides on this one passage)
   - stimulus  ACC-W910-INFO-LESSON-WEATHER (NWS forecasting explanatory single)
         -> the bank-partitioned TRANSFER passage
 
 Mnemonic SPOT (proposal, NOT sourced): Scan, Pinpoint (error type), Options, Test (the fix corrects the
 error AND preserves the meaning). Two tiers: a mechanics tier ("is it correct?") and, above it, a STYLE tier
-(gap #43: "is it precise / varied / register-appropriate?"). SCR modifier-repair sub-type (gap #21).
+(gap #43: "is it precise / varied / register-appropriate?"). SCR modifier-repair short production (gap #21).
 
 Honesty flag: this type's evidence base is sentence-combining (about 0.50) plus grammar-in-context (TWR),
 NOT the SRSD strategy effect. It is the LEAST SRSD-suited type; no SRSD effect size is claimed for it. Hard
@@ -52,54 +64,84 @@ LESSON = Lesson(
     fade_ledger_moves=["sentence-boundary", "because/but/so", "appositive", "sentence-combining",
                        "word-choice-precision"],
     slots=[
-        # ---------------- TEACH: SPOT cue (mechanics tier THEN style tier) + honesty flag + the passage ----
+        # ---------------- TEACH: SPOT (mechanics tier THEN style tier) + honesty flag + no-isolated-grammar --
         Slot("TEACH", "teach_card", "SPOT: the two-tier editing routine + why it rides on real writing",
              body=("Editing is not hunting for red marks at random. It is a routine you can run on any "
-                   "sentence, so we give it a cue: SPOT. Scan the sentence, Pinpoint the error type, weigh "
-                   "your Options, and Test the fix. The Test step is the one that matters most: a fix has to "
-                   "do TWO things at once. It has to correct the error AND keep the meaning the writer "
-                   "intended. A change that fixes the grammar but quietly says something different is not a "
-                   "fix, it is a new error. "
-                   "SPOT works on two tiers. First the mechanics tier: is it correct? (a complete sentence, "
-                   "not a fragment or a run-on; the modifier attached to the right word; the punctuation "
-                   "doing its job). Then, once it is correct, the style tier: is it precise, is it varied, is "
-                   "it right for a formal report? A sentence can be perfectly correct and still be vague or "
-                   "clunky, and the style tier is where you sharpen it. "
-                   "Honesty about the evidence here: this lesson is NOT built on a strategy-writing result. "
-                   "Its support comes from sentence-combining work (about a 0.50 effect) and from teaching "
-                   "grammar inside real writing rather than on worksheets. That is also the hard rule for "
-                   "this whole lesson: no isolated grammar drills. Isolated grammar taught apart from writing "
-                   "actually tests slightly negative, so every item you edit today lives inside one real "
-                   "passage and mirrors a sentence move you have already met.")),
+                   "sentence, so we give it a cue. SPOT stands for four steps: Scan the sentence, Pinpoint the "
+                   "error type, weigh your Options, and Test the fix. The Test step is the one that matters "
+                   "most: a fix has to do TWO things at once. It has to correct the error AND keep the meaning "
+                   "the writer intended. A change that fixes the grammar but quietly says something different "
+                   "is not a fix, it is a new error. "
+                   "SPOT works on two tiers. First the mechanics tier, which asks: is it correct? (a complete "
+                   "sentence, not a fragment or a run-on; the modifier next to the right word; the punctuation "
+                   "doing its job). Then, once it is correct, the style tier, which asks: is it precise, is it "
+                   "varied, is it right for a formal report? A sentence can be perfectly correct and still be "
+                   "vague or clunky, and the style tier is where you sharpen it. Fix the mechanics first, then "
+                   "raise the style. "
+                   "Honesty about the evidence here: this lesson is NOT built on the SRSD strategy-writing "
+                   "result, and it does not borrow that strength. Its support comes from sentence-combining "
+                   "work (about a 0.50 effect) and from teaching grammar inside real writing rather than on "
+                   "worksheets. That is also the hard rule for this whole lesson: no isolated grammar drills. "
+                   "Grammar taught apart from writing actually tests slightly negative, so every item you edit "
+                   "today lives inside one real passage and mirrors a sentence move you have already met.")),
+        Slot("TEACH", "teach_card", "The words editors use (learn these before you Pinpoint)",
+             body=("Before you can Pinpoint an error, you have to be able to name it, so learn these terms "
+                   "first. A COMPLETE SENTENCE is a group of words with a subject and a verb that can stand on "
+                   "its own (example: 'Congress passed the act.'). A FRAGMENT is a piece of a sentence that has "
+                   "been cut off from the words it needs, so it cannot stand on its own (example: 'Because the "
+                   "fuel tax paid for it.'). A RUN-ON is when two complete sentences are jammed together with "
+                   "no punctuation between them (example: 'The system runs 48,890 miles it reaches every large "
+                   "city.'). A COMMA SPLICE is when two complete sentences are joined with only a comma, which "
+                   "is too weak to hold them (example: 'The states paid part, the federal government paid the "
+                   "rest.'). A MODIFIER is a word or phrase that describes something else in the sentence; a "
+                   "misplaced modifier sits next to the wrong word, so it seems to describe the wrong thing "
+                   "(example: 'Stretching across rivers, the engineers worked' sounds like the engineers "
+                   "stretch across rivers). An APPOSITIVE is a noun phrase that renames the noun right before "
+                   "it, set off with commas (example: 'the Highway Trust Fund, a special account, paid the "
+                   "bills'). The cue for the Pinpoint step: say the error's name out loud, because you repair a "
+                   "run-on differently than a comma splice or a misplaced modifier.")),
         Slot("TEACH", "stimulus_display", "Read the passage you will edit (interstate highways)",
              ref="ACC-W910-INFO-LESSON-HIGHWAYS", bank="interstate_highways",
-             body=("Read the interstate-highway passage once. This is the single passage every edit today "
-                   "comes from. It explains how the Interstate Highway System began in 1956, how large it grew "
-                   "(about 48,890 miles), how a fuel tax and a federal-state partnership paid for it, and what "
-                   "it does for daily life. As you read, notice the kinds of sentences it uses (cause-and-"
-                   "effect hinges, added detail, combined clauses); those are the moves you will scan for.")),
+             body=("Read the interstate-highway passage once. This is the single passage every taught edit "
+                   "today comes from. It explains how the system began in 1956, how large it grew (about "
+                   "48,890 miles), how a fuel tax and a federal-state partnership paid for it, and what it does "
+                   "for daily life. As you read, note the kinds of sentences it uses (cause-and-effect hinges, "
+                   "added detail, combined clauses); those are the moves you will Scan for. The passage stays "
+                   "on screen while you work.")),
+        Slot("TEACH", "discrimination", "Pinpoint the error type (the P in SPOT)",
+             ref="", labeled_grade_c=True, bank="interstate_highways",
+             body=("Warm up the Pinpoint step (a labeled Grade-C discriminate-before-produce move: naming the "
+                   "error before you fix it). Read this draft sentence built from the passage: 'The interstate "
+                   "system began in 1956 it grew to about 48,890 miles.' What kind of error is it? "
+                   "(A) a fragment, because it cannot stand on its own  "
+                   "(B) a run-on, because two complete sentences are jammed together with no boundary  "
+                   "(C) a misplaced modifier, because a describing phrase sits next to the wrong word  "
+                   "(D) no error, the sentence is already correct. "
+                   "Correct: B. Both 'The interstate system began in 1956' and 'it grew to about 48,890 miles' "
+                   "are complete sentences, and nothing separates them, so it is a run-on. Naming the type is "
+                   "the Pinpoint step, and it decides the fix: a run-on needs a real boundary, not just a "
+                   "comma.")),
 
-        # ---------------- MODEL: annotated before/after (the SPOT Test step) -> predict-the-fix -----------
+        # ---------------- MODEL: annotated BEFORE/AFTER (the SPOT Test step) -> predict-the-fix ------------
         Slot("MODEL", "annotated_before_after", "The Test step: a fix that breaks meaning vs a fix that keeps it",
              bank="interstate_highways",
-             body=("Watch the SPOT Test step decide between two edits of one flawed sentence from a draft "
-                   "about the passage. "
-                   "FLAWED: 'Because the federal government paid 90 percent of the cost, the states could "
-                   "afford the work, this let construction spread across the whole country.' (a comma splice "
-                   "joins two full clauses). "
-                   "FIX THAT CHANGES THE MEANING (reject): 'Because the federal government paid 90 percent of "
-                   "the cost, the states could afford the work. This let construction spread across the whole "
-                   "country.' Splitting after 'work' is punctuated correctly, but it quietly drops the writer's "
-                   "chain: the states being able to afford the work is no longer presented as what let "
-                   "construction spread, just a separate fact [annotate: correct grammar, WRONG meaning, the "
-                   "because-chain is severed]. "
-                   "FIX THAT KEEPS THE MEANING (accept): 'Because the federal government paid 90 percent of the "
-                   "cost, the states could afford the work, which let construction spread across the whole "
-                   "country.' Replacing the splice with 'which' fixes the boundary AND preserves the single "
-                   "cause-and-effect chain the writer built [annotate: correct grammar AND meaning preserved, "
-                   "the because/so relationship survives]. "
-                   "That contrast IS the Test step: both options are grammatical, only one passes because "
-                   "only one keeps the meaning.")),
+             body=("Watch the SPOT Test step decide between two edits of one flawed sentence about the passage. "
+                   "BEFORE (flawed, a comma splice: two complete sentences joined by only a comma): 'Because "
+                   "the federal government paid 90 percent of the cost, the states could afford the work, this "
+                   "let construction spread across the whole country.' "
+                   "A FIX THAT CHANGES THE MEANING (reject this one): 'Because the federal government paid 90 "
+                   "percent of the cost, the states could afford the work. This let construction spread across "
+                   "the whole country.' The period is correct grammar, but it quietly severs the writer's "
+                   "chain: 'the states could afford the work' is no longer presented as the thing that let "
+                   "construction spread, just a stray fact set beside it [annotate: correct grammar, WRONG "
+                   "meaning, the because-chain is cut]. "
+                   "AFTER (the fix that corrects the error AND preserves the meaning): 'Because the federal "
+                   "government paid 90 percent of the cost, the states could afford the work, which let "
+                   "construction spread across the whole country.' Replacing the splice with 'which' repairs "
+                   "the boundary AND keeps the single cause-and-effect chain the writer built [annotate: "
+                   "correct grammar AND meaning preserved]. "
+                   "That contrast IS the Test step: both edits are grammatical, only the AFTER version passes, "
+                   "because only it keeps the meaning.")),
         Slot("MODEL", "predict_the_fix", "Predict which edit preserves the meaning",
              bank="interstate_highways",
              body=("Run SPOT yourself before the reveal. A draft sentence reads: 'The interstates are a small "
@@ -107,98 +149,131 @@ LESSON = Lesson(
                    "again). Which single edit corrects the boundary AND preserves the writer's contrast between "
                    "how LITTLE of the network the interstates are and how MUCH of the traffic they carry? "
                    "(A) 'The interstates are a small fraction of the nation's roads, but they carry about a "
-                   "quarter of its traffic.' "
+                   "quarter of its traffic.'  "
                    "(B) 'The interstates are a small fraction of the nation's roads because they carry about a "
-                   "quarter of its traffic.' "
+                   "quarter of its traffic.'  "
                    "(C) 'The interstates are a small fraction of the nation's roads they carry about a quarter "
-                   "of its traffic.' "
+                   "of its traffic.'  "
                    "(D) 'The interstates are a small fraction of the nation's roads; they carry about a "
                    "quarter, of its traffic.'"),
-             feedback=("A is the fix. The two clauses contrast (a small share of the roads, yet a large share "
-                       "of the traffic), so the coordinating conjunction 'but' both repairs the splice and "
+             feedback=("Correct: A. The two clauses contrast (a small share of the roads, yet a large share of "
+                       "the traffic), so the coordinating conjunction 'but' both repairs the comma splice and "
                        "keeps that contrast, which is exactly the meaning-preservation half of the Test step. "
                        "B is grammatical but changes the meaning: 'because' invents a cause the writer never "
                        "claimed. C leaves a run-on (no boundary at all). D adds a stray comma inside the second "
                        "clause and scrambles the sense. Correct AND meaning-preserving is the bar, not correct "
                        "alone.")),
 
-        # ---------------- SUPPORTED: discrimination FIRST (Grade-C, labeled, INLINE), then in-context selects ------
-        Slot("SUPPORTED", "discrimination", "Meaning preserved vs meaning changed (modifier minimal pair)",
+        # ---------------- SUPPORTED: discrimination FIRST (Grade-C, labeled, INLINE), then in-context selects ----
+        Slot("SUPPORTED", "discrimination", "Meaning preserved vs meaning changed (modifier minimal set)",
              ref="", labeled_grade_c=True, bank="interstate_highways",
-             body=("Design-bet step (discriminate before you produce; this recognition-before-production move "
-                   "is a labeled Grade-C design bet, not a proven result, and is A/B-flagged). Here is a flawed "
-                   "sentence with a misplaced modifier: 'Stretching across mountains and rivers, engineers "
-                   "built the interstates to connect distant cities.' The opening phrase should describe the "
-                   "roads, not the engineers. Two rewrites both read smoothly: "
+             body=("Discriminate before you produce (a labeled Grade-C design bet: recognition before "
+                   "production, not a proven result, A/B-flagged). Here is a flawed sentence with a misplaced "
+                   "modifier: 'Stretching across mountains and rivers, engineers built the interstates to "
+                   "connect distant cities.' The opening phrase 'stretching across mountains and rivers' should "
+                   "describe the roads, not the engineers. All four rewrites are grammatical. Pick the ONE that "
+                   "repairs the modifier AND preserves the intended meaning (the roads stretch across the "
+                   "terrain; the point is that they connect distant cities): "
                    "(A) 'Stretching across mountains and rivers, the interstates that engineers built connect "
-                   "distant cities.' "
+                   "distant cities.'  "
                    "(B) 'Stretching across mountains and rivers, engineers connected distant cities as they "
-                   "built the interstates.' "
-                   "Pick the rewrite that repairs the modifier AND preserves the intended meaning (the roads "
-                   "stretch across the terrain, and the point is that they connect cities), not the one that "
-                   "fixes the grammar while shifting who or what does what. The two options differ on exactly "
-                   "that one dimension.")),
-        Slot("SUPPORTED", "sr_practice", "In-context select: conventions (NO-CHANGE is an option)",
+                   "built the interstates.'  "
+                   "(C) 'Engineers, stretching across mountains and rivers, built the interstates to connect "
+                   "distant cities.'  "
+                   "(D) 'The interstates stretch across mountains and rivers, engineers built them to connect "
+                   "distant cities.' "
+                   "Correct: A. Only A puts the roads right after the opening phrase (so the roads, not the "
+                   "engineers, do the stretching) and keeps the main point that the roads connect cities. B "
+                   "fixes the grammar but shifts the meaning: now the engineers do the connecting, not the "
+                   "roads. C still attaches the phrase to 'Engineers,' so the modifier is still misplaced. D "
+                   "repairs the modifier but trades in a comma splice, swapping one error for another.")),
+        Slot("SUPPORTED", "sr_practice", "In-context select: conventions (NO CHANGE is an option)",
              ref="", bank="interstate_highways",
-             body=("Now select in context. In the passage sentence 'The federal money came mostly from a tax "
-                   "on gasoline and diesel fuel,' choose the best edit for the underlined phrase 'gasoline and "
-                   "diesel fuel.' "
+             body=("Now select in context (the mechanics tier of SPOT). In the passage sentence 'The federal "
+                   "money came mostly from a tax on gasoline and diesel fuel,' choose the best edit for the "
+                   "phrase 'gasoline and diesel fuel': "
                    "(A) NO CHANGE  "
                    "(B) gasoline, and diesel fuel  "
                    "(C) gasoline and diesel, fuel  "
                    "(D) gasoline; and diesel fuel  "
-                   "Remember that NO CHANGE can be the right answer: do not fix what is not broken. This is the "
-                   "mechanics tier of SPOT.")),
+                   "Correct: A. The phrase is a simple two-item list joined by 'and,' so no comma or semicolon "
+                   "belongs inside it. B splits the two items with a needless comma, C drops a comma into the "
+                   "middle of one item ('diesel fuel'), and D uses a semicolon where nothing is being "
+                   "separated. NO CHANGE can be the right answer: do not fix what is not broken.")),
         Slot("SUPPORTED", "sr_practice", "In-context select: sentence boundary (fragment / run-on)",
              ref="", bank="interstate_highways",
-             body=("Select the edit that turns this run-on into one complete, correctly bounded sentence "
-                   "without changing the writer's meaning: 'The system runs about 48,890 miles it reaches "
-                   "nearly every large city in the country.' "
+             body=("Pinpoint the boundary first (sentence boundaries are the error most likely to sink a "
+                   "conventions score). Select the edit that turns this run-on into one complete, correctly "
+                   "bounded sentence WITHOUT changing the writer's meaning: 'The system runs about 48,890 miles "
+                   "it reaches nearly every large city in the country.' "
                    "(A) miles, it reaches  "
                    "(B) miles and reaches  "
                    "(C) miles, reaching  "
                    "(D) miles it, reaches  "
-                   "Sentence boundaries are the move most likely to sink the conventions score, so Pinpoint the "
-                   "boundary first. (Both B and C are grammatical; choose the one that keeps the two facts in "
-                   "one clean sentence and preserves the meaning.)")),
+                   "Correct: B. 'and reaches' joins the two facts into one clean sentence and keeps both as "
+                   "equal points (the length AND the reach). A only swaps the run-on for a comma splice (a "
+                   "comma is too weak to join two complete sentences). D leaves the run-on and adds a stray "
+                   "comma. C ('miles, reaching') is grammatical but demotes the second fact into an "
+                   "afterthought, so B preserves the meaning best.")),
         Slot("SUPPORTED", "sr_practice", "In-context select: the STYLE tier (precise / register-appropriate)",
              ref="", bank="interstate_highways",
-             body=("This item is the style tier, above mechanics (gap #43). The sentence 'The project was "
-                   "really big and cost a lot of money' is already grammatically correct; your job is to choose "
-                   "the most precise, formal-register rewrite for a report. "
+             body=("This item is the STYLE tier, one step above mechanics (a design bet that style earns its "
+                   "own tier, gap #43). The sentence 'The project was really big and cost a lot of money' is "
+                   "already grammatically correct; your job is to choose the most precise, formal rewrite for "
+                   "an informational report: "
                    "(A) The project was really big and cost a ton.  "
-                   "(B) The project was enormous in scale and ran to about 114 billion dollars.  "
+                   "(B) The project was enormous in scale and cost about 114 billion dollars.  "
                    "(C) The project was pretty huge and super expensive.  "
                    "(D) The project was big money.  "
-                   "Test it the same way: the better wording has to sharpen the meaning, not drift away from "
-                   "it.")),
-        Slot("MODEL", "diagnosis_frq", "Diagnose your own edit",
+                   "Correct: B. B replaces the vague words ('really big,' 'a lot of money') with a precise "
+                   "scale and the actual figure from the passage, in formal register. A and C stay casual and "
+                   "vague ('a ton,' 'super expensive'), and D is an informal idiom that drops the meaning "
+                   "almost entirely. Style still passes the Test step: the better wording sharpens the meaning, "
+                   "it does not drift from it.")),
+        Slot("MODEL", "diagnosis_frq", "Diagnose an edit with the SPOT checklist (modeled, then you)",
              bank="interstate_highways", scored=True,
-             body=("In one or two sentences, diagnose your own work on the items above: which edit did you "
-                   "pick, what error type did you Pinpoint, and how do you know your fix preserved the "
-                   "writer's meaning rather than quietly changing it? Name the tier you were on (mechanics or "
-                   "style).")),
+             body=("First watch the check run on a flawed edit, then run the same check yourself. A writer "
+                   "tried to fix this run-on from a highway draft: 'Trucks carry goods across state lines they "
+                   "use the interstates to do it.' The attempted fix was: 'Trucks carry goods across state "
+                   "lines, they use the interstates to do it.' Run the SPOT check step by step. Step 1, Scan "
+                   "and Pinpoint: what is the error type? A run-on, two complete sentences with no real "
+                   "boundary. Step 2, does the fix correct the error? No: a comma alone cannot join two "
+                   "complete sentences, so the fix only turned a run-on into a comma splice, and the error is "
+                   "not repaired. Step 3, does it preserve the meaning? The meaning survives, but the error "
+                   "does not, and a fix has to pass BOTH halves of the Test step. Now you: write ONE better fix "
+                   "for that same sentence, then run this checklist on your fix and answer all three in two or "
+                   "three sentences. Checklist: (1) Which error type did I Pinpoint? (2) Does my fix correct "
+                   "the error with a real boundary, not just a comma? (3) Does my fix keep the writer's meaning, "
+                   "or did it quietly change who does what? Scored on Conventions.")),
 
-        # ---------------- INDEPENDENT: the STAAR SCR short production (revise, keep the meaning) -----------
-        Slot("INDEPENDENT", "production_frq", "SCR: revise the flawed sentence, keep the meaning (highways)",
+        # ---------------- INDEPENDENT: STAAR SCR short production (revise, keep the meaning) ----------------
+        Slot("INDEPENDENT", "production_frq", "Short revision: fix the modifier, keep the meaning (highways)",
              ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True,
-             body=("Independent performance (STAAR short-constructed-response). Here is a flawed sentence "
-                   "about the highway passage: 'Signed into law in 1956, the country began building a "
-                   "connected network of high-speed roads.' The opening phrase does not attach to the right "
-                   "word (the country was not signed into law; the act was). Rewrite the sentence so the "
-                   "modifier attaches logically AND the intended meaning is preserved. Change only what you "
-                   "must. Scored on Conventions.")),
+             body=("Independent performance (a STAAR short-constructed-response: a short, focused revision, not "
+                   "a full essay). Here is a flawed sentence about the highway passage: 'Signed into law in "
+                   "1956, the country began building a connected network of high-speed roads.' The opening "
+                   "phrase 'Signed into law in 1956' is a misplaced modifier: it should describe the ACT that "
+                   "was signed, not 'the country' (the country was not signed into law). Rewrite the sentence "
+                   "so the opening phrase attaches to the right word AND the writer's meaning is preserved. Run "
+                   "SPOT: Scan, Pinpoint the error type, weigh your Options, and Test that your fix corrects "
+                   "the error and keeps the meaning. Product goal: (1) the opening phrase clearly describes the "
+                   "1956 act, (2) the sentence is complete and correctly bounded, (3) the original meaning (a "
+                   "1956 law started the roadbuilding) is unchanged, and (4) you change only what you must. "
+                   "Scored on Conventions.")),
 
         # ---------------- TRANSFER: same move, bank-partitioned NEW passage (weather) -----------------
-        Slot("TRANSFER", "production_frq", "SCR transfer on a NEW passage: revise, keep the meaning (weather)",
+        Slot("TRANSFER", "production_frq", "Short revision on a NEW passage: fix the modifier, keep the meaning (weather)",
              ref="ACC-W910-INFO-LESSON-WEATHER", bank="weather_science", rubric_ref="rc.staar", scored=True,
              body=("Transfer to a passage you have not edited (how the National Weather Service makes a "
                    "forecast, a different topic). A flawed draft sentence reads: 'Rising above 35 kilometers, "
-                   "forecasters use weather balloons to measure the upper air.' The introductory phrase does "
-                   "not describe the forecasters who follow it; it is the balloon that rises. Rewrite the "
-                   "sentence so the opening phrase attaches to the right word AND the writer's meaning is "
-                   "preserved. Run SPOT: Scan, Pinpoint the modifier, weigh Options, Test that the fix keeps "
-                   "the meaning. Scored on Conventions.")),
+                   "forecasters use weather balloons to measure the upper air.' The opening phrase 'Rising "
+                   "above 35 kilometers' is a misplaced modifier: it should describe the BALLOON that rises, "
+                   "not the forecasters. Rewrite the sentence so the opening phrase attaches to the right word "
+                   "AND the writer's meaning is preserved. Run SPOT: Scan, Pinpoint the modifier, weigh your "
+                   "Options, and Test that the fix keeps the meaning. Product goal: (1) the opening phrase "
+                   "clearly describes the balloon, (2) the sentence stays complete and correctly bounded, (3) "
+                   "the meaning (balloons rise high to measure the upper air) is unchanged, and (4) you change "
+                   "only what you must. Scored on Conventions.")),
     ],
 )
 
