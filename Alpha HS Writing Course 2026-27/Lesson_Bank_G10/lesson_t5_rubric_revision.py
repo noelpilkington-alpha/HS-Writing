@@ -144,18 +144,19 @@ LESSON = Lesson(
                    "on yourself as a writer.")),
 
         # ---------------- INDEPENDENT: self-score BEFORE, then graded reveal on the real scale ----------------
-        Slot("INDEPENDENT", "self_score", "Predict the score of your independent paragraph first",
+        Slot("INDEPENDENT", "self_score", "Predict the score of the paragraph you are about to write",
              bank="recycling_recovery",
-             body=("Independent calibration. You will now revise your paragraph, or write a fresh one, on "
-                   "recycling so that every figure you cite is followed by an explanation of how it supports "
-                   "your controlling idea. Before the grader sees it, predict its Development score on the "
-                   "3-point scale and name the one move you added to earn it. Predict first, reveal second.")),
-        Slot("INDEPENDENT", "production_frq", "Independent performance: revise to a 3, then reveal",
+             body=("Independent calibration. In the next step you will write one full body paragraph on "
+                   "recycling in which every figure you cite is followed by a sentence explaining how it "
+                   "supports your controlling idea. First, predict the Development score that paragraph will "
+                   "earn on the 3-point scale, and name the one move you will make to earn it. Predict first, "
+                   "then write and reveal.")),
+        Slot("INDEPENDENT", "production_frq", "Independent performance: write to a 3, then reveal",
              ref="", bank="recycling_recovery", rubric_ref="rc.staar", scored=True,
-             body=("Independent performance: write or revise a full body paragraph on recycling and materials "
-                   "recovery so that every figure you cite is followed by a sentence explaining how it supports "
-                   "your controlling idea. Scored on the STAAR scale (Organization and Development scored first, "
-                   "then Conventions, per the gating rule). The grader reveals your real score against your "
+             body=("Independent performance: write one full body paragraph on recycling and materials recovery "
+                   "so that every figure you cite is followed by a sentence explaining how it supports your "
+                   "controlling idea. Scored on the STAAR scale (Organization and Development scored first, then "
+                   "Conventions, per the gating rule). The grader reveals your real score against your "
                    "prediction so you can measure how well-calibrated you are.")),
 
         # ---------------- TRANSFER: same CHECK move, partitioned NEW topic + new scale ----------------

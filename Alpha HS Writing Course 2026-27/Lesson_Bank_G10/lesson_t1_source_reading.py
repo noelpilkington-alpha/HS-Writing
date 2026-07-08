@@ -54,9 +54,10 @@ LESSON = Lesson(
         Slot("TEACH", "stimulus_display", "Read the source on how a weather forecast is made",
              ref="ACC-W910-INFO-LESSON-WEATHER", bank="weather_science",
              body=("Read the article about how the National Weather Service builds a forecast. As you read, "
-                   "MARK it up: underline the one sentence that states the author's Main idea, circle each "
-                   "place a figure is Attributed to a named source (NOAA or the National Weather Service), and "
-                   "star one Key line you could quote exactly.")),
+                   "keep the MARK moves in mind: find the one sentence that states the author's Main idea, "
+                   "notice each place a figure is Attributed to a named source (NOAA or the National Weather "
+                   "Service), and pick one Key line you could quote exactly. The next steps will ask you to "
+                   "use what you found.")),
 
         # ---------------- MODEL: 4-mechanism async sequence (clean before/after + predict-the-fix) --------
         Slot("MODEL", "annotated_before_after", "Watch a distorted summary become a fair one",
