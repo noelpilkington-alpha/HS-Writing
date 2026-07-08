@@ -37,7 +37,7 @@ LESSON_TOPICS = {
     "urban": ["congestion_pricing"],
     "education_policy": ["longer_school_year"],
     "time_policy": ["daylight_saving"],
-    "rhetoric_pd": ["gettysburg_address", "fdr_infamy"],
+    "rhetoric_pd": ["story_of_an_hour"],   # Chopin "Story of an Hour" (lesson); distinct from test-pool chopin_prose
 }
 
 
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     overlap = test_ids & lesson_ids
     assert not overlap, f"CONTAMINATION: topics in both pools: {overlap}"
     assert len(test_ids) == 16, f"expected 16 test topics (the existing bank), got {len(test_ids)}"
-    assert len(lesson_ids) == 9, f"expected 9 lesson topics (the new seed), got {len(lesson_ids)}"
+    assert len(lesson_ids) == 8, f"expected 8 lesson topics (the new seed), got {len(lesson_ids)}"
     for t in test_ids:
         assert r.pool_of(t) == POOL_TEST
     for t in lesson_ids:
