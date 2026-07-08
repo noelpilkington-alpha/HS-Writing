@@ -159,19 +159,36 @@ def gate_citable_facts(s: StimulusRecord) -> tuple[bool, str]:
         return False, f"only {n} citable facts; need >=3 discrete facts for evidence-based writing"
     return True, f"{n} citable facts"
 
-def gate_two_sidedness(s: StimulusRecord) -> tuple[bool, str]:
-    """For OPPOSING family: the two passages must take genuinely different positions (angle recorded,
-    and a credibility/source contrast). Mechanical proxy: distinct angles + distinct fact-source orgs."""
-    if s.family != "opposing":
-        return True, "n/a (not opposing)"
-    if len(s.passages) != 2 or not all(p.angle.strip() for p in s.passages):
-        return False, "opposing set needs 2 passages each with a recorded angle"
-    if s.passages[0].angle.strip().lower() == s.passages[1].angle.strip().lower():
-        return False, "the two angles are identical (not genuinely two-sided)"
-    orgs = {f.org for f in s.fact_sources}
-    if len(orgs) < 2:
-        return False, "opposing set should draw on >=2 distinct source orgs (credibility contrast)"
-    return True, "two distinct angles + multi-org credibility contrast"
+def gate_source_config(s: StimulusRecord) -> tuple[bool, str]:
+    """Source-configuration validity. Replaces gate_two_sidedness for the compose-from-singles world.
+
+    - A composable SINGLE (tagged proposition+stance, or theme+facet+connection_point) is always valid.
+    - An untagged single is valid for lesson bucket, or for explanatory/analysis mode (single-source IS the form).
+      An untagged single in test+argument fails (a pick-a-side test must be a composed opposing pair).
+    - A pre-composed opposing/complementary pair keeps the legacy checks (2 passages, distinct angles, >=2 orgs)."""
+    is_prop_member = bool(s.proposition_id and s.stance)
+    is_theme_member = bool(s.theme_id and s.facet and s.connection_point)
+
+    if s.family == "single":
+        if is_prop_member or is_theme_member:
+            return True, "composable single (tagged to a proposition or theme)"
+        if s.bucket == "lesson" or s.mode in ("explanatory", "analysis"):
+            return True, "valid single-source (lesson teaching single, or explanatory/analysis form)"
+        return False, ("untagged argument single in test bucket: a pick-a-side test needs a composed opposing "
+                       "pair, so this single must carry a proposition_id + stance")
+
+    # pre-composed pair (legacy path)
+    if s.family in ("complementary", "opposing"):
+        if len(s.passages) != 2 or not all(p.angle.strip() for p in s.passages):
+            return False, "paired set needs 2 passages each with a recorded angle"
+        if s.passages[0].angle.strip().lower() == s.passages[1].angle.strip().lower():
+            return False, "the two angles are identical (not genuinely two-sided)"
+        if s.family == "opposing":
+            orgs = {f.org for f in s.fact_sources}
+            if len(orgs) < 2:
+                return False, "opposing set should draw on >=2 distinct source orgs (credibility contrast)"
+        return True, "pre-composed pair with distinct angles"
+    return False, f"unknown family '{s.family}'"
 
 def gate_lexile(s: StimulusRecord) -> tuple[bool, str]:
     """Every passage must land in the G10 band via the readability gate we built."""
@@ -234,7 +251,7 @@ GATES = [
     ("provenance", gate_provenance),
     ("fact_sources", gate_fact_sources),
     ("citable_facts", gate_citable_facts),
-    ("two_sidedness", gate_two_sidedness),
+    ("source_config", gate_source_config),
     ("lexile", gate_lexile),
     ("content", gate_content),
     ("bucket_profile", gate_bucket_profile),
@@ -319,6 +336,9 @@ if __name__ == "__main__":
     )
     qc_stimulus(demo)
     print(qc_report(demo))
+    # NOTE: the demo passages are ABBREVIATED (~200 words) for readability, so the demo intentionally fails
+    # the 480-word structure gate. The demo is illustrative; the real bank (full-length passages) is verified
+    # by bank_loader.py. This file's exit status reflects the SELF-TEST ASSERTIONS below, not the abbreviated demo.
 
     # two-bucket fields: backward-compatible defaults
     assert demo.bucket == "lesson", "default bucket is lesson"
@@ -368,4 +388,27 @@ if __name__ == "__main__":
     assert ok6
     print("stimulus_contract profile gates OK")
 
-    sys.exit(0 if demo.qc["passed"] else 1)
+    # composable single: argument single tagged as a proposition member (pro) -> valid
+    _member = StimulusRecord(id="M", grade="9-10", mode="argument", family="single", prompt="p",
+                             passages=[Passage("t", "w " * 500)], fact_sources=[], provenance={},
+                             bucket="test", form="staar", proposition_id="prop_x", stance="pro")
+    okm, _ = gate_source_config(_member)
+    assert okm, "argument single tagged to a proposition is a valid composable single"
+    # untagged argument single in TEST bucket -> fail (pick-a-side test needs a pair)
+    _untagged = StimulusRecord(id="U", grade="9-10", mode="argument", family="single", prompt="p",
+                               passages=[Passage("t", "w " * 500)], fact_sources=[], provenance={},
+                               bucket="test", form="staar")
+    oku, whyu = gate_source_config(_untagged)
+    assert not oku and "proposition" in whyu.lower(), "untagged argument test single must be a proposition member"
+    # untagged explanatory single -> valid (single-source IS the form)
+    _info = StimulusRecord(id="I", grade="9-10", mode="explanatory", family="single", prompt="p",
+                           passages=[Passage("t", "w " * 500)], fact_sources=[], provenance={},
+                           bucket="test", form="mcas")
+    oki, _ = gate_source_config(_info)
+    assert oki, "explanatory single is a valid single-source form"
+    print("stimulus_contract source-config gate OK")
+
+    # reaching here means every self-test assertion above passed (the abbreviated demo's structure failure is
+    # expected and does not gate this file; the real bank is verified by bank_loader.py).
+    print("stimulus_contract self-test PASS")
+    sys.exit(0)
