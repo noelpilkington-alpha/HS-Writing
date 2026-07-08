@@ -1,0 +1,1252 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G10 Lesson Bank — Model Lessons (QC-verified)</title>
+<style>
+:root{--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--panel:#f8fafc;--accent:#7c3aed;--accentbg:#f5f3ff;
+--ok:#166534;--okbg:#dcfce7;--bad:#991b1b;--badbg:#fee2e2;}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);
+line-height:1.55;margin:0;background:#fff}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 22px 90px}
+header.top{border-bottom:3px solid var(--accent);padding-bottom:14px;margin-bottom:10px}
+h1{font-size:1.7rem;margin:0 0 4px}
+.sub{color:var(--muted);font-size:.94rem;margin:0}
+.summary{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 16px;min-width:120px}
+.stat .n{font-size:1.5rem;font-weight:800;color:var(--accent)}
+.stat .l{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.prov{background:var(--accentbg);border-left:4px solid var(--accent);padding:11px 15px;border-radius:0 8px 8px 0;
+margin:14px 0;font-size:.84rem}
+.toc{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 26px}
+.tocitem{text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:20px;padding:5px 13px;font-size:.82rem}
+.tocitem b{color:var(--accent)}
+.tocitem.tp{border-color:#86efac;background:var(--okbg)} .tocitem.tf{border-color:#fca5a5;background:var(--badbg)}
+.lesson{border:1px solid var(--line);border-radius:14px;margin:22px 0;overflow:hidden}
+.lhd{padding:14px 18px;color:#fff;background:var(--accent)}
+.lhd.t1,.lhd.t6{background:#0d9488} .lhd.t2,.lhd.t3,.lhd.t8{background:#2563eb}
+.lhd.t4{background:#be123c} .lhd.t5,.lhd.t7{background:#d97706}
+.lnum{font-size:.72rem;font-weight:700;opacity:.9;letter-spacing:.06em}
+.ltitle{font-size:1.2rem;font-weight:800;margin:2px 0}
+.badge{font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:20px;vertical-align:middle;margin-left:8px}
+.badge.ok{background:var(--okbg);color:var(--ok)} .badge.bad{background:var(--badbg);color:var(--bad)}
+.lmeta{font-size:.74rem;opacity:.92} .lmeta .file{font-family:ui-monospace,Menlo,monospace}
+.ltarget,.lacc,.lseq,.lbound{padding:9px 18px;font-size:.84rem;border-bottom:1px solid var(--line);background:var(--panel)}
+.lacc code,.lbound code{background:#eef2ff;color:#4338ca;border-radius:5px;padding:1px 6px;font-size:.78rem}
+.lseq{font-family:ui-monospace,Menlo,monospace;font-size:.76rem;color:var(--muted)}
+.gates{display:flex;flex-wrap:wrap;gap:5px;padding:12px 18px}
+.g{font-size:.68rem;padding:3px 9px;border-radius:6px;font-family:ui-monospace,Menlo,monospace;cursor:help}
+.gp{background:var(--okbg);color:var(--ok)} .gf{background:var(--badbg);color:var(--bad);font-weight:700}
+.slots{padding:6px 18px 18px}
+.slot{display:flex;gap:0;margin:10px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.rail{width:6px;flex:none}
+.slotmain{padding:11px 15px;flex:1}
+.slothd{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.role{font-size:.68rem;font-weight:800;letter-spacing:.05em}
+.kind{font-size:.8rem;font-weight:700}
+.qti{font-size:.68rem;color:var(--muted);font-family:ui-monospace,Menlo,monospace;margin-left:auto}
+.slottitle{font-size:.92rem;font-weight:600;margin:3px 0 5px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.chips span{font-size:.68rem;padding:2px 8px;border-radius:12px}
+.ref{background:#e0e7ff;color:#3730a3;font-family:ui-monospace,Menlo,monospace}
+.auth{background:#f1f5f9;color:var(--muted)}
+.bank{background:#ecfeff;color:#0e7490} .rub{background:#fef3c7;color:#92400e;font-family:ui-monospace,Menlo,monospace}
+.scored{background:#dcfce7;color:#166534} .gc{background:#fae8ff;color:#86198f}
+.body{font-size:.85rem;white-space:pre-wrap;background:#fff;border-left:3px solid var(--line);padding:6px 12px;margin-top:4px}
+.fb{font-size:.82rem;background:#f5f3ff;border-left:3px solid var(--accent);padding:6px 12px;margin-top:6px;border-radius:0 6px 6px 0}
+.fb b{color:var(--accent)}
+footer{margin-top:40px;font-size:.78rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+</style></head><body><div class="wrap">
+<header class="top"><h1>Grade 10 Lesson Bank &mdash; Model Lessons</h1>
+<p class="sub">The 8 reusable, council-adjudicated lesson TYPES, each assembled as a Timeback assessment-test
+(SRSD item sequence) and machine-verified against the 11-gate lesson contract.</p></header>
+<div class="prov"><b>What this is:</b> each lesson is an ORDERED item sequence (Teach &rarr; Model &rarr;
+Supported &rarr; Independent &rarr; Transfer) that binds real bank artifacts (stimuli + SR/CR items) and
+authors the connective slots. The Model stage is the modality-corrected 4-mechanism sequence (annotated
+before/after &rarr; predict-the-fix &rarr; feedback on the student's own draft &rarr; self-diagnosis), NOT a
+passive-read think-aloud. Every gate below passed on the machine harness; hover a gate chip for its check.</div>
+<div class="summary">
+  <div class="stat"><div class="n">8</div><div class="l">lesson types</div></div>
+  <div class="stat"><div class="n">8/8</div><div class="l">QC pass</div></div>
+  <div class="stat"><div class="n">81</div><div class="l">total slots</div></div>
+  <div class="stat"><div class="n">33</div><div class="l">graded FRQ slots</div></div>
+  <div class="stat"><div class="n">8</div><div class="l">bound bank refs</div></div>
+</div>
+<div class="toc"><a href="#ACC-W910-L-T1-SOURCE-0001" class="tocitem tp"><b>T1</b> source-reading</a><a href="#ACC-W910-L-T2-CLAIM-0001" class="tocitem tp"><b>T2</b> claim-building</a><a href="#ACC-W910-L-T3-EVIDENCE-0001" class="tocitem tp"><b>T3</b> evidence-integration</a><a href="#ACC-W910-L-T4-ANALYSIS-0001" class="tocitem tp"><b>T4</b> text-dependent-analysis</a><a href="#ACC-W910-L-T5-RUBRIC-0001" class="tocitem tp"><b>T5</b> rubric-revision</a><a href="#ACC-W910-L-T6-EDITING-0001" class="tocitem tp"><b>T6</b> editing-in-context</a><a href="#ACC-W910-L-T7-ESSAY-0001" class="tocitem tp"><b>T7</b> essay-assembly</a><a href="#ACC-W910-L-T8-SYNTHESIS-0001" class="tocitem tp"><b>T8</b> cross-source-synthesis</a></div>
+
+  <section class="lesson" id="ACC-W910-L-T1-SOURCE-0001">
+    <div class="lhd t1">
+      <div class="lnum">TYPE 1</div>
+      <div class="ltitle">Read It Fairly First: Building the They-Say (MARK)
+        <span class="badge ok">PASS · 11/11 gates</span>
+      </div>
+      <div class="lmeta">source-reading · ACC-W910-L-T1-SOURCE-0001 · 9-10 · 9 slots · <span class="file">lesson_t1_source_reading.py</span></div>
+    </div>
+    <div class="ltarget"><b>Target:</b> Read one source and build a fair, attributed summary you could quote from: name the Main idea, Attribute the figures to who reported them, capture the Reasons/evidence, and lift one Key line. Sets up the they-say that later argument answers. Trait: reading/summary accuracy.</div>
+    <div class="lacc">ACC: <code>ACC.W.SRC.1</code> <code>ACC.W.INFO.1</code> <code>CCSS.RI.9-10.2</code> &nbsp;|&nbsp; Fade-ledger moves: attributive-tag, fair-summary, hedge-preservation</div>
+    <div class="lseq"><b>Sequence:</b> T:teachcard → T:stimulusdisplay → M:annotatedbeforeafter → M:predictthefix → S:discrimination → S:productionfrq → M:diagnosisfrq → I:productionfrq → T:productionfrq</div>
+    <div class="lbound"><b>Bound bank refs:</b> <code>ACC-W910-INFO-LESSON-RECYCLING</code> <code>ACC-W910-INFO-LESSON-WEATHER</code> </div>
+    <div class="gates"><span class="g gp" title="SRSD shell complete + in order (Teach-&gt;Model-&gt;Supported-&gt;Independent-&gt;Transfer)">shell_completeness</span><span class="g gp" title="Model = 4-mechanism async sequence (annotated before/after + predict-the-fix + diagnosis)">model_sequence</span><span class="g gp" title="discrimination precedes production; Grade-C move labeled">discrimination_before_production</span><span class="g gp" title="2 bound refs, all present in the banks">binding_integrity</span><span class="g gp" title="transfer bank {&#x27;recycling_recovery&#x27;} partitioned from taught {&#x27;weather_science&#x27;}">bank_partition</span><span class="g gp" title="no self_score slot (n/a); no person-praise">calibration_discipline</span><span class="g gp" title="3 production FRQ(s), all routed to a valid rc.* config">grader_routing</span><span class="g gp" title="all slots map to native Timeback interactions (all JSON-safe)">timeback_native</span><span class="g gp" title="no over-claimed effect sizes (async model cites modality-flexible mechanisms only)">effect_size_honesty</span><span class="g gp" title="type 1 source-reading: MARK [proposal]">mnemonic_status</span><span class="g gp" title="no em dashes">no_em_dash</span></div>
+    <div class="slots">
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Teach card</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">1. Why a fair, attributed summary comes first</div>
+        <div class="chips"><span class="auth">authored</span>    </div>
+        <div class="body">Before you can argue with a source, you have to represent it fairly. That fair version is the they-say your own writing will answer, so getting it wrong quietly weakens every point you build on top of it. Our cue for reading a source is MARK: Main idea (what is the author&#x27;s overall point?), Attribution (who is saying it, and where does the figure come from?), Reasons/evidence (what facts back the point?), Key quotable line (one sentence worth quoting exactly). A fair summary keeps the author&#x27;s hedges (words like about, can, and twice a day) and names the source. A distortion does the opposite: it cherry-picks the scariest number, drops the attribution, or turns a careful claim into an absolute (for example, turning the article&#x27;s plain statement that no forecast model is perfect into a claim that forecasters can predict any storm). Reading tasks on the test ask you to summarize and use a source accurately, so a distorted they-say costs you. Goal for today: build a fair, attributed summary you could actually quote from.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Stimulus (source display)</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">2. Read the source on how a weather forecast is made</div>
+        <div class="chips"><span class="ref">binds ACC-W910-INFO-LESSON-WEATHER</span> <span class="bank">bank: weather_science</span>   </div>
+        <div class="body">Read the article about how the National Weather Service builds a forecast. As you read, MARK it up: underline the one sentence that states the author&#x27;s Main idea, circle each place a figure is Attributed to a named source (NOAA or the National Weather Service), and star one Key line you could quote exactly.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Annotated before/after</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">3. Watch a distorted summary become a fair one</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: weather_science</span>   </div>
+        <div class="body">BEFORE (distorts the source): Weather balloons fly 115,000 feet into the sky every hour, and the article proves the Weather Service can predict any storm perfectly, so no forecast should ever catch anyone off guard. AFTER (fair, annotated with MARK): [Main idea] The article explains that a modern forecast is built as a chain that runs from observation to prediction to a public warning, not from a single guess. [Attribution] Its figures come from NOAA and the National Weather Service, not from the writer&#x27;s opinion. [Reasons/evidence] The agency runs 92 weather-balloon stations that launch twice a day, 365 days a year, and each balloon can rise above 35 kilometers, about 115,000 feet; closer to the ground it operates a network of about 160 Doppler radars, and 122 local offices adjust the computer models with regional knowledge. [Key line] As the article puts it, a forecast &#x27;is built from steady measurement, tested science, and human judgment.&#x27; Notice what the BEFORE version broke: it said balloons fly every hour (the article says twice a day), it treated 115,000 feet as a routine altitude (the article says a balloon CAN rise that high, which is a ceiling), it turned &#x27;no model is perfect&#x27; into perfect prediction, and it dropped who reported the figures. The AFTER version keeps the hedges and names the source, so it earns the reader&#x27;s trust.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Predict-the-fix (choice + reveal)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">4. Predict the distortion before the reveal</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: weather_science</span>   </div>
+        <div class="body">Diagnose this summary before we reveal the fix. A classmate writes: &#x27;The weather article shows the Weather Service launches balloons every hour and can predict any storm perfectly.&#x27; Which is the clearest distortion of the source? (A) it turns the article&#x27;s &#x27;twice a day&#x27; launches into &#x27;every hour&#x27; and its plain statement that no model is perfect into a claim of perfect prediction, and it drops who reported the figures  (B) the summary is simply too short  (C) it summarizes the wrong topic  (D) it quotes far too much of the article</div><div class="fb"><b>Reveal:</b> The strongest answer is A. The source says crews launch the balloons twice a day, 365 days a year, not every hour, and it states plainly that no model is perfect, which is exactly why local forecasters adjust the computer results by hand. The summary also never names NOAA or the National Weather Service as the source. A fair MARK summary keeps the article&#x27;s hedges (about, can, twice a day) and attributes each figure to who reported it. That is the Main idea and Attribution moves working together. Length is not the problem here; faithfulness is.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Discrimination (choice)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">5. Fair use of a source vs. off-claim or overstated material</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: weather_science</span>   <span class="gc">Grade-C labeled</span></div>
+        <div class="body">Design-bet step (discriminate before you produce, a Grade-C move we are testing, not a proven law): choosing material that genuinely and fairly supports a claim is the flip side of writing a fair summary. Both sentences below draw on the weather source for the claim that a forecast rests on measurement. Pick the one that stays inside what the source reports, not the one that quietly overstates it. Option A (fair support): &#x27;The forecast rests on measurement: the National Weather Service runs 92 balloon stations that launch twice a day and about 160 Doppler radars that track storms.&#x27; Option B (off-claim / overstated): &#x27;The forecast rests on measurement, which is why the Weather Service can tell you exactly what the weather will be a month from now.&#x27; The options differ on exactly one thing: whether the material earns its place as fair support. Option A repeats figures the source actually reports; Option B adds a claim about month-ahead certainty the source never makes.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">6. Partial fade: write the Attribution move only</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: weather_science</span> <span class="rub">rc.mcas</span> <span class="scored">scored</span> </div>
+        <div class="body">Guided practice (partial fade). The Main idea and Reasons are already drafted for you: &#x27;The article explains that a forecast is built as a chain, from balloon and radar observations to computer models that local forecasters adjust, and finally to a public warning when dangerous weather is near.&#x27; Write the Attribution move only: in one sentence, name who reports the forecasting figures and make clear the claims come from the source, not from your own opinion.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Diagnosis FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">7. Diagnose your own attribution</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: weather_science</span>  <span class="scored">scored</span> </div>
+        <div class="body">In one or two sentences, diagnose your own work: what would a no-attribution version have looked like, what did you add to attribute the figures, and why does naming the source make the summary fairer to the author? Name the MARK letters you used.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#d97706"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#d97706">INDEPENDENT</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">8. Write a full fair MARK summary of the source</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: weather_science</span> <span class="rub">rc.mcas</span> <span class="scored">scored</span> </div>
+        <div class="body">Independent performance: write a short fair summary (3 to 4 sentences) of the weather-forecast article using all four MARK moves. State the Main idea, Attribute the figures to the agency that reported them, give the key Reasons/evidence, and end with one Key line you could quote exactly. Keep the author&#x27;s hedges (words like about, can, and twice a day); do not overstate. Scored on summary accuracy and fair attribution.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#be123c"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#be123c">TRANSFER</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">9. Apply MARK to a NEW source (bank-partitioned)</div>
+        <div class="chips"><span class="ref">binds ACC-W910-INFO-LESSON-RECYCLING</span> <span class="bank">bank: recycling_recovery</span> <span class="rub">rc.mcas</span> <span class="scored">scored</span> </div>
+        <div class="body">Transfer: apply MARK to a source you have not practiced on. Read the recycling article, then write a short fair summary (3 to 4 sentences) that states the Main idea, Attributes the figures to the agency that reported them (the EPA), gives the key Reasons/evidence, and ends with one Key line you could quote. Keep every hedge the article uses (words like about and almost). Scored on summary accuracy and fair attribution.</div>
+      </div>
+    </div></div>
+  </section>
+  <section class="lesson" id="ACC-W910-L-T2-CLAIM-0001">
+    <div class="lhd t2">
+      <div class="lnum">TYPE 2</div>
+      <div class="ltitle">Take a STAND: Build a Defensible Claim That Answers So What (STAND)
+        <span class="badge ok">PASS · 11/11 gates</span>
+      </div>
+      <div class="lmeta">claim-building · ACC-W910-L-T2-CLAIM-0001 · 9-10 · 12 slots · <span class="file">lesson_t2_claim_building.py</span></div>
+    </div>
+    <div class="ltarget"><b>Target:</b> Build a defensible thesis using they-say/I-say in three stances (agree, disagree, agree-with-a-difference): take a clear stance, make an arguable assertion the other side could reject, complete the &#x27;I say&#x27; with a because/but/so hinge, and answer &#x27;so what&#x27; by naming the stakes. Trait: Thesis/Purpose.</div>
+    <div class="lacc">ACC: <code>ACC.W.ARG.1</code> <code>ACC.W.INFO.6</code> <code>CCSS.W.9-10.1</code> <code>CCSS.W.9-10.1b</code> &nbsp;|&nbsp; Fade-ledger moves: because/but/so, they-say/I-say, so-what/stakes</div>
+    <div class="lseq"><b>Sequence:</b> T:teachcard → T:stimulusdisplay → T:discrimination → T:productionfrq → M:annotatedbeforeafter → M:predictthefix → S:discrimination → S:productionfrq → M:diagnosisfrq → I:productionfrq → T:stimulusdisplay → T:productionfrq</div>
+    <div class="lbound"><b>Bound bank refs:</b> <code>ACC-W910-ARG-OPP-LESSON-CONGESTION</code> <code>ACC-W910-ARG-OPP-LESSON-SCHOOLYEAR</code> </div>
+    <div class="gates"><span class="g gp" title="SRSD shell complete + in order (Teach-&gt;Model-&gt;Supported-&gt;Independent-&gt;Transfer)">shell_completeness</span><span class="g gp" title="Model = 4-mechanism async sequence (annotated before/after + predict-the-fix + diagnosis)">model_sequence</span><span class="g gp" title="discrimination precedes production; Grade-C move labeled">discrimination_before_production</span><span class="g gp" title="2 bound refs, all present in the banks">binding_integrity</span><span class="g gp" title="transfer bank {&#x27;congestion_pricing&#x27;} partitioned from taught {&#x27;longer_school_year&#x27;}">bank_partition</span><span class="g gp" title="no self_score slot (n/a); no person-praise">calibration_discipline</span><span class="g gp" title="4 production FRQ(s), all routed to a valid rc.* config">grader_routing</span><span class="g gp" title="all slots map to native Timeback interactions (all JSON-safe)">timeback_native</span><span class="g gp" title="no over-claimed effect sizes (async model cites modality-flexible mechanisms only)">effect_size_honesty</span><span class="g gp" title="type 2 claim-building: STAND [proposal]">mnemonic_status</span><span class="g gp" title="no em dashes">no_em_dash</span></div>
+    <div class="slots">
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Teach card</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">1. What a defensible claim is + the STAND cue + the so-what test</div>
+        <div class="chips"><span class="auth">authored</span>    </div>
+        <div class="body">A thesis is a claim you can defend. It is not a fact you can look up, and it is not an opinion no one can weigh. Our cue for building one is STAND: Stance (which side you take), Territory (the &#x27;they say&#x27; you are answering), Assertion (a point a reasonable reader could reject), Nuance (room to agree with a difference), Defensible (backed by reasons, not just feeling). They-say/I-say gives you three stances to pick from: you can agree, you can disagree, or you can agree with a difference (yes, but). Whichever you choose, a strong claim also passes the &#x27;so what&#x27; test: it says why the answer matters. On every state rubric, the top band rewards a position that reaches significance, not one that just restates the prompt. Goal for today: write a defensible claim that takes a stance and answers &#x27;so what&#x27;.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Stimulus (source display)</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">2. Read the sources on a longer school year</div>
+        <div class="chips"><span class="ref">binds ACC-W910-ARG-OPP-LESSON-SCHOOLYEAR</span> <span class="bank">bank: longer_school_year</span>   </div>
+        <div class="body">Read both sources on whether the United States should adopt a longer school year. One side argues that more days would narrow the summer-slide gap; the other argues that more seat time is not the same as more learning. For each side, note the &#x27;they say&#x27; (the position that side takes) so you have real territory to answer.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Discrimination (choice)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">3. Sort it: fact vs arguable claim vs ungrounded opinion</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: longer_school_year</span>   <span class="gc">Grade-C labeled</span></div>
+        <div class="body">Design-bet step (discriminate before you produce, a Grade-C move we label as a bet, not proof): sort each statement as a FACT (checkable, no one argues it), an ARGUABLE CLAIM (a stance a reasonable person could reject), or an UNGROUNDED OPINION (a preference with no reason anyone could weigh). Only the arguable claim can anchor an essay. Sort these: (1) &#x27;A typical American public school runs about 180 days each year.&#x27; (2) &#x27;Because the long summer break lets some students slide backward while wealthier peers keep learning, the United States should adopt a longer school year.&#x27; (3) &#x27;Summer break is just the best part of the whole year.&#x27;</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">4. Ungraded warm-up: what do you actually think?</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: longer_school_year</span> <span class="rub">rc.4trait</span>  </div>
+        <div class="body">Ungraded warm-up (this one is not scored, so write freely): before you study any models, freewrite for a few minutes on the real question. What do you actually think about whether the United States should adopt a longer school year, and why? Get your honest take onto the page. Next we will sharpen it into a defensible claim.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Annotated before/after</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">5. Watch a fact become a defensible claim</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: longer_school_year</span>   </div>
+        <div class="body">BEFORE (a fact, not a claim): &#x27;A typical American public school runs about 180 days a year.&#x27; That statement is true, and the sources confirm it (NCES), but no one on the other side disagrees with it, so there is nothing to argue. AFTER (an arguable claim with stakes, annotated): &#x27;The United States should adopt a longer school year [Stance + Assertion the other side could reject], because a schedule that sends students away for a long summer lets learning slide backward for the children who can least afford tutoring or camps [because-hinge, the I say], which quietly widens the gap between richer and poorer students every fall instead of closing it [so what: the stakes].&#x27; Notice the AFTER version does what the BEFORE cannot: it takes a Stance, makes an Assertion a reasonable reader could reject, and answers &#x27;so what&#x27;. That is the S, the A, and the significance beat of STAND doing the work.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Predict-the-fix (choice + reveal)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">6. Predict: why can this not be your thesis?</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: longer_school_year</span>   </div>
+        <div class="body">Diagnose this draft before we reveal the fix. If this sentence were offered as a thesis, which is its single biggest problem? Draft: &#x27;The summer break lasts about two to three months in most American schools.&#x27; (A) it states a fact no one disputes, so there is no arguable stance to defend  (B) it is too short to be a thesis  (C) it does not name its source  (D) it uses a number instead of words</div><div class="fb"><b>Reveal:</b> The answer is A. &#x27;The summer break lasts about two to three months&#x27; is a checkable fact, and a fact is not a claim: nobody on the other side disagrees, so there is nothing to argue. To turn it into a defensible thesis you add a Stance and an Assertion the other side could reject (&#x27;the United States should adopt a longer school year&#x27;), then answer &#x27;so what&#x27; by naming the stakes (why the length of the break matters). A fact can support a claim, but it cannot be the claim. Length, citation, and numbers are not the issue here.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Discrimination (choice)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">7. Claim with stakes vs claim without (so-what minimal pair)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: longer_school_year</span>   <span class="gc">Grade-C labeled</span></div>
+        <div class="body">Design-bet step (labeled Grade-C): both options below are arguable claims that take the same stance. They differ on exactly one move, the &#x27;so what.&#x27; Pick the one that answers why it matters. (A) &#x27;The United States should adopt a longer school year.&#x27; (B) &#x27;The United States should adopt a longer school year, because the long summer break lets low-income students lose ground while wealthier peers keep learning, widening the gap the schools then spend every fall trying to rebuild.&#x27; B reaches the stakes; A stops at the position. Top-band rubrics reward the claim that says why it matters.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">8. Guided: write ONE defensible STAND claim</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: longer_school_year</span> <span class="rub">rc.ohio</span> <span class="scored">scored</span> </div>
+        <div class="body">Guided practice: write ONE defensible claim on the longer-school-year question. Pick a Stance (agree, disagree, or agree-with-a-difference), state an Assertion the other side could reject, complete the &#x27;I say&#x27; with a because/but/so hinge, and finish with a &#x27;so what&#x27; clause that names the stakes. Draw your reason from the sources. Scored on Thesis/Purpose.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Diagnosis FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">9. Diagnose your own claim</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: longer_school_year</span>  <span class="scored">scored</span> </div>
+        <div class="body">In one or two sentences, diagnose your own work. Is your claim arguable (could a reasonable reader on the other side reject it, or is it really a fact or a bare opinion)? Does it answer &#x27;so what&#x27; by naming the stakes? Name the STAND letters your claim delivers and the one it still needs.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#d97706"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#d97706">INDEPENDENT</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">10. Write an independent STAND claim with stakes</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: longer_school_year</span> <span class="rub">rc.ohio</span> <span class="scored">scored</span> </div>
+        <div class="body">Independent performance: on the longer-school-year question, write a defensible thesis that takes a clear Stance, makes an Assertion the other side could reject, and answers &#x27;so what&#x27; with an explicit stakes beat (why the answer matters). Use a because/but/so hinge as your &#x27;I say.&#x27; Scored on Thesis/Purpose.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#be123c"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#be123c">TRANSFER</span>
+          <span class="kind">Stimulus (source display)</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">11. Read the sources on a NEW topic</div>
+        <div class="chips"><span class="ref">binds ACC-W910-ARG-OPP-LESSON-CONGESTION</span> <span class="bank">bank: congestion_pricing</span>   </div>
+        <div class="body">Read this new pair of sources on whether cities should charge tolls to drive downtown during the busiest hours (congestion pricing). For each side, note the &#x27;they say&#x27; so you have territory to answer.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#be123c"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#be123c">TRANSFER</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">12. Build a STAND claim on the new topic</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: congestion_pricing</span> <span class="rub">rc.ohio</span> <span class="scored">scored</span> </div>
+        <div class="body">Transfer to a topic you have not practiced: write a defensible claim on whether cities should charge tolls to drive downtown during busy hours. Take a Stance, make an arguable Assertion, add your &#x27;I say&#x27; with a because/but/so hinge, and answer &#x27;so what&#x27; by naming the stakes. Scored on Thesis/Purpose.</div>
+      </div>
+    </div></div>
+  </section>
+  <section class="lesson" id="ACC-W910-L-T3-EVIDENCE-0001">
+    <div class="lhd t3">
+      <div class="lnum">TYPE 3</div>
+      <div class="ltitle">Integrate the Evidence: No Quote Stands Alone (PROVE)
+        <span class="badge ok">PASS · 11/11 gates</span>
+      </div>
+      <div class="lmeta">evidence-integration · ACC-W910-L-T3-EVIDENCE-0001 · 9-10 · 9 slots · <span class="file">lesson_t3_evidence_integration.py</span></div>
+    </div>
+    <div class="ltarget"><b>Target:</b> Integrate a source quote so it never stands alone: attributive tag (who said it) plus a because/but/so hinge that ties it to the claim. Trait: Evidence/Development.</div>
+    <div class="lacc">ACC: <code>ACC.W.SRC.1</code> <code>ACC.W.ARG.2</code> <code>CCSS.W.9-10.1</code> &nbsp;|&nbsp; Fade-ledger moves: because/but/so, attributive-tag, sentence-combining</div>
+    <div class="lseq"><b>Sequence:</b> T:teachcard → T:stimulusdisplay → M:annotatedbeforeafter → M:predictthefix → S:discrimination → S:productionfrq → M:diagnosisfrq → I:productionfrq → T:productionfrq</div>
+    <div class="lbound"><b>Bound bank refs:</b> <code>ACC-W910-INFO-LESSON-HIGHWAYS</code> <code>ACC-W910-INFO-LESSON-WETLANDS</code> </div>
+    <div class="gates"><span class="g gp" title="SRSD shell complete + in order (Teach-&gt;Model-&gt;Supported-&gt;Independent-&gt;Transfer)">shell_completeness</span><span class="g gp" title="Model = 4-mechanism async sequence (annotated before/after + predict-the-fix + diagnosis)">model_sequence</span><span class="g gp" title="discrimination precedes production; Grade-C move labeled">discrimination_before_production</span><span class="g gp" title="2 bound refs, all present in the banks">binding_integrity</span><span class="g gp" title="transfer bank {&#x27;interstate_highways&#x27;} partitioned from taught {&#x27;wetlands_restoration&#x27;}">bank_partition</span><span class="g gp" title="no self_score slot (n/a); no person-praise">calibration_discipline</span><span class="g gp" title="3 production FRQ(s), all routed to a valid rc.* config">grader_routing</span><span class="g gp" title="all slots map to native Timeback interactions (all JSON-safe)">timeback_native</span><span class="g gp" title="no over-claimed effect sizes (async model cites modality-flexible mechanisms only)">effect_size_honesty</span><span class="g gp" title="type 3 evidence-integration: PROVE [established-caveat]">mnemonic_status</span><span class="g gp" title="no em dashes">no_em_dash</span></div>
+    <div class="slots">
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Teach card</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">1. Why a dropped quote costs you points</div>
+        <div class="chips"><span class="auth">authored</span>    </div>
+        <div class="body">A dropped quote is a quotation set into your paragraph with no lead-in and no follow-up, as if it could speak for itself. It cannot. The reader is left guessing who said it and why it matters to your claim. On every state rubric, evidence that is merely present but not developed sits in the middle band. The move that lifts it is integration. Our cue for it is PROVE: Point (state the claim), Reference (attribute and cite the source), Observe (explain what it shows), Verify (tie it back to the claim), Extend (say why it matters). Goal for today: write evidence where no quote stands alone.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Stimulus (source display)</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">2. Read the source on wetlands</div>
+        <div class="chips"><span class="ref">binds ACC-W910-INFO-LESSON-WETLANDS</span> <span class="bank">bank: wetlands_restoration</span>   </div>
+        <div class="body">Read the source about wetlands. Mark one fact you could use as evidence, and note who reports it.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Annotated before/after</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">3. Watch a dropped quote become integrated</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: wetlands_restoration</span>   </div>
+        <div class="body">BEFORE (drops the move): The source says wetlands stop floods. &quot;Wetlands once stored 60 days of floodwater.&quot; This proves my point. AFTER (explains HOW, annotated): According to the source, which cites the EPA, one stretch of the Mississippi River once held natural wetlands that could store at least 60 days of floodwater, but after most were drained or filled the same stretch could store only 12 days [Reference: who + what]. That drop from 60 days to 12 matters because it shows draining the wetlands did not just remove scenery; it stripped away most of the land&#x27;s built-in flood protection [Verify + Extend: tied to the claim]. Notice the AFTER version never leaves the quote alone: an attributive tag introduces it and a because-hinge follows it. That is the R-O-V-E of PROVE doing the work.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Predict-the-fix (choice + reveal)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">4. Predict the fix before you see it</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: wetlands_restoration</span>   </div>
+        <div class="body">Diagnose this draft before we reveal the fix. Which single move would most improve it? Draft: &#x27;Wetlands protect rare animals. &quot;More than one-third of endangered species live only in wetlands.&quot; So we should restore them.&#x27; (A) add an attributive tag and a because-hinge  (B) add a second quote  (C) make the sentences longer  (D) move the quote to the end</div><div class="fb"><b>Reveal:</b> The strongest fix is A. The quote is dropped: no one is named and nothing ties it to the claim. Naming the source and adding a because-hinge (it matters because losing wetlands would leave those species with nowhere else to live) turns a bare quote into developed evidence. That is the Reference and Verify moves in PROVE. A longer sentence or a second quote does not fix an unintegrated one.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Discrimination (choice)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">5. Integrated vs. dropped (minimal pair)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: wetlands_restoration</span>   <span class="gc">Grade-C labeled</span></div>
+        <div class="body">Design-bet step (discriminate before you produce, a Grade-C move we are testing, not a proven law): pick the version that integrates its evidence rather than dropping it. Both use the same wetlands figure; they differ on exactly one move, the attribution-plus-hinge. Option A (dropped): &#x27;Wetlands are disappearing. &quot;The country once held 221 million acres and only 103 million remained by the mid-1980s.&quot; We should act.&#x27; Option B (integrated): &#x27;The U.S. Geological Survey reports that the lower 48 states once held about 221 million acres of wetlands but had only about 103 million left by the mid-1980s, which matters because it means the country drained more than half of a landscape before understanding the flood control and habitat it provided.&#x27; Option B names who reported the figures and ties the loss to why it matters; Option A drops the numbers in with no lead-in and no follow-up.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">6. Write ONE integrated PROVE sentence</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: wetlands_restoration</span> <span class="rub">rc.staar</span> <span class="scored">scored</span> </div>
+        <div class="body">Using one fact from the wetlands source, write ONE sentence that (1) attributes the fact to the source and (2) ties it to a claim with a because/but/so hinge. Do not let the quote stand alone.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Diagnosis FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">7. Diagnose your own sentence</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: wetlands_restoration</span>  <span class="scored">scored</span> </div>
+        <div class="body">In one or two sentences, diagnose your own work: what would a dropped-quote version have looked like, what move did you add to integrate it, and why is your version stronger for the claim? Name the PROVE letters you used.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#d97706"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#d97706">INDEPENDENT</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">8. Develop a full evidence paragraph on the wetlands source</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: wetlands_restoration</span> <span class="rub">rc.staar</span> <span class="scored">scored</span> </div>
+        <div class="body">Independent performance: using the wetlands source, write a paragraph that states a claim about why wetlands are worth protecting or restoring and develops it with at least one fully integrated piece of source evidence (attribution plus a because/but/so hinge). Do not let any quote or figure stand alone. Scored on Evidence/Development.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#be123c"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#be123c">TRANSFER</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">9. Integrate evidence on a NEW topic</div>
+        <div class="chips"><span class="ref">binds ACC-W910-INFO-LESSON-HIGHWAYS</span> <span class="bank">bank: interstate_highways</span> <span class="rub">rc.ohio</span> <span class="scored">scored</span> </div>
+        <div class="body">Transfer: do the same integration move on a source you have not practiced on. Read the interstate highways article, then write one integrated evidence sentence (for example, about the network&#x27;s roughly 48,890 miles or the share of driving it carries), attributing the figure to who reported it and extending it with why the evidence matters to a claim. Scored on Evidence/Development.</div>
+      </div>
+    </div></div>
+  </section>
+  <section class="lesson" id="ACC-W910-L-T4-ANALYSIS-0001">
+    <div class="lhd t4">
+      <div class="lnum">TYPE 4</div>
+      <div class="ltitle">Analyze the Move, Reach the Significance (DEW)
+        <span class="badge ok">PASS · 11/11 gates</span>
+      </div>
+      <div class="lmeta">text-dependent-analysis · ACC-W910-L-T4-ANALYSIS-0001 · 9-10 · 10 slots · <span class="file">lesson_t4_analysis.py</span></div>
+    </div>
+    <div class="ltarget"><b>Target:</b> Analyze HOW an author builds meaning, not WHAT the text says: name the Device, state the Effect it has on the audience, and reach the Warrant (why that effect matters to the author&#x27;s purpose). The Warrant is the scored top-band move. Traits: Evidence/Development + Organization.</div>
+    <div class="lacc">ACC: <code>ACC.W.INFO.6</code> <code>ACC.W.ANALYSIS.1</code> <code>CCSS.RI.9-10.6</code> <code>CCSS.W.9-10.2</code> &nbsp;|&nbsp; Fade-ledger moves: device-effect-warrant, because/but/so, attributive-tag</div>
+    <div class="lseq"><b>Sequence:</b> T:teachcard → T:stimulusdisplay → M:annotatedbeforeafter → M:predictthefix → S:discrimination → S:discrimination → S:productionfrq → M:diagnosisfrq → I:productionfrq → T:productionfrq</div>
+    <div class="lbound"><b>Bound bank refs:</b> <code>ACC-W910-ANALYSIS-LESSON-HOUR</code> <code>ACC-W910-INFO-LESSON-WEATHER</code> </div>
+    <div class="gates"><span class="g gp" title="SRSD shell complete + in order (Teach-&gt;Model-&gt;Supported-&gt;Independent-&gt;Transfer)">shell_completeness</span><span class="g gp" title="Model = 4-mechanism async sequence (annotated before/after + predict-the-fix + diagnosis)">model_sequence</span><span class="g gp" title="discrimination precedes production; Grade-C move labeled">discrimination_before_production</span><span class="g gp" title="2 bound refs, all present in the banks">binding_integrity</span><span class="g gp" title="transfer bank {&#x27;weather_science&#x27;} partitioned from taught {&#x27;story_of_an_hour&#x27;}">bank_partition</span><span class="g gp" title="no self_score slot (n/a); no person-praise">calibration_discipline</span><span class="g gp" title="3 production FRQ(s), all routed to a valid rc.* config">grader_routing</span><span class="g gp" title="all slots map to native Timeback interactions (all JSON-safe)">timeback_native</span><span class="g gp" title="no over-claimed effect sizes (async model cites modality-flexible mechanisms only)">effect_size_honesty</span><span class="g gp" title="type 4 text-dependent-analysis: DEW [proposal]">mnemonic_status</span><span class="g gp" title="no em dashes">no_em_dash</span></div>
+    <div class="slots">
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Teach card</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">1. Analysis is not summary: the DEW cue and the significance principle</div>
+        <div class="chips"><span class="auth">authored</span>    </div>
+        <div class="body">Summary retells WHAT a text says. Paraphrase re-says it in other words. Analysis is a different job: it explains HOW an author builds meaning and WHY that choice works on the reader. On an analysis rubric, retelling the text sits in the low band no matter how accurate it is, because it never answers the real question: what is the author DOING? Our cue for the analytical move is DEW. Device: name the specific choice the author makes (an image, a repeated word, a shift in tone, a piece of irony). Effect: say what that choice does to the reader. Warrant: reach the significance, why that effect matters to the author&#x27;s purpose and how you know. Here is the part to hold onto: most students stop at the Effect and stall in the middle band. The move that lifts analysis into the top band is the W, the Warrant. Reaching why it matters is the difference between a solid response and an insightful one. Goal for today: write analysis that reaches significance, not analysis that stops at what the author did.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Stimulus (source display)</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">2. Read the source: Kate Chopin, &quot;The Story of an Hour&quot; (1894)</div>
+        <div class="chips"><span class="ref">binds ACC-W910-ANALYSIS-LESSON-HOUR</span> <span class="bank">bank: story_of_an_hour</span>   </div>
+        <div class="body">Read this excerpt from Kate Chopin&#x27;s 1894 story. It opens with Mrs. Mallard learning that her husband has died in a railroad accident, then follows her alone in her room. As you read, mark ONE choice the author makes (an image she lingers on, a moment of irony, a repeated word). You will analyze that one move, not the whole story. Notice especially what Mrs. Mallard sees through the open window and the word she begins to whisper.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Annotated before/after</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">3. Watch summary become analysis that reaches significance</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: story_of_an_hour</span>   </div>
+        <div class="body">BEFORE (this is summary, not analysis): In this part of the story Mrs. Mallard sits in a chair by an open window after she hears that her husband has died. She looks outside and sees trees, blue sky, and rain, and she hears birds and a song in the distance. Chopin uses a lot of nature description to set the scene before Mrs. Mallard starts saying she is free. Why the BEFORE version fails: every sentence retells WHAT the text shows or slaps a label on it (&#x27;a lot of nature description to set the scene&#x27;). It never explains what the choice DOES or why it matters. That is summary plus device-spotting, and it caps at the middle band. AFTER (real DEW analysis, annotated): Chopin crowds the view through the open window with signs of life: the tops of trees &#x27;all aquiver with the new spring life,&#x27; the &#x27;delicious breath of rain,&#x27; and &#x27;patches of blue sky&#x27; breaking through the clouds [DEVICE: a cluster of spring and renewal imagery, placed at the window at the very moment of grief]. Because those images press in exactly where the reader expects mourning, they tilt the scene toward life and possibility rather than loss [EFFECT: the reader begins to feel renewal gathering around her before she names it]. That matters because Chopin needs the reader to sense Mrs. Mallard&#x27;s coming liberation before she will admit it herself, so the open window lets the whispered &#x27;free, free, free&#x27; arrive as something the reader has already half-felt, which is what makes the story&#x27;s central irony, that a death is what frees her, land as a discovery instead of a mere announcement [WARRANT: why the effect serves Chopin&#x27;s purpose, the significance]. Notice the AFTER version moves Device to Effect to Warrant and does not stop until it reaches why the move matters. The last sentence is the significance, and it is what separates top-band analysis from a competent effect statement.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Predict-the-fix (choice + reveal)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">4. Predict: is this analysis, and if not, what fixes it?</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: story_of_an_hour</span>   </div>
+        <div class="body">Diagnose this draft before we reveal the fix. Draft: &#x27;Chopin repeats the word free near the end. This is a powerful moment. It shows Mrs. Mallard is happy now.&#x27; Which single move would most improve it? (A) explain what the repetition of &#x27;free&#x27; DOES to the reader and why it matters to Chopin&#x27;s purpose (reach effect and warrant)  (B) quote one more sentence from the story  (C) name two more literary devices Chopin uses  (D) make the sentences longer and more formal</div><div class="fb"><b>Reveal:</b> The strongest fix is A. The draft names a device (the repetition of &#x27;free&#x27;) and gives a vague label (&#x27;a powerful moment&#x27;), but it never explains what the repetition DOES to the reader or WHY that matters. That is summary plus device-spotting, not analysis. The fix is to reach the Effect and the Warrant: whispering &#x27;free&#x27; over and over, under her breath and almost against her will, lets the reader watch a feeling surface that Mrs. Mallard has not yet dared to claim (Effect), and that slow surfacing matters because it makes her liberation feel discovered rather than declared, which is what gives the story&#x27;s irony its force (Warrant). A second quote (B), more device names (C), or longer sentences (D) do not fix analysis that stalls at effect. Reaching significance is the E-to-W move, the lift into the top band.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Discrimination (choice)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">5. Discriminate: analysis vs summary vs paraphrase (three-way)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: story_of_an_hour</span>   <span class="gc">Grade-C labeled</span></div>
+        <div class="body">Design-bet step (discriminate before you produce; this is a Grade-C move we label as a bet, not a proven ingredient). You will see three responses to the same moment in the Chopin excerpt, the view through the open window. One SUMMARIZES (retells what she sees), one PARAPHRASES (re-says it in other words), and one ANALYZES (names the imagery as a device, states its effect on the reader, and reaches the warrant). Pick the analysis. The three differ on exactly one thing: whether the response explains HOW and WHY the choice works, or only re-reports the content.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Discrimination (choice)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">6. Discriminate: effect stated vs significance reached (the 4-&gt;5 lift)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: story_of_an_hour</span>   <span class="gc">Grade-C labeled</span></div>
+        <div class="body">Second discrimination (the top-band boundary pair). Both responses are real analysis and both correctly state an EFFECT of the spring imagery. They differ on one move only: one stops at the effect (&#x27;the imagery makes the scene feel hopeful, not sad&#x27;), the other reaches the WARRANT (&#x27;and that hopefulness lets the reader feel her liberation before she admits it, which is what makes the death-frees-her irony land as discovery&#x27;). Pick the version that reaches significance. This is the exact move that lifts a mid-band response into the top band.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">7. Completion: the device is given, you supply Effect + Warrant</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: story_of_an_hour</span> <span class="rub">rc.staar</span> <span class="scored">scored</span> </div>
+        <div class="body">Guided completion (the device is named for you, so you can spend all your effort on the hard part). DEVICE: Chopin describes Mrs. Mallard as &#x27;striving to beat it back with her will&#x27; and then, when she gives in, whispering &#x27;free, free, free&#x27; over and over under her breath. In TWO sentences, supply the rest of DEW: sentence one states the EFFECT this struggle-then-surrender has on the reader, sentence two reaches the WARRANT (why that effect matters to Chopin&#x27;s purpose in showing a woman discovering, against her own will, that she feels freed). Do not restate what the passage says; explain what it does and why it matters.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Diagnosis FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">8. Diagnose your own analysis: effect, or significance?</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: story_of_an_hour</span>  <span class="scored">scored</span> </div>
+        <div class="body">Diagnose your own work. In one or two sentences: did your response stop at the EFFECT (what the device does), or did you reach the WARRANT (why it matters to the author&#x27;s purpose)? Point to the exact sentence where you move from Device to Effect to Warrant, or name the spot where your analysis stalled at effect and did not reach significance.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#d97706"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#d97706">INDEPENDENT</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">9. Full DEW analysis of the Chopin excerpt (authored prompt)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: story_of_an_hour</span> <span class="rub">rc.ohio</span> <span class="scored">scored</span> </div>
+        <div class="body">Independent performance. Choose one of Chopin&#x27;s literary choices in the excerpt (the open-window imagery, the irony of Mrs. Mallard&#x27;s reaction, the repetition of &#x27;free,&#x27; or the shift in how her face and body are described). Write a paragraph that runs the full DEW move: name the DEVICE with specific evidence from the text, explain the EFFECT it has on the reader, and reach the WARRANT (why that choice matters to how Chopin develops Mrs. Mallard&#x27;s response to the news). Scored on Evidence/Development and Organization; the significance beat is the top-band move.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#be123c"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#be123c">TRANSFER</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">10. Analyze a DIFFERENT author&#x27;s move (weather explanatory, partitioned)</div>
+        <div class="chips"><span class="ref">binds ACC-W910-INFO-LESSON-WEATHER</span> <span class="bank">bank: weather_science</span> <span class="rub">rc.mcas</span> <span class="scored">scored</span> </div>
+        <div class="body">Transfer to a text you have not practiced on, in a different genre. The article &#x27;How a Weather Forecast Is Made&#x27; is not a story; it explains a process. Here the author&#x27;s choices are about STRUCTURE and SEQUENCE, not imagery. Analyze ONE such choice, for example the decision to open with how &#x27;ordinary&#x27; forecasts seem before revealing the science behind them, or the choice to present the whole system as a single chain that runs from a balloon drifting through the sky to an alert buzzing on a phone. Run the full DEW move: name the DEVICE (the structural or wording choice) with evidence, state its EFFECT on the reader, and reach the WARRANT (why that choice serves the author&#x27;s purpose of making a complex system clear). Same analytical move as the story; new author, new genre. Scored on Evidence/Development and Organization.</div>
+      </div>
+    </div></div>
+  </section>
+  <section class="lesson" id="ACC-W910-L-T5-RUBRIC-0001">
+    <div class="lhd t5">
+      <div class="lnum">TYPE 5</div>
+      <div class="ltitle">Score It Before You&#x27;re Scored: Revise for Substance (CHECK)
+        <span class="badge ok">PASS · 11/11 gates</span>
+      </div>
+      <div class="lmeta">rubric-revision · ACC-W910-L-T5-RUBRIC-0001 · 9-10 · 11 slots · <span class="file">lesson_t5_rubric_revision.py</span></div>
+    </div>
+    <div class="ltarget"><b>Target:</b> Revise a paragraph for SUBSTANCE against the rubric, not surface mechanics: name the trait, predict your own score, reveal the gap to the anchor, and correct the one move that raises the score. Deeper engine = calibration. Trait: Organization/Development.</div>
+    <div class="lacc">ACC: <code>ACC.W.REV.1</code> <code>ACC.W.CAL.1</code> <code>CCSS.W.9-10.5</code> &nbsp;|&nbsp; Fade-ledger moves: predict-then-reveal calibration, explain-the-evidence (2-&gt;3 move), gating-rule</div>
+    <div class="lseq"><b>Sequence:</b> T:teachcard → T:stimulusdisplay → M:annotatedbeforeafter → M:predictthefix → S:discrimination → S:selfscore → S:productionfrq → S:diagnosisfrq → I:selfscore → I:productionfrq → T:productionfrq</div>
+    <div class="lbound"><b>Bound bank refs:</b> <code>ACC-W910-INFO-LESSON-RECYCLING</code> </div>
+    <div class="gates"><span class="g gp" title="SRSD shell complete + in order (Teach-&gt;Model-&gt;Supported-&gt;Independent-&gt;Transfer)">shell_completeness</span><span class="g gp" title="Model = 4-mechanism async sequence (annotated before/after + predict-the-fix + diagnosis)">model_sequence</span><span class="g gp" title="discrimination precedes production; Grade-C move labeled">discrimination_before_production</span><span class="g gp" title="1 bound refs, all present in the banks">binding_integrity</span><span class="g gp" title="transfer bank {&#x27;wetlands_restoration&#x27;} partitioned from taught {&#x27;recycling_recovery&#x27;}">bank_partition</span><span class="g gp" title="calibration: self-score precedes reveal; no person-praise">calibration_discipline</span><span class="g gp" title="3 production FRQ(s), all routed to a valid rc.* config">grader_routing</span><span class="g gp" title="all slots map to native Timeback interactions (all JSON-safe)">timeback_native</span><span class="g gp" title="no over-claimed effect sizes (async model cites modality-flexible mechanisms only)">effect_size_honesty</span><span class="g gp" title="type 5 rubric-revision: CHECK [proposal]">mnemonic_status</span><span class="g gp" title="no em dashes">no_em_dash</span></div>
+    <div class="slots">
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Teach card</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">1. Substantive revision vs surface editing + the CHECK cue</div>
+        <div class="chips"><span class="auth">authored</span>    </div>
+        <div class="body">Revising for substance means changing what your writing SAYS and how well it meets the rubric, not just tidying commas and spelling. Surface editing fixes the sentence: a typo, a run-on, a misused word. Substantive revision changes the score on the traits that carry the most weight: does the paragraph state a clear controlling idea, does it develop that idea with specific evidence, and does it EXPLAIN how the evidence supports the point. You can proofread a thin paragraph until it is spotless and it will still sit in the middle band, because clean commas do not add development. Our cue for the calibration move is CHECK: Criteria (name the trait you are scoring), Hunt (find where the draft meets it and where it misses), Explain the gap (say in words what a higher-scoring version does that this one does not), Correct (make the substantive change), Keep-score (predict your score, THEN reveal the real one and measure the gap). The gating rule (STAAR) is a principle worth learning here: a scorer reads Organization and Development FIRST, and if a response earns 0 there, Conventions is scored 0 as well. The idea behind the rule is that conventions serve content: a flawlessly punctuated paragraph with no real idea gives the punctuation nothing to carry. So do not polish commas on a thin essay, fix the idea and the evidence first. Every reveal in this lesson uses one feedback format, GOAL / NOW / NEXT: GOAL names the target trait, NOW names exactly where the draft stands and what is missing, NEXT names the single move that raises the score. No praise for the writer, and no bare number: a grade with nothing attached does not tell you what to change.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Stimulus (source display)</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">2. Read the source you will calibrate on</div>
+        <div class="chips"><span class="ref">binds ACC-W910-INFO-LESSON-RECYCLING</span> <span class="bank">bank: recycling_recovery</span>   </div>
+        <div class="body">Read the source on recycling and materials recovery. You will score short paragraphs written about this topic, so you need to know what the evidence actually says. Note two specific figures a strong paragraph could use, and beside each one ask: could I say in a sentence WHY that figure matters to a claim?</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Annotated before/after</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">3. A self-awarded 3 that the reveal shows is a 2</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: recycling_recovery</span>   </div>
+        <div class="body">A student wrote this body paragraph on recycling and self-awarded it a 3 on Development. BEFORE (student self-scores 3): &#x27;Recycling is huge and important. According to the source, Americans recycled more than 69 million tons of material in 2018. This shows recycling matters. The country also makes about 292.4 million tons of waste, which is a lot.&#x27; The student&#x27;s reasoning for the 3: &#x27;I stated a claim, I quoted the source, and I used two facts.&#x27; AFTER (revealed score 2, gap named): the anchor paper that actually earns a 3 does one thing this draft never does, so it stays a 2. It names the 69 million ton figure and then only labels it (&#x27;this shows recycling matters&#x27;); it never says HOW that tonnage matters, for instance that recycling and composting together handled almost 94 million tons, about 32 percent of the nation&#x27;s waste, keeping that share out of landfills. The second fact (292.4 million tons generated) is dropped with no tie to the claim at all. GOAL: Development that explains evidence, not just names it. NOW: the draft names two figures and explains neither, so it holds at a 2. NEXT: after the 69 million ton fact, add one sentence saying why recovering that much material matters. Annotation on the sentence: the anchor 3 explains after every figure and mine does not, that is the exact gap.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Predict-the-fix (choice + reveal)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">4. Predict which draft scores higher (2/3 boundary pair)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: recycling_recovery</span>   </div>
+        <div class="body">Two drafts sit on the 2/3 boundary and cite the SAME figure. Predict which one scores higher on Development before the reveal. Draft P: &#x27;Recycling saves energy. The source says recycling one ton of aluminum cans saves more than 152 million Btu. That is a lot of energy. Recycling is clearly worth it.&#x27; Draft Q: &#x27;Recycling saves energy. The source says recycling one ton of aluminum cans saves more than 152 million Btu, which matters because that is about the same as 1,024 gallons of gasoline, so every ton of cans recovered keeps a large amount of fuel from being burned to make new metal from scratch.&#x27; (A) Draft P scores higher  (B) Draft Q scores higher  (C) they score the same</div><div class="fb"><b>Reveal:</b> Draft Q scores higher, and the single move that separates them is explanation. Both cite the same 152 million Btu figure, so they are level on evidence PRESENCE. GOAL: Development that ties evidence to a point. NOW: Draft P stops at &#x27;that is a lot of energy,&#x27; which only restates the number, so it holds at a 2. Draft Q takes the same figure and explains what it means (152 million Btu equals about 1,024 gallons of gasoline saved per ton), reaching the 3. NEXT: whenever you keep a figure, add the because-clause that says what it proves. Length is not what earns the point, the explanation is.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Discrimination (choice)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">5. Pick the 3 and name the one move (2 vs 3 boundary pair)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: recycling_recovery</span>   <span class="gc">Grade-C labeled</span></div>
+        <div class="body">Design-bet step (discriminate before you produce, a Grade-C move we are testing, not a proven law): here are two paragraphs on recycling that differ on exactly ONE move. One earns a 2, one earns a 3 on Development. Pick the 3 and name the single move that separates them. Option A (2): &#x27;Recycling helps the economy. Recycling and reuse supported about 681,000 jobs in a single year. Recycling is good for the country.&#x27; Option B (3): &#x27;Recycling helps the economy. The source reports that recycling and reuse activities supported about 681,000 jobs in a single year, which is why the material in a blue bin is not just waste to be managed but a resource that pays people to recover it.&#x27; The separating move: Option B EXPLAINS what the 681,000 jobs figure does (it shows recovery is paid work, a resource and not just trash); Option A only labels it &#x27;good.&#x27;</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Self-score (calibration)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">6. Predict your Development score BEFORE you write (Stage B)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: recycling_recovery</span>   </div>
+        <div class="body">Stage B calibration: predict, THEN reveal. In the next step you will write one paragraph. First, before you see any scoring, predict on the 3-point Development scale what your paragraph will earn (1, 2, or 3), and write one sentence of trait evidence for it: &#x27;I predict a __ because my paragraph ___.&#x27; You judged the anchors above first, then predict your own, on purpose: writers tend to over-rate their own drafts, so we always commit to a prediction before the grader reveals the real score.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">7. Write the paragraph you predicted, then see the gap</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: recycling_recovery</span> <span class="rub">rc.staar</span> <span class="scored">scored</span> </div>
+        <div class="body">Now write the paragraph you just predicted. Using the recycling source, write one body paragraph that states a controlling idea and develops it with at least one specific figure PLUS a sentence explaining how that figure supports your idea (the move that separates a 2 from a 3). The grader scores it on the STAAR scale, reading Organization and Development first per the gating rule, and reveals the gap between your predicted score and your real one.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Diagnosis FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">8. Diagnose the gap between predicted and revealed (CHECK)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: recycling_recovery</span>  <span class="scored">scored</span> </div>
+        <div class="body">Diagnose the gap in the CHECK format. In two or three sentences: GOAL (which trait were you scoring), NOW (what score did you predict, what did the grader give, and what specifically did the anchor-3 version do that yours did not), NEXT (the one substantive move you will add on your next paragraph to close the gap). Comment on the evidence and the explanation, not on yourself as a writer.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#d97706"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#d97706">INDEPENDENT</span>
+          <span class="kind">Self-score (calibration)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">9. Predict the score of your independent paragraph first</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: recycling_recovery</span>   </div>
+        <div class="body">Independent calibration. You will now revise your paragraph, or write a fresh one, on recycling so that every figure you cite is followed by an explanation of how it supports your controlling idea. Before the grader sees it, predict its Development score on the 3-point scale and name the one move you added to earn it. Predict first, reveal second.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#d97706"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#d97706">INDEPENDENT</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">10. Independent performance: revise to a 3, then reveal</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: recycling_recovery</span> <span class="rub">rc.staar</span> <span class="scored">scored</span> </div>
+        <div class="body">Independent performance: write or revise a full body paragraph on recycling and materials recovery so that every figure you cite is followed by a sentence explaining how it supports your controlling idea. Scored on the STAAR scale (Organization and Development scored first, then Conventions, per the gating rule). The grader reveals your real score against your prediction so you can measure how well-calibrated you are.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#be123c"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#be123c">TRANSFER</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">11. Transfer the CHECK move to a NEW topic</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: wetlands_restoration</span> <span class="rub">rc.mcas</span> <span class="scored">scored</span> </div>
+        <div class="body">Transfer to a NEW topic you have not calibrated on. Write one body paragraph about wetlands that states a controlling idea and develops it: cite at least one specific figure (for example that one stretch of the Mississippi River&#x27;s wetlands once stored at least 60 days of floodwater but only 12 days after most were drained, or that more than one-third of the nation&#x27;s threatened and endangered species live only in wetlands) and, for each figure, add the sentence that explains why it supports your idea. Scored on the MCAS Idea Development scale. Same CHECK move, new material: name the criteria, hunt for the gap, explain it, correct it, keep score.</div>
+      </div>
+    </div></div>
+  </section>
+  <section class="lesson" id="ACC-W910-L-T6-EDITING-0001">
+    <div class="lhd t6">
+      <div class="lnum">TYPE 6</div>
+      <div class="ltitle">Fix It Without Breaking It: Editing in Context (SPOT)
+        <span class="badge ok">PASS · 11/11 gates</span>
+      </div>
+      <div class="lmeta">editing-in-context · ACC-W910-L-T6-EDITING-0001 · 9-10 · 11 slots · <span class="file">lesson_t6_editing_in_context.py</span></div>
+    </div>
+    <div class="ltarget"><b>Target:</b> Fix mechanics/conventions AND style IN CONTEXT: select the edit that corrects the error and preserves the writer&#x27;s meaning, then produce the repair yourself. Items come from the SAME passage and mirror the taught sentence moves. Trait: Conventions/Language.</div>
+    <div class="lacc">ACC: <code>ACC.W.CONV.1</code> <code>ACC.W.CONV.2</code> <code>ACC.W.CONV.3</code> <code>CCSS.L.9-10.1</code> <code>CCSS.L.9-10.3</code> &nbsp;|&nbsp; Fade-ledger moves: sentence-boundary, because/but/so, appositive, sentence-combining, word-choice-precision</div>
+    <div class="lseq"><b>Sequence:</b> T:teachcard → T:stimulusdisplay → M:annotatedbeforeafter → M:predictthefix → S:discrimination → S:srpractice → S:srpractice → S:srpractice → M:diagnosisfrq → I:productionfrq → T:productionfrq</div>
+    <div class="lbound"><b>Bound bank refs:</b> <code>ACC-W910-INFO-LESSON-HIGHWAYS</code> <code>ACC-W910-INFO-LESSON-WEATHER</code> </div>
+    <div class="gates"><span class="g gp" title="SRSD shell complete + in order (Teach-&gt;Model-&gt;Supported-&gt;Independent-&gt;Transfer)">shell_completeness</span><span class="g gp" title="Model = 4-mechanism async sequence (annotated before/after + predict-the-fix + diagnosis)">model_sequence</span><span class="g gp" title="discrimination precedes production; Grade-C move labeled">discrimination_before_production</span><span class="g gp" title="2 bound refs, all present in the banks">binding_integrity</span><span class="g gp" title="transfer bank {&#x27;weather_science&#x27;} partitioned from taught {&#x27;interstate_highways&#x27;}">bank_partition</span><span class="g gp" title="no self_score slot (n/a); no person-praise">calibration_discipline</span><span class="g gp" title="2 production FRQ(s), all routed to a valid rc.* config">grader_routing</span><span class="g gp" title="all slots map to native Timeback interactions (all JSON-safe)">timeback_native</span><span class="g gp" title="no over-claimed effect sizes (async model cites modality-flexible mechanisms only)">effect_size_honesty</span><span class="g gp" title="type 6 editing-in-context: SPOT [proposal]">mnemonic_status</span><span class="g gp" title="no em dashes">no_em_dash</span></div>
+    <div class="slots">
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Teach card</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">1. SPOT: the two-tier editing routine + why it rides on real writing</div>
+        <div class="chips"><span class="auth">authored</span>    </div>
+        <div class="body">Editing is not hunting for red marks at random. It is a routine you can run on any sentence, so we give it a cue: SPOT. Scan the sentence, Pinpoint the error type, weigh your Options, and Test the fix. The Test step is the one that matters most: a fix has to do TWO things at once. It has to correct the error AND keep the meaning the writer intended. A change that fixes the grammar but quietly says something different is not a fix, it is a new error. SPOT works on two tiers. First the mechanics tier: is it correct? (a complete sentence, not a fragment or a run-on; the modifier attached to the right word; the punctuation doing its job). Then, once it is correct, the style tier: is it precise, is it varied, is it right for a formal report? A sentence can be perfectly correct and still be vague or clunky, and the style tier is where you sharpen it. Honesty about the evidence here: this lesson is NOT built on a strategy-writing result. Its support comes from sentence-combining work (about a 0.50 effect) and from teaching grammar inside real writing rather than on worksheets. That is also the hard rule for this whole lesson: no isolated grammar drills. Isolated grammar taught apart from writing actually tests slightly negative, so every item you edit today lives inside one real passage and mirrors a sentence move you have already met.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Stimulus (source display)</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">2. Read the passage you will edit (interstate highways)</div>
+        <div class="chips"><span class="ref">binds ACC-W910-INFO-LESSON-HIGHWAYS</span> <span class="bank">bank: interstate_highways</span>   </div>
+        <div class="body">Read the interstate-highway passage once. This is the single passage every edit today comes from. It explains how the Interstate Highway System began in 1956, how large it grew (about 48,890 miles), how a fuel tax and a federal-state partnership paid for it, and what it does for daily life. As you read, notice the kinds of sentences it uses (cause-and-effect hinges, added detail, combined clauses); those are the moves you will scan for.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Annotated before/after</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">3. The Test step: a fix that breaks meaning vs a fix that keeps it</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: interstate_highways</span>   </div>
+        <div class="body">Watch the SPOT Test step decide between two edits of one flawed sentence from a draft about the passage. FLAWED: &#x27;Because the federal government paid 90 percent of the cost, the states could afford the work, this let construction spread across the whole country.&#x27; (a comma splice joins two full clauses). FIX THAT CHANGES THE MEANING (reject): &#x27;Because the federal government paid 90 percent of the cost, the states could afford the work. This let construction spread across the whole country.&#x27; Splitting after &#x27;work&#x27; is punctuated correctly, but it quietly drops the writer&#x27;s chain: the states being able to afford the work is no longer presented as what let construction spread, just a separate fact [annotate: correct grammar, WRONG meaning, the because-chain is severed]. FIX THAT KEEPS THE MEANING (accept): &#x27;Because the federal government paid 90 percent of the cost, the states could afford the work, which let construction spread across the whole country.&#x27; Replacing the splice with &#x27;which&#x27; fixes the boundary AND preserves the single cause-and-effect chain the writer built [annotate: correct grammar AND meaning preserved, the because/so relationship survives]. That contrast IS the Test step: both options are grammatical, only one passes because only one keeps the meaning.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Predict-the-fix (choice + reveal)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">4. Predict which edit preserves the meaning</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: interstate_highways</span>   </div>
+        <div class="body">Run SPOT yourself before the reveal. A draft sentence reads: &#x27;The interstates are a small fraction of the nation&#x27;s roads, they carry about a quarter of its traffic.&#x27; (a comma splice again). Which single edit corrects the boundary AND preserves the writer&#x27;s contrast between how LITTLE of the network the interstates are and how MUCH of the traffic they carry? (A) &#x27;The interstates are a small fraction of the nation&#x27;s roads, but they carry about a quarter of its traffic.&#x27; (B) &#x27;The interstates are a small fraction of the nation&#x27;s roads because they carry about a quarter of its traffic.&#x27; (C) &#x27;The interstates are a small fraction of the nation&#x27;s roads they carry about a quarter of its traffic.&#x27; (D) &#x27;The interstates are a small fraction of the nation&#x27;s roads; they carry about a quarter, of its traffic.&#x27;</div><div class="fb"><b>Reveal:</b> A is the fix. The two clauses contrast (a small share of the roads, yet a large share of the traffic), so the coordinating conjunction &#x27;but&#x27; both repairs the splice and keeps that contrast, which is exactly the meaning-preservation half of the Test step. B is grammatical but changes the meaning: &#x27;because&#x27; invents a cause the writer never claimed. C leaves a run-on (no boundary at all). D adds a stray comma inside the second clause and scrambles the sense. Correct AND meaning-preserving is the bar, not correct alone.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Discrimination (choice)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">5. Meaning preserved vs meaning changed (modifier minimal pair)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: interstate_highways</span>   <span class="gc">Grade-C labeled</span></div>
+        <div class="body">Design-bet step (discriminate before you produce; this recognition-before-production move is a labeled Grade-C design bet, not a proven result, and is A/B-flagged). Here is a flawed sentence with a misplaced modifier: &#x27;Stretching across mountains and rivers, engineers built the interstates to connect distant cities.&#x27; The opening phrase should describe the roads, not the engineers. Two rewrites both read smoothly: (A) &#x27;Stretching across mountains and rivers, the interstates that engineers built connect distant cities.&#x27; (B) &#x27;Stretching across mountains and rivers, engineers connected distant cities as they built the interstates.&#x27; Pick the rewrite that repairs the modifier AND preserves the intended meaning (the roads stretch across the terrain, and the point is that they connect cities), not the one that fixes the grammar while shifting who or what does what. The two options differ on exactly that one dimension.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">SR practice item (choice)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">6. In-context select: conventions (NO-CHANGE is an option)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: interstate_highways</span>   </div>
+        <div class="body">Now select in context. In the passage sentence &#x27;The federal money came mostly from a tax on gasoline and diesel fuel,&#x27; choose the best edit for the underlined phrase &#x27;gasoline and diesel fuel.&#x27; (A) NO CHANGE  (B) gasoline, and diesel fuel  (C) gasoline and diesel, fuel  (D) gasoline; and diesel fuel  Remember that NO CHANGE can be the right answer: do not fix what is not broken. This is the mechanics tier of SPOT.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">SR practice item (choice)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">7. In-context select: sentence boundary (fragment / run-on)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: interstate_highways</span>   </div>
+        <div class="body">Select the edit that turns this run-on into one complete, correctly bounded sentence without changing the writer&#x27;s meaning: &#x27;The system runs about 48,890 miles it reaches nearly every large city in the country.&#x27; (A) miles, it reaches  (B) miles and reaches  (C) miles, reaching  (D) miles it, reaches  Sentence boundaries are the move most likely to sink the conventions score, so Pinpoint the boundary first. (Both B and C are grammatical; choose the one that keeps the two facts in one clean sentence and preserves the meaning.)</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">SR practice item (choice)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">8. In-context select: the STYLE tier (precise / register-appropriate)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: interstate_highways</span>   </div>
+        <div class="body">This item is the style tier, above mechanics (gap #43). The sentence &#x27;The project was really big and cost a lot of money&#x27; is already grammatically correct; your job is to choose the most precise, formal-register rewrite for a report. (A) The project was really big and cost a ton.  (B) The project was enormous in scale and ran to about 114 billion dollars.  (C) The project was pretty huge and super expensive.  (D) The project was big money.  Test it the same way: the better wording has to sharpen the meaning, not drift away from it.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Diagnosis FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">9. Diagnose your own edit</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: interstate_highways</span>  <span class="scored">scored</span> </div>
+        <div class="body">In one or two sentences, diagnose your own work on the items above: which edit did you pick, what error type did you Pinpoint, and how do you know your fix preserved the writer&#x27;s meaning rather than quietly changing it? Name the tier you were on (mechanics or style).</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#d97706"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#d97706">INDEPENDENT</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">10. SCR: revise the flawed sentence, keep the meaning (highways)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: interstate_highways</span> <span class="rub">rc.staar</span> <span class="scored">scored</span> </div>
+        <div class="body">Independent performance (STAAR short-constructed-response). Here is a flawed sentence about the highway passage: &#x27;Signed into law in 1956, the country began building a connected network of high-speed roads.&#x27; The opening phrase does not attach to the right word (the country was not signed into law; the act was). Rewrite the sentence so the modifier attaches logically AND the intended meaning is preserved. Change only what you must. Scored on Conventions.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#be123c"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#be123c">TRANSFER</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">11. SCR transfer on a NEW passage: revise, keep the meaning (weather)</div>
+        <div class="chips"><span class="ref">binds ACC-W910-INFO-LESSON-WEATHER</span> <span class="bank">bank: weather_science</span> <span class="rub">rc.staar</span> <span class="scored">scored</span> </div>
+        <div class="body">Transfer to a passage you have not edited (how the National Weather Service makes a forecast, a different topic). A flawed draft sentence reads: &#x27;Rising above 35 kilometers, forecasters use weather balloons to measure the upper air.&#x27; The introductory phrase does not describe the forecasters who follow it; it is the balloon that rises. Rewrite the sentence so the opening phrase attaches to the right word AND the writer&#x27;s meaning is preserved. Run SPOT: Scan, Pinpoint the modifier, weigh Options, Test that the fix keeps the meaning. Scored on Conventions.</div>
+      </div>
+    </div></div>
+  </section>
+  <section class="lesson" id="ACC-W910-L-T7-ESSAY-0001">
+    <div class="lhd t7">
+      <div class="lnum">TYPE 7</div>
+      <div class="ltitle">Build the Whole Essay: Plan First, Then Draft (BUILD)
+        <span class="badge ok">PASS · 11/11 gates</span>
+      </div>
+      <div class="lmeta">essay-assembly · ACC-W910-L-T7-ESSAY-0001 · 9-10 · 10 slots · <span class="file">lesson_t7_essay_assembly.py</span></div>
+    </div>
+    <div class="ltarget"><b>Target:</b> Assemble the sub-skills into a full source-based argument under test conditions: plan with an SPO (thesis plus ordered evidence) scaled to a multi-paragraph outline, draft from the plan, and manage the composing process. Open with a funnel that establishes context before the thesis and close with a conclusion that reaches significance, not a summary. Touches all four traits, Organization especially.</div>
+    <div class="lacc">ACC: <code>ACC.W.ARG.1</code> <code>ACC.W.ARG.2</code> <code>ACC.W.ARG.5</code> <code>ACC.W.INFO.6</code> <code>CCSS.W.9-10.1</code> <code>OH-ELA.W.9-10.1</code> &nbsp;|&nbsp; Fade-ledger moves: SPO, because/but/so, attributive-tag, funnel-intro, significance-close</div>
+    <div class="lseq"><b>Sequence:</b> T:teachcard → T:stimulusdisplay → M:annotatedbeforeafter → M:predictthefix → S:discrimination → S:productionfrq → S:diagnosisfrq → I:productionfrq → I:productionfrq → T:productionfrq</div>
+    <div class="lbound"><b>Bound bank refs:</b> <code>ACC-W910-ARG-OPP-LESSON-CONGESTION</code> <code>ACC-W910-ARG-OPP-LESSON-DST</code> </div>
+    <div class="gates"><span class="g gp" title="SRSD shell complete + in order (Teach-&gt;Model-&gt;Supported-&gt;Independent-&gt;Transfer)">shell_completeness</span><span class="g gp" title="Model = 4-mechanism async sequence (annotated before/after + predict-the-fix + diagnosis)">model_sequence</span><span class="g gp" title="discrimination precedes production; Grade-C move labeled">discrimination_before_production</span><span class="g gp" title="2 bound refs, all present in the banks">binding_integrity</span><span class="g gp" title="transfer bank {&#x27;daylight_saving&#x27;} partitioned from taught {&#x27;congestion_pricing&#x27;}">bank_partition</span><span class="g gp" title="no self_score slot (n/a); no person-praise">calibration_discipline</span><span class="g gp" title="4 production FRQ(s), all routed to a valid rc.* config">grader_routing</span><span class="g gp" title="all slots map to native Timeback interactions (all JSON-safe)">timeback_native</span><span class="g gp" title="no over-claimed effect sizes (async model cites modality-flexible mechanisms only)">effect_size_honesty</span><span class="g gp" title="type 7 essay-assembly: BUILD [proposal]">mnemonic_status</span><span class="g gp" title="no em dashes">no_em_dash</span></div>
+    <div class="slots">
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Teach card</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">1. Why a plan beats a plunge (BUILD, and the three phases)</div>
+        <div class="chips"><span class="auth">authored</span>    </div>
+        <div class="body">On the test you have one source set, one prompt, and a single sitting to produce a whole essay. That is the hardest job in writing because three things fight for room in your head at once: deciding WHAT to say (planning), turning it into sentences (drafting), and checking whether it works (reviewing). Try to do all three in one pass and you stall. The fix is to make them separate phases. First you plan on paper, then you draft from the plan, then you review against the rubric. A written plan is not wasted time. It holds the order for you so your working memory is free to build good sentences. Our cue for the whole job is BUILD: Brainstorm to the prompt (what does it actually ask, which side can you defend from the source), Underline the SPO plan (write a one-line thesis, then list your body points in order with the evidence each will use), Lay out paragraphs (turn each outline line into a paragraph), Integrate (bring in the moves you already own: a defensible claim, integrated evidence with a because/but/so hinge, and a fair answer to the other side), and Double-check to the rubric (a review pass for development, order, and style). Two moves win the top band and are easy to skip under pressure. Open with a funnel: give the reader a sentence or two of context on the issue BEFORE you state your thesis, so the claim lands in a setting instead of out of nowhere. Close with the reverse: pull your reasons back together and then answer the question so what, why this position matters beyond the page. A conclusion that only restates the introduction stays mid-band. Goal for today: plan first, draft from the plan, and frame the essay with a context opening and a significance close.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Stimulus (source display)</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">2. Read both sides of the congestion-pricing source</div>
+        <div class="chips"><span class="ref">binds ACC-W910-ARG-OPP-LESSON-CONGESTION</span> <span class="bank">bank: congestion_pricing</span>   </div>
+        <div class="body">Read the opposing pair on whether cities should charge tolls to drive downtown during the busiest hours (congestion pricing). As you read, jot the single strongest fact on each side (for example, the road-use and clean-air data on one side and the household-cost and uneven-transit data on the other). You are gathering the raw material your plan will order, not deciding your whole essay yet.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Annotated before/after</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">3. Watch a plunged-in pile become a planned, ordered essay</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: congestion_pricing</span>   </div>
+        <div class="body">BEFORE (plunges in, no plan): &#x27;Traffic is bad. The FHWA says Americans drive more than 3 trillion miles a year. Congestion pricing charges a toll. But a toll costs a low-wage worker the same as a rich driver. Transportation is a huge household expense. Also transit is uneven. So congestion pricing is complicated and there are good points on both sides.&#x27; Notice what happened: the writer started typing before deciding anything, so the sentences pile up (fact, counter-fact, fact) and build toward nothing. There is no thesis, the order is random, and the ending just shrugs. AFTER (SPO plan drives the order): the writer stopped and wrote a plan first. [SPO plan] Thesis: cities should charge congestion tolls, because a crowded free road is overused and the toll money can build the transit that gives people a real way out of the car. Body 1: the road is a limited space (FHWA: more than 3 trillion miles a year, much of it in dense areas with no room for new lanes), so pricing the busiest hour makes sense. Body 2: the honest objection, a flat toll hits low-wage workers hardest and transit is uneven (Census: most commuters still drive, many alone), and answer it, the toll only works paired with low-income discounts and real transit built from the proceeds. Body 3: significance, cleaner air for the people who live downtown (EPA: transportation is the largest source of US greenhouse gas emissions). [Drafted intro, funnel] &#x27;Every weekday morning, the same downtown streets fill with cars that crawl for blocks and burn fuel going nowhere [context]. Cities should charge a congestion toll during the busiest hours, because a road that is both crowded and free gets overused, and the money a toll raises can build the transit that lets people leave the car at home [thesis].&#x27; [Drafted conclusion, reverse funnel] &#x27;The wasted hours and the dirty air are not distant worries, they are measured on those streets right now [synthesis]. Pricing the crowded hour matters because it turns a hidden cost we already pay, in lost time and fouled air, into money a city can spend on a way out of the traffic [significance, the so-what].&#x27; Annotation: the AFTER never wanders because the plan set the order first. The intro situates the issue before the claim, each body paragraph is one planned point with its evidence tied to the thesis, and the conclusion reaches significance instead of restating the opening. That is the plan doing the work drafting cannot do under pressure.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Predict-the-fix (choice + reveal)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">4. Predict what this essay is missing before the reveal</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: congestion_pricing</span>   </div>
+        <div class="body">Diagnose this draft before we reveal the fix. A student writes: an opening sentence that jumps straight to &#x27;I think cities should charge congestion tolls,&#x27; three body paragraphs of facts in no clear order, and a last paragraph that reads &#x27;In conclusion, cities should charge congestion tolls because they are better.&#x27; What is the single biggest problem? (A) it has no plan, so the body has no order and the conclusion only restates the intro instead of reaching significance  (B) the sentences are too short  (C) it uses too many facts from the source  (D) it should not name the opposing side at all</div><div class="fb"><b>Reveal:</b> The strongest answer is A. The trouble is not the sentences or the facts, it is the missing plan. Because the writer never built an SPO, the body points sit in random order and nothing builds. And the conclusion just repeats the opening claim, so it stalls at mid-band. The fix is to plan the order first (thesis, then ordered body points with evidence) and to close by answering so what: why the position matters beyond restating it. A context opening and a significance close are the two framing moves this draft skipped.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Discrimination (choice)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">5. Planned-and-ordered vs plunged-in pile (minimal pair)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: congestion_pricing</span>   <span class="gc">Grade-C labeled</span></div>
+        <div class="body">Design-bet step (discriminate before you produce): you will see two openings for the same congestion-pricing essay. Version 1 gives one sentence of context on the daily gridlock downtown and then states a clear thesis (a funnel opening). Version 2 lists three facts from the source and never states a position. Pick the version whose plan you can see driving the order. The two differ on exactly one move: whether a thesis sets the direction before the evidence arrives.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">6. Complete the partial SPO plan (scaffold)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: congestion_pricing</span> <span class="rub">rc.4trait</span> <span class="scored">scored</span> </div>
+        <div class="body">Guided planning: here is a partial SPO for the congestion-pricing essay with the thesis and the first body line filled in for you. Thesis (given): cities should charge a congestion toll, because a crowded free road is overused and the toll money can build the transit that gives people a way out of the car. Body 1 (given): the road is limited space with no room for new lanes (FHWA road-use figures). Complete the plan: write Body 2 and Body 3 as one line each, naming the point AND the specific source evidence each will use, and order them so the essay builds. You are only planning here, not drafting sentences.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Diagnosis FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">7. Diagnose your own plan and framing</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: congestion_pricing</span>  <span class="scored">scored</span> </div>
+        <div class="body">In two or three sentences, diagnose your own plan before you draft from it. Does your opening establish context before the thesis, or does it jump straight to the claim? Do your body points sit in an order that builds toward the thesis, or could they be shuffled with no loss? Does your planned conclusion reach significance (why the position matters), or would it only restate the introduction? Name one move you will change before drafting.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#d97706"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#d97706">INDEPENDENT</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">8. Build the full SPO plan from scratch (scaffold faded)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: congestion_pricing</span> <span class="rub">rc.4trait</span> <span class="scored">scored</span> </div>
+        <div class="body">Independent planning, no outline provided: for the congestion-pricing prompt, write your own complete SPO. Give a one-line thesis that takes a defensible side, then list two or three body points in order, each naming the specific source evidence it will use and how that evidence ties to the thesis. Note in one phrase how you will open with context and how your conclusion will reach significance. This plan is the map you will draft from next.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#d97706"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#d97706">INDEPENDENT</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">9. Draft the full essay from your plan (authored, on the congestion sources)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: congestion_pricing</span> <span class="rub">rc.staar</span> <span class="scored">scored</span> </div>
+        <div class="body">Independent performance, timed and from your own plan: write the full argumentative essay on whether cities should charge tolls to drive downtown during the busiest hours. Use the congestion-pricing sources you read at the start of the lesson. Draft from the SPO you just built. Open with a funnel that establishes context before your thesis, develop each body paragraph with integrated source evidence tied to the claim, directly answer at least one objection from the side you argue against, and close with a conclusion that reaches significance rather than restating your opening. Then run one quick double-check pass for development, order, and style. Scored on all four traits, Organization especially.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#be123c"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#be123c">TRANSFER</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">10. Plan and draft a full timed essay on a NEW topic</div>
+        <div class="chips"><span class="ref">binds ACC-W910-ARG-OPP-LESSON-DST</span> <span class="bank">bank: daylight_saving</span> <span class="rub">rc.ohio</span> <span class="scored">scored</span> </div>
+        <div class="body">Transfer: run the whole BUILD process on a source you have not practiced, a different topic (whether the United States should abolish daylight saving time and keep one clock year round). Read the opposing pair, then under timed conditions and with no outline provided, plan your own SPO first and draft the full essay: a funnel opening that establishes context, body paragraphs whose order your plan sets, integrated evidence from both sources tied to your thesis, a fair answer to one objection, and a conclusion that reaches significance. Scored on all four traits.</div>
+      </div>
+    </div></div>
+  </section>
+  <section class="lesson" id="ACC-W910-L-T8-SYNTHESIS-0001">
+    <div class="lhd t8">
+      <div class="lnum">TYPE 8</div>
+      <div class="ltitle">Weave the Sources: One Argument, Not Two Summaries (WEAVE)
+        <span class="badge ok">PASS · 11/11 gates</span>
+      </div>
+      <div class="lmeta">cross-source-synthesis · ACC-W910-L-T8-SYNTHESIS-0001 · 9-10 · 9 slots · <span class="file">lesson_t8_synthesis.py</span></div>
+    </div>
+    <div class="ltarget"><b>Target:</b> Combine two sources into ONE argument, tracking which idea comes from which source and joining them on a shared thread instead of reporting them in sequence. Attribute each idea to its source, voice your own claim across both, and explain how they combine. Traits: Evidence/Development and Organization.</div>
+    <div class="lacc">ACC: <code>ACC.W.SRC.1</code> <code>ACC.W.ARG.2</code> <code>ACC.W.ARG.3</code> <code>CCSS.W.9-10.1</code> &nbsp;|&nbsp; Fade-ledger moves: attribute-each-idea, shared-thread, because/but/so, weigh-and-pick</div>
+    <div class="lseq"><b>Sequence:</b> T:teachcard → T:stimulusdisplay → M:annotatedbeforeafter → M:predictthefix → S:discrimination → S:productionfrq → M:diagnosisfrq → I:productionfrq → T:productionfrq</div>
+    <div class="lbound"><b>Bound bank refs:</b> <code>ACC-W910-ARG-OPP-LESSON-DST</code> <code>ACC-W910-ARG-OPP-LESSON-SCHOOLYEAR</code> </div>
+    <div class="gates"><span class="g gp" title="SRSD shell complete + in order (Teach-&gt;Model-&gt;Supported-&gt;Independent-&gt;Transfer)">shell_completeness</span><span class="g gp" title="Model = 4-mechanism async sequence (annotated before/after + predict-the-fix + diagnosis)">model_sequence</span><span class="g gp" title="discrimination precedes production; Grade-C move labeled">discrimination_before_production</span><span class="g gp" title="2 bound refs, all present in the banks">binding_integrity</span><span class="g gp" title="transfer bank {&#x27;daylight_saving&#x27;} partitioned from taught {&#x27;longer_school_year&#x27;}">bank_partition</span><span class="g gp" title="no self_score slot (n/a); no person-praise">calibration_discipline</span><span class="g gp" title="3 production FRQ(s), all routed to a valid rc.* config">grader_routing</span><span class="g gp" title="all slots map to native Timeback interactions (all JSON-safe)">timeback_native</span><span class="g gp" title="no over-claimed effect sizes (async model cites modality-flexible mechanisms only)">effect_size_honesty</span><span class="g gp" title="type 8 cross-source-synthesis: WEAVE [proposal]">mnemonic_status</span><span class="g gp" title="no em dashes">no_em_dash</span></div>
+    <div class="slots">
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Teach card</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">1. What synthesis is + the WEAVE cue</div>
+        <div class="chips"><span class="auth">authored</span>    </div>
+        <div class="body">You already know how to integrate ONE source so no quote stands alone. Synthesis is the next step up: you combine TWO (later more) sources into a SINGLE argument. The trap is writing a paragraph that reports Source A, then a separate paragraph that reports Source B, and calling that synthesis. That is two summaries sitting side by side. They were never joined. Real synthesis puts both sources to work on ONE shared thread and tracks which idea came from which source the whole way. Our cue is WEAVE: Which source says what (map both), Establish the shared thread (the point where they meet), Attribute each idea to its source (never blur who said what), Voice your own claim across them (your position uses both), Explain how they combine. We build this in stages: first a single source, then two sources that agree (complementary), then two that disagree (opposing). Opposing is the hardest, because there you synthesize, weigh the two sides, and pick. Goal for today: write one argument that genuinely joins two sources, with every idea attributed to the source it came from.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#0d9488"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#0d9488">TEACH</span>
+          <span class="kind">Stimulus (source display)</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">2. Read the paired source on a longer school year</div>
+        <div class="chips"><span class="ref">binds ACC-W910-ARG-OPP-LESSON-SCHOOLYEAR</span> <span class="bank">bank: longer_school_year</span>   </div>
+        <div class="body">This stimulus is really two sources in one: a pro passage arguing for a longer school year and a con passage arguing against it, on the same question, whether the United States should adopt a longer school year. Read both. As you read, note one usable idea from EACH source and, next to each, write which source it came from. Then look for the shared thread: what topic do both passages circle, even though they land on opposite conclusions?</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Annotated before/after</span>
+          <span class="qti">stimulus</span>
+        </div>
+        <div class="slottitle">3. Watch two summaries become one woven argument</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: longer_school_year</span>   </div>
+        <div class="body">BEFORE (two summaries side by side, never joined): Paragraph 1: The first source argues for a longer school year. It reports that a typical American public school runs about 180 days (NCES) and that a long summer break lets learning slide, hitting low-income students hardest. So a longer year would narrow the gap. Paragraph 2: The second source argues against it. It reports that more time in a seat is not the same as more learning and that running schools longer costs real money, since teachers are salaried and must be paid for the added weeks (BLS). So a longer year is not worth the price. (Notice: each paragraph reports ONE source and stops. The two ideas never touch. That is summary plus summary, not synthesis.) AFTER (one argument across both, annotated): Both passages actually agree on one fact, that the summer slide is real and falls hardest on low-income students, yet they split on whether adding days is the right cure [Establish the shared thread: the summer-slide gap set against the cost of the cure]. The pro source points to the summer slide to argue that more days would keep vulnerable students from losing ground (Source A) [Attribute to Source A], but the con source counters that seat time is not learning and that stretched districts might add days without adding pay, burning out the teachers schools cannot lose (Source B) [Attribute to Source B]. Read together, the honest question is not whether the summer slide matters, which both sources grant, but whether a longer calendar or a targeted summer program is the wiser way to spend the same money [Voice your own claim across both + Explain how they combine]. (Notice the AFTER version names a shared thread, cites BOTH sources on it, keeps each idea tagged to its source, and lands one claim that needed both. That is WEAVE.)</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Predict-the-fix (choice + reveal)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">4. Predict the fix before you see it</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: longer_school_year</span>   </div>
+        <div class="body">Diagnose this draft before we reveal the fix. A student wrote: &#x27;Source A says a longer school year would reduce the summer slide. Source B says a longer school year costs money and does not guarantee better teaching. Both are important points about the school calendar.&#x27; It reports both sources correctly, so what is still missing? Which single move would most turn it into synthesis? (A) name the shared thread the two sources meet on and state one claim that uses both  (B) add a third source  (C) add more statistics from Source A  (D) put Source B before Source A</div><div class="fb"><b>Reveal:</b> The strongest fix is A. The draft is two summaries reported in sequence: it tells us what each source says but never JOINS them. Nothing states where the two ideas connect or what YOU conclude from holding them together. The fix is to name the shared thread (both sources are really arguing about how best to spend the same money to close the summer-slide gap) and then voice one claim that needs both sources, keeping each idea attributed. A third source or more statistics only stacks more summary; reordering the sources changes nothing about whether they are joined.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Discrimination (choice)</span>
+          <span class="qti">choice</span>
+        </div>
+        <div class="slottitle">5. Synthesis vs. summary-plus-summary (minimal pair)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: longer_school_year</span>   <span class="gc">Grade-C labeled</span></div>
+        <div class="body">Design-bet step (discriminate before you produce): both responses below use the same two school-year facts and are equally correct about each source. Pick the one that SYNTHESIZES (joins the sources on a shared thread and lands one claim) rather than summarizing them in sequence. Option 1 (summary plus summary): &#x27;Source A reports that a long summer break lets low-income students slide backward, so a longer year would help. Source B reports that running schools longer costs real money and does not guarantee better teaching. Both are facts about the school calendar.&#x27; Option 2 (synthesis): &#x27;Source A shows the summer slide falls hardest on students who cannot afford enrichment, but Source B shows that simply adding costly days does not make the teaching inside them better, which is why the fairer fix may be a targeted summer program rather than a longer year for everyone.&#x27; The two responses differ on exactly one move: Option 2 names the shared thread (closing the summer-slide gap set against the cost of the cure) and voices a claim that needs both sources; Option 1 reports each source and stops. Correct choice: Option 2.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#2563eb"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#2563eb">SUPPORTED</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">6. Combine two given facts into one attributed claim (claim provided)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: longer_school_year</span> <span class="rub">rc.ohio</span> <span class="scored">scored</span> </div>
+        <div class="body">Scaffolded synthesis. The CLAIM is given to you: &#x27;The United States should fix the summer slide with targeted summer programs rather than a longer year for everyone.&#x27; You are given one fact from EACH source: from Source A, the summer slide lets low-income students lose ground while wealthier peers keep learning; from Source B, running schools longer costs real money because teachers are salaried and would have to be paid for the added weeks. Write TWO to THREE sentences that support the given claim by JOINING both facts on a shared thread. You must (1) attribute each fact to its source (name Source A and Source B, do not blur them), (2) use a because/but/so hinge to connect the gap to the cost of the cure, and (3) make the reader see why the two facts together support a targeted program. Do not write one sentence on Source A and a separate sentence on Source B: weave them.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#7c3aed"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#7c3aed">MODEL</span>
+          <span class="kind">Diagnosis FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">7. Diagnose your own synthesis</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: longer_school_year</span>  <span class="scored">scored</span> </div>
+        <div class="body">In one or two sentences, diagnose your own work. Answer honestly: did I JOIN the two sources on a shared thread, or did I report them one after the other? Is every idea still attributed to the correct source, or did I blur which source said what? Name the WEAVE letters you actually used, and say what a summary-plus-summary version of your response would have looked like instead.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#d97706"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#d97706">INDEPENDENT</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">8. Synthesize then pick: full school-year essay (authored)</div>
+        <div class="chips"><span class="auth">authored</span> <span class="bank">bank: longer_school_year</span> <span class="rub">rc.ohio</span> <span class="scored">scored</span> </div>
+        <div class="body">Independent performance (opposing sources, the hardest stage: synthesize, weigh, pick). Weighing BOTH school-year passages you read at the start of the lesson, write an argumentative essay stating your position on whether the United States should adopt a longer school year. Support your claim with specific evidence from BOTH sources, keep every idea attributed to the source it came from, address at least one objection from the side you argue against, and make clear what is at stake for students and schools. Your job is not to report each source in turn but to build ONE argument that uses both. Scored on Evidence/Development and Organization.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="rail" style="background:#be123c"></div>
+      <div class="slotmain">
+        <div class="slothd">
+          <span class="role" style="color:#be123c">TRANSFER</span>
+          <span class="kind">Production FRQ (grader)</span>
+          <span class="qti">extended-text</span>
+        </div>
+        <div class="slottitle">9. Synthesize on a NEW paired topic (bank-partitioned)</div>
+        <div class="chips"><span class="ref">binds ACC-W910-ARG-OPP-LESSON-DST</span> <span class="bank">bank: daylight_saving</span> <span class="rub">rc.ohio</span> <span class="scored">scored</span> </div>
+        <div class="body">Transfer to a paired source set you have not practiced on. Read the two opposing passages on whether the United States should abolish daylight saving time and keep one clock year round. Do the same WEAVE move: find the shared thread both sources circle, cite specific evidence from BOTH, attribute each idea to its source, then voice one position that weighs the two sides and picks. Address at least one objection from the side you argue against. Do not write a paragraph on one source and a separate paragraph on the other. Scored on Evidence/Development and Organization.</div>
+      </div>
+    </div></div>
+  </section>
+<footer>Generated by pipeline/render_lessons.py from the Lesson_Bank_G10 modules. Green gate chips = the
+machine QC contract (pipeline/lesson_contract.py) passed. FRQ slots route to the external grader via the
+listed rc.* rubric config. XML POST flagged where the Timeback interaction requires it.</footer>
+</div></body></html>
