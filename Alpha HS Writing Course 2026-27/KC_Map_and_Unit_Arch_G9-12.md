@@ -168,10 +168,19 @@ Bound from the existing G10 stimulus bank (`Stimulus_Bank_G10/`, 24 QC-verified 
 - **Narrative writing (audit G1):** DESCOPED for the current build, BACKLOGGED for phase 2. 7 systems test it (LA/MD/TN/NJ/SBAC-option/MS/IA). We ship the argument/analysis/synthesis core first; narrative is a queued fast-follow (seeded by prior College Essay/SCENE work). Students in narrative-testing states will NOT be covered for that task until phase 2 — recorded so it is a decision, not an accident.
 - **AP Literature track (audit G4):** NAMED-BUT-DEFERRED. B2 = AP Lang only in this build; the poetry/prose-fiction/literary-analysis KCs are queued, not cut. The alternate-AP-Lit reference stays, marked DEFERRED.
 
-### E2. BLOCKING verification (raised from nice-to-have by the audit)
-- **Confirm EGUMPP + AlphaWrite + AlphaRead are ENROLLED at HS + reach the HS band** (grade ceiling). The audit's mis-gating findings (discourse revision, vocab-for-effect, AP-Lexile reading) all assume these apps cover G9-12. The app-stack mapping is K-8. If they stop at G8, several "GATED = covered" cells are actually UNCOVERED and must move to HS-owned. **This is now blocking, not carried** — the gate-remediation routing AND the coverage claim depend on it.
+### E2. Mis-gating RESOLVED (Noel, 2026-07-08): separate HS courses own the adjacent bands
+The audit's mis-gating worry ("do the K-8 apps reach the HS band?") is resolved: the HS ecosystem has **separate HS Language, Vocabulary, and (question below) AP courses**, so the gated skills are owned by real HS courses, not only the K-8 apps. Ownership:
+- **Conventions + "Knowledge of Language"** (precision/concision/style-tone as SR editing of a given passage) -> HS **Language** course. GATED, safe.
+- **Vocabulary / vocabulary-for-effect** -> HS **Vocabulary** course. GATED, safe.
+- **Reading comprehension at HS Lexile** -> reading course / AlphaRead. GATED, safe.
+- **STAYS with WRITING (not language):** "Production of Writing" — transitions/cohesion (C.9.06), add/delete/reorder-for-purpose + organization (C.10.05). This is composition/rhetorical structure, not language mechanics, so it is correctly HS-writing-owned (the audit's biggest gap, kept in-scope). Precision/concision AS APPLIED IN THE STUDENT'S OWN ESSAY (C.10.04/C.11.04 revision passes) stays with writing; the same skill AS SR editing of someone else's passage is the Language course's.
+- **Net:** the writing course's job is WRITING (compose/structure/revise-for-meaning); conventions, language-knowledge, and vocabulary are owned by the Language + Vocabulary courses. This confirms the gate is safe and sharpens the scope.
+
+### E2b. Scope + standards anchor (Noel, 2026-07-08)
+- **The writing course spans G9-12** (B1/B2 ARE our AP writing courses; the AP tier stays in scope). NOT descoped to G9-10.
+- **Anchor = the common standards** (CCSS, TEKS, and the reconciled AlphaCommonCore spine from the earlier research), NOT AP-rubric-first. AP (and ACT/SAT) are **thin overlays** on a CCSS/TEKS-aligned core — the exam-agnostic-core + thin-overlays architecture. Consequence: every KC must carry a CCSS/TEKS tag (the primary alignment), with AP/ACT as secondary tags. The coverage matrix validates STANDARDS coverage first, tested-capability coverage second.
 
 ### E3. OPEN (non-blocking, carried)
 - Build G9/G11/G12 stimulus banks (incl. the new C.10.05 revision-passage set) before their anchor binding.
-- Re-attach the prior maps' per-KC standards tags (CCSS/TEKS/ACT/AP) to the reconciled + new KCs in the machine-readable encoding step.
-- Rebuild `coverage_matrix.py` against this corrected map (the old one is pre-gap-analysis + pre-audit; it must regression-check all 21 KCs + the gated set).
+- **Re-attach per-KC standards tags with CCSS/TEKS PRIMARY** (AP/ACT secondary) to all 21 KCs in the machine-readable encoding step, per E2b.
+- Rebuild `coverage_matrix.py` against this corrected map (done next: regression-checks all 21 KCs vs both the common-standards denominator AND the tested-capability set).
