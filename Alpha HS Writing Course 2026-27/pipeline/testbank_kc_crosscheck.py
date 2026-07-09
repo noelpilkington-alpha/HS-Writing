@@ -53,14 +53,16 @@ G10_BAND_TESTABLE = {
     "ACC.W.CONV.1", "ACC.W.CONV.2", "ACC.W.CONV.3",  # external-owned but measured on the G10 test
     "ACC.W.PROD.1", "ACC.W.PROC.2",
 }
-# G11 (college-test year): the writing-composition codes the SBAC/ACT/AP-Lang tasks measure. Conventions
-# (CONV.1/2) are the Language course's SR tier, not the G11 writing CR bank, so they are NOT required of the
-# G11 CR/essay item bank; INQ.1 (source-evaluation) IS newly testable here.
+# G11 (college-test year): the writing-COMPOSITION codes the SBAC/ACT/AP-Lang essay tasks measure. The G11
+# writing CR bank is essay-only; the SR "Production of Writing" / editing tier (transitions ARG.3/INFO.3,
+# knowledge-of-language CONV.3) + conventions (CONV.1/2) are the HS LANGUAGE course's SR tier, NOT the G11
+# writing CR bank -> external, not required of this bank. Source-evaluation (INQ.1) is scored INSIDE the
+# synthesis essay (a rubric dimension), not as a discrete item.
 G11_BAND_TESTABLE = {
-    "ACC.W.ARG.1", "ACC.W.ARG.2", "ACC.W.ARG.3", "ACC.W.ARG.5",
-    "ACC.W.INFO.2", "ACC.W.INFO.3", "ACC.W.INFO.5", "ACC.W.INFO.6",
+    "ACC.W.ARG.1", "ACC.W.ARG.2", "ACC.W.ARG.5",
+    "ACC.W.INFO.2", "ACC.W.INFO.5", "ACC.W.INFO.6",
     "ACC.W.SRC.1", "ACC.W.SRC.2", "ACC.W.SRC.3", "ACC.W.INQ.1",
-    "ACC.W.PROD.1", "ACC.W.PROC.2", "ACC.W.CONV.3",
+    "ACC.W.PROD.1", "ACC.W.PROC.2",
 }
 # G12 (AP tier, rides on G11): sophistication + sustained timed writing; same ACC codes as G11 (the delta is
 # depth/timed, not new ACC standards).
@@ -76,6 +78,7 @@ RUBRIC_DIMENSION_ACC = {
     "ACC.W.SRC.2",   # "integrate + cite evidence" = scored inside the CR essay's evidence dimension, not a discrete SR item
     "ACC.W.ARG.5",   # "concluding statement that follows from the argument" = scored inside the essay's Organization trait, not a discrete SR item
     "ACC.W.INFO.5",  # "formal style; concluding section" = scored inside the essay's Organization/Language traits
+    "ACC.W.INQ.1",   # G11 source credibility/bias = scored WHILE writing the synthesis essay (which sources to trust/use), a synthesis-essay rubric dimension, not a discrete SR item in the CR bank
 }
 
 
