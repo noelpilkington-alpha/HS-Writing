@@ -26,8 +26,14 @@ ROOT = os.path.join(HERE, "..")
 sys.path.insert(0, HERE)
 from course_sequence_g9_12 import ACC_SPINE, ACC_CODES, HS_KCS, DESCOPED  # single source of truth
 
-ITEM_DIR = os.path.join(ROOT, "Item_Bank_G10")
-STIM_DIR = os.path.join(ROOT, "Stimulus_Bank_G10")
+# Grade is selectable: `python testbank_kc_crosscheck.py [G9|G10]` (default G10). G9 = English I, G10 = English II;
+# both sit in the same 9-10 EOC band and measure the same ACC-standard set, so the denominator is shared.
+_GRADE = "G10"
+for _a in sys.argv[1:]:
+    if _a.upper() in ("G9", "G10"):
+        _GRADE = _a.upper()
+ITEM_DIR = os.path.join(ROOT, f"Item_Bank_{_GRADE}")
+STIM_DIR = os.path.join(ROOT, f"Stimulus_Bank_{_GRADE}")
 KNOWN_RUBRICS = {"rc.staar", "rc.mcas", "rc.ohio", "rc.4trait", "rc.ap", "rc.sc", "rc.fl"}
 
 # ACC codes an HS-owned KC carries (taught), and codes external courses own (still legitimately test-measurable at G10)
@@ -53,6 +59,8 @@ RUBRIC_DIMENSION_ACC = {
     "ACC.W.PROD.1",  # "appropriate to task/purpose/audience" = the whole essay, scored as Purpose/Focus
     "ACC.W.PROC.2",  # "revise for clarity/style" = scored via the essay's Development/Language dimension
     "ACC.W.SRC.2",   # "integrate + cite evidence" = scored inside the CR essay's evidence dimension, not a discrete SR item
+    "ACC.W.ARG.5",   # "concluding statement that follows from the argument" = scored inside the essay's Organization trait, not a discrete SR item
+    "ACC.W.INFO.5",  # "formal style; concluding section" = scored inside the essay's Organization/Language traits
 }
 
 
@@ -125,7 +133,7 @@ def main():
         rows.append((code, taught_owner, measured, sorted(used_acc.get(code, []))))
 
     # ---- report ----
-    print("=== G10 TEST-BANK <-> KC-MAP / ACC CROSS-CHECK ===")
+    print(f"=== {_GRADE} TEST-BANK <-> KC-MAP / ACC CROSS-CHECK ===")
     print("(does what the course TESTS speak the same ACC common standard as what it TEACHES?)\n")
     print(f"item files: {len(files)} | distinct ACC codes used by items: {len(used_acc)} | "
           f"stimulus ids found: {len(stim_ids)}\n")
