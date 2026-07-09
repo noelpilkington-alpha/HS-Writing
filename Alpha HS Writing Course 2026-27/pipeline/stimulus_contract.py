@@ -77,7 +77,20 @@ class StimulusRecord:
 # ---------------------------------------------------------------------------
 
 WORD_MIN, WORD_MAX = 480, 950                 # per-passage word band (spec ~500-900, small tolerance)
-LEXILE_GRADE = 10
+LEXILE_GRADE = 10                             # default when a record's grade does not pin a single grade
+
+def _lexile_grade_for(s) -> int:
+    """The single grade whose Lexile band a stimulus is gated against, from its `grade` field.
+    '9' -> 9 (English I), '10'/'9-10' -> 10 (English II band, the seed default), '11' -> 11, '12' -> 12.
+    Keeps G10 behavior identical (a '9-10' record still gates at 10)."""
+    g = (getattr(s, "grade", "") or "").strip()
+    if g == "9":
+        return 9
+    if g == "11":
+        return 11
+    if g == "12":
+        return 12
+    return LEXILE_GRADE  # "10" or "9-10" or anything else -> the seed's G10 band
 
 def _words(t: str) -> int:
     return len(re.findall(r"[A-Za-z]+(?:'[A-Za-z]+)?", t))
@@ -191,17 +204,18 @@ def gate_source_config(s: StimulusRecord) -> tuple[bool, str]:
     return False, f"unknown family '{s.family}'"
 
 def gate_lexile(s: StimulusRecord) -> tuple[bool, str]:
-    """Every passage must land in the G10 band via the readability gate we built."""
+    """Every passage must land in the grade's Lexile band (per the record's grade) via the readability gate."""
+    grade = _lexile_grade_for(s)
     results = []
     for p in s.passages:
         analysis = rg.analyze_text(p.text)
         lex = analysis["lexile_estimate"]
-        g = rg.apply_gate(lex, LEXILE_GRADE)
+        g = rg.apply_gate(lex, grade)
         results.append((p.title, lex, g["verdict"]))
         if g["verdict"] != "PASS":
             fails = "; ".join(f"{t}={l}L {v}" for t, l, v in results)
-            return False, f"Lexile FAIL: {fails} (target {rg.GRADE_GATE[LEXILE_GRADE][0]}-{rg.GRADE_GATE[LEXILE_GRADE][1]}L)"
-    return True, "all passages in G10 Lexile band: " + ", ".join(f"{t}={l}L" for t, l, _ in results)
+            return False, f"Lexile FAIL (G{grade} band {rg.GRADE_GATE[grade][0]}-{rg.GRADE_GATE[grade][1]}L): {fails}"
+    return True, f"all passages in G{grade} Lexile band: " + ", ".join(f"{t}={l}L" for t, l, _ in results)
 
 def gate_content(s: StimulusRecord) -> tuple[bool, str]:
     """Content-appropriateness screen (strictest-state envelope). AUTO-REJECT on Tier-3 bright lines;
