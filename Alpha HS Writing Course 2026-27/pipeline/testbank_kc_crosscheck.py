@@ -97,11 +97,18 @@ def load_item_acc_and_refs():
 
 
 def load_stimulus_ids():
+    # Scan the grade's own bank AND lower-grade banks: a G12 item legitimately binds a G11 stimulus (G12 AP
+    # mastery reuses the G11 synthesis/analysis sources), so stimulus refs resolve across banks, matching the
+    # item_contract's multi-bank binding gate.
     ids = set()
-    for f in glob.glob(os.path.join(STIM_DIR, "*.py")):
-        src = open(f, encoding="utf-8").read()
-        ids.update(re.findall(r'\b(ACC-W910-[A-Z]+-[A-Z0-9-]+?-?\d{4})\b', src))
-        ids.update(re.findall(r'id\s*=\s*"(ACC-W910-[^"]+)"', src))
+    dirs = [STIM_DIR]
+    if _GRADE == "G12":
+        dirs.append(os.path.join(ROOT, "Stimulus_Bank_G11"))
+    for d in dirs:
+        for f in glob.glob(os.path.join(d, "*.py")):
+            src = open(f, encoding="utf-8").read()
+            ids.update(re.findall(r'\b(ACC-W910-[A-Z]+-[A-Z0-9-]+?-?\d{4})\b', src))
+            ids.update(re.findall(r'id\s*=\s*"(ACC-W910-[^"]+)"', src))
     return ids
 
 
