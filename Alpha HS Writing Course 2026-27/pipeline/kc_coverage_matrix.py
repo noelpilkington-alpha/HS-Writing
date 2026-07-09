@@ -33,32 +33,32 @@ ROOT = os.path.join(HERE, "..")
 # ---------------------------------------------------------------------------
 HS_KCS = [
     # G9
-    dict(id="C.9.01", grade="G9", name="Defensible argument claim", ccss=["W.9-10.1a"], teks=["EI.10.C"], sec=["ACT.1"], funnel="argument"),
-    dict(id="C.9.05", grade="G9", name="Informational controlling-idea", ccss=["W.9-10.2a"], teks=["EI.9.B"], sec=[], funnel="informational"),
-    dict(id="C.9.02", grade="G9", name="Attributed-evidence sentence", ccss=["W.9-10.1b", "W.9-10.8"], teks=["EI.11.H"], sec=["AP.3"], funnel="evidence"),
-    dict(id="C.9.03", grade="G9", name="Reason/warrant sentence", ccss=["W.9-10.1b"], teks=["EI.10.C"], sec=["AP.5", "ACT.4"], funnel="reasoning"),
-    dict(id="C.9.06", grade="G9", name="Transitions & cohesion", ccss=["W.9-10.1c", "W.9-10.2c"], teks=["EI.9.C"], sec=["ACT.9"], funnel="production_of_writing"),
-    dict(id="C.9.04", grade="G9", name="Single-source essay (arg + informational)", ccss=["W.9-10.1", "W.9-10.2", "W.9-10.4"], teks=["EI.10.C", "EI.9.B"], sec=[], funnel="essay"),
+    dict(id="C.9.01", acc=["ACC.W.ARG.1"], grade="G9", name="Defensible argument claim", ccss=["W.9-10.1a"], teks=["EI.10.C"], sec=["ACT.1"], funnel="argument"),
+    dict(id="C.9.05", acc=["ACC.W.INFO.1"], grade="G9", name="Informational controlling-idea", ccss=["W.9-10.2a"], teks=["EI.9.B"], sec=[], funnel="informational"),
+    dict(id="C.9.02", acc=["ACC.W.SRC.2"], grade="G9", name="Attributed-evidence sentence", ccss=["W.9-10.1b", "W.9-10.8"], teks=["EI.11.H"], sec=["AP.3"], funnel="evidence"),
+    dict(id="C.9.03", acc=["ACC.W.ARG.2"], grade="G9", name="Reason/warrant sentence", ccss=["W.9-10.1b"], teks=["EI.10.C"], sec=["AP.5", "ACT.4"], funnel="reasoning"),
+    dict(id="C.9.06", acc=["ACC.W.ARG.3", "ACC.W.INFO.3"], grade="G9", name="Transitions & cohesion", ccss=["W.9-10.1c", "W.9-10.2c"], teks=["EI.9.C"], sec=["ACT.9"], funnel="production_of_writing"),
+    dict(id="C.9.04", acc=["ACC.W.PROD.1", "ACC.W.ARG.5", "ACC.W.INFO.2", "ACC.W.INFO.3", "ACC.W.INFO.5"], grade="G9", name="Single-source essay (arg + informational)", ccss=["W.9-10.1", "W.9-10.2", "W.9-10.4"], teks=["EI.10.C", "EI.9.B"], sec=[], funnel="essay"),
     # G10
-    dict(id="C.10.01", grade="G10", name="Counterclaim-aware claim", ccss=["W.9-10.1a"], teks=["EII.10.C"], sec=["ACT.2"], funnel="counterargument"),
-    dict(id="C.10.02", grade="G10", name="Device->effect->warrant (text-dependent analysis)", ccss=["W.9-10.9", "RI.9-10.6"], teks=["EII.5.B"], sec=[], funnel="analysis"),
-    dict(id="C.10.05", grade="G10", name="Rhetorical revision: add/delete/reorder + organization", ccss=["W.9-10.4", "W.9-10.5"], teks=["EII.9.C"], sec=["ACT.7", "ACT.8"], funnel="production_of_writing"),
-    dict(id="C.10.06", grade="G10", name="Cross-text (2-3 source) argument/analysis", ccss=["W.9-10.7", "W.9-10.8", "W.9-10.9"], teks=["EII.5.D"], sec=[], funnel="multisource"),
-    dict(id="C.10.03", grade="G10", name="Analysis essay strategy", ccss=["W.9-10.2", "W.9-10.9"], teks=["EII.5.B"], sec=[], funnel="analysis"),
-    dict(id="C.10.04", grade="G10", name="Precision-in-argument (applied revision pass, woven)", ccss=["W.9-10.4", "W.9-10.5"], teks=["EII.9.C"], sec=[], funnel="production_of_writing"),
+    dict(id="C.10.01", acc=["ACC.W.ARG.2"], grade="G10", name="Counterclaim-aware claim", ccss=["W.9-10.1a"], teks=["EII.10.C"], sec=["ACT.2"], funnel="counterargument"),
+    dict(id="C.10.02", acc=["ACC.W.INFO.6", "ACC.W.SRC.3"], grade="G10", name="Device->effect->warrant (text-dependent analysis)", ccss=["W.9-10.9", "RI.9-10.6"], teks=["EII.5.B"], sec=[], funnel="analysis"),
+    dict(id="C.10.05", acc=["ACC.W.PROC.2"], grade="G10", name="Rhetorical revision: add/delete/reorder + organization", ccss=["W.9-10.4", "W.9-10.5"], teks=["EII.9.C"], sec=["ACT.7", "ACT.8"], funnel="production_of_writing"),
+    dict(id="C.10.06", acc=["ACC.W.SRC.1"], grade="G10", name="Cross-text (2-3 source) argument/analysis", ccss=["W.9-10.7", "W.9-10.8", "W.9-10.9"], teks=["EII.5.D"], sec=[], funnel="multisource"),
+    dict(id="C.10.03", acc=["ACC.W.INFO.6", "ACC.W.INFO.2", "ACC.W.SRC.3"], grade="G10", name="Analysis essay strategy", ccss=["W.9-10.2", "W.9-10.9"], teks=["EII.5.B"], sec=[], funnel="analysis"),
+    dict(id="C.10.04", acc=["ACC.W.PROC.2"], grade="G10", name="Precision-in-argument (applied revision pass, woven)", ccss=["W.9-10.4", "W.9-10.5"], teks=["EII.9.C"], sec=[], funnel="production_of_writing"),
     # G11
-    dict(id="C.11.01", grade="G11", name="Nuanced claim", ccss=["W.11-12.1a"], teks=[], sec=["AP.1", "ACT.6"], funnel="argument"),
-    dict(id="C.11.03", grade="G11", name="Rhetorical-analysis essay (author's choices)", ccss=["W.11-12.9", "RI.11-12.6"], teks=[], sec=["APL.4"], funnel="rhetorical_analysis"),
-    dict(id="C.11.02", grade="G11", name="Cross-source synthesis essay", ccss=["W.11-12.7", "W.11-12.8", "W.11-12.9"], teks=[], sec=["APL.3"], funnel="synthesis"),
-    dict(id="C.11.08", grade="G11", name="Evaluate source credibility/bias", ccss=["W.11-12.8"], teks=["EII.11.G"], sec=[], funnel="source_evaluation"),
-    dict(id="C.11.06", grade="G11", name="Argue from own knowledge (source-free)", ccss=["W.11-12.1"], teks=[], sec=["AP.4"], funnel="source_free_argument"),
-    dict(id="C.11.07", grade="G11", name="Multi-perspective argument (3 given perspectives)", ccss=["W.11-12.1"], teks=[], sec=["ACT.2", "ACT.3"], funnel="multi_perspective"),
-    dict(id="C.11.04", grade="G11", name="Rhetorical concision/style (applied revision pass, woven)", ccss=["W.11-12.4", "W.11-12.5"], teks=[], sec=["ACT.10"], funnel="production_of_writing"),
-    dict(id="C.11.05", grade="G11", name="Timed-writing strategy", ccss=["W.11-12.4"], teks=[], sec=["AP.9"], funnel="timed"),
+    dict(id="C.11.01", acc=["ACC.W.ARG.1"], grade="G11", name="Nuanced claim", ccss=["W.11-12.1a"], teks=[], sec=["AP.1", "ACT.6"], funnel="argument"),
+    dict(id="C.11.03", acc=["ACC.W.INFO.6"], grade="G11", name="Rhetorical-analysis essay (author's choices)", ccss=["W.11-12.9", "RI.11-12.6"], teks=[], sec=["APL.4"], funnel="rhetorical_analysis"),
+    dict(id="C.11.02", acc=["ACC.W.SRC.1"], grade="G11", name="Cross-source synthesis essay", ccss=["W.11-12.7", "W.11-12.8", "W.11-12.9"], teks=[], sec=["APL.3"], funnel="synthesis"),
+    dict(id="C.11.08", acc=["ACC.W.SRC.1", "ACC.W.INQ.1"], grade="G11", name="Evaluate source credibility/bias", ccss=["W.11-12.8"], teks=["EII.11.G"], sec=[], funnel="source_evaluation"),
+    dict(id="C.11.06", acc=["ACC.W.ARG.1"], grade="G11", name="Argue from own knowledge (source-free)", ccss=["W.11-12.1"], teks=[], sec=["AP.4"], funnel="source_free_argument"),
+    dict(id="C.11.07", acc=["ACC.W.ARG.2"], grade="G11", name="Multi-perspective argument (3 given perspectives)", ccss=["W.11-12.1"], teks=[], sec=["ACT.2", "ACT.3"], funnel="multi_perspective"),
+    dict(id="C.11.04", acc=["ACC.W.PROC.2"], grade="G11", name="Rhetorical concision/style (applied revision pass, woven)", ccss=["W.11-12.4", "W.11-12.5"], teks=[], sec=["ACT.10"], funnel="production_of_writing"),
+    dict(id="C.11.05", acc=["ACC.W.PROC.1"], grade="G11", name="Timed-writing strategy", ccss=["W.11-12.4"], teks=[], sec=["AP.9"], funnel="timed"),
     # G12
-    dict(id="C.12.01", grade="G12", name="AP sophistication (significance/context/complexity) [intro G11]", ccss=["W.11-12.1", "W.11-12.2"], teks=[], sec=["AP.8", "ACT.5"], funnel="sophistication"),
-    dict(id="C.12.02", grade="G12", name="Sustained AP writing under timed conditions", ccss=["W.11-12.4"], teks=[], sec=["AP.9"], funnel="timed"),
-    dict(id="D.12.01", grade="G12", name="Voice through syntactic choice (woven)", ccss=["W.11-12.4"], teks=[], sec=[], funnel="voice"),
+    dict(id="C.12.01", acc=["ACC.W.ARG.2"], grade="G12", name="AP sophistication (significance/context/complexity) [intro G11]", ccss=["W.11-12.1", "W.11-12.2"], teks=[], sec=["AP.8", "ACT.5"], funnel="sophistication"),
+    dict(id="C.12.02", acc=["ACC.W.PROD.1"], grade="G12", name="Sustained AP writing under timed conditions", ccss=["W.11-12.4"], teks=[], sec=["AP.9"], funnel="timed"),
+    dict(id="D.12.01", acc=["ACC.W.CONV.3"], grade="G12", name="Voice through syntactic choice (woven)", ccss=["W.11-12.4"], teks=[], sec=[], funnel="voice"),
 ]
 
 # ---------------------------------------------------------------------------
@@ -133,6 +133,53 @@ STANDARD_FAMILIES = [
     dict(fam="TEKS EI/EII writing strands (9/10/5/11)", need="hs", via="C.9.01/C.9.05/C.10.01/C.10.02/C.10.06 (argument/info/analysis/research)"),
 ]
 
+# ---------------------------------------------------------------------------
+# 6. THE ALPHACOMMONCORE (ACC) SPINE denominator - THE canonical common-standard (05_AlphaCommonCore_Writing_Spine.md).
+#    ACC = empirical union of 50 states (>=2-state rule). This is the REAL source of truth the KC map anchors to
+#    (CCSS/TEKS above are subsets). Every ACC code must be OWNED by an HS KC (acc= tag), an external course, or a
+#    DOCUMENTED descope. §3 net-new is filtered by Noel's rule: WRITING owns only the TESTED slices; the rest are
+#    the differentiation layer (standards-only, not summatively assessed) -> deferred/elsewhere, documented.
+# ---------------------------------------------------------------------------
+ACC_SPINE = [
+    # §1 CORE (CCSS-anchored; ~37+ states each) - all must be owned
+    dict(code="ACC.W.ARG.1", name="Precise defensible claim; distinguish opposing", need="hs"),
+    dict(code="ACC.W.ARG.2", name="Develop claims AND counterclaims fairly", need="hs"),
+    dict(code="ACC.W.ARG.3", name="Transitions/cohesion linking claim-reason-evidence", need="hs"),
+    dict(code="ACC.W.ARG.4", name="Formal style / objective tone", need="external"),   # style = Language course + woven
+    dict(code="ACC.W.ARG.5", name="Concluding statement following from argument", need="hs"),  # part of essay strategy
+    dict(code="ACC.W.INFO.1", name="Introduce & organize complex ideas", need="hs"),
+    dict(code="ACC.W.INFO.2", name="Develop with facts/details/examples", need="hs"),
+    dict(code="ACC.W.INFO.3", name="Transitions/cohesion across ideas", need="hs"),
+    dict(code="ACC.W.INFO.4", name="Precise language + domain vocabulary", need="external"),  # vocab = Vocabulary course
+    dict(code="ACC.W.INFO.5", name="Formal style; concluding section", need="hs"),
+    dict(code="ACC.W.INFO.6", name="Analyze complex texts (analysis)", need="hs"),
+    dict(code="ACC.W.PROD.1", name="Writing appropriate to task/purpose/audience", need="hs"),
+    dict(code="ACC.W.PROC.1", name="Plan/draft/revise/edit (recursive)", need="hs"),
+    dict(code="ACC.W.PROC.2", name="Revise for clarity/style/audience", need="hs"),
+    dict(code="ACC.W.RES.1", name="Conduct short & sustained research", need="descoped"),  # full research process deferred
+    dict(code="ACC.W.RES.2", name="Formulate & refine inquiry questions", need="descoped"),
+    dict(code="ACC.W.SRC.1", name="Gather from multiple credible sources; assess", need="hs"),
+    dict(code="ACC.W.SRC.2", name="Integrate evidence; cite; avoid plagiarism", need="hs"),
+    dict(code="ACC.W.SRC.3", name="Draw evidence from texts (write-about-reading)", need="hs"),
+    dict(code="ACC.W.CONV.1", name="Command of grammar & usage", need="external"),
+    dict(code="ACC.W.CONV.2", name="Capitalization, punctuation, spelling", need="external"),
+    dict(code="ACC.W.CONV.3", name="Apply knowledge of language / style", need="external"),
+    dict(code="ACC.W.NARR.1", name="Narrative: context/POV/characters", need="descoped"),
+    dict(code="ACC.W.NARR.2", name="Narrative techniques", need="descoped"),
+    dict(code="ACC.W.NARR.3", name="Narrative sequence/coherence", need="descoped"),
+    dict(code="ACC.W.NARR.4", name="Narrative precise/sensory language", need="descoped"),
+    dict(code="ACC.W.NARR.5", name="Narrative reflective conclusion", need="descoped"),
+    # §3 NET-NEW (>=2 deviation states, beyond CCSS). Noel: WRITING owns only the TESTED slices.
+    dict(code="ACC.W.TECH.1", name="Multimodal/digital composition", need="descoped", note="8 states but standards-only, not summatively tested; QTI text-first"),
+    dict(code="ACC.W.MEDIA.1", name="Analyze/evaluate media messages/bias", need="external", note="reading/language territory; not writing-composition, not summatively tested"),
+    dict(code="ACC.W.WORK.1", name="Workplace/technical writing", need="descoped", note="tested only in VA G12; deferred-with-note (in-scope iff VA is a target)"),
+    dict(code="ACC.W.WORK.2", name="Correspondence as a genre", need="descoped", note="verified NOT tested (retired from STAAR); descope"),
+    dict(code="ACC.W.DIG.1", name="Digital citizenship / ethical source use", need="external", note="civic-literacy/library; not summatively tested as writing"),
+    dict(code="ACC.W.INQ.1", name="Inquiry/reflection cycle", need="hs", note="TESTED slice = source-evaluation, owned by C.11.08; full cycle deferred"),
+    dict(code="ACC.W.BLEND.1", name="Blend multiple modes in one piece", need="descoped", note="standards-only, not summatively tested"),
+    dict(code="ACC.W.CRAFT.1", name="Discrete word-choice/voice/organization craft", need="external", note="Language course (craft) + D.12.01 voice woven"),
+]
+
 
 def _owned(need: str, cap: str) -> tuple[bool, str]:
     """Is this capability owned per its 'need' category? Return (ok, owner-description)."""
@@ -161,7 +208,19 @@ def build():
         else:
             ok = any(d in DESCOPED for d in DESCOPED)  # descoped registry non-empty
         std_rows.append({**s, "ok": ok})
-    return cap_rows, std_rows
+    # ACC spine rows: hs -> some KC carries this acc code; external -> registered; descoped -> registered decision
+    kc_acc = {a for k in HS_KCS for a in k.get("acc", [])}
+    acc_rows = []
+    for a in ACC_SPINE:
+        if a["need"] == "hs":
+            owners = [k["id"] for k in HS_KCS if a["code"] in k.get("acc", [])]
+            ok, owner = bool(owners), ("HS KCs: " + ", ".join(owners) if owners else "NO HS KC carries this ACC code")
+        elif a["need"] == "external":
+            ok, owner = True, "external HS course (Language/Vocabulary/Reading) or woven"
+        else:
+            ok, owner = True, "documented descope/defer"
+        acc_rows.append({**a, "ok": ok, "owner": owner})
+    return cap_rows, std_rows, acc_rows
 
 
 def self_test():
@@ -191,15 +250,34 @@ def self_test():
     for c in TESTED_CAPABILITIES:
         if c["need"] == "descoped" and c["cap"] not in DESCOPED:
             errs.append(f"capability '{c['cap']}' marked descoped but not in DESCOPED registry")
+    # F. every HS KC's acc= code is a real ACC-spine code (no invented ACC codes)
+    acc_codes = {a["code"] for a in ACC_SPINE}
+    for k in HS_KCS:
+        for a in k.get("acc", []):
+            if a not in acc_codes:
+                errs.append(f"{k['id']} tagged ACC code '{a}' not in the ACC spine")
+    # G. every ACC §1 CORE code with need='hs' is carried by >=1 KC (the common-standard coverage guarantee)
+    kc_acc = {a for k in HS_KCS for a in k.get("acc", [])}
+    for a in ACC_SPINE:
+        if a["need"] == "hs" and a["code"] not in kc_acc:
+            errs.append(f"ACC code '{a['code']}' needs an HS KC but none carries it")
     return errs
 
 
-def _text_report(cap_rows, std_rows, errs) -> str:
-    L = ["=== G9-12 KC MAP COVERAGE MATRIX (map-level, standards-first) ===",
-         "(coverage, NOT efficacy: proves every tested capability + standard family has an owner;",
+def _text_report(cap_rows, std_rows, acc_rows, errs) -> str:
+    L = ["=== G9-12 KC MAP COVERAGE MATRIX (map-level, ACC-anchored) ===",
+         "(coverage, NOT efficacy: proves every ACC standard + tested capability has an owner;",
          " does NOT prove the teaching works. Efficacy needs field data with real students.)", ""]
-    L.append("-- TESTED CAPABILITIES --")
     gaps = 0
+    L.append("-- ACC SPINE (the common standard: >=2-state union; THE source of truth) --")
+    for a in acc_rows:
+        tag = "OK" if a["ok"] else "**UN-OWNED**"
+        if not a["ok"]:
+            gaps += 1
+        note = f"  [{a['note']}]" if a.get("note") else ""
+        L.append(f"[{tag}] {a['code']} {a['name']}  ({a['need']}) -> {a['owner']}{note}")
+    L.append("")
+    L.append("-- TESTED CAPABILITIES --")
     for r in cap_rows:
         tag = "OK" if r["ok"] else "**UN-OWNED**"
         if not r["ok"]:
@@ -207,7 +285,7 @@ def _text_report(cap_rows, std_rows, errs) -> str:
         L.append(f"[{tag}] {r['label']}  ({r['need']})")
         L.append(f"        owner: {r['owner']}   | tested by: {r['tests']}")
     L.append("")
-    L.append("-- CCSS/TEKS STANDARD FAMILIES (standards-first) --")
+    L.append("-- CCSS/TEKS STANDARD FAMILIES (subset alignment) --")
     for s in std_rows:
         tag = "OK" if s["ok"] else "**UN-OWNED**"
         if not s["ok"]:
@@ -218,24 +296,29 @@ def _text_report(cap_rows, std_rows, errs) -> str:
     if errs:
         L += [f"  FAIL: {e}" for e in errs]
     else:
-        L.append("  PASS: all consistency assertions hold (every tested cap owned, every KC standards-tagged,")
-        L.append("        no KC duplicates a gated skill, all referenced KCs exist, descopes documented).")
+        L.append("  PASS: all assertions hold (every ACC-core owned, every tested cap owned, every KC")
+        L.append("        ACC+standards-tagged, no KC duplicates a gated skill, refs exist, descopes documented).")
     L.append("")
-    L.append(f"{len(cap_rows)} capabilities + {len(std_rows)} standard families | "
+    L.append(f"{len(acc_rows)} ACC codes + {len(cap_rows)} capabilities + {len(std_rows)} standard families | "
              f"{gaps} un-owned | {len(errs)} consistency failures")
     L.append(f"HS-owned KCs: {len(HS_KCS)} | external-owned: {len(EXTERNAL_OWNED)} | descoped(documented): {len(DESCOPED)}")
     return "\n".join(L)
 
 
-def _html_report(cap_rows, std_rows, errs) -> str:
+def _html_report(cap_rows, std_rows, acc_rows, errs) -> str:
     def esc(s): return html.escape(str(s))
     def rows_html(rows, kind):
         out = []
         for r in rows:
             ok = r["ok"]; cls = "ok" if ok else "gap"
-            label = r["label"] if kind == "cap" else r["fam"]
-            owner = r["owner"] if kind == "cap" else r["via"]
-            tests = r.get("tests", "")
+            if kind == "cap":
+                label, owner, tests = r["label"], r["owner"], r.get("tests", "")
+            elif kind == "acc":
+                label = f'{r["code"]} {r["name"]}'
+                owner = r["owner"] + (f'  ({r["note"]})' if r.get("note") else "")
+                tests = ""
+            else:
+                label, owner, tests = r["fam"], r["via"], ""
             out.append(f'<tr class="{cls}"><td>{esc(label)}'
                        + (f'<span class="t">tested by: {esc(tests)}</span>' if tests else '')
                        + f'</td><td class="need">{esc(r["need"])}</td>'
@@ -244,6 +327,7 @@ def _html_report(cap_rows, std_rows, errs) -> str:
         return "".join(out)
     cap_gaps = sum(1 for r in cap_rows if not r["ok"])
     std_gaps = sum(1 for r in std_rows if not r["ok"])
+    acc_gaps = sum(1 for r in acc_rows if not r["ok"])
     testblock = ('<div class="pass">PASS - all consistency assertions hold</div>' if not errs
                  else '<div class="fail">FAIL<ul>' + "".join(f"<li>{esc(e)}</li>" for e in errs) + "</ul></div>")
     return f"""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
@@ -266,33 +350,37 @@ tr.gap .st{{color:#991b1b;font-weight:800}} tr.ok .st{{color:#166534;font-weight
 .pass{{background:#dcfce7;border-left:4px solid #16a34a;padding:12px 16px;border-radius:0 8px 8px 0;font-weight:700;color:#166534}}
 .fail{{background:#fef2f2;border-left:4px solid #991b1b;padding:12px 16px;border-radius:0 8px 8px 0;color:#991b1b}}
 </style></head><body>
-<h1>G9-12 Writing KC Map - Coverage Matrix</h1>
-<p class="sub">Every tested writing capability + every CCSS/TEKS standard family, mapped to its owner: an HS-owned KC, an external HS course (Language/Vocabulary/Reading), or an explicit documented descope.</p>
-<div class="ceiling"><b>What this proves, and what it does not.</b> A COVERAGE argument: no tested capability or standard family is left un-owned (necessary for students to pass). NOT an efficacy claim: coverage does not prove the teaching works - that needs field data with real students, which we do not have. Read as "the course targets everything the tests + standards demand, or explicitly defers it," not "proven to produce passing scores."</div>
-<div><span class="stat"><b>{len(HS_KCS)}</b> HS-owned KCs</span>
+<h1>G9-12 Writing KC Map - Coverage Matrix (ACC-anchored)</h1>
+<p class="sub">Anchored to the AlphaCommonCore spine (the empirical >=2-state union of all 50 states' writing standards). Every ACC standard + tested capability mapped to its owner: an HS-owned KC, an external HS course (Language/Vocabulary/Reading), or an explicit documented descope.</p>
+<div class="ceiling"><b>What this proves, and what it does not.</b> A COVERAGE argument: no ACC standard or tested capability is left un-owned (necessary for students to pass). NOT an efficacy claim: coverage does not prove the teaching works - that needs field data with real students, which we do not have. Read as "the course targets everything the common standard + tests demand, or explicitly defers it," not "proven to produce passing scores."</div>
+<div><span class="stat"><b>{len(ACC_SPINE)}</b> ACC codes</span>
+<span class="stat"><b>{len(HS_KCS)}</b> HS-owned KCs</span>
 <span class="stat"><b>{len(EXTERNAL_OWNED)}</b> external-owned</span>
 <span class="stat"><b>{len(DESCOPED)}</b> documented descopes</span>
-<span class="stat"><b>{cap_gaps+std_gaps}</b> un-owned</span></div>
+<span class="stat"><b>{acc_gaps+cap_gaps+std_gaps}</b> un-owned</span></div>
 {testblock}
-<h2>Tested capabilities</h2>
+<h2>AlphaCommonCore spine (the common standard - source of truth)</h2>
+<p class="sub">§1 core (CCSS-anchored, ~37+ states each) + §3 net-new (>=2 deviation states, beyond CCSS). Per Noel: WRITING owns only the TESTED slices of §3; the rest are the differentiation layer, deferred or owned elsewhere (noted).</p>
+<table><thead><tr><th>ACC code + sub-skill</th><th>Owner need</th><th>Owner (+ scope note)</th><th>Status</th></tr></thead>
+<tbody>{rows_html(acc_rows,"acc")}</tbody></table>
+<h2>Tested capabilities (backward-trace audit denominator)</h2>
 <table><thead><tr><th>Capability (and tests that score it)</th><th>Owner need</th><th>Owner</th><th>Status</th></tr></thead>
 <tbody>{rows_html(cap_rows,"cap")}</tbody></table>
-<h2>CCSS / TEKS standard families (standards-first)</h2>
+<h2>CCSS / TEKS standard families (subset alignment)</h2>
 <table><thead><tr><th>Standard family</th><th>Owner need</th><th>Owned via</th><th>Status</th></tr></thead>
 <tbody>{rows_html(std_rows,"std")}</tbody></table>
-<p class="sub" style="margin-top:20px">Source: reconciled KC map (<code>KC_Map_and_Unit_Arch_G9-12.md</code>) + backward-trace audit (<code>_evidence/kc_coverage_audit.md</code>). Standards-first: AP/ACT are thin overlays on a CCSS/TEKS-anchored core. This matrix is a regression guard - drop a KC or owner and a denominator row goes un-owned.</p>
+<p class="sub" style="margin-top:20px">Source of truth: the AlphaCommonCore spine (<code>05_AlphaCommonCore_Writing_Spine.md</code>, the >=2-state union). Reconciled KC map (<code>KC_Map_and_Unit_Arch_G9-12.md</code>) + backward-trace audit (<code>_evidence/kc_coverage_audit.md</code>). CCSS/TEKS are subsets of ACC; AP/ACT are thin overlays. Regression guard - drop a KC or owner and a denominator row goes un-owned.</p>
 </body></html>"""
 
 
 if __name__ == "__main__":
-    cap_rows, std_rows = build()
+    cap_rows, std_rows, acc_rows = build()
     errs = self_test()
     if "--html" in sys.argv:
         out = os.path.join(ROOT, "kc_coverage_matrix.html")
         with open(out, "w", encoding="utf-8") as fh:
-            fh.write(_html_report(cap_rows, std_rows, errs))
+            fh.write(_html_report(cap_rows, std_rows, acc_rows, errs))
         print(f"wrote {os.path.relpath(out, HERE)}")
-    print(_text_report(cap_rows, std_rows, errs))
-    cap_gaps = sum(1 for r in cap_rows if not r["ok"])
-    std_gaps = sum(1 for r in std_rows if not r["ok"])
-    sys.exit(0 if (cap_gaps == 0 and std_gaps == 0 and not errs) else 1)
+    print(_text_report(cap_rows, std_rows, acc_rows, errs))
+    gaps = sum(1 for r in (cap_rows + std_rows + acc_rows) if not r["ok"])
+    sys.exit(0 if (gaps == 0 and not errs) else 1)
