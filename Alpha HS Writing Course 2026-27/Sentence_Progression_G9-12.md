@@ -4,48 +4,62 @@
 **Date:** 2026-07-08
 **Basis:** Every placement cell is justified against four sources: (1) the state-test crosswalk (`skills_by_grade_crosswalk.html` + `TestDesign_Reference.md`), (2) TWR's documented skill sequence (`personas/01-twr-hochman-wexler.md`), (3) CCSS/ACC grade-band standards (`05_AlphaCommonCore_Writing_Spine.md` + `01_ccss_adherence_map.md`), and (4) the Council of Writing Instruction, convened in-session 2026-07-08, only where the first three conflicted. The spiral bands + assessment evidence are grounded in the 5 released-test batches (`ReleasedTests/batch1-5*.md`), synthesized in `_evidence/sentence_skill_assessment_evidence.md`. Placement evidence trail: `_evidence/sentence_skill_sources.md`.
 
-## Two things this map now distinguishes (the fix Noel asked for)
+## Two corrections that reshaped this map (Noel's pushback)
 
-An earlier cut of this map tagged every skill NEW-at-one-grade then flatly INHERITED, which HID how sentence capability keeps maturing. The reference tests show that is wrong for the mechanics: they re-assess sentence control at rising complexity every year. So the map now separates:
+An earlier cut placed the whole sentence substrate as "introduced at G9/G10" and tagged it flatly INHERITED afterward. Two facts, verified against the AlphaWrite Skill Plan + CCSS, refuted that:
 
-- **Ownership (where a skill is INTRODUCED as new instruction)** = the grade that teaches it to first automaticity. Unchanged from the verified placements.
-- **Maturity band (how the capability keeps DEVELOPING toward MASTERY)** = the later grades do NOT merely "retrieval-gate a done skill." They re-exercise it at higher complexity, in service of that grade's harder genre and test. "Inherited" means actively re-used and stretched, not parked.
+1. **The G3-8 substrate is inherited, not HS-new.** The AlphaWrite Skill Plan (`new-aw-skill-plan 2025`, G3-8 only) teaches AND re-spirals EVERY YEAR G3-G8: fragment/run-on control, because/but/so, appositives (identify, write, AND combine-with-appositives), subordinating conjunctions, sentence combining, kernel expansion, topic sentence. So HS OWNS none of these; it INHERITS them. Appositives are a CCSS G6 standard, so the earlier appositive-placement council ruling is VOIDED (wrong premise). Full evidence: `_evidence/g3-8_inherited_sentence_skills.md`.
+2. **The genuinely-HS-new sentence work is the advanced phrase/clause repertoire.** CCSS L.9-10.1.A (parallel structure) + L.9-10.1.B (varied phrases: prepositional, participial, absolute; varied clauses: relative, adverbial, noun) name what G3-8 never teaches. These are the real G9-10 Layer-1 content.
 
-**INTRODUCE -> DEVELOP -> MASTER** replaces the passive "inherited" tag:
-- **INTRODUCE** (the owning grade): full lesson, worked -> completion -> independent, to first automaticity.
-- **DEVELOP** (next grade[s]): retrieval-gate at entry (no re-teaching the mechanic), then the skill is EXERCISED at higher complexity inside that grade's genre work + measured on that grade's test. Fail the gate -> platform routes remediation to the owning grade.
-- **MASTER** (top grade[s]): the skill is used as a rhetorical choice in extended discourse (what ACT/SAT/AP actually measure), not merely produced correctly.
+**Design principle (Noel):** stick to what students are actually TESTED on, and make the sentence-level skills funnel INTO those tested skills. The reference tests do NOT test phrase/clause types by name; they test two umbrella SR capabilities. So the HS-new moves are organized UNDER the tested capability they serve, not as a grammar taxonomy.
 
-The expertise-reversal guard still holds (d approximately -0.428 for re-teaching an automated skill, ExpertiseReversal2025): DEVELOP/MASTER grades gate-then-exercise, they do not re-run the introductory lesson.
+**The two tested SR capabilities the crosswalk documents (the funnels):**
+- **"Sentence structure & boundaries"** (ACC.W.CONV.1) - TESTED every grade: G9 combining/boundaries -> G10 formation/parallelism/modifiers -> G11 complex-sentence revision (ACT/SAT) -> G12 rhetorical syntax (AP).
+- **"Knowledge of language / style"** (ACC.W.CONV.3) - G10 precision/word-choice -> G11 style/tone/concision (ACT/SAT) -> G12 rhetorical style (AP).
+
+**INHERIT -> MATURE model (replaces the passive "inherited" tag):**
+- **INHERITED (owned G3-8):** retrieval-gate at G9 entry (fast check, no re-teach). Pass -> proceed and MATURE the skill to rhetorical level inside genre work. Fail -> platform routes remediation to the owning AlphaWrite grade (may descend to G3). Honors the expertise-reversal guard (d approximately -0.428 for re-teaching an automated skill, ExpertiseReversal2025).
+- **HS-NEW (introduce G9-12):** full lesson (worked -> completion -> independent) at the owning HS grade, then DEVELOP/MASTER at later grades. These are the phrase/clause types + parallelism + precision/concision + rhetorical/AP syntax that G3-8 never taught.
 
 ## Honest scope note on "assessment evidence"
 
-The reference tests do NOT decompose sentence skills to the granular level. Not one of 20+ systems names appositives, combining, parallelism, subordination, or because/but/so as a discrete item. They assess umbrella capabilities ("sentence structure & boundaries," "knowledge of language," "sentence formation/variety") either inside the essay Conventions rubric or in edit-in-context selected-response (STAAR/TN/ACT/SAT/FL/MA). Therefore:
-- The **assessed-capability** column names the umbrella the test measures + the systems, cited.
-- The **exemplar items** (in the dedicated section below) are OWN-WORDS RECONSTRUCTIONS faithful to each documented format, NEVER real test items (copyright + our reference files contain no verbatim items). Each cites the official test + public format it mirrors.
-- The granular skills are OUR TWR-grounded decomposition of those umbrella capabilities, not the tests' own taxonomy. Stated plainly so no one mistakes a reconstruction for a lifted item.
+The reference tests do NOT decompose sentence skills to the granular level. They assess the two umbrella capabilities above, either inside the essay Conventions rubric or in edit-in-context selected-response (STAAR/TN/ACT/SAT/FL/MA). Therefore:
+- The **assessed-capability** column names the tested umbrella + systems, cited. Every HS-new row must funnel into one of the two tested capabilities, or it does not belong in the course.
+- The **exemplar items** (dedicated section below) are OWN-WORDS RECONSTRUCTIONS faithful to each documented format, NEVER real test items (copyright + our reference files contain no verbatim items). Each cites the official test + public format it mirrors.
+- The granular phrase/clause skills are OUR TWR/CCSS-grounded decomposition of the tested umbrellas, not the tests' own taxonomy. Stated plainly so no one mistakes a reconstruction for a lifted item.
 
 ---
 
-## Layer 1: Genre-General Mechanics (with maturity trajectory)
+## Layer 1a: INHERITED from G3-8 (retrieval-gate at G9, then mature; owned by NO HS grade)
 
-| Skill | INTRODUCE @ | Maturity trajectory (introduce -> develop -> master) | Assessed capability + systems (cited) |
-|-------|-------------|-------------------------------------------------------|----------------------------------------|
-| Sentence expansion (kernel + who/what/when/where/why/how) | **G9** | G9 introduce -> G10-12 develop (expand for detail/precision under harder texts) | Under "sentence structure & boundaries" / "sentence effectiveness" SR (STAAR revising, TN editing); essay Development dimension everywhere. |
-| Sentence combining (2-5 kernels into one) | **G9** | G9 introduce -> G10 develop (formation in longer passages) -> G11 master ("complex sentence revision," ACT/SAT) -> G12 rhetorical syntax | Crosswalk "sentence structure & boundaries" row, TESTED every grade: G9 "combining" -> G10 "formation" -> G11 "complex sentence revision" -> G12 "rhetorically effective syntax." NOT isolated to G9. |
-| Subordinating conjunctions (basic set: before/after/if/when) | **G9** | G9 introduce (basic set) -> G10 develop (concessive set in counterclaim-aware claim) -> G11-12 master (subordination as rhetorical control) | TWR Level 1 basic / Level 2 advanced; crosswalk sentence-complexity spiral (G9 -> ACT/SAT complex-sentence revision). |
-| Fragment / run-on / comma-splice control | **G9** | G9 introduce -> G10-12 develop (boundary control in longer, denser passages; NO-CHANGE recognition at G11) | Crosswalk G9 "fragments, run-ons"; STAAR editing "sentence boundaries," TN editing conventions; ACT/SAT Standard English Conventions. |
-| Because / but / so (bound to claim-evidence-reasoning) | **G9** | G9 introduce (CER connectives) -> G10-12 develop (reasoning links inside analysis + argument) | TWR analytical-thinking activity. **Delivery binding (Noel):** taught IN expository/argumentative CER (because = reasoning link, but = counterclaim/qualify pivot, so = cause-effect/conclusion), not a decontextualized connective drill. |
-| Controlling-idea / topic sentence | **G9** | G9 introduce -> G10-12 develop (controlling ideas for analysis/synthesis paragraphs) | Crosswalk "organization & cohesion" SR: G9 "topic sentences" -> G10 "paragraph logic" -> G11 "rhetorical organization/cohesion." Genre realizations are separate Layer-2 rows. |
-| Appositives (comma-set noun-renaming phrase) | **G10** *(council-confirmed; see re-examination #2)* | G10 introduce (isolate->automate->coordinate; gated on G9-substrate automaticity) -> G11 develop (embedded qualification in nuanced claims) -> G12 master (stylistic/sophistication move) | Subsumed under crosswalk G10 "sentence formation, modifiers"; no test names it discretely. TWR intermediate elaboration tool (§Ch 4 loc ~4120-4265); K&H element-interactivity ruling (grade A). |
-| Parallelism | **G10** | G10 introduce -> G11 develop (ACT/SAT sentence-structure items) -> G12 master (parallelism for rhetorical emphasis) | Crosswalk G10 "sentence formation, modifiers, parallelism" (VT, EOCs, FAST); ACT/SAT Standard English Conventions at G11. |
-| Modifier placement | **G10** | G10 introduce -> G11-12 develop (modifier precision in dense revision) | Crosswalk G10 "modifiers" (EOC editing); ACT/SAT sentence-structure at G11. |
-| Precision (basic word-level accuracy) | **G10** | G10 introduce (scaffolded word-choice editing) -> G11 develop into full stylistic precision -> G12 master (rhetorical style) | **COUNCIL-adjudicated split.** Crosswalk "knowledge of language" G10 "precision, concision, word choice" (EOC, VT). Winner K&H (CLT grade A) + G10 EOC anchor; loser TWR G9. |
-| Concision + stylistic precision | **G11** | G11 introduce -> G12 master (concision as rhetorical economy) | **COUNCIL-adjudicated split.** Crosswalk "knowledge of language" G11 "style, tone, precision, concision" (ACT Knowledge of Language, SAT Craft & Structure). 5-7 interacting elements; open revision. |
-| Rhetorical syntax (sentence variety AS a rhetorical choice) | **G11** | G11 introduce -> G12 master (sustained purposeful variation) | Crosswalk G11 "rhetorical organization/cohesion" (ACT Production of Writing, SAT Expression of Ideas "meet rhetorical goals"). |
-| AP sophistication syntax (purposeful, varied sentences sustaining a line of reasoning) | **G12** | G12 introduce/master (ceiling) | Crosswalk G12 LADDER (AP); AP FRQ Row B caps at 3 when errors interfere with meaning; Row C Sophistication 0-1 (batch4). |
+These are taught + spiraled every year G3-G8 in AlphaWrite. At HS they are gate-checked at entry and MATURED into the tested capability, never re-taught. Failure routes remediation to the owning AlphaWrite grade.
 
-**Layer-1 finding, refined:** G10 introduces no genre-general mechanic that is *novel in kind* (appositives/parallelism/modifiers/precision are refinements/extensions of the G9 substrate). But G10 is NOT idle on mechanics: it DEVELOPS the entire G9 substrate at higher complexity (longer passages, denser texts, the modal EOC). "Thin on NEW mechanics" is true; "thin on sentence work" is false. G9 and G11 carry the thick INTRODUCE phases; G10's Layer-1 is a develop-and-extend phase.
+| Inherited skill (owned G3-8) | Funnels into tested capability | HS maturation (what rises) |
+|------------------------------|-------------------------------|-----------------------------|
+| Sentence expansion (kernel + who/what/when/where/why/how) | sentence structure & boundaries; essay Development | Expand for precision/detail under harder texts (G9-12). |
+| Sentence combining (2-5 kernels -> one) | sentence structure & boundaries | The FUNNEL target: G10 formation -> G11 complex-sentence revision (ACT/SAT) -> G12 rhetorical syntax. HS-new phrase/clause types (1b) are the moves that mature this. |
+| Basic subordinating conjunctions (before/after/if/when) | sentence structure & boundaries | Concessive use in the G10 counterclaim-aware claim; subordination as rhetorical control by G11. |
+| Fragment / run-on / comma-splice control | sentence structure & boundaries | Boundary control in longer/denser passages; NO-CHANGE recognition (ACT/SAT G11). |
+| Because / but / so (CER connectives) | reasoning inside argument/analysis | **Delivery binding (Noel):** matured IN expository/argumentative CER (because = reasoning link, but = counterclaim/qualify pivot, so = cause-effect/conclusion), not a decontextualized drill. |
+| Appositives (comma-set noun-renaming phrase) | sentence structure & boundaries; knowledge of language | CCSS G6, taught G3-8 (incl. combine-with-appositives). Matured at HS as embedded qualification (feeds the G11 nuanced claim) + stylistic move (G12). NOT introduced at any HS grade. |
+| Controlling-idea / topic sentence | organization & cohesion | Controlling ideas for analysis/synthesis paragraphs (G10-11). Genre realizations are separate Layer-2 rows. |
+
+## Layer 1b: GENUINELY HS-NEW (introduce G9-12; funnels into the tested capability)
+
+What AlphaWrite G3-8 does NOT teach. Each row funnels into a tested SR capability (Noel's rule); a row that funneled into nothing tested would be cut.
+
+| HS-new skill | INTRODUCE @ | Maturity trajectory | Funnels into tested capability + systems (cited) |
+|--------------|-------------|---------------------|--------------------------------------------------|
+| **Advanced phrases for combining/variety** (prepositional, participial, absolute phrases) | **G9** | G9 introduce -> G10 develop (in formation items) -> G11 master (sentence variety for rhetorical goals, ACT/SAT) | CCSS L.9-10.1.B "various types of phrases." Funnels into "sentence structure & boundaries" (crosswalk G10 "sentence formation"; ACT Sentence Structure & Formation; SAT Standard English Conventions). The advanced combining moves G3-8 never taught. |
+| **Advanced clauses** (relative/adjective, adverbial-beyond-basic, noun clauses) | **G10** | G10 introduce -> G11 master (complex-sentence revision, ACT/SAT) | CCSS L.9-10.1.B "various types of clauses." Funnels into "sentence structure & boundaries" (crosswalk G11 "complex sentence revision"). Distinct from the inherited appositive (phrase) and basic subordinator. |
+| **Parallel structure** | **G9** | G9 introduce -> G10 develop -> G11 master (ACT/SAT) -> G12 rhetorical emphasis | CCSS L.9-10.1.A. Funnels into "sentence structure & boundaries" (crosswalk G10 "parallelism"; VT/EOC/FAST; ACT/SAT). Not in G3-8. |
+| **Modifier placement** (misplaced/dangling) | **G10** | G10 introduce -> G11-12 develop (precision in dense revision) | Crosswalk G10 "modifiers" (EOC editing); ACT/SAT sentence structure. Not in G3-8. |
+| **Precision (word-level accuracy)** | **G10** | G10 introduce (scaffolded word-choice editing) -> G11 develop into stylistic precision -> G12 rhetorical style | **COUNCIL-split.** Funnels into "knowledge of language" (crosswalk G10 "precision, word choice"; EOC/VT). Winner K&H (CLT grade A) + G10 EOC anchor; loser TWR G9. |
+| **Concision + stylistic precision** | **G11** | G11 introduce -> G12 master (concision as rhetorical economy) | **COUNCIL-split.** Funnels into "knowledge of language" (crosswalk G11 "style, tone, precision, concision"; ACT Knowledge of Language, SAT Craft & Structure). |
+| **Rhetorical syntax** (sentence variety AS a rhetorical choice) | **G11** | G11 introduce -> G12 master | Funnels into "sentence structure & boundaries" at the rhetorical tier (crosswalk G11 "rhetorical organization/cohesion"; ACT Production of Writing; SAT Expression of Ideas "meet rhetorical goals"). |
+| **AP sophistication syntax** (purposeful varied sentences sustaining a line of reasoning) | **G12** | G12 introduce/master (ceiling) | Crosswalk G12 LADDER (AP); AP FRQ Row B caps at 3 when errors interfere with meaning; Row C Sophistication 0-1 (batch4). |
+
+**Layer-1 finding, corrected:** The bulk of the "sentence substrate" (expansion, combining, appositives, because/but/so, basic subordination, boundaries, topic sentence) is INHERITED from G3-8, not HS-new. HS Layer-1 owns only the ADVANCED phrase/clause repertoire + parallelism + modifiers + precision/concision + rhetorical/AP syntax. Every HS-new row funnels into one of the two tested SR capabilities (sentence structure & boundaries; knowledge of language). G9-new: advanced phrases, parallel structure. G10-new: advanced clauses, modifiers, precision. G11-new: concision, rhetorical syntax. G12: AP syntax. This is thinner and more honest than the old map, and it eliminates the redundancy risk of re-teaching G3-8 skills.
 
 ---
 
@@ -68,14 +82,19 @@ The reference tests do NOT decompose sentence skills to the granular level. Not 
 
 These show the SPIRAL concretely: the same capability, re-assessed at rising complexity G9 -> G12. Every item below is an **own-words reconstruction faithful to the cited test's documented format**, built to illustrate the demand level. **None is a real test item.** Formats are drawn from `_evidence/sentence_skill_assessment_evidence.md`.
 
-### Cluster A: Sentence structure & boundaries (combining, subordination, formation, parallelism)
+### Cluster A: Sentence structure & boundaries (the tested funnel)
 
-The crosswalk documents this row TESTED at all four grades with escalating demand. This is the direct evidence that combining/subordination are NOT isolated to G9.
+The crosswalk documents this row TESTED at all four grades with escalating demand. The INHERITED G3-8 substrate is gate-checked then matured into it; the HS-NEW phrase/clause repertoire is what students newly learn to raise their performance on it.
 
-- **G9 INTRODUCE** - format: edit-in-context MC with NO-CHANGE (STAAR editing passage / TN Editing Task, batch1). *Demand: fix a sentence-boundary error by joining a subordinate clause.*
+- **G9 INHERITED (gate-check, not introduce)** - format: edit-in-context MC with NO-CHANGE (STAAR editing passage / TN Editing Task, batch1). *Demand: fix a sentence-boundary error by joining a subordinate clause - a G3-8 skill, retrieval-checked at G9 entry.*
   > Reconstruction: A draft reads, "The council approved the bike lanes. Because residents wanted safer streets." Choose the best revision of the underlined boundary.
   > A) NO CHANGE  B) lanes. Because, residents  C) **lanes because residents**  D) lanes; because residents.
-  > Key: C (subordinate clause joined; the fragment is repaired). Skill: fragment control + subordinating conjunction, the G9 substrate.
+  > Key: C (fragment repaired via subordination). Skill: fragment control + basic subordinating conjunction - INHERITED from AlphaWrite G3-8, gated (not taught) at HS.
+
+- **G9 HS-NEW (introduce)** - format: same edit-in-context MC shell, but the target is an advanced phrase G3-8 never taught. *Demand: combine two sentences using a participial or prepositional phrase (CCSS L.9-10.1.B).*
+  > Reconstruction: Combine: "The senator opposed the bill. She cited its cost." Choose the best single-sentence combination using a participial phrase.
+  > A) The senator opposed the bill, and she cited its cost.  B) **Citing its cost, the senator opposed the bill.**  C) The senator opposed the bill because of its cost.  D) The senator, she opposed the bill and its cost.
+  > Key: B (participial-phrase opener - a new combining move). Skill: advanced phrases, HS-NEW at G9, funneling into "sentence structure & boundaries." (A/C use only inherited coordinating/subordinating moves.)
 
 - **G10 DEVELOP** - format: edit-in-context MC (STAAR/TN editing; FL FAST reading-embedded). *Demand rises to parallelism + formation in a longer draft.*
   > Reconstruction: "The plan calls for reducing waste, to increase recycling, and expanded transit." Choose the revision that makes the series parallel.
@@ -107,17 +126,15 @@ The crosswalk documents this row escalating G10 -> G11, which is the direct evid
 
 ---
 
-## Re-examination under the maturity lens (Noel's two concerns)
+## Re-examination under the G3-8 inheritance lens (Noel's two concerns)
 
-Noel flagged: appositives only at G10, and expansion/combining/subordination "isolated to G9." The maturity view resolves both, with ONE placement question left for Noel.
+Noel flagged: appositives only at G10, and expansion/combining/subordination "isolated to G9." Checking the AlphaWrite Skill Plan (G3-8) resolved BOTH decisively, and voided an earlier ruling.
 
-1. **"Expansion/combining/subordination isolated to G9" - REFUTED by the evidence.** The crosswalk "sentence structure & boundaries" row is TESTED at every grade with rising demand (G9 combining -> G10 formation -> G11 complex-sentence revision -> G12 rhetorical syntax). These are INTRODUCED at G9 and DEVELOPED/MASTERED every year after. The old flat "inherited" tag hid this; the maturity trajectory column now makes it explicit. No placement change needed, only the honest representation.
+1. **"Expansion/combining/subordination isolated to G9" - CORRECT concern, now fixed structurally.** These are not G9-owned at all; they are INHERITED from G3-8 (taught + spiraled every year G3-G8). At HS they are retrieval-gated then matured into the tested "sentence structure & boundaries" capability (G10 formation -> G11 complex-sentence revision -> G12 rhetorical syntax). They now live in Layer 1a (inherited), not as G9 introductions. The HS-new combining content is the advanced phrase/clause repertoire in Layer 1b.
 
-2. **"Appositives only at G10" - RESOLVED by council (in-session, 2026-07-08), G10 UPHELD with conditions.** No test names appositives, so this was adjudicated as a developmental-sequence call. Seats: TWR -> G9 (parallel toolkit, no combining-prerequisite; grade B); Kirschner & Hendrick -> G10 (element-interactivity: appositive is simple alone but high-cost when COORDINATED with the moves G9 is still building; spacing cannot rescue failed encoding; grade A); DI/Engelmann -> G10 (task analysis: appositive is a phrase-level combining move requiring automatic clause-combining first, for faultless communication; grade B).
-   - **Ruling: INTRODUCE @ G10.** Decided by evidence strength (not vote count): K&H's grade-A CLT evidence on load-additivity + encoding-before-spacing outweighs TWR's grade-B parallel-toolkit claim. The crux (does the appositive require automatic combining first?) resolves YES: the 3-year-runway advantage of a G9 start evaporates if G9's concurrent load causes failed encoding. A reliable 2-year runway (G10 introduce -> G11 develop in nuanced claims -> G12 master) beats an unreliable 3-year one.
-   - **Losing position:** TWR's G9. Right that the appositive scaffold is teachable in isolation; outweighed because isolation is not how it appears in student writing (where the student must SELECT among moves), and that selection cost is what overloads G9.
-   - **Two conditions the ruling attaches (carry into the arc + gate design):** (a) G10-introduce is conditional on the G9 substrate (combining, subordination, fragment/run-on) reaching near-automaticity first, so the G10-entry retrieval-gate must actually verify it; if G9 combining is weak, defer appositives to mid-G10 after remediation. (b) G10 appositive instruction sequences isolate -> automate -> coordinate (teach the appositive alone before mixing it with competing moves).
-   - Net: **no placement change** (G10 stands), maturity bands = introduce G10 -> develop G11 (embed in nuanced claims) -> master G12 (AP stylistic use).
+2. **"Appositives only at G10" - the earlier council ruling is VOIDED (wrong premise).** Appositives are a CCSS G6 standard, taught + spiraled G3-G8 in AlphaWrite (Identify Appositives, Write Appositives, AND Combine Sentences with Appositives, present at every grade G3-G8). So appositives are INHERITED, introduced at NO HS grade. The in-session council ruling that placed them at "G10 INTRODUCE" was answering the wrong question, because the deliberation lacked the G3-8 skill-plan context + the CCSS grade-of-origin (my framing error, not a council-machinery error). The ruling is voided transparently; appositives move to Layer 1a. The two conditions it surfaced still carry forward to the retrieval-gate design: (a) the G9-entry gate verifies the inherited combining/subordination substrate is near-automatic; (b) any HS phrase/clause instruction sequences isolate -> automate -> coordinate. Evidence: `_evidence/g3-8_inherited_sentence_skills.md`.
+
+3. **"Are there OTHER combining types HS students need, e.g. prepositional phrases?" - YES, and they are the real HS-new Layer-1 content.** AlphaWrite teaches appositives + subordinating conjunctions + combining, but NOT the other CCSS L.9-10.1.B phrase/clause types: prepositional, participial, absolute phrases; relative, adverbial (beyond basic), noun clauses; plus L.9-10.1.A parallel structure. These are now Layer 1b, each funneling into the tested "sentence structure & boundaries" capability.
 
 ---
 
@@ -125,16 +142,16 @@ Noel flagged: appositives only at G10, and expansion/combining/subordination "is
 
 The spec's §B table was a triangulated hypothesis. Verification + assessment evidence moved these:
 
-**Layer 1:**
-1. **Appositives: G9 -> G10** (verification), then CONFIRMED @ G10 by council (2026-07-08) under the maturity lens, with two conditions attached (G9-substrate-automaticity gate + isolate->automate->coordinate sequencing). See re-examination #2.
-2. **Precision split from concision; precision @ G10, concision @ G11** (council + crosswalk knowledge-of-language spiral).
-3. **Controlling-idea / topic sentence added to Layer 1** (genre-general).
-4. **"Complex combining" is not a separate G10 row** - it is the G9 skill DEVELOPED at G10, now shown in the maturity column rather than as a new placement.
-5. **because/but/so delivery bound to CER** (Noel).
-6. **Passive "inherited" tag replaced by INTRODUCE -> DEVELOP -> MASTER bands** (Noel's maturity concern) - the biggest change; the map no longer implies a skill is "done" after its introducing grade.
+**Layer 1 (the big restructure):**
+1. **The G3-8 substrate is INHERITED, not HS-owned.** Expansion, combining, appositives, because/but/so, basic subordination, fragment/run-on control, topic sentence all moved to Layer 1a (inherited from AlphaWrite G3-8; retrieval-gate + mature). None is introduced at any HS grade. This corrects the earlier map, which wrongly owned them at G9/G10.
+2. **Appositive council ruling VOIDED.** Appositives are CCSS G6, taught G3-8; the G10-placement ruling had a false premise (that they were HS-new). Moved to Layer 1a. See re-examination #2.
+3. **HS-new Layer-1 = the advanced phrase/clause repertoire** (Layer 1b): prepositional/participial/absolute phrases (G9), relative/adverbial/noun clauses (G10), parallel structure (G9), modifier placement (G10) - the CCSS L.9-10.1.A/B content G3-8 never taught. Answers Noel's prepositional-phrase question.
+4. **Precision split from concision; precision @ G10, concision @ G11** (council + crosswalk knowledge-of-language spiral). Both HS-new (Layer 1b).
+5. **because/but/so delivery bound to CER** (Noel) - noted on its inherited row (matured, not introduced, at HS).
+6. **Every HS-new row must funnel into a tested SR capability** (Noel's rule): sentence structure & boundaries, or knowledge of language. Rows funneling into nothing tested are cut.
 
 **Layer 2:**
-7. **Controlling-idea sentence moved OUT to Layer 1.**
+7. **Controlling-idea sentence** is inherited (G3-8 Paragraphs courses), noted in Layer 1a; its genre realizations (claim, thesis) remain Layer-2.
 8. **"Nuanced/counterclaim-aware claim" split into two grades** (council): counterclaim-aware @ G10, nuanced @ G11.
 
 Everything else in the draft was confirmed.
@@ -143,14 +160,19 @@ Everything else in the draft was confirmed.
 
 ## Internal consistency check (verified by hand)
 
-- **No skill is INTRODUCED at two grades.** Each row has exactly one owning grade. PASS.
+- **No HS-NEW skill is introduced at two grades.** Each Layer-1b/Layer-2 row has one owning HS grade. PASS.
+- **Every inherited (Layer 1a) skill is owned by an earlier stage (G3-8), never by an HS grade.** PASS.
 - **Every DEVELOP/MASTER grade is later than the INTRODUCE grade.** PASS.
-- **G9 introduces no inherited Layer-1 mechanic** (entry-grade substrate taught outright). PASS.
-- **Split skills are non-overlapping** (precision G10 / concision G11; counterclaim-aware G10 / nuanced G11). PASS.
+- **Split skills are non-overlapping** (precision G10 / concision G11; counterclaim-aware G10 / nuanced G11; inherited appositive vs HS-new relative clause). PASS.
+- **Every HS-new row funnels into a named tested SR capability** (Noel's rule). PASS.
 - **Every exemplar is labeled a reconstruction, cites its format, and reproduces no real item.** PASS (copyright posture held).
 
-**Row totals:** 13 Layer-1 + 8 Layer-2 = 21 placements (unchanged); + 2 assessment clusters with 7 exemplar reconstructions.
+**Row totals:** Layer 1a = 7 inherited (G3-8) · Layer 1b = 8 HS-new · Layer 2 = 8 genre-sentence moves.
 
-**Ownership by grade (INTRODUCE):** G9 = 8 · G10 = 6 · G11 = 5 · G12 = 2. (Appositives council-confirmed @ G10, 2026-07-08.)
+**HS ownership by grade (INTRODUCE, HS-new only):**
+- **G9:** advanced phrases (prepositional/participial/absolute), parallel structure (1b); claim sentence, attributed-evidence sentence (L2). = 4.
+- **G10:** advanced clauses, modifier placement, precision (1b); counterclaim-aware claim, device-to-effect-to-warrant (L2). = 5.
+- **G11:** concision, rhetorical syntax (1b); nuanced claim, synthesis sentence, rhetorical-analysis sentence (L2). = 5.
+- **G12:** AP sophistication syntax (1b); AP sophistication moves (L2). = 2.
 
-Intended shape: thick INTRODUCE at G9 (substrate) and G11 (rhetorical/synthesis turn); G10 is a develop-and-extend phase (few new mechanics, heavy re-exercise on the modal EOC); G12 is AP mastery atop G11.
+Intended shape: HS does NOT re-teach the G3-8 sentence substrate. It gate-checks + matures it, and introduces only the advanced phrase/clause repertoire + parallelism + precision/concision + rhetorical/AP syntax, each funneling into a tested capability. Thinner, non-redundant, test-aligned.
