@@ -26,64 +26,19 @@ import os, sys, html
 
 HERE = os.path.dirname(__file__)
 ROOT = os.path.join(HERE, "..")
+sys.path.insert(0, HERE)
+
+# SINGLE SOURCE OF TRUTH: import the KC map / ACC spine / ownership registries from the canonical module.
+# This matrix does NOT redefine them - it VALIDATES coverage over them, so the two cannot diverge.
+from course_sequence_g9_12 import HS_KCS, ACC_SPINE, EXTERNAL_OWNED, DESCOPED  # noqa: E402
+
+# (HS_KCS, EXTERNAL_OWNED, DESCOPED, ACC_SPINE are imported above from course_sequence_g9_12 - the
+#  single source of truth. This module only adds the tested-capability + CCSS/TEKS-family DENOMINATORS
+#  below and validates that every one is owned by the imported data.)
 
 # ---------------------------------------------------------------------------
-# 1. THE HS-OWNED KC REGISTRY (the corrected, post-audit map). 21 taught KCs.
-#    Each: id, grade, name, primary CCSS/TEKS tag(s), secondary AP/ACT tags, the tested capability it funnels into.
-# ---------------------------------------------------------------------------
-HS_KCS = [
-    # G9
-    dict(id="C.9.01", acc=["ACC.W.ARG.1"], grade="G9", name="Defensible argument claim", ccss=["W.9-10.1a"], teks=["EI.10.C"], sec=["ACT.1"], funnel="argument"),
-    dict(id="C.9.05", acc=["ACC.W.INFO.1"], grade="G9", name="Informational controlling-idea", ccss=["W.9-10.2a"], teks=["EI.9.B"], sec=[], funnel="informational"),
-    dict(id="C.9.02", acc=["ACC.W.SRC.2"], grade="G9", name="Attributed-evidence sentence", ccss=["W.9-10.1b", "W.9-10.8"], teks=["EI.11.H"], sec=["AP.3"], funnel="evidence"),
-    dict(id="C.9.03", acc=["ACC.W.ARG.2"], grade="G9", name="Reason/warrant sentence", ccss=["W.9-10.1b"], teks=["EI.10.C"], sec=["AP.5", "ACT.4"], funnel="reasoning"),
-    dict(id="C.9.06", acc=["ACC.W.ARG.3", "ACC.W.INFO.3"], grade="G9", name="Transitions & cohesion", ccss=["W.9-10.1c", "W.9-10.2c"], teks=["EI.9.C"], sec=["ACT.9"], funnel="production_of_writing"),
-    dict(id="C.9.04", acc=["ACC.W.PROD.1", "ACC.W.ARG.5", "ACC.W.INFO.2", "ACC.W.INFO.3", "ACC.W.INFO.5"], grade="G9", name="Single-source essay (arg + informational)", ccss=["W.9-10.1", "W.9-10.2", "W.9-10.4"], teks=["EI.10.C", "EI.9.B"], sec=[], funnel="essay"),
-    # G10
-    dict(id="C.10.01", acc=["ACC.W.ARG.2"], grade="G10", name="Counterclaim-aware claim", ccss=["W.9-10.1a"], teks=["EII.10.C"], sec=["ACT.2"], funnel="counterargument"),
-    dict(id="C.10.02", acc=["ACC.W.INFO.6", "ACC.W.SRC.3"], grade="G10", name="Device->effect->warrant (text-dependent analysis)", ccss=["W.9-10.9", "RI.9-10.6"], teks=["EII.5.B"], sec=[], funnel="analysis"),
-    dict(id="C.10.05", acc=["ACC.W.PROC.2"], grade="G10", name="Rhetorical revision: add/delete/reorder + organization", ccss=["W.9-10.4", "W.9-10.5"], teks=["EII.9.C"], sec=["ACT.7", "ACT.8"], funnel="production_of_writing"),
-    dict(id="C.10.06", acc=["ACC.W.SRC.1"], grade="G10", name="Cross-text (2-3 source) argument/analysis", ccss=["W.9-10.7", "W.9-10.8", "W.9-10.9"], teks=["EII.5.D"], sec=[], funnel="multisource"),
-    dict(id="C.10.03", acc=["ACC.W.INFO.6", "ACC.W.INFO.2", "ACC.W.SRC.3"], grade="G10", name="Analysis essay strategy", ccss=["W.9-10.2", "W.9-10.9"], teks=["EII.5.B"], sec=[], funnel="analysis"),
-    dict(id="C.10.04", acc=["ACC.W.PROC.2"], grade="G10", name="Precision-in-argument (applied revision pass, woven)", ccss=["W.9-10.4", "W.9-10.5"], teks=["EII.9.C"], sec=[], funnel="production_of_writing"),
-    # G11
-    dict(id="C.11.01", acc=["ACC.W.ARG.1"], grade="G11", name="Nuanced claim", ccss=["W.11-12.1a"], teks=[], sec=["AP.1", "ACT.6"], funnel="argument"),
-    dict(id="C.11.03", acc=["ACC.W.INFO.6"], grade="G11", name="Rhetorical-analysis essay (author's choices)", ccss=["W.11-12.9", "RI.11-12.6"], teks=[], sec=["APL.4"], funnel="rhetorical_analysis"),
-    dict(id="C.11.02", acc=["ACC.W.SRC.1"], grade="G11", name="Cross-source synthesis essay", ccss=["W.11-12.7", "W.11-12.8", "W.11-12.9"], teks=[], sec=["APL.3"], funnel="synthesis"),
-    dict(id="C.11.08", acc=["ACC.W.SRC.1", "ACC.W.INQ.1"], grade="G11", name="Evaluate source credibility/bias", ccss=["W.11-12.8"], teks=["EII.11.G"], sec=[], funnel="source_evaluation"),
-    dict(id="C.11.06", acc=["ACC.W.ARG.1"], grade="G11", name="Argue from own knowledge (source-free)", ccss=["W.11-12.1"], teks=[], sec=["AP.4"], funnel="source_free_argument"),
-    dict(id="C.11.07", acc=["ACC.W.ARG.2"], grade="G11", name="Multi-perspective argument (3 given perspectives)", ccss=["W.11-12.1"], teks=[], sec=["ACT.2", "ACT.3"], funnel="multi_perspective"),
-    dict(id="C.11.04", acc=["ACC.W.PROC.2"], grade="G11", name="Rhetorical concision/style (applied revision pass, woven)", ccss=["W.11-12.4", "W.11-12.5"], teks=[], sec=["ACT.10"], funnel="production_of_writing"),
-    dict(id="C.11.05", acc=["ACC.W.PROC.1"], grade="G11", name="Timed-writing strategy", ccss=["W.11-12.4"], teks=[], sec=["AP.9"], funnel="timed"),
-    # G12
-    dict(id="C.12.01", acc=["ACC.W.ARG.2"], grade="G12", name="AP sophistication (significance/context/complexity) [intro G11]", ccss=["W.11-12.1", "W.11-12.2"], teks=[], sec=["AP.8", "ACT.5"], funnel="sophistication"),
-    dict(id="C.12.02", acc=["ACC.W.PROD.1"], grade="G12", name="Sustained AP writing under timed conditions", ccss=["W.11-12.4"], teks=[], sec=["AP.9"], funnel="timed"),
-    dict(id="D.12.01", acc=["ACC.W.CONV.3"], grade="G12", name="Voice through syntactic choice (woven)", ccss=["W.11-12.4"], teks=[], sec=[], funnel="voice"),
-]
-
-# ---------------------------------------------------------------------------
-# 2. EXTERNALLY-OWNED skills (gated; NOT taught by the writing course). Noel 2026-07-08:
-#    separate HS Language, Vocabulary, Reading courses + K-8 apps own these. Gate is SAFE.
-# ---------------------------------------------------------------------------
-EXTERNAL_OWNED = {
-    "conventions":        "HS Language course + EGUMPP (conventions G3-10)",
-    "knowledge_of_language": "HS Language course (precision/concision/style-tone as SR editing of a given passage)",
-    "sentence_mechanics": "EGUMPP + AlphaWrite (combining, appositives, subordination, parallelism, phrase/clause, modifiers)",
-    "vocabulary":         "HS Vocabulary course + AlphaRead",
-    "reading_comprehension": "Reading course / AlphaRead (incl. HS-Lexile + literary/nonfiction)",
-}
-
-# ---------------------------------------------------------------------------
-# 3. EXPLICITLY DESCOPED / DEFERRED (documented decisions, NOT silent holes). Noel 2026-07-08.
-# ---------------------------------------------------------------------------
-DESCOPED = {
-    "narrative":   "DESCOPED now, BACKLOGGED phase 2 (7 systems test it; core ships argument/analysis/synthesis first)",
-    "ap_literature": "NAMED-BUT-DEFERRED backlog (B2 = AP Lang only; poetry/prose-fiction/literary-analysis KCs queued)",
-    "research_process_full": "DEFERRED (locate/present/mode-of-delivery); source-evaluation slice IS covered (C.11.08)",
-}
-
-# ---------------------------------------------------------------------------
-# 4. THE DENOMINATOR: every tested writing capability (from the crosswalk / released tests) + who must own it.
+# THE DENOMINATOR: every tested writing capability (from the crosswalk / released tests) + who must own it.
+#    'need' = owner category the matrix requires: 'hs' (an HS KC funnel), 'external', or 'descoped'.
 #    'need' = owner category the matrix requires: 'hs' (an HS KC funnel), 'external', or 'descoped'.
 # ---------------------------------------------------------------------------
 TESTED_CAPABILITIES = [
@@ -133,52 +88,7 @@ STANDARD_FAMILIES = [
     dict(fam="TEKS EI/EII writing strands (9/10/5/11)", need="hs", via="C.9.01/C.9.05/C.10.01/C.10.02/C.10.06 (argument/info/analysis/research)"),
 ]
 
-# ---------------------------------------------------------------------------
-# 6. THE ALPHACOMMONCORE (ACC) SPINE denominator - THE canonical common-standard (05_AlphaCommonCore_Writing_Spine.md).
-#    ACC = empirical union of 50 states (>=2-state rule). This is the REAL source of truth the KC map anchors to
-#    (CCSS/TEKS above are subsets). Every ACC code must be OWNED by an HS KC (acc= tag), an external course, or a
-#    DOCUMENTED descope. §3 net-new is filtered by Noel's rule: WRITING owns only the TESTED slices; the rest are
-#    the differentiation layer (standards-only, not summatively assessed) -> deferred/elsewhere, documented.
-# ---------------------------------------------------------------------------
-ACC_SPINE = [
-    # §1 CORE (CCSS-anchored; ~37+ states each) - all must be owned
-    dict(code="ACC.W.ARG.1", name="Precise defensible claim; distinguish opposing", need="hs"),
-    dict(code="ACC.W.ARG.2", name="Develop claims AND counterclaims fairly", need="hs"),
-    dict(code="ACC.W.ARG.3", name="Transitions/cohesion linking claim-reason-evidence", need="hs"),
-    dict(code="ACC.W.ARG.4", name="Formal style / objective tone", need="external"),   # style = Language course + woven
-    dict(code="ACC.W.ARG.5", name="Concluding statement following from argument", need="hs"),  # part of essay strategy
-    dict(code="ACC.W.INFO.1", name="Introduce & organize complex ideas", need="hs"),
-    dict(code="ACC.W.INFO.2", name="Develop with facts/details/examples", need="hs"),
-    dict(code="ACC.W.INFO.3", name="Transitions/cohesion across ideas", need="hs"),
-    dict(code="ACC.W.INFO.4", name="Precise language + domain vocabulary", need="external"),  # vocab = Vocabulary course
-    dict(code="ACC.W.INFO.5", name="Formal style; concluding section", need="hs"),
-    dict(code="ACC.W.INFO.6", name="Analyze complex texts (analysis)", need="hs"),
-    dict(code="ACC.W.PROD.1", name="Writing appropriate to task/purpose/audience", need="hs"),
-    dict(code="ACC.W.PROC.1", name="Plan/draft/revise/edit (recursive)", need="hs"),
-    dict(code="ACC.W.PROC.2", name="Revise for clarity/style/audience", need="hs"),
-    dict(code="ACC.W.RES.1", name="Conduct short & sustained research", need="descoped"),  # full research process deferred
-    dict(code="ACC.W.RES.2", name="Formulate & refine inquiry questions", need="descoped"),
-    dict(code="ACC.W.SRC.1", name="Gather from multiple credible sources; assess", need="hs"),
-    dict(code="ACC.W.SRC.2", name="Integrate evidence; cite; avoid plagiarism", need="hs"),
-    dict(code="ACC.W.SRC.3", name="Draw evidence from texts (write-about-reading)", need="hs"),
-    dict(code="ACC.W.CONV.1", name="Command of grammar & usage", need="external"),
-    dict(code="ACC.W.CONV.2", name="Capitalization, punctuation, spelling", need="external"),
-    dict(code="ACC.W.CONV.3", name="Apply knowledge of language / style", need="external"),
-    dict(code="ACC.W.NARR.1", name="Narrative: context/POV/characters", need="descoped"),
-    dict(code="ACC.W.NARR.2", name="Narrative techniques", need="descoped"),
-    dict(code="ACC.W.NARR.3", name="Narrative sequence/coherence", need="descoped"),
-    dict(code="ACC.W.NARR.4", name="Narrative precise/sensory language", need="descoped"),
-    dict(code="ACC.W.NARR.5", name="Narrative reflective conclusion", need="descoped"),
-    # §3 NET-NEW (>=2 deviation states, beyond CCSS). Noel: WRITING owns only the TESTED slices.
-    dict(code="ACC.W.TECH.1", name="Multimodal/digital composition", need="descoped", note="8 states but standards-only, not summatively tested; QTI text-first"),
-    dict(code="ACC.W.MEDIA.1", name="Analyze/evaluate media messages/bias", need="external", note="reading/language territory; not writing-composition, not summatively tested"),
-    dict(code="ACC.W.WORK.1", name="Workplace/technical writing", need="descoped", note="tested only in VA G12; deferred-with-note (in-scope iff VA is a target)"),
-    dict(code="ACC.W.WORK.2", name="Correspondence as a genre", need="descoped", note="verified NOT tested (retired from STAAR); descope"),
-    dict(code="ACC.W.DIG.1", name="Digital citizenship / ethical source use", need="external", note="civic-literacy/library; not summatively tested as writing"),
-    dict(code="ACC.W.INQ.1", name="Inquiry/reflection cycle", need="hs", note="TESTED slice = source-evaluation, owned by C.11.08; full cycle deferred"),
-    dict(code="ACC.W.BLEND.1", name="Blend multiple modes in one piece", need="descoped", note="standards-only, not summatively tested"),
-    dict(code="ACC.W.CRAFT.1", name="Discrete word-choice/voice/organization craft", need="external", note="Language course (craft) + D.12.01 voice woven"),
-]
+# (ACC_SPINE imported from course_sequence_g9_12 - single source of truth; not redefined here.)
 
 
 def _owned(need: str, cap: str) -> tuple[bool, str]:
