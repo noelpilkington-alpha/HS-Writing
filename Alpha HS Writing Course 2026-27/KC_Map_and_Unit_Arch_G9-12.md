@@ -1,6 +1,10 @@
 # G9-12 Writing KC Map + Unit Architectures (GAP-SCOPED, RECONCILED)
 
 **Status:** DRAFT for review. Reconciles the prior KC scheme (`A1/A2/B1L/B2_Lesson_Map.md`, 68 KCs) with the gap-scoped roster (`Sentence_Skill_Roster_FINAL.md`) + app-ownership gap analysis (`_evidence/app_stack_ownership_gap.md`). Anchor-text binding: G10 first (Section D), then G9/G11/G12.
+
+**⭐ ANCHOR = the AlphaCommonCore (ACC) spine** (`05_AlphaCommonCore_Writing_Spine.md`) — the empirical ≥2-state union of all 50 states' writing standards (the project-start common-standards work). CCSS/TEKS are SUBSETS of ACC; AP/ACT are thin overlays. Every KC carries a primary `ACC.W.*` code.
+
+**⭐ SOURCE OF TRUTH = `pipeline/course_sequence_g9_12.py`** (the machine-readable, self-testing module encoding this map: ACC spine, KCs+tags, unit architecture, prerequisite DAG, gate spec). This doc is the human-readable RENDER of that module; the module is authoritative. Coverage is machine-verified by `pipeline/kc_coverage_matrix.py` (imports the module): 35 ACC codes + 24 tested capabilities all owned, 0 un-owned, self-test PASS. Coverage ≠ efficacy (efficacy needs student field data).
 **Date:** 2026-07-08
 **Decisions baked in (Noel):** (1) RECONCILE - keep the prior `Strand.Grade.Number` coding + D/P/S/I types (grader + knowledge-graph already use it); re-derive the KC set gap-scoped; drop/re-gate every KC an existing app owns. (2) Map KCs + unit archs for all 4 grades together (the DAG spans grades); bind anchor texts G10-first.
 
