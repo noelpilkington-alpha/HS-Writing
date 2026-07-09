@@ -79,39 +79,53 @@ HS Writing does NOT re-teach app-owned mechanics, but it DOES exercise them insi
 
 ## 2A. Prerequisite decomposition (each HS-owned skill = orchestration of gated granular tools)
 
-**The principle (Noel):** an HS-owned composition skill is NOT atomic. It orchestrates granular sentence tools that the apps already own. So each HS skill declares: (a) its **gated granular prerequisites** (app-owned components the retrieval-gate verifies before this skill is taught), (b) its **HS-owned prerequisites** (an earlier HS skill it builds on), and (c) the **orchestration delta** the HS lesson actually teaches. The apps own the components; HS teaches the composition of them into test-winning writing.
+**The principle (Noel):** an HS-owned composition skill is NOT atomic. It orchestrates granular sentence tools that the apps already own. Each HS skill declares: (a) its **gated granular prerequisites** (app-owned components the retrieval-gate verifies), (b) its **HS-owned prerequisite** (an earlier HS skill), (c) the **ONE new discrimination** it teaches (DI faultless-communication: exactly one new boundary per skill), and (d) for essay skills, the **genre STRATEGY** it teaches (SRSD: a named plan + self-monitoring; the sentence moves are prerequisites TO the strategy, not a substitute for it).
 
-The canonical example (Noel's): TWR's **because / but / so** is the analytical-thinking engine under the whole argument tier: **because** = the reasoning/warrant link, **but** = the counter/qualification pivot, **so** = the claim/conclusion that follows. HS never re-teaches because/but/so (AlphaWrite owns it); HS teaches its *argumentative orchestration*.
+**Reviewed by the council 2026-07-08** (TWR + Kirschner & Hendrick + DI + SRSD + judge), which found the architecture sound but the first-cut execution flawed. This version applies all 13 adjudicated fixes; full record in `_evidence/decomposition_council_review.md`. Two conflicts were adjudicated by evidence grade: SRSD (A) won "add a genre-strategy layer" over TWR (B); K&H (A) won "essays must be decomposed into stages" over TWR (B).
 
-| HS skill | Gated granular prerequisites (owning app) -> checked at gate | HS-owned prereq | Orchestration delta HS teaches |
-|----------|--------------------------------------------------------------|-----------------|--------------------------------|
-| **G9-1 defensible claim** | declarative sentence type + fragment control (AlphaWrite/EGUMPP); topic/controlling-idea sentence (AlphaWrite) | - | make the controlling-idea sentence a DEFENSIBLE, prompt-responsive position (the argumentative stance) |
-| **G9-2 attributed-evidence** | appositive for attribution "X, a historian, ..." (EGUMPP/AlphaWrite); prepositional phrase "according to..." (EGUMPP); quotation punctuation (EGUMPP); combining (AlphaWrite) | - | weave source evidence INTO your sentence + attribute it (integration move) |
-| **G9-3 reason/warrant** | **because/but/so** (AlphaWrite); subordinating conjunctions / causal adverb clause (AlphaWrite/EGUMPP) | G9-1 | **because-as-warrant**: state WHY the evidence supports the claim (the reasoning move, not the connective) |
-| **G9-4 single-source essay** | topic sentence, Single-Paragraph-Outline, transitions, paragraph structure (AlphaWrite Paragraphs) | G9-1, G9-2, G9-3 | assemble claim -> evidence -> reasoning -> conclusion around one stimulus |
-| **G10-1 counterclaim-aware claim** | concessive subordinators although/while/whereas + adverb clause (EGUMPP/AlphaWrite); **but**-pivot (AlphaWrite); combining | G9-1 | use the concession TO STRENGTHEN the claim ("Although X, Y because Z") - the argumentative use of subordination |
-| **G10-2 device->effect->warrant** | appositive to name the device (EGUMPP); relative clause "which creates..." (EGUMPP); **because**-warrant (AlphaWrite) | G9-3 | the analytical chain: name device -> its effect -> why it matters (text-dependent analysis) |
-| **G10-3 analysis essay** | paragraph structure (AlphaWrite) | G10-2 | analysis-essay architecture (thesis about a text's craft + device chains as evidence) |
-| **G10-4 rhetorical precision delta** | word choice, commonly-confused words, basic wordiness (EGUMPP) | G9-1 | precision FOR ARGUMENTATIVE EFFECT (the delta above EGUMPP mechanical word choice) |
-| **G11-1 nuanced claim** | appositives + relative clauses + participial phrases for embedding (EGUMPP) | G10-1 | embed multi-dimensional qualification INTO the claim (nuance beyond binary counterclaim) |
-| **G11-2 synthesis** | coordinating/correlative conjunctions + transitions (EGUMPP/AlphaWrite) | G9-2, G11-1 | connect/compare 2+ sources in one sentence + build a synthesis essay |
-| **G11-3 rhetorical-analysis** | appositives/clauses (EGUMPP) | G10-2 | analyze the author's CHOICES -> effect/purpose (distinct from analyzing the text's ideas) |
-| **G11-4 rhetorical concision delta** | wordiness/unclear elements + parallel structure (EGUMPP) | G10-4 | cut FOR RHETORICAL EMPHASIS / to meet a rhetorical goal (delta above EGUMPP wordiness) |
-| **G12-1 AP sophistication** | - (rides on HS prereqs) | G11-1, G11-2, G11-3 | convey significance ("so what"), establish context, integrate competing perspectives |
-| **G12-2 sustained timed AP writing** | - | G12-1 + all G11 | sustain the above under timed FRQ conditions |
+Canonical example (Noel's): TWR's **because/but/so** is an analytical-THINKING / comprehension prompt, NOT a warrant-writing tool (TWR seat correction). The warrant is written with **subordinating conjunctions for causation** (since/because/as) + WHY-question expansion. HS never re-teaches those (apps own them); HS teaches the *argumentative orchestration* - using a causal clause to state WHY evidence supports the claim.
 
-**Two prerequisite structures fall out of this (both feed the machine-readable module + gate design):**
+### Component (sentence-move) skills
 
-1. **The retrieval-gate spec (per grade):** the entry gate verifies exactly the gated granular skills the grade's HS skills compose, NOT a vague "substrate check."
-   - **G9 gate checks:** sentence types + fragment control, topic sentence, appositive, prepositional phrase, quotation punctuation, because/but/so, subordinating conjunctions, combining, SPO/transitions. (Owners: AlphaWrite + EGUMPP.)
-   - **G10 gate checks:** G9 set + concessive subordinators/adverb clauses, relative clauses, word choice/confused-words/wordiness. (+ EGUMPP clause & modifier lessons.)
-   - **G11 gate checks:** G10 set + participial phrases, coordinating/correlative conjunctions, parallel structure, unclear-elements. (EGUMPP full phrase/clause + style repertoire.)
-   - **G12 gate checks:** G11 set (all mature). Failure at any tier routes to the owning app (EGUMPP conventions / AlphaWrite sentence craft), possibly a lower grade's content.
+| HS skill | Gated granular prerequisites (owning app) | HS prereq | The ONE new discrimination HS teaches |
+|----------|-------------------------------------------|-----------|----------------------------------------|
+| **G9-1 defensible claim** | declarative sentence + fragment control (EGUMPP); topic/controlling-idea sentence (AlphaWrite) | - | **claim vs non-claim**: a defensible, prompt-responsive POSITION (arguable) vs a topic-announcing or factual sentence |
+| **G9-2 attributed-evidence** | appositive for attribution (EGUMPP/AlphaWrite); prepositional phrase "according to" (EGUMPP); **sentence combining** (AlphaWrite); quotation punctuation *(optional, only for direct quotes; paraphrase/summary uses none)* | - | **attributed vs bare evidence**: source material woven in + credited vs dropped-in |
+| **G9-3 reason/warrant** | **subordinating conjunctions for causation** since/because/as (EGUMPP/AlphaWrite); WHY-question sentence expansion (AlphaWrite) *(NOT because/but/so, which is a comprehension prompt)* | G9-1 | **warrant vs restatement**: a clause stating WHY the evidence supports the claim vs merely repeating the evidence |
+| **G10-1 counterclaim-aware claim** | concessive subordinators although/while/whereas + adverb clause (EGUMPP); combining (AlphaWrite) | G9-1 | **counterclaim-aware vs claim-only**: concede the opposing view then reassert ("Although X, Y because Z") |
+| **G10-2 device->effect->warrant** | device-NAMING vocabulary *(content layer: metaphor/anaphora/juxtaposition - taught/gated separately, NOT an appositive use)*; relative clause "which creates..." (EGUMPP); causal clause (from G9-3) | G9-3 | **analysis vs summary**: name the author's device -> its effect -> why it matters, vs restating what the text says |
+| **G10-4 (reclassified: applied revision-in-genre, NOT a new composition skill)** | word choice / confused-words / wordiness (EGUMPP) | G9-1 | *(no new orchestration; a REVISION pass applying EGUMPP precision inside argument drafts. Folded into essay revision, not a standalone skill.)* |
+| **G11-1 nuanced claim** | appositives + relative clauses (EGUMPP); participial phrases *(optional - one tool for embedding, not required)* | G10-1 | **nuanced vs binary claim**: multi-dimensional qualification embedded in the claim vs a single concession |
+| **G11-3 rhetorical-analysis** | device-naming vocabulary; appositives/clauses (EGUMPP) | G10-2 | **author's-choices vs text's-ideas**: analyze WHY the author made a rhetorical choice + its effect on the audience, vs analyzing the content (the delta over G10-2) |
+| **G11-4 (reclassified: applied revision-in-genre)** | wordiness/unclear-elements + parallel structure (EGUMPP) | G10-4 pass | *(no new orchestration; a REVISION pass cutting for rhetorical emphasis. Folded into essay revision.)* |
 
-2. **The internal HS prerequisite DAG (what must precede what within HS):**
-   `G9-1 -> {G9-3, G9-4, G10-1, G10-4}` · `G9-2 -> {G9-4, G11-2}` · `G9-3 -> {G9-4, G10-2}` · `G10-1 -> G11-1` · `G10-2 -> {G10-3, G11-3}` · `G10-4 -> G11-4` · `{G11-1, G11-2, G11-3} -> G12-1 -> G12-2`. This DAG is the ordering law the course sequence + gate code enforce (no HS skill before its HS prereq; no HS skill before its gated granular prereqs are gate-passed).
+### Genre-STRATEGY skills (SRSD layer: named plan + self-monitoring; sentence moves above are prerequisites TO these)
 
-**Why no council on this:** every relevant seat AGREES on the principle (TWR: because/but/so is the analytical-thinking foundation, sentences are building blocks; Kirschner & Hendrick: automate components before combining; DI/Engelmann: explicit prerequisite chains via task analysis). Convening them to agree would violate the council's divergence guardrail. This decomposition is derived directly from TWR's documented sequence + the app-ownership map; the one sub-judgment (is because/but/so-for-argument HS-new or gated?) is already resolved by the gate/own split: the connective is gated (AlphaWrite), the argumentative orchestration is HS-owned.
+| HS strategy skill | Component prereqs | Genre strategy taught (plan + self-monitoring) | Staged decomposition (K&H: essay != one skill) |
+|-------------------|-------------------|------------------------------------------------|-------------------------------------------------|
+| **G9-4 single-source argument/informative essay** | G9-1, G9-2, G9-3 | a NAMED argument strategy (plan for what goes where + how much + order) + self-monitoring cues ("Did I state WHY each piece of evidence supports my claim?") | **(a)** body-paragraph assembly (claim+evidence+warrant, one paragraph) -> **(b)** multi-paragraph coherence (intro+body+conclusion, transitions) -> **(c)** timed single-source essay. Each stage GATES the sentence tools it uses (combining, subordination, appositive) as timed-production probes (cumulative review). |
+| **G10-3 analysis essay** | G10-2; G9-4 stage-(b) paragraph structure | a NAMED analysis strategy (thesis about a text's craft + device-chain body plan) + self-monitoring ("Does each body paragraph name a device, its effect, and why it matters?") | (a) single device-chain paragraph -> (b) multi-device analysis essay -> (c) timed. Gates G10-2 + G9 sentence tools. |
+| **G11-2 synthesis essay** | G9-2, G11-1; coordinating/correlative conjunctions + transitions (EGUMPP) | a NAMED synthesis strategy (put 2+ sources in conversation around one claim) + self-monitoring ("Have I connected sources, not just listed them?") | (a) cross-source sentence -> (b) multi-source paragraph -> (c) synthesis essay, timed. Gates attribution + nuance. |
+| **G12-1 AP sophistication** | G11-1, G11-2, G11-3 | the significance + context + competing-perspectives moves (closes audit gaps N2/N3) + self-monitoring ("Have I said why this matters + situated it?") | (a) significance/"so-what" move -> (b) context-establishing move -> (c) integrate competing perspectives. |
+| **G12-2 sustained timed AP FRQ** | G12-1 + all G11 | putting the AP strategy under timed conditions | (a) untimed full FRQ -> (b) extended-time -> (c) exam-timed. Sustain + timed are separated loads, not stacked at once. |
+
+*Every skill (component + strategy) is taught via gradual release: worked example -> labeled model -> partial fade -> independent (K&H within-skill fade; SRSD model-messy/memorize/support/fade). Discrimination before production.*
+
+**Three structures fall out (all feed the machine-readable module + gate design):**
+
+1. **The retrieval-gate spec (per grade), upgraded to timed-production / dual-task probes (K&H: a worksheet check proves accessibility, not in-composition automaticity):**
+   - **G9 gate:** sentence types + fragment control, topic sentence, appositive, prepositional phrase, subordinating conjunctions for causation, combining, SPO/transitions, paragraph structure. *(quotation punctuation only if direct quotes used.)*
+   - **G10 gate:** G9 set + concessive subordinators/adverb clauses, relative clauses, device-naming vocabulary, word-choice/wordiness.
+   - **G11 gate:** G10 set + participial phrases *(optional)*, coordinating/correlative conjunctions, parallel structure, unclear-elements.
+   - **G12 gate:** G11 set (all mature).
+   - Each probe is timed production in composition context, not isolated identification. Failure routes to the owning app (EGUMPP conventions / AlphaWrite sentence craft), possibly a lower grade's content.
+
+2. **The internal HS prerequisite DAG** (component + strategy skills; G10-4/G11-4 now revision passes inside G10-3/G11-2, not standalone nodes):
+   `G9-1 -> {G9-3, G10-1}` · `G9-2 -> G9-4` · `G9-3 -> {G9-4, G10-2}` · `{G9-1,G9-2,G9-3} -> G9-4` · `G9-4 -> G10-3` · `G10-2 -> {G10-3, G11-3}` · `G10-1 -> G11-1` · `{G9-2,G11-1} -> G11-2` · `{G11-1,G11-2,G11-3} -> G12-1 -> G12-2`. Ordering law: no HS skill before its HS prereq; no HS skill before its gated granular prereqs pass; essay skills gate their component sentence tools cumulatively.
+
+3. **The essay-decomposition rule:** no "essay" is a single teachable unit (K&H element-interactivity: 6+ interacting elements). Every essay skill (G9-4, G10-3, G11-2, G12-2) is taught in three stages (single-paragraph -> multi-paragraph -> timed), each stage gating the sentence tools it deploys.
+
+**Why the council WAS convened here (vs. the placement questions):** this was REVIEW mode on a concrete artifact, not a placement dispute - the seats found real execution flaws (missing discriminations, essay overload, missing strategy layer, false prerequisites), which is exactly what review is for, not manufactured conflict. The principle (gated components + HS orchestration) survived unchallenged; the execution was corrected.
 
 ---
 
@@ -152,7 +166,7 @@ GRADE N COURSE
 - **G11 (B1):** GATE substrate; OWN nuanced claim + synthesis + rhetorical-analysis sentences/essays + rhetorical concision delta. (ACT/SAT year.)
 - **G12 (B2):** GATE substrate; OWN AP sophistication (significance, context, competing perspectives) + sustained timed AP FRQ writing. (AP year.)
 
-**HS-owned skill counts (composition/rhetorical tier only):** G9 = 4 · G10 = 4 · G11 = 4 · G12 = 2 = **14 HS-owned skills**, atop the fully-gated EGUMPP + AlphaWrite substrate. (Down from the 20 in the pre-gap-analysis draft, which duplicated EGUMPP.)
+**HS-owned skill counts (after the council review reclassification):** 12 taught skills = 7 component sentence-moves (G9-1/2/3, G10-1/2, G11-1/3) + 5 genre strategies (G9-4, G10-3, G11-2, G12-1, G12-2). The former G10-4 and G11-4 "precision/concision deltas" are RECLASSIFIED as applied revision passes folded into the essay-revision phase (not standalone composition skills), per the TWR+DI finding that revision != orchestration. Each of the 5 genre-strategy skills is taught in 3 stages (single-paragraph -> multi-paragraph -> timed), so the buildable lesson count is larger than 12; the SKILL count is 12. All atop the fully-gated EGUMPP + AlphaWrite substrate.
 
 ---
 
@@ -162,7 +176,7 @@ GRADE N COURSE
 - Cross-pollination is explicit: app-owned mechanics are gated + applied, remediation routed to the owning app.
 - Conventions scored holistically (not taught), matching how the tests score them.
 - Timeback-deliverable item shells only (NO-CHANGE MC + hot-text default; no adaptive/graphic-gap-match).
-- Every HS-owned skill is DECOMPOSED into its gated granular prerequisites (Section 2A): HS teaches the orchestration, the apps own the components. The HS prerequisite DAG is validated acyclic + forward-only (no HS skill precedes its prerequisites); the per-grade retrieval-gate checks exactly the granular skills that grade's HS skills compose.
+- Every HS-owned skill is DECOMPOSED into its gated granular prerequisites (Section 2A): HS teaches the orchestration, the apps own the components. Council-reviewed 2026-07-08 (13 fixes applied): component vs genre-strategy skills separated; each skill names its ONE new discrimination (DI); essay skills carry a named genre strategy + self-monitoring (SRSD) and are decomposed into 3 stages (K&H); gates upgraded to timed-production probes; false prerequisites removed. The revised HS prerequisite DAG (12 nodes) is re-validated acyclic + forward-only.
 
 ## 6. Open verification (non-blocking, flagged)
 - The app-stack mapping is K-8; confirm EGUMPP + AlphaWrite are actually ENROLLED for HS students in Timeback (not merely capable of spanning the 9-10 band) before finalizing the gate-remediation routing. If they are NOT deployed at HS, a thin HS conventions safety-net returns to scope. (Noel chose the gate-only reframe; this is the one assumption to verify with the Timeback/enrollment team.)
