@@ -1,7 +1,8 @@
 # Finalized HS Writing Skill Roster + Scaffold (G9-12) — GAP-SCOPED
 
-**Status:** DECISION-LOCKED (gap-scoped rewrite). This is the authoritative per-grade roster the course build + test bank + gate code read from. Supersedes the prior sentence-progression framing, which wrongly proposed teaching sentence mechanics that existing Alpha apps already own.
-**Date:** 2026-07-08
+**Status:** DECISION-LOCKED (gap-scoped) + ACC-RECONCILED (2026-07-09). This roster's skills are now encoded, ACC-anchored, in the SINGLE SOURCE OF TRUTH: `pipeline/course_sequence_g9_12.py` (self-testing) + `KC_Map_and_Unit_Arch_G9-12.md`. **Where this doc and the module differ, the MODULE is authoritative** (this doc is the human-readable rationale). The roster's original skill labels (G9-1, G10-2, ...) map to the module's KC ids (C.9.01, C.10.02, ...) via the crosswalk in Section 1A below.
+**Date:** 2026-07-08 (roster) · 2026-07-09 (ACC reconciliation)
+**Anchor:** the AlphaCommonCore spine (>=2-state union); every owned skill carries a primary `ACC.W.*` code. CCSS/TEKS are subsets; AP/ACT are overlays.
 **The governing principle (Noel):** HS Writing covers ONLY the tested writing skills that existing Alpha ELA apps do NOT own. Skills an app already teaches are RETRIEVAL-GATED and APPLIED in composition (cross-pollination), never re-taught. Focus = the writing skills students must execute on standardized tests that no current app provides.
 
 **Evidence base:** app ownership (`_evidence/app_stack_ownership_gap.md`, from the NY Standards -> Timeback app-stack xlsx + EGUMPP correction memo); tested capabilities + item formats (`_evidence/sentence_skill_assessment_evidence.md`, `_evidence/writing_item_type_catalog.md`); G3-8 inheritance (`_evidence/g3-8_inherited_sentence_skills.md`); council rulings (`_evidence/sentence_skill_sources.md`).
@@ -25,6 +26,38 @@ The Alpha app stack is K-8 and, for two apps, spirals into the 9-10 band. HS Wri
 ## 1. What HS Writing OWNS (the genuine gap: tested writing skills no app covers)
 
 The gap is the COMPOSITION + RHETORICAL tier: turning mechanically-correct sentences (EGUMPP) and basic composition (AlphaWrite G8) into test-winning source-based argument / analysis / synthesis writing. Every owned skill funnels into a tested capability and is owned by NO app.
+
+## 1A. ACC crosswalk — roster labels -> source-of-truth KC ids (authoritative)
+
+This roster was authored before the KC map + ACC anchoring + the backward-trace coverage audit. The audit ADDED 7 KCs the roster's original 14-skill framing lacked (informational thesis, transitions/cohesion, cross-text, source-free argument, multi-perspective, source-evaluation). The definitive per-grade skill set + ACC codes now lives in `course_sequence_g9_12.py`; this table reconciles the roster's labels to it.
+
+| Roster label (this doc) | Module KC id | Primary ACC code(s) | Note |
+|-------------------------|--------------|---------------------|------|
+| G9-1 defensible claim | **C.9.01** | ACC.W.ARG.1 | |
+| (none — audit-added) | **C.9.05** | ACC.W.INFO.1 | NEW: informational controlling-idea (STAAR's dominant mode) |
+| G9-2 attributed-evidence | **C.9.02** | ACC.W.SRC.2 | |
+| G9-3 reason/warrant | **C.9.03** | ACC.W.ARG.2 | |
+| (none — audit-added) | **C.9.06** | ACC.W.ARG.3, ACC.W.INFO.3 | NEW: transitions & cohesion (ACT Production-of-Writing gap) |
+| G9-4 single-source essay | **C.9.04** | ACC.W.PROD.1 (+ARG.5/INFO.2/3/5) | |
+| G10-1 counterclaim-aware claim | **C.10.01** | ACC.W.ARG.2 | |
+| G10-2 device->effect->warrant | **C.10.02** | ACC.W.INFO.6, ACC.W.SRC.3 | |
+| G10-3 analysis essay | **C.10.03** | ACC.W.INFO.6, ACC.W.INFO.2, ACC.W.SRC.3 | |
+| G10-4 precision-in-argument (revision pass) | **C.10.04** | ACC.W.PROC.2 | woven |
+| (none — audit-added) | **C.10.05** | ACC.W.PROC.2 | NEW: rhetorical revision add/delete/reorder + organization |
+| (none — audit-added) | **C.10.06** | ACC.W.SRC.1 | NEW: cross-text 2-3 source (modal G10 EOC) |
+| G11-1 nuanced claim | **C.11.01** | ACC.W.ARG.1 | |
+| G11-2 synthesis | **C.11.02** | ACC.W.SRC.1 | |
+| G11-3 rhetorical-analysis | **C.11.03** | ACC.W.INFO.6 | |
+| G11-4 rhetorical concision (revision pass) | **C.11.04** | ACC.W.PROC.2 | woven |
+| (none — cross-cutting) | **C.11.05** | ACC.W.PROC.1 | timed-writing strategy |
+| (none — audit-added) | **C.11.06** | ACC.W.ARG.1 | NEW: argue from own knowledge (AP Lang Q3, source-free) |
+| (none — audit-added) | **C.11.07** | ACC.W.ARG.2 | NEW: multi-perspective argument (ACT, 3 given perspectives) |
+| (none — audit-added) | **C.11.08** | ACC.W.SRC.1, ACC.W.INQ.1 | NEW: evaluate source credibility/bias |
+| G12-1 AP sophistication | **C.12.01** | ACC.W.ARG.2 | significance/context/competing perspectives; introduced G11, mastered G12 |
+| G12-2 sustained timed AP writing | **C.12.02** | ACC.W.PROD.1 | |
+| (voice, woven) | **D.12.01** | ACC.W.CONV.3 | applied, not owned |
+
+**Reconciled totals:** 23 module KCs (was 14 in this doc's original framing; +7 audit KCs +2 revision-pass/timed cross-cutters made explicit). The gated substrate (Section 0) is unchanged. Every KC's ACC code is validated owned by `pipeline/kc_coverage_matrix.py` (35 ACC codes, 0 un-owned) and the module self-test.
 
 ### GRADE 9 (A1) - foundations of source-based composition
 

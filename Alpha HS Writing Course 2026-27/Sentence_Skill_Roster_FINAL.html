@@ -49,7 +49,7 @@
   &nbsp;&mdash;&nbsp; each skill is taught to automaticity at its owning grade, then retrieval-gated (not re-taught) at later grades.
 </div>
 <h1>Finalized HS Writing Skill Roster + Scaffold (G9-12) — GAP-SCOPED</h1>
-<p><strong>Status:</strong> DECISION-LOCKED (gap-scoped rewrite). This is the authoritative per-grade roster the course build + test bank + gate code read from. Supersedes the prior sentence-progression framing, which wrongly proposed teaching sentence mechanics that existing Alpha apps already own. <strong>Date:</strong> 2026-07-08 <strong>The governing principle (Noel):</strong> HS Writing covers ONLY the tested writing skills that existing Alpha ELA apps do NOT own. Skills an app already teaches are RETRIEVAL-GATED and APPLIED in composition (cross-pollination), never re-taught. Focus = the writing skills students must execute on standardized tests that no current app provides.</p>
+<p><strong>Status:</strong> DECISION-LOCKED (gap-scoped) + ACC-RECONCILED (2026-07-09). This roster&#x27;s skills are now encoded, ACC-anchored, in the SINGLE SOURCE OF TRUTH: <code>pipeline/course_sequence_g9_12.py</code> (self-testing) + <code>KC_Map_and_Unit_Arch_G9-12.md</code>. <strong>Where this doc and the module differ, the MODULE is authoritative</strong> (this doc is the human-readable rationale). The roster&#x27;s original skill labels (G9-1, G10-2, ...) map to the module&#x27;s KC ids (C.9.01, C.10.02, ...) via the crosswalk in Section 1A below. <strong>Date:</strong> 2026-07-08 (roster) · 2026-07-09 (ACC reconciliation) <strong>Anchor:</strong> the AlphaCommonCore spine (&gt;=2-state union); every owned skill carries a primary <code>ACC.W.*</code> code. CCSS/TEKS are subsets; AP/ACT are overlays. <strong>The governing principle (Noel):</strong> HS Writing covers ONLY the tested writing skills that existing Alpha ELA apps do NOT own. Skills an app already teaches are RETRIEVAL-GATED and APPLIED in composition (cross-pollination), never re-taught. Focus = the writing skills students must execute on standardized tests that no current app provides.</p>
 <p><strong>Evidence base:</strong> app ownership (<code>_evidence/app_stack_ownership_gap.md</code>, from the NY Standards -&gt; Timeback app-stack xlsx + EGUMPP correction memo); tested capabilities + item formats (<code>_evidence/sentence_skill_assessment_evidence.md</code>, <code>_evidence/writing_item_type_catalog.md</code>); G3-8 inheritance (<code>_evidence/g3-8_inherited_sentence_skills.md</code>); council rulings (<code>_evidence/sentence_skill_sources.md</code>).</p>
 <hr/>
 <h2>0. What existing apps OWN (gated at HS entry, never re-taught)</h2>
@@ -76,6 +76,155 @@
 <hr/>
 <h2>1. What HS Writing OWNS (the genuine gap: tested writing skills no app covers)</h2>
 <p>The gap is the COMPOSITION + RHETORICAL tier: turning mechanically-correct sentences (EGUMPP) and basic composition (AlphaWrite G8) into test-winning source-based argument / analysis / synthesis writing. Every owned skill funnels into a tested capability and is owned by NO app.</p>
+<h2>1A. ACC crosswalk — roster labels -&gt; source-of-truth KC ids (authoritative)</h2>
+<p>This roster was authored before the KC map + ACC anchoring + the backward-trace coverage audit. The audit ADDED 7 KCs the roster&#x27;s original 14-skill framing lacked (informational thesis, transitions/cohesion, cross-text, source-free argument, multi-perspective, source-evaluation). The definitive per-grade skill set + ACC codes now lives in <code>course_sequence_g9_12.py</code>; this table reconciles the roster&#x27;s labels to it.</p>
+<table>
+<thead><tr>
+<th>Roster label (this doc)</th>
+<th>Module KC id</th>
+<th>Primary ACC code(s)</th>
+<th>Note</th>
+</tr></thead><tbody>
+<tr>
+<td>G9-1 defensible claim</td>
+<td><strong>C.9.01</strong></td>
+<td>ACC.W.ARG.1</td>
+<td></td>
+</tr>
+<tr>
+<td>(none — audit-added)</td>
+<td><strong>C.9.05</strong></td>
+<td>ACC.W.INFO.1</td>
+<td>NEW: informational controlling-idea (STAAR&#x27;s dominant mode)</td>
+</tr>
+<tr>
+<td>G9-2 attributed-evidence</td>
+<td><strong>C.9.02</strong></td>
+<td>ACC.W.SRC.2</td>
+<td></td>
+</tr>
+<tr>
+<td>G9-3 reason/warrant</td>
+<td><strong>C.9.03</strong></td>
+<td>ACC.W.ARG.2</td>
+<td></td>
+</tr>
+<tr>
+<td>(none — audit-added)</td>
+<td><strong>C.9.06</strong></td>
+<td>ACC.W.ARG.3, ACC.W.INFO.3</td>
+<td>NEW: transitions &amp; cohesion (ACT Production-of-Writing gap)</td>
+</tr>
+<tr>
+<td>G9-4 single-source essay</td>
+<td><strong>C.9.04</strong></td>
+<td>ACC.W.PROD.1 (+ARG.5/INFO.2/3/5)</td>
+<td></td>
+</tr>
+<tr>
+<td>G10-1 counterclaim-aware claim</td>
+<td><strong>C.10.01</strong></td>
+<td>ACC.W.ARG.2</td>
+<td></td>
+</tr>
+<tr>
+<td>G10-2 device-&gt;effect-&gt;warrant</td>
+<td><strong>C.10.02</strong></td>
+<td>ACC.W.INFO.6, ACC.W.SRC.3</td>
+<td></td>
+</tr>
+<tr>
+<td>G10-3 analysis essay</td>
+<td><strong>C.10.03</strong></td>
+<td>ACC.W.INFO.6, ACC.W.INFO.2, ACC.W.SRC.3</td>
+<td></td>
+</tr>
+<tr>
+<td>G10-4 precision-in-argument (revision pass)</td>
+<td><strong>C.10.04</strong></td>
+<td>ACC.W.PROC.2</td>
+<td>woven</td>
+</tr>
+<tr>
+<td>(none — audit-added)</td>
+<td><strong>C.10.05</strong></td>
+<td>ACC.W.PROC.2</td>
+<td>NEW: rhetorical revision add/delete/reorder + organization</td>
+</tr>
+<tr>
+<td>(none — audit-added)</td>
+<td><strong>C.10.06</strong></td>
+<td>ACC.W.SRC.1</td>
+<td>NEW: cross-text 2-3 source (modal G10 EOC)</td>
+</tr>
+<tr>
+<td>G11-1 nuanced claim</td>
+<td><strong>C.11.01</strong></td>
+<td>ACC.W.ARG.1</td>
+<td></td>
+</tr>
+<tr>
+<td>G11-2 synthesis</td>
+<td><strong>C.11.02</strong></td>
+<td>ACC.W.SRC.1</td>
+<td></td>
+</tr>
+<tr>
+<td>G11-3 rhetorical-analysis</td>
+<td><strong>C.11.03</strong></td>
+<td>ACC.W.INFO.6</td>
+<td></td>
+</tr>
+<tr>
+<td>G11-4 rhetorical concision (revision pass)</td>
+<td><strong>C.11.04</strong></td>
+<td>ACC.W.PROC.2</td>
+<td>woven</td>
+</tr>
+<tr>
+<td>(none — cross-cutting)</td>
+<td><strong>C.11.05</strong></td>
+<td>ACC.W.PROC.1</td>
+<td>timed-writing strategy</td>
+</tr>
+<tr>
+<td>(none — audit-added)</td>
+<td><strong>C.11.06</strong></td>
+<td>ACC.W.ARG.1</td>
+<td>NEW: argue from own knowledge (AP Lang Q3, source-free)</td>
+</tr>
+<tr>
+<td>(none — audit-added)</td>
+<td><strong>C.11.07</strong></td>
+<td>ACC.W.ARG.2</td>
+<td>NEW: multi-perspective argument (ACT, 3 given perspectives)</td>
+</tr>
+<tr>
+<td>(none — audit-added)</td>
+<td><strong>C.11.08</strong></td>
+<td>ACC.W.SRC.1, ACC.W.INQ.1</td>
+<td>NEW: evaluate source credibility/bias</td>
+</tr>
+<tr>
+<td>G12-1 AP sophistication</td>
+<td><strong>C.12.01</strong></td>
+<td>ACC.W.ARG.2</td>
+<td>significance/context/competing perspectives; introduced G11, mastered G12</td>
+</tr>
+<tr>
+<td>G12-2 sustained timed AP writing</td>
+<td><strong>C.12.02</strong></td>
+<td>ACC.W.PROD.1</td>
+<td></td>
+</tr>
+<tr>
+<td>(voice, woven)</td>
+<td><strong>D.12.01</strong></td>
+<td>ACC.W.CONV.3</td>
+<td>applied, not owned</td>
+</tr>
+</tbody></table>
+<p><strong>Reconciled totals:</strong> 23 module KCs (was 14 in this doc&#x27;s original framing; +7 audit KCs +2 revision-pass/timed cross-cutters made explicit). The gated substrate (Section 0) is unchanged. Every KC&#x27;s ACC code is validated owned by <code>pipeline/kc_coverage_matrix.py</code> (35 ACC codes, 0 un-owned) and the module self-test.</p>
 <h3>GRADE 9 (A1) - foundations of source-based composition</h3>
 <table>
 <thead><tr>
