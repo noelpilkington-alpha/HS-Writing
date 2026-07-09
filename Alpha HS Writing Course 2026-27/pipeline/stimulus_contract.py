@@ -25,7 +25,11 @@ import readability_gate as rg
 import calibration_anchors as ca  # noqa: F401  (available for gate_equivalent_form callers)
 
 Mode = Literal["argument", "explanatory", "analysis"]
-Family = Literal["single", "complementary", "opposing"]
+# Families: single/complementary/opposing = G9-10 shapes (1-2 passages). G11 adds:
+#   synthesis_set  = a SOURCE SET of 3-6 passages (SBAC 4 / AP Lang 6) for cross-source synthesis
+#   perspective_set= an issue + given PERSPECTIVES, NO source passage (ACT Writing 3-perspective)
+#   prompt_only    = a source-free prompt, NO passage (AP Lang Q3 argue-from-own-knowledge)
+Family = Literal["single", "complementary", "opposing", "synthesis_set", "perspective_set", "prompt_only"]
 
 # ---------------------------------------------------------------------------
 # 1. THE EMIT CONTRACT
@@ -58,6 +62,7 @@ class StimulusRecord:
     provenance: dict                 # {copyright: "own_authored", rights: "public-domain-sourced", ...}
     modeling_anchor: str = ""        # which real form this models (STAAR / MCAS / Ohio)
     acc_tags: list[str] = field(default_factory=list)
+    perspectives: list[str] = field(default_factory=list)  # perspective_set (ACT): the given perspective statements
     # two-bucket architecture fields (all defaulted -> backward compatible with the existing 16 stimuli)
     bucket: str = "lesson"           # "lesson" | "test"
     topic_id: str = ""
@@ -95,9 +100,35 @@ def _lexile_grade_for(s) -> int:
 def _words(t: str) -> int:
     return len(re.findall(r"[A-Za-z]+(?:'[A-Za-z]+)?", t))
 
+SYNTHESIS_SET_MIN, SYNTHESIS_SET_MAX = 3, 6   # source-set size (SBAC 4 / AP Lang 6)
+
 def gate_structure(s: StimulusRecord) -> tuple[bool, str]:
-    exp = {"single": 1, "explanatory": 1, "complementary": 2, "opposing": 2}
-    # family drives passage count; single mode may be 1, paired families need 2
+    if not s.prompt.strip():
+        return False, "empty prompt"
+    # G11 shapes with no single-passage word-band expectation:
+    if s.family == "prompt_only":
+        if s.passages:
+            return False, "prompt_only family must have NO passages (source-free argument)"
+        return True, "source-free prompt (no passage), prompt present"
+    if s.family == "perspective_set":
+        if s.passages:
+            return False, "perspective_set family must have NO source passage (perspectives are given in-prompt)"
+        if len(s.perspectives) < 2:
+            return False, f"perspective_set needs >=2 given perspectives, got {len(s.perspectives)}"
+        return True, f"perspective set: {len(s.perspectives)} given perspectives, no source passage"
+    if s.family == "synthesis_set":
+        n = len(s.passages)
+        if not (SYNTHESIS_SET_MIN <= n <= SYNTHESIS_SET_MAX):
+            return False, f"synthesis_set needs {SYNTHESIS_SET_MIN}-{SYNTHESIS_SET_MAX} sources, got {n}"
+        # each text source obeys the word band; a visual/quantitative source may be shorter (flagged by short text)
+        for p in s.passages:
+            w = _words(p.text)
+            if w > WORD_MAX:
+                return False, f"source '{p.title}' is {w} words, over {WORD_MAX}"
+            if w < WORD_MIN and "visual" not in (p.angle or "").lower() and "quantitative" not in (p.angle or "").lower():
+                return False, f"text source '{p.title}' is {w} words, under {WORD_MIN} (mark angle 'visual'/'quantitative' if a chart/figure)"
+        return True, f"synthesis set of {n} sources, all within band (visual sources exempt from the word floor)"
+    # G9-10 shapes (single/complementary/opposing)
     need = 2 if s.family in ("complementary", "opposing") else 1
     if len(s.passages) != need:
         return False, f"family '{s.family}' needs {need} passage(s), got {len(s.passages)}"
@@ -105,8 +136,6 @@ def gate_structure(s: StimulusRecord) -> tuple[bool, str]:
         w = _words(p.text)
         if not (WORD_MIN <= w <= WORD_MAX):
             return False, f"passage '{p.title}' is {w} words, outside {WORD_MIN}-{WORD_MAX}"
-    if not s.prompt.strip():
-        return False, "empty prompt"
     return True, f"{len(s.passages)} passage(s), all in word band"
 
 def gate_provenance(s: StimulusRecord) -> tuple[bool, str]:
@@ -133,7 +162,14 @@ def gate_fact_sources(s: StimulusRecord) -> tuple[bool, str]:
     """Anti-fabrication gate. For OWN-AUTHORED stimuli: every numeric figure in the passages must be
     backed by a fact-source row with a real fetched http(s) URL. For PUBLIC-DOMAIN verbatim texts
     (analysis mode): the text is a real author's words (not facts we authored), so the figure-backing
-    check does not apply; instead we require the PD source to be documented (a source row with a URL)."""
+    check does not apply; instead we require the PD source to be documented (a source row with a URL).
+    SOURCE-FREE families (perspective_set, prompt_only) provide no external facts (the student argues from
+    OWN knowledge), so a fact table is not required; but any fact-source row present must still be valid."""
+    if s.family in ("perspective_set", "prompt_only"):
+        for fsrc in s.fact_sources:  # optional, but if present must be well-formed
+            if not re.match(r"^https?://", (fsrc.url_fetched or "").strip()):
+                return False, f"fact-source '{fsrc.fact[:40]}' has no valid fetched URL"
+        return True, "source-free family: no external fact table required (argue from own knowledge)"
     if not s.fact_sources:
         return False, "no fact-source table"
     for fsrc in s.fact_sources:
@@ -164,6 +200,15 @@ def gate_citable_facts(s: StimulusRecord) -> tuple[bool, str]:
     PUBLIC-DOMAIN (analysis): the student cites the TEXT itself (lines/moves), not external facts, so
     only the source-documentation row(s) are required (>=1)."""
     n = len(s.fact_sources)
+    if s.family in ("perspective_set", "prompt_only"):
+        return True, "source-free family: student supplies own evidence (no citable-fact requirement)"
+    if s.family == "synthesis_set":
+        # a synthesis set's "citable facts" are the sources themselves; own-authored needs >=3 sources, PD >=1
+        if (s.provenance or {}).get("copyright") == "public_domain":
+            return True, f"synthesis set of {len(s.passages)} PD sources (cite across sources)"
+        if len(s.passages) < 3:
+            return False, f"synthesis_set needs >=3 sources to synthesize, got {len(s.passages)}"
+        return True, f"synthesis set of {len(s.passages)} sources + {n} fact rows"
     if (s.provenance or {}).get("copyright") == "public_domain":
         if n < 1:
             return False, "analysis text needs >=1 documented source row"
@@ -181,6 +226,19 @@ def gate_source_config(s: StimulusRecord) -> tuple[bool, str]:
     - A pre-composed opposing/complementary pair keeps the legacy checks (2 passages, distinct angles, >=2 orgs)."""
     is_prop_member = bool(s.proposition_id and s.stance)
     is_theme_member = bool(s.theme_id and s.facet and s.connection_point)
+
+    # G11 families
+    if s.family == "synthesis_set":
+        n = len(s.passages)
+        orgs = {f.org for f in s.fact_sources if f.org.strip()}
+        # a synthesis set must present multiple distinct sources; own-authored sets need >=2 distinct orgs
+        if (s.provenance or {}).get("copyright") == "own_authored" and len(orgs) < 2:
+            return False, f"synthesis_set (own-authored) should draw on >=2 distinct source orgs, got {len(orgs)}"
+        return True, f"synthesis set of {n} sources (>=1 visual/quantitative recommended)"
+    if s.family == "perspective_set":
+        return True, f"perspective set ({len(s.perspectives)} given perspectives; ACT multi-perspective form)"
+    if s.family == "prompt_only":
+        return True, "source-free prompt (AP Lang Q3 argue-from-knowledge form)"
 
     if s.family == "single":
         if is_prop_member or is_theme_member:
