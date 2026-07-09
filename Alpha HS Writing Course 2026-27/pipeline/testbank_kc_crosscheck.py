@@ -26,11 +26,13 @@ ROOT = os.path.join(HERE, "..")
 sys.path.insert(0, HERE)
 from course_sequence_g9_12 import ACC_SPINE, ACC_CODES, HS_KCS, DESCOPED  # single source of truth
 
-# Grade is selectable: `python testbank_kc_crosscheck.py [G9|G10]` (default G10). G9 = English I, G10 = English II;
-# both sit in the same 9-10 EOC band and measure the same ACC-standard set, so the denominator is shared.
+# Grade is selectable: `python testbank_kc_crosscheck.py [G9|G10|G11|G12]` (default G10).
+# G9=English I, G10=English II (shared 9-10 EOC denominator); G11=college-test year (SBAC/ACT/AP Lang,
+# adds synthesis + rhetorical-analysis + source-free/multi-perspective argument + sophistication);
+# G12=AP tier (rides on G11, AP Lang only).
 _GRADE = "G10"
 for _a in sys.argv[1:]:
-    if _a.upper() in ("G9", "G10"):
+    if _a.upper() in ("G9", "G10", "G11", "G12"):
         _GRADE = _a.upper()
 ITEM_DIR = os.path.join(ROOT, f"Item_Bank_{_GRADE}")
 STIM_DIR = os.path.join(ROOT, f"Stimulus_Bank_{_GRADE}")
@@ -51,6 +53,19 @@ G10_BAND_TESTABLE = {
     "ACC.W.CONV.1", "ACC.W.CONV.2", "ACC.W.CONV.3",  # external-owned but measured on the G10 test
     "ACC.W.PROD.1", "ACC.W.PROC.2",
 }
+# G11 (college-test year): the writing-composition codes the SBAC/ACT/AP-Lang tasks measure. Conventions
+# (CONV.1/2) are the Language course's SR tier, not the G11 writing CR bank, so they are NOT required of the
+# G11 CR/essay item bank; INQ.1 (source-evaluation) IS newly testable here.
+G11_BAND_TESTABLE = {
+    "ACC.W.ARG.1", "ACC.W.ARG.2", "ACC.W.ARG.3", "ACC.W.ARG.5",
+    "ACC.W.INFO.2", "ACC.W.INFO.3", "ACC.W.INFO.5", "ACC.W.INFO.6",
+    "ACC.W.SRC.1", "ACC.W.SRC.2", "ACC.W.SRC.3", "ACC.W.INQ.1",
+    "ACC.W.PROD.1", "ACC.W.PROC.2", "ACC.W.CONV.3",
+}
+# G12 (AP tier, rides on G11): sophistication + sustained timed writing; same ACC codes as G11 (the delta is
+# depth/timed, not new ACC standards).
+G12_BAND_TESTABLE = set(G11_BAND_TESTABLE)
+BAND_TESTABLE = {"G9": G10_BAND_TESTABLE, "G10": G10_BAND_TESTABLE, "G11": G11_BAND_TESTABLE, "G12": G12_BAND_TESTABLE}[_GRADE]
 
 # RUBRIC-DIMENSION standards: measured HOLISTICALLY inside the CR essay rubric (not as a discrete taggable
 # item). Real state EOCs score these as an essay trait, so 'no discrete item' is CORRECT, not a gap. (Same
@@ -105,7 +120,7 @@ def main():
     # C. coverage: every G10-band-testable ACC code is measured - by a discrete item, OR (for rubric-dimension
     #    standards) by the CR essay rubric (>=1 CR item exists). A truly unmeasured standard is a bank gap.
     has_cr_item = any(f.startswith("cr_") for f in files)
-    for code in sorted(G10_BAND_TESTABLE):
+    for code in sorted(BAND_TESTABLE):
         if code in used_acc:
             continue
         if code in RUBRIC_DIMENSION_ACC and has_cr_item:
@@ -126,7 +141,7 @@ def main():
 
     # E. taught-vs-tested matrix (report)
     rows = []
-    for code in sorted(G10_BAND_TESTABLE):
+    for code in sorted(BAND_TESTABLE):
         taught = code in TAUGHT_ACC
         taught_owner = "KC" if taught else ("external course" if code in EXTERNAL_ACC else "-")
         measured = code in used_acc
