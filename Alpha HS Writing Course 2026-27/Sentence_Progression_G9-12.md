@@ -37,7 +37,7 @@ The reference tests do NOT decompose sentence skills to the granular level. Not 
 | Fragment / run-on / comma-splice control | **G9** | G9 introduce -> G10-12 develop (boundary control in longer, denser passages; NO-CHANGE recognition at G11) | Crosswalk G9 "fragments, run-ons"; STAAR editing "sentence boundaries," TN editing conventions; ACT/SAT Standard English Conventions. |
 | Because / but / so (bound to claim-evidence-reasoning) | **G9** | G9 introduce (CER connectives) -> G10-12 develop (reasoning links inside analysis + argument) | TWR analytical-thinking activity. **Delivery binding (Noel):** taught IN expository/argumentative CER (because = reasoning link, but = counterclaim/qualify pivot, so = cause-effect/conclusion), not a decontextualized connective drill. |
 | Controlling-idea / topic sentence | **G9** | G9 introduce -> G10-12 develop (controlling ideas for analysis/synthesis paragraphs) | Crosswalk "organization & cohesion" SR: G9 "topic sentences" -> G10 "paragraph logic" -> G11 "rhetorical organization/cohesion." Genre realizations are separate Layer-2 rows. |
-| Appositives (comma-set noun-renaming phrase) | **G10** *(see re-examination below)* | G10 introduce -> G11 develop (embedded qualification in nuanced claims) -> G12 master (appositive as a stylistic/sophistication move) | Subsumed under crosswalk G10 "sentence formation, modifiers"; no test names it discretely. TWR intermediate elaboration tool (§Ch 4 loc ~4120-4265). |
+| Appositives (comma-set noun-renaming phrase) | **G10** *(council-confirmed; see re-examination #2)* | G10 introduce (isolate->automate->coordinate; gated on G9-substrate automaticity) -> G11 develop (embedded qualification in nuanced claims) -> G12 master (stylistic/sophistication move) | Subsumed under crosswalk G10 "sentence formation, modifiers"; no test names it discretely. TWR intermediate elaboration tool (§Ch 4 loc ~4120-4265); K&H element-interactivity ruling (grade A). |
 | Parallelism | **G10** | G10 introduce -> G11 develop (ACT/SAT sentence-structure items) -> G12 master (parallelism for rhetorical emphasis) | Crosswalk G10 "sentence formation, modifiers, parallelism" (VT, EOCs, FAST); ACT/SAT Standard English Conventions at G11. |
 | Modifier placement | **G10** | G10 introduce -> G11-12 develop (modifier precision in dense revision) | Crosswalk G10 "modifiers" (EOC editing); ACT/SAT sentence-structure at G11. |
 | Precision (basic word-level accuracy) | **G10** | G10 introduce (scaffolded word-choice editing) -> G11 develop into full stylistic precision -> G12 master (rhetorical style) | **COUNCIL-adjudicated split.** Crosswalk "knowledge of language" G10 "precision, concision, word choice" (EOC, VT). Winner K&H (CLT grade A) + G10 EOC anchor; loser TWR G9. |
@@ -113,11 +113,11 @@ Noel flagged: appositives only at G10, and expansion/combining/subordination "is
 
 1. **"Expansion/combining/subordination isolated to G9" - REFUTED by the evidence.** The crosswalk "sentence structure & boundaries" row is TESTED at every grade with rising demand (G9 combining -> G10 formation -> G11 complex-sentence revision -> G12 rhetorical syntax). These are INTRODUCED at G9 and DEVELOPED/MASTERED every year after. The old flat "inherited" tag hid this; the maturity trajectory column now makes it explicit. No placement change needed, only the honest representation.
 
-2. **"Appositives only at G10" - the one open call.** Two defensible options, and no test can settle it (none name appositives):
-   - **Keep INTRODUCE @ G10** (current, council-consistent): TWR sequences appositives AFTER combining as an intermediate elaboration tool; the crosswalk first subsumes them under G10 "modifiers." Clean sequence, but shorter runway to AP-level automatic use.
-   - **Move INTRODUCE to G9** (recommended for maximum maturity runway): TWR teaches appositives as an elaboration partner to combining/expansion, so pairing them at G9 is defensible; it gives three years (G10 develop, G11 embed in nuanced claims, G12 stylistic mastery) instead of two. Cost: thickens the G9 substrate phase and reverses the council's earlier G10 placement.
-
-   **My recommendation: move appositives to G9-INTRODUCE**, because the whole point of the maturity lens is runway, and appositives are the syntactic prerequisite for the G11 nuanced claim (embedded qualification). But this reverses a council ruling and changes what gets encoded, so I am holding it as a flagged decision for you, not making it unilaterally.
+2. **"Appositives only at G10" - RESOLVED by council (in-session, 2026-07-08), G10 UPHELD with conditions.** No test names appositives, so this was adjudicated as a developmental-sequence call. Seats: TWR -> G9 (parallel toolkit, no combining-prerequisite; grade B); Kirschner & Hendrick -> G10 (element-interactivity: appositive is simple alone but high-cost when COORDINATED with the moves G9 is still building; spacing cannot rescue failed encoding; grade A); DI/Engelmann -> G10 (task analysis: appositive is a phrase-level combining move requiring automatic clause-combining first, for faultless communication; grade B).
+   - **Ruling: INTRODUCE @ G10.** Decided by evidence strength (not vote count): K&H's grade-A CLT evidence on load-additivity + encoding-before-spacing outweighs TWR's grade-B parallel-toolkit claim. The crux (does the appositive require automatic combining first?) resolves YES: the 3-year-runway advantage of a G9 start evaporates if G9's concurrent load causes failed encoding. A reliable 2-year runway (G10 introduce -> G11 develop in nuanced claims -> G12 master) beats an unreliable 3-year one.
+   - **Losing position:** TWR's G9. Right that the appositive scaffold is teachable in isolation; outweighed because isolation is not how it appears in student writing (where the student must SELECT among moves), and that selection cost is what overloads G9.
+   - **Two conditions the ruling attaches (carry into the arc + gate design):** (a) G10-introduce is conditional on the G9 substrate (combining, subordination, fragment/run-on) reaching near-automaticity first, so the G10-entry retrieval-gate must actually verify it; if G9 combining is weak, defer appositives to mid-G10 after remediation. (b) G10 appositive instruction sequences isolate -> automate -> coordinate (teach the appositive alone before mixing it with competing moves).
+   - Net: **no placement change** (G10 stands), maturity bands = introduce G10 -> develop G11 (embed in nuanced claims) -> master G12 (AP stylistic use).
 
 ---
 
@@ -126,7 +126,7 @@ Noel flagged: appositives only at G10, and expansion/combining/subordination "is
 The spec's §B table was a triangulated hypothesis. Verification + assessment evidence moved these:
 
 **Layer 1:**
-1. **Appositives: G9 -> G10** (verification), now flagged for possible **move back to G9** under the maturity lens (see re-examination; Noel's call).
+1. **Appositives: G9 -> G10** (verification), then CONFIRMED @ G10 by council (2026-07-08) under the maturity lens, with two conditions attached (G9-substrate-automaticity gate + isolate->automate->coordinate sequencing). See re-examination #2.
 2. **Precision split from concision; precision @ G10, concision @ G11** (council + crosswalk knowledge-of-language spiral).
 3. **Controlling-idea / topic sentence added to Layer 1** (genre-general).
 4. **"Complex combining" is not a separate G10 row** - it is the G9 skill DEVELOPED at G10, now shown in the maturity column rather than as a new placement.
@@ -151,6 +151,6 @@ Everything else in the draft was confirmed.
 
 **Row totals:** 13 Layer-1 + 8 Layer-2 = 21 placements (unchanged); + 2 assessment clusters with 7 exemplar reconstructions.
 
-**Ownership by grade (INTRODUCE):** G9 = 8 · G10 = 6 · G11 = 5 · G12 = 2. (If appositives move to G9: G9 = 9, G10 = 5.)
+**Ownership by grade (INTRODUCE):** G9 = 8 · G10 = 6 · G11 = 5 · G12 = 2. (Appositives council-confirmed @ G10, 2026-07-08.)
 
 Intended shape: thick INTRODUCE at G9 (substrate) and G11 (rhetorical/synthesis turn); G10 is a develop-and-extend phase (few new mechanics, heavy re-exercise on the modal EOC); G12 is AP mastery atop G11.
