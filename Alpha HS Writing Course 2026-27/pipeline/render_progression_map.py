@@ -1,17 +1,22 @@
-"""Render Sentence_Progression_G9-12.md to a standalone styled HTML for review.
+"""Render a progression/catalog Markdown doc to a standalone styled HTML for review.
 
-Dependency-free (no markdown lib). Handles the subset of Markdown this doc uses:
+Dependency-free (no markdown lib). Handles the subset of Markdown these docs use:
 headers (#..####), pipe tables, **bold**, `code`, horizontal rules, blank-line
 paragraphs, and blockquotes. House style: purple accent, readable tables.
-Run: python pipeline/render_progression_map.py
-Writes: Sentence_Progression_G9-12.html next to the source.
+Run: python pipeline/render_progression_map.py [source.md ...]
+  (no args -> renders the default map + the item-type catalog)
+Writes: <source>.html next to each source.
 """
 import html
 import re
+import sys
 from pathlib import Path
 
-SRC = Path(__file__).resolve().parent.parent / "Sentence_Progression_G9-12.md"
-OUT = SRC.with_suffix(".html")
+BASE = Path(__file__).resolve().parent.parent
+DEFAULT_SOURCES = [
+    BASE / "Sentence_Progression_G9-12.md",
+    BASE / "_evidence" / "writing_item_type_catalog.md",
+]
 
 ACCENT = "#6d28d9"       # house purple
 ACCENT_SOFT = "#ede9fe"  # muted highlight
@@ -128,13 +133,16 @@ def convert(md: str) -> str:
     return "\n".join(html_parts)
 
 
-def main():
-    md = SRC.read_text(encoding="utf-8")
+def render_one(src: Path):
+    md = src.read_text(encoding="utf-8")
     body = convert(md)
+    # title = first H1 in the doc, else the filename
+    m = re.search(r"^#\s+(.+)$", md, re.MULTILINE)
+    title = html.escape(m.group(1)) if m else src.stem
     doc = f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>G9-12 Sentence-Skill Progression Map (VERIFIED)</title>
+<title>{title}</title>
 <style>
   :root {{ --accent: {ACCENT}; --accent-soft: {ACCENT_SOFT}; --ink: {INK}; }}
   * {{ box-sizing: border-box; }}
@@ -184,8 +192,18 @@ def main():
 {body}
 </body></html>
 """
-    OUT.write_text(doc, encoding="utf-8")
-    print(f"wrote {OUT}")
+    out = src.with_suffix(".html")
+    out.write_text(doc, encoding="utf-8")
+    print(f"wrote {out}")
+
+
+def main():
+    args = sys.argv[1:]
+    sources = [Path(a) for a in args] if args else DEFAULT_SOURCES
+    for src in sources:
+        if not src.is_absolute():
+            src = BASE / src
+        render_one(src)
 
 
 if __name__ == "__main__":

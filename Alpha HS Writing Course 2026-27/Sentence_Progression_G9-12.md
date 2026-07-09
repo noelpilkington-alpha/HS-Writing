@@ -82,6 +82,8 @@ What AlphaWrite G3-8 does NOT teach. Each row funnels into a tested SR capabilit
 
 These show the SPIRAL concretely: the same capability, re-assessed at rising complexity G9 -> G12. Every item below is an **own-words reconstruction faithful to the cited test's documented format**, built to illustrate the demand level. **None is a real test item.** Formats are drawn from `_evidence/sentence_skill_assessment_evidence.md`.
 
+**Item FORMAT variety (see `_evidence/writing_item_type_catalog.md`):** states test writing skills in several selected-response shells, not just 4-option MC. The highest-frequency are (1) MC with NO-CHANGE (`choice`, Timeback JSON-safe), (2) hot-text select-the-error/best-sentence (`hottext`, Timeback XML-required), (3) inline-choice dropdown (`inline-choice`, XML-required). Lesson discrimination/transfer items should rehearse students in these SAME shells. The exemplars below span the three so designers see the real set; each notes its Timeback deliverability.
+
 ### Cluster A: Sentence structure & boundaries (the tested funnel)
 
 The crosswalk documents this row TESTED at all four grades with escalating demand. The INHERITED G3-8 substrate is gate-checked then matured into it; the HS-NEW phrase/clause repertoire is what students newly learn to raise their performance on it.
@@ -107,6 +109,14 @@ The crosswalk documents this row TESTED at all four grades with escalating deman
   > Key: B (concessive subordination foregrounds the claim, a rhetorical choice). Skill: subordination as rhetorical control, the G9 mechanic MATURED.
 
 - **G12 MASTER/LADDER** - format: AP Lang MC "evaluate revisions to stimulus texts" + FRQ syntactic control (Row B/C, batch4). *Demand: judge whether a syntactic revision sustains the line of reasoning; in the essay, varied purposeful sentences read as sophistication.* (No discrete summative editing test at G12; this is LADDER + FRQ-embedded.)
+
+**Same skill, other real shells (format variety, not new grades):**
+
+- **Hot-text shell** (`hottext`, Timeback XML-required) - format: STAAR/SBAC/FL FAST select-the-word/sentence [batch1 L62, batch3 L69/L166]. *Demand: SELECT (not choose-from-options) the error or the best element in a passage.*
+  > Reconstruction: In the passage below, click the ONE sentence that is a run-on. "The committee met for hours. They debated the budget line by line the vote was close. In the end the measure passed." Correct target: "They debated the budget line by line the vote was close." Skill: boundary control, hot-text selection. Deliverable via XML POST.
+
+- **Inline-choice / dropdown shell** (`inline-choice`, Timeback XML-required) - format: STAAR new-question-types dropdown [batch1 L62]. *Demand: pick the correct form from an in-text dropdown, no separate option list.*
+  > Reconstruction: "By the time the crew finished, the storm [ had passed / has passed / passing ]." Correct: "had passed" (past perfect for the earlier of two past events). Skill: verb-form/formation in context, inline-choice. Deliverable via XML POST.
 
 ### Cluster B: Knowledge of language (precision, then concision/style)
 
