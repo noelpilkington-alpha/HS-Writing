@@ -14,6 +14,7 @@ Run locally: uvicorn main:app --reload --port 8000
 
 import json
 import os
+import re
 from contextlib import asynccontextmanager
 
 import anthropic
@@ -35,11 +36,12 @@ from ap_scorer import score_ap_essay
 from consensus import grade_with_consensus
 from passage_bank import get_passage, get_passage_text, list_passages
 from revision_scorer import score_revision
+from rubric_scorer import score_rubric_essay, RUBRIC_CONFIGS, config_max_score
 from models import FRQType
 
 load_dotenv()
 
-CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-20250514")
+CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-5")  # was claude-sonnet-4-20250514 (404 dead, 2026-07-07)
 GRADING_API_KEY = os.getenv("GRADING_API_KEY")
 ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "*").split(",")
 client: anthropic.Anthropic | None = None
@@ -105,6 +107,35 @@ class APGradeRequest(BaseModel):
     course: str | None = None
     lesson_id: str | None = None
     use_consensus: bool = True
+
+
+class RubricGradeRequest(BaseModel):
+    """Config-driven 4-trait rubric scoring (Model C, the rc.* engine)."""
+    rubric_config: str                 # rc.staar | rc.mcas | rc.ohio | rc.4trait  (rc.ap -> use /grade/ap)
+    student_text: str
+    mode: str | None = None            # argument | explanatory | analysis
+    passage_text: str | None = None
+    passage_id: str | None = None
+    prompt_text: str | None = None
+    grade_level: str = "Grade 10"
+    use_consensus: bool = True
+
+
+class RubricGradeResponse(BaseModel):
+    scoring_model: str = "rubric_config"
+    rubric_config: str
+    mode: str | None = None
+    traits: dict                       # {trait_key: {score, reasoning}}
+    raw_trait_sum: int
+    scorers: int
+    total: int
+    max_score: int
+    gate_applied: bool
+    feedback: str
+    weakest_trait: str
+    next_step: str
+    consensus_method: str | None = None
+    run_count: int | None = None
 
 
 class RevisionGradeRequest(BaseModel):
@@ -448,6 +479,87 @@ async def grade_ap_submission(req: APGradeRequest):
         )
 
 
+# ----- Config-driven 4-trait Rubric Grading (Model C, the rc.* engine) -----
+
+@app.get("/rubric-configs")
+async def list_rubric_configs():
+    """List the available rc.* rubric configs and their trait/scale/gate shape."""
+    out = {}
+    for rc_id, cfg in RUBRIC_CONFIGS.items():
+        out[rc_id] = {
+            "models": cfg["models"],
+            "traits": [{"key": k, "label": l, "min": lo, "max": hi} for (k, l, lo, hi) in cfg["traits"]],
+            "scorers": cfg.get("scorers", 1),
+            "gate": cfg.get("gate"),
+            "max_score": config_max_score(rc_id),
+        }
+    out["rc.ap"] = {"models": "AP Lang/Lit", "note": "Use POST /grade/ap (Row A/B/C + Sophistication)."}
+    return {"rubric_configs": out}
+
+
+@app.post("/grade/rubric", response_model=RubricGradeResponse)
+async def grade_rubric_submission(req: RubricGradeRequest):
+    """Grade a source-based essay on an rc.* config (STAAR/MCAS/Ohio/4-trait). 3-run consensus by default.
+
+    This is the scorer for the G10 CR test-bank items (cr_argument / cr_explanatory / cr_analysis).
+    For AP (rc.ap), use POST /grade/ap instead.
+    """
+    c = _require_client()
+
+    if req.rubric_config == "rc.ap":
+        raise HTTPException(status_code=400, detail="rc.ap uses AP Row A/B/C scoring. Use POST /grade/ap.")
+    if req.rubric_config not in RUBRIC_CONFIGS:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Unknown rubric_config '{req.rubric_config}'. Options: {sorted(RUBRIC_CONFIGS)} + rc.ap.",
+        )
+
+    text = _validate_student_text(req.student_text)
+    passage_text = _resolve_passage(req.passage_id, req.passage_text)
+
+    score_kwargs = {
+        "rc_id": req.rubric_config,
+        "student_text": text,
+        "mode": req.mode,
+        "passage_text": passage_text,
+        "prompt_text": req.prompt_text,
+        "grade_level": req.grade_level,
+    }
+
+    consensus_method = None
+    run_count = None
+    if req.use_consensus:
+        consensus = grade_with_consensus(
+            client=c, model=CLAUDE_MODEL, score_fn=score_rubric_essay,
+            scoring_model="rubric_config", num_runs=3, **score_kwargs,
+        )
+        result = consensus["final_result"]
+        consensus_method = consensus["consensus_method"]
+        run_count = consensus["run_count"]
+    else:
+        result = score_rubric_essay(c, CLAUDE_MODEL, **score_kwargs)
+
+    cfg = RUBRIC_CONFIGS[req.rubric_config]
+    trait_keys = [k for (k, _l, _lo, _hi) in cfg["traits"]]
+    traits = {k: result.get(k, {"score": 0, "reasoning": ""}) for k in trait_keys}
+
+    return RubricGradeResponse(
+        rubric_config=req.rubric_config,
+        mode=req.mode,
+        traits=traits,
+        raw_trait_sum=result.get("raw_trait_sum", 0),
+        scorers=result.get("scorers", cfg.get("scorers", 1)),
+        total=result.get("total", 0),
+        max_score=result.get("max_score", config_max_score(req.rubric_config)),
+        gate_applied=result.get("gate_applied", False),
+        feedback=result.get("feedback", ""),
+        weakest_trait=result.get("weakest_trait", trait_keys[0]),
+        next_step=result.get("next_step", ""),
+        consensus_method=consensus_method,
+        run_count=run_count,
+    )
+
+
 # ----- Gateway / Gate Check -----
 
 class GatewayGradeRequest(BaseModel):
@@ -538,6 +650,39 @@ async def grade_gateway(req: GatewayGradeRequest):
 # We use this to look up which rubric to grade against.
 TIMEBACK_ITEM_RUBRIC_MAP: dict[str, str] = {}
 
+# G10 CR test-bank items (ACC-W910-CR-*) route to the config-driven rc.* engine.
+# Per-item registry populated at push time: identifier -> {rubric_config, mode, passage_id}.
+# Until an item is registered, we fall back to a per-family default (mode + rc.4trait) so the item
+# still scores. Family is read from the ID: CR-ARG -> argument, CR-INFO -> explanatory, CR-ANLY -> analysis.
+TIMEBACK_CR_REGISTRY: dict[str, dict] = {}
+_CR_FAMILY_DEFAULTS = {
+    "ARG": ("argument", "rc.4trait"),
+    "INFO": ("explanatory", "rc.4trait"),
+    "ANLY": ("analysis", "rc.4trait"),
+}
+
+
+def _cr_routing(identifier: str) -> dict | None:
+    """Return {rubric_config, mode, passage_id} for a CR item id, or None if not a CR item."""
+    if identifier in TIMEBACK_CR_REGISTRY:
+        return TIMEBACK_CR_REGISTRY[identifier]
+    m = re.search(r"ACC-W910-CR-([A-Z]+)-\d{4}", identifier or "")
+    if m:
+        mode, rc = _CR_FAMILY_DEFAULTS.get(m.group(1), ("argument", "rc.4trait"))
+        return {"rubric_config": rc, "mode": mode, "passage_id": None}
+    # G9-G12 course LESSON FRQs (ids like ACC-W910-L-G9-C901-0001-S07-production_frq or
+    # ACC-W1112-L-G11-...). These are scored by grade band, not per-item registered: grades 9/10 use the
+    # STAAR English I/II CR rubric (rc.staar, genre-agnostic Dev/Org + Conventions); grades 11/12 use the
+    # AP Lang overlay (rc.ap). mode is left None (rc.staar is genre-agnostic; rc.ap defaults to argument
+    # frq_type downstream). This mirrors the CR-band fallback so any pushed lesson FRQ scores without a
+    # per-item registration step.
+    lg = re.search(r"ACC-W\d+-L-G(\d+)", identifier or "")
+    if lg:
+        grade = int(lg.group(1))
+        rc = "rc.ap" if grade >= 11 else "rc.staar"
+        return {"rubric_config": rc, "mode": None, "passage_id": None}
+    return None
+
 
 @app.post("/timeback/echo")
 async def timeback_echo(request: Request):
@@ -561,6 +706,36 @@ async def timeback_score(req: TimebackScoreRequest):
     student_text = student_text.strip()
     if not student_text:
         return {"score": 0.0, "feedback": {"identifier": "incomplete", "value": "No response provided."}}
+
+    # G10 CR test-bank items (ACC-W910-CR-*) route to the config-driven rc.* engine.
+    cr = _cr_routing(req.identifier)
+    if cr:
+        rc_id = cr["rubric_config"]
+        if rc_id == "rc.ap":
+            frq_map = {"argument": "argument", "analysis": "rhetorical_analysis", "explanatory": "argument"}
+            result = score_ap_essay(c, CLAUDE_MODEL, frq_type=FRQType(frq_map.get(cr["mode"], "argument")),
+                                    student_text=student_text,
+                                    passage_text=_resolve_passage(cr.get("passage_id"), None))
+            total, max_score = result.get("total", 0), 6
+            passed = total >= 4
+            feedback_text = result.get("feedback", "")
+        else:
+            passage_text = _resolve_passage(cr.get("passage_id"), None) if cr.get("passage_id") else None
+            result = score_rubric_essay(c, CLAUDE_MODEL, rc_id=rc_id, student_text=student_text,
+                                        mode=cr.get("mode"), passage_text=passage_text)
+            total = result.get("total", 0)
+            max_score = result.get("max_score", config_max_score(rc_id))
+            passed = max_score > 0 and (total / max_score) >= 0.6
+            wk = result.get("weakest_trait", "")
+            feedback_text = result.get("feedback", "")
+            if result.get("next_step"):
+                feedback_text = f"{feedback_text}\nNext: {result['next_step']}"
+            if result.get("gate_applied"):
+                feedback_text += "\n(Note: the scoring gate applied because the response did not develop the idea.)"
+        return {
+            "score": round(total / max_score, 2) if max_score else 0.0,
+            "feedback": {"identifier": "correct" if passed else "incorrect", "value": feedback_text},
+        }
 
     # Look up rubric from the item identifier
     rubric_id = TIMEBACK_ITEM_RUBRIC_MAP.get(req.identifier)
