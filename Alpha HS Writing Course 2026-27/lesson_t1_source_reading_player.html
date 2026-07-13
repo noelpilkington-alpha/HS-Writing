@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Read It Fairly First: Building the They-Say (MARK) - student view</title>
+<style>
+:root{--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--bg:#f1f5f9;--card:#fff;--brand:#2563eb;
+--ok:#166534;--okbg:#dcfce7;--bad:#991b1b;--badbg:#fee2e2;--src:#0369a1;--srcbg:#f0f9ff;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+.banner{background:#0f172a;color:#cbd5e1;font-size:.72rem;padding:6px 16px;text-align:center}
+.banner b{color:#fff}
+.topbar{background:var(--card);border-bottom:1px solid var(--line);padding:12px 20px;position:sticky;top:0;z-index:5}
+.topbar .t{font-weight:800;font-size:1rem}
+.topbar .sub{color:var(--muted);font-size:.8rem;margin-top:2px}
+.progwrap{max-width:820px;margin:10px auto 0;padding:0 20px}
+.progbar{height:6px;background:var(--line);border-radius:6px;overflow:hidden}
+.progfill{height:100%;background:var(--brand);width:0;transition:width .25s}
+.progtext{font-size:.72rem;color:var(--muted);margin-top:4px}
+.stage{max-width:820px;margin:22px auto;padding:0 20px 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.phase{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--brand);background:#eff6ff;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+.qtitle{font-size:1.15rem;font-weight:800;margin:0 0 14px}
+.body{white-space:pre-wrap;font-size:.98rem}
+.stem{font-size:1rem;margin-bottom:14px;white-space:pre-wrap}
+.opts{display:flex;flex-direction:column;gap:10px;margin:8px 0 4px}
+.opt{border:2px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:flex-start;font-size:.95rem;background:#fff}
+.opt:hover{border-color:#93c5fd}
+.opt .let{font-weight:800;color:var(--brand);flex:none}
+.opt.sel{border-color:var(--brand);background:#eff6ff}
+.opt.correct{border-color:var(--ok);background:var(--okbg)}
+.opt.wrong{border-color:var(--bad);background:var(--badbg)}
+.opt.disabled{cursor:default;opacity:.85}
+.reveal{margin-top:16px;padding:13px 16px;border-radius:10px;font-size:.92rem;white-space:pre-wrap;display:none}
+.reveal.show{display:block}
+.reveal.rc{background:var(--okbg);border:1px solid #86efac}
+.reveal.rw{background:var(--badbg);border:1px solid #fca5a5}
+.reveal b{display:block;margin-bottom:4px}
+.srcpane{background:var(--srcbg);border:1px solid #bae6fd;border-radius:10px;padding:6px 18px;margin-top:12px;max-height:340px;overflow:auto}
+.srctitle{font-weight:800;color:var(--src);font-size:.9rem;margin:12px 0 4px}
+.srctext{white-space:pre-wrap;font-size:.9rem;line-height:1.55}
+textarea{width:100%;min-height:150px;border:2px solid var(--line);border-radius:10px;padding:12px;font-family:inherit;font-size:.95rem;resize:vertical}
+textarea:focus{border-color:var(--brand);outline:none}
+.goal{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;font-size:.86rem;margin:10px 0}
+.goal b{color:#92400e}
+.graderbox{margin-top:14px;padding:13px 16px;border-radius:10px;background:#f5f3ff;border:1px solid #ddd6fe;font-size:.9rem;display:none}
+.graderbox.show{display:block}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:22px}
+.btn{background:var(--brand);color:#fff;border:none;border-radius:10px;padding:11px 22px;font-size:.95rem;font-weight:700;cursor:pointer}
+.btn:disabled{background:#cbd5e1;cursor:not-allowed}
+.btn.ghost{background:#fff;color:var(--brand);border:2px solid var(--brand)}
+.qtimeta{font-size:.68rem;color:var(--muted);font-family:ui-monospace,Menlo,monospace;margin-top:14px;border-top:1px dashed var(--line);padding-top:8px}
+.done{text-align:center;padding:40px 20px}
+.done h2{color:var(--ok)}
+</style></head><body>
+<div class="banner">PREVIEW: a local simulation of the Timeback student player. Interaction model + content are faithful; this is <b>not</b> the QTI payload (Timeback strips JS from stimuli). One item per screen, exactly as a student would step through it.</div>
+<div class="topbar"><div class="t">Read It Fairly First: Building the They-Say (MARK)</div><div class="sub">Read one source and write a fair, attributed they-say (a 4 to 6 sentence summary the author would agree with) using the MARK strategy: Main idea, Attribution, Reasons/evidence, Key quotable line. This is the they-say that later argument answers. Trait: reading/summary accuracy.</div>
+  <div class="progwrap"><div class="progbar"><div class="progfill" id="pf"></div></div><div class="progtext" id="pt"></div></div>
+</div>
+<div class="stage"><div id="screen"></div>
+  <div class="nav"><button class="btn ghost" id="back" onclick="go(-1)">Back</button><button class="btn" id="next" onclick="advance()">Continue</button></div>
+</div>
+<script>
+const SCREENS = [{"n": 1, "role": "TEACH", "role_label": "Learn", "kind": "teach_card", "title": "What a they-say is (and the three things you will keep straight)", "type": "read", "body": "A they-say is what your source actually says, put fairly and in its own words, before you react to it. Here is the plain test: write it so well that the author would nod and say, 'Yes, that is my point,' even if you were about to disagree. A they-say is NOT your opinion, and it is NOT whether you agree. You are reporting the source, not answering it. Why it matters: a fair they-say is the point your own writing will later push against, so if you get it wrong, everything you build on it is shaky. In this lesson you write only the they-say. Keep three things straight, and give each its own name: (1) the SOURCE ARTICLE is the weather article on your screen, the words the author wrote; (2) your MARK NOTES are the four parts you find; (3) your THEY-SAY is the 4 to 6 sentence paragraph you write from those notes. When a step names one of these three, it will say which one."}, {"n": 2, "role": "TEACH", "role_label": "Learn", "kind": "teach_card", "title": "The MARK strategy: each letter, with a right and a wrong example", "type": "read", "body": "MARK is how you build a fair they-say from one source. Each letter has one job. M = Main idea: the ONE point the whole source is built around. Right: the Weather Service exists to observe, predict, and warn so people get more time. Wrong (too narrow): 'The agency uses weather balloons,' which is one detail, not the whole point. A = Attribution: WHO is saying it, named out loud, so the credit is clear. Right: 'According to the National Weather Service...'. Wrong (bare fact, no source): 'Watches and warnings are different,' which never says who reported it. R = Reasons/evidence: the support the source gives for its main idea. Right: it pairs computer models with the local knowledge of forecasters in its 122 offices. Wrong (your reason, not the source's): 'because weather is important to everyone,' which the source never says. K = Key quotable line: ONE sentence in the source's EXACT words, inside quotation marks. Right: 'A tornado watch means be prepared; a tornado warning means take action now.' Wrong (a paraphrase you put in quotes, or a tiny detail): not the author's exact words, or not the key point. Your goal today: a they-say that hits all four MARK parts and adds no opinion."}, {"n": 3, "role": "TEACH", "role_label": "Learn", "kind": "stimulus_display", "title": "Read the source one section at a time", "type": "source", "body": "Here is the source article on how the National Weather Service builds a forecast. Read it one section at a time. After each section you will answer one short question that builds one part of MARK, so you never have to hold the whole article in your head at once. The article stays on screen while you answer.", "passages": [{"title": "How a Weather Forecast Is Made", "text": "Weather forecasts have become so ordinary that most people barely notice them. Yet each forecast rests on a large system of measurement and science. In the United States, that work is the job of the National Weather Service. This is a federal agency that watches the sky every hour of every day. This passage explains where a forecast comes from. It shows how the agency gathers its data, how it turns that data into a prediction, and how it warns the public when dangerous weather is coming.\n\nA forecast begins with observation. Before anyone can say what the weather will do, forecasters must know what it is doing right now. They need readings both at the ground and high in the air. To measure the upper air, the agency launches weather balloons. Each balloon carries a small tool called a radiosonde. The National Weather Service reports that it runs 92 of these balloon stations across North America. Crews launch the balloons twice a day, 365 days a year. A single balloon can rise above 35 kilometers, or about 115,000 feet. As it climbs, its sensors send back readings on pressure, temperature, humidity, and wind. These launches happen at the same times all over the world. That way, nations can share one snapshot of the sky.\n\nCloser to the ground, the agency relies on radar. The National Weather Service runs this radar with the Air Force and the Federal Aviation Administration. Together they operate a network of about 160 Doppler radars known as NEXRAD. These radars detect rain, snow, and wind. They can also map how a storm is moving and how hard it is raining. Balloons, radars, ground stations, and satellites all feed a steady stream of numbers into powerful computers.\n\nThe next step is prediction. The computers run math models. A model takes the current conditions and figures out, step by step, how the sky is likely to change over the coming days. No model is perfect. So forecasters at local offices study the model results. They compare those results with what they see in their own region. Then they adjust the forecast using their own experience. The agency divides the country among 122 local Weather Forecast Offices. Each office is in charge of the towns, rivers, and land nearby. A forecaster in the mountains knows patterns that a distant computer might miss. That local knowledge makes the final forecast more reliable.\n\nThe most important part of the work is the warning. A routine forecast helps people plan their day. A warning can save a life. Say the data show that a tornado or a flash flood is likely. The local office then issues an alert. That alert spreads within seconds through phones, radio, television, and the internet. The agency draws a careful line between a watch and a warning. A watch means conditions are right for dangerous weather to form, so people should stay alert. A warning means the dangerous weather is happening or about to happen, so people should act at once. That difference in wording tells the public how soon they must respond.\n\nWater is a special focus. Thirteen River Forecast Centers track rainfall and snowmelt across the country. They predict when rivers will rise. This helps communities prepare for floods long before the water reaches them.\n\nTaken together, the pieces form a chain. It runs from a balloon drifting through the sky to an alert buzzing on a phone. Observation feeds prediction. Prediction feeds the forecast. When the weather turns dangerous, the forecast becomes a warning. Knowing that chain does not make the sky any calmer. But it shows why a modern forecast is far more than a guess. It is built from steady measurement, tested science, and human judgment. All of it aims to tell people what the weather will do before it does it."}], "source_id": "ACC-W910-INFO-LESSON-WEATHER"}, {"n": 4, "role": "TEACH", "role_label": "Learn", "kind": "discrimination", "title": "Section 1 check: who is speaking? (builds A)", "type": "choice", "stem": "Read the opening section. Then answer: in this article, who is making the claims you will summarize?", "options": [{"letter": "A", "text": "a reporter who interviewed some scientists"}, {"letter": "B", "text": "the National Weather Service (NWS)"}, {"letter": "C", "text": "local news stations"}, {"letter": "D", "text": "the article does not say"}], "correct": "B", "explanation": "Correct: B. The source names itself, the NWS. That name is your A, Attribution. This is a labeled Grade-C discriminate-before-produce step: naming who speaks before you summarize."}, {"n": 5, "role": "TEACH", "role_label": "Learn", "kind": "discrimination", "title": "Section 2 check: which detail is observation? (builds R)", "type": "choice", "stem": "Read the observation section. Which detail belongs to the OBSERVATION stage, measuring what is happening now?", "options": [{"letter": "A", "text": "computer models calculate the coming days (that is prediction)"}, {"letter": "B", "text": "Doppler radars see the rotation inside a thunderstorm"}, {"letter": "C", "text": "the agency issues a flood forecast (that is the rivers stage)"}, {"letter": "D", "text": "people take protective action (that is a warning response)"}], "correct": "B", "explanation": "Correct: B. Radar readings are how the NWS observes conditions right now, a Reasons/evidence detail (R)."}, {"n": 6, "role": "TEACH", "role_label": "Learn", "kind": "discrimination", "title": "Section 3 check: watch or warning? (the point the author calls critical)", "type": "choice", "stem": "Read the warning section. A tornado is happening right now in a town. According to the source, the NWS would issue a:", "options": [{"letter": "A", "text": "watch, because conditions are favorable (a watch is 'be ready,' before it happens)"}, {"letter": "B", "text": "warning, because the dangerous weather is already happening"}, {"letter": "C", "text": "flood forecast"}, {"letter": "D", "text": "neither, until the storm ends"}], "correct": "B", "explanation": "Correct: B. A warning means take action now. The source calls this difference critical for public safety."}, {"n": 7, "role": "MODEL", "role_label": "Watch", "kind": "annotated_before_after", "title": "A weak they-say becomes a fair one", "type": "read", "body": "BEFORE (weak they-say, do NOT copy this): 'The weather is going to be bad this week, and you should be careful.' Why it is weak, checked against MARK: A is missing (it never says WHO is speaking); M is vague (this could describe ANY weather article ever written; it does not name THIS source's point); R is missing (no reason or evidence from the source); K is missing (no exact-words quote). This is the closest-cliche trap: it swaps the source's specific point for a generic idea that fits any article. AFTER (a strong they-say; the labels point to the visible parts): 'According to the National Weather Service [A], the agency's central job is to observe, predict, and warn so that communities get as much time as possible before dangerous weather hits [M]. It supports this by pairing computer models with the local knowledge of forecasters in its 122 offices, and by drawing a sharp line between a watch and a warning [R]. As the NWS puts it, \"A tornado watch means be prepared; a tornado warning means take action now\" [K].' Read the labels: the part naming the National Weather Service is [A]; the part naming observe, predict, and warn is [M]; the part about models plus local knowledge and the watch/warning line is [R]; the quoted sentence in quotation marks is [K]. Every MARK part is visible in that one paragraph."}, {"n": 8, "role": "MODEL", "role_label": "Watch", "kind": "predict_the_fix", "title": "Predict the one fix this draft needs", "type": "choice", "stem": "Here is a fresh they-say another student wrote. It passes some MARK checks but fails one badly. Draft: 'The National Weather Service says weather can be dangerous and people should be careful. It uses radar and balloons.' Which single fix does it most need?", "options": [{"letter": "A", "text": "add attribution, name who is speaking"}, {"letter": "B", "text": "replace the vague main idea with the source's specific point, that the NWS exists to observe, predict, and warn so people get more time"}, {"letter": "C", "text": "delete the detail about radar and balloons"}, {"letter": "D", "text": "add your own opinion about whether you think the NWS is effective"}], "correct": "B", "explanation": "The answer is B. The draft already names the NWS, so A is not the gap. It is a closest-cliche: 'weather can be dangerous' could describe any article, so it fails M, the Main idea. The one fix it most needs is the source's specific point. Option C is wrong because the radar and balloon details are fine evidence (R); cutting them does not fix the real problem. Option D is a trap: a they-say reports, it never reacts, so you never add your own opinion."}, {"n": 9, "role": "SUPPORTED", "role_label": "Practice (guided)", "kind": "discrimination", "title": "Which is a correct Key line? (minimal pair, mastery gate)", "type": "choice", "stem": "Discriminate before you produce (a labeled Grade-C step). All four options are candidate K lines (Key quotable line) for the weather source. Which one is a correct K, an exact-words quote that captures the source's most important point?", "options": [{"letter": "A", "text": "'A tornado watch means be prepared; a tornado warning means take action now.'"}, {"letter": "B", "text": "'Weather balloons, released twice a day, carry instruments high into the sky.'"}, {"letter": "C", "text": "A tornado watch means be prepared and a warning means act now"}, {"letter": "D", "text": "'The weather can be dangerous.'"}], "correct": "A", "explanation": "Correct: A. Option B is exact words but a minor detail, not the key point. Option C captures the point but has no quotation marks and is not the exact words, a dropped quote. Option D fails the fairness test: it could describe any weather article. Only A is a true K."}, {"n": 10, "role": "SUPPORTED", "role_label": "Practice (guided)", "kind": "production_frq", "title": "Completion: fill the MARK frame (fade rung 1)", "type": "frq", "prompt": "Guided practice with the frame provided. Using the weather source, fill in each blank, then read your sentences back as one paragraph. A (attribution): 'According to ____,'. M (main idea): 'its main point is that ____.'. R (reasons): 'It supports this by ____.'. K (key line): 'As the source puts it, \"____.\"'. Product goal: all four blanks filled from the source, the quote in exact words, no opinion added. Scored on summary accuracy and fair attribution.", "rubric": "rc.mcas"}, {"n": 11, "role": "MODEL", "role_label": "Watch", "kind": "diagnosis_frq", "title": "Diagnose a draft with the MARK self-check (modeled, then you)", "type": "frq", "prompt": "First, watch the check run on a flawed draft, then run it yourself. Flawed draft: 'The Weather Service does important work and uses a lot of technology.' Run the MARK self-check, step by step. Step 1, M: does it state the source's ONE main point? No, it is a cliche that fits any article, so the repair frame is 'The main idea of this article is ____.'. Step 2, A: does it name who is speaking? It says Weather Service, so A is met. Step 3, R: does it give the source's reasons or evidence? No, so add one: 'The NWS bases this on ____.'. Step 4, K: is there an exact-words quote in quotation marks? No, so add one. Now you: in two or three sentences, say which MARK letters that draft was missing, write one repair using a frame above, and name the closest-cliche problem in your own words.", "rubric": ""}, {"n": 12, "role": "INDEPENDENT", "role_label": "Practice (on your own)", "kind": "production_frq", "title": "Write a full fair they-say, then run the self-check", "type": "frq", "prompt": "Independent performance: write a fair they-say of the weather article, 4 to 6 sentences, using MARK. You may use these frames or your own: 'According to the NWS, ____.'; 'The NWS reports that ____.'; 'The NWS bases this on ____.'; 'As the NWS puts it, \"____.\"'. Product goal, all four required: (1) M name the source's one main idea, not just a detail; (2) A name who is speaking; (3) R include at least one reason or piece of evidence the source gives; (4) K include one exact-words quote in quotation marks; and add no opinion. Then run the MARK self-check on your own they-say. For each row, if you mark No, use the repair frame and rewrite. M: did I state the ONE main point, not just a detail? Repair: 'The source's main point is that ____.'. A: did I name WHO is speaking? Repair: 'According to ____,'. R: did I include a reason or evidence the source gives? Repair: 'The source supports this by ____.'. K: did I include one exact-words quote in quotation marks? Repair: 'As the source puts it, \"____.\"'. FAIR (the closest-cliche test): could my they-say describe ANY article on this topic, or ONLY this source? If any article, add the source's specific claim and evidence until it could only describe this one, and cut any opinion. Scored on summary accuracy and fair attribution.", "rubric": "rc.mcas"}, {"n": 13, "role": "TRANSFER", "role_label": "Try it on something new", "kind": "production_frq", "title": "Apply MARK to a NEW source (bank-partitioned)", "type": "frq", "prompt": "Transfer: apply MARK to a source you have not practiced on. Read the recycling article, then write a fair they-say, 4 to 6 sentences, using the same MARK moves. You may use the frames: 'According to the source, ____.'; 'The source reports that ____.'; 'It bases this on ____.'; 'As the source puts it, \"____.\"'. Product goal, all four required: name the Main idea, Attribute the claims to the source, give at least one Reason or piece of evidence, and quote one Key line in exact words; add no opinion. Then run the same MARK self-check, using the FAIR closest-cliche test: could your they-say describe any recycling article, or only this one? Keep every hedge the article uses. Scored on summary accuracy and fair attribution.", "rubric": "rc.mcas"}];
+const TOTAL = 13;
+let idx = 0;
+const answered = {};  // screen index -> {picked, submitted}
+
+function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+function render(){
+  const s = SCREENS[idx];
+  document.getElementById("pf").style.width = ((idx)/TOTAL*100)+"%";
+  document.getElementById("pt").textContent = "Step "+(idx+1)+" of "+TOTAL+"  |  "+s.role_label;
+  let h = '<div class="card"><span class="phase">'+esc(s.role_label)+'</span><h2 class="qtitle">'+esc(s.title)+'</h2>';
+  const next = document.getElementById("next");
+  const back = document.getElementById("back");
+  back.style.visibility = idx===0 ? "hidden":"visible";
+
+  if(s.type==="read"){
+    h += '<div class="body">'+esc(s.body)+'</div>';
+    next.textContent = "Continue"; next.disabled=false; next.dataset.mode="advance";
+  }
+  else if(s.type==="source"){
+    h += '<div class="body">'+esc(s.body)+'</div>';
+    h += '<div class="srcpane">';
+    for(const p of s.passages){ h+='<div class="srctitle">'+esc(p.title)+'</div><div class="srctext">'+esc(p.text)+'</div>'; }
+    h += '</div>';
+    next.textContent = "Continue"; next.disabled=false; next.dataset.mode="advance";
+  }
+  else if(s.type==="choice"){
+    h += '<div class="stem">'+esc(s.stem)+'</div><div class="opts" id="opts">';
+    const st = answered[idx];
+    s.options.forEach(o=>{
+      let cls="opt";
+      if(st&&st.submitted){ cls+=" disabled";
+        if(o.letter===s.correct) cls+=" correct";
+        else if(o.letter===st.picked) cls+=" wrong";
+      } else if(st&&st.picked===o.letter){ cls+=" sel"; }
+      h+='<div class="'+cls+'" onclick="pick(\''+o.letter+'\')"><span class="let">'+o.letter+'</span><span>'+esc(o.text)+'</span></div>';
+    });
+    h += '</div>';
+    const rc = (st&&st.submitted&&st.picked===s.correct);
+    h += '<div class="reveal '+(rc?"rc":"rw")+(st&&st.submitted?" show":"")+'" id="reveal"><b>'+(rc?"Correct":"Not quite")+'</b>'+esc(s.explanation)+'</div>';
+    if(st&&st.submitted){ next.textContent="Continue"; next.disabled=false; next.dataset.mode="advance"; }
+    else { next.textContent="Submit"; next.disabled=!(st&&st.picked); next.dataset.mode="submit"; }
+  }
+  else if(s.type==="frq"){
+    h += '<div class="goal"><b>Your task.</b> '+esc(s.prompt)+'</div>';
+    h += '<textarea id="ta" placeholder="Write your response here..." oninput="onType()">'+(answered[idx]?esc(answered[idx].text||""):"")+'</textarea>';
+    h += '<div class="graderbox" id="gb"><b>Sent to the writing grader.</b> In Timeback this response goes to the external grader ('+(s.rubric?esc(s.rubric):"rubric")+'), which returns a score and feedback keyed to the goal above. (No live grader in this preview.)</div>';
+    const st = answered[idx];
+    if(st&&st.submitted){ next.textContent="Continue"; next.disabled=false; next.dataset.mode="advance"; }
+    else { next.textContent="Submit to grader"; next.disabled=!(st&&st.text&&st.text.trim().length>10); next.dataset.mode="submitfrq"; }
+  }
+  h += '<div class="qtimeta">item type: '+esc(s.kind)+'  |  QTI: '+(s.type==="choice"?"choice (select + feedback)":s.type==="frq"?"extended-text + ExternalApiScore":"stimulus (display-only)")+'</div>';
+  h += '</div>';
+  document.getElementById("screen").innerHTML = h;
+}
+
+function pick(letter){ const st=answered[idx]||{}; if(st.submitted) return; st.picked=letter; answered[idx]=st; render(); }
+function onType(){ const st=answered[idx]||{}; st.text=document.getElementById("ta").value; answered[idx]=st; const n=document.getElementById("next"); n.disabled=!(st.text.trim().length>10); }
+function advance(){
+  const mode=document.getElementById("next").dataset.mode;
+  if(mode==="submit"){ answered[idx].submitted=true; render(); return; }
+  if(mode==="submitfrq"){ answered[idx].submitted=true; document.getElementById("gb").classList.add("show"); render(); document.getElementById("gb").classList.add("show"); return; }
+  go(1);
+}
+function go(d){ idx+=d; if(idx>=TOTAL){ finish(); return; } if(idx<0) idx=0; render(); }
+function finish(){
+  document.getElementById("pf").style.width="100%";
+  document.getElementById("pt").textContent="Complete";
+  document.getElementById("screen").innerHTML='<div class="card done"><h2>Lesson complete</h2><p>You stepped through all '+TOTAL+' items, one at a time, the way a student would in the Timeback player.</p></div>';
+  document.querySelector(".nav").style.display="none";
+}
+render();
+</script></body></html>

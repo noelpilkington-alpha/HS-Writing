@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>G9-12 Writing KC Map + Unit Architectures (GAP-SCOPED, RECONCILED)</title>
+<style>
+  :root { --accent: #6d28d9; --accent-soft: #ede9fe; --ink: #1f2430; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         color: var(--ink); line-height: 1.55; max-width: 1180px; margin: 0 auto;
+         padding: 40px 32px 96px; background: #fafafb; }
+  h1 { font-size: 30px; border-bottom: 4px solid var(--accent); padding-bottom: 12px; }
+  h2 { font-size: 23px; color: var(--accent); margin-top: 40px;
+        border-bottom: 1px solid #e5e7eb; padding-bottom: 6px; }
+  h3 { font-size: 18px; margin-top: 28px; }
+  code { background: #f1f0f6; padding: 1px 6px; border-radius: 4px;
+          font-size: 0.9em; color: #4c1d95; }
+  hr { border: none; border-top: 1px solid #e5e7eb; margin: 34px 0; }
+  blockquote { background: var(--accent-soft); border-left: 4px solid var(--accent);
+                margin: 16px 0; padding: 12px 18px; border-radius: 0 8px 8px 0;
+                font-size: 0.95em; }
+  table { border-collapse: collapse; width: 100%; margin: 18px 0; font-size: 14px;
+           background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.06); border-radius: 8px;
+           overflow: hidden; }
+  th { background: var(--accent); color: #fff; text-align: left; padding: 10px 12px;
+        font-weight: 600; vertical-align: top; }
+  td { padding: 10px 12px; border-top: 1px solid #eee; vertical-align: top; }
+  tr:nth-child(even) td { background: #fbfbfd; }
+  td:first-child { font-weight: 600; width: 18%; }
+  blockquote { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; }
+  .badge { display: inline-block; padding: 3px 11px; border-radius: 999px;
+            font-weight: 700; font-size: 13px; color: #fff; white-space: nowrap; }
+  .badge-g9  { background: #2563eb; }
+  .badge-g10 { background: #7c3aed; }
+  .badge-g11 { background: #db2777; }
+  .badge-g12 { background: #b45309; }
+  strong { color: #111; }
+  ul { margin: 12px 0; }
+  li { margin: 5px 0; }
+  .legend { margin: 8px 0 24px; font-size: 13px; color: #555; }
+  .legend .badge { margin-right: 6px; }
+</style></head>
+<body>
+<div class="legend">
+  Owning-grade legend:
+  <span class="badge badge-g9">G9</span>
+  <span class="badge badge-g10">G10</span>
+  <span class="badge badge-g11">G11</span>
+  <span class="badge badge-g12">G12</span>
+  &nbsp;&mdash;&nbsp; each skill is taught to automaticity at its owning grade, then retrieval-gated (not re-taught) at later grades.
+</div>
+<h1>G9-12 Writing KC Map + Unit Architectures (GAP-SCOPED, RECONCILED)</h1>
+<p><strong>Status:</strong> DRAFT for review. Reconciles the prior KC scheme (<code>A1/A2/B1L/B2_Lesson_Map.md</code>, 68 KCs) with the gap-scoped roster (<code>Sentence_Skill_Roster_FINAL.md</code>) + app-ownership gap analysis (<code>_evidence/app_stack_ownership_gap.md</code>). Anchor-text binding: G10 first (Section D), then G9/G11/G12.</p>
+<p><strong>⭐ ANCHOR = the AlphaCommonCore (ACC) spine</strong> (<code>05_AlphaCommonCore_Writing_Spine.md</code>) — the empirical ≥2-state union of all 50 states&#x27; writing standards (the project-start common-standards work). CCSS/TEKS are SUBSETS of ACC; AP/ACT are thin overlays. Every KC carries a primary <code>ACC.W.*</code> code.</p>
+<p><strong>⭐ SOURCE OF TRUTH = <code>pipeline/course_sequence_g9_12.py</code></strong> (the machine-readable, self-testing module encoding this map: ACC spine, KCs+tags, unit architecture, prerequisite DAG, gate spec). This doc is the human-readable RENDER of that module; the module is authoritative. Coverage is machine-verified by <code>pipeline/kc_coverage_matrix.py</code> (imports the module): 35 ACC codes + 24 tested capabilities all owned, 0 un-owned, self-test PASS. Coverage ≠ efficacy (efficacy needs student field data). <strong>Date:</strong> 2026-07-08 <strong>Decisions baked in (Noel):</strong> (1) RECONCILE - keep the prior <code>Strand.Grade.Number</code> coding + D/P/S/I types (grader + knowledge-graph already use it); re-derive the KC set gap-scoped; drop/re-gate every KC an existing app owns. (2) Map KCs + unit archs for all 4 grades together (the DAG spans grades); bind anchor texts G10-first.</p>
+<h2>Coding scheme (unchanged, reused from prior work)</h2>
+<ul><li><strong>ID = Strand.Grade.Number.</strong> Strand: C=Composition, M=Mechanics, D=Discourse/voice. (Kept for grader + knowledge-graph compatibility.)</li><li><strong>KC type:</strong> D=Discrimination · P=Production · S=Structure(rule) · I=Integrative. Rule: discrimination precedes production; 80%+ to advance; gateway KCs block downstream.</li><li><strong>NEW status columns (gap-scope):</strong> <code>HS-OWNED</code> (we teach it) · <code>GATED</code> (app owns it; retrieval-check + apply, never teach) · funnel = the tested capability it serves.</li></ul>
+<hr/>
+<h2>A. The reconciliation verdict (what changed from the 68 prior KCs)</h2>
+<table>
+<thead><tr>
+<th>Prior KC(s)</th>
+<th>Prior status</th>
+<th>Reconciled status</th>
+<th>Why</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>M.9.02 Sentence Imitation, M.9.03 Spot Wordiness, M.9.04 Revise Concision, M.9.05 Parallelism, M.9.06 Sentence Combining</strong></td>
+<td>A1 taught (Unit 6)</td>
+<td><strong>GATED (EGUMPP/AlphaWrite own)</strong> - removed as taught KCs</td>
+<td>App-stack gap analysis: EGUMPP owns parallelism/combining/wordiness G3-10; AlphaWrite owns combining/sentence craft G3-8. HS gates + applies, does not teach. (Exception: M.9.04 concision&#x27;s RHETORICAL tier survives as the G11 concision delta, folded into revision.)</td>
+</tr>
+<tr>
+<td><strong>M.9.01 Spot Stylistic Strengths, D.9.01/02 Voice</strong></td>
+<td>A1 taught</td>
+<td><strong>HS-OWNED but DEMOTED to woven/applied</strong></td>
+<td>Style/voice recognition is not a tested discrete skill; it is exercised in composition + flagged in revision, not a standalone lesson. Kept as woven, not a gateway.</td>
+</tr>
+<tr>
+<td><strong>C.9.B01-B05 Bridge KCs, C.9.01-12 analytical, C.10.x, C.AP.L.x, C.HS.x</strong></td>
+<td>taught</td>
+<td><strong>HS-OWNED (retained, re-mapped to the 12 roster skills)</strong></td>
+<td>Composition/analysis/synthesis/AP tiers: no app owns these. This is the genuine HS gap.</td>
+</tr>
+<tr>
+<td><strong>C.10.14, C.AP.L.15, C.HS.04 Timed strategy</strong></td>
+<td>taught</td>
+<td><strong>HS-OWNED (retained)</strong></td>
+<td>Timed-transfer is the documented AP/ACT failure mode (AP Deep Dive); no app owns it.</td>
+</tr>
+</tbody></table>
+<p><strong>Net:</strong> the 5 A1 sentence-mechanics KCs (M.9.02-06) move from taught -&gt; gated. Everything composition/analysis-level is retained. This is exactly the redundancy the gap analysis flagged, now removed from the KC layer too.</p>
+<hr/>
+<h2>A2. Coverage-audit revisions (2026-07-08, adversarial backward-trace)</h2>
+<p>The reconciled map was audited by tracing real released-item DEMANDS backward to the KCs (<code>_evidence/kc_coverage_audit.md</code>, 4 test-family finders + red-team). It found the forward-built map INCOMPLETE. Decisions applied below (Noel, 2026-07-08):</p>
+<p><strong>FIXED (added/corrected KCs - clear coverage holes in tested skills):</strong></p>
+<ul><li><strong>G2 Informational controlling-idea</strong> -&gt; new <strong>C.9.05</strong> (STAAR&#x27;s DOMINANT ECR mode is informational; C.9.01 was argument-coded, C.9.04 blurred the modes).</li><li><strong>G5 Production-of-Writing / discourse revision</strong> -&gt; new <strong>C.9.06</strong> (transitions &amp; cohesion) + <strong>C.10.05</strong> (add/delete/reorder for rhetorical purpose + organization). This is 38-43% of ACT English + STAAR revising items; it was owned by NOBODY (not conventions-gated, not essay-KC). Quadruple-corroborated - the single biggest gap.</li><li><strong>G6 Multi-source (2-3 text) writing at G10</strong> -&gt; new <strong>C.10.06</strong> (cross-text comparative argument/analysis, between single-source C.9.04 and G11 synthesis C.11.02). The modal G10 EOC is 2-4 source.</li><li><strong>G3 Source-free / multi-perspective argument</strong> -&gt; new <strong>C.11.06</strong> (argue from own knowledge, AP Lang Q3, no given material) + <strong>C.11.07</strong> (engage multiple GIVEN perspectives + position own — ACT Writing). <strong>Noel clarification: ACT Writing is NOT source-free — it supplies 3 perspectives on the issue; the student weighs them + positions their own. AP Lang Q3 IS source-free. Two distinct KCs.</strong> (Restores the prior C.AP.L.08 + C.10.15-21 intent.)</li><li><strong>G7 AP sophistication taught too late</strong> -&gt; C.12.01 sophistication is now INTRODUCED at G11 (woven into C.11.02/C.11.03), MASTERED at G12. Row C is the 5-vs-6 differentiator on the G11 Track-B gate.</li><li><strong>G8 Source credibility/bias</strong> -&gt; new <strong>C.11.08</strong> (evaluate source credibility/bias) in the G11 synthesis unit. (Matches the prior gap analysis&#x27;s two actionable research flags.)</li></ul>
+<p><strong>DESCOPED / DEFERRED (explicit, documented - not hidden holes):</strong></p>
+<ul><li><strong>G1 Narrative writing</strong> -&gt; DESCOPED for the current build, BACKLOGGED for phase 2. 7 systems test it (LA/MD/TN/NJ/SBAC-option/MS/IA); we consciously focus the core on argument/analysis/synthesis (dominant + highest-leverage) and queue narrative as a fast-follow. Prior College Essay/SCENE work seeds it. <strong>This is a conscious descope, recorded so it is not a silent gap.</strong></li><li><strong>G4 AP Literature</strong> -&gt; NAMED-BUT-DEFERRED backlog. AP Lang is the primary tested track; AP Lit (poetry/prose-fiction/literary analysis) is a distinct analytical mode + literary stimuli, queued not cut. The B-track alternate-AP-Lit reference stays, marked DEFERRED.</li></ul>
+<p><strong>BLOCKING VERIFICATION (raised from nice-to-have by the audit):</strong></p>
+<ul><li>The mis-gating findings share one root cause: several &quot;GATED = covered&quot; cells assume EGUMPP/AlphaWrite/AlphaRead teach the HS band (discourse revision, vocab-for-effect, AP-Lexile reading). If those apps stop at G8, those cells are actually UNCOVERED. <strong>Confirm EGUMPP/AlphaWrite/AlphaRead HS enrollment + grade ceiling BEFORE relying on the gate</strong> (was flagged in the roster; the audit makes it blocking).</li></ul>
+<p><strong>LOW / no action:</strong> short-CR vs full-essay (same skill, interpret &quot;essay&quot; as extended-response); precision/concision SR-format transfer (add SR practice, skill already covered).</p>
+<hr/>
+<h2>B. The reconciled KC map (HS-OWNED KCs only; app-owned mechanics gated, listed in Section B0)</h2>
+<h3>B0. GATED substrate (app-owned; retrieval-check at entry, never a KC lesson)</h3>
+<p><code>GATE.SENT</code> = the app-owned sentence substrate: kernel expansion, combining, appositives, because/but/so, subordinating conjunctions, fragment/run-on/comma-splice, parallelism, phrase/clause types, modifiers, basic wordiness, topic sentence, spelling/punctuation/agreement. Owners: EGUMPP (conventions G3-10) + AlphaWrite (sentence craft G3-8). Per-grade gate probes are timed-production, not worksheets (K&amp;H). Failure routes to the owning app.</p>
+<h3>B1. Grade 9 (A1) — foundations of source-based composition</h3>
+<table>
+<thead><tr>
+<th>KC ID</th>
+<th>Name</th>
+<th>Type</th>
+<th>Gateway?</th>
+<th>Funnels into (tested)</th>
+<th>Roster skill</th>
+<th>Gated prereqs (GATE.SENT subset)</th>
+</tr></thead><tbody>
+<tr>
+<td>C.9.01</td>
+<td>Defensible claim (prompt-responsive ARGUMENT position)</td>
+<td>D-&gt;P</td>
+<td>GATEWAY</td>
+<td>STAAR Eng I argument claim; all EOC argument</td>
+<td>G9-1</td>
+<td>declarative sentence, fragment control, topic sentence</td>
+</tr>
+<tr>
+<td>C.9.05</td>
+<td><strong>Informational controlling-idea</strong> (thesis that names topic + organizing angle for EXPLANATION, not a stance) *(NEW - audit G2)*</td>
+<td>D-&gt;P</td>
+<td>GATEWAY</td>
+<td>STAAR Eng I/II informational ECR (the DOMINANT mode)</td>
+<td>(new)</td>
+<td>topic sentence (gated); sibling to C.9.01 - discriminate claim vs controlling-idea</td>
+</tr>
+<tr>
+<td>C.9.02</td>
+<td>Attributed-evidence sentence (integrate + credit source)</td>
+<td>P</td>
+<td></td>
+<td>STAAR/EOC research-evidence</td>
+<td>G9-2</td>
+<td>appositive, &quot;according to&quot; prep phrase, combining; quotation punct (only if direct quote)</td>
+</tr>
+<tr>
+<td>C.9.03</td>
+<td>Reason/warrant sentence (WHY evidence supports claim/controlling idea)</td>
+<td>P</td>
+<td>GATEWAY</td>
+<td>EOC development trait; AP.5</td>
+<td>G9-3</td>
+<td>causal subordinating conjunctions (since/because/as), WHY-question expansion</td>
+</tr>
+<tr>
+<td>C.9.06</td>
+<td><strong>Transitions &amp; cohesion</strong> (select the transition matching the logical relationship; connect ideas across sentences) *(NEW - audit G5)*</td>
+<td>D-&gt;P</td>
+<td></td>
+<td>ACT Production of Writing, SAT Expression of Ideas, STAAR revising</td>
+<td>(new)</td>
+<td>NOT gated (rhetorical glue, not sentence conventions); discrimination-first (SR shells)</td>
+</tr>
+<tr>
+<td>C.9.04</td>
+<td>Single-source essay strategy — SEPARATED by mode: (a) argument essay (on C.9.01) · (b) informational essay (on C.9.05)</td>
+<td>I</td>
+<td>GATEWAY</td>
+<td>STAAR Eng I ECR (both modes)</td>
+<td>G9-4</td>
+<td>+ SPO, transitions (C.9.06), paragraph structure (gated); staged: paragraph-&gt;multi-para-&gt;timed</td>
+</tr>
+<tr>
+<td>D.9.01</td>
+<td>Voice/style (woven, not gateway)</td>
+<td>woven</td>
+<td></td>
+<td>ACT.11 tone/voice (later)</td>
+<td>(applied)</td>
+<td>(gated substrate)</td>
+</tr>
+</tbody></table>
+<p><strong>A1 gate:</strong> single-source source-based essay (argument OR informational — both modes now have distinct thesis KCs) + entry GATE.SENT check. Pass = essay &gt;= threshold; conventions scored holistically inside it.</p>
+<h3>B2. Grade 10 (A2) — the modal-EOC year: analysis + counterargument</h3>
+<table>
+<thead><tr>
+<th>KC ID</th>
+<th>Name</th>
+<th>Type</th>
+<th>Gateway?</th>
+<th>Funnels into</th>
+<th>Roster skill</th>
+<th>Gated prereqs</th>
+</tr></thead><tbody>
+<tr>
+<td>C.10.01</td>
+<td>Counterclaim-aware claim (&quot;Although X, Y because Z&quot;)</td>
+<td>P</td>
+<td>GATEWAY</td>
+<td>STAAR Eng II counterclaim</td>
+<td>G10-1</td>
+<td>concessive subordinators although/while, adverb clause, combining</td>
+</tr>
+<tr>
+<td>C.10.02</td>
+<td>Device-&gt;effect-&gt;warrant sentence (text-dependent analysis)</td>
+<td>P</td>
+<td>GATEWAY</td>
+<td>SC-TDA, PA Keystone, MA, Regents</td>
+<td>G10-2</td>
+<td>device-naming vocab (content layer), relative clause, causal clause (from C.9.03)</td>
+</tr>
+<tr>
+<td>C.10.03</td>
+<td>Analysis essay strategy</td>
+<td>I</td>
+<td>GATEWAY</td>
+<td>the modal G10 EOC</td>
+<td>G10-3</td>
+<td>+ paragraph structure (from C.9.04); staged paragraph-&gt;essay-&gt;timed</td>
+</tr>
+<tr>
+<td>C.10.05</td>
+<td><strong>Rhetorical revision: add/delete/reorder for purpose + organization</strong> (should this sentence be added? most logical sequence?) *(NEW - audit G5)*</td>
+<td>D-&gt;P</td>
+<td></td>
+<td>ACT Production of Writing (38-43%), SAT Expression of Ideas, STAAR revising</td>
+<td>(new)</td>
+<td>NOT gated (discourse-level, above sentence conventions); discrimination-first via SR shells + applied in revision</td>
+</tr>
+<tr>
+<td>C.10.06</td>
+<td><strong>Cross-text (2-3 source) argument/analysis</strong> (integrate + compare evidence across sources, short of full synthesis) *(NEW - audit G6)*</td>
+<td>I</td>
+<td>GATEWAY</td>
+<td>modal G10 EOC (NY/FL/MA/MD/SC/LA/NJ all 2-4 source)</td>
+<td>(new)</td>
+<td>on C.9.02 + C.10.03; between single-source C.9.04 and G11 synthesis C.11.02</td>
+</tr>
+<tr>
+<td>C.10.04</td>
+<td>Precision-in-argument (applied revision pass, NOT standalone)</td>
+<td>woven</td>
+<td></td>
+<td>EOC knowledge-of-language</td>
+<td>G10-4 (revision pass)</td>
+<td>word choice/wordiness (gated)</td>
+</tr>
+</tbody></table>
+<p><strong>A2 gate:</strong> cross-text (2-3 source) text-dependent analysis essay (the STAAR Eng II + modal-EOC mode) + counterclaim-aware argument + rhetorical-revision SR + GATE.SENT check (G9+G10 subset).</p>
+<h3>B3. Grade 11 (B1) — the college-test year: synthesis + rhetorical analysis + style</h3>
+<table>
+<thead><tr>
+<th>KC ID</th>
+<th>Name</th>
+<th>Type</th>
+<th>Gateway?</th>
+<th>Funnels into</th>
+<th>Roster skill</th>
+<th>Gated prereqs</th>
+</tr></thead><tbody>
+<tr>
+<td>C.11.01</td>
+<td>Nuanced claim (qualification embedded)</td>
+<td>P</td>
+<td>GATEWAY</td>
+<td>SBAC/ACT/Regents/AP Lang</td>
+<td>G11-1</td>
+<td>appositives, relative clauses (participials optional)</td>
+</tr>
+<tr>
+<td>C.11.02</td>
+<td>Cross-source/synthesis sentence + essay strategy</td>
+<td>I</td>
+<td>GATEWAY (Track B gate)</td>
+<td>SBAC synthesis, AP Lang 6-source</td>
+<td>G11-2</td>
+<td>coordinating/correlative conjunctions, transitions</td>
+</tr>
+<tr>
+<td>C.11.03</td>
+<td>Rhetorical-analysis sentence + essay (author&#x27;s choices)</td>
+<td>I</td>
+<td>GATEWAY</td>
+<td>AP Lang rhet-analysis, NH SAT, FL G11</td>
+<td>G11-3</td>
+<td>device-naming vocab, appositives/clauses</td>
+</tr>
+<tr>
+<td>C.11.04</td>
+<td>Rhetorical concision/style (applied revision pass)</td>
+<td>woven</td>
+<td></td>
+<td>ACT KoL, SAT Expression</td>
+<td>G11-4 (revision pass)</td>
+<td>wordiness, parallel structure (gated)</td>
+</tr>
+<tr>
+<td>C.11.05</td>
+<td>Timed-writing strategy</td>
+<td>P</td>
+<td></td>
+<td>ACT/AP timing</td>
+<td>(roster: cross-cutting)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C.11.06</td>
+<td><strong>Argue from own knowledge</strong> (source-free: generate evidence/examples from knowledge, observation, reading — NO given material) *(NEW - audit G3)*</td>
+<td>P-&gt;I</td>
+<td>GATEWAY</td>
+<td>AP Lang Argument FRQ (33% of Section II)</td>
+<td>(new; restores prior C.AP.L.08)</td>
+<td>on C.9.01 + C.9.03; the reasoning spine minus the source dependency</td>
+</tr>
+<tr>
+<td>C.11.07</td>
+<td><strong>Multi-perspective argument</strong> (analyze 2-3 GIVEN perspectives on an issue, weigh strengths/limits, position own relative to them) *(NEW - audit G3; Noel: ACT is NOT source-free, it supplies perspectives)*</td>
+<td>P-&gt;I</td>
+<td></td>
+<td>ACT Writing (3-perspective, ~26 ACT/SAT states)</td>
+<td>(new; restores prior C.10.15-21 intent)</td>
+<td>on C.10.01 counterclaim-aware; distinct from source-text analysis</td>
+</tr>
+<tr>
+<td>C.11.08</td>
+<td><strong>Evaluate source credibility/bias</strong> (judge author credentials, bias, evidence quality; which source to trust + why) *(NEW - audit G8)*</td>
+<td>D</td>
+<td></td>
+<td>SBAC/PARCC research-simulation tasks; ACC 11(G)(i)/(H)</td>
+<td>(new)</td>
+<td>in the synthesis unit; the read-the-source step already exists</td>
+</tr>
+<tr>
+<td>—</td>
+<td>*(AP sophistication C.12.01 is now INTRODUCED here at G11, woven into C.11.02/C.11.03; mastered at G12 — audit G7)*</td>
+<td></td>
+<td></td>
+<td>AP Row C (5-vs-6 on the G11 Track-B gate)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>B1 gate:</strong> AP-style practice set — rhetorical analysis + synthesis + argument (source-based AND source-free C.11.06) + multi-perspective (C.11.07) for the ACT path. Sophistication (C.12.01) introduced + surfaced on the gate rubric. Track B enrollment gated here.</p>
+<h3>B4. Grade 12 (B2) — AP tier</h3>
+<table>
+<thead><tr>
+<th>KC ID</th>
+<th>Name</th>
+<th>Type</th>
+<th>Gateway?</th>
+<th>Funnels into</th>
+<th>Roster skill</th>
+<th>Gated prereqs</th>
+</tr></thead><tbody>
+<tr>
+<td>C.12.01</td>
+<td>AP sophistication (significance &quot;so-what&quot; + context + competing perspectives) — INTRODUCED G11 (woven), MASTERED G12 *(audit G7)*</td>
+<td>I</td>
+<td>GATEWAY</td>
+<td>AP FRQ Row C; ACT.5/AP.2 gaps</td>
+<td>G12-1</td>
+<td>(rides on C.11.01/02/03)</td>
+</tr>
+<tr>
+<td>C.12.02</td>
+<td>Sustained AP writing under timed conditions</td>
+<td>I</td>
+<td>GATEWAY</td>
+<td>AP Lang/Lit FRQ</td>
+<td>G12-2</td>
+<td>staged: untimed-&gt;extended-&gt;exam-timed</td>
+</tr>
+<tr>
+<td>D.12.01</td>
+<td>Voice through syntactic choice (woven)</td>
+<td>woven</td>
+<td></td>
+<td>AP style/sophistication</td>
+<td>(applied)</td>
+<td>(gated substrate)</td>
+</tr>
+</tbody></table>
+<p><strong>B2 gate:</strong> full timed AP practice exam, 5+ target.</p>
+<p><strong>Reconciled KC totals (HS-OWNED taught KCs), post-audit:</strong> G9 = 6 (C.9.01/05/02/03/06/04) + 1 woven · G10 = 5 (C.10.01/02/03/05/06) + 1 revision-pass · G11 = 8 (C.11.01/02/03/05/06/07/08 + sophistication-intro) + 1 revision-pass · G12 = 2 + 1 woven. ~21 taught KCs (was ~14 pre-audit; the audit added 7: C.9.05, C.9.06, C.10.05, C.10.06, C.11.06, C.11.07, C.11.08). Still down from the prior 68 because app-owned mechanics stay gated; the additions are genuine tested-skill holes the forward map missed, not restored redundancy.</p>
+<hr/>
+<h2>C. Unit architectures (all four grades; KCs grouped in DAG order + the locked scaffold)</h2>
+<p>Every unit follows the locked scaffold: ENTRY retrieval-gate (GATE.SENT subset) -&gt; genre-specific sentence move (just-in-time) -&gt; paragraph phase -&gt; essay phase (staged, per K&amp;H) -&gt; calibration/revision woven. Ordering law: no unit before the unit teaching its prerequisites.</p>
+<h3>G9 (A1) — 5 units (post-audit)</h3>
+<ul><li><strong>U1 Claim/controlling-idea + Evidence foundations</strong> (C.9.01 argument claim, C.9.05 informational controlling-idea, C.9.02): gate GATE.SENT(G9); teach BOTH thesis modes (discriminate claim vs controlling-idea) + attributed-evidence -&gt; single-paragraph. Gateway: C.9.01 + C.9.05.</li><li><strong>U2 Reasoning</strong> (C.9.03): teach warrant sentence (causal-clause orchestration) -&gt; claim/idea+evidence+warrant paragraph. Gateway: C.9.03.</li><li><strong>U3 Cohesion</strong> (C.9.06): teach transitions/cohesion (discrimination-first) -&gt; connect ideas across a paragraph. *(NEW - audit G5)*</li><li><strong>U4 Single-source essay</strong> (C.9.04, staged, both modes): body-paragraph assembly -&gt; multi-paragraph coherence -&gt; timed single-source essay (argument OR informational). Gateway: C.9.04 (course gate).</li><li><strong>U5 Style woven</strong> (D.9.01): applied in U1-U4 revision, not a standalone block.</li></ul>
+<h3>G10 (A2) — 4 units (post-audit)</h3>
+<ul><li><strong>U1 Counterargument</strong> (C.10.01): gate GATE.SENT(G9+G10); teach counterclaim-aware claim -&gt; argument paragraph with concession. Gateway: C.10.01.</li><li><strong>U2 Text-dependent analysis</strong> (C.10.02): teach device-&gt;effect-&gt;warrant sentence -&gt; analysis paragraph. Gateway: C.10.02.</li><li><strong>U3 Rhetorical revision</strong> (C.10.05): teach add/delete/reorder-for-purpose + organization (discrimination via SR shells) -&gt; applied in essay revision. *(NEW - audit G5; the 38-43%-of-ACT-English gap)*</li><li><strong>U4 Cross-text analysis essay</strong> (C.10.06 + C.10.03, staged; C.10.04 revision pass woven): 2-3 source comparative analysis/argument, staged to timed. Gateway: C.10.06 (course gate). *(C.10.06 NEW - audit G6)*</li></ul>
+<h3>G11 (B1) — 6 units (post-audit)</h3>
+<ul><li><strong>U1 Nuance</strong> (C.11.01): gate GATE.SENT(all); teach nuanced claim -&gt; nuanced argument paragraph. Gateway: C.11.01.</li><li><strong>U2 Rhetorical analysis</strong> (C.11.03): teach rhetorical-analysis sentence -&gt; rhet-analysis essay (staged). Sophistication (C.12.01) INTRODUCED here (woven). Gateway: C.11.03.</li><li><strong>U3 Synthesis + source evaluation</strong> (C.11.02 + C.11.08, staged): evaluate source credibility/bias, then cross-source sentence -&gt; synthesis essay. Gateway: C.11.02 (Track B gate). *(C.11.08 NEW - audit G8)*</li><li><strong>U4 Source-free argument</strong> (C.11.06): argue from own knowledge, no given material -&gt; AP-Lang-Q3-style essay. Gateway: C.11.06. *(NEW - audit G3)*</li><li><strong>U5 Multi-perspective argument</strong> (C.11.07): analyze 3 given perspectives + position own -&gt; ACT-Writing-style essay. *(NEW - audit G3; Noel: ACT supplies perspectives, not source-free)*</li><li><strong>U6 Timing + calibration</strong> (C.11.05, C.11.04 revision pass): timed strategy + concision-for-effect woven; sophistication surfaced on the gate rubric.</li></ul>
+<h3>G12 (B2) — 2 units (+ deferred AP Lit track)</h3>
+<ul><li><strong>U1 Sophistication mastery</strong> (C.12.01, introduced at G11): master significance + context + competing-perspectives atop G11 essays. Gateway: C.12.01.</li><li><strong>U2 Timed AP mastery</strong> (C.12.02, staged untimed-&gt;exam-timed; D.12.01 voice woven). Gateway: C.12.02 (course gate).</li><li><strong>[DEFERRED] AP Literature track</strong> — poetry/prose-fiction/literary-analysis KCs NOT built (named-but-deferred backlog, audit G4). B2 currently = AP Lang only.</li></ul>
+<hr/>
+<h2>D. Anchor-text binding — G10 FIRST (proves the KC -&gt; arch -&gt; anchor pipeline)</h2>
+<p>Bound from the existing G10 stimulus bank (<code>Stimulus_Bank_G10/</code>, 24 QC-verified stimuli, Lexile 1050-1185L). <strong>Bucket discipline:</strong> lesson-bucket (<code>lesson_*</code>) stimuli bind to LESSONS; test-bucket (<code>arg_*</code>/<code>info_*</code>/<code>analysis_*</code>) reserved for the gate/test bank (contamination partition, per <code>pipeline/contamination_check.py</code>). No stimulus binds to both.</p>
+<table>
+<thead><tr>
+<th>G10 Unit</th>
+<th>KC</th>
+<th>Anchor text (LESSON bucket)</th>
+<th>Bucket / rights</th>
+</tr></thead><tbody>
+<tr>
+<td>U1 Counterargument</td>
+<td>C.10.01</td>
+<td><code>lesson_arg_congestion_pricing.py</code>, <code>lesson_arg_school_year.py</code>, <code>lesson_arg_daylight_saving.py</code> (opposing-view argument, own-authored, federal-fact-sourced)</td>
+<td>lesson · shippable</td>
+</tr>
+<tr>
+<td>U2 Text-dependent analysis</td>
+<td>C.10.02</td>
+<td><code>lesson_analysis_story_of_an_hour.py</code> (Chopin, PD, 764w/1123L)</td>
+<td>lesson · shippable (PD)</td>
+</tr>
+<tr>
+<td>U3 Rhetorical revision (C.10.05, NEW)</td>
+<td>C.10.05</td>
+<td>own-words draft passages built FROM the lesson_info_* stimuli (revision targets: weak transitions, misordered sentences, off-topic sentence to delete) — authored, not a new stimulus</td>
+<td>lesson · shippable *(to build)*</td>
+</tr>
+<tr>
+<td>U4 Cross-text analysis essay (C.10.06, NEW)</td>
+<td>C.10.06, C.10.03</td>
+<td>a PAIR of lesson-bucket stimuli (e.g. <code>lesson_info_recycling.py</code> + <code>lesson_info_highways.py</code>) for 2-source comparison</td>
+<td>lesson · shippable</td>
+</tr>
+<tr>
+<td><strong>GATE (reserved)</strong></td>
+<td>course gate</td>
+<td><code>arg_*</code> (6), <code>info_*</code> (6), <code>analysis_*</code> (4) — TEST bucket, NEVER bound to a lesson</td>
+<td>test · reserved</td>
+</tr>
+</tbody></table>
+<p><strong>Anchor-binding rule (carry to G9/G11/G12):</strong> each unit&#x27;s anchor must (a) be lesson-bucket (never test), (b) match the unit&#x27;s genre + the grade&#x27;s Lexile band, (c) be copyright-clean (own-authored federal-fact or PD), (d) support the KC&#x27;s specific move (e.g. an analysis anchor must have &gt;=3 analyzable authorial choices). G9/G11/G12 anchor binding follows once their stimulus banks are built to the same 6-gate QC standard (G10 bank is furthest along; G9/G11/G12 banks are the next stimulus-generation targets).</p>
+<hr/>
+<h2>E. What this map deliberately does + does NOT do</h2>
+<ul><li>DOES keep the prior coding scheme (grader/knowledge-graph compatible) and retain every composition/analysis KC that no app owns.</li><li>DOES re-gate the 5 A1 sentence-mechanics KCs (M.9.02-06) to app-owned (the reconciliation&#x27;s core move).</li><li>DOES close the 7 tested-skill coverage holes the backward-trace audit found (C.9.05, C.9.06, C.10.05, C.10.06, C.11.06, C.11.07, C.11.08 + early-sophistication).</li><li>DOES bind G10 anchors from the verified lesson-bucket, honoring the test-partition.</li><li>Does NOT teach any app-owned mechanic; does NOT bind test-bucket stimuli to lessons; does NOT re-introduce the pre-gap-analysis redundancy.</li></ul>
+<h3>E1. Explicitly DESCOPED / DEFERRED (conscious, documented — not hidden holes)</h3>
+<ul><li><strong>Narrative writing (audit G1):</strong> DESCOPED for the current build, BACKLOGGED for phase 2. 7 systems test it (LA/MD/TN/NJ/SBAC-option/MS/IA). We ship the argument/analysis/synthesis core first; narrative is a queued fast-follow (seeded by prior College Essay/SCENE work). Students in narrative-testing states will NOT be covered for that task until phase 2 — recorded so it is a decision, not an accident.</li><li><strong>AP Literature track (audit G4):</strong> NAMED-BUT-DEFERRED. B2 = AP Lang only in this build; the poetry/prose-fiction/literary-analysis KCs are queued, not cut. The alternate-AP-Lit reference stays, marked DEFERRED.</li></ul>
+<h3>E2. Mis-gating RESOLVED (Noel, 2026-07-08): separate HS courses own the adjacent bands</h3>
+<p>The audit&#x27;s mis-gating worry (&quot;do the K-8 apps reach the HS band?&quot;) is resolved: the HS ecosystem has <strong>separate HS Language, Vocabulary, and (question below) AP courses</strong>, so the gated skills are owned by real HS courses, not only the K-8 apps. Ownership:</p>
+<ul><li><strong>Conventions + &quot;Knowledge of Language&quot;</strong> (precision/concision/style-tone as SR editing of a given passage) -&gt; HS <strong>Language</strong> course. GATED, safe.</li><li><strong>Vocabulary / vocabulary-for-effect</strong> -&gt; HS <strong>Vocabulary</strong> course. GATED, safe.</li><li><strong>Reading comprehension at HS Lexile</strong> -&gt; reading course / AlphaRead. GATED, safe.</li><li><strong>STAYS with WRITING (not language):</strong> &quot;Production of Writing&quot; — transitions/cohesion (C.9.06), add/delete/reorder-for-purpose + organization (C.10.05). This is composition/rhetorical structure, not language mechanics, so it is correctly HS-writing-owned (the audit&#x27;s biggest gap, kept in-scope). Precision/concision AS APPLIED IN THE STUDENT&#x27;S OWN ESSAY (C.10.04/C.11.04 revision passes) stays with writing; the same skill AS SR editing of someone else&#x27;s passage is the Language course&#x27;s.</li><li><strong>Net:</strong> the writing course&#x27;s job is WRITING (compose/structure/revise-for-meaning); conventions, language-knowledge, and vocabulary are owned by the Language + Vocabulary courses. This confirms the gate is safe and sharpens the scope.</li></ul>
+<h3>E2b. Scope + standards anchor (Noel, 2026-07-08)</h3>
+<ul><li><strong>The writing course spans G9-12</strong> (B1/B2 ARE our AP writing courses; the AP tier stays in scope). NOT descoped to G9-10.</li><li><strong>Anchor = the common standards</strong> (CCSS, TEKS, and the reconciled AlphaCommonCore spine from the earlier research), NOT AP-rubric-first. AP (and ACT/SAT) are <strong>thin overlays</strong> on a CCSS/TEKS-aligned core — the exam-agnostic-core + thin-overlays architecture. Consequence: every KC must carry a CCSS/TEKS tag (the primary alignment), with AP/ACT as secondary tags. The coverage matrix validates STANDARDS coverage first, tested-capability coverage second.</li></ul>
+<h3>E3. OPEN (non-blocking, carried)</h3>
+<ul><li>Build G9/G11/G12 stimulus banks (incl. the new C.10.05 revision-passage set) before their anchor binding.</li><li><strong>Re-attach per-KC standards tags with CCSS/TEKS PRIMARY</strong> (AP/ACT secondary) to all 21 KCs in the machine-readable encoding step, per E2b.</li><li>Rebuild <code>coverage_matrix.py</code> against this corrected map (done next: regression-checks all 21 KCs vs both the common-standards denominator AND the tested-capability set).</li></ul>
+</body></html>

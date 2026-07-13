@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English I · Unit 1 — Reading-to-Write Foundations (expository rebuild)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#23201A; --soft:#6B6456; --faint:#9A917F; --rule:#E7E2D6; --rule2:#D8D2C4;
+    --card:#FFFFFF; --bg:#F6F3EC; --accent:#3B6E8F; --argue:#2E7D5B; --argue-t:#E6F1EB;
+    --gold:#A8801F; --gold-t:#FBF3DE; --synth:#5B6E8F; --shadow:0 1px 3px rgba(40,34,20,.07),0 6px 18px rgba(40,34,20,.05);
+    --fact:#7B61A8; --fact-t:#F4F1FA;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:14px;line-height:1.6;}
+  a{color:var(--accent);}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px;}
+
+  /* top bar */
+  .bar{position:sticky;top:0;z-index:20;background:rgba(246,243,236,.93);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule);padding:9px 0;margin-bottom:0;}
+  .bar .inner{max-width:1180px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:14px;}
+  .bar .crumb{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);}
+  .bar .lp{margin-left:auto;font-size:11px;color:var(--soft);}
+  .toggle{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--soft);cursor:pointer;user-select:none;}
+  .toggle input{accent-color:var(--accent);}
+
+  /* lesson nav */
+  .lnav{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0 4px;}
+  .navitem{display:flex;flex-direction:column;gap:2px;border:1px solid var(--rule);background:var(--card);border-radius:10px;padding:8px 11px;cursor:pointer;min-width:128px;text-align:left;font:inherit;transition:.12s;}
+  .navitem:hover{border-color:var(--accent);}
+  .navitem.active{border-color:var(--accent);box-shadow:0 0 0 2px var(--argue-t);}
+  .navitem .code{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.05em;color:var(--accent);font-weight:600;}
+  .navitem .lt{font-size:11.5px;line-height:1.3;color:var(--ink);}
+  .navitem .gt{display:inline-block;background:var(--gold);color:#fff;font-size:8px;border-radius:3px;padding:1px 5px;letter-spacing:.04em;margin-top:2px;}
+
+  /* head */
+  .lhead{margin:16px 0 10px;}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+  .lhead h1{font-family:"Spectral",serif;font-size:27px;line-height:1.2;margin:4px 0 7px;}
+  .lhead p{margin:0 0 9px;color:var(--soft);max-width:760px;}
+  .stds{display:flex;gap:6px;flex-wrap:wrap;}
+  .chip{font-family:"IBM Plex Mono",monospace;font-size:9.5px;border-radius:5px;padding:2px 7px;border:1px solid var(--rule2);color:var(--soft);background:var(--card);}
+  .chip.teks{border-color:#C9D9C9;color:#3A6B4A;} .chip.ccss{border-color:#C9D2DE;color:#3F5E8F;}
+  .chip.act{border-color:#E0D2B0;color:#8a6d22;}
+
+  /* design banner */
+  .dbanner{display:none;background:#EFEAFB;border:1px solid #D8CEEA;border-radius:11px;padding:12px 15px;margin:10px 0;font-size:12.5px;color:#4A3F66;}
+  .dbanner h4{margin:0 0 4px;font-size:11px;font-family:"IBM Plex Mono",monospace;letter-spacing:.05em;text-transform:uppercase;color:#6A4F96;}
+  body.design-on .dbanner{display:block;}
+
+  /* layout */
+  .layout{display:grid;grid-template-columns:300px 1fr;gap:18px;align-items:start;margin-top:14px;}
+  @media(max-width:820px){.layout{grid-template-columns:1fr;}}
+
+  /* rail (scrolls independently) */
+  .rail{position:sticky;top:54px;background:var(--card);border:1px solid var(--rule);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;max-height:calc(100vh - 66px);}
+  @media(max-width:820px){.rail{position:static;max-height:none;}}
+  .rail__h{flex:0 0 auto;background:#F0EEE7;padding:10px 15px;border-bottom:1px solid var(--rule2);font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);font-weight:600;}
+  .rail__b{flex:1 1 auto;overflow-y:auto;padding:13px 15px;}
+
+  .src__q{font-family:"Spectral",serif;font-size:14.5px;font-weight:600;line-height:1.35;margin-bottom:3px;}
+  .src__meta{font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);margin-bottom:9px;}
+  .src__passage{font-family:"Spectral",serif;font-size:12.5px;line-height:1.62;color:var(--ink);background:#FBFAF7;border:1px solid var(--rule);border-left:3px solid var(--synth);border-radius:8px;padding:11px 12px;}
+  .src__passage p{margin:0 0 9px;} .src__passage p:last-child{margin:0;}
+  .src__cite{color:var(--accent);font-style:italic;}
+
+  /* FACT card */
+  .fact{margin-top:11px;background:var(--fact-t);border:1px solid #D8CEEA;border-radius:10px;padding:10px 12px;}
+  .fact__h{font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;color:var(--fact);margin-bottom:6px;}
+  .fact__row{display:flex;gap:8px;font-size:11px;line-height:1.4;margin-bottom:4px;}
+  .fact__l{flex:0 0 16px;height:16px;border-radius:4px;background:var(--fact);color:#fff;font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:10px;text-align:center;line-height:16px;}
+  .fact__row.dim{opacity:.45;}
+  .fact__note{font-size:10px;color:var(--soft);font-style:italic;margin-top:5px;border-top:1px dashed var(--rule);padding-top:6px;}
+
+  /* steps */
+  .step{background:var(--card);border:1px solid var(--rule);border-radius:14px;box-shadow:var(--shadow);margin:13px 0;overflow:hidden;}
+  .step__h{display:flex;align-items:center;gap:9px;padding:11px 16px;border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+  .step__n{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.04em;color:#fff;background:var(--soft);border-radius:5px;padding:2px 8px;}
+  .step__n.core{background:var(--argue);}
+  .step__t{font-family:"Spectral",serif;font-size:16px;font-weight:600;}
+  .step__core{font-size:9.5px;font-family:"IBM Plex Mono",monospace;color:var(--argue);letter-spacing:.04em;}
+  .step__phase{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);}
+  .step__b{padding:14px 16px;}
+  .lead{margin:0 0 10px;}
+  .q{font-weight:600;color:var(--ink);margin:10px 0 5px;}
+  .flab{font-size:11.5px;color:var(--soft);margin:9px 0 3px;font-weight:500;}
+  textarea.ta{width:100%;border:1px solid var(--rule2);border-radius:8px;padding:8px 10px;font:inherit;font-size:13px;background:#FCFBF8;resize:vertical;min-height:54px;}
+  textarea.ta:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px var(--argue-t);}
+  .btn{margin-top:11px;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:8px 16px;font:inherit;font-weight:600;font-size:13px;cursor:pointer;}
+  .btn:hover{filter:brightness(1.06);} .btn.done{background:var(--argue);}
+  .fb{margin-top:10px;border-radius:8px;padding:9px 12px;font-size:12.5px;}
+  .fb.coach{background:var(--gold-t);border:1px solid #E6D4A8;color:#6B5410;}
+  .fb.ok{background:var(--argue-t);border:1px solid #BCE0C8;color:#1F5C3F;}
+
+  /* DI block */
+  .di{margin:8px 0 12px;border:1px solid #D8CCEF;border-radius:11px;background:#FBFAFE;overflow:hidden;}
+  .di__h{display:flex;align-items:center;gap:8px;background:#F0EBFB;padding:7px 12px;border-bottom:1px solid #E0D6F2;}
+  .di__tag{font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;color:var(--fact);}
+  .di__mlt{font-size:9px;color:#8A7BB0;font-family:"IBM Plex Mono",monospace;}
+  .di__t{font-family:"Spectral",serif;font-weight:600;font-size:13.5px;margin-left:auto;color:#4A3F66;}
+  .di__body{padding:10px 13px;}
+  .di__rule{font-size:12.5px;margin-bottom:9px;} .di__rule b{color:var(--fact);}
+  .di__move{margin:8px 0;font-size:12.5px;}
+  .di__lbl{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;border-radius:4px;padding:1px 6px;margin-right:6px;}
+  .di__lbl.model{background:#E6F1EB;color:var(--argue);} .di__lbl.same{background:var(--fact-t);color:var(--fact);}
+  .ex{display:flex;gap:8px;margin:5px 0;font-size:12px;line-height:1.5;}
+  .ex .mk{flex:0 0 16px;font-weight:700;text-align:center;}
+  .ex.yes .mk{color:var(--argue);} .ex.no .mk{color:#B0593E;}
+  .ex.yes{background:var(--argue-t);border-radius:6px;padding:6px 9px;} .ex.no{background:#FBEEE9;border-radius:6px;padding:6px 9px;}
+  .di__test{margin-top:9px;font-size:12px;border-top:1px dashed #E0D6F2;padding-top:8px;color:#4A3F66;}
+  .di__test b{color:var(--fact);}
+
+  /* pre-read */
+  .preread{background:#F4F1FA;border:1px solid #D8CEEA;border-left:3px solid var(--fact);border-radius:9px;padding:11px 13px;margin:8px 0;}
+  .preread__h{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;color:#6A4F96;margin-bottom:5px;}
+  .preread__h .sc{background:var(--fact);color:#fff;border-radius:3px;padding:1px 6px;margin-left:6px;font-size:8px;}
+
+  /* repair-a-near-miss (discrimination fused INTO production) */
+  .repair{margin:10px 0;border:1px solid #E6C3B3;border-radius:9px;background:#FCF7F4;padding:11px 13px;}
+  .repair__h{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;color:#9a5238;margin-bottom:7px;}
+  .repair__nm{position:relative;background:#FBEEE9;border:1px solid #E6C3B3;border-radius:7px;padding:8px 11px 8px;font-family:"Spectral",serif;font-size:13px;line-height:1.5;margin-bottom:8px;}
+  .repair__tag{display:block;font-family:"IBM Plex Mono",monospace;font-size:8px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:#B0593E;margin-bottom:3px;}
+
+  /* testbox / note */
+  .testbox{background:var(--gold-t);border:1px solid #E6D4A8;border-radius:8px;padding:9px 12px;margin:9px 0;font-size:12px;color:#6B5410;}
+  .gate{background:#FBEEE9;border:1px solid #E6C3B3;border-radius:9px;padding:10px 13px;margin:9px 0;font-size:12px;color:#8a4a30;}
+  .gate b{color:#B0593E;}
+  .meetfact{background:var(--fact-t);border:1px solid #D8CEEA;border-left:3px solid var(--fact);border-radius:9px;padding:10px 13px;margin:4px 0 11px;font-size:12.5px;line-height:1.55;}
+  .meetfact b{color:var(--fact);}
+
+  /* design layer (per step) */
+  .design{display:none;margin-top:12px;border-top:1px dashed var(--rule2);padding-top:11px;}
+  body.design-on .design{display:block;}
+  .design__h{display:flex;gap:10px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);margin-bottom:8px;}
+  .design__h .srsd{color:var(--fact);} .design__h .strat{color:var(--accent);}
+  .dgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+  @media(max-width:680px){.dgrid{grid-template-columns:1fr;}}
+  .dpanel{border:1px solid var(--rule);border-radius:9px;padding:9px 11px;font-size:11.5px;line-height:1.5;background:#FCFBF8;}
+  .dpanel.span{grid-column:1/-1;}
+  .dl{font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--soft);font-weight:600;margin-bottom:4px;}
+  .gtagb{display:inline-block;font-size:8.5px;border-radius:4px;padding:1px 6px;margin-bottom:5px;font-family:"IBM Plex Mono",monospace;}
+  .gtagb.real{background:#E6F1EB;color:var(--argue);} .gtagb.synth{background:#EEF1F4;color:var(--synth);} .gtagb.new{background:#FBF3DE;color:var(--gold);}
+  .rubricgrade{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--argue);background:#E6F1EB;border-radius:5px;padding:2px 7px;display:inline-block;}
+
+  .bank{margin-top:14px;border:1px solid var(--rule);border-radius:11px;background:var(--card);overflow:hidden;}
+  .bank summary{cursor:pointer;padding:10px 14px;font-size:12px;font-weight:600;color:var(--soft);}
+  .bank .bb{padding:0 14px 12px;font-size:11.5px;color:var(--soft);}
+  .srcitem{border-top:1px solid var(--rule);padding:8px 0;}
+  .srcitem b{color:var(--ink);}
+</style>
+</head>
+<body>
+<div class="bar"><div class="inner">
+  <span class="crumb">English I · Reading-to-Write Foundations</span>
+  <span class="crumb" style="color:var(--fact)">EXPOSITORY · FACT</span>
+  <label class="toggle"><input type="checkbox" id="designToggle"> Design layer</label>
+  <span class="lp" id="barlesson"></span>
+</div></div>
+
+<div class="wrap">
+  <div class="lnav" id="navlist"></div>
+  <div id="main"></div>
+</div>
+
+<script>
+/* ============================================================
+   UNIT 1 (English I) — REBUILT to the validated C3 spec
+   Mode: expository response-to-text (STAAR-verified primary).
+   Mnemonic: FACT (Focus / Add details / Clarify / Tie up).
+   Each lesson = a slice of the SRSD 6-step flow; scaffold fades
+   Heavy -> internal across 1.1 -> 1.5. Coach/feedback strings are
+   the D7 Yeager "wise-feedback" strings (name-right / name-the-move /
+   high-standards-plus-belief). Passages are the verified C4_U1 set.
+   ============================================================ */
+
+function S(fw,code){return {fw:fw,code:code};}
+
+/* -- the two verified expository sources (C4_U1) -- */
+const SOURCES = {
+  sleep:{
+    q:"Why Teenagers Are So Tired: Sleep and School Start Times",
+    meta:"~640 words · expository · grade-9 · CDC-sourced",
+    paras:[
+      "Almost every teenager knows the feeling: the alarm goes off, the room is still dark, and getting out of bed feels nearly impossible. For a long time, many adults assumed sleepy teenagers were simply lazy. Researchers who study sleep have found a different explanation — being tired in the morning is partly built into the biology of growing up.",
+      "Sleep experts agree teenagers need a large amount of sleep. According to the Centers for Disease Control and Prevention, teens aged 13 to 18 should sleep 8 to 10 hours per 24 hours <span class='src__cite'>(CDC, 2024)</span>. While a person sleeps, the brain strengthens memories and the body restores energy. When teens fall short night after night, they struggle to concentrate, remember, and manage their moods.",
+      "Most teenagers are not getting close to that amount. In a national study, the CDC reported that the share of high school students who slept fewer than 8 hours on school nights was 72.7% <span class='src__cite'>(CDC, 2015 data)</span> — roughly seven of every ten students, across the entire United States.",
+      "Part of the answer is the school schedule. Using national data from 2011–12, the CDC found the average start time for public middle and high schools was 8:03 a.m. <span class='src__cite'>(CDC, 2011–12 data)</span>. Many students wake well before that, often in the dark.",
+      "A group of pediatricians, the American Academy of Pediatrics, concluded that middle and high schools should start no earlier than 8:30 a.m. <span class='src__cite'>(AAP, via CDC)</span>. Yet the study covered an estimated 39,700 public schools, most starting earlier than that target.",
+      "These findings have led many communities to rethink the school clock. Some districts pushed start times later; others kept earlier schedules for bus routes and sports. This passage does not argue that one choice is correct. What the research makes clear is the basic situation: teenagers need 8–10 hours of sleep, most are not getting it, and the typical school day begins earlier than experts suggest."
+    ],
+    focus:"Scientific evidence shows most American high school students get far less than the recommended amount of sleep, and the typical school day starts earlier than experts advise — which helps explain why teenagers are so often tired.",
+    preGood:"7 out of 10|72.7|fewer than 8|8 to 10|8:03|8:30|most|not getting enough|short"
+  },
+  pollinators:{
+    q:"The Tiny Workers Behind Our Food: Bees and Other Pollinators",
+    meta:"~620 words · expository · grade-9 · NPS-sourced",
+    paras:[
+      "When most people picture where their food comes from, they imagine farmers and fields. They rarely picture a bee. Yet bees and other pollinators do a quiet, essential job. A pollinator is an animal — often an insect — that moves pollen from one flower to another, letting plants produce fruits, seeds, and the next generation of plants.",
+      "The reach of pollinators into our diet is larger than most people expect. According to the National Park Service, pollinators are responsible for 1 out of 3 bites of food we take each day <span class='src__cite'>(National Park Service)</span>. Apples, blueberries, almonds, melons, and squash all depend on their work.",
+      "The importance is not limited to our plates — it extends to plant life across the planet. The National Park Service reports that at least 75% of all flowering plants on Earth are pollinated by insects and animals <span class='src__cite'>(National Park Service)</span>. Those plants also feed wildlife and form the base of many ecosystems.",
+      "The scale becomes clearer when we count the plants. The NPS explains that pollinators support more than 1,200 food crops and 180,000 different types of plants <span class='src__cite'>(National Park Service)</span>. A single bee seems unimportant, but multiplied across millions, the effect on agriculture is enormous.",
+      "That effect can be measured in money. According to the NPS, pollination by honey bees contributed to over $19 billion of crop production in 2010, and other insect pollinators contributed nearly $10 billion <span class='src__cite'>(National Park Service)</span>.",
+      "Because pollinators matter so much, scientists watch their populations carefully; many species face habitat loss, disease, and pesticide exposure. This passage does not argue about solutions. Its purpose is to explain the role pollinators play — and the evidence is consistent: pollinators touch a large share of our food, the majority of flowering plants, and billions of dollars in crops."
+    ],
+    focus:"Bees and other pollinators perform an essential job for the food supply — supporting a large share of what people eat, most of the world's flowering plants, and billions of dollars in crops.",
+    preGood:"1 out of 3|one third|third|75%|1,200|180,000|19 billion|10 billion|food|crops|flowering"
+  }
+};
+
+/* FACT, with which letters this lesson foregrounds */
+function factCard(active, note){
+  const rows=[
+    ["F","<b>Focus</b> — the controlling idea (what the passage explains)"],
+    ["A","<b>Add details</b> — the key facts/evidence from the passage"],
+    ["C","<b>Clarify</b> — explain HOW each detail supports the focus"],
+    ["T","<b>Tie up</b> — a conclusion that connects back to the focus"]
+  ];
+  return '<div class="fact"><div class="fact__h">FACT — your routine for any source</div>'+
+    rows.map(r=>'<div class="fact__row'+(active.includes(r[0])?'':' dim')+'"><span class="fact__l">'+r[0]+'</span><span>'+r[1]+'</span></div>').join('')+
+    (note?'<div class="fact__note">'+note+'</div>':'')+'</div>';
+}
+
+/* ============================================================ LESSONS */
+const LESSONS=[
+
+/* ---- 1.1 ---- */
+{code:"1.1", title:"Reason, not restate", gate:false, core:true, frontier:true,
+  sub:"The unit's highest-leverage move, taught first. You'll meet the whole FACT toolkit below, then zoom in on its hardest move — <b>Clarify</b>: write the sentence that explains <b>how</b> a fact supports your point. Restating repeats the fact; clarifying says why it proves the point.",
+ stds:[S("teks","TEKS EI.5(C)"),S("teks","EI.9(B)(ii)"),S("ccss","CCSS 9-10W.2b"),S("ccss","9-10W.9")],
+ src:"sleep", factActive:["C"], factNote:"This lesson lives in the C — the move that turns a fact into reasoning.",
+ blocks:[
+   {kind:"meetfact", html:"<b>Your toolkit for every source: FACT.</b> Four moves that turn a passage into a written response — <b>F</b>ocus (the controlling idea) · <b>A</b>dd details (evidence from the text) · <b>C</b>larify (explain how each detail supports the focus) · <b>T</b>ie up (a close). You'll use all four together soon. This lesson zooms in on the one that earns the most points and is the hardest to do: <b>C — Clarify</b>."},
+   {kind:"di", title:"Clarify: explain how the evidence supports the point",
+     rule:"Evidence shows <i>what</i> the text says. To <b>Clarify</b> is to say <i>how</i> that fact supports the point — what it means for the focus. Restating just repeats the fact; clarifying adds why it proves the point.",
+     model:"Here's the move done well, on one fact: <i>“The text says teens are tired in the morning, <b>which shows</b> the early start fights their biology — so the schedule itself, not the student, causes the lost focus.”</i> The fact is the same a restater would use; the Clarify is the second half that explains how it supports the point. <span style='opacity:.7'>(You'll repair a broken one yourself just below — that's where the move sticks.)</span>",
+     pair:[{ok:false,t:"“The text says teens are tired in the morning.” <span style='opacity:.7'>(repeats the fact — restate)</span>"},
+           {ok:true,t:"“The text says teens are tired in the morning, which shows the early start fights their biology — so the schedule itself, not the student, causes the lost focus.”"}],
+     same:[
+       "“Teens average fewer than 8 hours on school nights, <b>which shows</b> the schedule asks them to learn before their bodies are ready.”",
+       "“The typical school starts at 8:03 a.m. <b>For a teen whose brain isn't alert until later, that means the hardest thinking happens at its worst hour.</b>”",
+       "“Pediatricians recommend no start before 8:30. <b>The gap between that advice and the real 8:03 average is the whole problem — the schedule, not the student, drives the lost focus.</b>”"],
+     test:"Now you — here's a different fact from the passage. Add the Clarify: explain how it supports the focus (try <i>which shows…</i> or <i>this means…</i>)."},
+   {kind:"repair", flaw:"This only restates the fact — no Clarify", nearmiss:"“The CDC says 72.7% of students sleep fewer than 8 hours on school nights.”",
+     q:"That sentence stops at the fact. <b>Repair it:</b> keep the fact, then add the Clarify — explain how it supports the idea that the schedule, not the student, causes the shortfall.",
+     id:"l11", ph:"72.7% sleep fewer than 8 hours, which shows / which means…"},
+   {kind:"selfcheck", q:"Read your sentence back. Does it explain <i>how</i> the fact supports the point, or does it just restate? If it only restates, fix it before you move on.", id:"l11s", ph:"My sentence explains how because… (or: I need to fix it — it still just restates)"}],
+ check:{id:"l11", min:6, good:"which|means|shows|because|so |causes|gap|leads|matters",
+   coach:"You've got the fact down — now add the Clarify. Right now it <i>restates</i> what the text says; say <i>how</i> it supports your point (try “which shows…” or “this means…”). You're one move away.",
+   ok:"That's the Clarify move — you didn't just repeat the fact, you said <i>how</i> it supports the point. That's the single thing that moves a response from a 2 to a 3."},
+ design:{srsd:"Model It / Support It", phase:"Draft · ★ frontier · Heavy", strat:"FACT-C: explain how evidence supports the point",
+   g:"real", gclaim:"The warrant move — explain how, not that — is the dominant 3→2→1 lever on the STAAR rubric.",
+   quote:"Purdue OWL Toulmin: the warrant is “the assumption that links the grounds to the claim.” UNC Writing Center “Paragraphs”: “none of your examples should be left unexplained.” C5 S-INF: 3 = “clearly explained,” 2 = “insufficiently explained.”",
+   grade:"Rubric B: D1✓ D2✓ (pair+3 sameness) D3✓ D4✓ D5✓ D6✓ D7✓"}},
+
+/* ---- 1.2 ---- */
+{code:"1.2", title:"Read for the idea", gate:false, core:false,
+ sub:"Before you can explain a text, you have to know what it's saying. Find the <b>Focus</b> — the passage's controlling idea in one sentence. This step's comprehension check is <b>scored separately</b> from your writing, so a misread routes you to re-read support, not a writing penalty.",
+ stds:[S("teks","TEKS EI.4(F)"),S("teks","EI.4(G)"),S("teks","EI.5(B)"),S("ccss","CCSS 9-10RI.1")],
+ src:"sleep", factActive:["F"], factNote:"This lesson lives in the F — finding the controlling idea before you write.",
+ blocks:[
+   {kind:"di", title:"Find the Focus before you write",
+     rule:"The <b>Focus</b> is the passage's controlling idea in one sentence — what it <i>mainly</i> explains. Not one fact from it; the big idea all the facts serve.",
+     model:"Watch me decide. I ask: <i>does this cover the whole passage, or just one corner of it?</i> “Schools start at 8:03” → one fact → too narrow. “The passage explains that teens need more sleep than the school schedule lets them get” → covers the whole thing → that's the Focus.",
+     pair:[{ok:false,t:"“This passage is about the CDC.” <span style='opacity:.7'>(names a source, not the idea — too narrow)</span>"},
+           {ok:true,t:"“The passage explains that most teens get less sleep than they need, partly because school starts earlier than experts advise.”"}],
+     test:"Now you — state this passage's Focus in one sentence, then answer the check below."},
+   {kind:"preread", q:"<b>Comprehension check</b> (scored separately): In one sentence, what does this passage mainly explain? Then: name one piece of evidence it gives.", id:"l12p", ph:"The passage mainly explains… ; one piece of evidence is…"},
+   {kind:"write", flab:"Now write the Focus as you'd use it — the controlling idea in your own words:", id:"l12", ph:"In one sentence: what is this passage mainly explaining?"}],
+ check:{id:"l12", min:6, good:"sleep|teen|school|start|8|hours|schedule|need|less",
+   coach:"That's a true detail, but it's narrower than the Focus — it's one fact, not what the passage is mainly explaining. Zoom out: in one sentence, what's the big idea? You're close.",
+   ok:"You found the Focus — that's the controlling idea the whole passage is built around, in one sentence. That's exactly what you'll write toward."},
+ design:{srsd:"Develop Background / Discuss It", phase:"Setup · Heavy", strat:"FACT-F: locate the controlling idea + separately-scored comprehension pre-read",
+   g:"real", gclaim:"A comprehension pre-read scored separately from writing lets the grader tell “didn't read” from “can't write.”",
+   quote:"STAAR “Hot Text” + close-reading TDQ ladder (read-for-the-idea is a proven item type). MVP brainlift SPOV 5: comprehension pre-read scored separately so a misread routes to re-read support.",
+   grade:"Rubric B: D1✓ D3✓ (Focus = rubric controlling-idea row) D5✓"}},
+
+/* ---- 1.3 ---- */
+{code:"1.3", title:"Cite + explain", gate:false, core:true,
+ sub:"The paragraph engine of the whole course: pull a specific detail from the passage (FACT's <b>A — Add details</b>) AND clarify it (the <b>C</b> from 1.1). A detail with no clarify is a <i>dropped quote</i> — the most common reason a response scores a 2 instead of a 3.",
+ stds:[S("teks","TEKS EI.5(C)"),S("teks","EI.5(D)"),S("teks","EI.9(B)(ii)"),S("ccss","CCSS 9-10W.9"),S("ccss","9-10W.2b")],
+ src:"pollinators", factActive:["A","C"], factNote:"This lesson joins A (cite the detail) to C (explain it) — the cite-then-explain pair.",
+ blocks:[
+   {kind:"di", title:"Cite, then explain — never a dropped quote",
+     rule:"<b>Add a detail</b> = name a specific fact from the passage. <b>Clarify</b> = explain how it supports your focus. A detail without a clarify is a <i>dropped quote</i> — it sits there and a reader thinks “so what?”",
+     model:"Here's the pair done well: <i>“The passage says 1 out of 3 bites of food depends on pollinators, <b>which shows</b> how deeply our everyday meals rely on a process most people never see.”</i> A specific cited detail, then the Clarify that explains how it supports the focus — never a quote left sitting alone. <span style='opacity:.7'>(You'll repair a dropped one yourself just below.)</span>",
+     pair:[{ok:false,t:"“The passage says 1 out of 3 bites of food depends on pollinators.” <span style='opacity:.7'>(dropped quote — no clarify)</span>"},
+           {ok:true,t:"“The passage says 1 out of 3 bites of food depends on pollinators, which shows how deeply our everyday meals rely on a process most people never see.”"}],
+     same:[
+       "“More than 75% of flowering plants are pollinated by animals — <b>a figure that tells us pollinators matter far beyond the food aisle, all the way to wild ecosystems.</b>”",
+       "“Honey-bee pollination added over $19 billion to crops in 2010. <b>That dollar figure is why the passage frames pollinator health as a farming issue, not just a nature one.</b>”",
+       "“Pollinators support more than 1,200 food crops. <b>Put next to one bee on one flower, that number is the point: the effect is enormous only because it's repeated millions of times.</b>”"],
+     test:"Now you — cite one detail the models did NOT use, then clarify it."},
+   {kind:"repair", flaw:"This is a dropped quote — cited, but not explained", nearmiss:"“The text says pollinators support more than 180,000 types of plants.”",
+     q:"That detail is just dropped on the page. <b>Repair it:</b> keep the cited fact, then add the Clarify — explain how it supports the focus (that pollinators matter far beyond the food we eat).",
+     id:"l13", ph:"The text says pollinators support 180,000 plant types, which shows / which means…"},
+   {kind:"selfcheck", q:"Read your sentence back. Is the detail still a dropped quote, or did you add the Clarify (how it supports the focus)? If it's dropped, fix it.", id:"l13s", ph:"My detail is explained because… (or: still dropped — needs the Clarify)"}],
+ check:{id:"l13", min:8, good:"which|means|shows|because|so |why|matters|tells us|reveals",
+   coach:"You cited a real detail from the passage — good. But it's a <i>dropped quote</i> right now: it's sitting there without the Clarify. Add one sentence saying how it supports your focus, and it's a 3.",
+   ok:"Strong cite-and-explain: you named a specific detail AND clarified how it supports your focus — no dropped quote. That's the paragraph engine working."},
+ design:{srsd:"Support It", phase:"Draft · ★ · Heavy→Medium", strat:"FACT A+C: cite-then-explain (the dropped-quote fix)",
+   g:"real", gclaim:"“Drops quotes without explanation” is the #1 negative exemplar in the STAAR scoring guides (“instead of explaining the evidence”).",
+   quote:"C5 negative exemplar #1: “Instead of explaining the evidence…” → the S-INF evidence 3→1 lever. SRSD Activity Specs: dropped quote → add the “this shows” link (coping model).",
+   grade:"Rubric B: D1✓ D2✓ (pair+3 sameness) D3✓ D4✓ D5✓ D6✓ D7✓"}},
+
+/* ---- 1.4 ---- */
+{code:"1.4", title:"Controlling idea from a passage", gate:false, core:false,
+ sub:"Refine a response into a clear <b>controlling idea</b> about the passage's content — a thesis as <i>refinement</i> of the reasoning you've already built. It names what the passage explains <b>and</b> the specific point you'll develop — not a vague topic label.",
+ stds:[S("teks","TEKS EI.9(B)(i)"),S("teks","EI.9(B)(ii)"),S("teks","EI.5(G)"),S("ccss","CCSS 9-10W.2a"),S("ccss","9-10W.4")],
+ src:"pollinators", factActive:["F"], factNote:"Back to F — but now a crafted controlling idea, not just a located one.",
+ blocks:[
+   {kind:"di", title:"Refine your Focus into a controlling idea",
+     rule:"A controlling idea is a Focus you've <i>sharpened</i>: it says what the passage explains AND the specific point you'll develop about it — not a vague topic label.",
+     model:"Watch me sharpen. Vague: <i>“This passage is about pollinators.”</i> — true, but it's a label; a reader doesn't know my point. I refine: <i>“This passage explains that pollinators quietly support a huge share of our food and ecosystems, which is why scientists treat their decline as a serious risk.”</i> Now it names the point I'll develop.",
+     pair:[{ok:false,t:"“This passage is about pollinators.” <span style='opacity:.7'>(a topic label — no point)</span>"},
+           {ok:true,t:"“This passage explains that pollinators support a surprisingly large share of our food and plant life, which makes their decline a real concern.”"}],
+     test:"Now you — refine a working focus on the pollinator passage into a controlling idea that names your point. <i>(New passage from the one the model used — so the move transfers, not copies.)</i>"},
+   {kind:"write", flab:"Your controlling idea — what the passage explains + the specific point you'll develop:", id:"l14", ph:"This passage explains that… , which…"}],
+ check:{id:"l14", min:8, good:"which|because|so |explains|shows|support|matters|why|food|plant|ecosystem",
+   coach:"That names the topic but not your point yet — it's a label, not a controlling idea. Sharpen it: what specifically does the passage <i>show</i> about this? You've done the thinking; now make the sentence say it.",
+   ok:"That's a controlling idea, not just a topic — it names what the passage explains <i>and</i> the specific point you'll develop. A reader knows exactly where you're headed."},
+ design:{srsd:"Model It + Support It", phase:"Outline · Medium", strat:"FACT-F refined: thesis-as-refinement (after the reasoning)",
+   g:"synth", gclaim:"Reasoning before the REFINED thesis: the controlling idea is taught as a refinement of reasoning already built — “developing the thesis is the problem, not stating it.”",
+   quote:"Purdue OWL “Tips for Writing Thesis Statements” supports SPECIFIC (avoid too-broad); the arguable/refinement idea is sourced to RWT “not immediately self-evident” + UNC “Thesis Statements” (working thesis as refinement). [Tips page does NOT carry the “arguable” language — cited per-phrase.]",
+   grade:"Rubric B: D1✓ (per-phrase citations) D2✓ D3✓ D4✓ (new-passage test) D5✓ D7✓"}},
+
+/* ---- 1.5 ---- */
+{code:"1.5", title:"Bridge gate — short expository response", gate:true, core:true,
+ sub:"No new move — you assemble all four FACT moves into a short expository response: a controlling idea + two explained-evidence paragraphs + a close. This is the gate: <b>no FACT fields, no model, a passage you've never seen, one attempt.</b> FACT is now in your head.",
+ stds:[S("teks","TEKS EI.9(A)"),S("teks","EI.9(B)(i)(ii)"),S("teks","EI.10(B)"),S("teks","EI.5(C)"),S("ccss","CCSS 9-10W.2"),S("ccss","9-10W.4"),S("ccss","9-10W.9")],
+ src:"pollinators", srcReserved:true, factActive:[], factNote:"No card at the gate — recall FACT from memory. That's the point of the gate.",
+ blocks:[
+   {kind:"gate", html:"<b>Gate conditions.</b> This is a cold, single-attempt check on a reserved passage you haven't worked with. No FACT fields, no tutorial, no revision loop — exactly like the test. If you fail, you don't lose access: you get targeted practice (scaffold restored) and a <i>fresh</i> reserved passage to try again. Never the same passage twice."},
+   {kind:"testbox", html:"<b>Before you write, recall FACT from memory:</b> Focus (your controlling idea) · Add details (evidence from the passage) · Clarify (how each detail supports the focus) · Tie up (a close that connects back). The optional self-check below tells us whether you've internalized it — it doesn't change your score."},
+   {kind:"write", flab:"Write your short expository response (controlling idea + 2 explained-evidence paragraphs + close):", id:"l15", ph:"Open with your controlling idea about what the passage explains…", big:true},
+   {kind:"preread", q:"Optional self-check (tracked, not scored): which FACT move are you least sure you included?", id:"l15s", ph:"I'm least sure about my… (F / A / C / T)"}],
+ check:{id:"l15", min:40, good:"which|means|shows|because|so |1 out of 3|75|1,200|19 billion|pollinat|crops|flower",
+   coach:"Keep going — a full response needs a controlling idea, then at least two details each with a Clarify (how it supports the focus), then a close. Aim for the FACT shape from memory.",
+   ok:"You assembled all four FACT moves cold, on a passage you'd never seen — Focus, Add details, Clarify, Tie up. That's the bridge: you carried the strategy in, no scaffold. <i>(On a real gate this is one attempt, graded on the STAAR informational rubric: Trait 1 ≥2 and Trait 2 ≥1 to pass.)</i>"},
+ design:{srsd:"Independent Performance", phase:"Draft · Light→None · COLD GATE", strat:"Mastery gate — FACT assembled cold, reserved passage, single attempt",
+   g:"real", gclaim:"The first unscaffolded write must come before the test, not be the test. FACT internal by the gate = the memorize-to-automaticity payoff.",
+   quote:"SRSD Activity Specs Tier 2/3 mastery gate (no scaffold, one shot, assigned passage). C4: reserved-stimulus discipline (held out of instruction → genuine cold transfer). C5: S-INF, Trait 1 ≥2 & Trait 2 ≥1; rescore-loop is practice-only.",
+   grade:"Rubric A A7 cleared: cold/single-attempt/reserved + stated re-gate policy"}}
+];
+
+/* ============================================================ RENDER */
+const FW={teks:"TEKS",ccss:"CCSS",act:"ACT"};
+const GLABEL={real:"From a real lesson",synth:"Our synthesis",new:"New ground"};
+function chip(s){return '<span class="chip '+s.fw+'">'+s.code+'</span>';}
+
+function renderSource(key,reserved){
+  const s=SOURCES[key];
+  return '<div class="src__q">'+(reserved?'🔒 Reserved passage — ':'')+s.q+'</div>'+
+    '<div class="src__meta">'+s.meta+(reserved?' · held out of instruction':'')+'</div>'+
+    '<div class="src__passage">'+s.paras.map(p=>'<p>'+p+'</p>').join('')+'</div>';
+}
+
+function renderBlock(b){
+  switch(b.kind){
+    case "di":
+      return '<div class="di"><div class="di__h"><span class="di__tag">Direct Instruction</span><span class="di__mlt">Model → Lead → Test</span>'+
+        (b.title?'<span class="di__t">'+b.title+'</span>':'')+'</div><div class="di__body">'+
+        '<div class="di__rule"><b>The rule:</b> '+b.rule+'</div>'+
+        '<div class="di__move"><span class="di__lbl model">Model · watch me (coping)</span>'+b.model+'</div>'+
+        (b.pair?'<div class="di__move">'+b.pair.map(p=>'<div class="ex '+(p.ok?'yes':'no')+'"><span class="mk">'+(p.ok?'✓':'✗')+'</span><span>'+p.t+'</span></div>').join('')+'</div>':'')+
+        (b.same?'<div class="di__move"><span class="di__lbl same">Same move, three ways (don’t bind it to one phrase)</span>'+
+          b.same.map(s=>'<div class="ex yes"><span class="mk">✓</span><span>'+s+'</span></div>').join('')+'</div>':'')+
+        '<div class="di__test">↳ <b>Your turn:</b> '+b.test+'</div></div></div>';
+    case "repair":
+      return '<div class="repair"><div class="repair__h">🔧 Fix the near-miss — recognize what’s missing, then write the fix</div>'+
+        '<div class="repair__nm"><span class="repair__tag">'+b.flaw+'</span>'+b.nearmiss+'</div>'+
+        '<p class="q" style="font-weight:500">'+b.q+'</p>'+
+        '<textarea class="ta" id="'+b.id+'" placeholder="'+b.ph+'"></textarea></div>';
+    case "selfcheck":
+      return '<div class="preread" style="border-left-color:var(--argue);background:var(--argue-t)"><div class="preread__h" style="color:#1F5C3F">✎ Judge your own writing (the self-check that transfers)</div>'+
+        '<p class="q" style="font-weight:500">'+b.q+'</p><textarea class="ta" id="'+b.id+'" placeholder="'+b.ph+'"></textarea></div>';
+    case "preread":
+      return '<div class="preread"><div class="preread__h">📖 '+(b.q.indexOf('self-check')>-1?'Self-check':'Comprehension check')+(b.q.indexOf('separately')>-1?'<span class="sc">scored separately</span>':'')+'</div>'+
+        '<p class="q" style="font-weight:500">'+b.q+'</p><textarea class="ta" id="'+b.id+'" placeholder="'+b.ph+'"></textarea></div>';
+    case "write":
+      return (b.flab?'<div class="flab">'+b.flab+'</div>':'')+'<textarea class="ta" id="'+b.id+'" placeholder="'+b.ph+'"'+(b.big?' style="min-height:150px"':'')+'></textarea>';
+    case "testbox": return '<div class="testbox">'+b.html+'</div>';
+    case "meetfact": return '<div class="meetfact">'+b.html+'</div>';
+    case "gate": return '<div class="gate">'+b.html+'</div>';
+    default: return '';
+  }
+}
+
+function renderDesign(d){
+  return '<div class="design"><div class="design__h"><span class="srsd">SRSD: '+d.srsd+'</span><span>'+d.phase+'</span><span class="strat">Strategy: '+d.strat+'</span></div>'+
+    '<div class="dgrid">'+
+      '<div class="dpanel"><div class="dl">🧠 What this teaches</div>'+d.strat+'</div>'+
+      '<div class="dpanel"><div class="dl">🏷 Standards</div>'+''+'<div style="display:flex;gap:5px;flex-wrap:wrap"></div></div>'+
+      '<div class="dpanel span"><div class="dl">📚 Grounding & source</div><span class="gtagb '+d.g+'">'+GLABEL[d.g]+'</span> '+d.gclaim+'<div style="margin-top:6px;font-style:italic;color:var(--faint)">'+d.quote+'</div></div>'+
+      '<div class="dpanel span"><div class="dl">✓ Quality bar (acceptance rubric)</div><span class="rubricgrade">'+d.grade+'</span></div>'+
+    '</div></div>';
+}
+
+function renderLesson(i){
+  const L=LESSONS[i];
+  const rail='<aside class="rail"><div class="rail__h">Your source — read it, then write from it</div><div class="rail__b">'+
+    renderSource(L.src,L.srcReserved)+factCard(L.factActive,L.factNote)+'</div></aside>';
+  const blocks=L.blocks.map(renderBlock).join('');
+  const head='<div class="lhead"><div class="eyebrow">Lesson '+L.code+(L.gate?' · BRIDGE GATE':'')+(L.frontier?' · ★ FRONTIER MOVE':'')+'</div>'+
+    '<h1>'+L.title+'</h1><p>'+L.sub+'</p><div class="stds">'+L.stds.map(chip).join('')+'</div></div>';
+  const banner='<div class="dbanner"><h4>How this lesson is built (design layer)</h4>This unit follows the validated C1 spec (English I, Reading-to-Write Foundations, expository response-to-text). Each lesson installs <b>one</b> FACT move, fades scaffold Heavy→internal across 1.1→1.5, and is graded against the project acceptance rubric (shown per step). Coach/feedback strings use the Yeager “wise-feedback” voice. Toggle off for the student view.</div>';
+  const fdesign=renderDesign(L.design);
+  const main=head+banner+'<div class="layout">'+rail+'<div>'+
+    '<div class="step"><div class="step__h"><span class="step__n'+(L.core?' core':'')+'">Lesson '+L.code+'</span><span class="step__t">'+L.title+'</span>'+(L.core?'<span class="step__core">⭐ core move</span>':'')+'<span class="step__phase">'+L.design.phase+'</span></div>'+
+    '<div class="step__b">'+blocks+
+      (L.check?'<button class="btn" id="btn">'+(L.gate?'Submit (gate — one attempt)':'Check my work')+'</button><div class="fb-slot"></div>':'')+
+      fdesign+
+    '</div></div>'+
+    '</div></div>';
+  document.getElementById('main').innerHTML=main;
+  document.querySelectorAll('.navitem').forEach((n,j)=>n.classList.toggle('active',j===i));
+  document.getElementById('barlesson').textContent='Lesson '+L.code+' · '+(i+1)+' of '+LESSONS.length;
+  // bind
+  const btn=document.getElementById('btn');
+  if(btn) btn.addEventListener('click',()=>runCheck(L,btn));
+  window.scrollTo(0,0);
+}
+
+function wc(v){return (v.trim().match(/\S+/g)||[]).length;}
+function runCheck(L,btn){
+  const c=L.check; const el=document.getElementById(c.id); const v=el?el.value:'';
+  const slot=document.querySelector('.fb-slot');
+  if(wc(v)<c.min){ slot.innerHTML='<div class="fb coach">'+c.coach+'</div>'; return; }
+  if(c.good){ const good=new RegExp(c.good,'i'); if(!good.test(v)){ slot.innerHTML='<div class="fb coach">'+c.coach+'</div>'; return; } }
+  slot.innerHTML='<div class="fb ok">'+c.ok+'</div>'; btn.classList.add('done'); btn.textContent='✓ done';
+}
+
+/* nav */
+const navlist=document.getElementById('navlist');
+LESSONS.forEach((L,i)=>{
+  const b=document.createElement('button'); b.className='navitem';
+  b.innerHTML='<span class="code">Lesson '+L.code+'</span><span class="lt">'+L.title+'</span>'+(L.gate?'<span class="gt">BRIDGE GATE</span>':'');
+  b.addEventListener('click',()=>renderLesson(i)); navlist.appendChild(b);
+});
+document.getElementById('designToggle').addEventListener('change',e=>document.body.classList.toggle('design-on',e.target.checked));
+renderLesson(0);
+</script>
+</body>
+</html>

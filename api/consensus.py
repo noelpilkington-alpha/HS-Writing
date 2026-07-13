@@ -190,7 +190,7 @@ def _judge_call_criteria(
 
 def _get_total_score(result: dict, scoring_model: str) -> int:
     """Extract the total score from a grading result dict."""
-    if scoring_model == "ap_rubric":
+    if scoring_model in ("ap_rubric", "rubric_config"):
         return result.get("total", 0)
     elif scoring_model in ("criteria", "hybrid", "planning"):
         return result.get("criteria_met", 0)
