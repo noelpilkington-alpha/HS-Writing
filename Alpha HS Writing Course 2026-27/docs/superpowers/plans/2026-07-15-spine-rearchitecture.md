@@ -28,6 +28,15 @@ draft). Council verified all 35 have wrapper+verdict pointing at the SAME visibl
 mismatches. Converting paragraph diagnosis to own-draft-only would prematurely strip the scaffold at the grain
 where it is most warranted. VERDICT: sound-as-is, no edits. Task 6 closed with 0 lesson changes.
 
+## Task 8 (T4 analysis + T5 revision) - NO CHANGES NEEDED (2026-07-15)
+
+Verified: all 20 T4/T5 lessons already conform. Grain is derived from the terminal production unit, so T4/T5
+lessons were distributed across the sentence and paragraph grains (NONE are essay-grain) and were already
+handled by those passes: the sentence-grain T4/T5 got their second discrimination (Task 7), the paragraph-grain
+ones use the sound provided-weak-draft coping-model diagnosis (Task 6, verified sound-as-is). Deterministic
+check: 0 phantom-draft mismatches, 0 grain-crosscheck failures across all 20. Full-course grain crosscheck =
+100/100 conform. Task 8 closed with 0 additional lesson changes.
+
 ## Global Constraints
 
 - NO em dashes anywhere in student-facing lesson content or authored prompts (use commas, colons, parentheses). Enforced by `gate_no_em_dash`.
