@@ -135,60 +135,61 @@ LESSON = Lesson(
                    "Two decisions govern the whole section: name the TYPE from its tell before you plan, and "
                    "BUDGET the section so the third essay is never abandoned. Aim for the sophistication point. "
                    "There is no clock; take the time you need.")),
-        # ===== UNSCORED section plan (a map for the three cold writes; not a certification write) =====
-        Slot("SUPPORTED", "production_frq", "Plan your section (not graded)",
+        # ===== UNSCORED section-budget plan (a map for the three cold writes; not a certification write).
+        # BUDGET only: it precedes the sources, so it does NOT ask the student to name types yet (no tell is
+        # visible) and does NOT pre-label the FRQ types (that naming IS the assessed skill, done at each FRQ). =====
+        Slot("SUPPORTED", "production_frq", "Plan your section budget (not graded)",
              ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=False, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="Before you write, lay out a plan for the whole section. This plan is not graded; it is "
-                       "your map for the three cold essays.",
-                 setapart_block=setapart("Fill in this plan:",
-                                         "Section budget: FRQ 1 (synthesis) ______ share. FRQ 2 (rhetorical analysis) ______ share. FRQ 3 (argument) ______ share. For each FRQ, name its type from the tell and the one move-set you will run."),
-                 closer="Then write the three FRQs from this plan, keeping to your budget so all three finish.")),
+                 intro="This section has three FRQs. Before you start, set a budget so the third essay is never "
+                       "abandoned. This plan is not graded; it is your map. You will name each FRQ's type and "
+                       "plan its moves when you reach it, once you can read its tell.",
+                 setapart_block=setapart("Set your budget:",
+                                         "FRQ 1 ______ share of your time. FRQ 2 ______ share. FRQ 3 ______ share. As you reach each FRQ, name its type from the tell, then run that type's moves."),
+                 closer="Then work through the three FRQs in order, keeping to your budget so all three finish.")),
 
-        # ===== FRQ 1 (synthesis): held-out source set, cold write =====
-        Slot("TEACH", "stimulus_display", "FRQ 1: a source set on a renewable grid (synthesis)",
+        # ===== FRQ 1: held-out multi-source set, cold write. Type NOT named (naming it is the assessed skill). =====
+        Slot("TEACH", "stimulus_display", "FRQ 1: read the prompt and name its type",
              ref="ACC-W910-SYNTH-SET-0001", bank="renewable_grid_synthesis",
-             body=("Read the first FRQ, a set of four sources on whether the United States power grid can run "
-                   "mostly on renewable energy. Name its type from the tell (a source set, so synthesis), then "
-                   "write a full synthesis that weaves at least three sources into one argument, weights them, "
-                   "and situates the claim. The texts stay on screen while you work.")),
-        Slot("TRANSFER", "production_frq", "GATE: write FRQ 1 (synthesis)",
+             body=("Here is the first FRQ, a set of four sources on whether the United States power grid can run "
+                   "mostly on renewable energy. Read the tell and name the type yourself, then run that type's "
+                   "moves and write the full response. The texts stay on screen while you work.")),
+        Slot("TRANSFER", "production_frq", "GATE: write FRQ 1",
              ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=True, unit="essay",
              body=frq_prompt(
-                 intro="The gate, FRQ 1. On your own, write the whole synthesis on the renewable-grid set.",
-                 closer="Write a complete synthesis: a situated claim, body paragraphs that weave at least three "
-                        "sources into one argument and weight them, and a conclusion that defends a position. "
-                        "Keep to your section budget so FRQs 2 and 3 still get finished. There is no time limit.")),
+                 intro="The gate, FRQ 1. Name the type from the tell, then on your own write the full response to "
+                       "this FRQ.",
+                 closer="Run the moves that match the type you named, use the sources as that type requires, and "
+                        "write a complete, situated response with a conclusion that defends a position. Keep to "
+                        "your section budget so FRQs 2 and 3 still get finished. There is no time limit.")),
 
-        # ===== FRQ 2 (rhetorical analysis): a DIFFERENT type + held-out passage, cold write =====
-        Slot("TRANSFER", "stimulus_display", "FRQ 2: a single passage to analyze (rhetorical analysis)",
+        # ===== FRQ 2: a DIFFERENT type + held-out passage, cold write. Type NOT named for the student. =====
+        Slot("TRANSFER", "stimulus_display", "FRQ 2: read the prompt and name its type",
              ref="ACC-W910-RA-SINGLE-0002", bank="ra_speech_2",
-             body=("The second FRQ is a different type: a single passage that asks how the writer builds the "
-                   "argument. Name the type (one passage asking how, so rhetorical analysis), then analyze the "
-                   "writer\'s choices and their effect on the audience, not the topic itself. Keep to your "
+             body=("Here is the second FRQ: a single passage with its own tell. Read it, name the type yourself, "
+                   "and notice it is a different type from FRQ 1, so it needs different moves. Keep to your "
                    "section budget. The text stays on screen while you work.")),
-        Slot("TRANSFER", "production_frq", "GATE: write FRQ 2 (rhetorical analysis)",
+        Slot("TRANSFER", "production_frq", "GATE: write FRQ 2",
              ref="", bank="ra_speech_2", rubric_ref="rc.ap", scored=True, unit="essay",
              body=frq_prompt(
-                 intro="FRQ 2, a new type: analyze how the writer builds the argument for the audience.",
-                 closer="Write a full rhetorical analysis: a situated introduction, body paragraphs that tie the "
-                        "writer\'s choices to their effect on the audience, and a conclusion, aiming for the "
-                        "sophistication point. A different type from FRQ 1, so different moves. Keep to your "
-                        "section budget; there is no time limit.")),
+                 intro="FRQ 2. Name the type from the tell, then write the full response.",
+                 closer="Run the moves that match the type you named and write a complete, situated response with "
+                        "a conclusion, aiming for the sophistication point. A different type from FRQ 1, so "
+                        "different moves. Keep to your section budget; there is no time limit.")),
 
         # ===== FRQ 3 (argument, no source): the THIRD type, cold write. Different prompt from the PP100 mastery
         # FRQ 3 so mastery stays a fresh cold task; bank partitioned from the taught set. =====
-        Slot("TRANSFER", "production_frq", "GATE: write FRQ 3 (argument)",
+        Slot("TRANSFER", "production_frq", "GATE: write FRQ 3",
              ref="", bank="argument_no_source", rubric_ref="rc.ap", scored=True, unit="essay",
              body=frq_prompt(
-                 intro="The last FRQ, a third type: argument, with NO source. The tell is a general question, "
-                       "so take a position and defend it from your own knowledge and examples.",
-                 setapart_block=setapart("Your argument prompt:",
+                 intro="The last FRQ. Read the tell and name its type yourself: notice there is no passage this "
+                       "time, only a general question. Name the type, then write the full response.",
+                 setapart_block=setapart("Your prompt:",
                                          "Some people hold that a willingness to fail is necessary for real achievement, while others argue that failure mostly discourages people and slows them down. Take a position on the role that failure should play in the pursuit of worthwhile goals."),
-                 closer="Write a full argument essay: a thesis that states your position, body paragraphs that "
-                        "anchor it with specific examples, and a conclusion. Your evidence comes from your own "
-                        "knowledge. Keep to your section budget so all three FRQs finish, and aim for the "
-                        "sophistication point. This completes the full section, run on your own.")),
+                 closer="Run the moves that match the type you named: a thesis that states your position, body "
+                        "paragraphs that anchor it with specific examples, and a conclusion. With no passage, "
+                        "your evidence comes from your own knowledge. Keep to your section budget so all three "
+                        "FRQs finish, and aim for the sophistication point. This completes the full section.")),
         # ===== POST-HOC self-score: judge the finished section against the section check (calibration) =====
         Slot("INDEPENDENT", "self_score", "Score your own section, then predict the gate result",
              ref="", bank="argument_no_source",
