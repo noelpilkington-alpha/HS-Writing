@@ -142,7 +142,8 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Argue task: which sentence is the right product?",
              ref="", labeled_grade_c=True, bank="four_day_week",
              body=("Read the verb, then pick the sentence that is the RIGHT product. The task: ARGUE whether "
-                   "schools should switch to a four-day week. Which sentence fits that verb?"),
+                   "schools should switch to a four-day week. An argue task calls for a claim that takes a side "
+                   "AND backs it with a reason. Which sentence is that finished product?"),
              choices=[
                  {"id": "A",
                   "text": "A four-day school week touches students, teachers, and families in several important "
