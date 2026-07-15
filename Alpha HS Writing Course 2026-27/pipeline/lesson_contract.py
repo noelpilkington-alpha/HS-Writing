@@ -23,6 +23,7 @@ Dependency-free (stdlib only; scans the sibling bank dirs for id existence).
 """
 from __future__ import annotations
 import re, os, sys, glob
+import importlib.util
 from dataclasses import dataclass, field
 from typing import Literal
 
@@ -70,6 +71,34 @@ LESSON_TYPES = {
 UNIT_LADDER = ["sentence", "paragraph", "multi_paragraph", "essay"]
 UNIT_RANK = {u: i for i, u in enumerate(UNIT_LADDER)}
 
+
+def grain(L) -> str:
+    """The lesson's grain = the highest unit-ladder rank among its scored production_frq slots.
+    Falls back to 'sentence' if no scored production exists. (Spine re-architecture: the spine density is
+    keyed on grain, derived from the terminal production unit, not the lesson title.)"""
+    units = [s.unit for s in L.slots if s.kind == "production_frq" and getattr(s, "unit", "")]
+    if not units:
+        return "sentence"
+    return max(units, key=lambda u: UNIT_RANK.get(u, 0))
+
+
+# Required slot shape per (class, grain), from SPINE_DELIBERATION_verdict.md. gate is class-level
+# (grain-independent). "revision_or_coached_transfer": paragraph grain and above pass with EITHER an own-draft
+# diagnosis_frq OR exactly one coached (feedback-bearing) TRANSFER write, never both. multi_paragraph is treated
+# as paragraph-family (verdict language "paragraph grain and above"); it is a documented interpolation.
+GRAIN_TEMPLATES = {
+    "gate": {
+        "banned_kinds": {"annotated_before_after", "discrimination", "predict_the_fix"},
+        "require_kinds": {"production_frq"},   # a cold write
+        "max_scored_writes": 1,                 # ONLY the cold write is scored; the plan is a scored=False affordance
+    },
+    ("practice", "sentence"): {"discrimination_min": 2, "production_writes": (2, 3)},
+    ("practice", "paragraph"): {"discrimination_min": 1, "production_writes": (2, 3), "revision_or_coached_transfer": True},
+    ("practice", "multi_paragraph"): {"discrimination_min": 1, "production_writes": (1, 3), "revision_or_coached_transfer": True},
+    ("practice", "essay"): {"discrimination_max": 1, "production_writes": (1, 1), "revision_or_coached_transfer": True,
+                            "no_transfer_write": True},
+}
+
 @dataclass
 class Slot:
     role: Role
@@ -85,6 +114,10 @@ class Slot:
     unit: str = ""           # production slots: the UNIT of production written here.
                              # "" = not a sized production; else one of UNIT_LADDER (sentence..essay).
                              # Enforces the TWR sentence->paragraph->composition scaffold (see gates below).
+    choices: list = field(default_factory=list)   # OPTIONAL explicit MCQ options for discrimination/predict:
+                             # [{"id":"A","text":"...","correct":bool,"why":"why this option is right/wrong"}].
+                             # When present, the renderer uses these directly (reliable per-choice feedback)
+                             # instead of parsing options+reveal out of the body prose.
 
 @dataclass
 class Lesson:
@@ -99,27 +132,83 @@ class Lesson:
     fade_ledger_moves: list[str] = field(default_factory=list)
     provenance: dict = field(default_factory=dict)
     qc: dict = field(default_factory=dict)
+    # PP100 MASTERY task (held-out, task-specific): {"source": "<held-out stimulus id>", "prompt_html": "<the
+    # task-specific mastery instruction, authored to this lesson's skill, referencing the held-out source>",
+    # "unit": "<sentence|paragraph|multi_paragraph|essay>", "rubric_ref": "rc.*"}. The mastery pusher renders
+    # this (source block + prompt_html) instead of reusing the in-lesson INDEPENDENT write, so mastery is a
+    # genuinely fresh, task-specific cold assessment. Empty -> pusher falls back to the held-out generic path.
+    mastery: dict = field(default_factory=dict)
+    # lesson CLASS: "practice" (the default teaching lesson, full grain-differentiated arc) or "gate" (a unit
+    # certification: scaffold-free cold write, per the spine re-architecture verdict). Class-aware gates below
+    # relax the SRSD-arc / model-sequence / discrimination-before-production checks for gate lessons.
+    lesson_class: str = "practice"
 
 # ---- bank id index (scan once) --------------------------------------------
 
 def _bank_ids() -> set[str]:
     ids: set[str] = set()
-    for d in (STIMULUS_DIR, ITEM_DIR, os.path.join(HERE)):
+    # scan ALL grade stimulus banks (G9-G12) + item dir + HERE - NOT just STIMULUS_DIR (=G10). G9/G11/G12
+    # lessons bind refs from their own grade's Stimulus_Bank_*; a G10-only scan false-fails binding_integrity
+    # on every other grade (regression seen 2026-07-13 when lesson_contract was reverted to a G10-only version).
+    dirs = [ITEM_DIR, os.path.join(HERE)]
+    for g in ("G9", "G10", "G11", "G12"):
+        dirs.append(os.path.join(HERE, "..", f"Stimulus_Bank_{g}"))
+        dirs.append(os.path.join(HERE, "..", f"Item_Bank_{g}"))  # scan every grade's item bank, not just G10
+    seen = set()
+    for d in dirs:
         for f in glob.glob(os.path.join(d, "*.py")):
+            if f in seen:
+                continue
+            seen.add(f)
             try:
                 src = open(f, encoding="utf-8").read()
             except Exception:
                 continue
-            # ANY literal full id token: "ACC-W910-<FAMILY>-NNNN". Catches both id="..." AND ids passed
-            # as positional args to helper builders (e.g. mk("ACC-W910-SR-LANG-0001", ...) in sr_language.py
-            # and scr("ACC-W910-SR-SCR-0001", ...) in sr_scr_modifier.py, which an id="..."-only regex misses).
-            ids.update(re.findall(r'"(ACC-W910-[A-Z0-9\-]+-\d{4})"', src))
-            # bare literal id="..." without a trailing 4-digit block (defensive)
-            ids.update(re.findall(r'\bid\s*=\s*"(ACC-W910-[A-Z0-9\-]+)"', src))
-            # programmatic ids: id=f"ACC-W910-SR-ORG-{idnum:04d}"  ->  register the prefix as a family
-            for pre in re.findall(r'\bid\s*=\s*f"(ACC-W910-SR-[A-Z]+)-\{', src):
-                ids.add(pre + "-*")   # wildcard family marker
+            # ANY literal full id token "ACC-W<band>-<FAMILY>-NNNN" (band 910 or 1112). Catches id="..." AND
+            # ids passed positionally to helper builders (mk(...), scr(...)) that an id="..."-only regex misses.
+            ids.update(re.findall(r'"(ACC-W(?:910|1112)-[A-Z0-9\-]+-\d{4})"', src))
+            # bare literal id="..." with NO trailing 4-digit block - e.g. FRAME stimuli ACC-W910-FRAME-PHONEBAN.
+            ids.update(re.findall(r'\bid\s*=\s*"(ACC-W(?:910|1112)-[A-Z0-9\-]+)"', src))
+            # frame/stimulus records may set the id via other attrs (id=, sourced ids in rec builders):
+            ids.update(re.findall(r'"(ACC-W(?:910|1112)-FRAME-[A-Z0-9\-]+)"', src))
+            # programmatic ids: id=f"ACC-W910-SR-ORG-{idnum:04d}" cannot be read by a source regex, so
+            # EXECUTE the module and collect the CONCRETE .id of every generated item. This closes the
+            # family-wildcard fail-open (a bogus -9999 that was never generated no longer resolves). The
+            # "-*" wildcard is registered only as a fallback when exec fails, so an unloadable bank never
+            # silently blocks binding; that fallback path is the one place a bogus number can still pass.
+            # Only actual item-bank modules generate SR ids programmatically. Exclude the pipeline's own
+            # files (this module contains the pattern in comments), which would exec-fail and wrongly
+            # trigger the permissive wildcard fallback.
+            in_item_bank = os.sep + "Item_Bank_" in os.path.abspath(f)
+            if in_item_bank and re.search(r'\bid\s*=\s*f"ACC-W(?:910|1112)-SR-[A-Z]+-\{', src):
+                loaded = _concrete_ids_from_module(f)
+                if loaded:
+                    ids.update(loaded)
+                else:
+                    for pre in re.findall(r'\bid\s*=\s*f"(ACC-W(?:910|1112)-SR-[A-Z]+)-\{', src):
+                        ids.add(pre + "-*")   # fallback: exec failed, keep the old permissive behavior
     return ids
+
+
+def _concrete_ids_from_module(path: str) -> set[str]:
+    """Execute an item-bank module and return the concrete .id of every item it generates.
+    Item banks expose an ITEMS list of records with an .id attribute (see Item_Bank_*/sr_*.py)."""
+    out: set[str] = set()
+    try:
+        name = "ib_" + os.path.basename(path)[:-3].replace(".", "_")
+        spec = importlib.util.spec_from_file_location(name, path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+    except SystemExit:
+        mod = None
+    except Exception:
+        return out
+    for attr in ("ITEMS", "LESSONS", "RECORDS"):
+        for obj in getattr(mod, attr, []) or []:
+            rid = getattr(obj, "id", None)
+            if isinstance(rid, str) and rid.startswith("ACC-W"):
+                out.add(rid)
+    return out
 
 _BANK = None
 def bank_ids() -> set[str]:
@@ -142,35 +231,61 @@ def _ref_exists(ref: str) -> bool:
 
 def gate_shell_completeness(L: Lesson) -> tuple[bool, str]:
     roles = [s.role for s in L.slots]
-    for r in SHELL_ORDER:
+    if getattr(L, "lesson_class", "practice") == "gate":
+        # a gate is the Independent-Performance endpoint: a cue + a cold TRANSFER write. No full SRSD arc.
+        missing = {"TEACH", "TRANSFER"} - set(roles)
+        if missing:
+            return False, f"gate missing {missing} (needs a cue + a cold TRANSFER write)"
+        return True, "gate shell (cue + cold write) present"
+    # essay-grain practice lessons route TRANSFER out to the gate/PP100 (verdict), so the in-article shell
+    # ends at INDEPENDENT. Require the first four stages; TRANSFER is not expected at essay grain.
+    required = list(SHELL_ORDER)
+    if getattr(L, "lesson_class", "practice") == "practice" and grain(L) == "essay":
+        required = [r for r in SHELL_ORDER if r != "TRANSFER"]
+    for r in required:
         if r not in roles:
             return False, f"SRSD shell incomplete: missing '{r}' stage"
-    # shell stages must appear in order (first occurrence of each role is monotincreasing)
-    firsts = [roles.index(r) for r in SHELL_ORDER]
+    # shell stages must appear in order (first occurrence of each required role is monotonic increasing)
+    firsts = [roles.index(r) for r in required]
     if firsts != sorted(firsts):
-        return False, f"shell stages out of order: {[(r, roles.index(r)) for r in SHELL_ORDER]}"
-    return True, "SRSD shell complete + in order (Teach->Model->Supported->Independent->Transfer)"
+        return False, f"shell stages out of order: {[(r, roles.index(r)) for r in required]}"
+    tail = "" if "TRANSFER" in required else " (essay grain: transfer routed to gate/PP100)"
+    return True, "SRSD shell complete + in order" + tail
 
 def gate_model_sequence(L: Lesson) -> tuple[bool, str]:
     """Modality-corrected Model slot: clean annotated before/after -> predict-the-fix (mechanisms 1-2 in
     MODEL), plus a student-generated diagnosis somewhere in the lesson (mechanism 4). Mechanism 3 (feedback
-    on the student's OWN draft) is the production_frq's grader feedback. NO passive-read messy think-aloud."""
+    on the student's OWN draft) is the production_frq's grader feedback. NO passive-read messy think-aloud.
+    Gate lessons are scaffold-free by design (verdict) -> exempt. The diagnosis (mechanism 4) is required only
+    at paragraph grain and above, and a coached (feedback-bearing) TRANSFER write satisfies it as an
+    alternative (paragraph transfer-flagged lessons); at sentence grain it folds into predict-the-fix."""
+    if getattr(L, "lesson_class", "practice") == "gate":
+        return True, "gate: model sequence not required (scaffold-free by design)"
     model = [s for s in L.slots if s.role == "MODEL"]
     kinds = {s.kind for s in model}
     if "annotated_before_after" not in kinds:
         return False, "MODEL missing the clean annotated before/after (mechanism 1: unambiguous worked example)"
     if "predict_the_fix" not in kinds:
         return False, "MODEL missing predict-the-fix (mechanism 2: student diagnoses BEFORE the reveal)"
-    if not any(s.kind == "diagnosis_frq" for s in L.slots):
-        return False, "no student-generated diagnosis slot (mechanism 4) anywhere in the lesson"
+    rank = UNIT_RANK.get(grain(L), 0)
+    needs_revision = rank >= UNIT_RANK["paragraph"]
+    has_diag = any(s.kind == "diagnosis_frq" for s in L.slots)
+    has_coached_transfer = any(s.kind == "production_frq" and s.role == "TRANSFER" and s.feedback.strip()
+                               for s in L.slots)
+    if needs_revision and not (has_diag or has_coached_transfer):
+        return False, ("paragraph grain or above needs EITHER an own-draft diagnosis_frq OR one coached "
+                       "(feedback-bearing) TRANSFER write (mechanism 4)")
     # predict-the-fix must carry a reveal (feedback-block)
     for s in model:
         if s.kind == "predict_the_fix" and not s.feedback.strip():
             return False, "predict-the-fix has no feedback reveal (feedback-block)"
-    return True, "Model = 4-mechanism async sequence (annotated before/after + predict-the-fix + diagnosis)"
+    return True, "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
 
 def gate_discrimination_before_production(L: Lesson) -> tuple[bool, str]:
-    """Grade-C move, LABELED as a design bet. A discrimination slot must appear before any production FRQ."""
+    """Grade-C move, LABELED as a design bet. A discrimination slot must appear before any production FRQ.
+    Gate lessons are scaffold-free (verdict) -> discrimination intentionally absent -> exempt."""
+    if getattr(L, "lesson_class", "practice") == "gate":
+        return True, "gate: discrimination intentionally absent (scaffold-free)"
     disc_idx = [i for i, s in enumerate(L.slots) if s.kind == "discrimination"]
     prod_idx = [i for i, s in enumerate(L.slots) if s.kind in ("production_frq", "diagnosis_frq")]
     if not disc_idx:
@@ -200,9 +315,17 @@ def gate_binding_integrity(L: Lesson) -> tuple[bool, str]:
 def gate_bank_partition(L: Lesson) -> tuple[bool, str]:
     """DI hard bank-partition: the TRANSFER slot's content bank must DIFFER from every taught
     (MODEL/SUPPORTED) content bank, so transfer is genuine, not recall of the same material."""
+    # gates ARE the cold transfer on a held-out source; the plan + cold write share that held-out bank by
+    # design, so bank-partition does not apply. Exempt gates outright.
+    if getattr(L, "lesson_class", "practice") == "gate":
+        return True, "gate: the cold write IS the transfer (partition n/a)"
     taught = {s.bank for s in L.slots if s.role in ("MODEL", "SUPPORTED") and s.bank}
     transfer = [s for s in L.slots if s.role == "TRANSFER"]
     if not transfer:
+        # essay-grain practice lessons route transfer to the gate + PP100 (verdict), so no in-article
+        # TRANSFER slot is expected -> exempt.
+        if getattr(L, "lesson_class", "practice") == "practice" and grain(L) == "essay":
+            return True, "essay grain: in-article transfer routed to gate/PP100 (no TRANSFER slot expected)"
         return False, "no TRANSFER slot"
     tbanks = {s.bank for s in transfer if s.bank}
     if not tbanks:
@@ -214,12 +337,21 @@ def gate_bank_partition(L: Lesson) -> tuple[bool, str]:
 
 def gate_calibration_discipline(L: Lesson) -> tuple[bool, str]:
     """Judge-then-reveal: any self_score slot must PRECEDE a production/grader reveal (predict THEN reveal).
-    KILL-list: never 'hand rubric + grade yourself'; ban person-praise. (W&H: overestimate bias g=0.206.)"""
+    KILL-list: never 'hand rubric + grade yourself'; ban person-praise. (W&H: overestimate bias g=0.206.)
+    EXCEPTION (gate lessons): the verdict places the gate's self_score AFTER the cold write as post-hoc
+    calibration (train the student to judge their own finished work against the rubric), so the predict-then-
+    reveal ordering does not apply to gates."""
     ss_idx = [i for i, s in enumerate(L.slots) if s.kind == "self_score"]
     prod_idx = [i for i, s in enumerate(L.slots) if s.kind in ("production_frq", "diagnosis_frq")]
-    for i in ss_idx:
-        if not any(j > i for j in prod_idx):
-            return False, "a self_score has no following graded reveal (must predict THEN reveal the gap)"
+    scored_prod_idx = [i for i, s in enumerate(L.slots)
+                       if s.kind in ("production_frq", "diagnosis_frq") and getattr(s, "scored", False)]
+    if getattr(L, "lesson_class", "practice") != "gate":
+        for i in ss_idx:
+            # valid EITHER as predict-then-reveal (a production follows) OR as post-hoc calibration on a
+            # scored write that PRECEDES it (the external grader reveals the truth on that write's submission).
+            follows_scored_write = any(j < i for j in scored_prod_idx)
+            if not any(j > i for j in prod_idx) and not follows_scored_write:
+                return False, "a self_score has no graded reveal (predict THEN reveal, or score a preceding graded write)"
     # ban person-praise in authored bodies/feedback (praise ~0.12; kill-list)
     praise = re.compile(r"\b(great job|good job|you'?re so smart|nice work|well done|you'?re a natural)\b", re.I)
     for s in L.slots:
@@ -310,7 +442,9 @@ def gate_no_prior_work_reference(L: Lesson) -> tuple[bool, str]:
 _TECH_TERMS = {
     "they-say/I-say": r"\bthey[- ]say\b|\bi[- ]say\b",
     "controlling idea": r"\bcontrolling idea\b",
-    "thesis": r"\bthesis\b",
+    # match the CONCEPT 'thesis' but NOT the STAAR rubric-trait label 'Thesis/Purpose' (a scoring category name,
+    # not the pedagogical term a lesson must define). Excludes 'thesis/purpose' and 'thesis/'.
+    "thesis": r"\bthesis\b(?!\s*/)",
     "claim (arguable)": r"\barguable claim\b",
     "attributive tag": r"\battributive tag\b",
     "appositive": r"\bappositive\b",
@@ -383,9 +517,13 @@ def gate_model_before_required(L: Lesson) -> tuple[bool, str]:
         if s.kind == "diagnosis_frq":
             if not saw_model:
                 return False, f"{s.role}/diagnosis_frq asks students to diagnose before any MODEL of how to diagnose"
-            # scaffold present: sentence frames, a checklist, or named steps in the prompt
-            if not re.search(r"(frame|checklist|step 1|first,|use this|fill in|sentence starter|template|"
-                             r"name the|say what|then say|prompt:)", s.body or "", re.I):
+            # scaffold present: sentence frames, a checklist, named steps, OR an authored list/set-apart block
+            # (<ol>/<li> = a real checklist rendered structurally; <div ... dashed> = a set-apart weak-draft/frame).
+            body = s.body or ""
+            has_structured = re.search(r"<ol\b|<li\b|border:1px dashed", body, re.I)
+            has_keyword = re.search(r"(frame|checklist|step 1|first,|use this|fill in|sentence starter|template|"
+                                    r"name the|say what|then say|prompt:|run the test|rewrite)", body, re.I)
+            if not (has_structured or has_keyword):
                 return False, (f"{s.role}/diagnosis_frq gives no scaffold (frames/checklist/named steps) for HOW "
                                f"to diagnose; novices need the move modeled + scaffolded, not a blank 'diagnose it'")
     return True, "high-load moves are modeled before required; diagnosis is scaffolded"
@@ -480,6 +618,140 @@ def gate_no_em_dash(L: Lesson) -> tuple[bool, str]:
         return False, "em/en dash in authored lesson prose (house rule: use commas/colons/parens)"
     return True, "no em dashes"
 
+_OPT_MARKER = re.compile(r"\(([A-D])\)\s")
+
+
+def gate_distractor_length_cue(L: Lesson) -> tuple[bool, str]:
+    """BLOCKS: a choice item (discrimination/predict_the_fix/self_score) must NOT have its correct option as the
+    single longest option - that length cue lets a student guess without reasoning (Haladyna item-writing rule:
+    options homogeneous in length). Correct answer is read from the 'Correct: X.' / 'Reveal: X.' tail."""
+    problems = []
+    for i, s in enumerate(L.slots):
+        if s.kind not in ("discrimination", "predict_the_fix", "self_score"):
+            continue
+        body = re.sub(r"<[^>]+>", " ", s.body or "")
+        # predict_the_fix carries the options in `body` but the "Correct: X" marker in `feedback`
+        # (the reveal). Search BOTH for the marker, or the gate silently skips every such slot
+        # (was 96/96 unchecked). Options are still parsed from `body` only.
+        fb = re.sub(r"<[^>]+>", " ", s.feedback or "")
+        rev = re.search(r"\b(Correct:|Reveal:)", body, re.I)
+        core = body[:rev.start()] if (rev and _OPT_MARKER.search(body[:rev.start()])) else body
+        cm = re.search(r"\b(?:Correct|Reveal):\s*\(?([A-D])\)?", body + "\n" + fb, re.I)
+        pieces = re.split(r"(?=\([A-D]\)\s)", core)
+        opts = {}
+        for pc in pieces:
+            m = re.match(r"\(([A-D])\)\s*(.+)", pc.strip(), re.S)
+            if m:
+                opts[m.group(1)] = m.group(2).strip()
+        if not opts or not cm:
+            continue
+        correct = cm.group(1)
+        if correct not in opts:
+            continue
+        lens = {k: len(v) for k, v in opts.items()}
+        mx = max(lens.values())
+        if lens[correct] == mx and sum(1 for v in lens.values() if v == mx) == 1:
+            problems.append(f"slot {i+1} '{(s.title or '')[:28]}': key ({correct}) is the lone longest "
+                            f"({lens[correct]} vs {sorted(v for k,v in lens.items() if k!=correct)})")
+    if problems:
+        return False, "distractor length cue (correct answer is longest): " + "; ".join(problems)
+    return True, "no length cue: correct option is not the lone longest in any choice item"
+
+
+# internal design vocabulary that must NEVER reach a student. These are authoring/QC terms; a real G9 student
+# reading "a Grade-C design bet, labeled as a bet" (as they did in the Fable eval) is confused by jargon that
+# was never meant for them. The design RATIONALE belongs in provenance/comments, not the student-facing body.
+_LEAKED_LABELS = [
+    r"\bgrade[- ]?c\b", r"\bdesign bet\b", r"\blabeled as a bet\b", r"\bdiscrimination slot\b",
+    r"\bsignature[- ]?error\b", r"\bcoping model\b", r"\bnear[- ]?peer\b", r"\bSRSD\b",
+    r"\bissue frame\b", r"\bissue_frame\b", r"\bstimulus_display\b", r"\bteach_card\b",
+    r"\barchetype\b", r"\bT[2-8]\b(?!\w)", r"\brubric_ref\b", r"\brc\.staar\b", r"\brc\.ap\b",
+    r"\bmnemonic\b", r"\bcalibration discipline\b", r"\bbank[- ]?partition\b",
+]
+_LEAK_RE = re.compile("|".join(_LEAKED_LABELS), re.I)
+
+def gate_leaked_internal_label(L: Lesson) -> tuple[bool, str]:
+    """No internal authoring/QC jargon in STUDENT-FACING text (slot body/feedback/title). Design rationale lives
+    in provenance + comments. Fixes the live Fable finding: 'a Grade-C design bet, labeled as a bet' leaked into
+    the discrimination prompt and confused every simulated student ('made zero sense', 'not written for me')."""
+    hits = []
+    for i, s in enumerate(L.slots):
+        text = f"{s.title or ''} {s.body or ''} {s.feedback or ''}"
+        text = re.sub(r"<[^>]+>", " ", text)   # ignore markup/attribute values
+        for m in _LEAK_RE.finditer(text):
+            hits.append(f"slot {i+1} '{(s.title or '')[:24]}': leaked '{m.group(0)}'")
+    if hits:
+        return False, "internal label leaked into student text: " + "; ".join(hits[:6])
+    return True, "no internal design/QC jargon in student-facing text"
+
+
+def gate_leaked_answer_cue(L: Lesson) -> tuple[bool, str]:
+    """No answer given away inside the options. The Fable students noticed wrong MCQ options literally contained
+    'Try again' text -> the correct option was the only one without it, so they never had to reason. Distractor
+    text must not contain retry/feedback phrasing; that belongs in per-choice feedback, not the option label."""
+    leak = re.compile(r"\btry again\b|\bincorrect\b|\bthat'?s wrong\b|\bnot quite\b|\bre-?read\b", re.I)
+    hits = []
+    for i, s in enumerate(L.slots):
+        if s.kind not in ("discrimination", "predict_the_fix", "self_score"):
+            continue
+        body = re.sub(r"<[^>]+>", " ", s.body or "")
+        rev = re.search(r"\b(Correct:|Reveal:)", body, re.I)
+        core = body[:rev.start()] if rev else body   # only the OPTIONS region, not the reveal/feedback tail
+        for pc in re.split(r"(?=\([A-D]\)\s)", core):
+            m = re.match(r"\(([A-D])\)\s*(.+)", pc.strip(), re.S)
+            if m and leak.search(m.group(2)):
+                hits.append(f"slot {i+1} option ({m.group(1)}) contains feedback/retry text")
+    if hits:
+        return False, "answer-cue leaked into an option: " + "; ".join(hits[:6])
+    return True, "no retry/feedback text leaked into option labels"
+
+
+def gate_format_fidelity(L: Lesson) -> tuple[bool, str]:
+    """Format sanity on authored bodies: (a) any HTML present must be well-formed enough to not run text
+    together (balanced block tags), (b) no doubled spaces from a stripped tag, (c) a body with >45 words and NO
+    block break (p/br/li/heading/div) is a wall-of-text risk the renderer cannot paragraph -> flag it. This is
+    the machine half of Noel's 'formatting 100% correct' gate; visual review still catches the rest."""
+    problems = []
+    for i, s in enumerate(L.slots):
+        b = s.body or ""
+        if not b:
+            continue
+        # balanced common block tags (unbalanced -> run-together render)
+        for tag in ("div", "p", "span"):
+            if b.lower().count(f"<{tag}") != b.lower().count(f"</{tag}>"):
+                problems.append(f"slot {i+1}: unbalanced <{tag}> tags")
+        # wall of text: long prose slot with zero block markup
+        plain = re.sub(r"<[^>]+>", " ", b)
+        words = len(re.findall(r"[A-Za-z]+", plain))
+        has_block = re.search(r"</(p|div|li|h[1-6])>|<br", b, re.I)
+        if words > 45 and not has_block and s.kind in ("teach_card", "annotated_before_after"):
+            problems.append(f"slot {i+1} '{(s.title or '')[:22]}': {words}-word body with no block breaks (wall of text)")
+    if problems:
+        return False, "format-fidelity: " + "; ".join(problems[:6])
+    return True, "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+
+
+def gate_gate_shape(L: Lesson) -> tuple[bool, str]:
+    """A gate lesson must be scaffold-free (verdict): no annotated_before_after / discrimination /
+    predict_the_fix; exactly one SCORED cold production write (TRANSFER role, held-out bank); a brief plan is
+    allowed only as an UNSCORED affordance (scored=False). Non-gate lessons pass trivially."""
+    if getattr(L, "lesson_class", "practice") != "gate":
+        return True, "not a gate"
+    spec = GRAIN_TEMPLATES["gate"]
+    banned = spec["banned_kinds"] & {s.kind for s in L.slots}
+    if banned:
+        return False, f"gate contains banned teaching scaffold(s): {sorted(banned)}"
+    scored_writes = [s for s in L.slots if s.kind == "production_frq" and getattr(s, "scored", False)]
+    if not scored_writes:
+        return False, "gate has no scored (cold) production write"
+    if len(scored_writes) > spec["max_scored_writes"]:
+        return False, (f"gate has {len(scored_writes)} scored writes (max {spec['max_scored_writes']}: only the "
+                       f"cold write is scored; the plan must be scored=False)")
+    if not any(s.role == "TRANSFER" for s in scored_writes):
+        return False, "gate has no TRANSFER (cold, held-out) scored write"
+    return True, "gate is scaffold-free (cue + unscored plan + one scored cold write)"
+
+
 GATES = [
     ("shell_completeness", gate_shell_completeness),
     ("model_sequence", gate_model_sequence),
@@ -496,10 +768,15 @@ GATES = [
     ("model_before_required", gate_model_before_required),
     ("no_ambiguous_reference", gate_no_ambiguous_reference),
     ("unit_ladder", gate_unit_ladder),
+    ("distractor_length_cue", gate_distractor_length_cue),
+    ("leaked_internal_label", gate_leaked_internal_label),
+    ("leaked_answer_cue", gate_leaked_answer_cue),
+    ("format_fidelity", gate_format_fidelity),
     ("type_ceiling", gate_type_ceiling),
     ("effect_size_honesty", gate_effect_size_honesty),
     ("mnemonic_status", gate_mnemonic_status),
     ("no_em_dash", gate_no_em_dash),
+    ("gate_gate_shape", gate_gate_shape),
 ]
 
 def qc_lesson(L: Lesson) -> dict:
