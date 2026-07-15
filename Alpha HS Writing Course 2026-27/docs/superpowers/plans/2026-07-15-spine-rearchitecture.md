@@ -8,6 +8,26 @@
 
 **Tech Stack:** Python 3 (stdlib only for contract/crosscheck; the lessons import `lesson_contract` + `lesson_prompts`); the render/preview layer is stdlib + the live LearnWith player. No new dependencies.
 
+## Review substitution (2026-07-15)
+
+Fable-5 (Anthropic API key in HS Writing/.env) ran OUT OF CREDITS mid-Phase-B. Per Noel: the per-grain review
+step is now (a) deterministic checks (24 contract gates + render-QC + grain crosscheck + a dangling-reference
+scan) PLUS (b) a Council-of-Writing-Instruction review (subagent-based, no API-credit dependency). Fable
+rejoins for the final readiness audit when credits return. The make -> review -> fix -> re-review loop is
+otherwise unchanged.
+
+## Task 6 (paragraph grain) - NO CHANGES NEEDED (scope decision 2026-07-15)
+
+Deterministic audit + a Council scope-review (SRSD + TWR + CLT lenses) found all 35 paragraph/multi_paragraph
+practice lessons ALREADY conform: (a) 0 structural grain-crosscheck issues (2-3 writes, discrimination present,
+revision-or-coached-transfer satisfied), and (b) their diagnosis uses the INTENDED coping-model pattern ("watch
+the check run on a SHOWN weak draft, then write/fix a fresh one of your own") - a legitimate model-before-produce
+scaffold, which is the sanctioned coached-transfer option at this grain. This is NOT the essay-grain defect: the
+essay defect was a MISMATCH (wrapper said "reread YOUR draft" while the verdict described a deleted phantom
+draft). Council verified all 35 have wrapper+verdict pointing at the SAME visible weak draft, zero phantom
+mismatches. Converting paragraph diagnosis to own-draft-only would prematurely strip the scaffold at the grain
+where it is most warranted. VERDICT: sound-as-is, no edits. Task 6 closed with 0 lesson changes.
+
 ## Global Constraints
 
 - NO em dashes anywhere in student-facing lesson content or authored prompts (use commas, colons, parentheses). Enforced by `gate_no_em_dash`.
