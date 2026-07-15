@@ -219,9 +219,9 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
                  checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Does the thesis take a clear side?", "Barely. 'Is good' is soft. Sharpen it into a real position someone could reject."),
-                     ("Are the points distinct and ordered?", "No. 'Helps / is nice / people like it' overlap. Make them distinct and put them in a building order."),
-                     ("Is a source fact named for each point?", "No. Attach one piece of evidence to each point."),
+                     ("Does your thesis take a clear side?", "If it only rates the topic (like 'X is good'), sharpen it into a position someone could reject."),
+                     ("Are your body points distinct and ordered?", "If they overlap or restate each other, make them distinct and put them in a building order."),
+                     ("Is a source fact named for each point?", "If a point has no evidence behind it, attach one piece of evidence to it."),
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you submit. Finish by "
                         "naming which part your essay still needs most.")),

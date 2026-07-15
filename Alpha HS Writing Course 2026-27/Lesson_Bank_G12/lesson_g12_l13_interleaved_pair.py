@@ -200,9 +200,9 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
                  checklist_block=checklist(title="Run the switch check:", rows=[
-                     ("Is the next prompt's type named from its tell?", "No. A source set signals a synthesis. Name it before planning."),
-                     ("Do the planned moves match that type, not the last one?", "No. The argument moves (personal position, own examples) are carried over. Switch to weaving and weighting the sources."),
-                     ("For a synthesis, is one argument built from the sources and weighted?", "No. Add the weave-and-weight move the synthesis needs."),
+                     ("Have you named the next prompt's type from its tell?", "If you have not, a source set signals a synthesis, so name it before you plan."),
+                     ("Do your planned moves match that type, not the last prompt?", "If they are still the argument moves (a personal position and your own examples), switch to weaving and weighting the sources."),
+                     ("For a synthesis, is one argument built from the sources and weighted?", "If one argument is not yet built from the sources and weighted, add the weave-and-weight move the synthesis needs."),
                  ]),
                  closer="For every line that fails on your draft, name what is off in one sentence and make the "
                         "fix. Finish by naming the new move-set you will switch to for the synthesis prompt.")),

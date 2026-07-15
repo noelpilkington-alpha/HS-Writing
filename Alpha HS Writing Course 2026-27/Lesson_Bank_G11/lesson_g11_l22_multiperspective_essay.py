@@ -227,9 +227,9 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
                  checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Is the position a real stance, not 'it is complicated'?", "No. Commit to one position someone could reject."),
-                     ("Does each body paragraph WEIGH a perspective (concede, limit, advance)?", "No. Each only explains. Rebuild each as weighing."),
-                     ("Does every paragraph push the same position?", "Cannot tell yet, because there is no position. Align them once you have one."),
+                     ("Is the position a real stance, not 'it is complicated'?", "If it only says the issue is complicated or takes no side, commit to one position someone could reject."),
+                     ("Does each body paragraph WEIGH a perspective (concede, limit, advance)?", "If a paragraph only explains the view, rebuild it to concede what it gets right, name its limit, and advance your position."),
+                     ("Does every paragraph push the same position?", "If any paragraph drifts to a different stance, align them all to push the one position."),
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you move on. Finish by "
                         "naming which part your essay still needs most.")),

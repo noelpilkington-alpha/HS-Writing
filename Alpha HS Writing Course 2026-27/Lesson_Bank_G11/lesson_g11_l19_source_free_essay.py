@@ -223,9 +223,9 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
                  checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Does the thesis take a defensible side?", "Barely. 'Is good' is soft. Sharpen it into a real position someone could reject."),
-                     ("Is each body point a specific NAMED example?", "No. 'It helps / is important / people like it' are restatements. Replace each with a real named case."),
-                     ("Does each example tie to the thesis?", "Cannot tell yet, because there are no cases. Plan the tie once each case is named."),
+                     ("Does your thesis take a defensible side?", "If it only rates the topic (like 'X is good'), sharpen it into a real position someone could reject."),
+                     ("Is each body point a specific NAMED example?", "If a body point just restates the opinion (like 'it helps' or 'it is important'), replace it with a real named case you can develop."),
+                     ("Does each example tie back to the thesis?", "If an example drifts to a new claim instead of linking back, add a sentence tying it to the thesis."),
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you submit. Finish by "
                         "naming which part your essay still needs most.")),

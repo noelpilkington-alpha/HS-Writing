@@ -224,14 +224,16 @@ LESSON = Lesson(
         Slot("MODEL", "diagnosis_frq", "Check your own synthesis: paced and woven?",
              ref="", bank="ai_workforce_synthesis", scored=True,
              body=frq_prompt(
-                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
+                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft.",
                  checklist_block=checklist(title="Check your own draft, line by line:", rows=[
-                     ("Is the reading capped to a share of the window?", "No. 'Read every source fully' reads out the clock. Cap it so there is time to write."),
-                     ("Is there ONE woven argument with a source assigned to each point?", "No. 'Write about each one' is a survey. Name one argument the set builds and assign a source to each point."),
-                     ("Is drafting time reserved to reach a real conclusion?", "No. Nothing is left for a close. Reserve time so the synthesis lands its upshot."),
+                     ("Did your reading stay capped to a share of your window?", "If you read every source to the bottom and ran low on time, note it: cap the reading sooner on your next write so there is time to weave."),
+                     ("Is there ONE woven argument with a source assigned to each point?", "If it reads as a source-by-source survey, name one argument the set builds and assign each point to the source that carries it best."),
+                     ("Does the essay reach a real conclusion that lands the upshot?", "If it stops mid-thought or just restates the claim, add an ending that states what the whole argument adds up to."),
                  ]),
-                 closer="For every line that fails on your draft, name what is off in one sentence and make the "
-                        "fix. Finish by naming the one argument the set builds.")),
+                 closer="For the two lines about the draft itself (the woven argument and the conclusion), name what "
+                        "is off in one sentence and fix it now. The reading cap is about your process, not a line "
+                        "you can rewrite, so note what to adjust on your next write. Finish by naming the one "
+                        "argument the set builds.")),
 
         # ===== INDEPENDENT: rehearse the whole synthesis from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Rehearse the full synthesis",

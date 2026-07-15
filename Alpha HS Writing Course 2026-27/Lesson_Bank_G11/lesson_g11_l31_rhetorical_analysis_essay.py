@@ -225,9 +225,9 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
                  checklist_block=checklist(title="Check your own draft, line by line:", rows=[
-                     ("Does the thesis name an overall purpose?", "No. 'Talks about the Depression' names a topic, not a purpose. Say what Roosevelt is trying to make the audience feel, believe, or do."),
-                     ("Does each choice name a quote and its effect on the audience?", "No. 'Mentions fear' and 'uses repetition' name devices with no quote and no effect. Attach a trimmed quote and the effect on his listeners to each."),
-                     ("Does each choice tie back to the purpose?", "No. Nothing connects the choices to one end. Show how each effect serves the purpose named in the thesis."),
+                     ("Does your thesis name an overall purpose?", "If it only names the topic (like 'talks about the Depression'), say instead what Roosevelt is trying to make the audience feel, believe, or do."),
+                     ("Does each choice name a quote and its effect on the audience?", "If a choice names a device with no quote and no effect (like 'mentions fear' or 'uses repetition'), attach a trimmed quote and the effect on his listeners to each."),
+                     ("Does each choice tie back to the purpose?", "If nothing connects the choices to one end, show how each effect serves the purpose named in the thesis."),
                  ]),
                  closer="For every line that fails on your draft, name what is off in one sentence and make the "
                         "fix. Finish by naming the overall purpose your essay is built to prove.")),

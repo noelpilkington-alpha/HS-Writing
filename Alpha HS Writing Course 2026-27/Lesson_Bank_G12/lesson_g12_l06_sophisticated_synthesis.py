@@ -228,9 +228,9 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
                  checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Is there ONE woven argument with sources weighted?", "Barely. 'All three say water matters' is summary, not a weave with weights. Assign each point to the source that carries it and weight them."),
-                     ("Is the claim situated in a larger question?", "No. Name the broader question this claim is one case of, so the reader sees the stakes."),
-                     ("Is the tension held rather than flattened?", "No. It ends on 'conserve'. Name the conflict (cutting either use starves the other) and reason from it to a real position."),
+                     ("Is there ONE woven argument with sources weighted?", "If it just says the sources agree (like 'all three say water matters'), that is summary, not a weave with weights. Assign each point to the source that carries it and weight them."),
+                     ("Is the claim situated in a larger question?", "If the claim stands alone with no larger frame, name the broader question this claim is one case of, so the reader sees the stakes."),
+                     ("Is the tension held rather than flattened?", "If it ends flat (like a plain call to 'conserve'), name the conflict (cutting either use starves the other) and reason from it to a real position."),
                  ]),
                  closer="For every row that fails on your draft, name the gap in one line and make the fix. "
                         "Finish by naming the larger question your synthesis answers.")),

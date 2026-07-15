@@ -214,20 +214,24 @@ LESSON = Lesson(
                  closer="Write the stage budget, then the fast plan: the one argument the set builds, plus your "
                         "ordered points each tagged with the source that carries it. This budget and plan is "
                         "what you will build the full synthesis from.")),
-        # DIAGNOSIS = self-revision: reread your OWN just-written synthesis and run the 3-question check on it,
-        # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
-        # scaffold and the grader scores the diagnosis within the item.
+        # DIAGNOSIS = self-revision: reread your OWN just-written synthesis and run the check on it. The two
+        # substance lines (one argument, weighted sources) are fixed in the draft; the pacing/process line
+        # cannot be fixed in a finished draft, so it reframes as a metacognitive adjustment for the NEXT write.
+        # Same taught source (load balance). Self-contained: the checklist is the scaffold and the grader scores
+        # the diagnosis within the item.
         Slot("MODEL", "diagnosis_frq", "Check your own synthesis: woven and weighted?",
              ref="", bank="renewable_grid_synthesis", scored=True,
              body=frq_prompt(
-                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
+                 intro="Reread the synthesis you just wrote and run this check on YOUR draft.",
                  checklist_block=checklist(title="Check your own draft, line by line:", rows=[
-                     ("Are planning and checking given protected minutes?", "No. The whole window goes to reading and drafting. Split it into read, plan, draft, and check, and protect the plan and check minutes."),
-                     ("Is there ONE argument the set builds, not a summary of each source?", "No. 'Summarize each source in order' is a tour. Name one argument, such as whether the grid can go mostly renewable and on what condition."),
-                     ("Is each source assigned to the point it carries?", "No. Tag each point with the source that best supports it, and pull that source in where it carries the most weight."),
+                     ("Did planning and checking get protected minutes, or did the window go entirely to reading and drafting?", "If they got squeezed out, that is a process fix: on your NEXT synthesis, split the window into read, plan, draft, and check first, and protect the plan and check minutes."),
+                     ("Does your draft build ONE argument the whole set supports, not a summary of each source in turn?", "If it walks through the sources one at a time, name one argument (such as whether the grid can go mostly renewable and on what condition) and rebuild the draft around it."),
+                     ("Is each source pulled in at the point it best carries?", "If a source just sits in its own equal paragraph, tag each point with the source that best supports it and weave that source in where it carries the most weight."),
                  ]),
-                 closer="For every line that fails on your draft, name what is off in one sentence and make the "
-                        "fix. Finish by naming the one argument your synthesis builds.")),
+                 closer="Fix the two substance lines (one argument, and each source weighted to the point it "
+                        "carries) in your draft now. The timing line cannot be fixed in a finished draft, so use "
+                        "it to adjust how you budget your NEXT synthesis. Finish by naming the one argument your "
+                        "synthesis builds.")),
 
         # ===== INDEPENDENT: build the whole synthesis from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Rehearse the full synthesis",

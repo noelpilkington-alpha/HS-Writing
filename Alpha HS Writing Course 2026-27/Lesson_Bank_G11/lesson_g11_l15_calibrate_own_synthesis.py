@@ -212,19 +212,20 @@ LESSON = Lesson(
                         "source by what it can carry. Then, in one line, predict your own score on each row with "
                         "a reason. The grader will score the synthesis; your prediction is what you compare "
                         "against.")),
-        # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the row-by-row checklist on it,
-        # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
-        # scaffold and the grader scores the diagnosis within the item.
+        # DIAGNOSIS = self-revision on the student's OWN just-written draft. A single labeled EXAMPLE shows what
+        # naming a gap looks like (an example, NOT the student's essay); the student then names and fixes the gap
+        # on THEIR OWN draft. Same taught source (load balance). Self-contained: the grader scores the diagnosis.
         Slot("MODEL", "diagnosis_frq", "Name the gap between your prediction and the grader",
              ref="", bank="water_competing_uses", scored=True,
              body=frq_prompt(
-                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Development, off by one: what happened?", "The argument wove but wandered in the middle, so it reads as one loose argument rather than one tight one. Fix: tighten to a single line the whole piece serves."),
-                     ("Evidence, off by two: what happened?", "The writer leaned on one source far harder than it could carry and never weighted energy against farming. The blind spot was counting 'used the source' as 'weighted the source.'"),
-                 ]),
-                 closer="For every row that fails on your draft, name the gap in one line and make the fix. "
-                        "Finish by naming your single biggest gap.")),
+                 intro="Reread the essay you just wrote and compare your prediction with the grader's real score.",
+                 setapart_block=setapart("Here is what naming a gap looks like:",
+                     "Evidence, off by two: I predicted a 4, but the grader gave a 2, because I leaned on one "
+                     "source harder than it could carry and never weighted the energy use against the farming "
+                     "use. My blind spot was counting 'used the source' as 'weighted the source.' Fix: weight "
+                     "each source by what it can carry."),
+                 closer="Now do this on YOUR draft. For every row where your number was off, name the gap in one "
+                        "line the same way, then make the fix. Finish by naming your single biggest gap.")),
 
         # ===== INDEPENDENT: predict + name the gap with no frame + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Calibrate on your own",

@@ -211,12 +211,12 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
                  checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Does the controlling idea take NO side?",
-                      "No. 'Incredible and worth protecting' argues a side. Reword it as a focus, like how and why birds migrate."),
-                     ("Are the parts distinct and specific?",
-                      "No. 'Amazing / long / important' are vague. Name real parts: why birds migrate, how far, how they are tracked."),
+                     ("Does your controlling idea take NO side?",
+                      "If it argues a side or rates the topic, reword it into a focus that takes no side, such as how and why birds migrate."),
+                     ("Are your parts distinct and specific?",
+                      "If any part is vague, name a real one instead: why birds migrate, how far they travel, and how scientists track them."),
                      ("Does each part have evidence from the source?",
-                      "No. Attach a fact and its source to each part."),
+                      "If a part has no evidence behind it, attach a fact and its source to it."),
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you move on. Finish by "
                         "confirming your controlling idea takes no side.")),
@@ -225,8 +225,10 @@ LESSON = Lesson(
         Slot("INDEPENDENT", "production_frq", "Write the full informational essay",
              ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="essay",
              body=frq_prompt(
-                 intro="On your own now, build the whole essay from your plan. Write a complete informational "
-                       "essay explaining how and why birds migrate.",
+                 intro="On your own now, start by planning it in a quick single-paragraph outline (a controlling "
+                       "idea with no side, then your ordered parts with their evidence), then build the whole "
+                       "essay from that plan. Write a complete informational essay explaining how and why birds "
+                       "migrate.",
                  checklist_block=checklist(title="Build it with these parts:", rows=[
                      "An INTRODUCTION that frames the controlling idea (no side).",
                      "THREE body paragraphs, each explaining one part with attributed evidence, ordered to build and linked.",

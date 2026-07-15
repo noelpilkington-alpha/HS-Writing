@@ -231,14 +231,17 @@ LESSON = Lesson(
         Slot("MODEL", "diagnosis_frq", "Run the pacing check on your own draft",
              ref="", bank="automation_policy", scored=True,
              body=frq_prompt(
-                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
+                 intro="Reread the essay you just wrote and run this checklist on YOUR draft.",
                  checklist_block=checklist(title="Run the check:", rows=[
-                     ("Did planning and checking get protected minutes?", "No. Reserve minutes for planning up front and for a reread at the end, before the drafting block."),
-                     ("Does every body paragraph get a share of drafting time, not just the first?", "No. The first paragraph is taking the whole block. Split the drafting minutes evenly across all the paragraphs."),
-                     ("Are minutes reserved so the last paragraph and the conclusion get finished work?", "No. Nothing is left for the ending. Carve out a share for the final paragraph and the conclusion before you start."),
+                     ("Did planning and checking get their own protected minutes?", "If planning up front or the final reread got squeezed out, reserve minutes for both on your next write, before the drafting block."),
+                     ("Did every body paragraph get a share of the drafting minutes, not just the first?", "If the first paragraph took most of the block, split the drafting minutes more evenly across all the paragraphs on your next write."),
+                     ("Do your last body paragraph and conclusion have the same finished work as your opening?", "If the ending is thin or shrinks to a flat line while the opening is fully developed, build it out now so it is as finished as the first paragraph."),
                  ]),
-                 closer="For every line that fails on your draft, name what is off in one sentence and make the "
-                        "fix. Finish by naming how many minutes the last body paragraph got.")),
+                 closer="The two pacing rows (protected minutes for planning and checking, and an even share of "
+                        "the drafting minutes) cannot be repaired in a finished draft, so carry those adjustments "
+                        "into your next write. The finished-work row is about this draft, so fix it now: if your "
+                        "ending is starved, build the final body paragraph and conclusion out until they are as "
+                        "finished as your opening. Finish by naming how many minutes the last body paragraph got.")),
 
         # ===== INDEPENDENT: sustain the whole essay from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Sustain the full essay",

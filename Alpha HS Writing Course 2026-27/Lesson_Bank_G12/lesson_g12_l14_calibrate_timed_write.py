@@ -228,16 +228,16 @@ LESSON = Lesson(
         Slot("MODEL", "diagnosis_frq", "Name the gap, and whether pacing caused it",
              ref="", bank="automation_policy", scored=True,
              body=frq_prompt(
-                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Run the check:", rows=[
+                 intro="Here is what naming a gap looks like. This example runs the check on one essay:",
+                 checklist_block=checklist(title="Example: naming a gap", rows=[
                      ("Where did the essay meet the row?", "The intro and body one held the trade-off in tension, so the start earned the prediction."),
                      ("Where did it miss?", "Body three flattened into one side and the conclusion was cut, so the tension dropped at the end."),
                      ("Did PACING cause the miss?", "Yes. The late fade, not a thinking error, is what cost the row; the writer ran out of budget."),
                  ]),
-                 closer="Now name each gap between your predicted rows and the grader's rows for your own "
-                        "essay, and flag any gap caused by pacing. Finish by naming your single biggest pacing "
-                        "gap, or, if your prediction matched and pacing held, say so and name the row you were "
-                        "most at risk of missing.")),
+                 closer="Now run this same check on YOUR draft. Reread the essay you just wrote, name each gap "
+                        "between your predicted rows and the grader's rows, and fix any line that fails. Flag any "
+                        "gap caused by pacing, then name your single biggest pacing gap. If your prediction "
+                        "matched and pacing held, say so and name the row you were most at risk of missing.")),
 
         # ===== INDEPENDENT: calibrate a full-write cold (no frame) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Calibrate a full-write on your own",

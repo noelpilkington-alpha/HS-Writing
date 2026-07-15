@@ -235,9 +235,9 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
                  checklist_block=checklist(title="Check your own draft, line by line:", rows=[
-                     ("Is the thesis situated in a larger question?", "No. 'Fund training' answers only the narrow prompt. Frame it inside the larger question of how a society splits a fixed budget between the future and the present."),
-                     ("Does each body paragraph hold a tension?", "No. Three reasons training is good just stack one side. Give each paragraph a real tension it keeps live, not a dismissal."),
-                     ("Does the conclusion defend a real position?", "No. 'Training wins' restates the thesis. Name the rule or priority a thoughtful opponent would still have to respect."),
+                     ("Is the thesis situated in a larger question?", "If it only answers the narrow prompt (like just picking whether to fund training), frame it inside the larger question of how a society splits a fixed budget between the future and the present."),
+                     ("Does each body paragraph hold a tension?", "If a paragraph just stacks reasons for one side or calls the other side wrong, give it a real tension it keeps live instead of a dismissal."),
+                     ("Does the conclusion defend a real position?", "If it only restates the thesis, name the rule or priority a thoughtful opponent would still have to respect."),
                  ]),
                  closer="For every line that fails on your draft, name what is off in one sentence and make the "
                         "fix. Finish by naming the larger question your essay situates the choice in.")),

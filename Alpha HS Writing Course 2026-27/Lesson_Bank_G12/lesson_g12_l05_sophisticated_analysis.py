@@ -227,9 +227,9 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
                  checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Is the rhetorical situation named (audience, purpose, bind)?", "No. Name who the audience is, what Douglass needs from them, and the bind he is in."),
-                     ("Is a strategic tension named (what he must manage at once)?", "No. Name the competing pressures, such as praise the founders while indicting the nation."),
-                     ("Is each choice tied to that situation, not just labeled?", "No. Tie each choice to the audience and the tension instead of listing it as a technique."),
+                     ("Is the rhetorical situation named (audience, purpose, bind)?", "If it is missing or only implied, name who the audience is, what Douglass needs from them, and the bind he is in."),
+                     ("Is a strategic tension named (what he must manage at once)?", "If no tension is named, name the competing pressures, such as praising the founders while indicting the nation."),
+                     ("Is each choice tied to that situation, not just labeled?", "If a choice is only labeled as a technique, tie it to the audience and the tension instead."),
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you submit. Finish by "
                         "naming the tension your analysis holds.")),

@@ -234,14 +234,15 @@ LESSON = Lesson(
         Slot("MODEL", "diagnosis_frq", "Name the gap between your prediction and the grader",
              ref="", bank="public_health", scored=True,
              body=frq_prompt(
-                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Run the check:", rows=[
+                 intro="Here is what naming a gap looks like:",
+                 checklist_block=checklist(title="Example (naming a gap):", rows=[
                      ("Where did the essay meet the criterion?", "It situated the question in the broader tension."),
                      ("Where did it miss?", "One body paragraph flattened the tension, so the sophistication was not consistent."),
                      ("What was the blind spot?", "Counting the strong opening as enough for a holistic point."),
                  ]),
-                 closer="After each check, revise the weakest line in your own draft. Finish by naming your single "
-                        "biggest gap and the one change you made to close it.")),
+                 closer="Now do the same on YOUR draft: reread the essay you just wrote, run these three questions "
+                        "on it, revise the weakest line, and finish by naming your single biggest gap and the one "
+                        "change you made to close it.")),
 
         # ===== INDEPENDENT: calibrate cold, no frame + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Calibrate on your own",

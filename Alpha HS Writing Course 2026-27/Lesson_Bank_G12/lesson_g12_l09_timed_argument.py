@@ -229,12 +229,14 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
                  checklist_block=checklist(title="Run the check:", rows=[
-                     ("Does the plan cover every body paragraph, not just the first?", "No. Only the intro is planned. Name each body point and the tension it holds before drafting."),
-                     ("Is there a defended conclusion in the plan?", "No. Add an ending that defends a priority, not one that repeats the thesis."),
-                     ("Is drafting time shared so the ending gets finished?", "No. Budget the stages so the conclusion is not written in the last thirty seconds."),
+                     ("Does your essay build every body paragraph, not just the opening?", "If a later paragraph is thin or missing, name the point it should hold and the tension it grants, then build it out."),
+                     ("Does your conclusion defend the priority, not just repeat the thesis?", "If it only restates the claim, revise it to defend why that priority holds even for a reader who leans the other way."),
+                     ("Did the ending get finished work, or did it run out of time?", "If the conclusion came out rushed, adjust your stage budget on your next write so the ending gets real time, not the last thirty seconds."),
                  ]),
-                 closer="For every line that fails on your draft, name what is off in one sentence and make the "
-                        "fix. Finish by naming what your conclusion defends.")),
+                 closer="For the body and conclusion rows, name what is off in one sentence and fix it in your "
+                        "draft now. The pacing row is about your process, not this finished draft, so instead "
+                        "note one change to your stage budget for your next write. Finish by naming what your "
+                        "conclusion defends.")),
 
         # ===== INDEPENDENT: rehearse the whole essay from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Rehearse the full argument",

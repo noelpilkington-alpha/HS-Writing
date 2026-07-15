@@ -205,20 +205,26 @@ LESSON = Lesson(
                  closer="Write the four budget numbers so planning and checking each get protected minutes, then "
                         "write a one-line thesis that takes a side and three ordered points, each naming the "
                         "source fact it will use. This budget and plan are what you will build the essay from.")),
-        # DIAGNOSIS = self-revision: reread your OWN just-written essay and run the three-question budget check on
-        # it, fixing any line that fails. Same taught bank (load balance). Self-contained: the checklist is the
-        # scaffold and the grader scores the diagnosis within the item.
+        # DIAGNOSIS = metacognitive pacing check: reread your OWN draft and run the three-question budget check on
+        # how you spent your minutes. Pacing cannot be bought back on a finished draft, so failing rows route to a
+        # process fix on the NEXT write; only a substance gap the pacing left behind (a missing conclusion, an
+        # unchecked error) is fixed in the draft now. Same taught bank (load balance). Self-contained: the checklist
+        # is the scaffold and the grader scores the diagnosis within the item.
         Slot("MODEL", "diagnosis_frq", "Check your own budget and essay",
              ref="", bank="infrastructure_spending", scored=True,
              body=frq_prompt(
-                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
+                 intro="Reread the essay you just wrote and look at how you spent your minutes. Run this pacing check on YOUR draft, one row at a time.",
                  checklist_block=checklist(title="Check your own draft, row by row:", rows=[
                      ("Does reading get real minutes?", "If reading got almost none, the prompt and evidence get skipped. Carve out minutes to read."),
                      ("Are planning and checking protected?", "If planning or checking got only leftovers, give each its own protected minutes."),
                      ("Does drafting fit what remains?", "If drafting swallowed the window, the other stages starve. Shrink drafting so read, plan, and check fit."),
                  ]),
-                 closer="For every row that fails on your draft, fix it before you move on. Finish by naming how many "
-                        "minutes you protected for planning.")),
+                 closer="The rows above are all about how you spent your minutes, and you cannot buy those minutes "
+                        "back by editing a finished draft. For each row that fails, note it and adjust your process "
+                        "on your NEXT write, deciding those protected minutes before you start. If the rushed pacing "
+                        "left a substance gap you can still repair, such as a missing conclusion or an unchecked "
+                        "error, fix that gap in your draft now. Finish by naming how many minutes you will protect "
+                        "for planning next time.")),
 
         # ===== INDEPENDENT: build the whole essay on the budget (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a full essay on your budget",

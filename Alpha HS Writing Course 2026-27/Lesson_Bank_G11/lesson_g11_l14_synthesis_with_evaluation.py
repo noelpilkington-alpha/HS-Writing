@@ -206,9 +206,9 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
                  checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Is there ONE argument woven from the whole set?", "Barely. It gestures at one claim but really just says every source agrees, which is closer to a summary than a woven argument."),
-                     ("Is each source used only where it is strong?", "No. It leans on all three equally. Assign each point to the source strongest for it, the overview source for the national limit and the sector sources for where the biggest draws are."),
-                     ("Does it say where the set stops short?", "No. Add a line naming what no single source can settle, such as which of the two giant uses a region should cut first."),
+                     ("Is there ONE argument woven from the whole set?", "If it just says every source agrees rather than building a single argument, state the ONE argument the whole set builds and organize by point."),
+                     ("Is each source used only where it is strong?", "If it leans on all three sources equally, assign each point to the source strongest for it, the overview source for the national limit and the sector sources for where the biggest draws are."),
+                     ("Does it say where the set stops short?", "If no line names what the set cannot settle, add one, such as which of the two giant uses a region should cut first."),
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you move on. Finish by "
                         "naming one source and the exact point it carries.")),

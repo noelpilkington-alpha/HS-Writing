@@ -207,26 +207,27 @@ LESSON = Lesson(
                  closer="Write your budget (with a capped reading share) and a fast plan: the rhetorical "
                         "situation, the two or three choices with the effect you will analyze for each, and a "
                         "one-line thesis. This plan is what leaves you time to finish the analysis.")),
-        # DIAGNOSIS = self-revision: reread your OWN just-written analysis and run the 3-question check on it,
-        # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
-        # scaffold and the grader scores the diagnosis within the item.
+        # DIAGNOSIS = self-check on the student's OWN just-written PLAN and budget (not a check on a provided
+        # weak draft). The rows are pacing/process rows, so fixes carry into the NEXT write, not a finished
+        # draft. Self-contained: the checklist is the scaffold and the grader scores the diagnosis within the item.
         Slot("MODEL", "diagnosis_frq", "Check the plan leaves time to finish",
              ref="", bank="ra_speech_1", scored=True,
              body=frq_prompt(
-                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
+                 intro="Reread the plan and budget you just wrote. Run this checklist on it before you draft.",
                  checklist_block=checklist(title="Run the check:", rows=[
-                     ("Is the reading capped to a small share of the time?", "No. 'Annotate the whole speech' spends the window marking. Cap it: read only until you have the situation and two or three choices."),
-                     ("Are just two or three choices chosen, not every appeal?", "No. Marking every appeal leaves nothing to say. Pick the two or three choices with the clearest effect."),
-                     ("Is time reserved to finish the analysis with a conclusion?", "No. Nothing is planned for drafting. Reserve most of the time to write choice to effect to purpose, conclusion included."),
+                     ("Is the reading capped to a small share of the time?", "If your budget gives the reading most of the window, cap it: read only until you have the situation and two or three choices."),
+                     ("Are just two or three choices chosen, not every appeal?", "If the plan tries to cover every appeal, narrow it to the two or three choices with the clearest effect."),
+                     ("Is time reserved to finish the analysis with a conclusion?", "If little time is left for drafting, reserve most of it to write choice to effect to purpose, conclusion included."),
                  ]),
-                 closer="For every line that fails on your draft, name what is off in one sentence and make the "
-                        "fix. Finish by naming the two or three choices you analyzed.")),
+                 closer="These are process fixes, not draft edits: for every line that fails, name in one sentence "
+                        "what you will change about your budget or plan, and carry that adjustment into the full "
+                        "analysis you are about to write. Finish by naming the two or three choices you will analyze.")),
 
         # ===== INDEPENDENT: rehearse the whole analysis from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Rehearse the full analysis",
              ref="", bank="ra_speech_1", rubric_ref="rc.ap", scored=True, unit="essay",
              body=frq_prompt(
-                 intro="On your own now, rehearse the whole analysis under a capped-reading budget.",
+                 intro="On your own now, rehearse the whole analysis from the plan and budget you just checked, applying any process fix you named.",
                  closer="Write a complete rhetorical analysis of this speech end to end: a situated introduction "
                         "with a thesis, body paragraphs that each tie a choice to its effect on the audience, and "
                         "a conclusion that reaches the speaker's purpose. Then run the reread check. There is no "

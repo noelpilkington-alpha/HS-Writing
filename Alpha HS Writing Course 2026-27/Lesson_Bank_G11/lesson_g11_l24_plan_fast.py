@@ -210,9 +210,9 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Reread the fast plan you just wrote. Run this checklist on YOUR plan and fix any line that fails.",
                  checklist_block=checklist(title="Check your own plan, row by row:", rows=[
-                     ("Does one line name a position to defend?", "No. It only names the topic. State a side someone could reject, such as whether the government should steer workers toward growing fields."),
-                     ("Are there two or three ordered points?", "No. There are none. Add two or three reasons, each in a few words, in the order you will argue them."),
-                     ("Is it a few lines, not paragraphs?", "Yes, it is short, but short and empty is not a plan. It needs a position and points, still in a few lines."),
+                     ("Does one line name a position to defend?", "If it only names the topic, state a side someone could reject, such as whether the government should steer workers toward growing fields."),
+                     ("Are there two or three ordered points?", "If they are missing, add two or three reasons, each in a few words, in the order you will argue them."),
+                     ("Is it a few lines, not paragraphs?", "If it has grown into full sentences or written-out paragraphs, trim it back to a few lines: the position on one line and each point in a few words."),
                  ]),
                  closer="For every check your plan fails, fix that line now. Finish by naming the position your "
                         "plan will defend.")),
