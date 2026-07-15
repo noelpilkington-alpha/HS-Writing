@@ -80,6 +80,27 @@ _KEY_TERMS = ["arguable claim", "controlling idea", "thesis", "counterargument",
 _TERM_RE = re.compile(r"\b(" + "|".join(re.escape(t) for t in sorted(_KEY_TERMS, key=len, reverse=True)) + r")\b")
 
 
+# issue-frame stimuli open their passage with "Here is the question for your claim: <Q>? <rest of framing>".
+# Rendered as one flat run it reads as a wall with the question buried. Split it into a styled structural
+# lead-in: a bold label + the italicized question on its own line + a break, then the rest of the framing as a
+# normal paragraph. Matches the fix Noel requested. Returns None if the block is not a question lead-in.
+_Q_LEADIN = re.compile(r"^\s*Here is the question for your claim:\s*(.+?\?)\s*(.*)$", re.S | re.I)
+
+
+def _render_source_block(b: str) -> str:
+    """Render ONE source block as prompt/card HTML. If it is an issue-frame question lead-in, style the question
+    as a bold label + italic question + break; otherwise a plain paragraph. esc() everything (XML-safe)."""
+    m = _Q_LEADIN.match(b or "")
+    if m:
+        question, rest = m.group(1).strip(), m.group(2).strip()
+        html_out = ('<div style="font-weight:700;margin:0 0 2px;">Here is the question for your claim:</div>'
+                    f'<div style="font-style:italic;margin:0 0 8px;">{esc(question)}</div>')
+        if rest:
+            html_out += f'<p style="margin:0 0 8px;">{esc(rest)}</p>'
+        return html_out
+    return f'<p style="margin:0 0 8px;">{esc(b)}</p>'
+
+
 def _emphasize(text: str) -> str:
     """Escape text, then bold the FIRST occurrence of each key term (so definitions stand out without over-
     bolding every repeat). Operates on escaped text so it never injects unsafe markup."""
@@ -451,7 +472,7 @@ def frq_xml(fr_id: str, slot, source_text="", source_reminder="", boxed_source=F
             if k == 0 and len(blocks) > 1:
                 body_html += f'<div style="font-weight:700;margin:0 0 4px;">{esc(b)}</div>'
             else:
-                body_html += f'<p style="margin:0 0 8px;">{esc(b)}</p>'
+                body_html += _render_source_block(b)
         if boxed_source:
             # essay/gate writes: cap the source in a scrollable panel so the write box stays near the fold
             # (SPINE_REARCH_renderQA_result.md: a naive full re-inline pushes the box 395-587px below the fold).
