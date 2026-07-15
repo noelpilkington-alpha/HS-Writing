@@ -31,10 +31,12 @@ def check_lesson(L) -> list:
         bad = spec["banned_kinds"] & set(kinds)
         if bad:
             probs.append(f"gate has banned scaffold {sorted(bad)}")
-        if len(scored_writes) > spec["max_scored_writes"]:
-            probs.append(f"gate has {len(scored_writes)} scored writes > {spec['max_scored_writes']}")
-        if not any(s.role == "TRANSFER" for s in scored_writes):
-            probs.append("gate has no TRANSFER (cold, held-out) scored write")
+        if not scored_writes:
+            probs.append("gate has no scored (cold) production write")
+        if any(s.role == "SUPPORTED" for s in scored_writes):
+            probs.append("gate has a SCORED SUPPORTED plan (plan must be scored=False)")
+        if not any(s.role in ("INDEPENDENT", "TRANSFER") for s in scored_writes):
+            probs.append("gate has no cold INDEPENDENT/TRANSFER scored write")
         return probs
     g = grain(L)
     spec = GRAIN_TEMPLATES.get((cls, g))

@@ -89,8 +89,12 @@ def grain(L) -> str:
 GRAIN_TEMPLATES = {
     "gate": {
         "banned_kinds": {"annotated_before_after", "discrimination", "predict_the_fix"},
-        "require_kinds": {"production_frq"},   # a cold write
-        "max_scored_writes": 1,                 # ONLY the cold write is scored; the plan is a scored=False affordance
+        "require_kinds": {"production_frq"},   # >=1 cold write
+        # the plan (a SUPPORTED production_frq) must be scored=False; every SCORED write must be a cold
+        # INDEPENDENT/TRANSFER production. This allows a single-essay gate (1 cold write) AND an AP FRQ-section
+        # gate (e.g. G12: synthesis + rhetorical analysis + argument = 3 cold writes) without letting a scored
+        # plan re-introduce construct-irrelevant variance.
+        "no_scored_plan": True,
     },
     ("practice", "sentence"): {"discrimination_min": 2, "production_writes": (2, 3)},
     ("practice", "paragraph"): {"discrimination_min": 1, "production_writes": (2, 3), "revision_or_coached_transfer": True},
@@ -744,12 +748,14 @@ def gate_gate_shape(L: Lesson) -> tuple[bool, str]:
     scored_writes = [s for s in L.slots if s.kind == "production_frq" and getattr(s, "scored", False)]
     if not scored_writes:
         return False, "gate has no scored (cold) production write"
-    if len(scored_writes) > spec["max_scored_writes"]:
-        return False, (f"gate has {len(scored_writes)} scored writes (max {spec['max_scored_writes']}: only the "
-                       f"cold write is scored; the plan must be scored=False)")
-    if not any(s.role == "TRANSFER" for s in scored_writes):
-        return False, "gate has no TRANSFER (cold, held-out) scored write"
-    return True, "gate is scaffold-free (cue + unscored plan + one scored cold write)"
+    # every SCORED write must be a cold INDEPENDENT/TRANSFER production; a SUPPORTED plan must be scored=False
+    # (so it is an affordance, not a certification write). This allows 1 cold essay OR a multi-FRQ section.
+    scored_plan = [s for s in scored_writes if s.role == "SUPPORTED"]
+    if scored_plan:
+        return False, f"gate has a SCORED SUPPORTED plan ({len(scored_plan)}); the plan must be scored=False"
+    if not any(s.role in ("INDEPENDENT", "TRANSFER") for s in scored_writes):
+        return False, "gate has no cold INDEPENDENT/TRANSFER scored write"
+    return True, f"gate is scaffold-free (cue + unscored plan + {len(scored_writes)} cold scored write(s))"
 
 
 GATES = [
