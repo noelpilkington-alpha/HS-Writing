@@ -123,6 +123,25 @@ def test_gate_passes_when_scaffold_free():
     assert r["passed"], (r["first_failure"], {k: v for k, v in r["gates"].items() if not v["passed"]})
 
 
+def test_grain_crosscheck_flags_essay_with_transfer():
+    from grain_spine_crosscheck import check_lesson
+    L = _practice_essay()
+    L.slots.append(_slot("TRANSFER", "production_frq", unit="essay", bank="b", rubric_ref="rc.staar"))
+    probs = check_lesson(L)
+    assert any("transfer" in p.lower() for p in probs), probs
+
+
+def test_grain_crosscheck_passes_clean_gate():
+    from grain_spine_crosscheck import check_lesson
+    assert check_lesson(_gate()) == []
+
+
+def test_grain_crosscheck_passes_clean_essay_and_sentence():
+    from grain_spine_crosscheck import check_lesson
+    assert check_lesson(_practice_essay()) == []
+    assert check_lesson(_practice_sentence()) == []
+
+
 def test_gate_rejects_smuggled_scaffold():
     g = _gate()
     g.slots.insert(1, _slot("MODEL", "annotated_before_after", bank="held"))
