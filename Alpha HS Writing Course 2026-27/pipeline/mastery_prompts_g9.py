@@ -158,7 +158,7 @@ MASTERY = {
         + _box("A paragraph with filler transitions:",
                "After World War II, more Americans owned cars than ever before. Also, the nation's roads were a "
                "patchwork of narrow, crowded routes. Also, Congress passed the Federal-Aid Highway Act in 1956. "
-               "Then the country built a network that now runs about 48,890 miles.")
+               "Then the country built a network that now runs about 46,876 miles.")
         + _task("The words also and then hide the real relationships between these ideas.",
                 "Rewrite the paragraph, replacing each filler transition with one that names the true "
                 "relationship (add, contrast, cause, or sequence). Keep the facts the same.")},
