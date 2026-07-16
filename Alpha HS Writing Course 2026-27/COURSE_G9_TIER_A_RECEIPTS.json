@@ -1,0 +1,5364 @@
+{
+ "G9": [
+  {
+   "lesson_id": "ACC-W910-L-G9-C901-0001",
+   "title": "Take a Side Someone Could Argue With",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "3 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'free_transit'} partitioned from taught {'four_day_week'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'sentence' (sentence -> sentence -> sentence)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 3 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'sentence' within type ceiling 'sentence'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 2 claim-building: STAND [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'The debate: a four-day school week' is 134 words, o)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: all passages in G9 Lexile band: The debate: a four-day schoo)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'The debate: paying students for grades' is 129 word)"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: all passages in G9 Lexile band: The debate: paying students )"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'The debate: free public transit' is 137 words, outs)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: all passages in G9 Lexile band: The debate: free public tran)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C901-0003",
+   "title": "Make the Claim Sharp and Say Why It Matters",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'free_transit'} partitioned from taught {'pay_for_grades'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'sentence' (sentence -> sentence -> sentence)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 3 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'sentence' within type ceiling 'sentence'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 2 claim-building: STAND [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'The debate: paying students for grades' is 129 word)"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: all passages in G9 Lexile band: The debate: paying students )"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-PAYGRADES]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'The debate: free public transit' is 137 words, outs)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: all passages in G9 Lexile band: The debate: free public tran)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C905-0004",
+   "title": "Set a Focus, Not a Side (Explaining)",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'photosynthesis'} partitioned from taught {'water_cycle'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'sentence' (sentence -> sentence -> sentence)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 3 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'sentence' within type ceiling 'sentence'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 2 claim-building: STAND [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'How the water cycle works' is 48 words, outside 480)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): How the water cycle works=)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'How photosynthesis turns light into food' is 52 wor)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): How photosynthesis turns l)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C901-0006",
+   "title": "Argue or Explain? Choose the Right Sentence",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "3 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'animal_migration'} partitioned from taught {'four_day_week', 'volcanoes'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'sentence' (sentence -> sentence -> sentence)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 3 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'sentence' within type ceiling 'sentence'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 2 claim-building: STAND [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'The debate: a four-day school week' is 134 words, o)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: all passages in G9 Lexile band: The debate: a four-day schoo)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'How volcanoes form and erupt' is 53 words, outside )"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): How volcanoes form and eru)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'How and why animals migrate' is 54 words, outside 4)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): How and why animals migrat)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C902-0007",
+   "title": "Name Your Source: No Quote Stands Alone",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'animal_migration'} partitioned from taught {'school_lunch'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'sentence' (sentence -> sentence -> sentence)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 3 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'sentence' within type ceiling 'paragraph'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 3 evidence-integration: PROVE [established-caveat]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:fact_sources": {
+     "passed": true,
+     "detail": "5 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:citable_facts": {
+     "passed": true,
+     "detail": "5 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Free Lunch for Everyone? A School Meals Debate=1104L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:fact_sources": {
+     "passed": true,
+     "detail": "6 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:citable_facts": {
+     "passed": true,
+     "detail": "6 citable facts"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: The Great Journeys of Birds=1090L"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C902-0008",
+   "title": "Pick the Evidence That Actually Proves Your Claim",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'phone_ban'} partitioned from taught {'animal_migration'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'sentence' (sentence -> sentence -> sentence)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 3 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'sentence' within type ceiling 'paragraph'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 3 evidence-integration: PROVE [established-caveat]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:fact_sources": {
+     "passed": true,
+     "detail": "6 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:citable_facts": {
+     "passed": true,
+     "detail": "6 citable facts"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: The Great Journeys of Birds=1090L"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:fact_sources": {
+     "passed": true,
+     "detail": "3 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:citable_facts": {
+     "passed": true,
+     "detail": "3 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Phones in School: Ban Them or Teach With Them?=1072L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C902-0009",
+   "title": "Fold the Quote Into Your Own Sentence",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'water_cycle'} partitioned from taught {'phone_ban'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'sentence' (sentence -> sentence -> sentence)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 3 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'sentence' within type ceiling 'paragraph'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 3 evidence-integration: PROVE [established-caveat]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:fact_sources": {
+     "passed": true,
+     "detail": "3 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:citable_facts": {
+     "passed": true,
+     "detail": "3 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Phones in School: Ban Them or Teach With Them?=1072L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:fact_sources": {
+     "passed": true,
+     "detail": "6 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:citable_facts": {
+     "passed": true,
+     "detail": "6 citable facts"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: The Endless Journey of Water=1070L"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C903-0010",
+   "title": "Link Evidence to Your Claim With Because, But, So",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'community_service'} partitioned from taught {'school_lunch'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'sentence' (sentence -> sentence -> sentence)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 3 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'sentence' within type ceiling 'paragraph'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 3 evidence-integration: PROVE [established-caveat]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:fact_sources": {
+     "passed": true,
+     "detail": "5 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:citable_facts": {
+     "passed": true,
+     "detail": "5 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Free Lunch for Everyone? A School Meals Debate=1104L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:fact_sources": {
+     "passed": true,
+     "detail": "4 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:citable_facts": {
+     "passed": true,
+     "detail": "4 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Required to Give Back? Community Service and the Diploma=1049L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C903-0011",
+   "title": "Say Why the Evidence Supports Your Claim (the Warrant)",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'phone_ban'} partitioned from taught {'community_service'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'sentence' (sentence -> sentence -> sentence)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 3 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'sentence' within type ceiling 'paragraph'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 3 evidence-integration: PROVE [established-caveat]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:fact_sources": {
+     "passed": true,
+     "detail": "4 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:citable_facts": {
+     "passed": true,
+     "detail": "4 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Required to Give Back? Community Service and the Diploma=1049L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:fact_sources": {
+     "passed": true,
+     "detail": "3 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:citable_facts": {
+     "passed": true,
+     "detail": "3 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Phones in School: Ban Them or Teach With Them?=1072L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C903-0012",
+   "title": "Build It Together: Point, Evidence, Warrant",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'animal_migration'} partitioned from taught {'water_cycle'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'paragraph' (sentence -> paragraph -> paragraph)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 2 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'paragraph' within type ceiling 'paragraph'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 3 evidence-integration: PROVE [established-caveat]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:fact_sources": {
+     "passed": true,
+     "detail": "6 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:citable_facts": {
+     "passed": true,
+     "detail": "6 citable facts"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: The Endless Journey of Water=1070L"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:fact_sources": {
+     "passed": true,
+     "detail": "6 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:citable_facts": {
+     "passed": true,
+     "detail": "6 citable facts"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: The Great Journeys of Birds=1090L"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C903-0028",
+   "title": "Two Pieces of Evidence, One Point",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'grid_spending'} partitioned from taught {'ai_workforce'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'paragraph' (sentence -> paragraph -> paragraph)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 2 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'paragraph' within type ceiling 'paragraph'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 3 evidence-integration: PROVE [established-caveat]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-AIWORKFORCE]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-AIWORKFORCE]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-AIWORKFORCE]:fact_sources": {
+     "passed": true,
+     "detail": "8 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-AIWORKFORCE]:citable_facts": {
+     "passed": true,
+     "detail": "8 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-AIWORKFORCE]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-AIWORKFORCE]:lexile": {
+     "passed": true,
+     "detail": "all passages in G11 Lexile band: Should Government Steer Workers Toward the Growing Fields?=1239L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-AIWORKFORCE]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-AIWORKFORCE]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-AIWORKFORCE]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-AIWORKFORCE]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-GRIDSPENDING]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-GRIDSPENDING]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-GRIDSPENDING]:fact_sources": {
+     "passed": true,
+     "detail": "7 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-GRIDSPENDING]:citable_facts": {
+     "passed": true,
+     "detail": "7 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-GRIDSPENDING]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-GRIDSPENDING]:lexile": {
+     "passed": true,
+     "detail": "all passages in G11 Lexile band: Build the Power, or Build the Grid?=1239L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-GRIDSPENDING]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-GRIDSPENDING]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-GRIDSPENDING]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-GRIDSPENDING]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C903-0013",
+   "title": "Check the Reasoning: Does the Warrant Really Explain?",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'water_cycle'} partitioned from taught {'volcanoes'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "calibration: self-score precedes reveal; no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'sentence' (sentence -> sentence -> sentence)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 3 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'sentence' within type ceiling 'paragraph'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 5 rubric-revision: CHECK [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'How volcanoes form and erupt' is 53 words, outside )"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): How volcanoes form and eru)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'How the water cycle works' is 48 words, outside 480)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): How the water cycle works=)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-WATER-CYCLE]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C906-0014",
+   "title": "Pick the Transition the Logic Needs",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'animal_migration'} partitioned from taught {'photosynthesis'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'paragraph' (paragraph -> paragraph -> paragraph)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 2 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'paragraph' within type ceiling 'paragraph'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 3 evidence-integration: PROVE [established-caveat]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'How photosynthesis turns light into food' is 52 wor)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): How photosynthesis turns l)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'How and why animals migrate' is 54 words, outside 4)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): How and why animals migrat)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C906-0015",
+   "title": "Make Every This and It Point Clearly",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'volcanoes'} partitioned from taught {'animal_migration'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'sentence' (sentence -> sentence -> sentence)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 3 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'sentence' within type ceiling 'sentence'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 6 editing-in-context: SPOT [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'How and why animals migrate' is 54 words, outside 4)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): How and why animals migrat)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-MIGRATION]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'How volcanoes form and erupt' is 53 words, outside )"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): How volcanoes form and eru)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C906-0016",
+   "title": "Revise a Choppy Paragraph Into a Connected One",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'community_service'} partitioned from taught {'school_lunch'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'paragraph' (paragraph -> paragraph -> paragraph)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 2 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'paragraph' within type ceiling 'paragraph'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 5 rubric-revision: CHECK [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'The debate: free school meals' is 121 words, outsid)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): The debate: free school me)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-FRAME-COMMUNITYSERVICE]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'The debate: required community service' is 125 word)"
+    },
+    "stimulus[ACC-W910-FRAME-COMMUNITYSERVICE]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-COMMUNITYSERVICE]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-COMMUNITYSERVICE]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-COMMUNITYSERVICE]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-COMMUNITYSERVICE]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): The debate: required commu)"
+    },
+    "stimulus[ACC-W910-FRAME-COMMUNITYSERVICE]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-COMMUNITYSERVICE]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-COMMUNITYSERVICE]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-COMMUNITYSERVICE]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C906-0027",
+   "title": "Sound Like an Essay: Formal, Objective Tone",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'free_transit'} partitioned from taught {'four_day_week'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'sentence' (sentence -> sentence -> sentence)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 3 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'sentence' within type ceiling 'sentence'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 6 editing-in-context: SPOT [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'The debate: a four-day school week' is 134 words, o)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: all passages in G9 Lexile band: The debate: a four-day schoo)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-FOURDAYWEEK]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'The debate: free public transit' is 137 words, outs)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: all passages in G9 Lexile band: The debate: free public tran)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-FREETRANSIT]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C906-0017",
+   "title": "Build a Body Paragraph That Connects: Claim, Evidence, Warrant + Cohesion",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'school_lunch'} partitioned from taught {'phone_ban'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'paragraph' (paragraph -> paragraph -> paragraph)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 2 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'paragraph' within type ceiling 'essay'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 7 essay-assembly: BUILD [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:fact_sources": {
+     "passed": true,
+     "detail": "3 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:citable_facts": {
+     "passed": true,
+     "detail": "3 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Phones in School: Ban Them or Teach With Them?=1072L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-PHONEBAN]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:fact_sources": {
+     "passed": true,
+     "detail": "5 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:citable_facts": {
+     "passed": true,
+     "detail": "5 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Free Lunch for Everyone? A School Meals Debate=1104L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C906-0018",
+   "title": "Write a Fresh Paragraph, Then Check It Yourself",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'animal_migration'} partitioned from taught {'community_service'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'paragraph' (paragraph -> paragraph -> paragraph)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 2 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'paragraph' within type ceiling 'essay'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 7 essay-assembly: BUILD [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:fact_sources": {
+     "passed": true,
+     "detail": "4 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:citable_facts": {
+     "passed": true,
+     "detail": "4 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Required to Give Back? Community Service and the Diploma=1049L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:fact_sources": {
+     "passed": true,
+     "detail": "6 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:citable_facts": {
+     "passed": true,
+     "detail": "6 citable facts"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: The Great Journeys of Birds=1090L"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C901-0022",
+   "title": "Argue or Explain? Choose the Essay Mode",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "3 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'volcanoes'} partitioned from taught {'phone_ban', 'photosynthesis'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'multi_paragraph' (multi_paragraph -> multi_paragraph -> multi_paragraph)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 2 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'multi_paragraph' within type ceiling 'essay'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 7 essay-assembly: BUILD [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-FRAME-PHONEBAN]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'The debate: phones in school' is 131 words, outside)"
+    },
+    "stimulus[ACC-W910-FRAME-PHONEBAN]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-PHONEBAN]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-PHONEBAN]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-PHONEBAN]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-PHONEBAN]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): The debate: phones in scho)"
+    },
+    "stimulus[ACC-W910-FRAME-PHONEBAN]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-PHONEBAN]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-PHONEBAN]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-PHONEBAN]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'How photosynthesis turns light into food' is 52 wor)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): How photosynthesis turns l)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-PHOTOSYNTHESIS]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'How volcanoes form and erupt' is 53 words, outside )"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): How volcanoes form and eru)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C904-0019",
+   "title": "Plan Before You Draft: The Multiple-Paragraph Outline",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'volcanoes'} partitioned from taught {'water_cycle'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'multi_paragraph' (multi_paragraph -> multi_paragraph -> multi_paragraph)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 2 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'multi_paragraph' within type ceiling 'essay'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 7 essay-assembly: BUILD [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:fact_sources": {
+     "passed": true,
+     "detail": "6 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:citable_facts": {
+     "passed": true,
+     "detail": "6 citable facts"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: The Endless Journey of Water=1070L"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-WATER-CYCLE]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:fact_sources": {
+     "passed": true,
+     "detail": "7 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:citable_facts": {
+     "passed": true,
+     "detail": "7 citable facts"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Windows into a Fiery Planet=1108L"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C904-0020",
+   "title": "Order the Paragraphs So the Essay Builds",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'school_lunch'} partitioned from taught {'volcanoes'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'multi_paragraph' (multi_paragraph -> multi_paragraph -> multi_paragraph)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 2 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'multi_paragraph' within type ceiling 'essay'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 7 essay-assembly: BUILD [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:fact_sources": {
+     "passed": true,
+     "detail": "7 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:citable_facts": {
+     "passed": true,
+     "detail": "7 citable facts"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Windows into a Fiery Planet=1108L"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:fact_sources": {
+     "passed": true,
+     "detail": "5 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:citable_facts": {
+     "passed": true,
+     "detail": "5 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Free Lunch for Everyone? A School Meals Debate=1104L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C904-0021",
+   "title": "Frame the Thesis, Land the Upshot",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'photosynthesis'} partitioned from taught {'school_lunch'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'multi_paragraph' (multi_paragraph -> multi_paragraph -> multi_paragraph)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 2 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'multi_paragraph' within type ceiling 'essay'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 7 essay-assembly: BUILD [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:fact_sources": {
+     "passed": true,
+     "detail": "5 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:citable_facts": {
+     "passed": true,
+     "detail": "5 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Free Lunch for Everyone? A School Meals Debate=1104L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-SCHOOLLUNCH]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-PHOTOSYNTHESIS]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-PHOTOSYNTHESIS]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-PHOTOSYNTHESIS]:fact_sources": {
+     "passed": true,
+     "detail": "6 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-PHOTOSYNTHESIS]:citable_facts": {
+     "passed": true,
+     "detail": "6 citable facts"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-PHOTOSYNTHESIS]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-PHOTOSYNTHESIS]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: How a Leaf Makes Food from Light=1063L"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-PHOTOSYNTHESIS]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-PHOTOSYNTHESIS]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-PHOTOSYNTHESIS]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-PHOTOSYNTHESIS]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C904-0023",
+   "title": "Write a Full Argument Essay From Your Plan",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order (essay grain: transfer routed to gate/PP100)"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "1 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "essay grain: in-article transfer routed to gate/PP100 (no TRANSFER slot expected)"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "2 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'essay' (multi_paragraph -> essay)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 2 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'essay' within type ceiling 'essay'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 7 essay-assembly: BUILD [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:fact_sources": {
+     "passed": true,
+     "detail": "4 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:citable_facts": {
+     "passed": true,
+     "detail": "4 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Required to Give Back? Community Service and the Diploma=1049L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-COMMUNITYSERVICE]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C904-0024",
+   "title": "Write a Full Informational Essay From Your Plan",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order (essay grain: transfer routed to gate/PP100)"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "1 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "essay grain: in-article transfer routed to gate/PP100 (no TRANSFER slot expected)"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "no self_score slot (n/a); no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "2 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'essay' (multi_paragraph -> essay)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 2 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'essay' within type ceiling 'essay'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 7 essay-assembly: BUILD [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:fact_sources": {
+     "passed": true,
+     "detail": "6 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:citable_facts": {
+     "passed": true,
+     "detail": "6 citable facts"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: The Great Journeys of Birds=1090L"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-MIGRATION]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C904-0025",
+   "title": "Revise Against the Rubric, Then Check Your Own Essay",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "SRSD shell complete + in order"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "Model = mechanisms 1-2 (before/after + predict-the-fix) + grain-appropriate diagnosis"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "discrimination precedes production; every Grade-C move labeled"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "2 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "transfer bank {'school_lunch'} partitioned from taught {'volcanoes'}"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "calibration: self-score precedes reveal; no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "3 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'paragraph' (paragraph -> paragraph -> paragraph)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 2 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'paragraph' within type ceiling 'paragraph'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 5 rubric-revision: CHECK [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "not a gate"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'How volcanoes form and erupt' is 53 words, outside )"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): How volcanoes form and eru)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-VOLCANOES]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:structure": {
+     "passed": true,
+     "detail": "n/a (issue_frame: passage 'The debate: free school meals' is 121 words, outsid)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:fact_sources": {
+     "passed": true,
+     "detail": "n/a (issue_frame: no fact-source table)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:citable_facts": {
+     "passed": true,
+     "detail": "n/a (issue_frame: only 0 citable facts; need >=3 discrete facts for evidence-b)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:source_config": {
+     "passed": true,
+     "detail": "n/a (issue_frame: unknown family 'issue_frame')"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:lexile": {
+     "passed": true,
+     "detail": "n/a (issue_frame: Lexile FAIL (G9 band 1010-1150L): The debate: free school me)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-FRAME-SCHOOLLUNCH]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C904-0026",
+   "title": "G9 Gate: Write a Complete Informational Essay",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "gate shell (cue + cold write) present"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "gate: model sequence not required (scaffold-free by design)"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "gate: discrimination intentionally absent (scaffold-free)"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "1 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "gate: the cold write IS the transfer (partition n/a)"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "calibration: self-score precedes reveal; no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "2 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'essay' (essay)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 0 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'essay' within type ceiling 'essay'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 7 essay-assembly: BUILD [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "gate is scaffold-free (cue + unscored plan + 1 cold scored write(s))"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:fact_sources": {
+     "passed": true,
+     "detail": "7 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:citable_facts": {
+     "passed": true,
+     "detail": "7 citable facts"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:lexile": {
+     "passed": true,
+     "detail": "all passages in G9 Lexile band: Windows into a Fiery Planet=1108L"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:content": {
+     "passed": true,
+     "detail": "content clean (no bright-line, no flags)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-INFO-LESSON-VOLCANOES]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  },
+  {
+   "lesson_id": "ACC-W910-L-G9-C904-0029",
+   "title": "G9 Gate: Write a Complete Argument Essay",
+   "gates": {
+    "contract:shell_completeness": {
+     "passed": true,
+     "detail": "gate shell (cue + cold write) present"
+    },
+    "contract:model_sequence": {
+     "passed": true,
+     "detail": "gate: model sequence not required (scaffold-free by design)"
+    },
+    "contract:discrimination_before_production": {
+     "passed": true,
+     "detail": "gate: discrimination intentionally absent (scaffold-free)"
+    },
+    "contract:binding_integrity": {
+     "passed": true,
+     "detail": "1 bound refs, all present in the banks"
+    },
+    "contract:bank_partition": {
+     "passed": true,
+     "detail": "gate: the cold write IS the transfer (partition n/a)"
+    },
+    "contract:calibration_discipline": {
+     "passed": true,
+     "detail": "calibration: self-score precedes reveal; no person-praise"
+    },
+    "contract:grader_routing": {
+     "passed": true,
+     "detail": "2 production FRQ(s), all routed to a valid rc.* config"
+    },
+    "contract:timeback_native": {
+     "passed": true,
+     "detail": "all slots map to native Timeback interactions (all JSON-safe)"
+    },
+    "contract:no_source_markup": {
+     "passed": true,
+     "detail": "no mark-up-the-source instructions on display slots"
+    },
+    "contract:no_prior_work_reference": {
+     "passed": true,
+     "detail": "no cross-item references to the student's prior work"
+    },
+    "contract:define_before_use": {
+     "passed": true,
+     "detail": "all technical terms defined before use"
+    },
+    "contract:content_depth": {
+     "passed": true,
+     "detail": "all slots carry finished-depth content; worked examples show before+after"
+    },
+    "contract:model_before_required": {
+     "passed": true,
+     "detail": "high-load moves are modeled before required; diagnosis is scaffolded"
+    },
+    "contract:no_ambiguous_reference": {
+     "passed": true,
+     "detail": "no dangling references; every 'this/that X' shows its referent"
+    },
+    "contract:unit_ladder": {
+     "passed": true,
+     "detail": "unit ladder non-decreasing; reaches 'essay' (essay)"
+    },
+    "contract:distractor_length_cue": {
+     "passed": true,
+     "detail": "no length cue: 0 choice item(s) inspected, correct never lone-longest"
+    },
+    "contract:leaked_internal_label": {
+     "passed": true,
+     "detail": "no internal design/QC jargon in student-facing text"
+    },
+    "contract:leaked_answer_cue": {
+     "passed": true,
+     "detail": "no retry/feedback text leaked into option labels"
+    },
+    "contract:format_fidelity": {
+     "passed": true,
+     "detail": "authored bodies format-clean (balanced tags, no unbroken wall of text)"
+    },
+    "contract:type_ceiling": {
+     "passed": true,
+     "detail": "top production unit 'essay' within type ceiling 'essay'"
+    },
+    "contract:effect_size_honesty": {
+     "passed": true,
+     "detail": "no over-claimed effect sizes (async model cites modality-flexible mechanisms only)"
+    },
+    "contract:mnemonic_status": {
+     "passed": true,
+     "detail": "type 7 essay-assembly: BUILD [proposal]"
+    },
+    "contract:no_em_dash": {
+     "passed": true,
+     "detail": "no em dashes"
+    },
+    "contract:gate_gate_shape": {
+     "passed": true,
+     "detail": "gate is scaffold-free (cue + unscored plan + 1 cold scored write(s))"
+    },
+    "contract:structural_item": {
+     "passed": true,
+     "detail": "structural items well-formed (option forms, count, single key, no duplicates)"
+    },
+    "render:fidelity": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "register": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "mastery_genre": {
+     "passed": true,
+     "detail": "clean"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-WATERTRADEOFF]:structure": {
+     "passed": true,
+     "detail": "1 passage(s), all in word band"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-WATERTRADEOFF]:provenance": {
+     "passed": true,
+     "detail": "provenance complete (own_authored)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-WATERTRADEOFF]:fact_sources": {
+     "passed": true,
+     "detail": "6 fact-sources, all with fetched URLs; all in-text figures backed"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-WATERTRADEOFF]:citable_facts": {
+     "passed": true,
+     "detail": "6 citable facts"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-WATERTRADEOFF]:source_config": {
+     "passed": true,
+     "detail": "valid single-source (lesson teaching single, or explanatory/analysis form)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-WATERTRADEOFF]:lexile": {
+     "passed": true,
+     "detail": "all passages in G12 Lexile band: When Food and Power Compete for the Same Water=1295L"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-WATERTRADEOFF]:content": {
+     "passed": true,
+     "detail": "content PASS-with-FLAGS (human review before ship): one_sided_policy"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-WATERTRADEOFF]:bucket_profile": {
+     "passed": true,
+     "detail": "lesson profile ok"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-WATERTRADEOFF]:equivalent_form": {
+     "passed": true,
+     "detail": "n/a (lesson bucket)"
+    },
+    "stimulus[ACC-W910-ARG-LESSON-WATERTRADEOFF]:register": {
+     "passed": true,
+     "detail": "passage register clean (no childish opener, no leaked jargon)"
+    }
+   },
+   "blockers": [],
+   "passed": true
+  }
+ ]
+}
