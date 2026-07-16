@@ -1,0 +1,2509 @@
+{
+  "ACC-W910-ARG-LESSON-PHONEBAN": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://nces.ed.gov/programs/digest/d21/tables/dt21_233.50.asp",
+        "figure": "76.9 percent",
+        "verbatim": "Prohibited non-academic use of cell phones or smartphones during school hours ... 76.9",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://nces.ed.gov/programs/digest/d21/tables/dt21_233.50.asp",
+        "figure": "90.9 percent",
+        "verbatim": "2009-10 ... 90.9",
+        "verified": true,
+        "reason": "figure token found on page (no verbatim captured)"
+      },
+      {
+        "url": "https://nces.ed.gov/programs/digest/d21/tables/dt21_233.50.asp",
+        "figure": "65.8 percent",
+        "verbatim": "2015-16 ... 65.8",
+        "verified": true,
+        "reason": "figure token found on page (no verbatim captured)"
+      }
+    ]
+  },
+  "ACC-W910-ANALYSIS-SINGLE-0005": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.gutenberg.org/cache/epub/3090/pg3090.txt",
+        "figure": "Guy de Maupassant, \"The Necklace\" (\"La Parure\"), first published 1884",
+        "verbatim": "She had no gowns, no jewels, nothing. And she loved nothing but that.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gutenberg.org/cache/epub/3090/pg3090.txt",
+        "figure": "author lived 1850-1893; story first published 1884; both pre-1929 => US public domain",
+        "verbatim": "But one evening her husband reached home with a triumphant air",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gutenberg.org/cache/epub/3090/pg3090.txt",
+        "figure": "setup establishes characterization, imagery, and irony; ends on the turn (the diamond necklace)",
+        "verbatim": "Suddenly she discovered, in a black satin box, a superb diamond necklace",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ARG-OPP-0007": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://nces.ed.gov/fastfacts/display.asp?id=50",
+        "figure": "18.8 percent",
+        "verbatim": "18.8 percent of public schools required that students wear uniforms",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://nces.ed.gov/programs/digest/d21/tables/dt21_233.50.asp",
+        "figure": "11.8 percent",
+        "verbatim": "Required students to wear uniforms ... 1999-2000 ... 11.8",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://nces.ed.gov/fastfacts/display.asp?id=719",
+        "figure": "19 percent",
+        "verbatim": "about 19 percent of students ages 12-18 ... reported being bullied ... during school",
+        "verified": true,
+        "reason": "figure confirmed on page (2/3 verbatim segments matched)"
+      },
+      {
+        "url": "https://nces.ed.gov/fastfacts/display.asp?id=719",
+        "figure": "28 percent",
+        "verbatim": "a decline from 2010-11, when 28 percent reported being bullied",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.census.gov/library/publications/2023/demo/p60-280.html",
+        "figure": "11.5 percent",
+        "verbatim": "The official poverty rate in 2022 was 11.5 percent",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.census.gov/library/publications/2023/demo/p60-280.html",
+        "figure": "12.4 percent",
+        "verbatim": "SPM child poverty rate more than doubled, from 5.2 percent in 2021 to 12.4 percent in 2022",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.census.gov/library/publications/2023/demo/p60-280.html",
+        "figure": "5.2 percent",
+        "verbatim": "from 5.2 percent in 2021 to 12.4 percent in 2022",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://nces.ed.gov/programs/digest/d21/tables/dt21_233.50.asp",
+        "figure": "43.7 percent",
+        "verbatim": "Enforced a strict dress code ... 2019-20 ... 43.7",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://nces.ed.gov/programs/digest/d21/tables/dt21_233.50.asp",
+        "figure": "21.5 percent",
+        "verbatim": "Required students to wear uniforms ... 2015-16 ... 21.5",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ARG-OPP-0009": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.archives.gov/founding-docs/amendments-11-27",
+        "figure": "July 1, 1971",
+        "verbatim": "Ratified July 1, 1971",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.archives.gov/founding-docs/amendments-11-27",
+        "figure": "March 23, 1971",
+        "verbatim": "passed by Congress March 23, 1971",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.archives.gov/founding-docs/amendments-11-27",
+        "figure": "18",
+        "verbatim": "shall not be denied or abridged by the United States or by any State on account of age",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.census.gov/library/stories/2021/04/record-high-turnout-in-2020-general-election.html",
+        "figure": "57 percent",
+        "verbatim": "57% voted in 2020, up from 49% in 2016",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.census.gov/library/stories/2021/04/record-high-turnout-in-2020-general-election.html",
+        "figure": "74 percent",
+        "verbatim": "74% voted in 2020, compared to 71% in 2016",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.census.gov/library/stories/2021/04/record-high-turnout-in-2020-general-election.html",
+        "figure": "67 percent",
+        "verbatim": "national turnout at 67% of citizens 18 and older",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      }
+    ]
+  },
+  "ACC-W910-ARG-OPP-0008": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://nces.ed.gov/programs/statereform/tab5_14.asp",
+        "figure": "28 states; 180 days",
+        "verbatim": "Number of instructional days and hours in the school year, by state: 2018 ... 180",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://nces.ed.gov/programs/digest/d13/tables/dt13_234.12.asp",
+        "figure": "4.1 percent",
+        "verbatim": "Percent of schools with a year-round calendar cycle ... 4.1",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://nces.ed.gov/programs/digest/d13/tables/dt13_234.12.asp",
+        "figure": "3,700 of 90,000",
+        "verbatim": "Number of schools with year-round calendar cycle 3,700 ... Total number of public schools 90,000",
+        "verified": true,
+        "reason": "figure confirmed on page (0/2 verbatim segments matched)"
+      },
+      {
+        "url": "https://nces.ed.gov/surveys/sass/tables/sass0708_1023181_s1n.asp",
+        "figure": "4.4 percent",
+        "verbatim": "all public schools totaled 90,760 ... 4.4 percent had all students attending a year-round calendar",
+        "verified": true,
+        "reason": "figure confirmed on page (0/2 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.census.gov/library/publications/2023/demo/p60-280.html",
+        "figure": "11.5 percent",
+        "verbatim": "The official poverty rate in 2022 was 11.5 percent",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.census.gov/library/publications/2023/demo/p60-280.html",
+        "figure": "12.4 percent",
+        "verbatim": "SPM child poverty rate more than doubled, from 5.2 percent in 2021 to 12.4 percent in 2022",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.census.gov/library/publications/2023/demo/p60-280.html",
+        "figure": "5.2 percent",
+        "verbatim": "from 5.2 percent in 2021 to 12.4 percent in 2022",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ARG-OPP-0010": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.nps.gov/subjects/condors/understandingcondors.htm",
+        "figure": "22 individuals in 1982",
+        "verbatim": "dropped to a low of 22 individuals in 1982",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nps.gov/subjects/condors/understandingcondors.htm",
+        "figure": "captive breeding programs",
+        "verbatim": "All wild condors were then trapped and placed in captive breeding programs",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nps.gov/subjects/condors/understandingcondors.htm",
+        "figure": "518 condors",
+        "verbatim": "As of the end of 2019, there were a total of 518 condors in the world",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nps.gov/subjects/condors/understandingcondors.htm",
+        "figure": "337 in the wild",
+        "verbatim": "with 337 of those flying free in the wild",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.govinfo.gov/content/pkg/USCODE-2020-title7/html/USCODE-2020-title7-chap54.htm",
+        "figure": "exhibitor includes zoos",
+        "verbatim": "includes carnivals, circuses, and zoos exhibiting such animals whether operated for profit or not",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.govinfo.gov/content/pkg/USCODE-2020-title7/html/USCODE-2020-title7-chap54.htm",
+        "figure": "humane handling, care, treatment",
+        "verbatim": "the humane handling, care, treatment, and transportation of animals by dealers, research facilities, and exhibitors",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.govinfo.gov/content/pkg/USCODE-2020-title7/html/USCODE-2020-title7-chap54.htm",
+        "figure": "minimum requirements",
+        "verbatim": "minimum requirements ... for handling, housing, feeding, watering, sanitation, ventilation ... adequate veterinary care",
+        "verified": true,
+        "reason": "all 3 verbatim segments found on page"
+      }
+    ]
+  },
+  "ACC-W910-FRAME-COMMUNITYSERVICE": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-FRAME-FOURDAYWEEK": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-FRAME-FREETRANSIT": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-FRAME-PAYGRADES": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-FRAME-PHONEBAN": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-FRAME-SCHOOLLUNCH": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-FRAME-SOCIALMEDIAAGE": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-FRAME-MIGRATION": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-FRAME-PHOTOSYNTHESIS": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-FRAME-VOLCANOES": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-FRAME-WATER-CYCLE": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-INFO-SINGLE-0009": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.epa.gov/pollinator-protection/colony-collapse-disorder",
+        "figure": "",
+        "verbatim": "Colony Collapse Disorder is the phenomenon that occurs when the majority of worker bees in a colony disappear",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nps.gov/subjects/pollinators/what-is-a-pollinator.htm",
+        "figure": "",
+        "verbatim": "As they drink nectar or land on flowers, pollen sticks to their bodies and gets carried to the next flower they visit.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nps.gov/subjects/pollinators/what-is-a-pollinator.htm",
+        "figure": "",
+        "verbatim": "This movement fertilizes a plant, helping make seeds, fruits, and new plants.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.ars.usda.gov/oc/br/ccd/index/",
+        "figure": "18 billion",
+        "verbatim": "Pollination by managed honey bee colonies adds at least $18 billion to the value of U.S. agriculture annually",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.ars.usda.gov/oc/br/ccd/index/",
+        "figure": "1 in 3",
+        "verbatim": "About one mouthful in three in our diet directly or indirectly benefits from honey bee pollination.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.ars.usda.gov/oc/br/ccd/index/",
+        "figure": "",
+        "verbatim": "Almonds, for example, are almost completely dependent on honey bees for pollination.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.ars.usda.gov/oc/br/ccd/index/",
+        "figure": "5 million / 2.66 million",
+        "verbatim": "decreased from 5 million in the 1940s to about 2.66 million today",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.ars.usda.gov/oc/br/ccd/index/",
+        "figure": "30 to 90 percent",
+        "verbatim": "In October 2006, some beekeepers began reporting losses of 30-90 percent of their hives.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.ars.usda.gov/oc/br/ccd/index/",
+        "figure": "",
+        "verbatim": "No scientific cause for CCD has been proven ... no one factor is the cause of CCD.",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      }
+    ]
+  },
+  "ACC-W910-INFO-SINGLE-0007": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.usgs.gov/faqs/what-earthquake-and-what-causes-them-happen",
+        "figure": "",
+        "verbatim": "The tectonic plates ... get stuck at their edges due to friction.",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/faqs/what-earthquake-and-what-causes-them-happen",
+        "figure": "",
+        "verbatim": "An earthquake is caused by a sudden slip on a fault ... releases energy in waves that travel through the earth's crust and cause the shaking that we feel",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/faqs/what-earthquake-and-what-causes-them-happen",
+        "figure": "",
+        "verbatim": "When the stress on the edge overcomes the friction, there is an earthquake",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/faqs/what-earthquake-and-what-causes-them-happen",
+        "figure": "650 miles / 10 miles",
+        "verbatim": "more than 650 miles long and extends to depths of at least 10 miles",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/faqs/what-earthquake-and-what-causes-them-happen",
+        "figure": "2 inches per year",
+        "verbatim": "the Pacific Plate is moving to the northwest ... at a rate of about two inches per year",
+        "verified": true,
+        "reason": "figure confirmed on page (1/2 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.usgs.gov/programs/earthquake-hazards/earthquake-magnitude-energy-release-and-shaking-intensity",
+        "figure": "1935",
+        "verbatim": "The Richter Scale (ML) ... was the first magnitude scale ... introduced in 1935 ... moment magnitude (MW) is a more accurate measure of the earthquake size",
+        "verified": true,
+        "reason": "figure confirmed on page (0/4 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.usgs.gov/programs/earthquake-hazards/earthquake-magnitude-energy-release-and-shaking-intensity",
+        "figure": "10 / 32 times",
+        "verbatim": "a tenfold increase in measured amplitude ... 32 times more energy release",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/programs/earthquake-hazards/earthquake-magnitude-energy-release-and-shaking-intensity",
+        "figure": "",
+        "verbatim": "Intensity is the measure of shaking at each location ... Modified Mercalli Intensity Scale ... expressed in Roman numerals",
+        "verified": true,
+        "reason": "all 3 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/programs/earthquake-hazards/national-earthquake-information-center-neic",
+        "figure": "30,000",
+        "verbatim": "the NEIC staff locates and publishes approximately 30,000 earthquakes on a yearly basis",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-INFO-SINGLE-0008": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://oceanservice.noaa.gov/facts/how-hurricanes-form.html",
+        "figure": "26.5 degrees Celsius / 50 meters",
+        "verbatim": "Water at least 26.5 degrees Celsius over a depth of 50 meters powers the storm.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/facts/how-hurricanes-form.html",
+        "figure": "",
+        "verbatim": "Thunderstorms turn ocean heat into hurricane fuel.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/facts/how-hurricanes-form.html",
+        "figure": "",
+        "verbatim": "a tropical wave ... a low pressure area that moves through the moisture-rich tropics",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.weather.gov/mob/tropical_definitions",
+        "figure": "38 mph",
+        "verbatim": "A tropical cyclone that has maximum sustained surface winds ... of 38 mph (33 knots) or less.",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.weather.gov/mob/tropical_definitions",
+        "figure": "39-73 mph",
+        "verbatim": "maximum sustained surface winds ranging from 39-73 mph (34 to 63 knots).",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.weather.gov/mob/tropical_definitions",
+        "figure": "74 mph",
+        "verbatim": "A hurricane is a tropical cyclone that has maximum sustained surface winds of 74 mph or greater",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nhc.noaa.gov/aboutsshws.php",
+        "figure": "1 to 5",
+        "verbatim": "a 1 to 5 rating based only on a hurricane's maximum sustained wind speed",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nhc.noaa.gov/aboutsshws.php",
+        "figure": "74-95 mph / 157 mph",
+        "verbatim": "Category 1: 74-95 mph ... Category 5: 157 mph or higher",
+        "verified": true,
+        "reason": "figure confirmed on page (0/2 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.nhc.noaa.gov/aboutsshws.php",
+        "figure": "",
+        "verbatim": "Categories 3, 4 and 5 are considered major hurricanes",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://www.nhc.noaa.gov/climo/",
+        "figure": "June 1 / November 30",
+        "verbatim": "The Atlantic hurricane season runs from June 1 to November 30.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nhc.noaa.gov/climo/",
+        "figure": "14 / 7 / 3",
+        "verbatim": "14 named storms, 7 hurricanes, and 3 major hurricanes",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-INFO-SINGLE-0006": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://oceanservice.noaa.gov/education/tutorial_tides/tides01_intro.html",
+        "figure": "",
+        "verbatim": "tides are very long-period waves that move through the oceans in response to the forces exerted by the moon and sun",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/facts/moon-tide.html",
+        "figure": "",
+        "verbatim": "While the moon and sun cause tides on our planet, the gravitational pull of these celestial bodies",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/education/tutorial_tides/tides01_intro.html",
+        "figure": "",
+        "verbatim": "high tide ... the crest of the wave ... low tide corresponds to the lowest part of the wave, or its trough ... the tidal range",
+        "verified": false,
+        "reason": "1/4 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/education/tutorial_tides/tides01_intro.html",
+        "figure": "",
+        "verbatim": "The incoming tide ... is called a flood current; the outgoing tide is called an ebb current ... slack water",
+        "verified": true,
+        "reason": "all 3 verbatim segments found on page"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/education/tutorial_tides/tides07_cycles.html",
+        "figure": "2 high / 2 low",
+        "verbatim": "most areas have two high tides and two low tides each day",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/education/tutorial_tides/tides07_cycles.html",
+        "figure": "",
+        "verbatim": "semidiurnal tide ... mixed semidiurnal tide ... diurnal tide ... West Coast tends to have mixed semidiurnal tides, whereas a semidiurnal pattern is more typical of the East Coast",
+        "verified": true,
+        "reason": "all 4 verbatim segments found on page"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/education/tutorial_tides/tides05_lunarday.html",
+        "figure": "24 hours 50 minutes",
+        "verbatim": "a lunar day is 24 hours and 50 minutes ... it takes the Earth an extra 50 minutes to catch up to the moon",
+        "verified": true,
+        "reason": "figure confirmed on page (1/2 verbatim segments matched)"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/education/tutorial_tides/tides05_lunarday.html",
+        "figure": "12 hours 25 minutes",
+        "verbatim": "High tides occur 12 hours and 25 minutes apart",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ANALYSIS-LESSON-G9": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.gutenberg.org/cache/epub/7256/pg7256.txt",
+        "figure": "O. Henry (William Sydney Porter), \"The Gift of the Magi\", 1905",
+        "verbatim": "One dollar and eighty-seven cents. That was all.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gutenberg.org/cache/epub/7256/pg7256.txt",
+        "figure": "first published 1905 (pre-1929) => US public domain",
+        "verbatim": "And the next day would be Christmas.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gutenberg.org/cache/epub/7256/pg7256.txt",
+        "figure": "short story first published 1905 in \"The New York Sunday World\"",
+        "verbatim": "The other was Della's hair.",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      }
+    ]
+  },
+  "ACC-W910-ARG-LESSON-COMMUNITYSERVICE": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://nces.ed.gov/surveys/frss/publications/1999043/index.asp?sectionid=4",
+        "figure": "64 percent",
+        "verbatim": "64 percent of all public schools",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://nces.ed.gov/surveys/frss/publications/1999043/index.asp?sectionid=4",
+        "figure": "83 percent",
+        "verbatim": "high schools ... 83 percent",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://nces.ed.gov/surveys/frss/publications/1999043/index.asp?sectionid=5",
+        "figure": "32 percent",
+        "verbatim": "percentage of public schools nationwide with service-learning was 32 percent",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://nces.ed.gov/surveys/frss/publications/1999043/index.asp?sectionid=5",
+        "figure": "46 percent",
+        "verbatim": "46 percent of all high schools had students participating in service-learning",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ARG-LESSON-SCHOOLLUNCH": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.ers.usda.gov/topics/food-nutrition-assistance/child-nutrition-programs/national-school-lunch-program",
+        "figure": "4.8 billion",
+        "verbatim": "more than 4.8 billion lunches",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.ers.usda.gov/topics/food-nutrition-assistance/child-nutrition-programs/national-school-lunch-program",
+        "figure": "17.7 billion",
+        "verbatim": "total cost of $17.7 billion",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.ers.usda.gov/topics/food-nutrition-assistance/child-nutrition-programs/national-school-lunch-program",
+        "figure": "100,000",
+        "verbatim": "operates in nearly 100,000 public and nonprofit private schools",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://nces.ed.gov/fastfacts/display.asp?id=898",
+        "figure": "185 percent",
+        "verbatim": "under 185 percent of the poverty threshold",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://nces.ed.gov/fastfacts/display.asp?id=898",
+        "figure": "10.5 million",
+        "verbatim": "about 10.5 million students attended high-poverty schools",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-INFO-LESSON-MIGRATION": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.nps.gov/cakr/learn/nature/birds.htm",
+        "figure": "150",
+        "verbatim": "150 species of birds ... the endless sunlight and still lakes on the tundra make food incredibly abundant",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.nps.gov/cakr/learn/nature/birds.htm",
+        "figure": "12,000 miles",
+        "verbatim": "flies between Antarctic and the Arctic - 12,000 miles each way",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.nps.gov/cakr/learn/nature/birds.htm",
+        "figure": "24,000 miles",
+        "verbatim": "24,000 mile yearly migration ... the longest of any species on earth",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.nps.gov/cakr/learn/nature/birds.htm",
+        "figure": "two",
+        "verbatim": "Two major flyways ... drawing birds from the Pacific and the Americas ... a third flyway",
+        "verified": true,
+        "reason": "figure confirmed on page (2/3 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.usgs.gov/labs/bird-banding-laboratory",
+        "figure": "1920",
+        "verbatim": "The lab was established in 1920",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.usgs.gov/labs/bird-banding-laboratory",
+        "figure": "60,000",
+        "verbatim": "receives over 60,000 band encounter reports from hunters each year",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-INFO-LESSON-PHOTOSYNTHESIS": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.energy.gov/science/doe-explainssolar-fuels",
+        "figure": "",
+        "verbatim": "natural photosynthesis in plants by using only water, carbon dioxide, and sunlight to generate fuel",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/facts/ocean-oxygen.html",
+        "figure": "about half / 50 percent",
+        "verbatim": "about half of Earth's oxygen comes from the ocean",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/facts/ocean-oxygen.html",
+        "figure": "20 percent",
+        "verbatim": "Prochlorococcus ... produces up to 20% of the oxygen in our entire biosphere",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.gml.noaa.gov/outreach/faq.html",
+        "figure": "200 billion metric tons",
+        "verbatim": "The oceans and land vegetation release and absorb over 200 billion metric tons of carbon into and out of the atmosphere each year",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.energy.gov/science/doe-explainsthe-carbon-cycle",
+        "figure": "25 percent",
+        "verbatim": "about 25 percent of human-source carbon emissions have been captured by forests, grassland, and farms",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://science.nasa.gov/kids/earth/",
+        "figure": "430 parts per million",
+        "verbatim": "430 parts of Carbon Dioxide for every million parts of air",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-INFO-LESSON-VOLCANOES": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.usgs.gov/faqs/what-difference-between-magma-and-lava",
+        "figure": "",
+        "verbatim": "a thick flowing substance called magma ... rises and collects in magma chambers",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/faqs/what-difference-between-magma-and-lava",
+        "figure": "",
+        "verbatim": "Scientists use the term magma for molten rock that is underground and lava for molten rock that breaks through the Earth's surface",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/faqs/how-many-active-volcanoes-are-there-earth",
+        "figure": "1,350",
+        "verbatim": "There are about 1,350 potentially active volcanoes worldwide",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/faqs/how-many-active-volcanoes-are-there-earth",
+        "figure": "500",
+        "verbatim": "About 500 of those 1,350 volcanoes have erupted in historical time",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/faqs/how-can-we-tell-when-a-volcano-will-erupt",
+        "figure": "161",
+        "verbatim": "There are 161 potentially active volcanoes in the United States",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/faqs/how-can-we-tell-when-a-volcano-will-erupt",
+        "figure": "57",
+        "verbatim": "57 volcanoes are a high threat or very high threat to public safety",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/faqs/how-can-we-tell-when-a-volcano-will-erupt",
+        "figure": "",
+        "verbatim": "normally generates detectable earthquakes ... Subtle swelling of the ground surface",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      }
+    ]
+  },
+  "ACC-W910-INFO-LESSON-WATER-CYCLE": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.usgs.gov/special-topics/water-science-school/science/water-cycle",
+        "figure": "",
+        "verbatim": "Energy from the sun and the force of gravity drive the continual movement of water between pools",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/special-topics/water-science-school/science/how-much-water-there-earth",
+        "figure": "96.5 percent",
+        "verbatim": "about 96.5 percent of all Earth's water",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/special-topics/water-science-school/science/how-much-water-there-earth",
+        "figure": "68 percent",
+        "verbatim": "over 68 percent is locked up in ice and glaciers",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/special-topics/water-science-school/science/how-much-water-there-earth",
+        "figure": "30 percent",
+        "verbatim": "Another 30 percent of freshwater is in the ground",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/special-topics/water-science-school/science/how-much-water-there-earth",
+        "figure": "0.0001 percent",
+        "verbatim": "rivers 509 2,120 0.0001",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.usgs.gov/special-topics/water-science-school/science/watersheds-and-drainage-basins",
+        "figure": "",
+        "verbatim": "an area of land that drains all the streams and rainfall to a common outlet",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ANALYSIS-SINGLE-0003": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.reaganlibrary.gov/archives/speech/address-nation-explosion-space-shuttle-challenger",
+        "figure": "Ronald Reagan, Address to the Nation on the Explosion of the Space Shuttle Challenger, 1986",
+        "verbatim": "This is truly a national loss.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.reaganlibrary.gov/archives/speech/address-nation-explosion-space-shuttle-challenger",
+        "figure": "US Government work (presidential address delivered in official capacity) => not copyrightable, 17 USC 105 => US public domain",
+        "verbatim": "The future doesn't belong to the fainthearted; it belongs to the brave.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.reaganlibrary.gov/archives/speech/address-nation-explosion-space-shuttle-challenger",
+        "figure": "Televised address from the Oval Office on the day the Space Shuttle Challenger broke apart shortly after launch, January 28, 1986",
+        "verbatim": "We mourn seven heroes",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ANALYSIS-PAIR-0001": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://avalon.law.yale.edu/18th_century/patrick.asp",
+        "figure": "Patrick Henry, Speech to the Virginia Convention, 1775",
+        "verbatim": "give me liberty or give me death!",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://avalon.law.yale.edu/18th_century/patrick.asp",
+        "figure": "delivered 1775; first published 1817 (Wirt); both pre-1929 => US public domain",
+        "verbatim": "The war is actually begun!",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://en.wikisource.org/wiki/What_to_the_Slave_Is_the_Fourth_of_July%3F",
+        "figure": "Frederick Douglass, What to the Slave Is the Fourth of July?, 1852",
+        "verbatim": "This Fourth July is yours, not mine. You may rejoice, I must mourn.",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://archive.org/stream/Douglass_July_Oration/ocm30553533_V_0_djvu.txt",
+        "figure": "delivered and first published 1852 (pamphlet); pre-1929 => US public domain",
+        "verbatim": "My subject, then, fellow-citizens, is American Slavery.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ANALYSIS-SINGLE-0002": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.gutenberg.org/cache/epub/160/pg160.txt",
+        "figure": "Kate Chopin, \"A Pair of Silk Stockings,\" first published in Vogue, 1897",
+        "verbatim": "Little Mrs. Sommers one day found herself the unexpected possessor of fifteen dollars.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gutenberg.org/cache/epub/160/pg160.txt",
+        "figure": "author Kate Chopin lived 1850-1904; story first published 1897; both pre-1929 => US public domain",
+        "verbatim": "The question of investment was one that occupied her greatly.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gutenberg.org/cache/epub/160/pg160.txt",
+        "figure": "opening establishes characterization, imagery, and situational irony via the silk stockings",
+        "verbatim": "She looked down to see that her hand lay upon a pile of silk stockings.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ANALYSIS-SINGLE-0001": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://avalon.law.yale.edu/18th_century/patrick.asp",
+        "figure": "Patrick Henry, Speech to the Virginia Convention, 1775",
+        "verbatim": "Give me liberty or give me death!",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://avalon.law.yale.edu/18th_century/patrick.asp",
+        "figure": "delivered 1775; first published 1817 (Wirt); both pre-1929 => US public domain",
+        "verbatim": "Shall we try argument? Sir, we have been trying that for the last ten years.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://avalon.law.yale.edu/18th_century/patrick.asp",
+        "figure": "Second Virginia Convention, St. John's Church, Richmond, March 23, 1775",
+        "verbatim": "The war is actually begun!",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ANALYSIS-SINGLE-0004": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://en.wikisource.org/wiki/What_to_the_Slave_Is_the_Fourth_of_July%3F",
+        "figure": "Frederick Douglass, What to the Slave Is the Fourth of July?, 1852",
+        "verbatim": "This Fourth July is yours, not mine. You may rejoice, I must mourn.",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://en.wikisource.org/wiki/What_to_the_Slave_Is_the_Fourth_of_July%3F",
+        "figure": "delivered and first published 1852 (pamphlet); pre-1929 => US public domain",
+        "verbatim": "My subject, then, fellow-citizens, is American Slavery.",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://archive.org/stream/Douglass_July_Oration/ocm30553533_V_0_djvu.txt",
+        "figure": "wording checked word-for-word vs the 1852 pamphlet (\"torn\"/\"towering\" confirmed)",
+        "verbatim": "when the chains of servitude had been torn from his limbs?",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      }
+    ]
+  },
+  "ACC-W910-ARG-OPP-0001": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.epa.gov/greenvehicles/greenhouse-gas-emissions-typical-passenger-vehicle",
+        "figure": "4.6 metric tons",
+        "verbatim": "A typical passenger vehicle emits about 4.6 metric tons of CO2 per year.",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.epa.gov/greenvehicles/greenhouse-gas-emissions-typical-passenger-vehicle",
+        "figure": "400 grams",
+        "verbatim": "The average passenger vehicle emits about 400 grams of CO2 per mile.",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.epa.gov/greenvehicles/electric-vehicle-myths",
+        "figure": "16-25 percent",
+        "verbatim": "Gasoline vehicles only convert about 16-25% of the energy from gasoline into movement.",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.epa.gov/greenvehicles/electric-vehicle-myths",
+        "figure": "87-91 percent",
+        "verbatim": "EVs use approximately 87%-91% of the energy from the battery ... to propel the vehicle.",
+        "verified": true,
+        "reason": "figure confirmed on page (1/2 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.epa.gov/greenvehicles/electric-vehicle-myths",
+        "figure": "",
+        "verbatim": "total GHGs for the EV are still lower than those for the gasoline car.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.energy.gov/sites/default/files/2024-10/Congressional%20Report%20EV%20Grid%20Impacts.pdf",
+        "figure": "0.15 percent",
+        "verbatim": "In 2022, only 0.15% of the available electricity produced served transportation.",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://www.energy.gov/sites/default/files/2024-10/Congressional%20Report%20EV%20Grid%20Impacts.pdf",
+        "figure": "34 percent",
+        "verbatim": "If 100% of the 2022 fleet were electrified, this percentage would be expected to grow to 34%.",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.energy.gov/sites/default/files/2024-10/Congressional%20Report%20EV%20Grid%20Impacts.pdf",
+        "figure": "50 billion",
+        "verbatim": "required distribution grid investments may be up to $50 billion by 2035.",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.energy.gov/sites/default/files/2024-10/Congressional%20Report%20EV%20Grid%20Impacts.pdf",
+        "figure": "1.4-26.8 billion",
+        "verbatim": "projected distribution system upgrade costs ... range from $1.4 billion to $26.8 billion.",
+        "verified": false,
+        "reason": "2/2 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://www.usgs.gov/news/science-snippet/interior-department-releases-final-2025-list-critical-minerals",
+        "figure": "80 percent",
+        "verbatim": "In 2024, the U.S. imported 80% of the rare earth elements it used.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ARG-OPP-0002": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.dol.gov/agencies/whd/minimum-wage",
+        "figure": "$7.25 / July 24, 2009",
+        "verbatim": "The federal minimum wage is $7.25 per hour effective July 24, 2009.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "http://web.archive.org/web/20211215061809/https://www.cbo.gov/publication/56975",
+        "figure": "17 million",
+        "verbatim": "17 million workers whose wages would otherwise be below $15 per hour would be directly affected",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "http://web.archive.org/web/20211215061809/https://www.cbo.gov/publication/56975",
+        "figure": "509 billion",
+        "verbatim": "higher pay ($509 billion) for people who were employed at higher hourly wages under the bill",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "http://web.archive.org/web/20211215061809/https://www.cbo.gov/publication/56975",
+        "figure": "0.9 million",
+        "verbatim": "The number of people in poverty would be reduced by 0.9 million.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "http://web.archive.org/web/20211215061809/https://www.cbo.gov/publication/56975",
+        "figure": "1.4 million / 0.9 percent",
+        "verbatim": "Employment would be reduced by 1.4 million workers, or 0.9 percent, according to CBO's average estimate",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "http://web.archive.org/web/20211215061809/https://www.cbo.gov/publication/56975",
+        "figure": "54 billion",
+        "verbatim": "the cumulative budget deficit over the 2021-2031 period would increase by $54 billion",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.bls.gov/opub/reports/minimum-wage/2022/home.htm",
+        "figure": "1.0 million / 1.3 percent",
+        "verbatim": "these 1.0 million workers with wages at or below the federal minimum made up 1.3 percent of all hourly paid workers",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.bls.gov/opub/reports/minimum-wage/2022/home.htm",
+        "figure": "13.4 percent",
+        "verbatim": "well below the percentage of 13.4 recorded in 1979",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.bls.gov/opub/reports/minimum-wage/2022/home.htm",
+        "figure": "45 percent",
+        "verbatim": "workers under age 25 ... made up about 45 percent of those paid the federal minimum wage or less",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.bls.gov/opub/reports/minimum-wage/2022/home.htm",
+        "figure": "3 percent / 1 percent",
+        "verbatim": "about 3 percent earned the minimum wage or less, compared with just under 1 percent of workers age 25 and older",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ARG-OPP-0003": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "19 percent",
+        "verbatim": "About 19% was from nuclear energy",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=207&t=3",
+        "figure": "57 / 96 / 28",
+        "verbatim": "the United States had 57 commercially operated nuclear power plants with 96 nuclear power reactors in 28 states",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.energy.gov/ne/articles/what-generation-capacity",
+        "figure": "92 percent",
+        "verbatim": "producing reliable and secure power more than 92% of the time in 2024",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.energy.gov/ne/articles/what-generation-capacity",
+        "figure": "42 percent",
+        "verbatim": "a coal (42.36%)",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.energy.gov/ne/articles/what-generation-capacity",
+        "figure": "60 percent",
+        "verbatim": "natural gas (59.9%)",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.energy.gov/ne/articles/what-generation-capacity",
+        "figure": "34 percent",
+        "verbatim": "wind (34.3%)",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.energy.gov/ne/articles/what-generation-capacity",
+        "figure": "23 percent",
+        "verbatim": "solar (23.4%)",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.energy.gov/ne/articles/what-generation-capacity",
+        "figure": "8 percent",
+        "verbatim": "made up 8% of the country's total capacity",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=207&t=3",
+        "figure": "April 2024",
+        "verbatim": "Vogtle Unit 4 ... began commercial operation in April 2024",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-21-603",
+        "figure": "86,000 metric tons / 75",
+        "verbatim": "about 86,000 metric tons of spent nuclear fuel from commercial reactors stored at 75 U.S. sites",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-21-603",
+        "figure": "33 states",
+        "verbatim": "stored on-site at 75 operating or shutdown nuclear power plants in 33 states",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-21-603",
+        "figure": "2,000 metric tons",
+        "verbatim": "an amount that grows by about 2,000 metric tons each year",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-21-603",
+        "figure": "2010",
+        "verbatim": "in 2010, DOE terminated its efforts to license a repository at Yucca Mountain",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-21-603",
+        "figure": "9 billion",
+        "verbatim": "the U.S. government has paid reactor owners about $9 billion for storage",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nrc.gov/reading-rm/doc-collections/fact-sheets/radwaste",
+        "figure": "24,000 years",
+        "verbatim": "Plutonium-239 has a half-life of 24,000 years",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/energyexplained/nuclear/us-nuclear-industry.php",
+        "figure": "19 reactors / 15 sites",
+        "verbatim": "According to the U.S. Nuclear Regulatory Commission, 19 commercial nuclear power reactors at 15 sites are in various stages of decommissioning",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ARG-OPP-0004": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.cdc.gov/sleep/about/index.html",
+        "figure": "8-10 hours",
+        "verbatim": "Teen 13-17 years 8-10 hours",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://archive.cdc.gov/www_cdc_gov/media/releases/2015/p0806-school-sleep.html",
+        "figure": "2 out of 3",
+        "verbatim": "The proportion of high school students who fail to get sufficient sleep (2 out of 3)",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://archive.cdc.gov/www_cdc_gov/media/releases/2015/p0806-school-sleep.html",
+        "figure": "8:03 a.m.",
+        "verbatim": "The average start time was 8:03 AM.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://archive.cdc.gov/www_cdc_gov/media/releases/2015/p0806-school-sleep.html",
+        "figure": "fewer than 1 in 5; 42 states",
+        "verbatim": "Fewer than 1 in 5 middle and high schools ... 42 states reported that 75-100 percent ... started before 8:30 AM.",
+        "verified": true,
+        "reason": "all 3 verbatim segments found on page"
+      },
+      {
+        "url": "https://archive.cdc.gov/www_cdc_gov/media/releases/2015/p0806-school-sleep.html",
+        "figure": "8:30 a.m.",
+        "verbatim": "the American Academy of Pediatrics issued a policy statement urging ... no earlier than 8:30 AM",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://archive.cdc.gov/www_cdc_gov/media/releases/2015/p0806-school-sleep.html",
+        "figure": "40,000 schools",
+        "verbatim": "data from the 2011-2012 Schools and Staffing Survey of nearly 40,000 public middle, high, and combined schools",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.bls.gov/news.release/famee.nr0.htm",
+        "figure": "66.3 percent",
+        "verbatim": "in 66.3 percent of these families both parents were employed",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.bls.gov/news.release/famee.nr0.htm",
+        "figure": "73.9 percent",
+        "verbatim": "for all mothers with children under age 18 was 73.9 percent",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://nces.ed.gov/fastfacts/display.asp?id=67",
+        "figure": "1,152 dollars",
+        "verbatim": "$1,152 per student transported in 2018-19 (in unadjusted dollars)",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://nces.ed.gov/fastfacts/display.asp?id=67",
+        "figure": "51.4 percent; 24,245,000 (about 24 million)",
+        "verbatim": "2018-19  24,245,000 ... 51.4 (percent of total)",
+        "verified": true,
+        "reason": "figure confirmed on page (0/2 verbatim segments matched)"
+      }
+    ]
+  },
+  "ACC-W910-ARG-OPP-0005": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.hhs.gov/surgeongeneral/reports-and-publications/youth-mental-health/social-media/index.html",
+        "figure": "95 percent",
+        "verbatim": "Up to 95% of young people aged 13-17 report using a social media platform.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.hhs.gov/surgeongeneral/reports-and-publications/youth-mental-health/social-media/index.html",
+        "figure": "3.5 hours",
+        "verbatim": "teenagers spend an average of 3.5 hours a day on social media",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.hhs.gov/surgeongeneral/reports-and-publications/youth-mental-health/social-media/index.html",
+        "figure": "3 hours",
+        "verbatim": "who spend more than 3 hours a day on social media face double the risk of mental health problems",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.hhs.gov/surgeongeneral/reports-and-publications/youth-mental-health/social-media/index.html",
+        "figure": "46 percent",
+        "verbatim": "46% of adolescents aged 13-17 said social media makes them feel worse",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.cdc.gov/yrbs/results/2021-yrbs-results.html",
+        "figure": "42 percent",
+        "verbatim": "over 40 percent (42%) of high school students struggle with persistent feelings of sadness or hopelessness",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.cdc.gov/yrbs/results/2021-yrbs-results.html",
+        "figure": "29 percent",
+        "verbatim": "nearly 30 percent (29%) experienced poor mental health",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.hhs.gov/sites/default/files/sg-youth-mental-health-social-media-advisory.pdf",
+        "figure": "58 percent",
+        "verbatim": "helps them feel more accepted (58%)",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.hhs.gov/sites/default/files/sg-youth-mental-health-social-media-advisory.pdf",
+        "figure": "67 percent",
+        "verbatim": "people who can support them through tough times (67%)",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.hhs.gov/sites/default/files/sg-youth-mental-health-social-media-advisory.pdf",
+        "figure": "71 percent",
+        "verbatim": "a place to show their creative side (71%)",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.hhs.gov/sites/default/files/sg-youth-mental-health-social-media-advisory.pdf",
+        "figure": "80 percent",
+        "verbatim": "more connected to what's going on in their friends' lives (80%)",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.hhs.gov/sites/default/files/sg-youth-mental-health-social-media-advisory.pdf",
+        "figure": "",
+        "verbatim": "Seven out of ten adolescent girls of color report encountering positive or identity-affirming content",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa",
+        "figure": "13",
+        "verbatim": "operators of websites or online services directed to children under 13 years of age ... collecting personal information online from a child",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      }
+    ]
+  },
+  "ACC-W910-ARG-OPP-0006": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.nasa.gov/news-release/nasa-report-details-how-agency-significantly-benefits-us-economy/",
+        "figure": "64.3 billion",
+        "verbatim": "generated more than $64.3 billion in total economic output during fiscal year 2019",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nasa.gov/news-release/nasa-report-details-how-agency-significantly-benefits-us-economy/",
+        "figure": "312,000 jobs",
+        "verbatim": "supported more than 312,000 jobs nationwide",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nasa.gov/news-release/nasa-report-details-how-agency-significantly-benefits-us-economy/",
+        "figure": "7 billion",
+        "verbatim": "an estimated $7 billion in federal, state, and local taxes",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nasa.gov/news-release/nasa-report-details-how-agency-significantly-benefits-us-economy/",
+        "figure": "14 billion",
+        "verbatim": "generated more than $14 billion in total economic output",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nasa.gov/news-release/nasa-report-details-how-agency-significantly-benefits-us-economy/",
+        "figure": "69,000 jobs",
+        "verbatim": "supported more than 69,000 jobs nationwide",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nasa.gov/news-release/nasa-report-details-how-agency-significantly-benefits-us-economy/",
+        "figure": "22 percent",
+        "verbatim": "provided about 22 percent of NASA's economic impact",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://spinoff.nasa.gov/",
+        "figure": "2,000 spinoffs",
+        "verbatim": "profiled more than 2,000 spinoffs since 1976",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-23-105609",
+        "figure": "11.2 billion",
+        "verbatim": "NASA requested $11.2 billion ... to fund the program through fiscal year 2028",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-23-105609",
+        "figure": "11.8 billion",
+        "verbatim": "in addition to the $11.8 billion already spent developing the initial capability",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-23-105609",
+        "figure": "",
+        "verbatim": "at current cost levels, the SLS program is unaffordable",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-24-106767",
+        "figure": "82 billion",
+        "verbatim": "NASA plans to invest over $82 billion in major projects",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-24-106767",
+        "figure": "7.6 billion",
+        "verbatim": "cost overruns decreased from $7.6 billion in 2023",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-24-106767",
+        "figure": "4.4 billion",
+        "verbatim": "to $4.4 billion in 2024",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-24-106767",
+        "figure": "65 percent / 2.9 billion",
+        "verbatim": "Orion accounted for 65 percent ($2.9 billion) of the portfolio's total cumulative baseline cost overrun",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-24-106767",
+        "figure": "9.6 billion",
+        "verbatim": "development cost baselines ... totaling $9.6 billion for three Artemis projects",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      }
+    ]
+  },
+  "ACC-W910-FRAME-CONGESTION": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-FRAME-DST": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-FRAME-SCHOOLYEAR": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-INFO-SINGLE-0001": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://oceanservice.noaa.gov/education/tutorial_corals/coral07_importance.html",
+        "figure": "1 percent / 25 percent",
+        "verbatim": "coral reefs cover only 1% of the world's oceans, but provide habitat for at least 25% of the world's marine life",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/education/tutorial_corals/coral07_importance.html",
+        "figure": "4,000",
+        "verbatim": "Home to over 4,000 species of fish, corals, and marine life",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/facts/coral_economy.html",
+        "figure": "half",
+        "verbatim": "Approximately half of all federally managed fisheries depend on coral reefs and related habitats for a portion of their life cycles.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/facts/coral_economy.html",
+        "figure": "100 million",
+        "verbatim": "The National Marine Fisheries Service estimates the commercial value of U.S. fisheries from coral reefs is over $100 million.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://coast.noaa.gov/states/fast-facts/coral-reefs.html",
+        "figure": "3.4 billion",
+        "verbatim": "The total economic value of coral reef services for the U.S., including fisheries, tourism, and coastal protection, is over $3.4 billion each year.",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://coast.noaa.gov/states/fast-facts/coral-reefs.html",
+        "figure": "97 percent",
+        "verbatim": "can absorb up to 97 percent of a wave's energy",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.usgs.gov/centers/pcmsc/value-us-coral-reefs-risk-reduction",
+        "figure": "1.8 billion",
+        "verbatim": "coral reefs provide the U.S. with more than $1.8 billion dollars in flood protection benefits every year",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.usgs.gov/centers/pcmsc/value-us-coral-reefs-risk-reduction",
+        "figure": "18,100",
+        "verbatim": "Annually U.S. coral reefs provide flood protection benefits to more than 18,100 people",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/centers/pcmsc/value-us-coral-reefs-risk-reduction",
+        "figure": "675 million",
+        "verbatim": "$675 million in Florida",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/centers/pcmsc/value-us-coral-reefs-risk-reduction",
+        "figure": "836 million",
+        "verbatim": "$836 million in Hawaii",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.epa.gov/coral-reefs/threats-coral-reefs",
+        "figure": "30 percent",
+        "verbatim": "Since the Industrial Revolution, ocean acidity has increased by about 30%.",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.epa.gov/coral-reefs/threats-coral-reefs",
+        "figure": "2014",
+        "verbatim": "First identified in the Florida Keys in 2014 ... one of the most lethal coral diseases ever recorded.",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://oceanservice.noaa.gov/facts/coral_bleach.html",
+        "figure": "",
+        "verbatim": "corals will expel the algae (zooxanthellae) living in their tissues causing the coral to turn completely white ... When a coral bleaches, it is not dead ... If the algae loss is prolonged and the stress continues, coral eventually dies.",
+        "verified": true,
+        "reason": "all 3 verbatim segments found on page"
+      }
+    ]
+  },
+  "ACC-W910-INFO-SINGLE-0002": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.epa.gov/heatislands/learn-about-heat-islands",
+        "figure": "1 to 7 degrees F (day)",
+        "verbatim": "daytime temperatures in urban areas about 1-7 degrees F higher than temperatures in outlying areas",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.epa.gov/heatislands/learn-about-heat-islands",
+        "figure": "2 to 5 degrees F (night)",
+        "verbatim": "nighttime temperatures about 2-5 degrees F higher",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.epa.gov/heatislands/learn-about-heat-islands",
+        "figure": "66 degrees F warmer",
+        "verbatim": "conventional roofing materials may reach as much as 66 degrees F warmer than the surrounding air temperatures",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.epa.gov/heatislands/learn-about-heat-islands",
+        "figure": "1 to 9% per 2 degrees F",
+        "verbatim": "Increased electricity demand for air conditioning ranges from 1-9% for each 2 degrees F increase in temperature",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.epa.gov/heatislands/learn-about-heat-islands",
+        "figure": "up to 18 degrees F",
+        "verbatim": "Temperature surges in urban streams were as much as 18 degrees F higher due to heated runoff",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.epa.gov/heatislands/learn-about-heat-islands",
+        "figure": "702 deaths/yr (2004-2018)",
+        "verbatim": "From 2004 to 2018 the Centers for Disease Control and Prevention recorded an average of 702 heat deaths per year",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.cdc.gov/mmwr/volumes/69/wr/mm6924a1.htm",
+        "figure": "702 deaths/yr (415 underlying + 287 contributing)",
+        "verbatim": "an average of 702 heat-related deaths (415 with heat as the underlying cause and 287 as a contributing cause) occurred in the United States annually",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-INFO-SINGLE-0003": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.nps.gov/aboutus/national-park-system.htm",
+        "figure": "433 units",
+        "verbatim": "433 units (often referred to as parks) ... covering more than 85 million acres",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.nps.gov/aboutus/national-park-system.htm",
+        "figure": "85 million acres",
+        "verbatim": "covering more than 85 million acres",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nps.gov/aboutus/national-park-system.htm",
+        "figure": "63",
+        "verbatim": "National Parks (63)",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nps.gov/aboutus/national-park-system.htm",
+        "figure": "19",
+        "verbatim": "at least 19 naming designations",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nps.gov/aboutus/history.htm",
+        "figure": "1916",
+        "verbatim": "the Organic Act, signed August 25, 1916, created the National Park Service",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.nps.gov/subjects/socialscience/annual-visitation-highlights.htm",
+        "figure": "323 million",
+        "verbatim": "The National Park Service reported 323 million recreation visits in calendar year 2025.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nps.gov/subjects/socialscience/annual-visitation-highlights.htm",
+        "figure": "8.85 million / 2.7 percent",
+        "verbatim": "a decrease of 8.85 million recreation visits, or 2.7%, from the record year in 2024",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nps.gov/aboutus/index.htm",
+        "figure": "20,000 employees",
+        "verbatim": "Approximately 20,000 strong, the ... men and women of the National Park Service",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.doi.gov/pressreleases/national-parks-contributed-record-high-556-billion-us-economy-supported-415000-jobs",
+        "figure": "26.4 billion",
+        "verbatim": "$26.4 billion in communities near national parks",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.doi.gov/pressreleases/national-parks-contributed-record-high-556-billion-us-economy-supported-415000-jobs",
+        "figure": "55.6 billion",
+        "verbatim": "record high $55.6 billion benefit to the nation's economy",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.doi.gov/pressreleases/national-parks-contributed-record-high-556-billion-us-economy-supported-415000-jobs",
+        "figure": "415,400 jobs",
+        "verbatim": "supported 415,400 jobs",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.doi.gov/pressreleases/national-parks-contributed-record-high-556-billion-us-economy-supported-415000-jobs",
+        "figure": "19.4 billion",
+        "verbatim": "$19.4 billion in labor income",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nps.gov/subjects/infrastructure/deferred-maintenance.htm",
+        "figure": "24 billion",
+        "verbatim": "an estimated $24 billion in repair need existed on roads, buildings, utility systems",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-INFO-SINGLE-0004": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.nps.gov/subjects/pollinators/what-is-a-pollinator.htm",
+        "figure": "1 in 3 bites",
+        "verbatim": "Pollinators are responsible for 1 out of 3 bites of food we take each day.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nps.gov/subjects/pollinators/what-is-a-pollinator.htm",
+        "figure": "75 percent",
+        "verbatim": "At least 75% of all flowering plants on Earth are pollinated by insects and animals.",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.nps.gov/subjects/pollinators/what-is-a-pollinator.htm",
+        "figure": "1,200 food crops / 180,000 plants",
+        "verbatim": "This amounts to more than 1,200 food crops and 180,000 different types of plants.",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.nps.gov/subjects/pollinators/what-is-a-pollinator.htm",
+        "figure": "19 billion",
+        "verbatim": "pollination by honey bees contributed to over $19 billion of crop production in 2010",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.nps.gov/subjects/pollinators/what-is-a-pollinator.htm",
+        "figure": "10 billion",
+        "verbatim": "pollination by other insect pollinators contributed to nearly $10 billion of crop production",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usda.gov/about-usda/general-information/initiatives-and-highlighted-programs/peoples-garden/importance-pollinators",
+        "figure": "35 percent",
+        "verbatim": "about 35 percent of the world's food crops depend on animal pollinators to reproduce",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.fws.gov/initiative/pollinators/pollinators-benefit-agriculture",
+        "figure": "1 in 3 bites",
+        "verbatim": "That's one out of every three bites of food we consume.",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://www.nps.gov/subjects/pollinators/what-is-a-pollinator.htm",
+        "figure": "",
+        "verbatim": "Populations of bees and other pollinators are declining around the world.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-INFO-SINGLE-0005": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.nifc.gov/fire-information/statistics/wildfires",
+        "figure": "10.1 million acres / 10,122,336",
+        "verbatim": "2020 | 58,950 | 10,122,336 (one of the highest on record; 2015 is the single peak at 10,125,149)",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://www.nifc.gov/fire-information/statistics/wildfires",
+        "figure": "1.3 million acres / 1,323,666",
+        "verbatim": "1983 - 18,229 fires / 1,323,666 acres; pre-1983 not tracked with current reporting processes.",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://19january2021snapshot.epa.gov/climate-indicators/climate-change-indicators-wildfires_.html",
+        "figure": "72,000",
+        "verbatim": "an average of 72,000 wildfires per year",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://19january2021snapshot.epa.gov/climate-indicators/climate-change-indicators-wildfires_.html",
+        "figure": "9 of the 10 largest since 2000; peak 2015",
+        "verbatim": "The extent of area burned by wildfires each year appears to have increased since the 1980s ... of the 10 years with the largest acreage burned, nine have occurred since 2000, including the peak year in 2015.",
+        "verified": true,
+        "reason": "figure confirmed on page (0/2 verbatim segments matched)"
+      },
+      {
+        "url": "https://19january2021snapshot.epa.gov/climate-indicators/climate-change-indicators-wildfires_.html",
+        "figure": "5 to 21 percent",
+        "verbatim": "the proportion of burned land suffering severe damage has ranged from 5 to 21 percent",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://19january2021snapshot.epa.gov/climate-indicators/climate-change-indicators-wildfires_.html",
+        "figure": "",
+        "verbatim": "Earlier spring melting and reduced snowpack ... contributes to an increased wildfire risk; increased temperatures and drought.",
+        "verified": false,
+        "reason": "1/2 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://www.usgs.gov/science-explorer/climate/wildfire",
+        "figure": "",
+        "verbatim": "Rising temperatures, more frequent and severe droughts, and invasive species spread have caused fire seasons to become longer.",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://www.usgs.gov/science-explorer/climate/wildfire",
+        "figure": "100,000 square miles",
+        "verbatim": "Bark beetles ... have killed 100,000 square miles of trees across western North America in the last 20 years.",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/science-explorer/climate/wildfire",
+        "figure": "",
+        "verbatim": "post-wildfire landslides occurring almost every year, with major events expected roughly every ten years.",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://www.nifc.gov/fire-information/statistics/suppression-costs",
+        "figure": "1.4 billion dollars",
+        "verbatim": "2000: total first exceeded $1 billion at $1,410,802,000.",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://www.nifc.gov/fire-information/statistics/suppression-costs",
+        "figure": "4.4 billion dollars",
+        "verbatim": "2021 total $4,389,000,000 (highest in the table).",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      }
+    ]
+  },
+  "ACC-W910-ANALYSIS-LESSON-HOUR": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://en.wikisource.org/wiki/The_Story_of_an_Hour",
+        "figure": "Kate Chopin, \"The Story of an Hour\", 1894",
+        "verbatim": "Free! Body and soul free!",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://en.wikisource.org/wiki/The_Story_of_an_Hour",
+        "figure": "published 1894 (pre-1929) => US public domain",
+        "verbatim": "Knowing that Mrs. Mallard was afflicted with a heart trouble",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://en.wikisource.org/wiki/The_Story_of_an_Hour",
+        "figure": "short story first published 1894 (as \"The Dream of an Hour\")",
+        "verbatim": "There stood, facing the open window, a comfortable, roomy armchair.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ARG-OPP-LESSON-CONGESTION": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.fhwa.dot.gov/policyinformation/travel_monitoring/tvt.cfm",
+        "figure": "3 trillion",
+        "verbatim": "",
+        "verified": true,
+        "reason": "figure token found on page (no verbatim captured)"
+      },
+      {
+        "url": "https://www.epa.gov/ghgemissions/sources-greenhouse-gas-emissions",
+        "figure": "largest source",
+        "verbatim": "",
+        "verified": true,
+        "reason": "figure token found on page (no verbatim captured)"
+      },
+      {
+        "url": "https://www.bls.gov/cex/",
+        "figure": "second-largest",
+        "verbatim": "",
+        "verified": false,
+        "reason": "no verbatim captured and figure not found; cannot verify"
+      },
+      {
+        "url": "https://www.census.gov/topics/employment/commuting.html",
+        "figure": "majority drive alone",
+        "verbatim": "",
+        "verified": false,
+        "reason": "no verbatim captured and figure not found; cannot verify"
+      }
+    ]
+  },
+  "ACC-W910-ARG-OPP-LESSON-DST": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.cdc.gov/sleep/about/index.html",
+        "figure": "insufficient sleep",
+        "verbatim": "",
+        "verified": false,
+        "reason": "no verbatim captured and figure not found; cannot verify"
+      },
+      {
+        "url": "https://www.energy.gov/articles/daylight-saving-time",
+        "figure": "energy and activity",
+        "verbatim": "",
+        "verified": false,
+        "reason": "no verbatim captured and figure not found; cannot verify"
+      },
+      {
+        "url": "https://www.nhtsa.gov/risky-driving/drowsy-driving",
+        "figure": "darkness crash risk",
+        "verbatim": "",
+        "verified": false,
+        "reason": "no verbatim captured and figure not found; cannot verify"
+      }
+    ]
+  },
+  "ACC-W910-ARG-OPP-LESSON-SCHOOLYEAR": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://nces.ed.gov/fastfacts/display.asp?id=52",
+        "figure": "about 180 days",
+        "verbatim": "",
+        "verified": false,
+        "reason": "no verbatim captured and figure not found; cannot verify"
+      },
+      {
+        "url": "https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm",
+        "figure": "salaried",
+        "verbatim": "",
+        "verified": false,
+        "reason": "no verbatim captured and figure not found; cannot verify"
+      },
+      {
+        "url": "https://ies.ed.gov/ncee/",
+        "figure": "summer slide",
+        "verbatim": "",
+        "verified": false,
+        "reason": "no verbatim captured and figure not found; cannot verify"
+      }
+    ]
+  },
+  "ACC-W910-INFO-LESSON-HIGHWAYS": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://highways.dot.gov/highway-history/interstate-system/50th-anniversary/interstate-frequently-asked-questions",
+        "figure": "1956",
+        "verbatim": "Federal-Aid Highway Act of 1956 ... signed June 29, 1956",
+        "verified": true,
+        "reason": "figure confirmed on page (1/2 verbatim segments matched)"
+      },
+      {
+        "url": "https://highways.dot.gov/highway-history/interstate-system/50th-anniversary/interstate-frequently-asked-questions",
+        "figure": "46,876 miles",
+        "verbatim": "currently, the Interstate System is 46,876 miles long",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://highways.dot.gov/highway-history/interstate-system/50th-anniversary/interstate-frequently-asked-questions",
+        "figure": "90 percent",
+        "verbatim": "the Federal Government would pay 90 percent of the cost of construction",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://highways.dot.gov/highway-history/interstate-system/50th-anniversary/interstate-frequently-asked-questions",
+        "figure": "25 billion dollars",
+        "verbatim": "estimated to cost $25 billion over 12 years",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://highways.dot.gov/highway-history/interstate-system/50th-anniversary/interstate-frequently-asked-questions",
+        "figure": "114 billion dollars",
+        "verbatim": "final cost ... $114 billion",
+        "verified": true,
+        "reason": "figure confirmed on page (0/2 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.fhwa.dot.gov/policyinformation/travel_monitoring/tvt.cfm",
+        "figure": "one quarter / 25 percent",
+        "verbatim": "about one quarter of all vehicle miles driven in the country used the Interstate Highway System",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      }
+    ]
+  },
+  "ACC-W910-INFO-LESSON-RECYCLING": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling/national-overview-facts-and-figures-materials",
+        "figure": "292.4 million tons",
+        "verbatim": "In 2018, about 292.4 million tons of MSW were generated",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling/national-overview-facts-and-figures-materials",
+        "figure": "4.9 pounds",
+        "verbatim": "approximately 4.9 pounds per person per day",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling/national-overview-facts-and-figures-materials",
+        "figure": "69 million tons",
+        "verbatim": "Of the MSW generated, approximately ... more than 69 million tons were recycled",
+        "verified": true,
+        "reason": "figure confirmed on page (1/2 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling/national-overview-facts-and-figures-materials",
+        "figure": "25 million tons",
+        "verbatim": "25 million tons were composted",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling/national-overview-facts-and-figures-materials",
+        "figure": "94 million tons / 32 percent",
+        "verbatim": "almost 94 million tons ... a 32.1 percent recycling and composting rate",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.epa.gov/recycle/frequent-questions-recycling",
+        "figure": "152 million Btu / 1,024 gallons",
+        "verbatim": "Recycling just one ton of aluminum cans conserves more than 152 million Btu, the equivalent of 1,024 gallons of gasoline",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.epa.gov/recycle/frequent-questions-recycling",
+        "figure": "322 gallons",
+        "verbatim": "Recycling one ton of office paper can save the energy equivalent of consuming 322 gallons of gasoline",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.epa.gov/smm/recycling-economic-information-rei-report",
+        "figure": "681,000",
+        "verbatim": "recycling and reuse activities in the United States accounted for 681,000 jobs",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.epa.gov/recycle/frequent-questions-recycling",
+        "figure": "",
+        "verbatim": "items in the recycling bin that can ... t be recycled can contaminate the recycling stream",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      }
+    ]
+  },
+  "ACC-W910-INFO-LESSON-WEATHER": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.weather.gov/upperair/factsheet",
+        "figure": "92 / twice a day / 365",
+        "verbatim": "92 stations ... observations are usually taken ... up to an hour before 00:00 and/or 12:00 UTC, 365 days a year",
+        "verified": true,
+        "reason": "figure confirmed on page (2/3 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.weather.gov/upperair/factsheet",
+        "figure": "35 kilometers / 115,000 feet",
+        "verbatim": "can ascend to an altitude exceeding 35 km (about 115,000 feet)",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.ncei.noaa.gov/products/radar/next-generation-weather-radar",
+        "figure": "160",
+        "verbatim": "a network of 160 high-resolution S-band Doppler weather radars",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.weather.gov/organization",
+        "figure": "122",
+        "verbatim": "122 local Weather Forecast Offices (WFOs)",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://www.weather.gov/organization",
+        "figure": "13",
+        "verbatim": "13 River Forecast Centers (RFCs)",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      }
+    ]
+  },
+  "ACC-W910-INFO-LESSON-WETLANDS": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.epa.gov/wetlands/why-are-wetlands-important",
+        "figure": "60 days / 12 days",
+        "verbatim": "once stored at least 60 days of floodwater. Now they store only 12 days because most have been filled or drained",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.epa.gov/wetlands/why-are-wetlands-important",
+        "figure": "one-third",
+        "verbatim": "More than one-third of the United States' threatened and endangered species live only in wetlands",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.epa.gov/wetlands/why-are-wetlands-important",
+        "figure": "half",
+        "verbatim": "nearly half use wetlands at some point in their lives",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://water.usgs.gov/nwsum/WSP2425/history.html",
+        "figure": "221 million acres",
+        "verbatim": "approximately 221 million acres of wetlands ... in the conterminous United States",
+        "verified": true,
+        "reason": "all 2 verbatim segments found on page"
+      },
+      {
+        "url": "https://water.usgs.gov/nwsum/WSP2425/history.html",
+        "figure": "103 million acres",
+        "verbatim": "About 103 million acres remained as of the mid-1980's",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://water.usgs.gov/nwsum/WSP2425/history.html",
+        "figure": "22",
+        "verbatim": "twenty-two lost 50 percent or more",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://water.usgs.gov/nwsum/WSP2425/history.html",
+        "figure": "85 percent",
+        "verbatim": "Six States lost 85 percent or more of their original wetland acreage",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ARG-LESSON-AIWORKFORCE": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://data.bls.gov/projections/occupationProj",
+        "figure": "3.1 percent / 5.2 million",
+        "verbatim": "Total, all occupations ... 3.1 percent ... 5,211.8 thousand",
+        "verified": true,
+        "reason": "figure confirmed on page (1/3 verbatim segments matched)"
+      },
+      {
+        "url": "https://data.bls.gov/projections/occupationProj",
+        "figure": "33.5 percent",
+        "verbatim": "Data scientists 33.5% (245.9 to 328.3 thousand)",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://data.bls.gov/projections/occupationProj",
+        "figure": "245,900 to 328,300",
+        "verbatim": "Data scientists ... 245.9 ... 328.3",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://data.bls.gov/projections/occupationProj",
+        "figure": "19.7 percent",
+        "verbatim": "Computer and information research scientists 19.7%",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://ncses.nsf.gov/pubs/nsb20245",
+        "figure": "36.8 million",
+        "verbatim": "the STEM workforce had 36.8 million workers",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://ncses.nsf.gov/pubs/nsb20245",
+        "figure": "24 percent",
+        "verbatim": "which represented 24% of all U.S. workers in 2021",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://ncses.nsf.gov/pubs/nsb20245",
+        "figure": "22 percent to 24 percent",
+        "verbatim": "the percentage of workers in STEM occupations increased from 22% to 24%",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-19-257",
+        "figure": "2010 to 2016",
+        "verbatim": "from 2010 to 2016",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ARG-LESSON-GRIDSPENDING": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "4,178 billion kilowatthours",
+        "verbatim": "4,178 billion kilowatthours",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "60 percent",
+        "verbatim": "About 60% of this electricity generation was from fossil fuels",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "43 percent",
+        "verbatim": "Natural gas 43.1%",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "16 percent",
+        "verbatim": "Coal 16.2%",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "21 percent",
+        "verbatim": "about 21% was from renewable energy sources",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "10 percent",
+        "verbatim": "Wind 10.2%",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "19 percent",
+        "verbatim": "About 19% was from nuclear energy",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-ARG-LESSON-WATERTRADEOFF": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/water-use-united-states",
+        "figure": "322 billion gallons",
+        "verbatim": "Water use in the United States in 2015 was estimated to be about 322 billion gallons per day",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/water-use-united-states",
+        "figure": "90 percent",
+        "verbatim": "Around 90% of daily water use ... goes toward crop irrigation, thermoelectric power plants ... and public supply",
+        "verified": true,
+        "reason": "all 3 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/thermoelectric-power-water-use",
+        "figure": "133 billion gallons",
+        "verbatim": "Total withdrawals for thermoelectric power for 2015 were 133,000 Mgal/d",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/thermoelectric-power-water-use",
+        "figure": "41 percent",
+        "verbatim": "accounted for 41 percent of total water withdrawals",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/irrigation-water-use",
+        "figure": "118 billion gallons",
+        "verbatim": "total irrigation withdrawals were 118,000 Mgal/d",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/irrigation-water-use",
+        "figure": "42 percent",
+        "verbatim": "which accounted for 42 percent of total freshwater withdrawals",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-INFO-LESSON-ENERGYMIX": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "4,178 billion kilowatthours",
+        "verbatim": "4,178 billion kilowatthours",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "60 percent",
+        "verbatim": "About 60% of this electricity generation was from fossil fuels",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "43 percent",
+        "verbatim": "Natural gas 43.1%",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "16 percent",
+        "verbatim": "Coal 16.2%",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "19 percent",
+        "verbatim": "About 19% was from nuclear energy",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "21 percent",
+        "verbatim": "about 21% was from renewable energy sources",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "10 percent",
+        "verbatim": "Wind 10.2%",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      }
+    ]
+  }
+}
