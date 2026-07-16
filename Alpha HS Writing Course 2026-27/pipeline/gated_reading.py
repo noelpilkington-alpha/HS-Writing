@@ -642,12 +642,71 @@ def build_lesson_html(L, base_url="") -> tuple[str, list[tuple[str, str]]]:
 SOURCE_BOX_WORD_MAX = 150
 
 
-def render_qc(html: str, checkpoints) -> list:
+# ---- RENDER-FIDELITY parsers/patterns (Tier A6) ------------------------------------------------------------
+# These back the render-fidelity checks in render_qc: parse the RENDERED artifact back and assert integrity, so
+# the "mangled options / chopped reveal behind a green PASS badge" class (FABLE5_PIPELINE_EVAL section 2a) and
+# the "Cat-N label" class (Test Builder BrainLift) can never ship silently.
+
+# a rendered choice option: <qti-simple-choice identifier="opt_X"><div>TEXT</div>...  (TEXT is escaped plain text,
+# no nested <div> - build_lesson_html emits <div>{esc(content)}</div>, so the FIRST </div> closes the option).
+_OPT_RENDER_RE = re.compile(r'<qti-simple-choice identifier="(opt_[^"]+)"><div>(.*?)</div>', re.S)
+_CORRECT_RESP_RE = re.compile(r"<qti-correct-response>\s*<qti-value>(opt_[^<]+)</qti-value>")
+# a CHOICE-label marker that leaked INTO an option's text (the eval's chop tell: prose split at "(A)"/"(B)").
+_EMBED_MARKER_RE = re.compile(r"\([A-D]\)")
+# a DANGLING-CONTINUATION tail: a full sentence, then a break, then a lone connective the option ends on
+# (the eval's slot-4 defect: "...is a bare OPINION with no reason. Only" rendered as an option item). This is
+# the PRECISE residue a bad chop leaves; a raw "starts-lowercase / <3-words / no-terminal-punct" rule was
+# rejected after calibration (it false-flags ~45% of the course's legitimate lowercase imperative move-options).
+_OPT_DANGLE_RE = re.compile(
+    r"[.;]\s+(only|then|but|and|or|so|because|also|which|that|yet|however|nor|since|as)\s*$", re.I)
+# LLM alt-text descriptor blobs that leaked into student-visible content (Test Builder: figure-descriptor blobs
+# an LLM emits when it cannot render an image). Anchored on a leading figure/visual keyword INSIDE the brackets,
+# so authored fill-in frames like "[your side on the four-day week]" are NOT flagged (0 FP across 100 lessons).
+_PLACEHOLDER_RE = re.compile(
+    r"\[\s*(?:bar\s+graph|line\s+graph|pie\s+chart|column\s+chart|stacked\s+bar|scatter\s?plot|"
+    r"graph|chart|image|figure|diagram|photo|picture|illustration|screenshot|infographic|plot|map|visual)"
+    r"\b[^\]]{0,200}\]", re.I)
+# Cat-N disease (Test Builder): generic axis/category labels where real data labels are expected. Detected as a
+# SEQUENCE (>=2 siblings in the same family), because the defect is always a run ("Category 1, Category 2, ...")
+# and a lone occurrence is usually legitimate ("a Category 3 hurricane"). 0 FP across 100 lessons.
+_CATN_RE = re.compile(r"\b(Category|Series|Column|Region|Data\s?set|Slice|Wedge)\s+([A-H]|\d{1,3})\b")
+
+
+def _flat_text(fragment: str) -> str:
+    """Strip tags + unescape entities + collapse whitespace: the true student-visible text of a rendered fragment."""
+    t = re.sub(r"<[^>]+>", " ", fragment or "")
+    t = _html.unescape(t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def _catn_families(text: str) -> dict:
+    """Return {family: {labels}} for any Cat-N family with >=2 sibling generic labels in `text` (the defect tell)."""
+    fams: dict = {}
+    for m in _CATN_RE.finditer(text):
+        fams.setdefault(m.group(1).lower().replace(" ", ""), set()).add(re.sub(r"\s+", " ", m.group(0)))
+    return {k: v for k, v in fams.items() if len(v) >= 2}
+
+
+def render_qc(html: str, checkpoints, lessons=None) -> list:
     """Hard gate on the RENDERED output (lesson.html + item XML). Catches the recurring defect classes that used
     to require manual review, so they can never ship silently. Returns a list of problem strings (empty = clean).
-    Checks the STUDENT-VISIBLE prompt text of every FRQ/checkpoint item + the lesson body."""
+    Checks the STUDENT-VISIBLE prompt text of every FRQ/checkpoint item + the lesson body.
+
+    `lessons` (OPTIONAL, backward-compatible): the source Lesson object(s) this html/checkpoints was built from.
+    When supplied, the OPTION-INTEGRITY check also asserts each rendered option count matches the source slot's
+    choices[] count. The two live callers pass only (html, checkpoints); the choices[] cross-check is skipped
+    there and every artifact-level check still runs."""
     import xml.etree.ElementTree as ET
     problems = []
+    # map cp-<lesson>-s<i> -> declared choices[] count, so OPTION-INTEGRITY can assert the rendered option count
+    # matches the authored slot's choices[] (only when the caller passes the source lesson(s); default off).
+    choice_counts = {}
+    if lessons is not None:
+        _ls = lessons if isinstance(lessons, (list, tuple)) else [lessons]
+        for L in _ls:
+            for i, s in enumerate(getattr(L, "slots", []) or []):
+                if getattr(s, "choices", None):
+                    choice_counts[f"cp-{L.id}-s{i+1}"] = len(s.choices)
     # 1. well-formed body (the player uses a SAX parser). Treat the boolean 'hidden' attr as the known exception.
     mb = re.search(r"<body>(.*)</body>", html, re.S)
     if mb:
@@ -689,6 +748,61 @@ def render_qc(html: str, checkpoints) -> list:
             if words > SOURCE_BOX_WORD_MAX and "overflow:auto" not in srcblock:
                 problems.append(f"{pid}: {words}-word inlined source not in a capped scroller "
                                 f"(use boxed_source; box pushed below fold)")
+
+    # ==== RENDER-FIDELITY checks (Tier A6): parse the RENDERED artifact back and assert integrity. ====
+    # 7. OPTION-INTEGRITY: parse the rendered option list of every choice-interaction item and assert no "fake"
+    #    options created by a chopped reveal (the eval's slot-4/slot-6 defect), no empty options, no marker-desync.
+    for _id, xml in checkpoints:
+        if "<qti-choice-interaction" not in xml:
+            continue
+        opts = _OPT_RENDER_RE.findall(xml)
+        if not opts:
+            problems.append(f"{_id}: choice interaction rendered with NO parseable options")
+            continue
+        opt_ids = {oid for oid, _ in opts}
+        for oid, body in opts:
+            t = _flat_text(body)
+            if not t:
+                problems.append(f"{_id}/{oid}: rendered option is EMPTY (prose chopped to nothing)")
+                continue
+            # a leaked "(A)/(B)" choice-label inside an option's own text = prose was split mid-list into it
+            if _EMBED_MARKER_RE.search(t):
+                problems.append(f"{_id}/{oid}: rendered option contains a leaked choice marker "
+                                f"('{t[:48]}...') -> reveal prose chopped into a fake option")
+            # a dangling-continuation tail = a full sentence then a lone connective the option ends on (the eval's
+            # '...no reason. Only' chop). Precise residue of a bad chop; calibrated to 0 false positives.
+            elif _OPT_DANGLE_RE.search(t):
+                problems.append(f"{_id}/{oid}: rendered option ends mid-clause on a dangling connective "
+                                f"('...{t[-40:]}') -> reveal prose chopped mid-sentence")
+        # the correct-response must point at an option that actually rendered (a chop can drop the keyed option)
+        cr = _CORRECT_RESP_RE.search(xml)
+        if cr and cr.group(1) not in opt_ids:
+            problems.append(f"{_id}: correct-response '{cr.group(1)}' has no matching rendered option "
+                            f"(rendered: {sorted(opt_ids)}) -> option list mangled")
+        # when the source lesson was supplied, the rendered option count must equal the authored choices[] count
+        want = choice_counts.get(_id)
+        if want is not None and len(opts) != want:
+            problems.append(f"{_id}: rendered {len(opts)} options but the slot declares {want} choices[] "
+                            f"-> options added/dropped by the renderer")
+
+    # collect ALL student-visible rendered text for the content-blob checks (item XML + lesson body, catalog
+    # excluded - it holds hidden glossary/audio defs, not student-visible chrome). The catalog is always the
+    # LAST child of <body>, so split at its opening tag (nested divs make a regex strip unreliable).
+    body_html = (mb.group(1) if mb else "").split('<div class="tb-catalog"', 1)[0]
+    visible_fragments = [(f"item {_id}", xml) for _id, xml in checkpoints]
+    visible_fragments.append(("lesson body", body_html))
+
+    for where, frag in visible_fragments:
+        flat = _flat_text(frag)
+        # 8. LEAKED-PLACEHOLDER: an LLM figure-descriptor / alt-text blob that leaked into student-visible content.
+        for m in _PLACEHOLDER_RE.finditer(flat):
+            problems.append(f"{where}: leaked figure-descriptor placeholder in student text "
+                            f"('{m.group(0)[:60]}') -> LLM alt-text blob, not real content")
+        # 9. CAT-N LABELS: generic axis/category placeholders (>=2 siblings in a family) where real data is expected.
+        for fam, labs in _catn_families(flat).items():
+            problems.append(f"{where}: generic Cat-N labels {sorted(labs)[:4]} in a stimulus/diagram "
+                            f"-> labels must trace to real data, not placeholders")
+
     return problems
 
 
