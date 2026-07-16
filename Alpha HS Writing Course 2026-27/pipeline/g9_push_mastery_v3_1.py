@@ -104,8 +104,12 @@ def load_env():
 
 
 def _grader_score_url(base):
-    base = base.rstrip("/")
-    return base if base.endswith("/score") or base.endswith("/timeback/score") else base + "/timeback/score"
+    # Single source of truth for the endpoint path: the live grader serves POST {BASE}/score (root, no
+    # prefix), verified 2026-07-16 against api/external_score.py. Delegate to g9_wire_grader so the mastery
+    # push and the in-lesson wiring can never disagree on the path (they did: this helper defaulted to the
+    # older /timeback/score).
+    from g9_wire_grader import normalize_grader_url
+    return normalize_grader_url(base)
 
 
 # HELD-OUT mastery source per lesson: a mode-appropriate stimulus the lesson's ARTICLE does NOT use, so the
