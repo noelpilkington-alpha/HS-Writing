@@ -547,6 +547,7 @@ def build_lesson_html(L, base_url="") -> tuple[str, list[tuple[str, str]]]:
     checkpoints = []
     node_i = 0
     cur_source = ""   # nearest-preceding framing source, inlined into FRQ prompts (student can't scroll back)
+    cur_source_is_frame = False   # True when cur_source is an issue_frame (orientation, never quoted -> not re-inlined)
     inlined_sources = set()   # source texts already inlined ONCE; repeats get a short reminder, not the full block
                               # (Fable eval: pasting the full source into every same-topic write drove skim/boredom)
     for idx, s in enumerate(L.slots):
@@ -568,6 +569,12 @@ def build_lesson_html(L, base_url="") -> tuple[str, list[tuple[str, str]]]:
                 # remember the framing source for downstream FRQs, PRESERVING block structure (title + each
                 # paragraph on its own line) instead of one flattened run. blocks already computed above.
                 cur_source = blocks if blocks else _sentences_to_paras(_plain(src_html))
+                # is this an ISSUE_FRAME (topic orientation for an argue-from-knowledge claim)? Such frames are
+                # shown ONCE as their own card and are NEVER quoted by the following write (the student argues
+                # from own view), so re-inlining the whole debate into the write card is pure redundancy (the
+                # exact duplication Noel flagged on L01). Real passages (single/synthesis) are still inlined
+                # because the write quotes them. Track the family so the FRQ step below can skip re-inlining.
+                cur_source_is_frame = (getattr(STIM.get(s.ref), "family", "") == "issue_frame")
             # visual-design-protocol Track A: if an authored SVG diagram exists for this (lesson, slot), embed
             # it in the card (replacing the densest paragraph's cognitive load with a labeled diagram).
             diagram = _DIAGRAMS.get((L.id, idx + 1)) if _DIAGRAMS else None
@@ -601,7 +608,12 @@ def build_lesson_html(L, base_url="") -> tuple[str, list[tuple[str, str]]]:
             # the student can see the whole source while composing without the write box dropping below the fold.
             boxed = (getattr(L, "lesson_class", "practice") == "gate"
                      or getattr(s, "unit", "") in ("multi_paragraph", "essay"))
-            if cur_source and (boxed or src_key not in inlined_sources):
+            if cur_source_is_frame:
+                # issue_frame orientation: the debate was already shown as its own card and the write argues
+                # from the student's own view (it does not quote the frame). Do NOT re-inline the whole debate
+                # into the write card (that was the L01 redundancy); a one-line topic reminder is enough.
+                src_arg, reminder = "", _source_reminder(cur_source)
+            elif cur_source and (boxed or src_key not in inlined_sources):
                 src_arg, reminder = cur_source, ""
                 inlined_sources.add(src_key)
             elif cur_source:
