@@ -3,7 +3,6 @@
 the dev-free lesson view. It attempts every check/write in character and emits a journal update.
 Composition-probe lessons add the 'use only what you've learned; name what you're missing' ask."""
 from sim_student_eval.render_course import short_id, student_view
-from sim_student_eval.journal import validate_entry
 
 COMPOSITION_LESSONS = {"g9_l18", "g9_l23", "g9_l24", "g9_l26", "g9_l27"}
 

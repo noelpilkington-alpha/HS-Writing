@@ -5,17 +5,37 @@ answering the four curriculum questions. Findings are corroboration-labeled; not
 import os, json, glob
 
 
+def _read_jsonl(path: str) -> list:
+    """Read a .jsonl file, SKIPPING any undecodable line (a crash mid-write can leave a
+    partial last line; one bad line must not crash synthesis). Closes the handle."""
+    rows = []
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                rows.append(json.loads(line))
+            except json.JSONDecodeError:
+                continue
+    return rows
+
+
 def gather(run_dir: str) -> dict:
     out = {"walks": {}, "tests": {}}
     for f in glob.glob(os.path.join(run_dir, "journal_*.jsonl")):
         key = os.path.basename(f)[len("journal_"):-len(".jsonl")]  # persona_model
-        out["walks"].setdefault(key, {})["journal"] = [json.loads(l) for l in open(f, encoding="utf-8") if l.strip()]
+        out["walks"].setdefault(key, {})["journal"] = _read_jsonl(f)
     for f in glob.glob(os.path.join(run_dir, "transcript_*.jsonl")):
         key = os.path.basename(f)[len("transcript_"):-len(".jsonl")]
-        out["walks"].setdefault(key, {})["transcript"] = [json.loads(l) for l in open(f, encoding="utf-8") if l.strip()]
+        out["walks"].setdefault(key, {})["transcript"] = _read_jsonl(f)
     for f in glob.glob(os.path.join(run_dir, "test_*.json")):
         key = os.path.basename(f)[len("test_"):-len(".json")]
-        out["tests"][key] = json.load(open(f, encoding="utf-8"))
+        try:
+            with open(f, encoding="utf-8") as fh:
+                out["tests"][key] = json.load(fh)
+        except (json.JSONDecodeError, OSError):
+            continue
     return out
 
 
@@ -33,8 +53,10 @@ def detect_redundancies(gathered: dict) -> list:
     for r in rows:
         models = {w.split("_")[-1] for w in r["raised_by"]}
         personas = {w.rsplit("_", 1)[0] for w in r["raised_by"]}
+        # label vocabulary matches the analyst prompt's ask (CORROBORATED / PERSONA-SPECIFIC / SINGLE-MODEL)
         r["corroboration"] = ("CORROBORATED (cross-model)" if len(models) > 1 else
-                              "CORROBORATED (cross-persona)" if len(personas) > 1 else "SINGLE")
+                              "PERSONA-SPECIFIC (cross-persona, one model)" if len(personas) > 1 else
+                              "SINGLE-MODEL")
     return sorted(rows, key=lambda r: -len(r["raised_by"]))
 
 
@@ -68,7 +90,7 @@ def _build_evidence(gathered: dict, redundancies: list) -> str:
     return "\n".join(parts)[:120000]
 
 
-def synthesize(run_dir: str, anthropic_key: str, model: str = "claude-opus-4-8") -> str:
+def synthesize(run_dir: str, anthropic_key: str, model: str = "claude-fable-5") -> str:
     import anthropic
     gathered = gather(run_dir)
     redundancies = detect_redundancies(gathered)

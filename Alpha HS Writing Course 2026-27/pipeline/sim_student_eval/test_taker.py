@@ -67,29 +67,49 @@ def _letter_to_option_id(item, letter):
     return ""
 
 
+# Item kinds whose options are lettered A/B/C/D with a single-letter answer_key, so a
+# deterministic letter -> option-id -> key match is valid (NOT a writing score). 'choice' and
+# 'inline-choice' both qualify (verified: sr_organization inline-choice items are A-D w/ single
+# letter keys). 'hottext' (S1..Sn ids) and text-entry/extended-text are NOT letter-scorable and
+# are left as attemptability-only, so the match rate is not silently over-read as full coverage.
+_LETTER_SCORABLE = ("choice", "inline-choice")
+
+
 def take_test(client, persona: dict, items: list, digest: str) -> dict:
     attempts = []
     correct = 0
     total_mcq = 0
+    scored_kinds, unscored_kinds = set(), set()
     for item in items:
         user = ("YOUR MEMORY FROM THE COURSE:\n" + digest +
                 "\n\n===== TEST QUESTION =====\n" + present_item(item) +
                 "\n\nAttempt this question in character. If it is multiple choice, pick one letter. "
                 "If you cannot do it with what the course taught you, set can_attempt false and name "
                 "the missing skill.")
-        out = _ask_tool(client, persona["system_preamble"], user)
+        try:
+            out = _ask_tool(client, persona["system_preamble"], user)
+        except Exception as e:  # a single item's API failure must not abort the test pass
+            out = {"can_attempt": False, "missing_skill": "", "error": repr(e)}
         rec = {"id": item["id"], "kind": item["kind"], "mode": item["mode"],
                "student_answer": out.get("answer_letter") or out.get("written_answer", ""),
                "can_attempt": bool(out.get("can_attempt", False)),
                "missing_skill": out.get("missing_skill", "")}
-        if item["kind"] == "choice" and item["answer_key"]:
+        if out.get("error"):
+            rec["error"] = out["error"]
+        if item["kind"] in _LETTER_SCORABLE and item["answer_key"]:
             total_mcq += 1
+            scored_kinds.add(item["kind"])
             picked = _letter_to_option_id(item, out.get("answer_letter", ""))
             rec["mcq_correct"] = picked in item["answer_key"]
             if rec["mcq_correct"]:
                 correct += 1
+        else:
+            unscored_kinds.add(item["kind"])
         attempts.append(rec)
-    return {"attempts": attempts, "mcq_scored": {"correct": correct, "total": total_mcq}}
+    return {"attempts": attempts,
+            "mcq_scored": {"correct": correct, "total": total_mcq,
+                           "scored_kinds": sorted(scored_kinds),
+                           "unscored_kinds": sorted(unscored_kinds)}}
 
 
 def _ask_tool(client, system, user):
