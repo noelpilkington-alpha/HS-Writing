@@ -1,0 +1,3 @@
+# Tier B runtime state (promotion ledger + kill-switch) - not source, per-machine
+.tier_b_promotion.json
+.tier_b_killswitch
