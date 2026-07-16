@@ -168,7 +168,7 @@ LESSON = Lesson(
                    "the window stays open; B over-plans and rewrites the essay as an outline, and C skips "
                    "planning, so the draft wanders."),
              choices=[
-                 {"id": "A", "text": "Three lines jotted in about two minutes: one line names the position to defend, then P1, P2, and P3 name a reason each in a few words, with a shorthand fact beside each point.",
+                 {"id": "A", "text": "Three lines jotted in about two minutes: one line names the position to defend, then P1, P2, and P3 each name a reason, with a shorthand fact beside each point.",
                   "correct": True,
                   "why": "Correct. This names a position and an order in a few lines, enough to steer the draft while the window stays open to write."},
                  {"id": "B", "text": "A full page of complete sentences that writes out a topic sentence, a quotation, and a closing transition for every planned paragraph in the essay before any drafting begins.",

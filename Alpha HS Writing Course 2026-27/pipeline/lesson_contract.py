@@ -634,36 +634,52 @@ def gate_distractor_length_cue(L: Lesson) -> tuple[bool, str]:
     single longest option - that length cue lets a student guess without reasoning (Haladyna item-writing rule:
     options homogeneous in length). Correct answer is read from the 'Correct: X.' / 'Reveal: X.' tail."""
     problems = []
+    inspected = 0
     for i, s in enumerate(L.slots):
-        if s.kind not in ("discrimination", "predict_the_fix", "self_score"):
+        # self_score is a PREDICT-YOUR-OWN-RESULT calibration item (often a 2-option pass/gap or a 2-point
+        # scale), NOT a distractor-based MCQ where length cues the key. The Haladyna length rule applies to
+        # discrimination / predict_the_fix (real distractors); exempt self_score.
+        if s.kind not in ("discrimination", "predict_the_fix"):
             continue
-        body = re.sub(r"<[^>]+>", " ", s.body or "")
-        # predict_the_fix carries the options in `body` but the "Correct: X" marker in `feedback`
-        # (the reveal). Search BOTH for the marker, or the gate silently skips every such slot
-        # (was 96/96 unchecked). Options are still parsed from `body` only.
-        fb = re.sub(r"<[^>]+>", " ", s.feedback or "")
-        rev = re.search(r"\b(Correct:|Reveal:)", body, re.I)
-        core = body[:rev.start()] if (rev and _OPT_MARKER.search(body[:rev.start()])) else body
-        cm = re.search(r"\b(?:Correct|Reveal):\s*\(?([A-D])\)?", body + "\n" + fb, re.I)
-        pieces = re.split(r"(?=\([A-D]\)\s)", core)
-        opts = {}
-        for pc in pieces:
-            m = re.match(r"\(([A-D])\)\s*(.+)", pc.strip(), re.S)
-            if m:
-                opts[m.group(1)] = m.group(2).strip()
-        if not opts or not cm:
+        # PREFER the structured choices=[] array (unambiguous). Fall back to prose-parsing only when a slot
+        # has no choices[]. If NEITHER yields options for a slot that carries option markers, that is a
+        # FAILURE TO INSPECT (fail-closed), NOT a silent skip - the old `continue` here was a fail-open that
+        # let an unparseable length-cued item ship green (Fable eval HOLE 1).
+        opts, correct = {}, None
+        if getattr(s, "choices", None):
+            for c in s.choices:
+                if c.get("id") and c.get("text") is not None:
+                    opts[c["id"]] = str(c["text"])
+                if c.get("correct"):
+                    correct = c["id"]
+        else:
+            body = re.sub(r"<[^>]+>", " ", s.body or "")
+            fb = re.sub(r"<[^>]+>", " ", s.feedback or "")
+            rev = re.search(r"\b(Correct:|Reveal:)", body, re.I)
+            core = body[:rev.start()] if (rev and _OPT_MARKER.search(body[:rev.start()])) else body
+            cm = re.search(r"\b(?:Correct|Reveal):\s*\(?([A-D])\)?", body + "\n" + fb, re.I)
+            for pc in re.split(r"(?=\([A-D]\)\s)", core):
+                m = re.match(r"\(([A-D])\)\s*(.+)", pc.strip(), re.S)
+                if m:
+                    opts[m.group(1)] = m.group(2).strip()
+            correct = cm.group(1) if cm else None
+        # self_score with 2 options is a legit predict-then-reveal binary; still length-checkable if it has a key.
+        has_markers = bool(getattr(s, "choices", None)) or bool(_OPT_MARKER.search(re.sub(r"<[^>]+>", " ", s.body or "")))
+        if has_markers and (len(opts) < 2 or not correct):
+            problems.append(f"slot {i+1} '{(s.title or '')[:28]}': choice item could not be parsed for "
+                            f"length-cue check (opts={len(opts)}, key={correct!r}) - unparseable = fail-closed")
             continue
-        correct = cm.group(1)
-        if correct not in opts:
+        if not opts or not correct or correct not in opts:
             continue
+        inspected += 1
         lens = {k: len(v) for k, v in opts.items()}
         mx = max(lens.values())
         if lens[correct] == mx and sum(1 for v in lens.values() if v == mx) == 1:
             problems.append(f"slot {i+1} '{(s.title or '')[:28]}': key ({correct}) is the lone longest "
                             f"({lens[correct]} vs {sorted(v for k,v in lens.items() if k!=correct)})")
     if problems:
-        return False, "distractor length cue (correct answer is longest): " + "; ".join(problems)
-    return True, "no length cue: correct option is not the lone longest in any choice item"
+        return False, "distractor length cue: " + "; ".join(problems)
+    return True, f"no length cue: {inspected} choice item(s) inspected, correct never lone-longest"
 
 
 # internal design vocabulary that must NEVER reach a student. These are authoring/QC terms; a real G9 student
