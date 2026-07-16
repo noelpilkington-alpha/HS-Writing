@@ -39,7 +39,7 @@ class JournalStore:
 
     def append(self, entry: dict) -> None:
         e = validate_entry(entry)
-        os.makedirs(os.path.dirname(self.path), exist_ok=True)
+        os.makedirs(os.path.dirname(self.path) or ".", exist_ok=True)
         with open(self.path, "a", encoding="utf-8") as f:
             f.write(json.dumps(e, ensure_ascii=False) + "\n")
 
@@ -47,10 +47,15 @@ class JournalStore:
         if not os.path.exists(self.path):
             return []
         rows = []
-        for line in open(self.path, encoding="utf-8"):
-            line = line.strip()
-            if line:
-                rows.append(json.loads(line))
+        with open(self.path, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    rows.append(json.loads(line))
+                except json.JSONDecodeError:
+                    continue  # a corrupted line must not break the only cross-lesson memory
         return rows
 
     def digest(self) -> str:
@@ -67,7 +72,10 @@ class JournalStore:
                     skills.append(s)
             conf.update(r.get("confidence", {}))
         recent = rows[-5:]
-        lines = ["LESSONS DONE: " + ", ".join(r["lesson"] for r in rows)]
+        done = [r["lesson"] for r in rows]
+        shown = done[-20:]
+        prefix = (f"(+{len(done) - len(shown)} earlier) " if len(done) > len(shown) else "")
+        lines = ["LESSONS DONE: " + prefix + ", ".join(shown)]
         lines.append("SKILLS I CAN DO: " + ("; ".join(skills[:20]) or "none yet"))
         lines.append("MY CONFIDENCE: " + ("; ".join(f"{k}={v:.1f}" for k, v in list(conf.items())[:15]) or "n/a"))
         struggles = [s for r in recent for s in r.get("where_i_struggled", [])]
