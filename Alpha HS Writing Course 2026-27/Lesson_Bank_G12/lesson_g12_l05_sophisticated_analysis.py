@@ -219,6 +219,18 @@ LESSON = Lesson(
                  closer="Write the rhetorical SITUATION, the strategic TENSION he must manage, and the two or "
                         "three CHOICES, each tied to that situation. This plan is what you will build the "
                         "analysis from.")),
+        # ===== INDEPENDENT: build the whole analysis essay from the plan (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "BUILD: write the sophisticated analysis",
+             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, build the whole analysis essay from your plan.",
+                 closer="Write a complete rhetorical-analysis essay on Douglass: an introduction that situates the "
+                        "speech in its rhetorical situation, body paragraphs that tie specific choices to the "
+                        "audience and the speaker's bind and hold the strategic tension, and a conclusion on what "
+                        "the strategy achieves. Then run the situate-and-hold check and fix any gaps. Situating "
+                        "the rhetoric is what every strong analysis is built on, and you are ready to do it cold. "
+                        "Take the time you need.")),
+
         # DIAGNOSIS = self-revision: reread your OWN just-written analysis essay and run the three-question
         # checklist on it, fixing any line that fails. Same taught source (load balance). Self-contained: the
         # checklist is the scaffold and the grader scores the diagnosis within the item.
@@ -233,18 +245,6 @@ LESSON = Lesson(
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you submit. Finish by "
                         "naming the tension your analysis holds.")),
-
-        # ===== INDEPENDENT: build the whole analysis essay from the plan (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "BUILD: write the sophisticated analysis",
-             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, build the whole analysis essay from your plan.",
-                 closer="Write a complete rhetorical-analysis essay on Douglass: an introduction that situates the "
-                        "speech in its rhetorical situation, body paragraphs that tie specific choices to the "
-                        "audience and the speaker's bind and hold the strategic tension, and a conclusion on what "
-                        "the strategy achieves. Then run the situate-and-hold check and fix any gaps. Situating "
-                        "the rhetoric is what every strong analysis is built on, and you are ready to do it cold. "
-                        "Take the time you need.")),
     ],
 )
 

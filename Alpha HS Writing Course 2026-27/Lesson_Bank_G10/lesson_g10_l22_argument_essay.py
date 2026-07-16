@@ -211,6 +211,18 @@ LESSON = Lesson(
                  closer="Write the synthesis claim, one body point that weaves both sources, and one objection "
                         "you will concede and answer. This plan is what you will build the essay from. Do not "
                         "plan a one-source essay.")),
+        # ===== INDEPENDENT: build the whole cross-text essay (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Write the full cross-text argument essay",
+             ref="", bank="daylight_saving", rubric_ref="rc.staar", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, build the whole essay from your plan.",
+                 closer="Write a complete cross-text argument essay on daylight saving: an introduction that "
+                        "frames the question and states the synthesis claim, body paragraphs that weave both "
+                        "sources, one paragraph that concedes and answers the objection, and a conclusion that "
+                        "lands the upshot. Then run the reread check and fix any part that fails. This weave-"
+                        "and-answer build is what every real cross-text argument is made of, and you are ready "
+                        "to do it cold. Take the time you need.")),
+
         # DIAGNOSIS = self-revision of the student's OWN just-written draft (not a check on a provided weak
         # draft). Same taught source (load balance). Scaffolded by the 3-row checklist run on their own essay.
         Slot("MODEL", "diagnosis_frq", "Check your essay: woven and answered?",
@@ -224,18 +236,6 @@ LESSON = Lesson(
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you move on. Finish by "
                         "naming the objection you will answer.")),
-
-        # ===== INDEPENDENT: build the whole cross-text essay (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Write the full cross-text argument essay",
-             ref="", bank="daylight_saving", rubric_ref="rc.staar", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, build the whole essay from your plan.",
-                 closer="Write a complete cross-text argument essay on daylight saving: an introduction that "
-                        "frames the question and states the synthesis claim, body paragraphs that weave both "
-                        "sources, one paragraph that concedes and answers the objection, and a conclusion that "
-                        "lands the upshot. Then run the reread check and fix any part that fails. This weave-"
-                        "and-answer build is what every real cross-text argument is made of, and you are ready "
-                        "to do it cold. Take the time you need.")),
     ],
 )
 

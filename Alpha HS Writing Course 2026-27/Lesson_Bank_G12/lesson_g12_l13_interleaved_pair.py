@@ -192,6 +192,18 @@ LESSON = Lesson(
                  closer="Name this prompt's type and its moves (a position carried by examples), write a "
                         "one-line thesis, then write the switch flag reminding yourself the next prompt is a "
                         "different type you will re-name before planning.")),
+        # ===== INDEPENDENT: rehearse the first prompt end to end (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Rehearse the first prompt (argument)",
+             ref="", bank="water_tradeoff", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now. Under your own budget, rehearse the first prompt end to end.",
+                 closer="Write a complete argument essay on the water trade-off: a thesis that takes a "
+                        "defensible position, body paragraphs that carry it with specific examples, and a "
+                        "conclusion that holds the tension. There is no platform timer. Switching the move-set "
+                        "between two back-to-back prompts is what every real exam pair is built on, and you are "
+                        "ready to do it cold. When you finish, note that the next prompt is a synthesis and you "
+                        "will switch move-sets.")),
+
         # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the 3-question switch check on it,
         # fixing any line that fails. Same taught bank (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
@@ -206,18 +218,6 @@ LESSON = Lesson(
                  ]),
                  closer="For every line that fails on your draft, name what is off in one sentence and make the "
                         "fix. Finish by naming the new move-set you will switch to for the synthesis prompt.")),
-
-        # ===== INDEPENDENT: rehearse the first prompt end to end (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Rehearse the first prompt (argument)",
-             ref="", bank="water_tradeoff", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now. Under your own budget, rehearse the first prompt end to end.",
-                 closer="Write a complete argument essay on the water trade-off: a thesis that takes a "
-                        "defensible position, body paragraphs that carry it with specific examples, and a "
-                        "conclusion that holds the tension. There is no platform timer. Switching the move-set "
-                        "between two back-to-back prompts is what every real exam pair is built on, and you are "
-                        "ready to do it cold. When you finish, note that the next prompt is a synthesis and you "
-                        "will switch move-sets.")),
     ],
 )
 

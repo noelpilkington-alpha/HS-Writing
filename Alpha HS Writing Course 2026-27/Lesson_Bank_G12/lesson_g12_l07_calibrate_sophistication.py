@@ -230,6 +230,16 @@ LESSON = Lesson(
                  closer="The grader will score the sophistication; your one-line prediction is what you will "
                         "compare against it. Write the full essay, then the prediction.")),
 
+        # ===== INDEPENDENT: calibrate cold, no frame + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Calibrate on your own",
+             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, with no frame.",
+                 closer="Write a fresh sophisticated argument on the workforce prompt, predict your Row C result "
+                        "against the criterion with a reason, and after the grader returns its score, name the "
+                        "gap. Predicting against the Row C criterion and then naming the gap is what every "
+                        "calibrated writer is built on, and you are ready to do it cold. Take the time you need.")),
+
         # ===== DIAGNOSIS = run the same 3-question check on your OWN just-written draft (scaffolded self-revision) =====
         Slot("MODEL", "diagnosis_frq", "Name the gap between your prediction and the grader",
              ref="", bank="public_health", scored=True,
@@ -243,16 +253,6 @@ LESSON = Lesson(
                  closer="Now do the same on YOUR draft: reread the essay you just wrote, run these three questions "
                         "on it, revise the weakest line, and finish by naming your single biggest gap and the one "
                         "change you made to close it.")),
-
-        # ===== INDEPENDENT: calibrate cold, no frame + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Calibrate on your own",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, with no frame.",
-                 closer="Write a fresh sophisticated argument on the workforce prompt, predict your Row C result "
-                        "against the criterion with a reason, and after the grader returns its score, name the "
-                        "gap. Predicting against the Row C criterion and then naming the gap is what every "
-                        "calibrated writer is built on, and you are ready to do it cold. Take the time you need.")),
     ],
 )
 

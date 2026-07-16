@@ -198,6 +198,18 @@ LESSON = Lesson(
                  closer="Name the ONE argument the set builds, then next to each source note what it is strong "
                         "evidence for and where it falls short, so you know which source carries which point. "
                         "This plan is what you will build the essay from.")),
+        # ===== INDEPENDENT: build the whole synthesis essay (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Write the synthesis essay",
+             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, build the whole essay from your plan.",
+                 closer="Write a full synthesis essay on the water set: an introduction that states the one "
+                        "argument the set builds, body paragraphs organized by point that draw on the sources and "
+                        "weight each by what it can carry, and a conclusion that names what the set supports and "
+                        "where it stops short. Then run the reread check and fix any part that fails. Weaving and "
+                        "weighting is what every real college synthesis is built on, and you are ready to do it "
+                        "cold. Take the time you need.")),
+
         # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the three-question checklist on it,
         # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
@@ -212,18 +224,6 @@ LESSON = Lesson(
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you move on. Finish by "
                         "naming one source and the exact point it carries.")),
-
-        # ===== INDEPENDENT: build the whole synthesis essay (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Write the synthesis essay",
-             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, build the whole essay from your plan.",
-                 closer="Write a full synthesis essay on the water set: an introduction that states the one "
-                        "argument the set builds, body paragraphs organized by point that draw on the sources and "
-                        "weight each by what it can carry, and a conclusion that names what the set supports and "
-                        "where it stops short. Then run the reread check and fix any part that fails. Weaving and "
-                        "weighting is what every real college synthesis is built on, and you are ready to do it "
-                        "cold. Take the time you need.")),
     ],
 )
 

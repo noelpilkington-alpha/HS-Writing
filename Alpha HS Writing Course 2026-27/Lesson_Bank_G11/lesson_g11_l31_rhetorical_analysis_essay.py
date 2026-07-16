@@ -217,6 +217,19 @@ LESSON = Lesson(
                  closer="Write one line naming Roosevelt's overall purpose, then list two or three choices, each "
                         "naming the trimmed quote it will use, the effect that choice has on his audience, and "
                         "how that effect serves the purpose. This plan is what you will build the essay from.")),
+        # ===== INDEPENDENT: build the whole essay from the plan (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Write the full rhetorical-analysis essay",
+             ref="", bank="ra_speech_1", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, build the whole essay from your plan.",
+                 closer="Write a complete rhetorical-analysis essay on Roosevelt's First Inaugural: an "
+                        "introduction that names the author and occasion and states a thesis naming his overall "
+                        "purpose, two or three body paragraphs that each run choice (with a trimmed, framed "
+                        "quote) to effect on the audience to purpose, and a conclusion that ties the choices "
+                        "back to the one purpose. Then run the reread check and fix any part that fails. "
+                        "Sustaining the choice-to-effect-to-purpose move across a whole essay is the real skill, "
+                        "and you are ready to do it. Take the time you need.")),
+
         # DIAGNOSIS = self-revision: reread your OWN just-written essay and run the 3-question check on it,
         # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
@@ -231,19 +244,6 @@ LESSON = Lesson(
                  ]),
                  closer="For every line that fails on your draft, name what is off in one sentence and make the "
                         "fix. Finish by naming the overall purpose your essay is built to prove.")),
-
-        # ===== INDEPENDENT: build the whole essay from the plan (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Write the full rhetorical-analysis essay",
-             ref="", bank="ra_speech_1", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, build the whole essay from your plan.",
-                 closer="Write a complete rhetorical-analysis essay on Roosevelt's First Inaugural: an "
-                        "introduction that names the author and occasion and states a thesis naming his overall "
-                        "purpose, two or three body paragraphs that each run choice (with a trimmed, framed "
-                        "quote) to effect on the audience to purpose, and a conclusion that ties the choices "
-                        "back to the one purpose. Then run the reread check and fix any part that fails. "
-                        "Sustaining the choice-to-effect-to-purpose move across a whole essay is the real skill, "
-                        "and you are ready to do it. Take the time you need.")),
     ],
 )
 

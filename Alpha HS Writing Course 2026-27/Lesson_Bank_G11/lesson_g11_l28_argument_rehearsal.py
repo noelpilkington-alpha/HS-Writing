@@ -220,6 +220,18 @@ LESSON = Lesson(
                  closer="First NAME the task type and say how you can tell, then write a fast plan using that "
                         "type's moves (position plus specific examples, or weigh-the-views plus stake-own). This "
                         "plan is what you will build the essay from.")),
+        # ===== INDEPENDENT: build the whole essay from the matched plan (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Rehearse the matched argument essay",
+             ref="", bank="sfa_tradition_progress", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, run the full rehearsal on the tradition-versus-progress prompt.",
+                 closer="Spot the task type, then under your own budget write a complete argument essay using "
+                        "that type's moves (source-free: a defensible position plus specific examples, developed "
+                        "across body paragraphs, with a conclusion that lands the upshot). There is no platform "
+                        "timer; run your own budget and check. Before you submit, confirm the moves match the "
+                        "task type. Spotting the type and running its moves cold is what every real exam essay is "
+                        "built on, and you are ready to do it. Take the time you need.")),
+
         # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the 3-question check on it,
         # fixing any line that fails. Same taught prompt (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
@@ -234,18 +246,6 @@ LESSON = Lesson(
                  ]),
                  closer="For every line that fails on your draft, name what is off in one sentence and make the "
                         "fix. Finish by naming the task type your draft is written for.")),
-
-        # ===== INDEPENDENT: build the whole essay from the matched plan (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Rehearse the matched argument essay",
-             ref="", bank="sfa_tradition_progress", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, run the full rehearsal on the tradition-versus-progress prompt.",
-                 closer="Spot the task type, then under your own budget write a complete argument essay using "
-                        "that type's moves (source-free: a defensible position plus specific examples, developed "
-                        "across body paragraphs, with a conclusion that lands the upshot). There is no platform "
-                        "timer; run your own budget and check. Before you submit, confirm the moves match the "
-                        "task type. Spotting the type and running its moves cold is what every real exam essay is "
-                        "built on, and you are ready to do it. Take the time you need.")),
     ],
 )
 

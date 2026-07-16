@@ -212,6 +212,18 @@ LESSON = Lesson(
                         "source by what it can carry. Then, in one line, predict your own score on each row with "
                         "a reason. The grader will score the synthesis; your prediction is what you compare "
                         "against.")),
+        # ===== INDEPENDENT: predict + name the gap with no frame + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Calibrate on your own",
+             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now. No frame this time.",
+                 closer="Write a fresh synthesis on the water set, predict your score on each row with a reason, "
+                        "and after the grader returns its score, name the gap on every row where you differed. "
+                        "Before you submit, check: did I predict on the ROWS with reasons, not a feel number, "
+                        "and can I name one specific gap? Predicting your own score and naming the gap is what "
+                        "every calibrated writer does before a grader ever sees the work, and you are ready to "
+                        "do it cold.")),
+
         # DIAGNOSIS = self-revision on the student's OWN just-written draft. A single labeled EXAMPLE shows what
         # naming a gap looks like (an example, NOT the student's essay); the student then names and fixes the gap
         # on THEIR OWN draft. Same taught source (load balance). Self-contained: the grader scores the diagnosis.
@@ -226,18 +238,6 @@ LESSON = Lesson(
                      "each source by what it can carry."),
                  closer="Now do this on YOUR draft. For every row where your number was off, name the gap in one "
                         "line the same way, then make the fix. Finish by naming your single biggest gap.")),
-
-        # ===== INDEPENDENT: predict + name the gap with no frame + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Calibrate on your own",
-             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now. No frame this time.",
-                 closer="Write a fresh synthesis on the water set, predict your score on each row with a reason, "
-                        "and after the grader returns its score, name the gap on every row where you differed. "
-                        "Before you submit, check: did I predict on the ROWS with reasons, not a feel number, "
-                        "and can I name one specific gap? Predicting your own score and naming the gap is what "
-                        "every calibrated writer does before a grader ever sees the work, and you are ready to "
-                        "do it cold.")),
     ],
 )
 

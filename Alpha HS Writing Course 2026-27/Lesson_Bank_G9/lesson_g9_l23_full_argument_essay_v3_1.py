@@ -212,6 +212,17 @@ LESSON = Lesson(
                  closer="Write a single-paragraph outline: a one-line thesis that takes a side, then three "
                         "ordered body points, each naming its claim and the source fact it will use. This plan "
                         "is what you will build the essay from.")),
+        # ===== INDEPENDENT: build the whole essay from the plan (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Write the full argument essay",
+             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, build the whole essay from your plan.",
+                 closer="Write a complete argument essay on required community service: an introduction that "
+                        "frames the thesis, three body paragraphs (each a claim, attributed evidence, and a "
+                        "warrant, ordered to build and linked), and a conclusion that lands the upshot. Then run "
+                        "the reread check and fix any part that fails. Assembling the moves you own into one "
+                        "essay is the real skill, and you are ready to do it. Take the time you need.")),
+
         # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the same checklist on it, fixing
         # any line that fails. Same taught source (load balance). Scaffolded by the checklist itself.
         Slot("MODEL", "diagnosis_frq", "Check your draft defends the thesis",
@@ -225,17 +236,6 @@ LESSON = Lesson(
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you submit. Finish by "
                         "naming which part your essay still needs most.")),
-
-        # ===== INDEPENDENT: build the whole essay from the plan (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Write the full argument essay",
-             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, build the whole essay from your plan.",
-                 closer="Write a complete argument essay on required community service: an introduction that "
-                        "frames the thesis, three body paragraphs (each a claim, attributed evidence, and a "
-                        "warrant, ordered to build and linked), and a conclusion that lands the upshot. Then run "
-                        "the reread check and fix any part that fails. Assembling the moves you own into one "
-                        "essay is the real skill, and you are ready to do it. Take the time you need.")),
         # Per the essay-grain verdict, in-article TRANSFER is routed to the gate/PP100 (a separate resource), so
         # the lesson ends at the INDEPENDENT write + its self-revision. The prior TRANSFER stimulus + write are
         # removed here; the PP100 mastery task remains a separate, held-out resource.

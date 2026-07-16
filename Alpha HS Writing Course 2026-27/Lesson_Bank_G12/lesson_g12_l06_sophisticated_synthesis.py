@@ -220,6 +220,19 @@ LESSON = Lesson(
                  closer="Write the ONE argument the set builds and which source carries each point, then the "
                         "broader question it is one case of and the tension the sources create, then the "
                         "position you defend within it. This plan is what you will build the essay from.")),
+        # ===== INDEPENDENT: build the whole synthesis from the plan (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "BUILD: write the sophisticated synthesis",
+             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, build the whole synthesis from your plan.",
+                 closer="Write a complete synthesis essay on the water set: an introduction that states the "
+                        "woven claim and situates it in the broader question, body paragraphs organized by point "
+                        "that weave and weight the sources and hold their tension, and a conclusion that defends "
+                        "a position the tension forces. Then run the Row C check and fix any part that fails. "
+                        "Situating a woven claim and holding the sources' tension is what every real "
+                        "sophisticated synthesis is built on, and you are ready to do it cold. Take the time you "
+                        "need.")),
+
         # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the three-question check on it,
         # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
@@ -234,19 +247,6 @@ LESSON = Lesson(
                  ]),
                  closer="For every row that fails on your draft, name the gap in one line and make the fix. "
                         "Finish by naming the larger question your synthesis answers.")),
-
-        # ===== INDEPENDENT: build the whole synthesis from the plan (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "BUILD: write the sophisticated synthesis",
-             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, build the whole synthesis from your plan.",
-                 closer="Write a complete synthesis essay on the water set: an introduction that states the "
-                        "woven claim and situates it in the broader question, body paragraphs organized by point "
-                        "that weave and weight the sources and hold their tension, and a conclusion that defends "
-                        "a position the tension forces. Then run the Row C check and fix any part that fails. "
-                        "Situating a woven claim and holding the sources' tension is what every real "
-                        "sophisticated synthesis is built on, and you are ready to do it cold. Take the time you "
-                        "need.")),
     ],
 )
 

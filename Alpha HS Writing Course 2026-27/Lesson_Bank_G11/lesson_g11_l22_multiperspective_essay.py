@@ -219,6 +219,18 @@ LESSON = Lesson(
                  closer="Write your one-line position, then for each body paragraph note which perspective it "
                         "weighs and what it will concede, limit, and advance to build your position. This plan "
                         "is what you will build the essay from.")),
+        # ===== INDEPENDENT: build the whole essay from the plan (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Write the full multi-perspective essay",
+             ref="", bank="mp_public_space", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, build the whole essay from your plan.",
+                 closer="Write a complete multi-perspective essay on the streets issue: an introduction that "
+                        "stakes your position, body paragraphs that each weigh a given perspective (concede, "
+                        "limit, advance with a specific example) to build that position, and a conclusion that "
+                        "lands your stance. Then run the reread check and fix any part that fails. Weighing the "
+                        "views to build one position is what every real multi-perspective essay is built on, and "
+                        "you are ready to do it cold. Take the time you need.")),
+
         # DIAGNOSIS = self-revision: reread your OWN just-written essay and run the three-question checklist on it,
         # fixing any line that fails. Same taught bank (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
@@ -233,18 +245,6 @@ LESSON = Lesson(
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you move on. Finish by "
                         "naming which part your essay still needs most.")),
-
-        # ===== INDEPENDENT: build the whole essay from the plan (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Write the full multi-perspective essay",
-             ref="", bank="mp_public_space", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, build the whole essay from your plan.",
-                 closer="Write a complete multi-perspective essay on the streets issue: an introduction that "
-                        "stakes your position, body paragraphs that each weigh a given perspective (concede, "
-                        "limit, advance with a specific example) to build that position, and a conclusion that "
-                        "lands your stance. Then run the reread check and fix any part that fails. Weighing the "
-                        "views to build one position is what every real multi-perspective essay is built on, and "
-                        "you are ready to do it cold. Take the time you need.")),
         # TRANSFER routed out to the gate/PP100 (essay-grain verdict): the lesson ends at the INDEPENDENT write
         # plus its own-draft self-revision. The PP100 mastery task is a separate resource and is unaffected.
     ],

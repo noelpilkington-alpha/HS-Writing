@@ -215,6 +215,18 @@ LESSON = Lesson(
                  closer="List a one-line thesis that takes a side, then two or three specific examples from your "
                         "own knowledge, one per body paragraph, each a named case you can develop and tie to the "
                         "thesis. This plan is what you will build the essay from.")),
+        # ===== INDEPENDENT: build the whole essay from the plan (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Write the full source-free essay",
+             ref="", bank="sfa_curiosity_use", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, build the whole essay from your plan.",
+                 closer="Write a complete source-free argument essay on the curiosity prompt: an introduction "
+                        "that states the thesis, body paragraphs each carried by one specific, developed example "
+                        "from your own knowledge (tied to the thesis), and a conclusion that lands the upshot. "
+                        "Then run the reread check and fix any part that fails. A thesis carried by specific "
+                        "examples is what every real source-free essay is built on, and you are ready to do it "
+                        "cold. Take the time you need.")),
+
         # DIAGNOSIS = self-revision: reread your OWN just-written essay and run the three-question checklist on it,
         # fixing any line that fails. Same taught bank (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
@@ -229,18 +241,6 @@ LESSON = Lesson(
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you submit. Finish by "
                         "naming which part your essay still needs most.")),
-
-        # ===== INDEPENDENT: build the whole essay from the plan (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Write the full source-free essay",
-             ref="", bank="sfa_curiosity_use", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, build the whole essay from your plan.",
-                 closer="Write a complete source-free argument essay on the curiosity prompt: an introduction "
-                        "that states the thesis, body paragraphs each carried by one specific, developed example "
-                        "from your own knowledge (tied to the thesis), and a conclusion that lands the upshot. "
-                        "Then run the reread check and fix any part that fails. A thesis carried by specific "
-                        "examples is what every real source-free essay is built on, and you are ready to do it "
-                        "cold. Take the time you need.")),
     ],
 )
 

@@ -218,6 +218,18 @@ LESSON = Lesson(
                  closer="Write your reading cap, the one argument the set builds, and three points, each assigned "
                         "to the single source that carries it best (not a plan to summarize each source). This "
                         "plan is what you will draft the synthesis from.")),
+        # ===== INDEPENDENT: rehearse the whole synthesis from the plan (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Rehearse the full synthesis",
+             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now. Using your budget and plan, rehearse the complete synthesis end to end.",
+                 closer="Write a complete synthesis essay on the AI-workforce set: a situated, woven, weighted "
+                        "argument that assigns each point to the source that carries it, citing each source you "
+                        "use, and a real conclusion that lands the upshot. Run your own reading cap; there is no "
+                        "platform timer. Then confirm it is one woven argument, not a survey, and that it is "
+                        "finished. Pacing a whole synthesis end to end is what every real synthesis FRQ is built "
+                        "on, and you are ready to do it cold. Take the time you need.")),
+
         # DIAGNOSIS = self-revision: reread your OWN just-written synthesis and run the 3-question pacing check on
         # it, fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
@@ -234,18 +246,6 @@ LESSON = Lesson(
                         "is off in one sentence and fix it now. The reading cap is about your process, not a line "
                         "you can rewrite, so note what to adjust on your next write. Finish by naming the one "
                         "argument the set builds.")),
-
-        # ===== INDEPENDENT: rehearse the whole synthesis from the plan (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Rehearse the full synthesis",
-             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now. Using your budget and plan, rehearse the complete synthesis end to end.",
-                 closer="Write a complete synthesis essay on the AI-workforce set: a situated, woven, weighted "
-                        "argument that assigns each point to the source that carries it, citing each source you "
-                        "use, and a real conclusion that lands the upshot. Run your own reading cap; there is no "
-                        "platform timer. Then confirm it is one woven argument, not a survey, and that it is "
-                        "finished. Pacing a whole synthesis end to end is what every real synthesis FRQ is built "
-                        "on, and you are ready to do it cold. Take the time you need.")),
     ],
 )
 

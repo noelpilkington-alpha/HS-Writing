@@ -221,6 +221,17 @@ LESSON = Lesson(
                  closer="Write your stage budget and a fast plan that names the situated thesis, the tension "
                         "each body paragraph will hold, and what the conclusion defends. This plan is what you "
                         "will build the whole essay from.")),
+        # ===== INDEPENDENT: rehearse the whole essay from the plan (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Rehearse the full argument",
+             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, rehearse the whole essay from your budget and plan.",
+                 closer="Write a complete argument essay on the workforce prompt end to end: a situated claim, "
+                        "body paragraphs that hold the tension, and a conclusion that defends a priority. There "
+                        "is no platform timer; run your own budget and pacing, then run the reread check and fix "
+                        "any part that fails. Carrying a complete argument to a finished conclusion is what every "
+                        "real AP argument is built on, and you are ready to do it cold. Take the time you need.")),
+
         # DIAGNOSIS = self-revision: reread your OWN just-written essay and run the 3-question check on it,
         # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
@@ -237,17 +248,6 @@ LESSON = Lesson(
                         "draft now. The pacing row is about your process, not this finished draft, so instead "
                         "note one change to your stage budget for your next write. Finish by naming what your "
                         "conclusion defends.")),
-
-        # ===== INDEPENDENT: rehearse the whole essay from the plan (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Rehearse the full argument",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, rehearse the whole essay from your budget and plan.",
-                 closer="Write a complete argument essay on the workforce prompt end to end: a situated claim, "
-                        "body paragraphs that hold the tension, and a conclusion that defends a priority. There "
-                        "is no platform timer; run your own budget and pacing, then run the reread check and fix "
-                        "any part that fails. Carrying a complete argument to a finished conclusion is what every "
-                        "real AP argument is built on, and you are ready to do it cold. Take the time you need.")),
     ],
 )
 

@@ -224,6 +224,17 @@ LESSON = Lesson(
                         "the frame with a reason for each row drawn from the WHOLE essay. The grader will score "
                         "the essay; your prediction is what you will compare against.")),
 
+        # ===== INDEPENDENT: calibrate a full-write cold (no frame) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Calibrate a full-write on your own",
+             ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, no frame. Under your own budget, write a fresh full essay on the water "
+                       "trade-off.",
+                 closer="Predict your scores across the rows with a reason for each drawn from the whole essay, "
+                        "and after the grader returns them, name the gap and whether pacing caused it. Predicting "
+                        "your own full-write from the whole piece is what every calibrated writer is built on, "
+                        "and you are ready to do it cold. Take the budget you need.")),
+
         # ===== DIAGNOSIS = run the gap-naming check on the student's OWN just-written draft (self-revision) =====
         Slot("MODEL", "diagnosis_frq", "Name the gap, and whether pacing caused it",
              ref="", bank="automation_policy", scored=True,
@@ -238,17 +249,6 @@ LESSON = Lesson(
                         "between your predicted rows and the grader's rows, and fix any line that fails. Flag any "
                         "gap caused by pacing, then name your single biggest pacing gap. If your prediction "
                         "matched and pacing held, say so and name the row you were most at risk of missing.")),
-
-        # ===== INDEPENDENT: calibrate a full-write cold (no frame) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Calibrate a full-write on your own",
-             ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, no frame. Under your own budget, write a fresh full essay on the water "
-                       "trade-off.",
-                 closer="Predict your scores across the rows with a reason for each drawn from the whole essay, "
-                        "and after the grader returns them, name the gap and whether pacing caused it. Predicting "
-                        "your own full-write from the whole piece is what every calibrated writer is built on, "
-                        "and you are ready to do it cold. Take the budget you need.")),
     ],
 )
 

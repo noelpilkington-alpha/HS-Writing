@@ -225,6 +225,18 @@ LESSON = Lesson(
                                          "___ min, each body paragraph ___ min, conclusion ___ min."),
                  closer="Write the whole frame out. The goal is a plan that paces the body so the last paragraph "
                         "and the conclusion still get finished minutes, not scraps.")),
+        # ===== INDEPENDENT: sustain the whole essay from the plan (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Sustain the full essay",
+             ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, carry the whole essay from your plan and pacing.",
+                 closer="Write a complete argument essay on the water trade-off so the last body paragraph and "
+                        "the conclusion are as finished as the first. There is no platform timer, so keep a clock "
+                        "or phone timer in view and run your own budget and pacing, then reread to confirm every "
+                        "paragraph got finished work and the "
+                        "conclusion is complete. This even pacing is what every strong exam essay is built on, "
+                        "and you are ready to do it cold. Take the time you need.")),
+
         # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the 3-question pacing check on it,
         # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
@@ -242,18 +254,6 @@ LESSON = Lesson(
                         "into your next write. The finished-work row is about this draft, so fix it now: if your "
                         "ending is starved, build the final body paragraph and conclusion out until they are as "
                         "finished as your opening. Finish by naming how many minutes the last body paragraph got.")),
-
-        # ===== INDEPENDENT: sustain the whole essay from the plan (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Sustain the full essay",
-             ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, carry the whole essay from your plan and pacing.",
-                 closer="Write a complete argument essay on the water trade-off so the last body paragraph and "
-                        "the conclusion are as finished as the first. There is no platform timer, so keep a clock "
-                        "or phone timer in view and run your own budget and pacing, then reread to confirm every "
-                        "paragraph got finished work and the "
-                        "conclusion is complete. This even pacing is what every strong exam essay is built on, "
-                        "and you are ready to do it cold. Take the time you need.")),
     ],
 )
 

@@ -202,6 +202,18 @@ LESSON = Lesson(
                  closer="Keep it to a few lines: one line for the position, then two or three ordered points, "
                         "each in a few words with the fact it will use in shorthand. Do not write full sentences "
                         "for each paragraph. This plan is what you will build the essay from.")),
+        # ===== INDEPENDENT: build the whole essay from the fast plan (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Draft the essay from your fast plan",
+             ref="", bank="ai_regulation", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now. Make a two or three line fast plan for the AI-workforce prompt, then "
+                       "build the whole essay from it.",
+                 closer="Write a complete argument essay: an introduction that states the position, one body "
+                        "paragraph per planned point (each with its evidence), and a conclusion. There is no "
+                        "platform timer; the point is that a short plan steers the whole draft. Before you "
+                        "submit, confirm the essay follows your planned points. Making a fast plan steer a full "
+                        "draft is what every timed argument essay is built on, and you are ready to do it cold.")),
+
         # DIAGNOSIS = self-revision: reread the fast plan you JUST wrote and run the three-question check on it,
         # fixing any line that fails (not a check on a provided weak plan, and not a fresh production). Same taught
         # source (load balance). Self-contained: the checklist is the scaffold and the grader scores the diagnosis.
@@ -216,18 +228,6 @@ LESSON = Lesson(
                  ]),
                  closer="For every check your plan fails, fix that line now. Finish by naming the position your "
                         "plan will defend.")),
-
-        # ===== INDEPENDENT: build the whole essay from the fast plan (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Draft the essay from your fast plan",
-             ref="", bank="ai_regulation", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now. Make a two or three line fast plan for the AI-workforce prompt, then "
-                       "build the whole essay from it.",
-                 closer="Write a complete argument essay: an introduction that states the position, one body "
-                        "paragraph per planned point (each with its evidence), and a conclusion. There is no "
-                        "platform timer; the point is that a short plan steers the whole draft. Before you "
-                        "submit, confirm the essay follows your planned points. Making a fast plan steer a full "
-                        "draft is what every timed argument essay is built on, and you are ready to do it cold.")),
     ],
 )
 

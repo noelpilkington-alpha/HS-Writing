@@ -205,6 +205,18 @@ LESSON = Lesson(
                  closer="Write the four budget numbers so planning and checking each get protected minutes, then "
                         "write a one-line thesis that takes a side and three ordered points, each naming the "
                         "source fact it will use. This budget and plan are what you will build the essay from.")),
+        # ===== INDEPENDENT: build the whole essay on the budget (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Write a full essay on your budget",
+             ref="", bank="infrastructure_spending", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, build the whole essay on your budget.",
+                 closer="Using a minute budget for a 40-minute window, write a complete argument essay on the "
+                        "grid-spending prompt: plan in the planning minutes, draft in the drafting minutes, and "
+                        "reserve the check minutes to fix gaps before submitting. There is no platform timer; "
+                        "treat the budget as your own discipline. Confirm every stage got its minutes and the "
+                        "essay is complete and checked. Budgeting the minutes is what every timed exam essay is "
+                        "built on, and you are ready to do it cold.")),
+
         # DIAGNOSIS = metacognitive pacing check: reread your OWN draft and run the three-question budget check on
         # how you spent your minutes. Pacing cannot be bought back on a finished draft, so failing rows route to a
         # process fix on the NEXT write; only a substance gap the pacing left behind (a missing conclusion, an
@@ -225,18 +237,6 @@ LESSON = Lesson(
                         "left a substance gap you can still repair, such as a missing conclusion or an unchecked "
                         "error, fix that gap in your draft now. Finish by naming how many minutes you will protect "
                         "for planning next time.")),
-
-        # ===== INDEPENDENT: build the whole essay on the budget (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Write a full essay on your budget",
-             ref="", bank="infrastructure_spending", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, build the whole essay on your budget.",
-                 closer="Using a minute budget for a 40-minute window, write a complete argument essay on the "
-                        "grid-spending prompt: plan in the planning minutes, draft in the drafting minutes, and "
-                        "reserve the check minutes to fix gaps before submitting. There is no platform timer; "
-                        "treat the budget as your own discipline. Confirm every stage got its minutes and the "
-                        "essay is complete and checked. Budgeting the minutes is what every timed exam essay is "
-                        "built on, and you are ready to do it cold.")),
 
         # TRANSFER routed out to the gate/PP100 (essay-grain verdict): the lesson ends at the INDEPENDENT write
         # plus its own-draft self-revision. The PP100 mastery task is a separate resource and is unaffected.

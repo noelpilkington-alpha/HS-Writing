@@ -119,8 +119,24 @@ def _mut_structural_all_of_above(L):
     raise AssertionError("golden has no discrimination slot to mutate")
 
 
+def _mut_diagnosis_before_write_phantom(L):
+    # Reword the diagnosis (which sits BEFORE the independent write in the golden) to reference an
+    # ALREADY-WRITTEN draft ("reread the essay you just wrote"). That is the phantom-draft ordering
+    # defect: a self-reread check on an essay that does not exist yet. The golden's real diagnosis is a
+    # coping-model on a PROVIDED weak draft (fine before the write); this mutation flips it to the
+    # own-draft signature, which gate_diagnosis_after_write must reject when it precedes the write.
+    for s in L.slots:
+        if s.kind == "diagnosis_frq":
+            s.body = ("<p>Reread the essay you just wrote. Run this checklist on YOUR draft and fix any "
+                      "line that fails.</p>")
+            return L
+    raise AssertionError("golden has no diagnosis_frq slot to mutate")
+
+
 LESSON_KNOWN_BAD = [
     ("shell_completeness", _mut_shell_incomplete, "SRSD shell missing TRANSFER stage"),
+    ("diagnosis_after_write", _mut_diagnosis_before_write_phantom,
+     "diagnosis reads 'the essay you just wrote' but sits BEFORE the independent write (phantom draft)"),
     ("binding_integrity", _mut_phantom_ref, "bound ref to a never-generated SR id (HOLE 2)"),
     ("distractor_length_cue", _mut_length_cue_in_predict_fix,
      "predict_the_fix correct option lone-longest, marker in feedback (HOLE 1)"),

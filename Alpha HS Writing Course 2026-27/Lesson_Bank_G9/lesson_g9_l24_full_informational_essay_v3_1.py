@@ -205,22 +205,6 @@ LESSON = Lesson(
                  closer="Write a one-line controlling idea that takes no side, then three ordered parts, each "
                         "naming its topic and the evidence from the source it will use. This plan is what you "
                         "will build the essay from. Do not argue a side.")),
-        # ===== MODEL (diagnosis): self-revision - reread your OWN just-written draft and run the check on it =====
-        Slot("MODEL", "diagnosis_frq", "Check your plan holds the explain mode",
-             ref="", bank="animal_migration", scored=True,
-             body=frq_prompt(
-                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Does your controlling idea take NO side?",
-                      "If it argues a side or rates the topic, reword it into a focus that takes no side, such as how and why birds migrate."),
-                     ("Are your parts distinct and specific?",
-                      "If any part is vague, name a real one instead: why birds migrate, how far they travel, and how scientists track them."),
-                     ("Does each part have evidence from the source?",
-                      "If a part has no evidence behind it, attach a fact and its source to it."),
-                 ]),
-                 closer="For every row that fails on your draft, fix it in the essay before you move on. Finish by "
-                        "confirming your controlling idea takes no side.")),
-
         # ===== INDEPENDENT: build the whole essay cold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Write the full informational essay",
              ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="essay",
@@ -238,6 +222,22 @@ LESSON = Lesson(
                         "supported with evidence, do the parts build and link, did I avoid taking a side? "
                         "Assembling the plan into a full essay is the real move, and you are ready to do it "
                         "cold. Take the time you need.")),
+
+        # ===== MODEL (diagnosis): self-revision - reread your OWN just-written draft and run the check on it =====
+        Slot("MODEL", "diagnosis_frq", "Check your plan holds the explain mode",
+             ref="", bank="animal_migration", scored=True,
+             body=frq_prompt(
+                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
+                 checklist_block=checklist(title="Check your own draft, row by row:", rows=[
+                     ("Does your controlling idea take NO side?",
+                      "If it argues a side or rates the topic, reword it into a focus that takes no side, such as how and why birds migrate."),
+                     ("Are your parts distinct and specific?",
+                      "If any part is vague, name a real one instead: why birds migrate, how far they travel, and how scientists track them."),
+                     ("Does each part have evidence from the source?",
+                      "If a part has no evidence behind it, attach a fact and its source to it."),
+                 ]),
+                 closer="For every row that fails on your draft, fix it in the essay before you move on. Finish by "
+                        "confirming your controlling idea takes no side.")),
     ],
 )
 

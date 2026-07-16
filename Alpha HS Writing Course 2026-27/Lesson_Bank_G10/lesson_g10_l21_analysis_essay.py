@@ -216,6 +216,19 @@ LESSON = Lesson(
                  closer="Write one analytical claim about a technique the texts share, then, for each text, name "
                         "the device you will analyze and its effect. Do not plan two summaries. This plan is "
                         "what you will build the essay from.")),
+        # ===== INDEPENDENT: build the whole cross-text essay (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Write the full cross-text analysis essay",
+             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, build the whole essay from your plan, pairing the Chopin story with the highways article.",
+                 closer="Write a complete cross-text analysis essay: an introduction that names both texts and "
+                        "states one analytical claim about the authors' craft, body paragraphs that run device "
+                        "to effect to warrant on each text and weave them (naming where the texts line up or "
+                        "differ), and a conclusion on why the shared craft matters. Then run the reread check "
+                        "and fix any part that fails. One analytical claim carried across two texts is what "
+                        "every real cross-text analysis is built on, and you are ready to do it cold. Take the "
+                        "time you need.")),
+
         # DIAGNOSIS = self-revision of the student's OWN just-written draft (not a check on a provided weak
         # draft). Same taught source (load balance). Scaffolded by the 3-row checklist run on their own essay.
         Slot("MODEL", "diagnosis_frq", "Check your essay: one claim across both texts?",
@@ -229,19 +242,6 @@ LESSON = Lesson(
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you move on. Finish by "
                         "naming the shared technique your claim is about.")),
-
-        # ===== INDEPENDENT: build the whole cross-text essay (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Write the full cross-text analysis essay",
-             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, build the whole essay from your plan, pairing the Chopin story with the highways article.",
-                 closer="Write a complete cross-text analysis essay: an introduction that names both texts and "
-                        "states one analytical claim about the authors' craft, body paragraphs that run device "
-                        "to effect to warrant on each text and weave them (naming where the texts line up or "
-                        "differ), and a conclusion on why the shared craft matters. Then run the reread check "
-                        "and fix any part that fails. One analytical claim carried across two texts is what "
-                        "every real cross-text analysis is built on, and you are ready to do it cold. Take the "
-                        "time you need.")),
     ],
 )
 

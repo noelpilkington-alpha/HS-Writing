@@ -305,6 +305,45 @@ def gate_discrimination_before_production(L: Lesson) -> tuple[bool, str]:
                        f"must be labeled, not just one)")
     return True, "discrimination precedes production; every Grade-C move labeled"
 
+def gate_diagnosis_after_write(L: Lesson) -> tuple[bool, str]:
+    """PHANTOM-DRAFT ORDERING: a diagnosis_frq that tells the student to reread "the essay you just
+    wrote" / run a checklist on "YOUR draft" must appear AFTER the INDEPENDENT production write, not
+    before it - otherwise the student is told to check an essay that does not exist yet.
+
+    WHY (this session): the one-write re-architecture (084ff7e) reworded the essay-grain diagnosis to
+    "Reread the essay you just wrote..." but left the diagnosis slot POSITIONED BEFORE the independent
+    write in 25 lessons - a defect that slipped past all 24 contract gates + the 4 new gates and only
+    the readiness audit caught. This closes the hole deterministically.
+
+    CONSERVATIVE (avoids the documented over-flag mode): fires ONLY when the diagnosis body actually
+    references an already-written draft (the signature phrases). A diagnosis that checks "your PLAN
+    before you draft" (a legitimate coping-model / plan-check, e.g. G11 L31) does NOT reference a
+    written essay, so it is not flagged even when it precedes the write - that ordering is correct."""
+    _WRITTEN_DRAFT_SIGNATURES = ("you just wrote", "reread the essay", "essay you wrote",
+                                 "draft you just wrote", "reread your essay", "reread your draft")
+    indep_idx = [i for i, s in enumerate(L.slots)
+                 if s.kind == "production_frq" and s.role in ("INDEPENDENT", "TRANSFER")]
+    if not indep_idx:
+        return True, "no independent/transfer write (n/a)"
+    # The diagnosis must follow SOME write it could be rereading, i.e. at least the FIRST such write.
+    # (Using min, not max: a diagnosis that correctly trails the INDEPENDENT write is fine even if a
+    # separate later TRANSFER write on a NEW source follows it - it reads the draft the student already
+    # produced, not the not-yet-written transfer.)
+    first_write = min(indep_idx)
+    offenders = []
+    for i, s in enumerate(L.slots):
+        if s.kind != "diagnosis_frq":
+            continue
+        body = (getattr(s, "body", "") or "").lower()
+        refers_to_written = any(sig in body for sig in _WRITTEN_DRAFT_SIGNATURES)
+        if refers_to_written and i < first_write:
+            offenders.append(i)
+    if offenders:
+        return False, (f"diagnosis_frq slot(s) {offenders} tell the student to reread 'the essay you just "
+                       f"wrote' but appear BEFORE any independent write (first write at slot {first_write}): a "
+                       f"phantom-draft check on an essay that does not exist yet. Move the diagnosis AFTER the write.")
+    return True, "any own-draft diagnosis runs after the independent write"
+
 def gate_binding_integrity(L: Lesson) -> tuple[bool, str]:
     """Every ref (stimulus_id / item_id) must exist in the banks. Authored slots (ref='') are exempt."""
     missing = []
@@ -882,6 +921,7 @@ GATES = [
     ("shell_completeness", gate_shell_completeness),
     ("model_sequence", gate_model_sequence),
     ("discrimination_before_production", gate_discrimination_before_production),
+    ("diagnosis_after_write", gate_diagnosis_after_write),
     ("binding_integrity", gate_binding_integrity),
     ("bank_partition", gate_bank_partition),
     ("calibration_discipline", gate_calibration_discipline),

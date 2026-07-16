@@ -214,6 +214,17 @@ LESSON = Lesson(
                  closer="Write the stage budget, then the fast plan: the one argument the set builds, plus your "
                         "ordered points each tagged with the source that carries it. This budget and plan is "
                         "what you will build the full synthesis from.")),
+        # ===== INDEPENDENT: build the whole synthesis from the plan (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Rehearse the full synthesis",
+             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, run the whole routine and build the synthesis from your budget and plan.",
+                 closer="Write a complete synthesis on the renewable-grid set: weave ONE argument from the "
+                        "sources, weight each source by what it can carry, and cite each one you use. Then run "
+                        "the woven-and-weighted check and fix any part that fails. There is no platform timer; "
+                        "run your own budget. Rehearsing the whole routine end to end is what every real timed "
+                        "synthesis is built on, and you are ready to do it cold. Take the time you need.")),
+
         # DIAGNOSIS = self-revision: reread your OWN just-written synthesis and run the check on it. The two
         # substance lines (one argument, weighted sources) are fixed in the draft; the pacing/process line
         # cannot be fixed in a finished draft, so it reframes as a metacognitive adjustment for the NEXT write.
@@ -232,17 +243,6 @@ LESSON = Lesson(
                         "carries) in your draft now. The timing line cannot be fixed in a finished draft, so use "
                         "it to adjust how you budget your NEXT synthesis. Finish by naming the one argument your "
                         "synthesis builds.")),
-
-        # ===== INDEPENDENT: build the whole synthesis from the plan (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Rehearse the full synthesis",
-             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, run the whole routine and build the synthesis from your budget and plan.",
-                 closer="Write a complete synthesis on the renewable-grid set: weave ONE argument from the "
-                        "sources, weight each source by what it can carry, and cite each one you use. Then run "
-                        "the woven-and-weighted check and fix any part that fails. There is no platform timer; "
-                        "run your own budget. Rehearsing the whole routine end to end is what every real timed "
-                        "synthesis is built on, and you are ready to do it cold. Take the time you need.")),
     ],
 )
 

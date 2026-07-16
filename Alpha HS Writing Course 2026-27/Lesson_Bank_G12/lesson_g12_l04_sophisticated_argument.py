@@ -227,6 +227,19 @@ LESSON = Lesson(
                  closer="Write your situated thesis (larger question plus position), then for each body paragraph "
                         "the real tension it holds and its evidence, then the rule your conclusion defends. This "
                         "plan is what you will build the essay from.")),
+        # ===== INDEPENDENT: build the whole sophisticated essay from the plan (essay ceiling) + say-standard =====
+        Slot("INDEPENDENT", "production_frq", "Write the full sophisticated argument",
+             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, build the whole essay from your plan.",
+                 closer="Write a complete argument essay on the workforce prompt: an introduction that situates "
+                        "the choice in its broader question, body paragraphs that each hold a real tension and "
+                        "reason from it with evidence, and a conclusion that defends a rule or priority a "
+                        "thoughtful opponent must respect. Then run the reread check (situated, tension held, "
+                        "position defended) and fix any part that fails. Carrying sophistication across a whole "
+                        "argument is what every strong AP essay is built on, and you are ready to do it cold. "
+                        "There is no time limit; take the time you need.")),
+
         # DIAGNOSIS = self-revision: reread your OWN just-written essay and run the 3-question check on it,
         # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
@@ -241,19 +254,6 @@ LESSON = Lesson(
                  ]),
                  closer="For every line that fails on your draft, name what is off in one sentence and make the "
                         "fix. Finish by naming the larger question your essay situates the choice in.")),
-
-        # ===== INDEPENDENT: build the whole sophisticated essay from the plan (essay ceiling) + say-standard =====
-        Slot("INDEPENDENT", "production_frq", "Write the full sophisticated argument",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, build the whole essay from your plan.",
-                 closer="Write a complete argument essay on the workforce prompt: an introduction that situates "
-                        "the choice in its broader question, body paragraphs that each hold a real tension and "
-                        "reason from it with evidence, and a conclusion that defends a rule or priority a "
-                        "thoughtful opponent must respect. Then run the reread check (situated, tension held, "
-                        "position defended) and fix any part that fails. Carrying sophistication across a whole "
-                        "argument is what every strong AP essay is built on, and you are ready to do it cold. "
-                        "There is no time limit; take the time you need.")),
     ],
 )
 

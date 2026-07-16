@@ -207,6 +207,17 @@ LESSON = Lesson(
                  closer="Write your budget (with a capped reading share) and a fast plan: the rhetorical "
                         "situation, the two or three choices with the effect you will analyze for each, and a "
                         "one-line thesis. This plan is what leaves you time to finish the analysis.")),
+        # ===== INDEPENDENT: rehearse the whole analysis from the plan (essay ceiling) + say-the-standard =====
+        Slot("INDEPENDENT", "production_frq", "Rehearse the full analysis",
+             ref="", bank="ra_speech_1", rubric_ref="rc.ap", scored=True, unit="essay",
+             body=frq_prompt(
+                 intro="On your own now, rehearse the whole analysis from the plan and budget you just checked, applying any process fix you named.",
+                 closer="Write a complete rhetorical analysis of this speech end to end: a situated introduction "
+                        "with a thesis, body paragraphs that each tie a choice to its effect on the audience, and "
+                        "a conclusion that reaches the speaker's purpose. Then run the reread check. There is no "
+                        "platform timer; run your own budget and capped reading. This is what every real "
+                        "rhetorical analysis is built on, and you are ready to do it cold. Take the time you need.")),
+
         # DIAGNOSIS = self-check on the student's OWN just-written PLAN and budget (not a check on a provided
         # weak draft). The rows are pacing/process rows, so fixes carry into the NEXT write, not a finished
         # draft. Self-contained: the checklist is the scaffold and the grader scores the diagnosis within the item.
@@ -222,17 +233,6 @@ LESSON = Lesson(
                  closer="These are process fixes, not draft edits: for every line that fails, name in one sentence "
                         "what you will change about your budget or plan, and carry that adjustment into the full "
                         "analysis you are about to write. Finish by naming the two or three choices you will analyze.")),
-
-        # ===== INDEPENDENT: rehearse the whole analysis from the plan (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Rehearse the full analysis",
-             ref="", bank="ra_speech_1", rubric_ref="rc.ap", scored=True, unit="essay",
-             body=frq_prompt(
-                 intro="On your own now, rehearse the whole analysis from the plan and budget you just checked, applying any process fix you named.",
-                 closer="Write a complete rhetorical analysis of this speech end to end: a situated introduction "
-                        "with a thesis, body paragraphs that each tie a choice to its effect on the audience, and "
-                        "a conclusion that reaches the speaker's purpose. Then run the reread check. There is no "
-                        "platform timer; run your own budget and capped reading. This is what every real "
-                        "rhetorical analysis is built on, and you are ready to do it cold. Take the time you need.")),
     ],
 )
 
