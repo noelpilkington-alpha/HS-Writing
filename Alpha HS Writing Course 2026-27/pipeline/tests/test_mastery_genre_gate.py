@@ -67,36 +67,42 @@ def test_golden_analysis_match_passes_clean():
     assert ok, "golden (analysis/analysis MATCH) lesson wrongly flagged:\n" + "\n".join(problems)
 
 
-# ---- (2) KNOWN-BAD: a real GENRE MISMATCH is flagged -----------------------------------------
+# ---- (2) KNOWN-BAD: a real GENRE MISMATCH is flagged (mutation, not live data) ----------------
+# The 4 triage mismatches were FIXED in the bank on 2026-07-16 (mastery sources swapped / prompts realigned),
+# so the gate logic can no longer be proven against the live lessons. Instead we re-INJECT the exact defect the
+# triage found onto the now-fixed lesson and assert the gate still rejects it - the mutation is data-independent,
+# so it tests the LOGIC, not today's corpus. (History: before the fix these were live known-bads.)
 
 def test_known_bad_analysis_vs_explanatory_is_flagged():
-    """G10 C1003-0025: literary-fiction analysis taught, PP100 = explanatory wetlands = triage MISMATCH."""
+    """C1003-0025 was fixed to a literary-analysis held-out source. Re-inject the ORIGINAL defect
+    (an explanatory-nonfiction mastery on an analysis lesson) and assert the gate still rejects it."""
     L = _lesson_from("Lesson_Bank_G10/lesson_g10_l25_analysis_essay_single.py")
     assert L.id == "ACC-W910-L-G10-C1003-0025"
+    L.mastery = {"source": "ACC-W910-INFO-LESSON-WETLANDS",           # the original mismatched source
+                 "prompt_html": "<p>Analyze how the author builds interest in protecting wetlands.</p>"}
     ok, problems = check_mastery_alignment(L, "G10")
-    assert not ok, "known-bad (analysis taught / explanatory mastery) was NOT flagged"
+    assert not ok, "re-injected known-bad (analysis taught / explanatory mastery) was NOT flagged"
     assert any("GENRE mismatch" in p and "ANALYSIS" in p for p in problems), problems
 
 
-# ---- (3) THE FOUR GENUINE GENRE MISMATCHES from the triage, and only those -------------------
+# ---- (3) THE FOUR TRIAGE MISMATCHES ARE NOW FIXED (live corpus clean) + logic still catches them --
 
-EXPECTED_GENRE_MISMATCHES = {
-    "ACC-W910-L-G10-C1006-0021",   # analysis taught, argument op-ed mastery
-    "ACC-W910-L-G10-C1003-0025",   # lit-fiction analysis taught, explanatory wetlands mastery
-    "ACC-W1112-L-G11-C1102-0030",  # gate rehearses argument, synthesis-set mastery
-    "ACC-W910-L-G12-C1202-0012",   # analysis-tier lesson, synthesis-set mastery
+# The four lessons the triage marked as genre mismatches, with the FIX applied 2026-07-16:
+FIXED_TRIAGE_LESSONS = {
+    "ACC-W910-L-G10-C1006-0021",   # reframed cross-text -> single-text analysis (Challenger, analysis source)
+    "ACC-W910-L-G10-C1003-0025",   # explanatory wetlands -> literary analysis (Silk Stockings)
+    "ACC-W1112-L-G11-C1102-0030",  # synthesis-set -> source-free ARGUMENT (SFA-PROMPT-0004) the gate rehearses
+    "ACC-W910-L-G12-C1202-0012",   # prompt disambiguated + rubric-rows dropped; genre adjudicated (recognition lesson)
 }
 
 
-def test_gate_reproduces_the_four_triage_genre_mismatches_exactly():
-    flagged = set()
-    for _grade, catches in run_all().items():
-        for lid, _p in catches:
-            flagged.add(lid)
-    missing = EXPECTED_GENRE_MISMATCHES - flagged
-    extra = flagged - EXPECTED_GENRE_MISMATCHES
-    assert not missing, f"gate MISSED genuine triage mismatch(es): {sorted(missing)}"
-    assert not extra, f"gate OVER-flagged (documented failure mode) beyond the triage set: {sorted(extra)}"
+def test_the_four_triage_mismatches_are_now_clean_on_the_live_course():
+    """After the 2026-07-16 fixes, NONE of the four triage lessons should flag, AND the whole course
+    should be genre-clean (0 flags) - the goal state."""
+    flagged = {lid for _g, catches in run_all().items() for lid, _p in catches}
+    still_broken = FIXED_TRIAGE_LESSONS & flagged
+    assert not still_broken, f"a triage lesson is still flagged after its fix: {sorted(still_broken)}"
+    assert not flagged, f"course not genre-clean; unexpected flags: {sorted(flagged)}"
 
 
 def test_known_matches_are_not_flagged():
@@ -172,3 +178,29 @@ def test_one_level_transfer_is_not_a_dok_defect():
                  "prompt_html": "<p>Take a side and defend your position, answering the counterclaim.</p>"}
     ok, problems = check_mastery_alignment(L, "G10")
     assert ok, "one-level argument->argument transfer wrongly flagged:\n" + "\n".join(problems)
+
+
+# ---- (6) ADJUDICATED false-positive: suppressed ONLY while the profile holds -----------------
+
+def test_adjudicated_recognition_lesson_is_suppressed():
+    """C1202-0012 is a genre-agnostic FRQ-RECOGNITION lesson (type 5) taught on BOTH a synthesis set and an
+    analysis source; its synthesis-set mastery is correct. The gate's genre flag is a documented false-positive,
+    adjudicated (ADJUDICATED registry), so the live lesson must pass."""
+    L = _lesson_from("Lesson_Bank_G12/lesson_g12_l12_which_frq_type.py")
+    assert L.id == "ACC-W910-L-G12-C1202-0012"
+    ok, problems = check_mastery_alignment(L, "G12")
+    assert ok, "adjudicated recognition lesson wrongly flagged:\n" + "\n".join(problems)
+
+
+def test_adjudication_does_not_mask_a_defect_when_profile_breaks():
+    """Belt-and-suspenders: if C1202-0012 stops matching the adjudicated profile (e.g. it becomes an
+    analysis-PRODUCTION lesson, not a type-5 recognition lesson), the suppression must NOT fire - the guard
+    protects against the adjudication silently masking a future genuinely-different defect on the same id."""
+    from mastery_genre_gate import ADJUDICATED
+    L = _lesson_from("Lesson_Bank_G12/lesson_g12_l12_which_frq_type.py")
+    assert L.id in ADJUDICATED
+    # break the profile: make it a text-dependent-analysis PRODUCTION lesson (type 4), no longer type-5 recognition
+    L.lesson_type = 4
+    assert ADJUDICATED[L.id]["guard"](L) is False, "guard should not hold once the recognition profile is broken"
+    ok, problems = check_mastery_alignment(L, "G12")
+    assert not ok, "adjudication wrongly suppressed a real flag after the lesson profile changed"

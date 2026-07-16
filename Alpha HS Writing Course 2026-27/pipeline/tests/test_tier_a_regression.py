@@ -21,14 +21,6 @@ from tier_a_regression import audit_lesson, run_all, _ISSUE_FRAME_NA_GATES  # no
 from g9_push_dryrun import STIM  # noqa: E402
 
 
-EXPECTED_GENRE_MISMATCHES = {
-    "ACC-W910-L-G10-C1006-0021",
-    "ACC-W910-L-G10-C1003-0025",
-    "ACC-W1112-L-G11-C1102-0030",
-    "ACC-W910-L-G12-C1202-0012",
-}
-
-
 def test_g9_is_fully_clean():
     """G9 (the first course to ship) must be 27/27 clean on the full deterministic floor."""
     results = run_all()["G9"]
@@ -37,12 +29,14 @@ def test_g9_is_fully_clean():
         b for r in results for b in r["blockers"])
 
 
-def test_only_the_four_triage_mismatches_remain():
-    """Across the whole course the ONLY deterministic blockers are the 4 genuine mastery-genre
-    mismatches - no over-flagging (the documented failure mode)."""
-    failing = {r["lesson_id"] for _g, results in run_all().items() for r in results if not r["passed"]}
-    assert failing == EXPECTED_GENRE_MISMATCHES, (
-        f"missing={EXPECTED_GENRE_MISMATCHES - failing}  extra={failing - EXPECTED_GENRE_MISMATCHES}")
+def test_whole_course_is_clean_on_the_tier_a_floor():
+    """After the 2026-07-16 mastery-genre fixes, ALL 100 lessons across G9-G12 pass the full deterministic
+    floor with zero blockers - the goal state. (Before the fixes this asserted exactly the 4 genuine
+    mastery-genre mismatches remained; those are now resolved.)"""
+    failing = {r["lesson_id"]: r["blockers"]
+               for _g, results in run_all().items() for r in results if not r["passed"]}
+    assert not failing, "Tier-A floor not clean; unexpected blockers:\n" + "\n".join(
+        f"  {lid}: {blk}" for lid, blk in failing.items())
 
 
 def test_issue_frame_passage_gates_are_exempted_not_failed():

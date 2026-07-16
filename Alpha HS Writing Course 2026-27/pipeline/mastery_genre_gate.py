@@ -129,7 +129,13 @@ def _taught_source_genres(L, roles=("TEACH", "MODEL")):
 
 
 def _lesson_requires_analysis(L) -> bool:
-    """The lesson trains the student to PRODUCE an analysis of a text's craft/rhetoric."""
+    """The lesson trains the student to PRODUCE analysis, OR to recognize/revise/work ON analysis text
+    (so an analysis-mode held-out source is a genre MATCH). This is deliberately inclusive of the
+    genre-agnostic recognition/editing types (3/5/6) WHEN their content is about analysis - e.g. a
+    'Does this paragraph analyze or summarize?' check (type 5) or 'Trim the quote in analysis' (type 3)
+    legitimately carry an analysis-mode mastery source. The regex below matches both 'produce analysis'
+    and 'analyze the author's choices' framings, which is why those recognition lessons are correctly
+    NOT flagged."""
     if getattr(L, "lesson_type", 0) == 4:            # text-dependent-analysis type
         return True
     t = (L.title or "") + " " + (L.target or "")
@@ -251,6 +257,32 @@ def _dok_problem(L, prompt_html) -> str | None:
 
 
 # ---------------------------------------------------------------------------
+# ADJUDICATED false-positives (per-lesson, documented). Same discipline as scaffold_crosscheck.ADJUDICATED /
+# expected_exceptions: a decision without a written rationale is a latent regression. Each entry names WHY the
+# genre flag is deliberate design, WHO decided, and the trigger that REVERSES it. Belt-and-suspenders: the
+# suppression only fires if the lesson STILL matches the adjudicated profile (guard()), so it can never silently
+# mask a future genuinely-different defect on the same id.
+# ---------------------------------------------------------------------------
+ADJUDICATED = {
+    "ACC-W910-L-G12-C1202-0012": {
+        "rationale": ("Genre-agnostic FRQ-RECOGNITION lesson (type 5): the skill is NAMING whether a cold FRQ is "
+                      "synthesis / rhetorical-analysis / argument. It is taught on BOTH a synthesis set AND an "
+                      "analysis text, so a synthesis-set held-out source is correct (recognizing a synthesis FRQ "
+                      "is the point). The gate flags it only because 'rhetorical analysis' appears as a TYPE LABEL "
+                      "in the target, not because the lesson produces analysis. COURSE_MASTERY17_TRIAGE confirmed "
+                      "the real defect was the type-ambiguous PROMPT + untaught rubric-rows deliverable, both "
+                      "fixed 2026-07-16; the source genre is not a defect."),
+        "owner": "COURSE_MASTERY17_TRIAGE + Noel (2026-07-16)",
+        "reverse_if": "the lesson stops teaching on both a synthesis set and an analysis source, or stops being a "
+                      "recognition (type-5) lesson - i.e. it starts requiring the student to PRODUCE one genre.",
+        "guard": lambda L: (getattr(L, "lesson_type", 0) == 5
+                            and "synthesis" in _taught_source_genres(L, roles=("TEACH", "MODEL", "TRANSFER"))
+                            and "analysis" in _taught_source_genres(L, roles=("TEACH", "MODEL", "TRANSFER"))),
+    },
+}
+
+
+# ---------------------------------------------------------------------------
 # the gate
 # ---------------------------------------------------------------------------
 
@@ -276,6 +308,13 @@ def check_mastery_alignment(L, grade) -> tuple[bool, list[str]]:
     d = _dok_problem(L, prompt_html)
     if d:
         problems.append(f"{lid}: {d}")
+
+    # documented per-lesson adjudication: suppress a KNOWN gate false-positive, but ONLY if the lesson still
+    # matches the adjudicated profile (guard) - so it can never mask a future genuinely-different defect.
+    adj = ADJUDICATED.get(lid)
+    if problems and adj and adj["guard"](L):
+        return True, []
+
     return (not problems), problems
 
 
