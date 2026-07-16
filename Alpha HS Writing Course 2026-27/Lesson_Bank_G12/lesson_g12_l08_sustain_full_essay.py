@@ -24,7 +24,7 @@ Own words, no fabricated figures (every figure traces to the bound USGS source),
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "pipeline"))
 from lesson_contract import Lesson, Slot, qc_lesson, qc_report
-from lesson_prompts import frq_prompt, setapart, checklist
+from lesson_prompts import frq_prompt, setapart, checklist, outline_table
 
 ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
@@ -217,14 +217,18 @@ LESSON = Lesson(
              ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="For a 40-minute window on the water trade-off, write your budget, your fast plan, and a "
-                       "rough share of the drafting minutes per body paragraph before you draft.",
-                 setapart_block=setapart("Fill in this frame:",
-                                         "Budget: read ___ min, plan ___ min, draft ___ min, check ___ min. "
-                                         "Thesis: ______ (your position). Point 1 ______ + evidence. Point 2 "
-                                         "______ + evidence. Point 3 ______ + evidence. Drafting share: intro "
-                                         "___ min, each body paragraph ___ min, conclusion ___ min."),
-                 closer="Write the whole frame out. The goal is a plan that paces the body so the last paragraph "
-                        "and the conclusion still get finished minutes, not scraps.")),
+                       "rough share of the drafting minutes per body paragraph before you draft. First set your "
+                       "time budget: read ___ min, plan ___ min, draft ___ min, check ___ min. Then use the "
+                       "outline grid below for your fast plan.",
+                 setapart_block=outline_table(title="Copy this outline, then fill in each blank:", rows=[
+                     ("THESIS", "______ (your position)"),
+                     ("POINT 1", "______ + evidence"),
+                     ("POINT 2", "______ + evidence"),
+                     ("POINT 3", "______ + evidence"),
+                 ]),
+                 closer="Below the grid, set your drafting share: intro ___ min, each body paragraph ___ min, "
+                        "conclusion ___ min. Write the whole frame out. The goal is a plan that paces the body so "
+                        "the last paragraph and the conclusion still get finished minutes, not scraps.")),
         # ===== INDEPENDENT: sustain the whole essay from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Sustain the full essay",
              ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="essay",

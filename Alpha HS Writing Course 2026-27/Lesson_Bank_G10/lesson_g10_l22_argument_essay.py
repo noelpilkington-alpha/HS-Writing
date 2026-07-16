@@ -23,7 +23,7 @@ Own words, no fabricated figures, faithful to the bound sources, no em dashes. P
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "pipeline"))
 from lesson_contract import Lesson, Slot, qc_lesson, qc_report
-from lesson_prompts import frq_prompt, setapart, checklist
+from lesson_prompts import frq_prompt, setapart, checklist, outline_table
 
 ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
@@ -205,9 +205,13 @@ LESSON = Lesson(
         Slot("SUPPORTED", "production_frq", "Plan the argument: claim, weave, and the objection",
              ref="", bank="daylight_saving", rubric_ref="rc.staar", scored=True, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="Plan your cross-text argument on daylight saving before you write a word of it.",
-                 setapart_block=setapart("Fill in this plan:",
-                                         "Synthesis claim: ______ (your position the set supports). Woven point: ______ (a point that uses BOTH sources). Objection to answer: ______ (the strongest point from the side you do not take, and how you will answer it)."),
+                 intro="Use the outline grid below so you can see the shape of the plan. Copy it into the box and "
+                       "fill each blank to plan your cross-text argument on daylight saving before you write a word of it.",
+                 setapart_block=outline_table(title="Copy this plan, then fill in each blank:", rows=[
+                     ("SYNTHESIS CLAIM", "______ (your position the set supports)"),
+                     ("WOVEN POINT", "______ (a point that uses BOTH sources)"),
+                     ("OBJECTION TO ANSWER", "______ (the strongest point from the side you do not take, and how you will answer it)"),
+                 ]),
                  closer="Write the synthesis claim, one body point that weaves both sources, and one objection "
                         "you will concede and answer. This plan is what you will build the essay from. Do not "
                         "plan a one-source essay.")),

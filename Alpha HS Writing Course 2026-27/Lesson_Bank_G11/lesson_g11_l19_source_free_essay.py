@@ -25,7 +25,7 @@ HTML entities. Passes all 23 lesson_contract gates + render-qc.
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "pipeline"))
 from lesson_contract import Lesson, Slot, qc_lesson, qc_report
-from lesson_prompts import frq_prompt, setapart, checklist
+from lesson_prompts import frq_prompt, setapart, checklist, outline_table
 
 ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
@@ -209,9 +209,14 @@ LESSON = Lesson(
         Slot("SUPPORTED", "production_frq", "Plan your source-free essay",
              ref="", bank="sfa_curiosity_use", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="Plan your source-free essay on the curiosity prompt before you write a word of it.",
-                 setapart_block=setapart("Fill in this plan:",
-                                         "Thesis: ______ (your defensible side). Example 1: ______ (a named case) + the detail that makes it count. Example 2: ______ (a named case) + its detail. Example 3 (optional): ______ + its detail."),
+                 intro="Use the outline grid below to plan your source-free essay on the curiosity prompt "
+                       "before you write a word of it. Copy it into the box and fill in each blank.",
+                 setapart_block=outline_table(title="Copy this outline, then fill in each blank:", rows=[
+                     ("THESIS", "______ (your defensible side)"),
+                     ("EXAMPLE 1", ["______ (a named case)", "the detail that makes it count: ______"]),
+                     ("EXAMPLE 2", ["______ (a named case)", "its detail: ______"]),
+                     ("EXAMPLE 3 (optional)", ["______ (a named case)", "its detail: ______"]),
+                 ]),
                  closer="List a one-line thesis that takes a side, then two or three specific examples from your "
                         "own knowledge, one per body paragraph, each a named case you can develop and tie to the "
                         "thesis. This plan is what you will build the essay from.")),

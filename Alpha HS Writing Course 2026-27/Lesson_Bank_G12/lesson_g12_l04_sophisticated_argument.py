@@ -27,7 +27,7 @@ dashes. Passes all 23 lesson_contract gates + render-qc.
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "pipeline"))
 from lesson_contract import Lesson, Slot, qc_lesson, qc_report
-from lesson_prompts import frq_prompt, setapart, checklist
+from lesson_prompts import frq_prompt, setapart, checklist, outline_table
 
 ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
@@ -221,9 +221,15 @@ LESSON = Lesson(
         Slot("SUPPORTED", "production_frq", "Plan the sophisticated argument",
              ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="Plan a sophisticated argument on the workforce prompt before you draft a word of it.",
-                 setapart_block=setapart("Fill in this plan:",
-                                         "Situated thesis: ______ (the larger question + my position). Body 1: tension ______ + evidence ______. Body 2: tension ______ + evidence ______. Conclusion: the rule I defend ______."),
+                 intro="Use the outline grid below so you can see the shape of a sophisticated plan. Copy it into "
+                       "the box and fill each blank to plan a sophisticated argument on the workforce prompt "
+                       "before you draft a word of it.",
+                 setapart_block=outline_table(title="Copy this outline, then fill in each blank:", rows=[
+                     ("SITUATED THESIS", "______ (the larger question + my position)"),
+                     ("BODY 1", ["tension: ______", "evidence: ______"]),
+                     ("BODY 2", ["tension: ______", "evidence: ______"]),
+                     ("CONCLUSION", "the rule I defend: ______"),
+                 ]),
                  closer="Write your situated thesis (larger question plus position), then for each body paragraph "
                         "the real tension it holds and its evidence, then the rule your conclusion defends. This "
                         "plan is what you will build the essay from.")),

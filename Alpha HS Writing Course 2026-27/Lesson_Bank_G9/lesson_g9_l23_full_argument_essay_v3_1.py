@@ -24,7 +24,7 @@ Own words, no fabricated figures, no em dashes. Passes all 23 lesson_contract ga
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "pipeline"))
 from lesson_contract import Lesson, Slot, qc_lesson, qc_report
-from lesson_prompts import frq_prompt, setapart, checklist
+from lesson_prompts import frq_prompt, setapart, checklist, outline_table
 
 ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
@@ -206,9 +206,15 @@ LESSON = Lesson(
         Slot("SUPPORTED", "production_frq", "Plan the essay: thesis and ordered points",
              ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="Plan your argument essay on required community service before you write a word of it.",
-                 setapart_block=setapart("Fill in this plan:",
-                                         "Thesis: ______ (your side). Point 1: ______ + its evidence. Point 2: ______ + its evidence. Point 3: ______ + its evidence."),
+                 intro="Use the outline grid below so you can see the shape of the plan. Copy it into the box and "
+                       "fill each blank to plan your argument essay on required community service before you write "
+                       "a word of it.",
+                 setapart_block=outline_table(title="Copy this outline, then fill in each blank:", rows=[
+                     ("THESIS", "______ (your side)"),
+                     ("POINT 1", ["claim: ______", "evidence: ______"]),
+                     ("POINT 2", ["claim: ______", "evidence: ______"]),
+                     ("POINT 3", ["claim: ______", "evidence: ______"]),
+                 ]),
                  closer="Write a single-paragraph outline: a one-line thesis that takes a side, then three "
                         "ordered body points, each naming its claim and the source fact it will use. This plan "
                         "is what you will build the essay from.")),

@@ -20,7 +20,7 @@ fabricated figures, no em dashes. Passes all 23 lesson_contract gates + render-q
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "pipeline"))
 from lesson_contract import Lesson, Slot, qc_lesson, qc_report
-from lesson_prompts import frq_prompt, setapart, checklist
+from lesson_prompts import frq_prompt, setapart, checklist, outline_table
 
 ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
@@ -214,10 +214,16 @@ LESSON = Lesson(
         Slot("SUPPORTED", "production_frq", "Budget and plan the full argument",
              ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="Before you draft, budget your sitting and fast-plan the WHOLE argument on the workforce "
-                       "prompt, end to end.",
-                 setapart_block=setapart("Fill in this plan:",
-                                         "Budget: ______ to plan, ______ to draft each part, ______ to check. Situated thesis: ______. Body point 1 (and the tension it holds): ______. Body point 2: ______. Defended conclusion: ______."),
+                 intro="Before you draft, set your stage budget, then use the outline grid below to fast-plan "
+                       "the WHOLE argument on the workforce prompt, end to end.",
+                 setapart_block=(setapart("First set your stage budget:",
+                                          "______ to plan, ______ to draft each part, ______ to check.")
+                                 + outline_table(title="Then copy this outline and fill in each blank:", rows=[
+                                     ("Situated thesis", "______"),
+                                     ("Body point 1", "______ (and the tension it holds)"),
+                                     ("Body point 2", "______"),
+                                     ("Defended conclusion", "______"),
+                                 ])),
                  closer="Write your stage budget and a fast plan that names the situated thesis, the tension "
                         "each body paragraph will hold, and what the conclusion defends. This plan is what you "
                         "will build the whole essay from.")),
