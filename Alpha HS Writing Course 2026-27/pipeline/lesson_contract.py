@@ -296,10 +296,14 @@ def gate_discrimination_before_production(L: Lesson) -> tuple[bool, str]:
         return False, "no discrimination slot (the Grade-C discriminate-before-produce move is required)"
     if prod_idx and min(disc_idx) > min(prod_idx):
         return False, "production appears before any discrimination (violates discriminate-before-produce)"
-    # must be LABELED a design bet (Grade C), not sold as evidence
-    if not any(s.labeled_grade_c for s in L.slots if s.kind == "discrimination"):
-        return False, "discrimination slots must set labeled_grade_c=True (label the Grade-C design bet)"
-    return True, "discrimination precedes production; Grade-C move labeled"
+    # EVERY discrimination slot must be LABELED a design bet (Grade C), not sold as evidence. (Hardened from
+    # any()->all() 2026-07-15: the spine re-architecture added a 2nd discrimination to sentence-grain lessons,
+    # and any() let an unlabeled slot ride on a labeled sibling - a real fail-open the checker corpus caught.)
+    unlabeled = [i for i, s in enumerate(L.slots) if s.kind == "discrimination" and not s.labeled_grade_c]
+    if unlabeled:
+        return False, (f"discrimination slot(s) {unlabeled} not labeled_grade_c=True (every Grade-C design bet "
+                       f"must be labeled, not just one)")
+    return True, "discrimination precedes production; every Grade-C move labeled"
 
 def gate_binding_integrity(L: Lesson) -> tuple[bool, str]:
     """Every ref (stimulus_id / item_id) must exist in the banks. Authored slots (ref='') are exempt."""
