@@ -11,11 +11,12 @@ ROOT = os.path.join(HERE, "..", "..")  # -> Alpha HS Writing Course 2026-27/
 def _read_env_val(names):
     for base in (os.path.join(ROOT, ".env"), os.path.join(ROOT, "..", ".env")):
         if os.path.exists(base):
-            for line in open(base, encoding="utf-8"):
-                line = line.strip()
-                for n in names:
-                    if line.startswith(n) and "=" in line:
-                        return line.split("=", 1)[1].strip().strip('"').strip("'")
+            with open(base, encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    for n in names:
+                        if line.startswith(n) and "=" in line:
+                            return line.split("=", 1)[1].strip().strip('"').strip("'")
     for n in names:
         if os.environ.get(n):
             return os.environ[n]
