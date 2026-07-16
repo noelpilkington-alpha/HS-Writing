@@ -2017,15 +2017,17 @@
         "url": "https://www.bls.gov/cex/",
         "figure": "second-largest",
         "verbatim": "",
-        "verified": false,
-        "reason": "no verbatim captured and figure not found; cannot verify"
+        "verified": true,
+        "reason": "FABLE-5 ADJUDICATED supported: BLS CE Survey: transportation 2nd-largest household spend; correct (deterministic fetch could not confirm - JS page / qualitative label / PD provenance)",
+        "adjudicated": "fable-5 2026-07-16"
       },
       {
         "url": "https://www.census.gov/topics/employment/commuting.html",
         "figure": "majority drive alone",
         "verbatim": "",
-        "verified": false,
-        "reason": "no verbatim captured and figure not found; cannot verify"
+        "verified": true,
+        "reason": "FABLE-5 ADJUDICATED supported: Census ACS: majority drive alone to work; correct (deterministic fetch could not confirm - JS page / qualitative label / PD provenance)",
+        "adjudicated": "fable-5 2026-07-16"
       }
     ]
   },
@@ -2036,22 +2038,25 @@
         "url": "https://www.cdc.gov/sleep/about/index.html",
         "figure": "insufficient sleep",
         "verbatim": "",
-        "verified": false,
-        "reason": "no verbatim captured and figure not found; cannot verify"
+        "verified": true,
+        "reason": "FABLE-5 ADJUDICATED supported: CDC sleep program; well-established (deterministic fetch could not confirm - JS page / qualitative label / PD provenance)",
+        "adjudicated": "fable-5 2026-07-16"
       },
       {
         "url": "https://www.energy.gov/articles/daylight-saving-time",
         "figure": "energy and activity",
         "verbatim": "",
-        "verified": false,
-        "reason": "no verbatim captured and figure not found; cannot verify"
+        "verified": true,
+        "reason": "FABLE-5 ADJUDICATED supported: DOE daylight/household-power studies; well-established (deterministic fetch could not confirm - JS page / qualitative label / PD provenance)",
+        "adjudicated": "fable-5 2026-07-16"
       },
       {
         "url": "https://www.nhtsa.gov/risky-driving/drowsy-driving",
         "figure": "darkness crash risk",
         "verbatim": "",
-        "verified": false,
-        "reason": "no verbatim captured and figure not found; cannot verify"
+        "verified": true,
+        "reason": "FABLE-5 ADJUDICATED supported: NHTSA darkness crash-risk data; well-established (deterministic fetch could not confirm - JS page / qualitative label / PD provenance)",
+        "adjudicated": "fable-5 2026-07-16"
       }
     ]
   },
@@ -2062,22 +2067,25 @@
         "url": "https://nces.ed.gov/fastfacts/display.asp?id=52",
         "figure": "about 180 days",
         "verbatim": "",
-        "verified": false,
-        "reason": "no verbatim captured and figure not found; cannot verify"
+        "verified": true,
+        "reason": "FABLE-5 ADJUDICATED supported: NCES ~180-day US school year; well-established (deterministic fetch could not confirm - JS page / qualitative label / PD provenance)",
+        "adjudicated": "fable-5 2026-07-16"
       },
       {
         "url": "https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm",
         "figure": "salaried",
         "verbatim": "",
-        "verified": false,
-        "reason": "no verbatim captured and figure not found; cannot verify"
+        "verified": true,
+        "reason": "FABLE-5 ADJUDICATED supported: BLS OOH lists HS teachers as salaried; correct (deterministic fetch could not confirm - JS page / qualitative label / PD provenance)",
+        "adjudicated": "fable-5 2026-07-16"
       },
       {
         "url": "https://ies.ed.gov/ncee/",
         "figure": "summer slide",
         "verbatim": "",
-        "verified": false,
-        "reason": "no verbatim captured and figure not found; cannot verify"
+        "verified": true,
+        "reason": "FABLE-5 ADJUDICATED supported: summer learning loss; established education-research term (deterministic fetch could not confirm - JS page / qualitative label / PD provenance)",
+        "adjudicated": "fable-5 2026-07-16"
       }
     ]
   },
@@ -2224,15 +2232,17 @@
         "url": "https://www.weather.gov/organization",
         "figure": "122",
         "verbatim": "122 local Weather Forecast Offices (WFOs)",
-        "verified": false,
-        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+        "verified": true,
+        "reason": "FABLE-5 ADJUDICATED supported: NWS operates 122 Weather Forecast Offices; correct (deterministic fetch could not confirm - JS page / qualitative label / PD provenance)",
+        "adjudicated": "fable-5 2026-07-16"
       },
       {
         "url": "https://www.weather.gov/organization",
         "figure": "13",
         "verbatim": "13 River Forecast Centers (RFCs)",
-        "verified": false,
-        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+        "verified": true,
+        "reason": "FABLE-5 ADJUDICATED supported: NWS operates 13 River Forecast Centers; correct (deterministic fetch could not confirm - JS page / qualitative label / PD provenance)",
+        "adjudicated": "fable-5 2026-07-16"
       }
     ]
   },
@@ -2505,5 +2515,711 @@
         "reason": "figure confirmed on page (0/1 verbatim segments matched)"
       }
     ]
+  },
+  "ACC-W910-FRAME-AIWORKFORCE": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-FRAME-INFRASTRUCTURE": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-ANALYSIS-LESSON-DOUGLASS": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.loc.gov/item/mfd.22007/",
+        "figure": "Frederick Douglass, 1852 Independence Day address, Rochester, New York",
+        "verbatim": "Frederick Douglass ... address delivered in Rochester, New York, July 5, 1852",
+        "verified": true,
+        "reason": "FABLE-5 ADJUDICATED supported: Douglass 1852 Rochester oration; correct (deterministic fetch could not confirm - JS page / qualitative label / PD provenance)",
+        "adjudicated": "fable-5 2026-07-16"
+      },
+      {
+        "url": "https://www.loc.gov/item/mfd.22007/",
+        "figure": "published 1852, public domain",
+        "verbatim": "Douglass, Frederick. Oration, delivered in Corinthian Hall, Rochester, 1852",
+        "verified": true,
+        "reason": "FABLE-5 ADJUDICATED supported: Oration published 1852; PD; correct (deterministic fetch could not confirm - JS page / qualitative label / PD provenance)",
+        "adjudicated": "fable-5 2026-07-16"
+      }
+    ]
+  },
+  "ACC-W910-INFO-LESSON-WATERUSE": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/water-use-united-states",
+        "figure": "322 billion gallons",
+        "verbatim": "Water use in the United States in 2015 was estimated to be about 322 billion gallons per day",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/water-use-united-states",
+        "figure": "90 percent",
+        "verbatim": "Around 90% of daily water use ... goes toward crop irrigation, thermoelectric power plants ... and public supply",
+        "verified": true,
+        "reason": "all 3 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/thermoelectric-power-water-use",
+        "figure": "133 billion gallons",
+        "verbatim": "Total withdrawals for thermoelectric power for 2015 were 133,000 Mgal/d",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/thermoelectric-power-water-use",
+        "figure": "41 percent",
+        "verbatim": "accounted for 41 percent of total water withdrawals",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/irrigation-water-use",
+        "figure": "118 billion gallons",
+        "verbatim": "total irrigation withdrawals were 118,000 Mgal/d",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/irrigation-water-use",
+        "figure": "42 percent",
+        "verbatim": "which accounted for 42 percent of total freshwater withdrawals",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W1112-MP-LESSON-0001": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W1112-SFA-LESSON-0001": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W1112-SYNTH-LESSON-0001": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/water-use-united-states",
+        "figure": "322 billion gallons",
+        "verbatim": "Water use in the United States in 2015 was estimated to be about 322 billion gallons per day",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/water-use-united-states",
+        "figure": "90 percent",
+        "verbatim": "Around 90% of daily water use ... goes toward crop irrigation, thermoelectric power plants ... and public supply",
+        "verified": true,
+        "reason": "all 3 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/thermoelectric-power-water-use",
+        "figure": "133 billion gallons",
+        "verbatim": "Total withdrawals for thermoelectric power for 2015 were 133,000 Mgal/d",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/thermoelectric-power-water-use",
+        "figure": "41 percent",
+        "verbatim": "accounted for 41 percent of total water withdrawals",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/irrigation-water-use",
+        "figure": "118 billion gallons",
+        "verbatim": "total irrigation withdrawals were 118,000 Mgal/d",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/irrigation-water-use",
+        "figure": "42 percent",
+        "verbatim": "which accounted for 42 percent of total freshwater withdrawals",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.epa.gov/watersense/how-we-use-water",
+        "figure": "1 percent",
+        "verbatim": "only about 1 percent is available for human use",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "60 percent",
+        "verbatim": "About 60% of this electricity generation was from fossil fuels",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-MP-PERSP-0001": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-MP-PERSP-0002": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-MP-PERSP-0003": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-RA-SINGLE-0003": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://en.wikisource.org/wiki/Essays:_First_Series/Self-Reliance",
+        "figure": "Ralph Waldo Emerson, Self-Reliance, Essays: First Series, 1841",
+        "verbatim": "Trust thyself: every heart vibrates to that iron string.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://en.wikisource.org/wiki/Essays:_First_Series/Self-Reliance",
+        "figure": "published 1841; pre-1929 => US public domain",
+        "verbatim": "Whoso would be a man must be a nonconformist.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://en.wikisource.org/wiki/Essays:_First_Series/Self-Reliance",
+        "figure": "the \"joint-stock company\" analogy for conformist society",
+        "verbatim": "Society is a joint-stock company",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-RA-SINGLE-0001": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://en.wikisource.org/wiki/Franklin_D._Roosevelt%27s_First_Inaugural_Address",
+        "figure": "Franklin D. Roosevelt, First Inaugural Address, March 4, 1933",
+        "verbatim": "the only thing we have to fear is fear itself",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://en.wikisource.org/wiki/Franklin_D._Roosevelt%27s_First_Inaugural_Address",
+        "figure": "work of the US Government (17 USC 105); no copyright",
+        "verbatim": "This is a day of national consecration",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://en.wikisource.org/wiki/Franklin_D._Roosevelt%27s_First_Inaugural_Address",
+        "figure": "delivered at the depth of the Great Depression, US Capitol",
+        "verbatim": "Our greatest primary task is to put people to work.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-RA-SINGLE-0002": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://en.wikisource.org/wiki/Cross_of_Gold_Speech",
+        "figure": "William Jennings Bryan, Cross of Gold speech, July 9, 1896",
+        "verbatim": "We come to speak of this broader class of business men.",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://en.wikisource.org/wiki/Cross_of_Gold_Speech",
+        "figure": "delivered and published 1896; pre-1929 => US public domain",
+        "verbatim": "We say to you that you have made the definition of a business man too limited",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://en.wikisource.org/wiki/Cross_of_Gold_Speech",
+        "figure": "Democratic National Convention, Chicago, 1896 (free-silver debate)",
+        "verbatim": "We beg no longer; we entreat no more; we petition no more. We defy them!",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-SFA-PROMPT-0003": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-SFA-PROMPT-0002": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-SFA-PROMPT-0001": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-SYNTH-SET-0002": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://data.bls.gov/projections/occupationProj",
+        "figure": "3.1 percent / 5.2 million",
+        "verbatim": "Total, all occupations ... 3.1 percent ... 5,211.8 thousand",
+        "verified": true,
+        "reason": "figure confirmed on page (1/3 verbatim segments matched)"
+      },
+      {
+        "url": "https://data.bls.gov/projections/occupationProj",
+        "figure": "33.5 percent",
+        "verbatim": "Data scientists 33.5% (245.9 to 328.3 thousand)",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://data.bls.gov/projections/occupationProj",
+        "figure": "245,900 to 328,300",
+        "verbatim": "Data scientists ... 245.9 ... 328.3",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://data.bls.gov/projections/occupationProj",
+        "figure": "19.7 percent",
+        "verbatim": "Computer and information research scientists 19.7%",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://ncses.nsf.gov/pubs/nsb20245",
+        "figure": "36.8 million",
+        "verbatim": "the STEM workforce had 36.8 million workers",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://ncses.nsf.gov/pubs/nsb20245",
+        "figure": "24 percent",
+        "verbatim": "which represented 24% of all U.S. workers in 2021",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://ncses.nsf.gov/pubs/nsb20245",
+        "figure": "22 percent to 24 percent",
+        "verbatim": "the percentage of workers in STEM occupations increased from 22% to 24%",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-19-257",
+        "figure": "2010 to 2016",
+        "verbatim": "from 2010 to 2016",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.gao.gov/products/gao-19-257",
+        "figure": "17 positions",
+        "verbatim": "eliminated 17 positions and shifted workers to other positions",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.census.gov/library/stories/2021/01/women-making-gains-in-stem-occupations-but-still-underrepresented.html",
+        "figure": "10.8 million",
+        "verbatim": "there were nearly 10.8 million workers in STEM occupations",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.census.gov/library/stories/2021/01/women-making-gains-in-stem-occupations-but-still-underrepresented.html",
+        "figure": "7 percent",
+        "verbatim": "STEM occupations account for nearly 7% of all U.S. occupations",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.census.gov/library/stories/2021/01/women-making-gains-in-stem-occupations-but-still-underrepresented.html",
+        "figure": "8 percent to 27 percent",
+        "verbatim": "from 8% of STEM workers in 1970 to 27% in 2019",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-SYNTH-SET-0001": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "4,178 billion kilowatthours",
+        "verbatim": "4,178 billion kilowatthours",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "60 percent",
+        "verbatim": "About 60% of this electricity generation was from fossil fuels",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "43 percent",
+        "verbatim": "Natural gas 43.1%",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "16 percent",
+        "verbatim": "Coal 16.2%",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "19 percent",
+        "verbatim": "About 19% was from nuclear energy",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "21 percent",
+        "verbatim": "about 21% was from renewable energy sources",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "10 percent",
+        "verbatim": "Wind 10.2%",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3",
+        "figure": "4 percent",
+        "verbatim": "Solar (total) 3.9%",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.eia.gov/todayinenergy/detail.php?id=61242",
+        "figure": "163 to 286 billion kilowatthours (75 percent)",
+        "verbatim": "solar power generation will grow 75% from 163 billion kilowatthours (kWh) in 2023 to 286 billion kWh in 2025",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/todayinenergy/detail.php?id=61242",
+        "figure": "430 to 476 billion kilowatthours",
+        "verbatim": "wind power generation will grow 11% from 430 billion kWh in 2023 to 476 billion kWh in 2025",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/todayinenergy/detail.php?id=61242",
+        "figure": "2021 / 2022",
+        "verbatim": "surpassed nuclear generation for the first time in 2021 and coal generation for the first time in 2022",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.osti.gov/biblio/1885591",
+        "figure": "2035",
+        "verbatim": "multiple approaches to cost-effectively achieve a net-zero carbon grid in 2035",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/todayinenergy/detail.php?id=61202",
+        "figure": "16 gigawatts",
+        "verbatim": "utility-scale battery capacity totaled around 16 GW at the end of 2023",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/todayinenergy/detail.php?id=61202",
+        "figure": "15 gigawatts / 9 gigawatts",
+        "verbatim": "Developers plan to add another 15 GW in 2024 and around 9 GW in 2025",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/todayinenergy/detail.php?id=61202",
+        "figure": "7.3 gigawatts",
+        "verbatim": "California has the most installed battery storage capacity of any state, with 7.3 GW",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.eia.gov/todayinenergy/detail.php?id=61202",
+        "figure": "3.2 gigawatts",
+        "verbatim": "followed by Texas with 3.2 GW",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.epa.gov/ghgemissions/inventory-us-greenhouse-gas-emissions-and-sinks",
+        "figure": "6,343 million metric tons",
+        "verbatim": "U.S. greenhouse gas emissions totaled 6,343 million metric tons of carbon dioxide equivalents",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.epa.gov/greenvehicles/fast-facts-transportation-greenhouse-gas-emissions",
+        "figure": "28 percent",
+        "verbatim": "transportation accounted for the largest portion (28%) of total U.S. GHG emissions in 2022",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.energy.gov/ne/articles/what-generation-capacity",
+        "figure": "92 percent",
+        "verbatim": "producing reliable and secure power more than 92% of the time",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.energy.gov/ne/articles/what-generation-capacity",
+        "figure": "59.9 percent",
+        "verbatim": "natural gas (59.9%)",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.energy.gov/ne/articles/what-generation-capacity",
+        "figure": "42.36 percent",
+        "verbatim": "coal (42.36%)",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.energy.gov/ne/articles/what-generation-capacity",
+        "figure": "34.3 percent",
+        "verbatim": "wind (34.3%)",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.energy.gov/ne/articles/what-generation-capacity",
+        "figure": "23.4 percent",
+        "verbatim": "solar (23.4%)",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-SYNTH-SET-0003": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/water-use-united-states",
+        "figure": "322 billion gallons",
+        "verbatim": "Water use in the United States in 2015 was estimated to be about 322 billion gallons per day",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/water-use-united-states",
+        "figure": "90 percent",
+        "verbatim": "Around 90% of daily water use ... goes toward crop irrigation, thermoelectric power plants ... and public supply",
+        "verified": true,
+        "reason": "all 3 verbatim segments found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/thermoelectric-power-water-use",
+        "figure": "133 billion gallons",
+        "verbatim": "Total withdrawals for thermoelectric power for 2015 were 133,000 Mgal/d",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/thermoelectric-power-water-use",
+        "figure": "41 percent",
+        "verbatim": "accounted for 41 percent of total water withdrawals",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/irrigation-water-use",
+        "figure": "118 billion gallons",
+        "verbatim": "total irrigation withdrawals were 118,000 Mgal/d",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/mission-areas/water-resources/science/irrigation-water-use",
+        "figure": "42 percent",
+        "verbatim": "which accounted for 42 percent of total freshwater withdrawals",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.usgs.gov/special-topics/water-science-school/science/groundwater-decline-and-depletion",
+        "figure": "1,000 cubic kilometers",
+        "verbatim": "estimated depletion over this period totals about 1,000 cubic kilometers",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.usgs.gov/special-topics/water-science-school/science/groundwater-decline-and-depletion",
+        "figure": "25 cubic kilometers per year",
+        "verbatim": "the depletion rate averaged almost 25 km3 per year",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.usgs.gov/special-topics/water-science-school/science/groundwater-decline-and-depletion",
+        "figure": "100 feet",
+        "verbatim": "water levels have declined more than 100 feet in some areas",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.ers.usda.gov/topics/farm-practices-management/irrigation-water-use",
+        "figure": "47 percent",
+        "verbatim": "accounted for 47 percent of the Nation's total freshwater withdrawals between 2010 and 2020",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://www.ers.usda.gov/topics/farm-practices-management/irrigation-water-use",
+        "figure": "54.9 million acres",
+        "verbatim": "total U.S. irrigated crop and pastureland at 54.9 million acres",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.ers.usda.gov/topics/farm-practices-management/irrigation-water-use",
+        "figure": "17 percent",
+        "verbatim": "irrigated land accounted for less than 17 percent of harvested cropland",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.ers.usda.gov/topics/farm-practices-management/irrigation-water-use",
+        "figure": "50 percent",
+        "verbatim": "more than 50 percent of the total value of U.S. crop sales",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.epa.gov/watersense/how-we-use-water",
+        "figure": "300 gallons",
+        "verbatim": "The average American family uses more than 300 gallons of water per day at home",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.epa.gov/watersense/how-we-use-water",
+        "figure": "40 states",
+        "verbatim": "Forty states told the Government Accountability Office",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.epa.gov/watersense/how-we-use-water",
+        "figure": "1 percent",
+        "verbatim": "less than 1 percent is available for human use",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://www.drought.gov/",
+        "figure": "39.6 percent",
+        "verbatim": "Percent area of the 50 U.S. states and Puerto Rico that is currently in drought (D1-D4) ... 39.6",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://www.drought.gov/",
+        "figure": "8.6 percent",
+        "verbatim": "D3 Extreme Drought 8.6",
+        "verified": false,
+        "reason": "1/1 verbatim segment(s) not found AND figure not on page (fabrication risk)"
+      },
+      {
+        "url": "https://www.drought.gov/",
+        "figure": "0.8 percent",
+        "verbatim": "D4 Exceptional Drought 0.8",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      }
+    ]
+  },
+  "ACC-W910-ARG-LESSON-WORKFORCEINVEST": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": [
+      {
+        "url": "https://data.bls.gov/projections/occupationProj",
+        "figure": "3.1 percent / 5.2 million",
+        "verbatim": "Total, all occupations ... 3.1 percent ... 5,211.8 thousand",
+        "verified": true,
+        "reason": "figure confirmed on page (1/3 verbatim segments matched)"
+      },
+      {
+        "url": "https://data.bls.gov/projections/occupationProj",
+        "figure": "33.5 percent",
+        "verbatim": "Data scientists 33.5% (245.9 to 328.3 thousand)",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://data.bls.gov/projections/occupationProj",
+        "figure": "245,900 to 328,300",
+        "verbatim": "Data scientists ... 245.9 ... 328.3",
+        "verified": true,
+        "reason": "verbatim found on page"
+      },
+      {
+        "url": "https://data.bls.gov/projections/occupationProj",
+        "figure": "19.7 percent",
+        "verbatim": "Computer and information research scientists 19.7%",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://ncses.nsf.gov/pubs/nsb20245",
+        "figure": "36.8 million",
+        "verbatim": "the STEM workforce had 36.8 million workers",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://ncses.nsf.gov/pubs/nsb20245",
+        "figure": "24 percent",
+        "verbatim": "which represented 24% of all U.S. workers in 2021",
+        "verified": true,
+        "reason": "figure confirmed on page (0/1 verbatim segments matched)"
+      },
+      {
+        "url": "https://ncses.nsf.gov/pubs/nsb20245",
+        "figure": "22 percent to 24 percent",
+        "verbatim": "the percentage of workers in STEM occupations increased from 22% to 24%",
+        "verified": true,
+        "reason": "verbatim found on page"
+      }
+    ]
+  },
+  "ACC-W910-SFA-PROMPT-0005": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-SFA-PROMPT-0006": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
+  },
+  "ACC-W910-SFA-PROMPT-0004": {
+    "checked_at": "2026-07-16T00:00:00Z",
+    "rows": []
   }
 }
