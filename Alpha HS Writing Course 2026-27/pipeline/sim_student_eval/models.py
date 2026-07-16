@@ -80,6 +80,16 @@ class FableClient:
                 return dict(b.input)
         return {"response": "", "journal_update": {}, "error": "no tool call"}
 
+    def ask_tool(self, system: str, user: str, tool: dict) -> dict:
+        r = self._c.messages.create(
+            model=self._model, max_tokens=1500, system=system,
+            tools=[tool], tool_choice={"type": "tool", "name": tool["name"]},
+            messages=[{"role": "user", "content": user}])
+        for b in r.content:
+            if getattr(b, "type", "") == "tool_use":
+                return dict(b.input)
+        return {}
+
 
 class GptClient:
     def __init__(self, api_key: str, model: str = "gpt-5.5"):
@@ -105,3 +115,17 @@ class GptClient:
         if msg.tool_calls:
             return dict(_json.loads(msg.tool_calls[0].function.arguments))
         return {"response": msg.content or "", "journal_update": {}, "error": "no tool call"}
+
+    def ask_tool(self, system: str, user: str, tool: dict) -> dict:
+        import json as _json
+        ot = {"type": "function", "function": {"name": tool["name"],
+              "description": tool["description"], "parameters": tool["input_schema"]}}
+        r = self._c.chat.completions.create(
+            model=self._model,
+            messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
+            tools=[ot], tool_choice={"type": "function", "function": {"name": tool["name"]}},
+            max_completion_tokens=1500)
+        msg = r.choices[0].message
+        if msg.tool_calls:
+            return dict(_json.loads(msg.tool_calls[0].function.arguments))
+        return {}
