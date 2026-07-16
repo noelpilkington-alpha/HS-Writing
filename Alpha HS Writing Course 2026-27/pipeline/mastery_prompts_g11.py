@@ -197,20 +197,23 @@ MASTERY = {
         + _box("Your task:",
                "Write a full synthesis on the source set above, then grade your own work.", "teal")
         + _task("Write a full synthesis that weaves ONE argument from the source set above.",
-                "Before you submit, PREDICT your own rubric score row by row (Development and Evidence), giving a "
-                "reason for each row from what your writing actually does.",
-                "After the grader returns a score, name the GAP between your prediction and the real score, and "
-                "say what caused it.")},
+                "Before you submit, PREDICT your own score row by row (Development and Evidence, each 1 to 4), "
+                "giving a reason for each row from what your writing actually does.",
+                "Then re-score your finished draft carefully against those same two rows, and name the GAP "
+                "between your prediction and your honest re-score, saying what caused it.")},
 
     # C1102-0016 - mid-gate: independent full synthesis (essay). Held-out: SYNTH-LESSON-0001.
     "ACC-W1112-L-G11-C1102-0016": {"source": "ACC-W1112-SYNTH-LESSON-0001", "unit": "essay",
         "rubric_ref": "rc.ap", "prompt_html": _INTRO
-        + _box("Your gate task:",
-               "On your own, plan and write a full synthesis on the source set above.", "teal")
+        + _box("Your gate task (follow THIS, not the prompt printed inside the source set):",
+               "The three sources above are labeled Source 1, Source 2, and Source 3. On your own, plan and "
+               "write a full synthesis ACROSS the set.", "teal")
         + _task("This is the mid-course gate. Independently plan, draft, and self-check a full multi-source "
-                "synthesis using the source set above.",
-                "It must weave ONE argument from the set and weight each source by what it is good for and where "
-                "it falls short. Run your self-check before you submit.")},
+                "synthesis, using at least two of the three labeled sources above.",
+                "Do the synthesis move the unit taught: name the ONE claim the set jointly supports, weave "
+                "evidence from more than one source to build it, and lean on each source where it is strong "
+                "while naming where it is limited. This is a descriptive synthesis of what the sources show, not "
+                "a debate where you pick one side. Run your self-check before you submit.")},
 
     # C1104-0017 (kc C.11.06) - source-free: position + own example (sentence). SOURCE-FREE: no passage inlined
     # (an inlined passage would contradict the "do not use any passage" instruction); the general prompt is in-box.
@@ -331,14 +334,25 @@ MASTERY = {
                 "Do not pad it further. Write one tighter sentence.")},
 
     # C1106-0027 (kc C.11.05) - rehearse a full synthesis under your own budget (essay). Held-out: SYNTH-LESSON-0001.
+    # The held-out set is auto-inlined above as one block, so the three titled sources can read as a single essay.
+    # Labeled here (Source 1/2/3 by title) so the taught move (tag each point with the source that carries it) has
+    # clear referents: the three sources are the three titled sections, not the USGS/EPA/EIA citations inside them.
     "ACC-W1112-L-G11-C1106-0027": {"source": "ACC-W1112-SYNTH-LESSON-0001", "unit": "essay",
         "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        + _box("The set above is three sources:",
+               "Source 1, \"Where the Nation's Water Goes,\" frames the national water budget. "
+               "Source 2, \"The Water That Keeps the Lights On,\" argues for protecting the water that cools power "
+               "plants. Source 3, \"The Water That Grows the Food,\" argues for protecting the water that irrigates "
+               "crops. Treat these three titled sources as your set, and tag each point in your plan with the one "
+               "that carries it (the citations to the USGS, EPA, and EIA are evidence inside the sources, not "
+               "separate sources).",
+               "teal")
         + _box("Your task:",
-               "Write a full synthesis on the source set above, end to end, under a budget you set yourself.",
+               "Write a full synthesis on these three sources, end to end, under a budget you set yourself.",
                "teal")
         + _task("Budget the stages (reading, planning, drafting, checking) for the time you give yourself.",
-                "Then fast-plan the ONE argument the set builds, weave the sources by point and weight them, and "
-                "check at the end. Show your budget first, then the synthesis.")},
+                "Then fast-plan the ONE argument the set builds, weave the three sources by point and weight them, "
+                "and check at the end. Show your budget first, then the synthesis.")},
 
     # C1106-0028 (kc C.11.05) - match the moves to the task type (essay). Both prompts authored inline; no
     # external passage, so the source-free vs multi-perspective spot stays clean and the student names it.
@@ -382,7 +396,7 @@ MASTERY = {
     "ACC-W1112-L-G11-C1102-0030": {"source": "ACC-W910-SFA-PROMPT-0004", "unit": "essay",
         "rubric_ref": "rc.ap", "prompt_html": _INTRO
         + _box("A cold prompt:",
-               "Read the source-free prompt above and write the essay it calls for.", "teal")
+               "Read the prompt above and write the essay it calls for.", "teal")
         + _task("This is the course gate. First, name the TASK TYPE from its tell (what kind of prompt is this, "
                 "and does it give you sources or ask you to argue from your own knowledge?).",
                 "Then write the essay its moves reward, planning first and running a self-check at the end. Say "

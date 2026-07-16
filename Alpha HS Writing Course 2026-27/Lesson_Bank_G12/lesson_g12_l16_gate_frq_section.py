@@ -160,8 +160,10 @@ LESSON = Lesson(
                  intro="The gate, FRQ 1. Name the type from the tell, then on your own write the full response to "
                        "this FRQ.",
                  closer="Run the moves that match the type you named, use the sources as that type requires, and "
-                        "write a complete, situated response with a conclusion that defends a position. Keep to "
-                        "your section budget so FRQs 2 and 3 still get finished. There is no time limit.")),
+                        "write a complete, situated response with a conclusion that lands what that type calls "
+                        "for (a synthesis lands the argument you wove from the set; an analysis lands the "
+                        "writer's overall effect; an argument defends your position). Keep to your section "
+                        "budget so FRQs 2 and 3 still get finished. There is no time limit.")),
 
         # ===== FRQ 2: a DIFFERENT type + held-out passage, cold write. Type NOT named for the student. =====
         Slot("TRANSFER", "stimulus_display", "FRQ 2: read the prompt and name its type",

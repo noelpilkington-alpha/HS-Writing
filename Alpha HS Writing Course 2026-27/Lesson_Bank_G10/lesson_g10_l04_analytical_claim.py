@@ -178,29 +178,32 @@ LESSON = Lesson(
              ]),
         # SECOND minimal pair, DIFFERENT confounds than the first (which was summary vs opinion): here the two
         # traps are (B) naming a real craft choice but only REPORTING it, no purpose, and (C) a bare thematic
-        # interpretation that names NO specific choice. Fresh sentences (the ironic closing verdict, the
-        # heart-trouble opening, a theme statement), not the window/spring imagery used elsewhere. Correct
-        # option (A) is not the lone longest; the theme distractor (C) is the longest.
+        # interpretation that names NO specific choice. Fresh sentences (the ironic turn from grief to freedom,
+        # the heart-trouble opening, a theme statement), not the window/spring imagery used elsewhere. The
+        # correct choice stays WITHIN the provided excerpt (which ends at "Free! Body and soul free!"), so a
+        # solo student can verify it. Correct option (A) is not the lone longest; the theme distractor (C) is
+        # the longest.
         Slot("MODEL", "discrimination", "Which one claims a choice AND its purpose?",
              ref="", labeled_grade_c=True, bank="story_of_an_hour",
              body=("Same skill, a new set. The task is still to ANALYZE the story, and all three sentences name "
                    "Chopin. Only one is an analytical claim, a claim that names a choice AND its purpose. Which one? "
-                   "(A) Chopin closes on the doctors' verdict that Mrs. Mallard died 'of the joy that kills,' "
-                   "letting the reader who knows the truth feel the distance between how the men read her and what "
-                   "she actually felt.  "
+                   "(A) Chopin has the newly widowed Mrs. Mallard feel a rising sense of freedom rather than "
+                   "only grief, turning the moment we expect to be pure mourning into release and making us feel "
+                   "how confining her marriage had been.  "
                    "(B) Chopin opens the story by telling us in its very first line that Mrs. Mallard has heart "
                    "trouble.  "
                    "(C) Chopin suggests that a person can feel quietly trapped inside a marriage even when nothing "
                    "looks wrong from the outside, and that a first taste of freedom can be so overwhelming it is "
                    "impossible to hold on to for very long. "
-                   "Correct: A is the analytical claim. (A) names a choice (closing on the ironic verdict) AND what "
-                   "it does (making the reader feel the gap between the men's reading and the truth). (B) names a "
-                   "choice but only reports it, never saying what it accomplishes. (C) states the story's overall "
-                   "meaning but points to no specific choice, so it is a claim about theme, not craft."),
+                   "Correct: A is the analytical claim. (A) names a choice (the ironic turn from expected grief to "
+                   "a rising sense of freedom) AND what it does (making the reader feel how confining the marriage "
+                   "had been). (B) names a choice but only reports it, never saying what it accomplishes. (C) "
+                   "states the story's overall meaning but points to no specific choice, so it is a claim about "
+                   "theme, not craft."),
              choices=[
-                 {"id": "A", "text": "Chopin closes on the doctors' verdict that Mrs. Mallard died 'of the joy that kills,' letting the reader who knows the truth feel the distance between how the men read her and what she actually felt.",
+                 {"id": "A", "text": "Chopin has the newly widowed Mrs. Mallard feel a rising sense of freedom rather than only grief, turning the moment we expect to be pure mourning into release and making us feel how confining her marriage had been.",
                   "correct": True,
-                  "why": "Correct. It names a choice Chopin makes (closing on the ironic verdict) and says what that choice does (making the reader feel the gap between the men's reading and the truth), so it is a claim about the craft."},
+                  "why": "Correct. It names a choice Chopin makes (the ironic turn from expected grief to a rising sense of freedom) and says what that choice does (making the reader feel how confining the marriage had been), so it is a claim about the craft."},
                  {"id": "B", "text": "Chopin opens the story by telling us in its very first line that Mrs. Mallard has heart trouble.",
                   "correct": False,
                   "why": "This names a real choice, opening on her heart trouble, but only reports that she does it; without saying what the choice accomplishes, it is not yet an analytical claim."},

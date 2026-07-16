@@ -148,6 +148,12 @@ LESSON = Lesson(
              ref="", labeled_grade_c=True, bank="interstate_highways",
              body=("Now that you have seen one built, spot the target. Each version uses the same three sentences "
                    "about the highway system. Which order lets each sentence build on the one before it? "
+                   "(A) Today the interstate carries most long-haul freight. In the 1950s the government began "
+                   "funding a national network. Planners first had to decide who would pay for it.  "
+                   "(B) In the 1950s the government began funding a national network. Planners first had to "
+                   "decide who would pay for it. Today the interstate carries most long-haul freight.  "
+                   "(C) Planners first had to decide who would pay for it. In the 1950s the government began "
+                   "funding a national network. Today the interstate carries most long-haul freight. "
                    "Correct: C. It moves from the first question to the founding to the present-day result."),
              choices=[
                  {"id": "A", "text": "Today the interstate carries most long-haul freight. In the 1950s the government began funding a national network. Planners first had to decide who would pay for it.",
@@ -169,6 +175,12 @@ LESSON = Lesson(
              ref="", labeled_grade_c=True, bank="interstate_highways",
              body=("Here is a different draft about highway wear. All three orderings below use the same facts. "
                    "Which one is actually in building order, where each sentence leads into the next? "
+                   "(A) First, crews now repave long stretches of the road every summer. Next, heavy trucks "
+                   "pounded the pavement for years. Finally, that pavement cracked and broke into potholes.  "
+                   "(B) Heavy trucks pounded the pavement for years. That pavement cracked and broke into "
+                   "potholes. Now crews repave long stretches of the road every summer.  "
+                   "(C) That pavement cracked and broke into potholes. Heavy trucks pounded the pavement for "
+                   "years. Now crews repave long stretches of the road every summer. "
                    "Correct: B. It runs cause to effect even without any signpost words like First or Finally."),
              choices=[
                  {"id": "A", "text": "First, crews now repave long stretches of the road every summer. Next, heavy trucks pounded the pavement for years. Finally, that pavement cracked and broke into potholes.",

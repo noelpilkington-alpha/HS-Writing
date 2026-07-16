@@ -233,7 +233,7 @@ LESSON = Lesson(
         # DIAGNOSIS = self-revision: reread your OWN just-written essay and run the 3-question check on it,
         # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
-        Slot("MODEL", "diagnosis_frq", "Check your plan before you draft the whole essay",
+        Slot("MODEL", "diagnosis_frq", "Reread your finished essay and run the checklist",
              ref="", bank="ra_speech_1", scored=True,
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",

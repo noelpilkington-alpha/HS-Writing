@@ -45,8 +45,28 @@ REMEMBER = (
 '<ol style="color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px">'
 '<li style="margin:2px 0">Did I give a number for each rubric row (Development and Evidence)?</li>'
 '<li style="margin:2px 0">Did I write the reason for each number from what my writing actually does?</li>'
-'<li style="margin:2px 0">After the reveal, did I name the gap on every row where my number was off?</li></ol>'
+'<li style="margin:2px 0">After the row check, did I name the gap on every row where my number was off?</li></ol>'
 '<div style="color:#0f766e;font-size:13px;margin-top:6px">If any answer is no, the prediction is a guess, not a calibration.</div></div>')
+
+# the rubric the student predicts against: the two rows (Development, Evidence) with what each 1-to-4 level means.
+# Descriptors are consistent with the lesson's own worked examples (self_score sample = Development 2 / Evidence 2;
+# before/after = Development 3, Evidence 2 for leaning on one source). Shown in TEACH so prediction is grounded.
+RUBRIC = (
+'<div style="border:1px solid #99f6e4;border-radius:8px;padding:10px 14px;margin:8px 0;background:#f0fdfa;'
+'font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif">'
+'<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">The two rows you predict on (each scored 1 to 4)</div>'
+'<div style="color:#1f2a44;font-size:14px;margin:6px 0 2px"><strong>Development</strong> (does it weave ONE argument from the set?)</div>'
+'<ul style="color:#1f2a44;font-size:13px;margin:2px 0 6px;padding-left:22px">'
+'<li style="margin:2px 0"><strong>4</strong>: one clear argument the whole synthesis builds; every source serves it.</li>'
+'<li style="margin:2px 0"><strong>3</strong>: one argument, but a source or two sit to the side instead of serving it.</li>'
+'<li style="margin:2px 0"><strong>2</strong>: it names or tours the sources, but no single argument ties them together.</li>'
+'<li style="margin:2px 0"><strong>1</strong>: a list or summary, with no argument.</li></ul>'
+'<div style="color:#1f2a44;font-size:14px;margin:6px 0 2px"><strong>Evidence</strong> (does it use and weight the sources?)</div>'
+'<ul style="color:#1f2a44;font-size:13px;margin:2px 0 0;padding-left:22px">'
+'<li style="margin:2px 0"><strong>4</strong>: it uses several sources and weights each by what it can carry, so the strongest carry the most.</li>'
+'<li style="margin:2px 0"><strong>3</strong>: it uses several sources but leans on them about equally, without weighting.</li>'
+'<li style="margin:2px 0"><strong>2</strong>: it leans on one source harder than it can carry, or drops a figure without weighting.</li>'
+'<li style="margin:2px 0"><strong>1</strong>: it barely uses the sources, or uses only one.</li></ul></div>')
 
 # coping-model before/after: a feel-guess rebuilt into a row-by-row prediction with the gap named after the
 # reveal. Contains BOTH a literal BEFORE and AFTER (content_depth). No named person (stateless rule).
@@ -71,10 +91,10 @@ BEFORE_AFTER_HTML = (
       'font-weight:700">PREDICT + REASON</span> I predict Development 3 and Evidence 3, because I state one '
       'argument and weave three sources, but I do not weight them. '
       '<span style="background:#fef9c3;color:#854d0e;padding:1px 6px;border-radius:3px;font-size:11px;'
-      'font-weight:700">GAP</span> Grader gave Evidence 2; the gap is that two body points lean on one source '
-      'beyond what it can carry.</p>'
-    '<p style="margin:6px 0 0;color:#166534;font-size:13px">The prediction names rows and reasons, so the gap '
-    'to the grader is specific and fixable. Predict on the rows, then name the gap.</p>'
+      'font-weight:700">GAP</span> Re-scored carefully against the rubric, Evidence is a 2, not the 3 I first '
+      'guessed; the gap is that two body points lean on one source beyond what it can carry.</p>'
+    '<p style="margin:6px 0 0;color:#166534;font-size:13px">The prediction names rows and reasons, so when I '
+    're-score against the rubric the gap is specific and fixable. Predict on the rows, then name the gap.</p>'
   '</div>'
 '</div>')
 
@@ -138,6 +158,8 @@ LESSON = Lesson(
                    "<li style=\"margin:4px 0\"><strong>NAME THE GAP</strong>: for every row where your number "
                    "differed, say what you missed ('I counted weaving as enough; the grader wanted the sources "
                    "weighted').</li></ol>"
+                   "You cannot predict on a row you cannot see, so here are the two rows and what each score from "
+                   "1 to 4 means. Predict against these descriptors, not a feeling:" + RUBRIC +
                    "Committing to a row-by-row prediction before the reveal is what surfaces the blind spot; a "
                    "bare number hides it.")),
         Slot("TEACH", "stimulus_display", "Read the source set: competing water uses (3 sources)",
@@ -150,10 +172,10 @@ LESSON = Lesson(
         # ===== MODEL (before the quiz): coping-model before/after + the calibration check, then the items =====
         Slot("MODEL", "annotated_before_after", "Watch a feel-guess become a row-by-row prediction",
              bank="water_competing_uses",
-             body=("Here is a feel-guess rebuilt into a prediction tied to the rows, with the gap named after "
-                   "the reveal. Read the BEFORE, then the AFTER." + BEFORE_AFTER_HTML +
+             body=("Here is a feel-guess rebuilt into a prediction tied to the rows, with the gap named after a "
+                   "careful re-score against the rubric. Read the BEFORE, then the AFTER." + BEFORE_AFTER_HTML +
                    " The BEFORE guesses from feel. The AFTER predicts on the rows with reasons, then names the "
-                   "gap to the grader. Predicting on the rows is the move." + REMEMBER +
+                   "gap. Predicting on the rows is the move." + REMEMBER +
                    "When you predict your own, run this check before you trust the number.")),
         Slot("MODEL", "discrimination", "Which self-prediction can be compared to the grader?",
              ref="", labeled_grade_c=True, bank="water_competing_uses",
@@ -210,19 +232,19 @@ LESSON = Lesson(
                                          "Development __ because __; Evidence __ because __."),
                  closer="Write a synthesis that weaves ONE argument from the water sources and weights each "
                         "source by what it can carry. Then, in one line, predict your own score on each row with "
-                        "a reason. The grader will score the synthesis; your prediction is what you compare "
-                        "against.")),
+                        "a reason, using the rubric descriptors you were shown. That written prediction is what "
+                        "you will compare against when you re-score your draft next.")),
         # ===== INDEPENDENT: predict + name the gap with no frame + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Calibrate on your own",
              ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now. No frame this time.",
                  closer="Write a fresh synthesis on the water set, predict your score on each row with a reason, "
-                        "and after the grader returns its score, name the gap on every row where you differed. "
-                        "Before you submit, check: did I predict on the ROWS with reasons, not a feel number, "
-                        "and can I name one specific gap? Predicting your own score and naming the gap is what "
-                        "every calibrated writer does before a grader ever sees the work, and you are ready to "
-                        "do it cold.")),
+                        "then re-score your finished draft carefully against the rubric descriptors and name the "
+                        "gap on every row where your prediction differed. Before you submit, check: did I predict "
+                        "on the ROWS with reasons, not a feel number, and can I name one specific gap? Predicting "
+                        "your own score and naming the gap is what every calibrated writer does before a grader "
+                        "ever sees the work, and you are ready to do it cold.")),
 
         # DIAGNOSIS = self-revision on the student's OWN just-written draft. A single labeled EXAMPLE shows what
         # naming a gap looks like (an example, NOT the student's essay); the student then names and fixes the gap
@@ -230,12 +252,13 @@ LESSON = Lesson(
         Slot("MODEL", "diagnosis_frq", "Name the gap between your prediction and the grader",
              ref="", bank="water_competing_uses", scored=True,
              body=frq_prompt(
-                 intro="Reread the essay you just wrote and compare your prediction with the grader's real score.",
+                 intro="Reread the essay you just wrote and re-score it carefully against the rubric descriptors, "
+                       "then compare that honest score with the prediction you made.",
                  setapart_block=setapart("Here is what naming a gap looks like:",
-                     "Evidence, off by two: I predicted a 4, but the grader gave a 2, because I leaned on one "
-                     "source harder than it could carry and never weighted the energy use against the farming "
-                     "use. My blind spot was counting 'used the source' as 'weighted the source.' Fix: weight "
-                     "each source by what it can carry."),
+                     "Evidence, off by two: I predicted a 4, but re-scoring against the rubric it is a 2, because "
+                     "I leaned on one source harder than it could carry and never weighted the energy use against "
+                     "the farming use. My blind spot was counting 'used the source' as 'weighted the source.' "
+                     "Fix: weight each source by what it can carry."),
                  closer="Now do this on YOUR draft. For every row where your number was off, name the gap in one "
                         "line the same way, then make the fix. Finish by naming your single biggest gap.")),
     ],

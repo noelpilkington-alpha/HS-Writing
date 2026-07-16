@@ -134,20 +134,20 @@ SOURCE_GAO = (
 
 # --- Source 4: US Census Bureau -- DESCRIBED CHART (visual/quantitative), exempt from word floor
 SOURCE_CENSUS_CHART = (
-"The chart below, built from U.S. Census Bureau data, shows how the number of workers in STEM "
+"This U.S. Census Bureau data tracks how the number of workers in STEM "
 "occupations has changed over recent decades, alongside their share of the entire workforce. It "
-"combines two measures. Vertical bars represent the count of STEM workers in millions, while a line "
-"plotted above them represents STEM employment as a percentage of all occupations.\n\n"
+"reports two measures: the count of STEM workers in millions, and STEM employment as a percentage "
+"of all occupations.\n\n"
 "According to the Census Bureau, about 10.8 million workers held STEM occupations in 2019. That came to "
-"nearly 7 percent of all U.S. occupations under the Bureau's narrower definition. The line climbs "
-"across the decades, and one series is especially striking. The share of STEM workers who are women "
+"nearly 7 percent of all U.S. occupations under the Bureau's narrower definition. The share has climbed "
+"across the decades, and one figure is especially striking. The share of STEM workers who are women "
 "rose from 8 percent in 1970 to 27 percent in 2019, even as the overall STEM workforce continued to "
 "expand.\n\n"
-"Interpreted with care, the chart advances two conclusions at once. The rising bars show that technical "
-"employment has grown in absolute size. The ascending line shows that it has also grown as a share of "
+"Interpreted with care, these figures advance two conclusions at once. The rising count shows that technical "
+"employment has grown in absolute size. The rising percentage shows that it has also grown as a share of "
 "total employment. A careful reader should nonetheless resist a frequent error. Because the Census "
 "Bureau and the National Science Foundation define STEM differently, their totals diverge. The figures "
-"on this chart should therefore be compared with one another, not combined with counts drawn from a "
+"here should therefore be compared with one another, not combined with counts drawn from a "
 "different definition."
 )
 

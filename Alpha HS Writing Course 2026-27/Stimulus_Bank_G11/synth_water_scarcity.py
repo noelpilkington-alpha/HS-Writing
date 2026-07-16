@@ -183,18 +183,18 @@ SOURCE_EPA = (
 
 # --- Source 5: US NOAA -- DESCRIBED CHART (visual/quantitative), exempt from the 480-word floor -
 SOURCE_NOAA_CHART = (
-"The map and accompanying bar chart below come from the U.S. Drought Monitor, a product of the National "
+"These drought figures come from the U.S. Drought Monitor, a product of the National "
 "Integrated Drought Information System, which is operated by the National Oceanic and Atmospheric "
-"Administration. The display sorts the country into five drought categories, ranging from D0, "
+"Administration. The monitor sorts the country into five drought categories, ranging from D0, "
 "abnormally dry, up through D4, exceptional drought, the most severe level.\n\n"
 "As of early July 2026, the data show that about 39.6 percent of the fifty states and Puerto Rico were "
-"experiencing drought at the level of moderate or worse. The bar chart breaks that total into "
-"categories. The most severe bands, though smaller, are the most alarming. Extreme drought, category "
+"experiencing drought at the level of moderate or worse. That total breaks down by "
+"category. The most severe bands, though smaller, are the most alarming. Extreme drought, category "
 "D3, covered about 8.6 percent of the country, while exceptional drought, category D4, covered about "
 "0.8 percent.\n\n"
-"The chart repays careful reading. A single national percentage can hide sharp regional differences, "
-"because drought clusters in particular states rather than spreading evenly. Just as important, the map "
-"captures one moment in time. Drought categories shift from week to week as rain falls or fails to "
+"These numbers repay careful reading. A single national percentage can hide sharp regional differences, "
+"because drought clusters in particular states rather than spreading evenly. Just as important, the data "
+"capture one moment in time. Drought categories shift from week to week as rain falls or fails to "
 "fall, so a reader should treat the figure as a snapshot of present conditions, not as a fixed measure "
 "of the nation's long-term water supply."
 )

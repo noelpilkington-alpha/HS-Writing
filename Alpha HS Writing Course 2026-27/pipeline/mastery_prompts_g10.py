@@ -119,16 +119,23 @@ MASTERY = {
                 "to the author's purpose, grounding the why in the source above.",
                 "The significance step, not just the effect, is what lifts analysis into the top band.")},
 
-    # C1002-0008 - device-chain: link several choices to build one point (paragraph). Taught RECYCLING/WEATHER -> held-out DOUGLASS.
-    "ACC-W910-L-G10-C1002-0008": {"source": "ACC-W910-ANALYSIS-LESSON-DOUGLASS", "unit": "paragraph",
+    # C1002-0008 - device-chain: link several choices to build one point (paragraph). Taught RECYCLING/WEATHER
+    # -> held-out CHALLENGER. Fixed 2026-07-16 (readiness triage, genre/difficulty jump): the lesson models the
+    # device-chain ONLY on plain expository texts (recycling, weather) whose choices are concrete and easy to
+    # spot (an opening image, traced steps). The old held-out source (DOUGLASS, an 1852 oration dense with irony,
+    # biblical allusion, and archaic diction) demanded locating a kind of "choice" the lesson never modeled. The
+    # genre gate requires an ANALYSIS-mode held-out source for this type-4 lesson, so the source was swapped to
+    # Reagan's 1986 Challenger address: analysis-mode (gate-clean), modern plain prose, with concrete, spottable
+    # choices (naming each of the seven crew, the repeated "pioneers" framing, direct address to schoolchildren)
+    # of the same accessibility the lesson taught on. Unused elsewhere in G10; not a taught source in L08.
+    "ACC-W910-L-G10-C1002-0008": {"source": "ACC-W910-ANALYSIS-SINGLE-0003", "unit": "paragraph",
         "rubric_ref": "rc.staar", "prompt_html": _INTRO
         + _box("Your single analytical point:",
-               "The author forces his listeners to feel the gap between the nation's stated ideals and its "
-               "actual conduct.", "teal")
+               "The author consoles a grieving nation while reassuring it that space exploration will go on.", "teal")
         + _task("Sustain this ONE point across a paragraph with a device-chain, using the source above.",
                 "Link two or more of the author's choices that together build this point, showing how each choice "
                 "adds to it.",
-                "Do not make a single observation and stop; the moves must connect into one argument.")},
+                "Do not make a single observation and stop; the moves must connect into one point.")},
 
     # C1003-0009 - judge analyze vs summarize, predict, revise (paragraph). Taught WEATHER/WETLANDS -> held-out HOUR.
     "ACC-W910-L-G10-C1003-0009": {"source": "ACC-W910-ANALYSIS-LESSON-HOUR", "unit": "paragraph",

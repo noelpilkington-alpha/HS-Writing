@@ -5,8 +5,8 @@ RHETORICAL ANALYSIS needs a REAL author's choices to analyze, so the passage is 
 PUBLIC-DOMAIN text (an excerpt), NOT own-authored prose.
 
 TEXT: Ralph Waldo Emerson, "Self-Reliance," from Essays: First Series (1841). Excerpt = the
-central movement on trusting oneself and refusing conformity ("Trust thyself ... if I live wholly
-from within?").
+central movement on trusting oneself and refusing conformity ("Trust thyself ... the suffrage of
+the world.").
 
 PUBLIC-DOMAIN JUSTIFICATION: the essay was published in 1841, far earlier than 1929, so the text
 is unambiguously in the US public domain. No third-party copyrighted expression is used; the
@@ -60,10 +60,7 @@ PASSAGE = (
 "virtue in most request is conformity. Self-reliance is its aversion. It loves not realities and creators, but "
 "names and customs. Whoso would be a man must be a nonconformist. He who would gather immortal palms must not be "
 "hindered by the name of goodness, but must explore if it be goodness. Nothing is at last sacred but the "
-"integrity of your own mind. Absolve you to yourself, and you shall have the suffrage of the world. I remember an "
-"answer which when quite young I was prompted to make to a valued adviser, who was wont to importune me with the "
-"dear old doctrines of the church. On my saying, What have I to do with the sacredness of traditions, if I live "
-"wholly from within?"
+"integrity of your own mind. Absolve you to yourself, and you shall have the suffrage of the world."
 )
 
 SOURCE_URL = "https://en.wikisource.org/wiki/Essays:_First_Series/Self-Reliance"

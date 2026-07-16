@@ -193,8 +193,10 @@ LESSON = Lesson(
              ]),
         Slot("MODEL", "predict_the_fix", "What does this reason string's order most need?",
              bank="energy_transition",
-             body=("Diagnose this draft before the reveal. A string lists three reasons and ends on 'and it is "
-                   "also kind of a popular idea right now.' Which single move would most improve it? "
+             body=("Diagnose this draft before the reveal. Here is the reason string to fix: 'We should expand "
+                   "clean power because it can create jobs, because a reliable grid prevents the huge losses that "
+                   "blackouts cause, and because it is also kind of a popular idea right now.' Which single move "
+                   "would most improve it? "
                    "(A) move the strongest reason to the final slot, and cut the weak closer about popularity  "
                    "(B) add a fourth reason so the string gives the reader even more support to consider  "
                    "(C) make every reason about the same length so the three of them look evenly balanced  "

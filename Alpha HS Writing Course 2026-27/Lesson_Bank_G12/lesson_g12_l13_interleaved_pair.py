@@ -71,10 +71,12 @@ BEFORE_AFTER_HTML = (
     '<span style="color:#166534;font-size:13px;font-weight:600"> second try: re-named as synthesis, move-set switched</span>'
     '<p style="margin:8px 0 0;font-size:15px">'
       '<span style="background:#dbeafe;color:#1e3a8a;padding:1px 6px;border-radius:3px;font-size:11px;'
-      'font-weight:700">SWITCH THE MOVE-SET</span> "The USGS source shows irrigation water mostly leaves the '
-      'supply for good, while the USDA source shows those same irrigated farms produce more than half of U.S. '
-      'crop value. Weighing the two, the nation should protect food water but tie it to strict efficiency '
-      'rules." The sources are woven and weighted, not a personal opinion.</p>'
+      'font-weight:700">SWITCH THE MOVE-SET</span> "A synthesis prompt hands me a source set on the same '
+      'question, so I stop giving my own opinion and start weaving those sources. If one source reported how '
+      'much water irrigation loses for good and another reported how much crop value irrigated farms produce, '
+      'I would weigh the two and argue that the nation should protect food water but tie it to strict '
+      'efficiency rules." The move is to weave and weight whatever sources the prompt supplies, not to state a '
+      'personal opinion.</p>'
     '<p style="margin:6px 0 0;color:#166534;font-size:13px">Same writer, next prompt re-named as a synthesis '
     'and the moves switched to weave-and-weight. Re-name the type, switch the move-set: that is what interleaved '
     'practice builds.</p>'
@@ -207,17 +209,20 @@ LESSON = Lesson(
         # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the 3-question switch check on it,
         # fixing any line that fails. Same taught bank (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
-        Slot("MODEL", "diagnosis_frq", "Run the switch check on your own draft",
+        Slot("MODEL", "diagnosis_frq", "Run the switch check: your draft, then your plan for the next prompt",
              ref="", bank="water_tradeoff", scored=True,
              body=frq_prompt(
-                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
+                 intro="Reread the argument essay you just wrote, then write the short plan you will run for the "
+                       "NEXT prompt, a synthesis on a source set. Run this checklist on your essay and your plan, "
+                       "and fix any line that fails.",
                  checklist_block=checklist(title="Run the switch check:", rows=[
-                     ("Have you named the next prompt's type from its tell?", "If you have not, a source set signals a synthesis, so name it before you plan."),
-                     ("Do your planned moves match that type, not the last prompt?", "If they are still the argument moves (a personal position and your own examples), switch to weaving and weighting the sources."),
-                     ("For a synthesis, is one argument built from the sources and weighted?", "If one argument is not yet built from the sources and weighted, add the weave-and-weight move the synthesis needs."),
+                     ("Did your argument essay run the argument move-set, a defensible position carried by your own reasoning and examples?", "If it drifted into summarizing a source point by point, that is the wrong move-set for the argument; carry your position with your own reasons and specific examples."),
+                     ("In your plan for the next prompt, have you named it as a synthesis from its tell, a set of sources?", "If you have not named it yet, a source set is the synthesis tell, so name it before you plan the moves."),
+                     ("Does your synthesis plan switch the move-set, weaving one argument from the sources and weighting them, not repeating a personal opinion?", "If your plan still reaches for a personal position and your own examples, that is the argument move bleeding forward; switch it to weave-and-weight the sources the synthesis prompt gives you."),
                  ]),
-                 closer="For every line that fails on your draft, name what is off in one sentence and make the "
-                        "fix. Finish by naming the new move-set you will switch to for the synthesis prompt.")),
+                 closer="For every line that fails, name what is off in one sentence and make the fix on your "
+                        "essay or your plan. Finish by naming the synthesis move-set you will switch to for the "
+                        "next prompt.")),
     ],
 )
 

@@ -185,13 +185,15 @@ LESSON = Lesson(
                    "(C) Load the essay with more advanced vocabulary and longer, more formal sentences, add a "
                    "fourth supporting paragraph that stacks on one more example for the same side, and write a "
                    "much longer conclusion that walks back through every reason once again in fuller detail. "
-                   "Correct: B earns sophistication; A and C are only competent. (A) is organized but narrow and "
-                   "flattens the other side; (C) polishes the surface but never situates or holds the tension. "
-                   "(B) situates, holds the tension, and defends. Sophistication across the essay is the move."),
+                   "Correct: B earns sophistication; A and C do not. (A) is organized and clear, but setting the "
+                   "other side aside as simply mistaken is exactly the flattening this lesson tells you to fix, so "
+                   "it stays at the competent floor and never rises to sophistication; (C) polishes the surface but "
+                   "never situates or holds the tension. (B) situates, holds the tension, and defends. "
+                   "Sophistication across the essay is the move."),
              choices=[
                  {"id": "A", "text": "Open with one clear thesis, give three tidy paragraphs of evidence that all back the same side, treat the opposing view as simply mistaken and set it quietly aside, then restate the opening thesis in fresh words to close the whole essay out neatly.",
                   "correct": False,
-                  "why": "This is competent, not sophisticated. It is organized, but it answers only the narrow prompt and flattens the other side by calling it mistaken, so no sophistication is carried."},
+                  "why": "It is organized and clear, so it clears the competent floor, but it never rises above it: it answers only the narrow prompt and calls the other side mistaken. Dismissing a side that way is the flattening the lesson tells you to fix, so this plan carries no sophistication."},
                  {"id": "B", "text": "Situate the choice inside the larger question of how a society splits a fixed budget between the future and the present workforce, hold that tension in every paragraph, and defend a splitting rule the other side would still respect.",
                   "correct": True,
                   "why": "Correct. It situates the choice in a larger question, holds the tension paragraph by paragraph instead of dismissing a side, and defends a rule an opponent must respect. Sophistication runs through the whole essay."},

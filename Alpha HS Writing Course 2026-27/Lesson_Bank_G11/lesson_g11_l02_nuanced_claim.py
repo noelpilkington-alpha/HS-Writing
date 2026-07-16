@@ -210,9 +210,9 @@ LESSON = Lesson(
                    "(D) turn it into an open question and let the reader work out the answer on their own"),
              feedback=("Correct: A. The claim states a side but never distinguishes it from the near alternative "
                        "(fix the grid), so its exact position is fuzzy. The nuanced fix names what it is NOT: "
-                       "'The problem is not too little clean power but too little ability to move it, so build "
-                       "more capacity.' A supporting fact (B), more confidence (C), or a question (D) never add "
-                       "the not-X-but-Y distinction.")),
+                       "'The problem is not that the country cannot move the clean power it has, but that it "
+                       "builds too little of it, so build more capacity.' A supporting fact (B), more confidence "
+                       "(C), or a question (D) never add the not-X-but-Y distinction.")),
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught topic =====
         Slot("SUPPORTED", "production_frq", "Finish the claim: fill in the not-X and the but-Y",

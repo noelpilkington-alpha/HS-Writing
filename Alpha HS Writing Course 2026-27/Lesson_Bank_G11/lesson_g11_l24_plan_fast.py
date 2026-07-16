@@ -198,7 +198,7 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="For the AI-workforce prompt, write a fast plan before you draft a word of the essay.",
                  setapart_block=setapart("Fill in this plan:",
-                                         "Position: ______ (the side you will defend). Point 1: ______ + its fact. Point 2: ______ + its fact. Point 3: ______ + its fact."),
+                                         "Position: ______ (the side you will defend). Point 1: ______ + its fact. Point 2: ______ + its fact. Point 3 (optional, only if you have a third): ______ + its fact."),
                  closer="Keep it to a few lines: one line for the position, then two or three ordered points, "
                         "each in a few words with the fact it will use in shorthand. Do not write full sentences "
                         "for each paragraph. This plan is what you will build the essay from.")),

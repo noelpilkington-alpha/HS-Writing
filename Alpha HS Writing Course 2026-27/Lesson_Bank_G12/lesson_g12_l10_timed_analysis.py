@@ -41,9 +41,9 @@ REMEMBER = (
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">Your check tool: reread the analysis</div>'
 '<div style="color:#1f2a44;font-size:14px;margin:4px 0 0">Before you submit, reread the whole analysis and ask:</div>'
 '<ol style="color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px">'
-'<li style="margin:2px 0">Does each body paragraph name a real choice the speaker makes?</li>'
-'<li style="margin:2px 0">Does it tie that choice to its effect on the audience?</li>'
-'<li style="margin:2px 0">Does the analysis reach the speaker\'s purpose, not stop at a retell?</li></ol>'
+'<li style="margin:2px 0">Does each body paragraph name a real choice the writer or speaker makes?</li>'
+'<li style="margin:2px 0">Does it tie that choice to its effect on the audience (its readers or listeners)?</li>'
+'<li style="margin:2px 0">Does the analysis reach the writer\'s purpose, not stop at a retell?</li></ol>'
 '<div style="color:#0f766e;font-size:13px;margin-top:6px">If any answer is no, fix it before you submit.</div></div>')
 
 # coping-model before/after: an over-annotated approach (a retell that names no choice) rebuilt into a paced,
@@ -124,20 +124,24 @@ LESSON = Lesson(
                    "<ul style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
                    "<li style=\"margin:4px 0\"><strong>Cap the reading</strong>: read only until you can name the "
                    "situation and two or three choices worth analyzing, then stop. A rhetorical analysis means "
-                   "explaining the choices a speaker makes and the effect each one has on the audience.</li>"
+                   "explaining the choices a writer or speaker makes and the effect each one has on the audience, "
+                   "whether that audience reads the text or hears it.</li>"
                    "<li style=\"margin:4px 0\"><strong>Situated introduction</strong>: place the reader in the "
-                   "moment of the speech and state a thesis. A thesis is a one-sentence line that names the "
-                   "choices you will analyze and the overall effect they create.</li>"
+                   "text's situation, who is addressing whom and on what occasion, and state a thesis. A thesis "
+                   "is a one-sentence line that names the choices you will analyze and the overall effect they "
+                   "create.</li>"
                    "<li style=\"margin:4px 0\"><strong>Body paragraphs</strong>: one choice each, tied to its "
-                   "effect on the listeners.</li>"
-                   "<li style=\"margin:4px 0\"><strong>Conclusion</strong>: reach the speaker's purpose, the "
+                   "effect on the audience.</li>"
+                   "<li style=\"margin:4px 0\"><strong>Conclusion</strong>: reach the writer's purpose, the "
                    "goal the choices serve.</li></ul>"
-                   "The failure mode is a beautifully marked speech and a one-paragraph essay. Cap the reading; "
+                   "The failure mode is a beautifully marked text and a one-paragraph essay. Cap the reading; "
                    "pace the writing.")),
         Slot("TEACH", "teach_card", "The order of work, part by part",
              body=("Here is the order of work for a paced rehearsal. The rhetorical situation is when you know "
-                   "who is speaking, to whom, on what occasion, and toward what purpose. Follow this order and "
-                   "most of your time goes to writing, not marking:"
+                   "who is writing or speaking, to whom, on what occasion, and toward what purpose. For a "
+                   "published essay the occasion and audience are the readers and the moment the writer wrote "
+                   "for, just as a speech has its listeners and its hour. Follow this order and most of your time "
+                   "goes to writing, not marking:"
                    "<ol style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
                    "<li style=\"margin:4px 0\"><strong>BUDGET AND READ</strong>: cap the reading; find the "
                    "situation and two or three choices, then stop reading.</li>"
@@ -203,7 +207,7 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Plan your rhetorical analysis of this speech before you write a word of the essay.",
                  setapart_block=setapart("Fill in this plan:",
-                                         "Situation: ______ (speaker, audience, occasion). Choice 1: ______ + its effect. Choice 2: ______ + its effect. Choice 3: ______ + its effect. Thesis: ______."),
+                                         "Situation: ______ (writer or speaker, audience, occasion). Choice 1: ______ + its effect. Choice 2: ______ + its effect. Choice 3: ______ + its effect. Thesis: ______."),
                  closer="Write your budget (with a capped reading share) and a fast plan: the rhetorical "
                         "situation, the two or three choices with the effect you will analyze for each, and a "
                         "one-line thesis. This plan is what leaves you time to finish the analysis.")),

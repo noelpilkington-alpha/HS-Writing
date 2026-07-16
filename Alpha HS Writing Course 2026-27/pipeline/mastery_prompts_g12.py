@@ -166,6 +166,12 @@ MASTERY = {
     # RA-SINGLE-0002 (RA). Held-out RA source: RA-SINGLE-0003.
     "ACC-W910-L-G12-C1202-0010": {"source": "ACC-W910-RA-SINGLE-0003", "unit": "essay",
         "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        + _box("The rhetorical situation:",
+               "The passage above is from Ralph Waldo Emerson's essay \"Self-Reliance,\" published in Essays: "
+               "First Series (1841). Writing for the general reading public of his day, Emerson urges each "
+               "reader to trust an inner voice and resist the pressure to conform to society. Here the audience "
+               "reads the essay rather than hears it, and the occasion is its publication, not a speech.",
+               "teal")
         + _box("Your task:",
                "Analyze the rhetorical choices the writer of the passage above makes to achieve a purpose.",
                "teal")
@@ -201,7 +207,7 @@ MASTERY = {
         + _task("Your deliverable is a short naming-and-planning paragraph, not the finished essay. Do not "
                 "default to a memorized opening.",
                 "First NAME whether this is a synthesis, rhetorical-analysis, or argument FRQ, and give the tell "
-                "that proves it (here: it hands you a source set and asks you to use and cite the sources).",
+                "in the prompt that proves it.",
                 "Then name the move-set it rewards and sketch the plan you would run for it.")},
 
     # L13 - switch move-sets between two different FRQs (essay). Taught/transfer: WATERTRADEOFF, SYNTH-SET-0003

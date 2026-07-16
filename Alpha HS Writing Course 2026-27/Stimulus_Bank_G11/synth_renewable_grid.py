@@ -130,16 +130,16 @@ SOURCE_EPA = (
 
 # --- Source 4: US DOE -- DESCRIBED CHART (visual/quantitative), exempt from the 480-word floor --
 SOURCE_DOE_CHART = (
-"The bar chart below, drawn from data published by the U.S. Department of Energy, compares the 2024 "
+"The figures that follow, drawn from data published by the U.S. Department of Energy, compare the 2024 "
 "capacity factor of each major source of electricity. A capacity factor measures how much power a plant "
 "actually produced over the year against the maximum it could have produced if it had run at full "
-"output the entire time. A higher bar means a more consistently available source.\n\n"
-"The tallest bar belongs to nuclear power, which ran at more than 92 percent of its maximum capacity in "
+"output the entire time. A higher capacity factor means a more consistently available source.\n\n"
+"The highest figure belongs to nuclear power, which ran at more than 92 percent of its maximum capacity in "
 "2024. Natural gas follows at about 59.9 percent, and coal at about 42.36 percent. The two renewable "
-"sources at the center of the debate sit noticeably lower on the chart. Wind registers a capacity "
+"sources at the center of the debate sit noticeably lower. Wind registers a capacity "
 "factor of about 34.3 percent, and solar about 23.4 percent.\n\n"
-"The visual gap tells the essential story. The renewable bars are less than half the height of the "
-"nuclear bar, not because their equipment is faulty, but because the wind and sun are intermittent. A "
+"The gap between those numbers tells the essential story. The renewable figures are less than half of "
+"nuclear's, not because their equipment is faulty, but because the wind and sun are intermittent. A "
 "reader should draw the intended inference carefully. A low capacity factor does not mean a source is "
 "unimportant. It means that far more renewable capacity must be built, and paired with storage, to "
 "deliver the same steady supply that a single high-capacity-factor plant provides on its own."

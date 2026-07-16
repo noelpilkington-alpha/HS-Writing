@@ -33,7 +33,7 @@ ONE_IDEA = (
 'font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif">'
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">The one idea</div>'
 '<div style="color:#0f2f28;font-size:15px;margin-top:2px">A strong cross-text essay is a <strong>PLAN, built '
-'out and woven</strong>: a synthesis claim the whole source set supports, body paragraphs that weave the '
+'out and woven</strong>: a synthesis claim you defend from the whole source set, body paragraphs that weave the '
 'sources together, one paragraph that answers the counterclaim, and a conclusion that lands the upshot. You '
 'draft from the plan; you do not summarize one source, then the next, and hope.</div></div>')
 
@@ -43,7 +43,7 @@ REMEMBER = (
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">Your check tool: reread the cross-text essay</div>'
 '<div style="color:#1f2a44;font-size:14px;margin:4px 0 0">Before you submit, reread the whole essay and ask:</div>'
 '<ol style="color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px">'
-'<li style="margin:2px 0">Is there a synthesis claim the whole source set supports?</li>'
+'<li style="margin:2px 0">Is there a synthesis claim you defend from the source set?</li>'
 '<li style="margin:2px 0">Are the sources woven together across paragraphs, not listed one at a time?</li>'
 '<li style="margin:2px 0">Is the counterclaim named and then answered?</li></ol>'
 '<div style="color:#0f766e;font-size:13px;margin-top:6px">If any answer is no, fix it before you submit.</div></div>')
@@ -136,8 +136,10 @@ LESSON = Lesson(
                    "<li style=\"margin:4px 0\"><strong>Read the verb</strong>: analyze means one analytical claim "
                    "about the authors' craft; argue or should means a synthesis claim defended across the set "
                    "with the counterclaim answered.</li>"
-                   "<li style=\"margin:4px 0\"><strong>Synthesis claim</strong>: a position the whole set jointly "
-                   "supports, not a summary of one text at a time.</li>"
+                   "<li style=\"margin:4px 0\"><strong>Synthesis claim</strong>: for an analyze prompt, a "
+                   "position the whole set jointly supports; for an argue prompt on opposed sources, the side you "
+                   "take and defend using the set (one source backs your side, the other supplies the "
+                   "counterclaim you answer). Either way, not a summary of one text at a time.</li>"
                    "<li style=\"margin:4px 0\"><strong>Woven body</strong>: one paragraph per point, each pulling "
                    "from more than one source at once, not a paragraph per source.</li>"
                    "<li style=\"margin:4px 0\"><strong>Counterclaim answered</strong>: name the strongest claim "
@@ -159,7 +161,7 @@ LESSON = Lesson(
                        "essay. The task: should cities charge tolls to drive downtown during busy hours "
                        "(congestion pricing)? Use both sources.",
                  setapart_block=setapart("Fill in this plan:",
-                                         "Synthesis claim: ______ (the position both sources support). Point 1: ______ (weaves both sources). Point 2: ______ (weaves both). Counterclaim point: names ______ from the other side, then answers it with ______."),
+                                         "Synthesis claim: ______ (the side you take and defend using the set). Point 1: ______ (weaves both sources). Point 2: ______ (weaves both). Counterclaim point: names ______ from the other side, then answers it with ______."),
                  closer="Then write the full essay from this plan.")),
         # ===== the GATE: ONE cold cross-text essay on the held-out set (the certification write) =====
         Slot("TRANSFER", "production_frq", "GATE: write the complete cross-text essay",
@@ -177,7 +179,7 @@ LESSON = Lesson(
         Slot("INDEPENDENT", "self_score", "Score your own essay, then predict the gate result",
              ref="", bank="congestion_pricing",
              body=("Predict, then see your grade. Reread your finished essay and run the three-question check: "
-                   "is there a synthesis claim the whole set supports, are the sources woven rather than listed, "
+                   "is there a synthesis claim you defend from the set, are the sources woven rather than listed, "
                    "and is the counterclaim named and answered? Based on that, did your essay earn the gate?"),
              choices=[
                  {"id": "pass", "text": "Yes: all three are clearly there.", "correct": True,

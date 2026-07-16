@@ -245,10 +245,13 @@ LESSON = Lesson(
                      ("Where did it miss?", "Body three flattened into one side and the conclusion was cut, so the tension dropped at the end."),
                      ("Did PACING cause the miss?", "Yes. The late fade, not a thinking error, is what cost the row; the writer ran out of budget."),
                  ]),
-                 closer="Now run this same check on YOUR draft. Reread the essay you just wrote, name each gap "
-                        "between your predicted rows and the grader's rows, and fix any line that fails. Flag any "
-                        "gap caused by pacing, then name your single biggest pacing gap. If your prediction "
-                        "matched and pacing held, say so and name the row you were most at risk of missing.")),
+                 closer="Now run this same check on YOUR draft, using your own reread as the second opinion. "
+                        "Reread the essay you just wrote and compare each part against the prediction you made: "
+                        "for every row, name where the essay actually met your predicted score and where a "
+                        "careful reader would mark it lower than you did. Each place your reread lands lower than "
+                        "your prediction is a gap you can name now, without waiting on the grader. Flag any gap "
+                        "caused by pacing, then name your single biggest pacing gap. If your reread confirms your "
+                        "prediction and pacing held, say so and name the row you were most at risk of missing.")),
     ],
 )
 

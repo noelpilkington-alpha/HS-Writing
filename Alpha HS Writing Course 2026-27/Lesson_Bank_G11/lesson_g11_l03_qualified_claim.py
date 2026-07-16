@@ -165,7 +165,13 @@ LESSON = Lesson(
              ref="", labeled_grade_c=True, bank="ai_workforce_policy",
              body=("A fresh set, and all three take a side. Which one is a genuinely qualified claim: it names a "
                    "real limit, commits to a position, AND gives a reason a reader could weigh, instead of faking "
-                   "the limit or skipping the reason?"),
+                   "the limit or skipping the reason? "
+                   "(A) The state should fund retraining seats every so often in various cases, because offering some form of assistance to workers who are affected is generally a reasonable step for a government to take.  "
+                   "(B) When local factories automate their lines, the state should fund retraining seats, because laid-off workers cannot reskill fast enough on their own.  "
+                   "(C) When local factories automate their lines, the state should fund retraining seats for displaced workers. "
+                   "Correct: B. It names a real condition (when factories automate), commits to funding "
+                   "retraining, and gives a reason. (A) only pretends to set a limit with 'every so often in "
+                   "various cases'; (C) sets a real limit and commits but never says why."),
              choices=[
                  {"id": "A", "text": "The state should fund retraining seats every so often in various cases, because offering some form of assistance to workers who are affected is generally a reasonable step for a government to take.",
                   "correct": False,

@@ -241,8 +241,8 @@ LESSON = Lesson(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
                  checklist_block=checklist(title="Check your own draft, line by line:", rows=[
                      ("Does the prompt print set perspectives?", "No. The tradition-versus-progress prompt gives a general question and no printed views, so it is source-free, not multi-perspective."),
-                     ("Do the planned moves match the type?", "No. The plan assumes perspectives to weigh, but there are none. Switch to the source-free moves."),
-                     ("What should the moves be instead?", "Take a defensible position on whether progress requires breaking with tradition, then anchor it with specific examples from reading, studies, or experience."),
+                     ("Do the planned moves match that type?", "They match if your draft takes a defensible position and backs it with specific examples. If it instead tries to weigh printed perspectives, there are none here to weigh, so that is the mismatch to fix: switch to the source-free moves."),
+                     ("Are your source-free moves doing the work?", "Check that you take a defensible position on whether progress requires breaking with tradition, then anchor it with specific examples from reading, studies, or experience, rather than leaving the position unsupported."),
                  ]),
                  closer="For every line that fails on your draft, name what is off in one sentence and make the "
                         "fix. Finish by naming the task type your draft is written for.")),

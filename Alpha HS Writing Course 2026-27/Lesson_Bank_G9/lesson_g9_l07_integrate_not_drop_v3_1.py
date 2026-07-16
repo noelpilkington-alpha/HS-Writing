@@ -149,7 +149,7 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Which sentence integrates the quote?",
              ref="", labeled_grade_c=True, bank="phone_ban",
              body=("Now that you have seen one built, spot the target. All three use the same quoted number. "
-                   "Which one INTEGRATES the quote, folding it into a built sentence, instead of dropping it? "
+                   "Which one INTEGRATES the quote, folding it into a built sentence with the source named, instead of dropping it? "
                    "(A) The National Center for Education Statistics said it in a report from that year. "
                    "\"76.9 percent.\" That really is a lot of schools with limits.  "
                    "(B) The National Center for Education Statistics reports that \"76.9 percent\" of public "
