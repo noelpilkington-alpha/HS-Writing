@@ -75,17 +75,34 @@ The honesty guarantee: `verify_coverage()` checks each tracked defect's claimed 
 
 ---
 
+## Update (2026-07-16): all 4 mastery-genre defects fixed → 100/100
+
+The 4 mastery-genre mismatches are now resolved and the whole course is clean on the deterministic floor:
+
+```
+G9 27/27 · G10 26/26 · G11 31/31 · G12 16/16  =  100/100 lessons clean
+4,550 individual gate checks, all passing (COURSE_ALL_TIER_A_RECEIPTS.json)
+```
+
+Each fix mirrors what real state tests demand (docs 03/04) and was verified by **both** the deterministic gate and the independent Tier-B Fable judge:
+- **C1003-0025** (G10): held-out source → literary analysis (Silk Stockings), matching the taught genre.
+- **C1102-0030** (G11 gate): → source-free argument (the task the gate actually certifies).
+- **C1202-0012** (G12): prompt disambiguated + untaught deliverable dropped; genre flag was a false-positive on a recognition lesson, now a documented, *guarded* gate adjudication.
+- **C1006-0021** (G10): **the Tier-B judge earned its keep here** — it caught that a first single-text reframe conflicted with the lesson's cross-text body and would duplicate L25, a defect the deterministic gate approved. Fixed by authoring a genuine analysis-mode source *pair* (Henry 1775 + Douglass 1852). This is the two-tier design working as intended: the semantic judge catching what no fixed rule can.
+
+---
+
 ## Honest caveats (what this does *not* claim)
 
-1. **G10–G12 still have 4 real content defects** (the mastery-genre mismatches). G9 is clean; the other grades need the mastery source swapped before they ship. The gate now *flags* them every run — fixing them is content work, not pipeline work.
-2. **A fully-autonomous zero-issue run is not yet guaranteed.** Pedagogy-semantic defects still route through the LLM judge, which is trustworthy on the *known* classes but has not earned autonomous block authority yet (streak 1/3). New, never-seen defect classes will still need a human the first time — then the ratchet makes them automatic.
-3. **Grader / Tier D is untouched** (deferred by your decision).
+1. **A fully-autonomous zero-issue run is not yet guaranteed.** Pedagogy-semantic defects still route through the LLM judge, which is trustworthy on the *known* classes but has not earned autonomous block authority yet (streak 1/3). New, never-seen defect classes will still need a human the first time — then the ratchet makes them automatic.
+2. **Grader / Tier D is untouched** (deferred by your decision).
+3. One sequencing issue the triage noted (self-check-before-write ordering in the two G10 analysis essays) is a *separate* defect from the genre mismatch, not addressed in this pass (you scoped it to "genre fix only now"). Flagged for a follow-up.
 4. Nothing has been pushed. Direct-to-Timeback + Platform3 prep remain gated on your approval.
 
 ---
 
 ## What I recommend next
 
-- **Fix the 4 mastery-genre mismatches in G10–G12** (swap each held-out mastery source to the taught genre) so all four grades reach the G9 clean bar.
-- **Then re-run `tier_a_regression.py all`** → expect 100/100.
-- Optionally, run a full G9→G12 generation to see the hardened output end-to-end before any push.
+- **Optionally run a full G9→G12 generation** to see the hardened output end-to-end.
+- **Address the G10 sequencing issue** (self-check ordering) as a small follow-up if you want those two lessons fully clean beyond genre.
+- When you're ready, **the push to Timeback** (on your explicit go).
