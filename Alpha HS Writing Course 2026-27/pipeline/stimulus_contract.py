@@ -158,13 +158,35 @@ def gate_provenance(s: StimulusRecord) -> tuple[bool, str]:
         return False, "missing acc_tags"
     return True, f"provenance complete ({cp})"
 
-def gate_fact_sources(s: StimulusRecord) -> tuple[bool, str]:
+_FACT_RECEIPTS_DEFAULT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fact_verification.json")
+
+
+def _fact_receipt_for(stim_id: str, receipts_path: str | None) -> dict | None:
+    """Load the cached fact-verification receipt for a stimulus, or None if absent.
+    Receipts are written by verify_facts.py (a SEPARATE networked pass). This gate stays offline
+    and deterministic: it only READS the receipt, never fetches. No receipt -> behavior unchanged."""
+    path = receipts_path or _FACT_RECEIPTS_DEFAULT
+    if not os.path.exists(path):
+        return None
+    try:
+        data = json.load(open(path, encoding="utf-8"))
+    except Exception:
+        return None
+    return data.get(stim_id)
+
+
+def gate_fact_sources(s: StimulusRecord, receipts_path: str | None = None) -> tuple[bool, str]:
     """Anti-fabrication gate. For OWN-AUTHORED stimuli: every numeric figure in the passages must be
     backed by a fact-source row with a real fetched http(s) URL. For PUBLIC-DOMAIN verbatim texts
     (analysis mode): the text is a real author's words (not facts we authored), so the figure-backing
     check does not apply; instead we require the PD source to be documented (a source row with a URL).
     SOURCE-FREE families (perspective_set, prompt_only) provide no external facts (the student argues from
-    OWN knowledge), so a fact table is not required; but any fact-source row present must still be valid."""
+    OWN knowledge), so a fact table is not required; but any fact-source row present must still be valid.
+
+    fetch-verify (closes the fabrication hole): the URL/figure checks below only confirm a row is
+    well-FORMED, not that the cited figure is actually ON the page. verify_facts.py fetches each URL
+    and writes a receipt (fact_verification.json). If a receipt EXISTS for this stimulus, every row
+    must be marked verified or the gate fails. No receipt -> unchanged (offline CI stays green)."""
     if s.family in ("perspective_set", "prompt_only"):
         for fsrc in s.fact_sources:  # optional, but if present must be well-formed
             if not re.match(r"^https?://", (fsrc.url_fetched or "").strip()):
@@ -177,6 +199,16 @@ def gate_fact_sources(s: StimulusRecord) -> tuple[bool, str]:
             return False, f"fact-source '{fsrc.fact[:40]}' has no valid fetched URL"
         if not fsrc.org.strip():
             return False, f"fact-source '{fsrc.fact[:40]}' missing org"
+    # fetch-verify receipt (if one exists): every row's figure/verbatim must be confirmed on the page.
+    receipt = _fact_receipt_for(s.id, receipts_path)
+    if receipt is not None:
+        unverified = [r for r in receipt.get("rows", []) if not r.get("verified")]
+        if unverified:
+            first = unverified[0]
+            return False, (f"fetch-verify FAILED: {len(unverified)}/{len(receipt.get('rows', []))} rows "
+                           f"not confirmed on their source page (fabrication risk); e.g. "
+                           f"'{(first.get('verbatim') or first.get('figure') or '')[:40]}': "
+                           f"{first.get('reason', 'unverified')}")
     if (s.provenance or {}).get("copyright") == "public_domain":
         # PD verbatim text: source documented above; skip own-authored figure-backing
         return True, f"{len(s.fact_sources)} source row(s), PD text source documented (verbatim real text)"
@@ -305,7 +337,18 @@ def gate_bucket_profile(s: StimulusRecord) -> tuple[bool, str]:
 def gate_equivalent_form(s: StimulusRecord, anchor_set=None) -> tuple[bool, str]:
     """Test bucket only: the stimulus must sit inside the human-scored anchor band for {grade, mode, form}.
     When no anchor_set is supplied, or it has no anchors for that form yet, pass as UNCERTIFIED so the seed pool
-    can be built before anchors are scored. Lesson bucket is n/a."""
+    can be built before anchors are scored. Lesson bucket is n/a.
+
+    DELIBERATE DECISION (Noel, 2026-07-14) - UNCERTIFIED-passes is CORRECT here, not a fail-open to fix:
+    the anchor band is a HUMAN-SCORED calibration of real student writing, and we have NO student writing
+    for this course yet. The documented external test-form examples our research found are the interim
+    stand-in; there is nothing to score a band against. Blocking on absent anchors would halt the whole
+    test-bank build for a bar we cannot yet set. This is intentionally NOT symmetric with the other
+    fail-opens closed on 2026-07-14 (distractor_length_cue marker-in-feedback, _ref_exists family wildcard),
+    which were genuine holes with data available to close them.
+    REVERSAL TRIGGER: once real student responses exist and anchor bands are scored into calibration_anchors,
+    pass an anchor_set here and flip the two UNCERTIFIED branches below to a hard fail (or route UNCERTIFIED
+    to content_screen FLAG for human review). Do not "fix" this into a blocker before that trigger."""
     if s.bucket != "test":
         return True, "n/a (lesson bucket)"
     if anchor_set is None:
@@ -318,6 +361,22 @@ def gate_equivalent_form(s: StimulusRecord, anchor_set=None) -> tuple[bool, str]
     ok, why = anchor_set.equivalent_form_ok(s.grade, s.mode, s.form, lexile, passage_count, s.task_demand or band.demand_min)
     return ok, why
 
+def gate_register(s: StimulusRecord) -> tuple[bool, str]:
+    """Register/credibility of the passage TEXT itself (Tier A7, extended to the stimulus source).
+    WHY: Noel flagged 'The topic here is how volcanoes form' as childish/credibility-losing. That text
+    lived in a StimulusRecord passage, not a lesson teach_card, so the lesson-slot register scan never
+    saw it. This gate runs the same meta/childish-opener + leaked-jargon scan over every passage's own
+    text, at the source. Conservative (0 hits across the 95 live passages); Lexile/readability are
+    handled by gate_lexile, so this checks only opener register + jargon leaks."""
+    import register_gate as reg
+    flags = []
+    for p in s.passages:
+        flags += reg.check_passage_register(getattr(p, "text", "") or "",
+                                             where=f"passage '{getattr(p, 'title', '') or '?'}'")
+    if flags:
+        return False, "register: " + "; ".join(flags)
+    return True, "passage register clean (no childish opener, no leaked jargon)"
+
 GATES = [
     ("structure", gate_structure),
     ("provenance", gate_provenance),
@@ -328,6 +387,7 @@ GATES = [
     ("content", gate_content),
     ("bucket_profile", gate_bucket_profile),
     ("equivalent_form", gate_equivalent_form),
+    ("register", gate_register),
 ]
 
 # ---------------------------------------------------------------------------

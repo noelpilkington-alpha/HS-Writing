@@ -171,6 +171,24 @@ def _check_jargon(plain: str) -> list[str]:
     return hits
 
 
+def check_passage_register(text: str, where: str = "passage") -> list[str]:
+    """Register/credibility scan of a STIMULUS PASSAGE's own text (not a lesson slot). Returns a list
+    of flags. WHY THIS EXISTS: the childish opener Noel flagged ('The topic here is how volcanoes form')
+    lived in the StimulusRecord.passages[].text, NOT a lesson teach_card - so the lesson-slot scan above
+    would never have seen it. This closes that hole at the source. Scans for (a) meta/childish openers in
+    the passage's opening window and (b) leaked auditor/design jargon anywhere in the passage. It does NOT
+    apply the teach-card run-on readability check (that is calibrated for instructional prose, not the
+    Lexile-controlled source passages, which are gated on Lexile separately)."""
+    flags = []
+    if not (text or "").strip():
+        return flags
+    for op in _check_openers(_sentences(text)):
+        flags.append(f"{where}: meta/childish opener - \"{op}\"")
+    for j in _check_jargon(_plain(text)):
+        flags.append(f"{where}: auditor/design jargon leaked - {j}")
+    return flags
+
+
 def check_register(L) -> tuple[bool, list[str]]:
     """Register/credibility gate on one Lesson. Returns (passed, flags). passed == (flags == [])."""
     flags: list[str] = []

@@ -226,8 +226,18 @@ def _mut_stim_no_facts(s):
     return s
 
 
+def _mut_stim_childish_opener(s):
+    # Prepend the exact childish opener Noel flagged to the passage TEXT (not a lesson slot). This is the
+    # regression guard for the register-gate hole: the defect lived in StimulusRecord.passages[].text, so
+    # the lesson-slot register scan never saw it; gate_register must catch it at the source.
+    s.passages[0].text = "The topic here is how coral reefs form. " + s.passages[0].text
+    return s
+
+
 STIMULUS_KNOWN_BAD = [
     ("fact_sources", _mut_stim_unbacked_figure, "in-text figure with no fact-source row (fabrication risk)"),
     ("fact_sources", _mut_stim_bad_url, "fact-source with no valid fetched URL"),
     ("fact_sources", _mut_stim_no_facts, "own-authored stimulus with empty fact table"),
+    ("register", _mut_stim_childish_opener,
+     "childish 'The topic here is ...' opener in passage TEXT (the exact defect the lesson-slot scan missed)"),
 ]
