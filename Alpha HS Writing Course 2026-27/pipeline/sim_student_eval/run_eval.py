@@ -46,7 +46,8 @@ def run_walk(persona_id, model_name, lessons, run_dir, keys, gpt_model, do_test)
     if do_test:
         items = load_g9_test_items()
         tres = take_test(client, persona, items, jstore.digest())
-        json.dump(tres, open(os.path.join(run_dir, f"test_{tag}.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+        with open(os.path.join(run_dir, f"test_{tag}.json"), "w", encoding="utf-8") as f:
+            json.dump(tres, f, ensure_ascii=False, indent=2)
         print(f"  [{tag}] test: mcq {tres['mcq_scored']}")
 
 
@@ -60,6 +61,11 @@ def main():
     ap.add_argument("--run-id", default="g9_pilot")
     a = ap.parse_args()
 
+    persona_ids = [p.strip() for p in a.personas.split(",") if p.strip()]
+    unknown = [p for p in persona_ids if p not in PERSONAS]
+    if unknown:
+        ap.error(f"unknown persona(s): {', '.join(unknown)}. Known: {', '.join(sorted(PERSONAS))}")
+
     keys = load_keys()
     lessons = load_g9_lessons()
     if a.limit:
@@ -68,15 +74,16 @@ def main():
     os.makedirs(run_dir, exist_ok=True)
     print(f"Run dir: {run_dir}  |  lessons: {len(lessons)}")
 
-    for persona_id in a.personas.split(","):
+    for persona_id in persona_ids:
         for model_name in a.models.split(","):
             print(f"WALK: {persona_id} x {model_name}")
-            run_walk(persona_id.strip(), model_name.strip(), lessons, run_dir, keys, a.gpt_model, not a.no_test)
+            run_walk(persona_id, model_name.strip(), lessons, run_dir, keys, a.gpt_model, not a.no_test)
 
     print("Synthesizing report...")
     md = synthesize(run_dir, keys["anthropic"])
     rp = os.path.join(run_dir, "SIM_STUDENT_EVAL_G9.md")
-    open(rp, "w", encoding="utf-8").write(md)
+    with open(rp, "w", encoding="utf-8") as f:
+        f.write(md)
     print("REPORT:", rp)
 
 
