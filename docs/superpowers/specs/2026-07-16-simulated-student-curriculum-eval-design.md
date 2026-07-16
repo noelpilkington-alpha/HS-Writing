@@ -24,7 +24,7 @@ This is a **curriculum evaluation from the student's lived experience**, not a g
 | **Grading gap** | **Do NOT score writing.** | Automated grading isn't wired into the platform. Rather than couple the eval to the production grader (which we'd also be validating), findings come from the student's *lived experience*: confusion, friction, "I couldn't do this because X was never taught." |
 | **Run scope** | **Pilot G9 first, then scale.** | ~100 lessons across G9–G12 is a large spend on an unproven harness. Prove useful, non-slop output on G9's 27 lessons, let Noel read it, then run G10–G12 with the tuned harness. |
 | **Student memory** | **Continuous learner with an external structured journal.** | Redundancy + composition-readiness require the student to remember earlier lessons. To avoid context contamination/drift, memory is an **on-disk JSON "learner journal,"** not a growing raw transcript. Next lesson sees only the distilled journal + the new lesson. |
-| **Personas (pilot)** | **On-grade average G9 student** (the design's target student). | One persona proves the harness cheaply. High-achiever (sharpest redundancy detector) and struggling/distractible personas are built into the persona list and added at scale-up. |
+| **Personas (pilot)** | **Two: on-grade average G9 student + high-achieving/fast learner.** | The average student is the design's target and the primary *readiness* signal. The high-achiever is the sharpest *redundancy* detector (confirmed in Noel's L01 evals — bored by repetition, flags "you taught me this in L03"), so it directly serves question 2 from the first run. Struggling and distractible personas are built into the persona list and added at scale-up. |
 | **Model roles** | **Both Fable-5 and OpenAI as independent students; Claude synthesizes.** | Same persona walked twice, independently. Findings both models raise = robust; findings one raises = flagged model-specific noise. |
 
 ## 3. The "no knowledge of development" constraint — how it's enforced structurally
@@ -58,7 +58,8 @@ pipeline/sim_student_eval/
   test_taker.py     # the same student takes the G9 test carrying only the journal; logs attemptability.
   analyst.py        # Claude synthesis pass over ALL journals+transcripts: corroborate cross-model, detect
                     #   redundancy, composition-readiness gaps, test-readiness gaps.
-  run_eval.py       # orchestrator: 2 models x 1 persona x 27 lessons + test -> writes report + evidence.
+  run_eval.py       # orchestrator: 2 models x 2 personas x 27 lessons + test -> writes report + evidence.
+                    #   = 4 independent course-walks (fable-average, gpt-average, fable-achiever, gpt-achiever).
 ```
 
 ### 4.1 Data flow (per model-student, per lesson)
@@ -113,7 +114,13 @@ The same student takes the **G9 test** carrying the journal. G9 test surface, in
 
 - **Student A:** Anthropic `claude-fable-5` (proven callable via `.env` `ANTHROPIC_API_KEY`; the `lesson_review.fable_review` call shape is the template — `messages.create`, structured output via a forced tool call).
 - **Student B:** OpenAI (via `OPEN_AI_API_KEY`) — structured output via a JSON schema / tool call so journal updates are machine-valid.
-- **Analyst/synthesis:** Claude (the harness's own model, or `claude-opus`). Reads both students' journals + transcripts and produces the report. It labels each finding **CORROBORATED** (both students) or **SINGLE-MODEL** (one student — kept but flagged).
+- **Analyst/synthesis:** Claude (the harness's own model, or `claude-opus`). Reads all four course-walks' journals + transcripts and produces the report.
+
+**Corroboration labels** (with 2 models × 2 personas = 4 walks, corroboration is two-dimensional):
+- **CORROBORATED (cross-model):** both models raise it for the same persona → robust, not a model artifact.
+- **CORROBORATED (cross-persona):** both personas raise it → robust, not a persona quirk.
+- **PERSONA-SPECIFIC:** raised by the high-achiever only (typically redundancy/boredom) or the average student only (typically a scaffolding/clarity gap) — kept and labeled, because *which* student trips is itself the signal (redundancy is a high-achiever finding by design; a readiness gap is an average-student finding).
+- **SINGLE-MODEL:** one model in one persona only → kept but flagged as possible model noise.
 
 Each student agent is forced to emit structured output (a tool/function call with the journal schema) so we never parse free-text JSON — the same reliability lesson `lesson_review.py` already banked.
 
@@ -124,8 +131,8 @@ Each student agent is forced to emit structured output (a tool/function call wit
   2. *Redundancies* — corroborated list, each with the two lessons involved and which student(s) flagged it.
   3. *Composition readiness* — for each composition probe, the skills that were / weren't in place, traced to lessons.
   4. *Test readiness* — items the student couldn't attempt and the missing-skill trace.
-- **`journal_<persona>_<model>.jsonl`** (×2) — the external memory, one line per lesson.
-- **`transcripts_<persona>_<model>.jsonl`** (×2) — full raw student utterances (the evidence every finding cites).
+- **`journal_<persona>_<model>.jsonl`** (×4: average/achiever × fable/gpt) — the external memory, one line per lesson.
+- **`transcripts_<persona>_<model>.jsonl`** (×4) — full raw student utterances (the evidence every finding cites).
 
 ## 6. Honesty guardrails (non-negotiable, from project memory)
 
@@ -140,7 +147,7 @@ Each student agent is forced to emit structured output (a tool/function call wit
 - Not building a UI — outputs are Markdown + JSONL.
 - Not running G10–G12 in the first build (built grade-general, but pilot is G9).
 - Not simulating the LearnWith/Platform3 player runtime — we evaluate the *content* a student reads, which `render_student_experience` already produces faithfully.
-- Not persona multiplication in the pilot (one persona; list is extensible).
+- Not the full persona set in the pilot (two personas: average + high-achiever; struggling and distractible are in the extensible list, added at scale-up).
 
 ## 8. Key file references (verified)
 
