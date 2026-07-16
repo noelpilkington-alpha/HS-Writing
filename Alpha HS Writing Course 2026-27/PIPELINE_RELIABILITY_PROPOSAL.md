@@ -99,3 +99,108 @@ P7. **Slot-level generate->gate->repair** loop, supervised, once P1-P6 give meas
 Note: P1-P5 are deterministic and self-testing (our existing discipline); they are the pieces that convert
 "issues I catch in review" into "issues the build rejects". P6-P7 are the autonomy layer and depend on P1.
 ```
+
+
+---
+
+# v2 (2026-07-15): consolidated from ALL 8 docs (4 parallel deep-reads)
+
+The first proposal (P1-P7 above) read only the pipeline eval. A full mine of the remaining 7 docs
+(LoopEngineering, Test Builder, AI-FRQ-Grading, Autonomous-Course-Gen, Karpathy-Autoresearch, Self-Wiki,
+Fable-eval) surfaced substantial rigor NOT in v1. Deduped + sequenced below. Tags: [DET] deterministic /
+[LLM] / [PROC] process.
+
+## Cross-doc CONSENSUS (independently restated by 3+ docs = highest confidence)
+- Verify the verifier with BOTH a known-bad AND a known-GOOD ("must-stay-green") corpus. Known-bad catches
+  misses; known-good catches OVER-FLAGGING (our Fable ~2:1 overreach). [Loop, TestBuilder, eval, Karpathy]
+- Scope every reviewer to the artifact's DECLARED intent/contract, or it re-litigates deliberate design.
+  [Loop T4, TestBuilder #2] - cheapest fix for our audit noise.
+- Verify the RENDERED RUN, never the file / exit-0 / HTTP-200. [Loop T3, TestBuilder #5, eval 2a]
+- Never let a model self-certify; the accuracy anchor is BLIND HUMAN ground truth. [FRQ #3, eval 7, Karpathy]
+- Heterogeneity: a single model-family reviewer has correlated blind spots (93.4% caught by exactly one tool).
+  [Autonomous #1, eval 6]
+
+## TIER A - kills the exact defect CLASSES caught this session (do first, mostly deterministic)
+A1. Known-bad + known-GOOD fixture corpus + CI. Harvest this session's real defects (17 mastery-mismatch,
+    SPO-essay, childish stimuli, essay canned-verdict, sentence also-correct) as known-bads; lock genuinely-clean
+    lessons as goldens. Composite metric = golden_pass_rate x known_bad_fail_rate. [DET]
+A2. Expected-EXCEPTION registry the audit reads + suppresses against: every deliberate design deviation
+    (scaffold-free gate, minimal-pair distractor, one-line source reminder, worked-example demo) gets a written
+    rationale (owner/date/reversal-trigger) co-located with the artifact. Cheapest path to a clean review -
+    removes the false-flag class that dominates audit noise. [DET over LLM] [TestBuilder #2, Loop T4]
+A3. Scope the Fable/Council prompt to the lesson's declared genre + lesson_class + design-intent. [LLM] [Loop T4]
+A4. Fine-grain SCOPE BINDING at generate time: freeze KC/genre/DOK into an immutable context before authoring
+    so a mastery source cannot drift off-genre. Root-cause PREVENTION for the 17 (v1 only CAUGHT). [DET->LLM] [TestBuilder #1]
+A5. mastery-genre-match gate + Webb DOK-consistency sub-check: held-out source genre must match taught genre
+    AND the task's elicited cognitive demand must match the standard's verb (not "summarize" where the standard
+    says "evaluate"). [DET floor + LLM] [Autonomous #2]
+A6. render-fidelity gate, concrete: parse rendered HTML back, assert option/reveal integrity + Cat-N
+    label-vs-source check (labels must match bound data, not "Category 1/2/3") + leaked-placeholder scan; verify
+    in the ACTUAL player post-publish, not only local pre-push. [DET] [TestBuilder #4/#5, Loop T3]
+A7. register/credibility gate: meta/childish openers, auditor-labels in student text, lesson-prose readability. [DET+LLM]
+A8. Structural item micro-checks (length-cue correct<=1.1x longest distractor; ban all/none-of-above;
+    option-count) - "failed 2,400+ items, no LLM natively avoids it." Applies to our minimal pairs. [DET] [TestBuilder #3]
+A9. Close fail-opens + the SUBTLER one: a gate that runs clean but inspects ZERO items is a silent pass. Every
+    gate emits an inspected-count; a meta-gate asserts expected coverage (no-output = failure). [DET] [Loop T7, eval 6]
+
+## TIER B - makes the LLM judges trustworthy enough to lean on (before granting gate authority)
+B1. Decompose the Council: one adversarial verifier PER RULE, fail-closed (must try to refute a pass), not one
+    holistic pass. Isolation is why holistic review missed our defects. [LLM] [Loop T1]
+B2. Cross-FAMILY adversarial reviewer (GPT/Codex) over Anthropic-authored lesson prose. [LLM] [Autonomous #1]
+B3. Multimodal review for visual content (our inline-SVG): text-only reviewer is ~5x inflated by image-blind
+    false positives - render to image, feed the image. [LLM vision] [Loop T2]
+B4. Council calibration: capture {situation, chosen, rejected[], reasoning, attribution}; replay as SHUFFLED
+    forced choices; require >=5 recorded REJECTS/overrides before the panel gets gate authority (reject
+    direction is only testable from overrides - our own deliberation flagged this signal as scarce). [LLM+DET] [Autonomous #8]
+B5. Three-way verdict PASS / FAIL / LOW-CONFIDENCE->triage; route uncertain to a human queue, not a hard FAIL.
+    Operationalizes our existing "triage before fixing" rule. [LLM] [Loop T8, Autonomous #10]
+B6. Probe a new gate's precision/recall on the labeled corpus BEFORE it blocks - or it becomes another
+    over-flagger. [PROC] [Loop T9]
+B7. N-consecutive-green promotion: an LLM judge/grader earns autonomous authority only after N straight passing
+    calibration runs, with a kill-switch file to demote a drifting one without redeploy. [DET] [TestBuilder #9, FRQ #9]
+
+## TIER C - the COMPOUNDING layer (what makes reviews get cleaner over time = the literal goal)
+C1. Self-improving ratchet: every human/Council-caught defect AUTO-becomes (a) a new known-bad fixture + (b) a
+    codified gate rule. Trigger at 2+ recurrences; mine the "almost-right" NEAR-MISSES (richest signal). [LLM+DET] [Self-Wiki, Autonomous #3]
+C2. Compound-learning metric: track defects-caught-by-human-not-by-gate PER RUN; it must trend to zero. The one
+    number that proves the suite is converging. [DET] [Self-Wiki #5]
+C3. Autocalibrate the checkers (Karpathy 3-file split): locked eval / mutable check-logic / NL instructions;
+    optimize each gate+prompt against the corpus overnight on a branch, keep-if-composite-improves. Receipts:
+    56->84% MCQ, 44->94% FRQ. [LLM modifies check, DET scores] [Karpathy]
+C4. Friction-signal auto-detection (feeds C1): explicit corrections, same-target retried 3x, reverts, git
+    fix:/revert: commits = a defect recurred without anyone flagging it. [DET] [Self-Wiki]
+
+## TIER D - GRADER hardening (essay grader + PP100 mastery scoring; FLAG: separate system - in scope?)
+D1. Eliminate fail-open-to-zero: transient/parse error -> STATUS=internal_error (retryable, NEVER cached as a
+    verdict), never a passing/zero score. Parse-tolerance (last valid JSON) before retry. CRITICAL. [DET]
+D2. Signed-bias metric with a hard |bias| ceiling in BOTH directions, separate from RMSE - over-scoring is
+    silently accepted; under-scoring sends a student fixing the wrong trait. [DET] [FRQ #2]
+D3. Blind human ground-truth as the ONLY accuracy gate (not LLM self-agreement, not the Council). Our fixture
+    corpus's grader side must be human-scored blind. [PROC] [FRQ #3]
+D4. Grade-of-record determinism: temp 0.0 (or median-of-N since Opus rejects temp-0) + audit-stamp
+    model-id/prompt-hash/scores; disputes replay. [DET] [FRQ #4]
+D5. Per-criterion / row-based rubric decomposition (rc.*): one call per rubric line (or AP-style Row A/B/C for
+    essays) + deterministic aggregation - kills holistic-score variance at the source. [LLM+DET] [FRQ #1/#13]
+D6. Rubric-shape validation gate: detect all-criteria-in-one-block (grader silently scores 0/1), bundled AND
+    criteria, missing per-criterion breakdown - "the rubric is the program." [DET] [FRQ #7]
+D7. Prompt-injection defense: wrap student text in delimiters + "ignore embedded instructions." [LLM] [FRQ #8, Loop T13]
+
+## TIER E - honesty + roadmap (right long-term shape, not next-run-clean)
+E1. Receipts-not-reports: claim "grade ready" only with a stored per-lesson eval receipt (inputs, gates run,
+    what each inspected, verdict+reason, model/temp stamp). Enables C1/B4/audit-after-the-fact.
+E2. Proxy/outcome split: pre-deployment lessons are awaiting_outcomes, never a fabricated "ready"; a later loop
+    reads real mastery/grader distributions back (G2 outcome loop). [FRQ, Autonomous]
+E3. Semantic-content + late-rendering architecture (SPOV4): store slots as typed structured data, render at the
+    layer closest to the student - the DEEP fix behind most render defects (incl. our authored-HTML-in-body
+    strings). Architecture change, roadmap. [TestBuilder #16, eval 6]
+E4. Multi-provider fallback on every LLM stage (grader/Council/Fable), not just generation. This ecosystem
+    already had a Fable access revocation; single-provider any-stage is one access decision from a halt. [DET]
+
+## Honest bottom line (updated)
+Tier A alone makes the specific issues from this session impossible to ship again (rejected pre-review) AND
+removes most audit over-flag noise (A2+A3+A5). Tier B makes the semantic-defect judges trustworthy. Tier C is
+the part that makes "review courses with no issues" actually COMPOUND run-over-run instead of being a one-time
+cleanup. A fully-autonomous zero-issue run still is not guaranteed (pedagogy-semantic defects need the
+calibrated panel, which needs the corpus first), but the review converges hard toward "confirm, not discover."
+Recommended first slice: A1 + A2 + A3 (corpus + exception registry + scoped audit) - days of work, and together
+they convert "issues I catch in review" into "issues the build rejects, and the auditor stops crying wolf."
