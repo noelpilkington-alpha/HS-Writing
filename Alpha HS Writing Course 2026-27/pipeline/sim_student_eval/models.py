@@ -78,3 +78,29 @@ class FableClient:
             if getattr(b, "type", "") == "tool_use" and getattr(b, "name", "") == "report_student_turn":
                 return dict(b.input)
         return {"response": "", "journal_update": {}, "error": "no tool call"}
+
+
+class GptClient:
+    def __init__(self, api_key: str, model: str = "gpt-5.5"):
+        import openai
+        self._c = openai.OpenAI(api_key=api_key)
+        self._model = model
+
+    @property
+    def name(self) -> str:
+        return "gpt"
+
+    def ask(self, system: str, user: str) -> dict:
+        import json as _json
+        tool = {"type": "function", "function": {
+            "name": STUDENT_TOOL["name"], "description": STUDENT_TOOL["description"],
+            "parameters": STUDENT_TOOL["input_schema"]}}
+        r = self._c.chat.completions.create(
+            model=self._model,
+            messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
+            tools=[tool], tool_choice={"type": "function", "function": {"name": STUDENT_TOOL["name"]}},
+            max_completion_tokens=3000)
+        msg = r.choices[0].message
+        if msg.tool_calls:
+            return dict(_json.loads(msg.tool_calls[0].function.arguments))
+        return {"response": msg.content or "", "journal_update": {}, "error": "no tool call"}
