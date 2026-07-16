@@ -144,15 +144,21 @@ MASTERY = {
                 "Then REVISE it into real analysis using the source above: name a specific choice the author "
                 "makes, its effect on the reader, and why that effect matters to the story's purpose.")},
 
-    # C1005-0010 - revise for purpose: add what is needed, cut what is not (sentence). Taught WETLANDS/HIGHWAYS -> held-out RECYCLING.
+    # C1005-0010 - revise for purpose: add what is needed, cut what is not. Taught WETLANDS/HIGHWAYS -> held-out
+    # RECYCLING. Fixed 2026-07-16 (COURSE_MASTERY17_TRIAGE C1005-0010): the old PP100 demanded WITHIN-sentence
+    # clause surgery (cut a subordinate clause inside one compound sentence) - an operation the lesson never
+    # modeled. Every practice slot revises a MULTI-SENTENCE draft: delete the one off-purpose sentence, add the
+    # sentence the point needs. Reworded the PP100 to that same shape (unit stays multi-sentence draft revision).
     "ACC-W910-L-G10-C1005-0010": {"source": "ACC-W910-INFO-LESSON-RECYCLING", "unit": "sentence",
         "rubric_ref": "rc.staar", "prompt_html": _INTRO
-        + _box("A sentence to revise (its point: how sorting produces clean streams):",
-               "Workers and machines sort the material, and the facility, which opened years ago and now employs "
-               "many people, separates the load.")
-        + _task("Revise this sentence for its purpose using the source above.",
-                "Decide which part of the sentence does not serve that point and cut it, and add the piece the "
-                "reader needs to follow HOW the sorting produces clean, usable streams. Write one sentence.")},
+        + _box("A draft to revise (its point: how sorting produces clean streams):",
+               "Workers and machines sort the material into clean streams. The facility opened years ago and now "
+               "employs many people. Only clean, correctly sorted material can be pressed into bales and sold.")
+        + _task("Revise this draft for its purpose using the source above.",
+                "Delete the one sentence that does not serve the point (how sorting produces clean streams), and "
+                "add a sentence that shows HOW the sorting actually separates the material into those clean "
+                "streams.",
+                "Write the revised draft.")},
 
     # C1005-0011 - order sentences so each builds on the last (sentence). Taught HIGHWAYS/RECYCLING -> held-out WEATHER.
     "ACC-W910-L-G10-C1005-0011": {"source": "ACC-W910-INFO-LESSON-WEATHER", "unit": "sentence",
@@ -225,14 +231,22 @@ MASTERY = {
                 "single source.",
                 "Someone should be able to see it draws on the set as a whole. Write one sentence.")},
 
-    # C1006-0017 - use two sources together (woven) for one point (sentence). Taught SCHOOLYEAR/CONGESTION -> held-out DST.
+    # C1006-0017 - use two sources together (woven) for one point (sentence). Taught SCHOOLYEAR/CONGESTION ->
+    # held-out DST. Fixed 2026-07-16 (COURSE_MASTERY17_TRIAGE C1006-0017): the taught move (per the lesson's
+    # own SCHOOLYEAR model + CONGESTION transfer) weaves a fact from EACH side of an opposing pair so the two
+    # RELATE in one claim ("the slide meets the cost"; "the toll money can be aimed at the drivers the other
+    # source worries about") - NOT both sources cheering one side. The old PP100 assigned a one-sided pro-abolish
+    # health point on an OPPOSING pair, so the con passage could not honestly feed it. Reworded the point to a
+    # connect-both-sides claim that matches how the lesson modeled the weave on its own opposing sets.
     "ACC-W910-L-G10-C1006-0017": {"source": "ACC-W910-ARG-OPP-LESSON-DST", "unit": "sentence",
         "rubric_ref": "rc.staar", "prompt_html": _INTRO
         + _box("The point you are building:",
-               "Ending the twice-a-year clock change would remove a small but real cost to public health.", "teal")
-        + _task("Write ONE sentence that uses TWO of the sources in the set above TOGETHER to build this point.",
-                "Weave them (both feeding the same point), rather than giving each source its own separate chunk, "
-                "and attribute each source.",
+               "Any decision about the clock has to weigh a real health cost against a real everyday benefit.", "teal")
+        + _task("Write ONE sentence that uses BOTH sources in the set above TOGETHER to build this point: a fact "
+                "from the source that argues for ending the switch meeting a fact from the source that argues "
+                "against it.",
+                "Weave them so the two facts RELATE in one claim (the way the lesson wove the learning slide with "
+                "the cost), rather than giving each source its own separate chunk, and attribute each source.",
                 "Write one sentence.")},
 
     # C1006-0018 - name where sources agree and where they clash (sentence). Taught CONGESTION/DST -> held-out SCHOOLYEAR.
