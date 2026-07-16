@@ -21,7 +21,7 @@ bound sources preserved. Passes 23 lesson_contract gates + render-QC. No fabrica
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "pipeline"))
 from lesson_contract import Lesson, Slot, qc_lesson, qc_report
-from lesson_prompts import frq_prompt, setapart, checklist
+from lesson_prompts import frq_prompt, setapart, checklist, outline_table
 
 ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
@@ -63,22 +63,38 @@ BEFORE_AFTER_HTML = (
     '<span style="display:inline-block;background:#15803d;color:#fff;font-size:11px;font-weight:700;'
     'padding:2px 8px;border-radius:4px">AFTER</span>'
     '<span style="color:#166534;font-size:13px;font-weight:600"> a multiple-paragraph outline that holds the whole essay</span>'
-    '<p style="margin:8px 0 0;font-size:15px">'
-      '<span style="background:#dbeafe;color:#1e3a8a;padding:1px 6px;border-radius:3px;font-size:11px;'
-      'font-weight:700">THESIS</span> The water cycle constantly recycles Earth\'s water through connected stages. '
-      '<span style="background:#e0e7ff;color:#3730a3;padding:1px 6px;border-radius:3px;font-size:11px;'
-      'font-weight:700">INTRO</span> open on water always moving, land the thesis. '
-      '<span style="background:#fef9c3;color:#854d0e;padding:1px 6px;border-radius:3px;font-size:11px;'
-      'font-weight:700">BODY 1</span> Main idea: evaporation lifts water into the air. Details: sun heats surface '
-      'water, vapor rises (USGS). '
-      '<span style="background:#fef9c3;color:#854d0e;padding:1px 6px;border-radius:3px;font-size:11px;'
-      'font-weight:700">BODY 2</span> Main idea: it cools and falls back. Details: vapor condenses into clouds, '
-      'returns as precipitation (USGS). '
-      '<span style="background:#fef9c3;color:#854d0e;padding:1px 6px;border-radius:3px;font-size:11px;'
-      'font-weight:700">BODY 3</span> Main idea: it collects and the loop repeats. Details: gathers in rivers, '
-      'lakes, oceans (USGS). '
-      '<span style="background:#dcfce7;color:#166534;padding:1px 6px;border-radius:3px;font-size:11px;'
-      'font-weight:700">CONC</span> restate: the same water cycles endlessly.</p>'
+    # the MPO shown as a real 2-D outline GRID (label column + content; body rows pair main idea with details),
+    # so the two-level structure is visible, not a run-on line. <table> is a top-level block here (never inside a
+    # <p>) and uses inline styles only -> Timeback-safe (verified 2026-07-16).
+    '<table style="border-collapse:collapse;width:100%;margin:8px 0 0;font-size:14px">'
+      '<tr><td style="border:1px solid #bbf7d0;padding:5px 8px;background:#dbeafe;color:#1e3a8a;font-weight:700;'
+      'white-space:nowrap;vertical-align:top">THESIS</td>'
+      '<td style="border:1px solid #bbf7d0;padding:5px 8px;vertical-align:top" colspan="2">The water cycle '
+      'constantly recycles Earth\'s water through connected stages.</td></tr>'
+      '<tr><td style="border:1px solid #bbf7d0;padding:5px 8px;background:#e0e7ff;color:#3730a3;font-weight:700;'
+      'white-space:nowrap;vertical-align:top">INTRO</td>'
+      '<td style="border:1px solid #bbf7d0;padding:5px 8px;vertical-align:top" colspan="2">Open on water always '
+      'moving, land the thesis.</td></tr>'
+      '<tr><td style="border:1px solid #bbf7d0;padding:5px 8px;background:#fef9c3;color:#854d0e;font-weight:700;'
+      'white-space:nowrap;vertical-align:top">BODY 1</td>'
+      '<td style="border:1px solid #bbf7d0;padding:5px 8px;vertical-align:top">Main idea: evaporation lifts water '
+      'into the air.</td><td style="border:1px solid #bbf7d0;padding:5px 8px;vertical-align:top">Details: sun '
+      'heats surface water, vapor rises (USGS).</td></tr>'
+      '<tr><td style="border:1px solid #bbf7d0;padding:5px 8px;background:#fef9c3;color:#854d0e;font-weight:700;'
+      'white-space:nowrap;vertical-align:top">BODY 2</td>'
+      '<td style="border:1px solid #bbf7d0;padding:5px 8px;vertical-align:top">Main idea: it cools and falls '
+      'back.</td><td style="border:1px solid #bbf7d0;padding:5px 8px;vertical-align:top">Details: vapor condenses '
+      'into clouds, returns as precipitation (USGS).</td></tr>'
+      '<tr><td style="border:1px solid #bbf7d0;padding:5px 8px;background:#fef9c3;color:#854d0e;font-weight:700;'
+      'white-space:nowrap;vertical-align:top">BODY 3</td>'
+      '<td style="border:1px solid #bbf7d0;padding:5px 8px;vertical-align:top">Main idea: it collects and the loop '
+      'repeats.</td><td style="border:1px solid #bbf7d0;padding:5px 8px;vertical-align:top">Details: gathers in '
+      'rivers, lakes, oceans (USGS).</td></tr>'
+      '<tr><td style="border:1px solid #bbf7d0;padding:5px 8px;background:#dcfce7;color:#166534;font-weight:700;'
+      'white-space:nowrap;vertical-align:top">CONC</td>'
+      '<td style="border:1px solid #bbf7d0;padding:5px 8px;vertical-align:top" colspan="2">Restate: the same water '
+      'cycles endlessly.</td></tr>'
+    '</table>'
     '<p style="margin:6px 0 0;color:#166534;font-size:13px">Now the thesis governs the whole plan, an intro and '
     'conclusion frame it, and each body row pairs a main idea with its own details, so every paragraph knows '
     'what it argues and proves.</p>'
@@ -214,12 +230,13 @@ LESSON = Lesson(
         Slot("SUPPORTED", "production_frq", "Draft the thesis, intro, and first body row",
              ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="Use the frame below so you can focus on the parts of the plan. Start a multiple-paragraph "
-                       "outline for an essay explaining the water cycle.",
-                 setapart_block=setapart("Copy this frame, then fill in the blanks:",
-                                         "THESIS: ______ [what the water cycle does]. INTRODUCTION: ______ [how "
-                                         "you open and land the thesis]. BODY 1 main idea: ______ [first stage]; "
-                                         "details: ______ (______ [source])."),
+                 intro="Use the outline grid below so you can see the shape of the plan. Copy it into the box and "
+                       "fill each blank to start a multiple-paragraph outline for an essay explaining the water cycle.",
+                 setapart_block=outline_table(title="Copy this outline, then fill in each blank:", rows=[
+                     ("THESIS", "______ (what the water cycle does across the whole essay)"),
+                     ("INTRODUCTION", "______ (how you open and land the thesis)"),
+                     ("BODY 1", ["main idea: ______ (first stage)", "details: ______ (______ source)"]),
+                 ]),
                  closer="Write a governing thesis, an intro line, and one body row that pairs a main idea with "
                         "its details and source. Do not write a single-paragraph plan. Then check it: does the "
                         "thesis govern, is there an intro, does the body row pair a main idea with details?")),
