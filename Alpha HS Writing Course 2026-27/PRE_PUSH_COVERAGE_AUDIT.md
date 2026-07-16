@@ -31,7 +31,25 @@
 
 ## The gaps that matter for a G9 push
 
-### GAP 9 — Anti-fabrication check is not wired, and 8 G9 stimuli carry unverified figures  ·  **HIGH**
+### ✅ RESOLVED 2026-07-16 (commit d2a8f72)
+
+Gap 9 is closed for G9. The receipt is now wired (fresh receipt at the gate's read path
+`pipeline/fact_verification.json`) and **enforced** (gate_fact_sources fails any unverified row).
+**G9 is 100% fact-verified: 0 unverified figure rows across all 25 G9-bound stimuli.**
+
+Root cause was mostly verifier FALSE-NEGATIVES: federal sources render figures inside `<table>` cells,
+which defeated the raw-substring check. Hardened `verify_facts.py` (HTML-strip + entity-decode +
+table-aware percent-unit check) and re-verified. Three genuine residuals triaged: **HIGHWAYS "48,890
+miles" was a real error** (FHWA page says 46,876 — corrected in the passage + fact row); RECYCLING +
+WATER-CYCLE were correct content with verbatim captures that didn't substring-match (fixed the captures).
+
+Enforcement newly surfaced that **G10 has its own unverified rows** (WEATHER 122/13; DST/SCHOOLYEAR/
+CONGESTION qualitative-label rows with no checkable figure) — out of scope for the G9 push; a per-grade
+pre-push task when G10 approaches its own push.
+
+---
+
+### GAP 9 (original finding) — Anti-fabrication check is not wired, and 8 G9 stimuli carry unverified figures  ·  **HIGH**
 
 **Evidence.** `gate_fact_sources` reads a receipt at `pipeline/fact_verification.json`; the only receipt on disk is at `pipeline/_fact_verify/fact_verification.json` — **wrong path, so the check never fires in the QC run.** The gate currently passes on well-*formed* rows without confirming the figure is on the cited page.
 
