@@ -210,9 +210,11 @@ MASTERY = {
         + _box("Your essay task:",
                "Explain how the Interstate Highway System began, how big it grew, and how the country paid for "
                "it.", "teal")
-        + _task("Do NOT write the essay. Write the PLAN as a single-paragraph outline.",
-                "Give a one-line thesis (a controlling idea for this explain task), then list your ordered body "
-                "points, and next to each point name the specific evidence from the source you would use.")},
+        + _task("Do NOT write the essay. Write the PLAN as a multiple-paragraph outline (the MPO this lesson "
+                "taught).",
+                "Give a governing thesis for the whole essay, an introduction line, then ordered body rows that "
+                "each pair a main idea with its details and the specific evidence from the source, and a "
+                "conclusion line that restates the thesis. Do not write a single-paragraph plan.")},
 
     # L20 - order the body paragraphs so the essay builds (plan). Held-out: RECYCLING.
     "ACC-W910-L-G9-C904-0020": {"source": "ACC-W910-INFO-LESSON-RECYCLING", "unit": "multi_paragraph",
