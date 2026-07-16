@@ -778,6 +778,106 @@ def gate_gate_shape(L: Lesson) -> tuple[bool, str]:
     return True, f"gate is scaffold-free (cue + unscored plan + {len(scored_writes)} cold scored write(s))"
 
 
+# Structural MCQ defects "no LLM natively avoids" (TestBuilder doc: length-cueing failed 2,400+ items).
+# LENGTH-CUEING is handled by gate_distractor_length_cue; gate_structural_item ADDS the OTHER deterministic
+# item-writing defects. Banned option FORMS (all/none/both-of-the-above, Type-K roman-numeral combinations)
+# invite test-taking heuristics that let a student answer without the target reasoning; a non-standard option
+# COUNT, a missing/duplicated key, and duplicate option text are item-writing defects the generator will scale.
+_BANNED_OPTION_FORM = re.compile(
+    r"\ball of the (?:above|following)\b|\bnone of the (?:above|following)\b|"
+    r"\bboth\s+\(?[A-D]\)?\s+and\s+\(?[A-D]\)?\b|"          # both A and B / both (A) and (B)
+    r"\b[A-D]\s+and\s+[A-D]\s+(?:only|both)\b",             # A and B only / C and D both
+    re.I)
+# Type-K roman-numeral combination options ("I and II only", "II and III", "I, II, and III"). Case-SENSITIVE
+# (uppercase roman tokens only) so the English pronoun "I" and stray lowercase letters do not false-match.
+_BANNED_TYPE_K = re.compile(
+    r"\b(?:I{1,3}|IV|V)\b\s*(?:,\s*(?:and\s+)?|and\s+)\b(?:I{1,3}|IV|V)\b")
+
+
+def _norm_opt(t: str) -> str:
+    """Normalize an option's text for duplicate detection: strip tags, lowercase, drop non-alphanumerics,
+    collapse whitespace. Two options that differ only in punctuation/case/markup normalize equal."""
+    t = re.sub(r"<[^>]+>", " ", t or "")
+    t = re.sub(r"[^a-z0-9 ]+", " ", t.lower())
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def _slot_options(s):
+    """([(id, text)], correct_ids, parseable) for a choice slot: PREFER the structured choices=[] array;
+    fall back to the '(A)...(B)...' prose + 'Correct:/Reveal: X' tail in the body (same parse as
+    gate_distractor_length_cue). correct_ids is de-duplicated by letter (a prose reveal names one key)."""
+    if getattr(s, "choices", None):
+        opts, correct = [], []
+        for c in s.choices:
+            oid = c.get("id")
+            if oid is None:
+                continue
+            opts.append((oid, str(c.get("text", ""))))
+            if c.get("correct"):
+                correct.append(oid)
+        return opts, correct, True
+    body = re.sub(r"<[^>]+>", " ", s.body or "")
+    fb = re.sub(r"<[^>]+>", " ", s.feedback or "")
+    rev = re.search(r"\b(Correct:|Reveal:)", body, re.I)
+    core = body[:rev.start()] if (rev and _OPT_MARKER.search(body[:rev.start()])) else body
+    opts = []
+    for pc in re.split(r"(?=\([A-D]\)\s)", core):
+        m = re.match(r"\(([A-D])\)\s*(.+)", pc.strip(), re.S)
+        if m:
+            opts.append((m.group(1), m.group(2).strip()))
+    correct = [m.group(1) for m in re.finditer(r"\b(?:Correct|Reveal):\s*\(?([A-D])\)?", body + "\n" + fb, re.I)]
+    correct = list(dict.fromkeys(correct))   # unique, order-preserving
+    return opts, correct, bool(opts)
+
+
+def gate_structural_item(L) -> tuple[bool, str]:
+    """Deterministic structural MCQ micro-checks on discrimination / predict_the_fix items, targeting the
+    item-writing defect families 'no LLM natively avoids' (TestBuilder doc) that gate_distractor_length_cue
+    does NOT already cover (length-cueing is handled there; this does not duplicate it):
+      (a) banned option FORMS: 'all/none of the above', 'both A and B', Type-K roman-numeral combinations;
+      (b) option COUNT: our standard is exactly 3 options; flag 2 or >4 (self_score - a 2-point predict-your-
+          own-result item - is not a discrimination/predict item and is not inspected here);
+      (c) EXACTLY-ONE-CORRECT: exactly one option flagged correct (0 or 2+ correct = defect);
+      (d) NO DUPLICATE OPTIONS: two option texts identical/near-identical after normalization.
+    Reads s.choices when present, else the '(A)...(B)...'/'Correct: X' prose in s.body/feedback. An
+    unparseable choice item is left to gate_distractor_length_cue's fail-closed check, not double-flagged."""
+    problems = []
+    for i, s in enumerate(L.slots):
+        if s.kind not in ("discrimination", "predict_the_fix"):
+            continue
+        opts, correct, parseable = _slot_options(s)
+        if not parseable or not opts:
+            continue
+        tag = f"slot {i+1} '{(s.title or '')[:24]}'"
+        # (a) banned option forms
+        for oid, txt in opts:
+            if _BANNED_OPTION_FORM.search(txt) or _BANNED_TYPE_K.search(txt):
+                problems.append(f"{tag}: banned option form in ({oid}) '{txt.strip()[:36]}'")
+        # (b) option count: allow 2-4. A 2-option discrimination is a LEGITIMATE binary pick-better-of-two
+        # minimal pair ("which paragraph analyzes vs summarizes?"), a valid design - not a defect. Flag only
+        # <2 (not a choice) or >4 (Haladyna: too many options). (Relaxed from ==2||>4 after the gate over-
+        # flagged 5 real binary minimal-pair discriminations - the over-strict-gate failure mode.)
+        n = len(opts)
+        if n < 2 or n > 4:
+            problems.append(f"{tag}: {n} options (a choice item needs 2-4)")
+        # (c) exactly one correct
+        if len(correct) != 1:
+            problems.append(f"{tag}: {len(correct)} option(s) flagged correct (need exactly 1)")
+        # (d) duplicate / near-identical options
+        seen = {}
+        for oid, txt in opts:
+            key = _norm_opt(txt)
+            if not key:
+                continue
+            if key in seen:
+                problems.append(f"{tag}: options ({seen[key]}) and ({oid}) are duplicate/near-identical")
+            else:
+                seen[key] = oid
+    if problems:
+        return False, "structural item: " + "; ".join(problems[:6])
+    return True, "structural items well-formed (option forms, count, single key, no duplicates)"
+
+
 GATES = [
     ("shell_completeness", gate_shell_completeness),
     ("model_sequence", gate_model_sequence),
@@ -803,6 +903,7 @@ GATES = [
     ("mnemonic_status", gate_mnemonic_status),
     ("no_em_dash", gate_no_em_dash),
     ("gate_gate_shape", gate_gate_shape),
+    ("structural_item", gate_structural_item),
 ]
 
 def qc_lesson(L: Lesson) -> dict:

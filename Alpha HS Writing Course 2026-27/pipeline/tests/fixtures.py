@@ -21,6 +21,7 @@ import copy
 import glob
 import importlib.util
 import os
+import re
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PIPE = os.path.dirname(HERE)
@@ -101,6 +102,23 @@ def _mut_unlabeled_grade_c(L):
     raise AssertionError("golden has no discrimination slot to mutate")
 
 
+def _mut_structural_all_of_above(L):
+    # Insert an "all of the above" option into a discrimination -> banned option FORM (structural_item).
+    # The golden's discriminations carry a structured choices=[] array; add the banned form there (a wrong
+    # option, so option-count stays 4 and exactly-one-correct is preserved -> isolates the banned-form defect).
+    for s in L.slots:
+        if s.kind == "discrimination" and getattr(s, "choices", None):
+            s.choices.append({"id": "D", "text": "All of the above", "correct": False,
+                              "why": "banned option form injected for the checker corpus"})
+            return L
+        if s.kind == "discrimination" and s.body:
+            # prose fallback: append a "(D) All of the above" option before the Correct: tail
+            s.body = re.sub(r"(\bCorrect:)", r"(D) All of the above. \1", s.body, count=1) \
+                if re.search(r"\bCorrect:", s.body) else s.body + " (D) All of the above."
+            return L
+    raise AssertionError("golden has no discrimination slot to mutate")
+
+
 LESSON_KNOWN_BAD = [
     ("shell_completeness", _mut_shell_incomplete, "SRSD shell missing TRANSFER stage"),
     ("binding_integrity", _mut_phantom_ref, "bound ref to a never-generated SR id (HOLE 2)"),
@@ -109,6 +127,8 @@ LESSON_KNOWN_BAD = [
     ("no_em_dash", _mut_em_dash, "em dash in authored lesson prose (house rule)"),
     ("discrimination_before_production", _mut_unlabeled_grade_c,
      "discrimination slot not labeled_grade_c"),
+    ("structural_item", _mut_structural_all_of_above,
+     "'all of the above' banned option form inserted into a discrimination"),
 ]
 
 
