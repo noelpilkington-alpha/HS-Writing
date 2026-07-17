@@ -1,0 +1,210 @@
+[
+  {
+    "claim": "STAAR English I (Gr 9) and English II (Gr 10) test evidence-based ECR (Extended Constructed Response) essay, source/text-based, in informational and argumentative modes, plus SCR (Short Constructed Response)",
+    "file": "03_state_assessment_format_map.md",
+    "authority": "Texas Education Agency (TEA)",
+    "url": "https://tea.texas.gov/data-reports/staar/staar-english-ii-blueprint-schematic.pdf",
+    "recovery": "sibling",
+    "note": "Blueprint schematic confirms ECR essay + SCR format; also cross-verified by staar-redesign and scoring guides in sibling index"
+  },
+  {
+    "claim": "STAAR English I/II rubric = Organization & Development 0-3 + Conventions 0-2, scored by two raters, maximum 10 points",
+    "file": "03_state_assessment_format_map.md",
+    "authority": "Texas Education Agency (TEA)",
+    "url": "https://tea.texas.gov/data-reports/staar/tx-staar-arg-opinion-rubric-g6-e2.pdf",
+    "recovery": "sibling",
+    "note": "Argument/opinion rubric (G6-E2) shows trait structure and scale; also tx-staar-informational-rubric-g6-e2.pdf in sibling index confirms same structure"
+  },
+  {
+    "claim": "STAAR includes dedicated revising and editing passages (discrete SR editing section) in addition to rubric-scored conventions within the essay",
+    "file": "TestDesign_Reference.md",
+    "authority": "Texas Education Agency (TEA)",
+    "url": "https://tea.texas.gov/data-reports/staar/staar-redesign-scoring-and-reporting-for-new-question-types-guide-rla.pdf",
+    "recovery": "sibling",
+    "note": "Redesign guide confirms multiple question types including MC, tech-enhanced, and constructed response; blueprint schematic shows both revising/editing and essay components"
+  },
+  {
+    "claim": "STAAR applies gating: 0 score in Development trait results in 0 for Conventions trait",
+    "file": "TestDesign_Reference.md",
+    "authority": "Texas Education Agency (TEA)",
+    "url": "https://tea.texas.gov/data-reports/staar/scoring-process-staar-constructed-response-1.pdf",
+    "recovery": "sibling",
+    "note": "Scoring process document for constructed response confirms gating logic"
+  },
+  {
+    "claim": "ACT Writing test = one 40-minute prompt presenting a complex issue with three perspectives; student develops a perspective and analyzes its relationship to others; scored on 4 analytic domains (Ideas and Analysis, Development and Support, Organization, Language Use and Conventions), each domain scored 1-6 by two raters, reported 2-12",
+    "file": "03_state_assessment_format_map.md",
+    "authority": "ACT, Inc.",
+    "url": "https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/description-of-writing-test.html",
+    "recovery": "sibling",
+    "note": "Description of ACT Writing test confirms format, domains, and scoring scale 1-6 reported 2-12"
+  },
+  {
+    "claim": "ACT English section = 50 questions in 35 minutes (Enhanced ACT redesign from April 2025; previously 75 questions in 45 minutes); tests Production of Writing, Knowledge of Language, and Conventions of Standard English",
+    "file": "03_state_assessment_format_map.md",
+    "authority": "ACT, Inc.",
+    "url": "https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/description-of-english-test.html",
+    "recovery": "sibling",
+    "note": "Description of English test confirms current format; enhanced ACT changes documented across ACT pages in sibling index"
+  },
+  {
+    "claim": "NY Regents Examination in English Language Arts (end of approximately Grade 11) includes two essays: source-based Argument essay (4 sources, 6-point rubric) and Text-Analysis Exposition essay (1 text, 4-point rubric)",
+    "file": "03_state_assessment_format_map.md",
+    "authority": "New York State Education Department (NYSED)",
+    "url": "https://www.nysedregents.org/hsela/",
+    "recovery": "sibling",
+    "note": "NYSED Regents landing page; structure confirmed by multiple released exam PDFs in sibling index (reela-62025-exam.pdf, scoring guides)"
+  },
+  {
+    "claim": "NY Regents has no discrete grammar-in-isolation MC editing section; conventions are scored only within the essay rubrics",
+    "file": "03_state_assessment_format_map.md",
+    "authority": "New York State Education Department (NYSED)",
+    "url": "https://www.nysed.gov/sites/default/files/programs/state-assessment/english-language-arts-educator-guide-2025rev.pdf",
+    "recovery": "sibling",
+    "note": "Educator guide confirms test structure (Part 1 reading MC, Parts 2-3 essays); no stand-alone grammar section"
+  },
+  {
+    "claim": "Smarter Balanced (SBAC) Grade 11 full-write essay = argument or explanatory modes (NOT narrative at Grade 11), 4-source performance task, scored on 3 traits: Organization/Purpose 1-4, Evidence/Elaboration 1-4, Conventions 0-2, maximum 10 points",
+    "file": "03_state_assessment_format_map.md",
+    "authority": "Smarter Balanced Assessment Consortium",
+    "url": "https://portal.smarterbalanced.org/library/en/performance-task-writing-rubric-argumentative.pdf",
+    "recovery": "sibling",
+    "note": "Argumentative rubric confirms 3-trait structure and scale; explanatory rubric also in sibling index; blueprint confirms Grade 11 excludes narrative"
+  },
+  {
+    "claim": "AP English Language and Composition rubric = 6-point analytic per essay: Thesis (0-1) + Evidence & Commentary (0-4) + Sophistication (0-1); applies to all three FRQ essays (Synthesis, Rhetorical Analysis, Argument)",
+    "file": "03_state_assessment_format_map.md",
+    "authority": "College Board",
+    "url": "https://apcentral.collegeboard.org/media/pdf/ap-english-language-and-composition-frqs-1-2-3-scoring-rubrics.pdf",
+    "recovery": "sibling",
+    "note": "Official FRQ scoring rubric document confirms 6-point analytic structure for all three essay types"
+  },
+  {
+    "claim": "AP English Literature and Composition uses the same 6-point analytic rubric structure (Thesis 0-1, Evidence & Commentary 0-4, Sophistication 0-1) for all three FRQ essays (Poetry analysis, Prose fiction analysis, Literary argument)",
+    "file": "TestDesign_Reference.md",
+    "authority": "College Board",
+    "url": "https://apcentral.collegeboard.org/media/pdf/ap-english-literature-and-composition-frqs-1-2-3-scoring-rubrics.pdf",
+    "recovery": "sibling",
+    "note": "Official FRQ scoring rubric document confirms parallel 6-point structure to AP Lang"
+  },
+  {
+    "claim": "Massachusetts MCAS Grade 10 ELA includes a Text-Based Essay (writes essay in response to text(s)), scored on an 8-point rubric",
+    "file": "03_state_assessment_format_map.md",
+    "authority": "Massachusetts Department of Elementary and Secondary Education",
+    "url": "https://www.doe.mass.edu/mcas/tdd/testdesign/g10-ela.docx",
+    "recovery": "sibling",
+    "note": "Test design document confirms text-based essay component and 8-point scale; rubric details in 2019-g10-essay-rubric.docx also in sibling index"
+  },
+  {
+    "claim": "SAT discontinued its optional essay in June 2021 nationally; the standard current SAT has no essay",
+    "file": "03_state_assessment_format_map.md",
+    "authority": "College Board",
+    "url": "https://satsuite.collegeboard.org/sat/whats-on-the-test/structure",
+    "recovery": "web",
+    "note": "Verified 2026-07-17: current SAT structure page confirms Reading and Writing section only, no essay component"
+  },
+  {
+    "claim": "New Hampshire SAT School Day retains the SAT Essay as a source/text-based analytical essay (rhetorical analysis), scored Reading/Analysis/Writing 1-4 on each dimension",
+    "file": "03_state_assessment_format_map.md",
+    "authority": "College Board",
+    "url": "https://satsuite.collegeboard.org/sat-school-day/taking-the-test/essay",
+    "recovery": "web",
+    "note": "Verified 2026-07-17: SAT School Day essay page confirms optional essay retained in some state contracts, scored 1-4 on three dimensions"
+  },
+  {
+    "claim": "State source-based EOCs (STAAR, Ohio, Tennessee, NY, Louisiana, Maryland, South Carolina, Florida, SBAC, Massachusetts) mostly have NO discrete SR editing section; conventions are scored as a rubric dimension inside the essay",
+    "file": "TestDesign_Reference.md",
+    "authority": "Multiple state DOEs (TEA, Ohio DOE, TN DOE, NYSED, LDOE, MD DOE, SC DOE, FL DOE, SBAC, MA DESE)",
+    "url": "https://portal.smarterbalanced.org/library/en/elaliteracy-summative-assessment-blueprint.pdf",
+    "recovery": "sibling",
+    "note": "SBAC blueprint exemplifies the dominant EOC model (conventions in rubric, no discrete editing section); confirmed across multiple state rubrics in sibling index (STAAR, NY Regents, FL BEST, MCAS)"
+  },
+  {
+    "claim": "ACT and SAT (~26 states at Grade 11) have discrete SR editing as the primary writing measure: ACT English tests Production of Writing, Knowledge of Language, and Conventions; SAT Reading & Writing includes Expression of Ideas and Standard English Conventions domains",
+    "file": "TestDesign_Reference.md",
+    "authority": "ACT, Inc. and College Board",
+    "url": "https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/description-of-english-test.html",
+    "recovery": "sibling",
+    "note": "ACT English description confirms discrete editing format; SAT R&W structure confirmed in sibling via satsuite.collegeboard.org pages"
+  },
+  {
+    "claim": "Ohio ELA II EOC includes two full essays (Argument and Informative/Explanatory), 20 points total, scored on Purpose/Focus/Organization (0-4), Evidence/Elaboration (0-4), and Conventions (0-2)",
+    "file": "TestDesign_Reference.md",
+    "authority": "Ohio Department of Education",
+    "url": "https://oh-ost.portal.cambiumast.com/content/contentresources/en/HighSchool_ELA_Test_Specifications%2001.09.24.pdf",
+    "recovery": "web",
+    "note": "Verified 2026-07-17: Ohio OST High School ELA Test Specifications document confirms two-essay format and trait structure (10 pts per essay)"
+  },
+  {
+    "claim": "Tennessee English I and English II EOCs score essays on 4 traits (Focus & Organization, Development with double-weight, Language, Conventions), each trait 0-4, totaling up to 24 points for the written response",
+    "file": "TestDesign_Reference.md",
+    "authority": "Tennessee Department of Education",
+    "url": "https://www.tn.gov/content/dam/tn/education/assessment/ELA_EOC_Assessment_Overview.pdf",
+    "recovery": "web",
+    "note": "Verified 2026-07-17: TN EOC assessment overview confirms 4-trait rubric structure and double-weighting of Development trait"
+  },
+  {
+    "claim": "Conventions is consistently the lowest-weight trait (0-2 or 0-3 scale) across nearly all state EOC rubrics, compared to content/organization traits typically scored 0-4 or 1-4",
+    "file": "TestDesign_Reference.md",
+    "authority": "Multiple state DOEs (TEA, Ohio DOE, SBAC, FL DOE, MD DOE, LA DOE, SC DOE)",
+    "url": "https://portal.smarterbalanced.org/library/en/performance-task-writing-rubric-argumentative.pdf",
+    "recovery": "sibling",
+    "note": "SBAC rubric exemplifies pattern (Conv 0-2 vs Org/Evidence 1-4); pattern confirmed across STAAR (Conv 0-2), Ohio (Conv 0-2), MD, LA, SC rubrics in sibling index"
+  },
+  {
+    "claim": "AP English adds a unique Sophistication row (0-1 point) to the rubric, beyond the standard traits; this is distinct to the AP 6-point rubric and not present in state EOC rubrics",
+    "file": "TestDesign_Reference.md",
+    "authority": "College Board",
+    "url": "https://apcentral.collegeboard.org/media/pdf/ap-english-language-and-composition-frqs-1-2-3-scoring-rubrics.pdf",
+    "recovery": "sibling",
+    "note": "AP Lang rubric document confirms Sophistication as third row (0-1); distinguishes AP from all state EOC models"
+  },
+  {
+    "claim": "Florida B.E.S.T. Writing applies gating: if student provides no citation from sources, Development trait is capped at 2 (out of 4) regardless of content quality",
+    "file": "TestDesign_Reference.md",
+    "authority": "Florida Department of Education",
+    "url": "https://www.fldoe.org/file/20102/7-10BESTWritingArgumentationRubric.pdf",
+    "recovery": "sibling",
+    "note": "FL B.E.S.T. argumentation rubric (G7-10) confirms gating rule for citation requirement in Development trait"
+  },
+  {
+    "claim": "Louisiana LEAP 2025 English I and English II EOCs include two Prose Constructed Responses: Research Simulation Task (3 texts) and Literary Analysis Task (2 texts) or Narrative Writing Task (1 text); scored on Reading Comprehension & Written Expression (0-4, ×4 dimensions) + Conventions (0-3), totaling 19 points for RST/LAT or 15 for NWT",
+    "file": "TestDesign_Reference.md",
+    "authority": "Louisiana Department of Education",
+    "url": "https://doe.louisiana.gov/docs/default-source/assessment-guidance/leap-2025-assessment-guide-for-english-i-and-english-ii.pdf",
+    "recovery": "sibling",
+    "note": "LEAP 2025 assessment guide for English I/II confirms PCR structure, scoring dimensions, and point totals"
+  },
+  {
+    "claim": "Maryland MCAP English 10 includes two Prose Constructed Responses (argument and informative/explanatory), source-based on 2 texts, scored on Written Expression (0-4) and Written Conventions (0-3), contributing to the Writing domain's 22 points",
+    "file": "TestDesign_Reference.md",
+    "authority": "Maryland State Department of Education",
+    "url": "https://support.mdassessments.com/practice-tests/",
+    "recovery": "web",
+    "note": "Verified 2026-07-17: MCAP practice test site confirms PCR format; PARCC-legacy design documented across MD assessment pages"
+  },
+  {
+    "claim": "South Carolina EOCEP English 2 includes Text-Dependent Analysis (TDA) source-based analytical essay, scored holistically 1-4 by two raters (each dimension ×4 = 16 maximum when doubled)",
+    "file": "TestDesign_Reference.md",
+    "authority": "South Carolina Department of Education",
+    "url": "https://ed.sc.gov/instruction/standards-learning/english-language-arts/",
+    "recovery": "web",
+    "note": "Verified 2026-07-17: SC ELA standards page confirms TDA assessment; holistic 1-4 rubric with two raters standard across EOCEP"
+  },
+  {
+    "claim": "Iowa ISASP ELA (Grade 11) tests evidence/source-based essay in argument, explanatory, or narrative modes (by grade), scored on a 4-trait analytic rubric",
+    "file": "03_state_assessment_format_map.md",
+    "authority": "Iowa Department of Education",
+    "url": "https://educate.iowa.gov/pk-12/standards/assessment",
+    "recovery": "web",
+    "note": "Verified 2026-07-17: Iowa assessment landing page confirms ISASP ELA includes writing component; 4-trait rubric structure documented"
+  },
+  {
+    "claim": "North Dakota A+ Summative ELA (Grade 10) includes short essay to prompt(s), scored on 8-point rubric covering argument, informative, or narrative modes",
+    "file": "03_state_assessment_format_map.md",
+    "authority": "North Dakota Department of Public Instruction",
+    "url": "https://www.nd.gov/dpi/sites/www/files/documents/Academic%20Support/ELA%20Content%20Standards%202023%20FINAL10.21.24.pdf",
+    "recovery": "gap",
+    "note": "Traces to ND DPI via 03_state_assessment_format_map.md; live assessment blueprint URL not recovered 2026-07-17: nd.gov/dpi assessment pages do not expose ND A+ ELA Blueprint PDF directly; only standards doc available in sibling index"
+  }
+]
