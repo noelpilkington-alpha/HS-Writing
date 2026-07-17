@@ -98,7 +98,7 @@ Last session I marked the "blank MC steps" finding **FALSE** and said discard. T
 | D-b (low) | **F9** — optional; defensible as-is | HELD, low |
 | C-src (confirmed) | **F8** — swap gate/transfer sources to genuinely-unseen topics | HELD, **high** (gate validity) |
 | E | **F1** (self_score reframe) — corroborated | already in plan |
-| F-a counterclaim | **F-a** — teach counterclaim in G9 U4 *or* drop it from the l27 gate + mastery to match what G9 teaches | HELD, **high priority** |
+| F-a counterclaim | **DECIDED (Noel 2026-07-17): DROP from l27 gate + PP100; counterclaim stays G10.** It's a G10 KC (C.10.01/STAAR Eng II), not a G9 KC; no irrefutable evidence it earns its keep in G9. | HELD (decided), high |
 | F-b l02 checklist | restore q3 to the l01 standard | HELD |
 | F-d summarize | teach/practice it once in G9, or stop warning against it | HELD, low |
 | F-e l13 | none — **REFUTED** (not a correctness bug) | closed, no fix |
