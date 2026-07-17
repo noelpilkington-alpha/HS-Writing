@@ -107,6 +107,14 @@ Any lesson text implying "each outline row / rubric section will be scored" is f
 **F5 · Supported-write honesty — copy fix.** [cheap, do with F4]
 The "supported write" scaffold is a static starter frame, not responsive coaching (Timeback forbids mid-draft feedback). Fable: "a sentence starter sheet, not a writing coach... acceptable if we stop describing it as guided." Sweep the supported-write slots and drop any "guided"/"coaching"/"as you write" language; frame it as a starter frame. Same copy pass as F4.
 
+**F6 · G11/G12 CCSS re-skin — strip AP-exam wording (student-facing only).** [copy-only; own replacement key]
+*Source: the standards-alignment investigation (2026-07-17), not the two audits.* Concern raised: are G11/G12 "beyond CCSS"? **Verdict (Fable, move-by-move vs CCSS 11-12 anchors): NOT valid — the content is in-band.** Every taught skill maps onto CCSS 11-12 (W.11-12.1/1a/1b/4/5/7/8/9, RI.11-12.6, L.11-12.3; timed writing = W.11-12.10). The AP layer is *packaging*, not extra content. Decision (Noel): **treat G11/G12 as standard CCSS courses**, so the AP-exam framing becomes an optional overlay, not the default vocabulary — a **re-skin**, keeping every skill.
+- **Scope (student-facing text ONLY — titles, slot bodies, mastery prompts; NOT code comments / `council:` notes / docstrings, which legitimately keep AP provenance):** ~20 lessons; 7 AP-worded G12 titles + AP terms in bodies (sophistication×74, FRQ×38, Row C×17, full-write×13, "the exam"×4, AP Lang×2).
+- **Replacement key (full mapping + the 7 title rewrites):** `CCSS_RESKIN_G11_G12_key.md`. Core swaps: sophistication→complexity/nuance/depth-and-significance; FRQ (type)→writing task (type); "the exam"→timed writing / single sitting; full-write→full essay; drop "(Row C/B/A)" rubric coordinates, keep the trait names.
+- **Keeps everything:** no skill removed, no lesson retired, timed practice reframed as W.11-12.10 (not deleted), and **`ACC.W.INQ.1`** stays on its 4 G11 lessons as the documented additive §3 differentiation tag (those lessons also carry CCSS 11-12 tags — the course is not "non-CCSS" for keeping it; just do not market it as beyond-CCSS).
+- **Verify:** copy-only, so `tier_a_regression.py G11/G12` stays clean; re-grep student-facing text → 0 remaining AP terms (comments excluded); spot-render.
+- **Note:** the standards-alignment grep also confirmed there is **no "beyond CCSS" inflation language** describing the courses to correct — the only "beyond CCSS" phrases in the docs accurately label the deliberate §3 differentiation tier. So F6 is purely the AP-wording re-skin, nothing else.
+
 ---
 
 ## TIER 3 — Keep as-is (both audits agree these WORK)
@@ -118,11 +126,12 @@ No action — verified strong on Timeback: **discrimination minimal pairs** (bes
 ## Sequencing (do in this order)
 
 1. **T1-A + T1-B + F4 + F5** (one grader-output change + a single copy sweep covering both per-part promises and "guided"-write language) — highest impact, no platform work, unblocks F1. **Start here.**
-2. **F3 re-architecture** (retire the 2 orphan planners, fold into the essay lessons) — its own plan doc; independent of the grader work, can run in parallel with #1. Removes redundancy + the outline-rubric mismatch.
-3. **T1-C** (misconception taxonomy) — content-team spreadsheet, then wire into distractors + grader prompt.
-4. **F1 + F2** (reframe self_score + diagnosis around the new row feedback) — course-copy edits.
-5. **T1-D** (scored exemplars) — new native slots in essay lessons.
-6. **Wire + calibrate `rc.ap`** so the AP rows in T1-A are real for G11/G12 (deferred grader work; STAAR rows work now).
+2. **F6 CCSS re-skin** (G11/G12 AP-wording → CCSS, student-facing only) — copy-only, has its own replacement key; can run in the same copy pass as F4/F5 or standalone. Independent of the grader work.
+3. **F3 re-architecture** (retire the 2 orphan planners, fold into the essay lessons) — its own plan doc; independent of the grader work, can run in parallel with #1. Removes redundancy + the outline-rubric mismatch.
+4. **T1-C** (misconception taxonomy) — content-team spreadsheet, then wire into distractors + grader prompt.
+5. **F1 + F2** (reframe self_score + diagnosis around the new row feedback) — course-copy edits.
+6. **T1-D** (scored exemplars) — new native slots in essay lessons.
+7. **Wire + calibrate `rc.ap`** so the AP rows in T1-A are real for G11/G12 (deferred grader work; STAAR rows work now).
 
 ## Honest scope line
 Tiers 1–2 make the Timeback courses materially better *within the ceiling* and kill the one misleading move. What they **cannot** fix (per-section scores surfaced structurally, live mid-draft coaching, true improvement-aware revision, a closed adaptive calibration loop) are the exact things the external-app option would unlock — so this plan and the platform decision are complementary, not competing: ship these fixes now regardless of the platform call.
