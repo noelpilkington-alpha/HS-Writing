@@ -18,6 +18,9 @@ def parse_register(md):
         if m:
             cat = "Category " + m.group(1).strip()
             continue
+        if line.startswith("## ") and not m:
+            cat = None
+            continue
         if line.startswith("|") and "---" not in line and cat:
             cells = [c.strip() for c in line.strip().strip("|").split("|")]
             if len(cells) == 5 and cells[1] in ("Authority", "Expert"):
