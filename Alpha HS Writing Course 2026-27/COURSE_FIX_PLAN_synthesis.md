@@ -34,7 +34,7 @@ The full Fable-5 "what survives contact with Timeback" audit, verbatim by catego
 ### DEGRADED — fix within the ceiling (ranked by severity, as Fable ranked them)
 | # | Move | Finding | Fix |
 |---|---|---|---|
-| 1 | **MPO planning** — badly degraded | "We show a structured grid, then hand them one undifferentiated plain-text box; the structure exists only in their willingness to retype it." Aggregate score gives no signal about which row failed. Our table-grid is "a workaround, not the design." | **F3** (rides on **T1-A**: row-by-row feedback restores the per-row signal MPO needs) + keep the labeled-row template, labeled as a workaround. |
+| 1 | **MPO planning** — badly degraded | "We show a structured grid, then hand them one undifferentiated plain-text box; the structure exists only in their willingness to retype it." Aggregate score gives no signal about which row failed. Our table-grid is "a workaround, not the design." | **F3 — RE-ARCHITECTED** (retire the 2 orphan whole-essay-plan lessons, fold their teaching into the essay lessons that write from a plan). Root cause was the *standalone orphan lesson* + an outline scored on the essay rubric, not the feedback string. Dissolves the mismatch; own plan doc. |
 | 2 | **Multi-trait rubric grading** — significantly degraded | STAAR/AP traits are "marketed as the assessment spine," but the student gets one aggregate + prose; no per-trait scores → "your Evidence row improved" tracking impossible. "The rubric is real on the grader's side; invisible as structured feedback on the student's side." | **T1-A** (surface the rows the grader already computes, as feedback text) + **T1-B** (quote-anchor them). This is the plan's #1 lever. |
 | 3 | **Diagnosis / self-revision** (94) — near the fiction line | Card can't embed the student's just-written draft (they scroll/copy-paste); grader scores the revision **standalone** — never sees the original, so cannot assess improvement, and an unchanged resubmit scores identically, undetected. | **F2**: target the diagnosis at the T1-A row breakdown; reword any copy implying the system detects improvement (it does not). True improvement-scoring = a platform gap, not a course fix. |
 | 4 | **Supported write** — mildly degraded | "A sentence starter sheet, not a writing coach... acceptable if we stop describing it as guided." | **F5 (new)**: copy sweep — stop calling the static scaffold "guided"/"coaching"; frame it honestly as a starter frame. Folds into the F4 copy pass. |
@@ -94,8 +94,12 @@ The diagnosis card can't see the student's just-written draft, and the grader sc
 - Fix within ceiling: (a) the diagnosis prompt must restate the checklist against the row breakdown the student just received (so revision is targeted, not generic); (b) reword any copy that implies the system detects improvement — it doesn't. Honest framing: "revise, then resubmit for a fresh score," not "show your improvement."
 - True improvement-scoring needs the platform to pass the prior draft — a gap, not a course fix.
 
-**F3 · MPO planning — badly degraded.** [important; partly already mitigated]
-Structured grid in, one plain-text box out; aggregate score gives no per-row signal. We already added the outline-table grid + a numbered-row template. Remaining fix rides on T1-A: once the grader returns row-by-row feedback, an MPO submission gets Development/Organization signal that maps back to the outline rows. Also: keep the "type each labeled row" template (workaround, not design — say so in the lesson).
+**F3 · MPO / orphan whole-essay planning — RE-ARCHITECTED (retire + fold), not patched.** [important; own implementation plan]
+Deeper look (Noel, 2026-07-17) found the real problem is not the grid or the rubric — it is that the MPO is taught as a **standalone lesson where the student plans a whole essay and then never writes it**. Grading that orphan plan on the STAAR *essay* rubric (Development/Organization + Conventions) is also a category error: an outline is note-form, so Conventions is noise and Dev/Org does not decompose into the MPO's own rows. T1-A alone would only have put essay-grading resolution on a planning artifact — a patch on the wrong layer.
+- **Verified scope:** exactly TWO true whole-essay-plan orphans — `ACC-W910-L-G9-C904-0019` (MPO) and `ACC-W910-L-G10-C1006-0020` (cross-text planner). (L21 order-paragraphs and L22 intro/conclusion are genuine paragraph *sub-skills*, KEPT; `C901-0022` is a different KC — mode-decision — reframed, not retired.)
+- **Fix (Timeback-honest, no platform dependency):** fold each orphan's teaching into the essay lessons that *already* run teach→model→plan→write in ONE lesson (G9 C904-0023/0024; G10 C1006-0021/0022), then retire the standalone + drop its mastery. Within-KC only (C904, C1006); no pipeline/gate/renderer change.
+- **This dissolves the rubric-mismatch entirely** — outlines are no longer scored standalone; the plan becomes the SUPPORTED scaffold *inside* the essay lesson, feeding the scored essay. The already-shipped outline-table grid stays as that in-lesson scaffold.
+- **Full implementation plan:** `docs/superpowers/plans/2026-07-17-retire-orphan-planning-lessons.md` (6 tasks, content-loss-guarded, verified by tier_a_regression + tests; course 100 → 98 lessons).
 
 **F4 · Per-part promises — copy audit.** [cheap, do with T1-A]
 Any lesson text implying "each outline row / rubric section will be scored" is false on Timeback (one aggregate). Sweep the essay/MPO lessons and reword to what the platform actually delivers.
@@ -113,11 +117,12 @@ No action — verified strong on Timeback: **discrimination minimal pairs** (bes
 
 ## Sequencing (do in this order)
 
-1. **T1-A + T1-B + F4 + F5** (one grader-output change + a single copy sweep covering both per-part promises and "guided"-write language) — highest impact, no platform work, unblocks F1 and F3. **Start here.**
-2. **T1-C** (misconception taxonomy) — content-team spreadsheet, then wire into distractors + grader prompt.
-3. **F1 + F2** (reframe self_score + diagnosis around the new row feedback) — course-copy edits.
-4. **T1-D** (scored exemplars) — new native slots in essay lessons.
-5. **Wire + calibrate `rc.ap`** so the AP rows in T1-A are real for G11/G12 (deferred grader work; STAAR rows work now).
+1. **T1-A + T1-B + F4 + F5** (one grader-output change + a single copy sweep covering both per-part promises and "guided"-write language) — highest impact, no platform work, unblocks F1. **Start here.**
+2. **F3 re-architecture** (retire the 2 orphan planners, fold into the essay lessons) — its own plan doc; independent of the grader work, can run in parallel with #1. Removes redundancy + the outline-rubric mismatch.
+3. **T1-C** (misconception taxonomy) — content-team spreadsheet, then wire into distractors + grader prompt.
+4. **F1 + F2** (reframe self_score + diagnosis around the new row feedback) — course-copy edits.
+5. **T1-D** (scored exemplars) — new native slots in essay lessons.
+6. **Wire + calibrate `rc.ap`** so the AP rows in T1-A are real for G11/G12 (deferred grader work; STAAR rows work now).
 
 ## Honest scope line
 Tiers 1–2 make the Timeback courses materially better *within the ceiling* and kill the one misleading move. What they **cannot** fix (per-section scores surfaced structurally, live mid-draft coaching, true improvement-aware revision, a closed adaptive calibration loop) are the exact things the external-app option would unlock — so this plan and the platform decision are complementary, not competing: ship these fixes now regardless of the platform call.

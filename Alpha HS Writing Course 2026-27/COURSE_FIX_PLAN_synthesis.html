@@ -1,0 +1,203 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>HS Writing Course Fix Plan</title>
+<style>
+:root{--ink:#1f2a44;--mut:#556;--line:#e2e8f0;--accent:#1d4ed8;--bg:#f7f9fc;--code:#0f766e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:40px 24px 80px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:36px 44px;
+box-shadow:0 1px 3px rgba(31,42,68,.06)}
+h1{font-size:28px;line-height:1.25;margin:0 0 4px}
+h2{font-size:21px;margin:34px 0 10px;padding-top:18px;border-top:1px solid var(--line)}
+h2:first-of-type{border-top:0;padding-top:0}
+h3{font-size:16px;margin:22px 0 8px;color:var(--mut);text-transform:uppercase;letter-spacing:.03em}
+p,li{color:var(--ink)}
+strong{color:#0b1533}
+code{background:#eef2f7;color:var(--code);padding:1px 6px;border-radius:5px;font-size:13.5px;
+font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid #cbd5e1;padding:8px 11px;vertical-align:top;text-align:left}
+th{background:#eef2f7;font-weight:700;color:#0b1533}
+tr:nth-child(even) td{background:#fafbfe}
+blockquote{margin:12px 0;padding:8px 16px;border-left:3px solid var(--accent);
+background:#f0f5ff;color:var(--mut)}
+pre{background:#0b1533;color:#e6edf7;padding:14px 16px;border-radius:8px;overflow:auto;font-size:13px}
+ul,ol{padding-left:24px}
+a{color:var(--accent)}
+</style></head><body><div class="wrap"><div class="card">
+<h1 id="hs-writing-course-fix-plan-synthesis-of-the-two-assessments">HS Writing Course Fix Plan — synthesis of the two assessments</h1>
+<p><strong>Date:</strong> 2026-07-17
+<strong>Inputs:</strong> (1) Fable-5's "what survives contact with Timeback" audit (platform-floor); (2) Fable-5's "what to learn from AP One" audit (pedagogy-ceiling). This plan is the intersection: fix what the platform breaks, adopt what the competitor does better, and do the overlap <strong>first</strong>.</p>
+<hr />
+<h2 id="the-one-insight-that-ties-both-assessments-together">The one insight that ties both assessments together</h2>
+<p>Both audits, reached independently, point at the <strong>same lever: feedback resolution.</strong></p>
+<ul>
+<li>The Timeback audit named our two worst-degraded moves as <strong>multi-trait rubric grading</strong> ("the rubric is real on the grader's side, invisible as structured feedback on the student's side") and <strong>MPO planning</strong> (structured scaffold in → one undifferentiated aggregate out).</li>
+<li>The AP One audit named their single genuine advantage as <strong>per-row rubric feedback, anchored to the student's own text, routed to named misconceptions</strong> — and noted it is "embarrassing for us because our grader already computes the rows internally, then compresses them into one aggregate and throws the signal away."</li>
+</ul>
+<p>So the highest-value fix is not new content and not a platform change. It is: <strong>stop discarding the per-row signal the grader already produces, and format it back to the student as row-by-row, quote-anchored feedback.</strong> Everything else in this plan is sequenced around that.</p>
+<p>Confirmed while writing this: the grader's <code>ScoreResponse</code> already returns <code>breakdown={development, conventions, ...}</code> with per-trait scores — we currently render only the single aggregate. The change is output-formatting, not new grading.</p>
+<hr />
+<h2 id="grounding-the-survival-assessment-every-finding-its-fix">Grounding: the survival assessment (every finding → its fix)</h2>
+<p>The full Fable-5 "what survives contact with Timeback" audit, verbatim by category, each item tagged with the plan item that addresses it. This is the audit trail — nothing below is left unrouted.</p>
+<h3 id="works-as-is-protect-do-not-touch-tier-3">WORKS AS-IS — protect, do not touch (→ Tier 3)</h3>
+<table>
+<thead>
+<tr>
+<th>Move</th>
+<th>Finding</th>
+<th>Disposition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discrimination minimal pairs (129)</td>
+<td>"The strongest-fitting move in the whole course." Native MCQ + per-wrong-choice feedback + hard-gate retry is exactly what it needs.</td>
+<td><strong>KEEP</strong> (Tier 3). T1-C <em>enriches</em> it (distractor = named misconception) without changing the mechanic.</td>
+</tr>
+<tr>
+<td>Predict-the-fix (94)</td>
+<td>Diagnose → pick fix → reveal maps cleanly.</td>
+<td><strong>KEEP</strong> (Tier 3). T1-C targets each item at one misconception code.</td>
+</tr>
+<tr>
+<td>Teach / stimulus / annotated before-after (404)</td>
+<td>Static styled HTML covers it; annotations frozen (no progressive reveal) but it is fundamentally a reading move, nothing real lost.</td>
+<td><strong>KEEP</strong> (Tier 3). T1-D adds <em>scored</em> exemplars alongside.</td>
+</tr>
+<tr>
+<td>Independent + transfer essays, holistic AI grading</td>
+<td>One box, one aggregate score, one feedback blob = a legitimate <strong>summative</strong> essay experience.</td>
+<td><strong>KEEP</strong> (Tier 3). T1-A/T1-B upgrade the <em>feedback text</em> (still one item, still one outcome).</td>
+</tr>
+<tr>
+<td>SRSD as a <em>fixed</em> ladder</td>
+<td>"Gradual release survives as long as nobody expects it to be <em>responsive</em> release."</td>
+<td><strong>KEEP</strong> (Tier 3) — and protect it as our edge over AP One (they lack the strategy-instruction half).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="degraded-fix-within-the-ceiling-ranked-by-severity-as-fable-ranked-them">DEGRADED — fix within the ceiling (ranked by severity, as Fable ranked them)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Move</th>
+<th>Finding</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>MPO planning</strong> — badly degraded</td>
+<td>"We show a structured grid, then hand them one undifferentiated plain-text box; the structure exists only in their willingness to retype it." Aggregate score gives no signal about which row failed. Our table-grid is "a workaround, not the design."</td>
+<td><strong>F3 — RE-ARCHITECTED</strong> (retire the 2 orphan whole-essay-plan lessons, fold their teaching into the essay lessons that write from a plan). Root cause was the <em>standalone orphan lesson</em> + an outline scored on the essay rubric, not the feedback string. Dissolves the mismatch; own plan doc.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Multi-trait rubric grading</strong> — significantly degraded</td>
+<td>STAAR/AP traits are "marketed as the assessment spine," but the student gets one aggregate + prose; no per-trait scores → "your Evidence row improved" tracking impossible. "The rubric is real on the grader's side; invisible as structured feedback on the student's side."</td>
+<td><strong>T1-A</strong> (surface the rows the grader already computes, as feedback text) + <strong>T1-B</strong> (quote-anchor them). This is the plan's #1 lever.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Diagnosis / self-revision</strong> (94) — near the fiction line</td>
+<td>Card can't embed the student's just-written draft (they scroll/copy-paste); grader scores the revision <strong>standalone</strong> — never sees the original, so cannot assess improvement, and an unchanged resubmit scores identically, undetected.</td>
+<td><strong>F2</strong>: target the diagnosis at the T1-A row breakdown; reword any copy implying the system detects improvement (it does not). True improvement-scoring = a platform gap, not a course fix.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Supported write</strong> — mildly degraded</td>
+<td>"A sentence starter sheet, not a writing coach... acceptable if we stop describing it as guided."</td>
+<td><strong>F5 (new)</strong>: copy sweep — stop calling the static scaffold "guided"/"coaching"; frame it honestly as a starter frame. Folds into the F4 copy pass.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fiction-does-not-function-must-not-ship-as-is">FICTION — does not function; must not ship as-is</h3>
+<table>
+<thead>
+<tr>
+<th>Move</th>
+<th>Finding</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>self_score calibration</strong> (21 slots)</td>
+<td>The one that genuinely won't work: predict-your-score → system-compares-to-grader <strong>cannot close</strong> (no branching, no way to pipe the grader result into the self_score item). "What ships is an ungated rating click followed by nothing."</td>
+<td><strong>F1</strong>: reframe as calibration <em>against the T1-A row breakdown</em> ("compare to your self-score; the row you missed by &gt;1 point is your revision target"). Converts a dead click into a real move without branching. True closed loop waits on external-app/platform.</td>
+</tr>
+<tr>
+<td><strong>Per-part scoring anywhere</strong></td>
+<td>Any lesson copy implying "each outline row / rubric section is assessed" is false — composite items return one aggregate. Promising part-level accountability misleads the student.</td>
+<td><strong>F4</strong>: copy sweep across essay/MPO lessons — reword to what the platform actually delivers (one aggregate + row-by-row <em>feedback text</em>, not row <em>scores</em>).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Net:</strong> every WORKS item is protected, every DEGRADED item has a within-ceiling fix, and both FICTION items are either reframed (self_score) or corrected in copy (per-part). Nothing in the assessment is left unaddressed.</p>
+<hr />
+<h2 id="what-we-are-not-doing-decided-by-the-two-audits">What we are NOT doing (decided by the two audits)</h2>
+<ul>
+<li><strong>Not</strong> copying XP / day-streaks / a single "accuracy" number — Fable: engagement veneer; "psychometrically incoherent for a construct like rhetorical analysis; the rows are the real signal."</li>
+<li><strong>Not</strong> adding mastery gates on noisy AI 0/1 rubric rows — false pass/fails.</li>
+<li><strong>Not</strong> rebuilding as an external app <em>in this plan</em> — that's a separate strategic fork (documented elsewhere). This plan makes the <strong>current Timeback courses</strong> as good as the ceiling allows.</li>
+<li><strong>Not</strong> shipping the one FICTION move as-is (see F1).</li>
+</ul>
+<hr />
+<h2 id="tier-1-adopt-within-the-timeback-ceiling-now-no-platform-change">TIER 1 — Adopt within the Timeback ceiling NOW (no platform change)</h2>
+<p><strong>T1-A · Per-row rubric feedback string.</strong> [biggest impact; grader-side]
+The grader already computes rows (STAAR: Development/Organization + Conventions; AP: Row A Thesis / Row B Evidence&amp;Commentary / Row C Sophistication). Change the grader's <code>feedback</code> output from one prose blob to a <strong>row-by-row breakdown</strong>: each row's score + one targeted sentence. Timeback blocks structured per-row <em>scores</em> in the item outcome, but not the <em>text</em> of the feedback string. 
+- Where: <code>Writing_Test_Grader</code> grader output formatting (<code>external_score</code> / panel feedback assembly). Zero course-repo change.
+- Blocker note: <code>rc.ap</code> (G11/G12 AP rows) is still stubbed/uncalibrated — the AP panel must be wired + calibrated for the AP rows to be real. STAAR rows (G9/G10) exist now.</p>
+<p><strong>T1-B · Quote-anchored feedback.</strong> [high impact; grader-side]
+Instruct the grader to quote 1–2 of the student's OWN sentences per row as the anchor, not a generic description. Fable's example: not "name the device's effect" but "Your sentence 'Swift uses irony to make his point' names the device but never its effect — this is where Row B stalls at description." Loses the visual inline overlay (blocked), keeps ~80% of the value.
+- Where: grader prompt. Pairs with T1-A in the same change.</p>
+<p><strong>T1-C · Misconception taxonomy as an authoring asset.</strong> [high impact; content-side, no runtime]
+Build the curated error catalog AP One has (theirs: coded misconceptions like <code>mc_tone_is_just_word_choice</code>). ~15–25 codes cover AP Lang; a similar set for G9/G10 argument/analysis. Use it three ways, all within the ceiling:
+  1. Every MCQ <strong>distractor = a named misconception</strong>, its feedback names + corrects that specific error.
+  2. <strong>predict-the-fix</strong> items each target one code.
+  3. <strong>Seed the grader prompt</strong> so essay feedback names the pattern ("this is the device-spotting trap"), not just the symptom.
+- Where: a content-team spreadsheet → wired into discrimination <code>choices[].why</code> + grader prompt. No classifier runtime needed (that part is blocked; the taxonomy is the asset).</p>
+<p><strong>T1-D · Scored exemplar study.</strong> [medium impact; content-side]
+We have annotated before/after cards; AP One has <em>scored</em> exemplars with row-tagged annotations ("what a Row B 4 looks like vs a 2"). Add, for the essay lessons: a static exemplar card with row-tagged callouts → an MCQ sequence interrogating it ("Which sentence earns the Sophistication point?"; "This scored 2/4 on Row B — which revision moves it to 3?"). Studying scored worked-examples before producing is well-supported and we underuse it.
+- Where: new slots in the essay-grain lessons (teach/display + discrimination), all native kinds.</p>
+<hr />
+<h2 id="tier-2-fix-the-degradedfiction-moves-the-timeback-audit-flagged">TIER 2 — Fix the degraded/fiction moves the Timeback audit flagged</h2>
+<p><strong>F1 · self_score calibration (21 slots) — the one FICTION move.</strong> [must-fix: currently misleads]
+The predict-your-score → compare-to-grader loop <strong>cannot close on Timeback</strong> (no branching, no way to pipe the grader result back into the self_score item). Today it ships as an ungated rating click followed by nothing.
+- Fix within ceiling (from the AP One synthesis, A5): reframe it as a <strong>calibration-against-the-row-breakdown</strong> exercise. The grader feedback (now row-by-row, per T1-A) opens with: "Compare this to your self-score. The row you were off by more than a point is your revision target." Converts a dead step into a real calibration move without needing branching.
+- If we later go external-app: this becomes a true adaptive loop. For now, T1-A is its prerequisite.</p>
+<p><strong>F2 · Diagnosis / self-revision (94 slots) — degraded, near-fiction.</strong> [important]
+The diagnosis card can't see the student's just-written draft, and the grader scores the revision standalone (never sees the original → can't assess <em>improvement</em>; an unchanged resubmit scores identically, undetected).
+- Fix within ceiling: (a) the diagnosis prompt must restate the checklist against the row breakdown the student just received (so revision is targeted, not generic); (b) reword any copy that implies the system detects improvement — it doesn't. Honest framing: "revise, then resubmit for a fresh score," not "show your improvement."
+- True improvement-scoring needs the platform to pass the prior draft — a gap, not a course fix.</p>
+<p><strong>F3 · MPO / orphan whole-essay planning — RE-ARCHITECTED (retire + fold), not patched.</strong> [important; own implementation plan]
+Deeper look (Noel, 2026-07-17) found the real problem is not the grid or the rubric — it is that the MPO is taught as a <strong>standalone lesson where the student plans a whole essay and then never writes it</strong>. Grading that orphan plan on the STAAR <em>essay</em> rubric (Development/Organization + Conventions) is also a category error: an outline is note-form, so Conventions is noise and Dev/Org does not decompose into the MPO's own rows. T1-A alone would only have put essay-grading resolution on a planning artifact — a patch on the wrong layer.
+- <strong>Verified scope:</strong> exactly TWO true whole-essay-plan orphans — <code>ACC-W910-L-G9-C904-0019</code> (MPO) and <code>ACC-W910-L-G10-C1006-0020</code> (cross-text planner). (L21 order-paragraphs and L22 intro/conclusion are genuine paragraph <em>sub-skills</em>, KEPT; <code>C901-0022</code> is a different KC — mode-decision — reframed, not retired.)
+- <strong>Fix (Timeback-honest, no platform dependency):</strong> fold each orphan's teaching into the essay lessons that <em>already</em> run teach→model→plan→write in ONE lesson (G9 C904-0023/0024; G10 C1006-0021/0022), then retire the standalone + drop its mastery. Within-KC only (C904, C1006); no pipeline/gate/renderer change.
+- <strong>This dissolves the rubric-mismatch entirely</strong> — outlines are no longer scored standalone; the plan becomes the SUPPORTED scaffold <em>inside</em> the essay lesson, feeding the scored essay. The already-shipped outline-table grid stays as that in-lesson scaffold.
+- <strong>Full implementation plan:</strong> <code>docs/superpowers/plans/2026-07-17-retire-orphan-planning-lessons.md</code> (6 tasks, content-loss-guarded, verified by tier_a_regression + tests; course 100 → 98 lessons).</p>
+<p><strong>F4 · Per-part promises — copy audit.</strong> [cheap, do with T1-A]
+Any lesson text implying "each outline row / rubric section will be scored" is false on Timeback (one aggregate). Sweep the essay/MPO lessons and reword to what the platform actually delivers.</p>
+<p><strong>F5 · Supported-write honesty — copy fix.</strong> [cheap, do with F4]
+The "supported write" scaffold is a static starter frame, not responsive coaching (Timeback forbids mid-draft feedback). Fable: "a sentence starter sheet, not a writing coach... acceptable if we stop describing it as guided." Sweep the supported-write slots and drop any "guided"/"coaching"/"as you write" language; frame it as a starter frame. Same copy pass as F4.</p>
+<hr />
+<h2 id="tier-3-keep-as-is-both-audits-agree-these-work">TIER 3 — Keep as-is (both audits agree these WORK)</h2>
+<p>No action — verified strong on Timeback: <strong>discrimination minimal pairs</strong> (best-fit move), <strong>predict-the-fix</strong>, <strong>teach/stimulus/annotated before-after display</strong>, <strong>independent + transfer essays with holistic AI grading</strong>, <strong>SRSD as a fixed ladder</strong>. And the thing AP One <em>lacks</em> that we should protect: <strong>explicit SRSD strategy instruction</strong> (they have rich feedback, no strategy-teaching half — our genuine edge; do not dilute it chasing their feedback features).</p>
+<hr />
+<h2 id="sequencing-do-in-this-order">Sequencing (do in this order)</h2>
+<ol>
+<li><strong>T1-A + T1-B + F4 + F5</strong> (one grader-output change + a single copy sweep covering both per-part promises and "guided"-write language) — highest impact, no platform work, unblocks F1. <strong>Start here.</strong></li>
+<li><strong>F3 re-architecture</strong> (retire the 2 orphan planners, fold into the essay lessons) — its own plan doc; independent of the grader work, can run in parallel with #1. Removes redundancy + the outline-rubric mismatch.</li>
+<li><strong>T1-C</strong> (misconception taxonomy) — content-team spreadsheet, then wire into distractors + grader prompt.</li>
+<li><strong>F1 + F2</strong> (reframe self_score + diagnosis around the new row feedback) — course-copy edits.</li>
+<li><strong>T1-D</strong> (scored exemplars) — new native slots in essay lessons.</li>
+<li><strong>Wire + calibrate <code>rc.ap</code></strong> so the AP rows in T1-A are real for G11/G12 (deferred grader work; STAAR rows work now).</li>
+</ol>
+<h2 id="honest-scope-line">Honest scope line</h2>
+<p>Tiers 1–2 make the Timeback courses materially better <em>within the ceiling</em> and kill the one misleading move. What they <strong>cannot</strong> fix (per-section scores surfaced structurally, live mid-draft coaching, true improvement-aware revision, a closed adaptive calibration loop) are the exact things the external-app option would unlock — so this plan and the platform decision are complementary, not competing: ship these fixes now regardless of the platform call.</p>
+</div></div></body></html>
