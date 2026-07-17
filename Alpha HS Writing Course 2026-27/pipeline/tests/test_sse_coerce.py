@@ -54,3 +54,46 @@ def test_walk_lesson_survives_string_journal_update():
     assert isinstance(res["journal_update"], dict)
     assert res["journal_update"]["lesson"].startswith("g9_l02")
     assert "seq" in res["journal_update"]
+
+
+# --- retry-on-thin (the second live-pilot finding: Fable stochastically returns an EMPTY nested
+# journal_update while writing a full response; a retry usually recovers the structured fields) ---
+from sim_student_eval.models import ask_with_retry, _journal_is_thin
+
+
+def test_journal_is_thin():
+    assert _journal_is_thin({"response": "x", "journal_update": {}}) is True
+    assert _journal_is_thin({"response": "x", "journal_update": {"skills_i_can_now_do": ["a"]}}) is False
+    assert _journal_is_thin({"response": "x", "journal_update": {"confidence": {"c": 0.5}}}) is False
+
+
+def test_ask_with_retry_recovers_rich_journal():
+    calls = {"n": 0}
+    def raw(s, u):
+        calls["n"] += 1
+        if calls["n"] < 3:
+            return {"response": "resp", "journal_update": {}}          # thin
+        return {"response": "resp", "journal_update": {"skills_i_can_now_do": ["x", "y"]}}
+    r = ask_with_retry(raw, "s", "u", tries=3)
+    assert len(r["journal_update"]["skills_i_can_now_do"]) == 2
+    assert calls["n"] == 3  # stopped as soon as it got a rich one
+
+
+def test_ask_with_retry_all_thin_keeps_richest_and_response():
+    calls = {"n": 0}
+    def raw(s, u):
+        calls["n"] += 1
+        skills = ["one"] if calls["n"] == 2 else []
+        return {"response": "kept", "journal_update": {"skills_i_can_now_do": skills}}
+    r = ask_with_retry(raw, "s", "u", tries=3)
+    assert r["response"] == "kept"                                     # response never lost
+    assert len(r["journal_update"]["skills_i_can_now_do"]) == 1         # richest of the three
+
+
+def test_ask_with_retry_short_circuits_on_error():
+    calls = {"n": 0}
+    def raw(s, u):
+        calls["n"] += 1
+        return {"response": "", "journal_update": {}, "error": "no tool call"}
+    r = ask_with_retry(raw, "s", "u", tries=3)
+    assert r.get("error") and calls["n"] == 1                          # a real error is not retried

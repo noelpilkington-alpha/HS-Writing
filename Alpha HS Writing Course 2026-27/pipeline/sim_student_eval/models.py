@@ -103,6 +103,32 @@ def _normalize_turn(inp: dict) -> dict:
     return {"response": resp, "journal_update": _coerce_dict(inp.get("journal_update"))}
 
 
+def _journal_is_thin(turn: dict) -> bool:
+    """A turn is 'thin' when the model wrote a real response but left the STRUCTURED journal
+    essentially empty (no skills AND no confidence). Fable does this stochastically - the same
+    lesson returns rich on one call and empty on the next - so a retry usually recovers it. The
+    structured fields feed the redundancy pre-pass + readiness signal, so thin turns are low-value."""
+    ju = turn.get("journal_update") or {}
+    return not ju.get("skills_i_can_now_do") and not ju.get("confidence")
+
+
+def ask_with_retry(raw_ask, system: str, user: str, tries: int = 3) -> dict:
+    """Call raw_ask (which returns an already-normalized turn dict) up to `tries` times, keeping
+    the FIRST non-thin result. If every attempt is thin, return the richest one seen (most skills)
+    so we never lose the response. Vary nothing but the attempt (the model is stochastic)."""
+    best = None
+    for _ in range(max(1, tries)):
+        turn = raw_ask(system, user)
+        if turn.get("error"):          # a real API/no-tool error: return immediately, orchestrator logs it
+            return turn
+        if not _journal_is_thin(turn):
+            return turn
+        if best is None or len((turn.get("journal_update") or {}).get("skills_i_can_now_do", [])) \
+                > len((best.get("journal_update") or {}).get("skills_i_can_now_do", [])):
+            best = turn
+    return best if best is not None else {"response": "", "journal_update": {}, "error": "no result"}
+
+
 class FableClient:
     def __init__(self, api_key: str, model: str = "claude-fable-5"):
         import anthropic
@@ -113,7 +139,7 @@ class FableClient:
     def name(self) -> str:
         return "fable"
 
-    def ask(self, system: str, user: str) -> dict:
+    def _ask_once(self, system: str, user: str) -> dict:
         r = self._c.messages.create(
             model=self._model, max_tokens=3000, system=system,
             tools=[STUDENT_TOOL], tool_choice={"type": "tool", "name": "report_student_turn"},
@@ -122,6 +148,10 @@ class FableClient:
             if getattr(b, "type", "") == "tool_use" and getattr(b, "name", "") == "report_student_turn":
                 return _normalize_turn(dict(b.input))
         return {"response": "", "journal_update": {}, "error": "no tool call"}
+
+    def ask(self, system: str, user: str) -> dict:
+        # retry stochastically-thin journals (Fable skips the nested object ~intermittently)
+        return ask_with_retry(self._ask_once, system, user)
 
     def ask_tool(self, system: str, user: str, tool: dict) -> dict:
         r = self._c.messages.create(
@@ -144,7 +174,7 @@ class GptClient:
     def name(self) -> str:
         return "gpt"
 
-    def ask(self, system: str, user: str) -> dict:
+    def _ask_once(self, system: str, user: str) -> dict:
         import json as _json
         tool = {"type": "function", "function": {
             "name": STUDENT_TOOL["name"], "description": STUDENT_TOOL["description"],
@@ -158,6 +188,9 @@ class GptClient:
         if msg.tool_calls:
             return _normalize_turn(dict(_json.loads(msg.tool_calls[0].function.arguments)))
         return {"response": msg.content or "", "journal_update": {}, "error": "no tool call"}
+
+    def ask(self, system: str, user: str) -> dict:
+        return ask_with_retry(self._ask_once, system, user)
 
     def ask_tool(self, system: str, user: str, tool: dict) -> dict:
         import json as _json
