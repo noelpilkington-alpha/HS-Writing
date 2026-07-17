@@ -6,9 +6,14 @@ its paired ARGUMENT gate.
 
 Teaching point (KEPT): the course-terminal ARGUMENT task - independently plan, draft, and self-check a complete
 single-source argument essay from scratch on a COLD (unseen) source, assembling every move the course taught (a
-thesis that takes a side -> reasons backed by attributed evidence -> the counterclaim named and answered ->
+thesis that takes a side -> reasons backed by attributed evidence, each explained with a warrant ->
 a conclusion that lands the upshot). Written at the essay, UNTIMED (Timeback has no timer; the rigor is the cold,
 full, self-directed argument production). KC C.9.04.
+
+COUNTERCLAIM REMOVED 2026-07-17 (sim-student audit S2 + standards check): counterclaim is a G10 KC (C.10.01,
+STAAR Eng II, opens G10 U1 Counterargument), NOT a G9 KC, and G9 never teaches it (0 mentions in l01-l26). The
+gate must certify only what G9 taught: claim -> attributed evidence + warrant -> upshot. Counterclaim enters at
+G10 as designed.
 
 Rebuilt to the SCAFFOLD-FREE GATE template (spine re-architecture, SPINE_DELIBERATION_verdict.md), cloned from the
 G10 L24 gate proof-of-concept. A gate certifies INDEPENDENT transfer, so it is the SRSD endpoint, not another
@@ -51,7 +56,7 @@ LESSON = Lesson(
                 "taught_stimulus": "ACC-W910-ARG-LESSON-WATERTRADEOFF",
                 "transfer_stimulus": "ACC-W910-ARG-LESSON-WATERTRADEOFF",
                 "one_idea": "The argument gate is the whole routine on your own: PLAN a side-taking thesis, DRAFT, then CHECK.",
-                "one_reminder": "Gate self-check: thesis takes a side? claim+attributed evidence per paragraph? counterclaim named and answered? upshot?",
+                "one_reminder": "Gate self-check: thesis takes a side? claim+attributed evidence per paragraph? warrant explains why each fact proves the claim? upshot?",
                 "playbook": "_phase2/playbook_T7_BUILD.md",
                 "template": "SCAFFOLD-FREE GATE (cloned from G10 L24). ESSAY-TIER binds a full argument source; GATE = cold full production, UNTIMED.",
                 "version_note": ("V3.1 rebuilt to the SCAFFOLD-FREE GATE template (spine re-architecture verdict, "
@@ -87,8 +92,9 @@ LESSON = Lesson(
                    "dispute.</li>"
                    "<li style=\"margin:4px 0\"><strong>Reasons backed by evidence</strong>: each body paragraph "
                    "makes a claim and supports it with an attributed fact from the source.</li>"
-                   "<li style=\"margin:4px 0\"><strong>Counterclaim named and answered</strong>: a counterclaim "
-                   "is a strong point from the other side that you state and then answer.</li>"
+                   "<li style=\"margin:4px 0\"><strong>A warrant for each reason</strong>: a warrant is a "
+                   "sentence, placed after your evidence, that explains why that fact actually proves the claim, "
+                   "instead of leaving the reader to connect it.</li>"
                    "<li style=\"margin:4px 0\"><strong>Conclusion</strong>: land the upshot instead of repeating "
                    "the thesis.</li></ul>"
                    "There is no clock; take the time you need. Plan first, then draft.")),
@@ -107,9 +113,9 @@ LESSON = Lesson(
                        "essay. The task: when water runs short, which use, food or power, should get it first? "
                        "Take a side and use the source.",
                  setapart_block=setapart("Fill in this plan:",
-                     "Thesis (the side you defend): ______. Reason 1: ______ (evidence: ______). Reason 2: "
-                     "______ (evidence: ______). Counterclaim: names ______ from the other side, then answers "
-                     "it with ______. Conclusion: the upshot is ______."),
+                     "Thesis (the side you defend): ______. Reason 1: ______ (evidence: ______; warrant, why it "
+                     "proves the claim: ______). Reason 2: ______ (evidence: ______; warrant: ______). "
+                     "Conclusion: the upshot is ______."),
                  closer="Then write the full essay from this plan.")),
         # ===== the GATE: ONE cold argument essay on the held-out source (the certification write) =====
         Slot("TRANSFER", "production_frq", "GATE: write the complete argument essay",
@@ -119,27 +125,27 @@ LESSON = Lesson(
                        "water runs short, which use, food or power, should get it first? Take a side and use the "
                        "source.",
                  closer="Write a complete argument essay: an introduction that states a thesis taking a clear "
-                        "side, body paragraphs that each make a claim backed by attributed evidence, one "
-                        "paragraph that names and answers the counterclaim, and a conclusion that lands the "
+                        "side, body paragraphs that each make a claim backed by attributed evidence and a warrant "
+                        "explaining why that evidence proves the claim, and a conclusion that lands the "
                         "upshot. This is the terminal task the whole course led to, and you are ready to do it "
                         "cold. Take the time you need; there is no time limit.")),
         # ===== POST-HOC self-score: judge your finished essay against the check (calibration) =====
         Slot("INDEPENDENT", "self_score", "Score your own essay, then predict the gate result",
              ref="", bank="water_tradeoff",
              body=("Predict, then see your grade. Reread your finished essay against the check: a clear side, "
-                   "evidence for each reason, and the counterclaim named and answered. Did your essay earn the "
-                   "gate?"),
+                   "evidence for each reason, and a warrant that explains why each fact proves the claim. Did "
+                   "your essay earn the gate?"),
              choices=[
-                 {"id": "pass", "text": "Yes: claim, evidence, and the answered counterclaim are all there.",
+                 {"id": "pass", "text": "Yes: claim, attributed evidence, and a warrant for each reason are all there.",
                   "correct": True,
-                  "why": "If a side-taking claim, attributed evidence, and an answered counterclaim are all "
+                  "why": "If a side-taking claim, attributed evidence, and a warrant explaining each fact are all "
                          "present, the essay meets the gate. Compare this prediction to the grade you get back: "
                          "matching them is how you learn to judge your own argument writing."},
                  {"id": "gap", "text": "Not yet: at least one is missing or weak.",
                   "correct": False,
                   "why": "Then fix it before you submit. Go back and add the missing piece (the side-taking "
-                         "claim, the evidence, or the answer to the counterclaim), because any one of the three "
-                         "missing keeps the essay below the gate."},
+                         "claim, the evidence, or the warrant explaining why the evidence proves the claim), "
+                         "because any one of the three missing keeps the essay below the gate."},
              ]),
     ],
 )

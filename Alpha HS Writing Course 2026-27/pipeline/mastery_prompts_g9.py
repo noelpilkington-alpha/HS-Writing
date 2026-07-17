@@ -324,6 +324,6 @@ MASTERY = {
         + _task("This is the argument gate. Independently plan, draft, and self-check a complete single-source "
                 "ARGUMENT essay using the source above.",
                 "Include: an intro that frames a thesis taking a clear side; ordered body paragraphs, each with a "
-                "claim backed by attributed evidence; one paragraph that names and answers the counterclaim; and "
-                "a conclusion that lands the upshot. Run your self-check before you submit.")},
+                "claim backed by attributed evidence and a warrant explaining why that evidence proves the claim; "
+                "and a conclusion that lands the upshot. Run your self-check before you submit.")},
 }
