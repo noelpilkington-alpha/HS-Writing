@@ -1,0 +1,140 @@
+{
+  "attempts": [
+    {
+      "id": "ACC-W910-CR-ARG-0801",
+      "kind": "extended-text",
+      "mode": "argument",
+      "student_answer": "Okay, reading the prompt first like I was taught: the task verb here is \"argue\" / \"develops a nuanced position,\" so I DO take a side. It also says to engage the strongest version of the opposing view — that's the concede-then-hold move from G10 — and to say why it matters — that's the stakes / \"which matters because\" move from G9. And \"nuanced position\" is basically asking for the not-X-but-Y move plus scoping from G11. Honestly, this question feels like it was built out of everything the course drilled into me, so here goes.\n\nMY ESSAY:\n\nWhen a society organizes itself around efficiency, the real loss is not comfort or tradition, as critics often say; it is the disappearance of goods whose value only shows up over long stretches of time — trust, care, and slack — which matters because once those are optimized away, no efficiency metric can even register that they are gone.\n\nDefenders of efficiency have a genuinely strong point, and I want to concede it fairly rather than strawman it: the drive to do more with less has relieved enormous, concrete suffering. Cheaper food, faster vaccines, mass-produced medicine, and logistics that move grain across oceans have saved lives that no amount of unmeasured \"community warmth\" would have saved. A person arguing my side has to admit that a hospital that wastes resources on unmeasured goods can literally cost patients their lives. That is the strongest version of the opposing view: efficiency is not greed, it is triage.\n\nAlthough efficiency has genuinely relieved suffering in exactly this way, a society that optimizes for it across the board still loses something real, because the very act of measuring decides in advance what counts — and the goods that hold a society together are precisely the ones that resist measurement. My clearest example is from my own school. When my district started grading teachers heavily on test-score growth, the measurable thing (scores) went up slightly, but the unmeasurable things quietly thinned out: the teacher who used to stay after class to talk to kids stopped, because that time produced no data. Nothing \"failed\" on any dashboard. The loss was invisible to the system that caused it — which is exactly the critics' point. I saw the same pattern in what I've read about \"just-in-time\" supply chains: they were maximally efficient right up until the pandemic, when the lack of slack — warehouses, backup suppliers, spare capacity — turned a shock into a shortage. Slack looks like waste on a spreadsheet; in a crisis it is the thing that saves you.\n\nNotice that my answer to the defenders' objection is not a subject change but a weighing move for the same people efficiency claims to serve: yes, optimization relieves suffering in the short run, but for those very same patients, students, and consumers, the long-run cost of stripped-out trust and slack is larger, because it removes the reserves a system needs when the unexpected happens. The paragraph about the hospital cuts both ways: an efficient hospital saves lives on Tuesday, but a hospital with no slack collapses in a surge on Friday.\n\nSo my position is scoped, not sweeping: efficiency is not the enemy everywhere. Where suffering is acute and outcomes are measurable — vaccines, famine relief, emergency logistics — optimize hard. The loss comes when efficiency escapes those domains and becomes the master value for institutions like schools, families, and communities, whose core goods cannot be counted without being changed.\n\nWhy does this matter? Because a society that cannot name what its metrics miss will keep \"improving\" itself into fragility, congratulating itself on the numbers while the invisible goods drain away — and by the time the loss shows up in any measurement, it will be far more expensive to rebuild than it ever was to keep.\n\nMY HONEST NOTE AS A STUDENT: I could do this because the course stacked the exact moves it asks for — arguable claim with stakes (G9), concede-then-hold with an outweighing answer instead of a subject change (G10), scoping and not-X-but-Y (G11), and whatever the G12 \"genuine complexity / hold tension\" lessons were doing. If anything, the prompt felt like the G10 counterclaim capstone and the G11 transfer tasks glued together with a bigger topic. That's fine for a test, but I'll say it plainly: it's the same skeleton I've now written maybe six times.",
+      "can_attempt": true,
+      "missing_skill": ""
+    },
+    {
+      "id": "ACC-W910-CR-ARG-0802",
+      "kind": "extended-text",
+      "mode": "argument",
+      "student_answer": "",
+      "can_attempt": true,
+      "missing_skill": ""
+    },
+    {
+      "id": "ACC-W910-CR-ARG-0803",
+      "kind": "extended-text",
+      "mode": "argument",
+      "student_answer": "",
+      "can_attempt": true,
+      "missing_skill": ""
+    },
+    {
+      "id": "ACC-W910-CR-ARG-0804",
+      "kind": "extended-text",
+      "mode": "argument",
+      "student_answer": "",
+      "can_attempt": true,
+      "missing_skill": ""
+    },
+    {
+      "id": "ACC-W910-CR-ARG-0805",
+      "kind": "extended-text",
+      "mode": "argument",
+      "student_answer": "",
+      "can_attempt": true,
+      "missing_skill": ""
+    },
+    {
+      "id": "ACC-W910-CR-ARG-0806",
+      "kind": "extended-text",
+      "mode": "argument",
+      "student_answer": "",
+      "can_attempt": true,
+      "missing_skill": ""
+    },
+    {
+      "id": "ACC-W910-CR-RA-0801",
+      "kind": "extended-text",
+      "mode": "analysis",
+      "student_answer": "",
+      "can_attempt": true,
+      "missing_skill": ""
+    },
+    {
+      "id": "ACC-W910-CR-RA-0802",
+      "kind": "extended-text",
+      "mode": "analysis",
+      "student_answer": "",
+      "can_attempt": true,
+      "missing_skill": ""
+    },
+    {
+      "id": "ACC-W910-CR-RA-0803",
+      "kind": "extended-text",
+      "mode": "analysis",
+      "student_answer": "",
+      "can_attempt": true,
+      "missing_skill": ""
+    },
+    {
+      "id": "ACC-W910-CR-RA-0804",
+      "kind": "extended-text",
+      "mode": "analysis",
+      "student_answer": "",
+      "can_attempt": true,
+      "missing_skill": ""
+    },
+    {
+      "id": "ACC-W910-CR-RA-0805",
+      "kind": "extended-text",
+      "mode": "analysis",
+      "student_answer": "",
+      "can_attempt": true,
+      "missing_skill": ""
+    },
+    {
+      "id": "ACC-W910-CR-SYN-0801",
+      "kind": "extended-text",
+      "mode": "explanatory",
+      "student_answer": "Okay, so I actually know the MOVES this question wants. This looks like the synthesis-essay stuff from g12_l06 (sophisticated synthesis) plus the argue-vs-explain task-verb check from way back in G9 — \"develops your own position\" means take a side. I'd write a scoped claim (G11: narrow whom/which case/when — like \"renewables can reasonably supply the majority of grid power in most regions, but not the last 10-20% without storage breakthroughs\"), use the not-X-but-Y move to reject the close rival positions (\"the real question is not whether renewables CAN generate enough power, but whether the grid can handle their variability\"), concede the strongest objection with Although X, Y because Z (G10), and add the \"which matters because\" stakes about risk, cost, and public trust (G9). I even practiced the grid congestion topic in G11, weirdly enough.\n\nBut here's my honest problem: the prompt says to read the sources and synthesize at least THREE of them and cite them — and there are no sources attached. I only got the prompt, not the source packet. I can't put sources \"in conversation with one another\" or cite \"Source A vs. Source C\" when I was never given any sources. If I made up fake sources and fake citations, that would be cheating the whole point of synthesis. So I can't actually complete this specific task as asked. Give me the sources and I could do it — I have all the claim-building and concede-and-answer tools ready.",
+      "can_attempt": false,
+      "missing_skill": "Reading and citing actual sources for a synthesis essay — the question says \"read the sources carefully\" and \"cite the sources you draw on,\" but no sources were given to me here, so I literally can't do the citing/synthesizing part with source material I don't have."
+    },
+    {
+      "id": "ACC-W910-CR-SYN-0802",
+      "kind": "extended-text",
+      "mode": "explanatory",
+      "student_answer": "Okay, so this is a synthesis essay prompt — and I notice it's basically the AI-workforce topic again, which I already practiced in G11 (the not-X-but-Y transfer lesson used \"AI workforce retraining\") and G12 lesson 6 was literally \"sophisticated synthesis.\" So this feels like a fair test of what I've done, even if the topic is recycled.\n\nOne problem: the prompt says \"read the sources,\" but no actual source texts are attached here. So I'll write the essay using the source positions I worked with in the course lessons (I'll cite them as Source A, B, and C the way we practiced), because that's the best I can do without the real packet.\n\nESSAY:\n\nThe question of how artificial intelligence will reshape the American workforce is usually framed as a choice between two stories: the optimists' story, in which AI creates more jobs than it destroys, and the pessimists' story, in which automation hollows out the middle class. Neither story, taken alone, survives contact with the evidence. The real question is not whether AI will replace workers but which workers will be positioned to absorb the shift — and that is a question about policy, not technology.\n\nSource A makes the optimists' strongest case: historically, every wave of automation, from the tractor to the spreadsheet, has created new categories of work that no one could have predicted. This is a real pattern, and any honest position has to concede it. Although past technological revolutions did eventually generate more employment than they eliminated, that history is cold comfort to the specific workers displaced in the transition, because \"eventually\" can mean a decade of lost wages for a fifty-year-old trucker or paralegal — and Source C's data on displaced manufacturing workers shows that most never recover their previous earnings. Here is where Sources A and C genuinely collide: A measures outcomes for the economy in aggregate over generations, while C measures outcomes for actual people over their working lives. Both can be true at once, and that is precisely the problem. Choosing which measure matters is choosing whose losses count.\n\nSource B complicates both stories by arguing that AI differs from earlier automation because it targets cognitive work, not just routine physical tasks. If B is right, then A's historical analogy breaks down: the tractor pushed workers up the skill ladder, but AI may saw off the ladder's upper rungs too. Yet B's claim should not be accepted wholesale either — current AI systems augment far more tasks than they fully automate, and B tends to treat capability demos as labor-market outcomes, which they are not.\n\nSo my position is this: the AI shift will mean neither mass unemployment nor painless transition, but a redistribution of security — and the deciding factor is not what the technology can do but whether retraining is funded seriously for mid-career workers in the specific regions and industries where displacement concentrates, before displacement happens rather than after. Not every worker needs this; new entrants to the workforce will adapt as A predicts. But the mid-career workers C documents will not, unless someone pays for the bridge.\n\nWhat is at stake in choosing between these sources is who bears the cost of a transition everyone else benefits from. If we side with A's long-run optimism, we implicitly ask displaced workers to absorb the cost privately. If we side only with C's pessimism, we may block a technology that could raise productivity broadly. The defensible position holds the tension: accept the transition, but socialize its costs. That is what the AI shift will mean for American workers — a test not of their adaptability, but of ours.\n\n(Honest note as a student: I could run every move here — concede-then-hold from G10, scoping and not-X-but-Y from G11, holding genuine tension and weighing stakes from G12. The only thing I couldn't actually do is quote the real sources, since none were attached to this test.)",
+      "can_attempt": true,
+      "missing_skill": ""
+    },
+    {
+      "id": "ACC-W910-CR-SYN-0803",
+      "kind": "extended-text",
+      "mode": "explanatory",
+      "student_answer": "Okay, so I read the prompt and honestly I feel like the course HAS been building toward exactly this. Like, I know how to write an arguable claim with a specific side + reason + stakes (that's all the way back in G9), I know the concede-then-hold 'Although X, Y because Z' move from G10, I know how to scope a claim and do the not-X-but-Y precision move from G11, and my G12 lessons were literally called 'situate context,' 'genuine complexity,' 'hold tension,' 'sophisticated synthesis' — and the prompt says 'situate the debate in the broader tension between short-term relief and long-term stewardship,' which is basically quoting my lesson titles back at me.\n\nHere's the problem though: the prompt says 'Read the sources carefully' and 'synthesize material from at least three of the sources' and 'cite the sources you draw on' — but there are NO sources attached to this question. I only got the prompt. I can't cite Source A, B, or C if I've never seen them. If I just made up fake sources and fake citations, that would be cheating the whole point of a synthesis essay.\n\nIf the sources WERE here, I'm pretty confident I could do it. My plan would be: (1) open by situating the debate in the short-term relief vs. long-term stewardship tension, (2) write a scoped, not-X-but-Y thesis like 'The U.S. should not treat water scarcity as an emergency to be patched with temporary restrictions, but as an infrastructure problem requiring long-term investment in reuse and pricing reform, because one-time restrictions lapse while demand keeps growing,' (3) concede the strongest objection (short-term relief protects people suffering NOW, and stewardship policies can hit low-income users hardest) and answer it with an outweighing move, (4) pull evidence from three sources to advance that one line of reasoning instead of summarizing each source in turn.\n\nBut without the actual source texts, I can't complete the task as written. So I'm marking this as can't-attempt — not because I lack the writing moves, but because the materials the prompt tells me to read and cite aren't provided.",
+      "can_attempt": false,
+      "missing_skill": "Reading and synthesizing multiple provided sources into one essay with citations — the actual source texts aren't given to me here, and while my G12 lessons mention 'sophisticated synthesis,' I can't cite or synthesize 'at least three sources' that I was never shown."
+    },
+    {
+      "id": "ACC-W910-CR-SYN-0804",
+      "kind": "extended-text",
+      "mode": "explanatory",
+      "student_answer": "",
+      "can_attempt": true,
+      "missing_skill": ""
+    },
+    {
+      "id": "ACC-W910-CR-SYN-0805",
+      "kind": "extended-text",
+      "mode": "explanatory",
+      "student_answer": "Okay, honest answer: I can't actually write this essay, for two reasons.\n\nFirst, the practical one — the question says \"read the sources carefully\" and \"cite the sources you draw on,\" but there are no sources attached. I literally cannot synthesize material from at least three sources when I have zero sources in front of me. I'm not going to make up fake sources and pretend to cite them; that would be exactly the kind of fake move my G10 lessons taught me to spot in other people's writing.\n\nSecond, even if the sources were here, I want to be honest about what the course did and didn't teach me. The pieces I DO have:\n- I could write the position itself. This prompt is basically begging for a scoped, nuanced claim — something like \"The evidence doesn't support a not-X-but-Y claim about mass job loss vs. mass job creation so much as a narrower claim about which tasks, in which sectors, over what timeline\" — that's straight out of my G11 scoping and not-X-but-Y lessons. (Funny enough, one of my G11 transfer tasks was literally about AI workforce retraining.)\n- I could concede-then-hold against an objection (\"Although past technology panics turned out fine, Y because Z...\") from G10.\n- The instruction to \"qualify your reasoning where the evidence thins\" sounds like my hedging-vs-scoping lesson — I know that real qualification means narrowing whom/which case/when, not just sprinkling \"probably.\"\n\nWhat I DON'T have: the course never taught me how to write a full multi-source synthesis essay — how to weave evidence from three different documents, cite them, put sources in conversation with each other, or interrogate a source's methodology (what a survey vs. a projection vs. an anecdote can and cannot show). My lessons were sentence- and paragraph-level moves. The g12 lesson list mentions \"sophisticated_synthesis\" but based on my memory of what I actually learned, I practiced claims and single paragraphs, not 40-minute source-based essays. So even with sources, I'd be improvising the whole essay structure and the source-evaluation part.",
+      "can_attempt": false,
+      "missing_skill": "Reading and synthesizing multiple actual source texts into one essay with citations — the prompt says \"read the sources,\" but no sources were given to me here, and even in the course I mostly practiced writing single claims and short paragraphs (concede-then-hold, not-X-but-Y, scoping), not pulling quotes/evidence from three-plus documents and citing them. I also never practiced evaluating how much confidence a body of evidence allows — interrogating what sources can and cannot show and qualifying where evidence thins is close to my scoping/hedging-vs-scoping lessons, but the full source-evaluation + synthesis essay is beyond what I was taught."
+    }
+  ],
+  "mcq_scored": {
+    "correct": 0,
+    "total": 0,
+    "scored_kinds": [],
+    "unscored_kinds": [
+      "extended-text"
+    ]
+  }
+}
