@@ -141,13 +141,32 @@ def synthesize(run_dir: str, anthropic_key: str, model: str = "claude-fable-5",
     for b in r.content:
         if getattr(b, "type", "") == "tool_use":
             rep = b.input
+    # Always embed the DETERMINISTIC redundancy table under Q2 (built from the students' own
+    # felt_repeated flags), so Q2 is never empty even when the model writes its redundancy prose
+    # into other sections. The model's Q2 prose (if any) is appended beneath the factual table.
+    red_table = _redundancy_table_md(redundancies)
+    q2_prose = rep.get("redundancies", "").strip()
+    q2 = red_table + ("\n\n" + q2_prose if q2_prose else "")
+
     md = [f"# Simulated-Student Curriculum Evaluation - {g}", "",
           "> Signal, not proof. Simulated students are a design signal to investigate, "
           "NOT field evidence of efficacy. No writing was scored (grading is not yet wired); "
           "findings are the students' lived experience plus deterministic multiple-choice matches.", "",
           "## Most severe findings (ranked)", "", rep.get("top_findings", "(none)"), "",
           "## 1. Do the lessons make sense?", "", rep.get("makes_sense", ""), "",
-          "## 2. Are there redundancies?", "", rep.get("redundancies", ""), "",
+          "## 2. Are there redundancies?", "", q2, "",
           "## 3. Do the lessons prepare them for the full compositions?", "", rep.get("composition_readiness", ""), "",
           "## 4. Do the courses prepare them for the tests?", "", rep.get("test_readiness", "")]
     return "\n".join(md)
+
+
+def _redundancy_table_md(redundancies: list) -> str:
+    """Factual redundancy table straight from the students' felt_repeated flags (model-independent)."""
+    if not redundancies:
+        return "_No lesson was flagged by any student as repeating an earlier one._"
+    lines = ["**Lessons students flagged as repeating an earlier lesson (from their own felt_repeated notes):**", "",
+             "| Lesson | Echoes | Corroboration | What repeated |", "|---|---|---|---|"]
+    for r in redundancies:
+        what = (r.get("what", "") or "").replace("|", "/").replace("\n", " ")[:160]
+        lines.append(f"| {r['lesson']} | {r['echoes_lesson']} | {r['corroboration']} | {what} |")
+    return "\n".join(lines)
