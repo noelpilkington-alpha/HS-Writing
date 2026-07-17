@@ -1,4 +1,4 @@
-"""Test-readiness pass. The student takes the G9 test bank items carrying only its journal.
+"""Test-readiness pass. The student takes a grade's test bank items carrying only its journal.
 For MCQ we log a deterministic answer-vs-key match (allowed - not a writing score). For
 extended-text (CR) we log attemptability + the student's self-reported missing skill only."""
 import os, sys, glob, importlib.util, json
@@ -9,6 +9,7 @@ ROOT = os.path.join(PIPE, "..")
 sys.path.insert(0, PIPE)
 
 _SKIP_PREFIXES = ("pp100_",)  # mastery instruments: out of scope for lived test-readiness
+_ITEM_BANK = {"g9": "Item_Bank_G9", "g10": "Item_Bank_G10", "g11": "Item_Bank_G11", "g12": "Item_Bank_G12"}
 
 
 def _load_module(path):
@@ -18,9 +19,13 @@ def _load_module(path):
     return m
 
 
-def load_g9_test_items() -> list:
+def load_test_items(grade: str) -> list:
+    grade = grade.lower()
+    bank = _ITEM_BANK.get(grade)
+    if bank is None:
+        raise ValueError(f"unknown grade {grade!r}; expected one of {tuple(_ITEM_BANK)}")
     items = []
-    for f in sorted(glob.glob(os.path.join(ROOT, "Item_Bank_G9", "*.py"))):
+    for f in sorted(glob.glob(os.path.join(ROOT, bank, "*.py"))):
         if os.path.basename(f).startswith(_SKIP_PREFIXES):
             continue
         try:
@@ -37,6 +42,11 @@ def load_g9_test_items() -> list:
                 "answer_key": list(it.answer_key),  # harness-only, never shown
             })
     return items
+
+
+def load_g9_test_items() -> list:
+    """Back-compat wrapper (kept so existing G9 callers/tests are unchanged)."""
+    return load_test_items("g9")
 
 
 def present_item(item: dict) -> str:

@@ -14,14 +14,18 @@ try:
 except Exception:  # pragma: no cover - models import is always available in the real harness
     EXTRACT_TOOL = None
 
-COMPOSITION_LESSONS = {"g9_l18", "g9_l23", "g9_l24", "g9_l26", "g9_l27"}
+# A lesson is a COMPOSITION PROBE when its terminal task is a full piece: lesson_type 7 (essay
+# assembly) or 8 (cross-source synthesis), OR it is a unit gate (lesson_class == 'gate'). Derived
+# structurally so it works across G9-G12 with no per-grade hardcoded list. (Verified: this selects
+# 10/11/13/11 probes for G9/G10/G11/G12.)
+_COMPOSITION_TYPES = {7, 8}
 
 
-def _is_composition(sid: str) -> bool:
-    return any(sid.startswith(p) for p in COMPOSITION_LESSONS)
+def is_composition_lesson(L) -> bool:
+    return getattr(L, "lesson_class", "practice") == "gate" or getattr(L, "lesson_type", 0) in _COMPOSITION_TYPES
 
 
-def build_narrate_prompt(sid: str, view: str, digest: str, is_composition: bool) -> str:
+def build_narrate_prompt(view: str, digest: str, is_composition: bool, grade_label: str = "9th") -> str:
     extra = ""
     if is_composition:
         extra = (
@@ -33,33 +37,30 @@ def build_narrate_prompt(sid: str, view: str, digest: str, is_composition: bool)
     return (
         "YOUR MEMORY FROM EARLIER LESSONS:\n" + digest +
         "\n\n===== TODAY'S LESSON (read it and do every step) =====\n" + view + extra +
-        "\n\n=====\nNow, in character as a 9th grader working alone, actually answer every check "
-        "and attempt every writing task. Think out loud: what clicked, what confused you, what felt "
-        "like a repeat of an earlier lesson (name which one), and how sure you feel about each skill. "
-        "Write it all as your honest first-person reaction.")
+        "\n\n=====\nNow, in character as a " + grade_label + "-grade student working alone, actually "
+        "answer every check and attempt every writing task. Think out loud: what clicked, what confused "
+        "you, what felt like a repeat of an earlier lesson (name which one), and how sure you feel about "
+        "each skill. Write it all as your honest first-person reaction.")
 
 
-# kept for back-compat with any caller/test that used the old single-call name
-build_user_prompt = build_narrate_prompt
-
-
-def _extract_prompt(sid: str, digest: str, narration: str) -> str:
+def _extract_prompt(sid: str, digest: str, narration: str, grade_label: str = "9th") -> str:
     return (
-        "Below is a 9th-grade student's own narration of the writing lesson they just finished, plus "
-        "the running memory of what they knew before it. Record their learning state in structured "
-        "form, extracting ONLY what the narration actually supports (do not invent skills or struggles).\n\n"
-        "For felt_repeated: set echoes_lesson to an earlier lesson's name (like 'g9_l03...') ONLY if the "
-        "student said this lesson repeated an earlier one; otherwise leave it empty. For confidence: a "
-        "0.0-1.0 number per skill the student showed a confidence signal about.\n\n"
+        "Below is a " + grade_label + "-grade student's own narration of the writing lesson they just "
+        "finished, plus the running memory of what they knew before it. Record their learning state in "
+        "structured form, extracting ONLY what the narration actually supports (do not invent skills or "
+        "struggles).\n\n"
+        "For felt_repeated: set echoes_lesson to an earlier lesson's name (like 'g9_l03...' or "
+        "'g10_l05...') ONLY if the student said this lesson repeated an earlier one; otherwise leave it "
+        "empty. For confidence: a 0.0-1.0 number per skill the student showed a confidence signal about.\n\n"
         "PRIOR MEMORY (earlier-lesson names appear here):\n" + digest +
         "\n\n===== THE STUDENT'S NARRATION OF LESSON " + sid + " =====\n" + narration)
 
 
-def walk_lesson(client, persona: dict, L, digest: str) -> dict:
+def walk_lesson(client, persona: dict, L, digest: str, grade_label: str = "9th") -> dict:
     sid = short_id(L)
     view = student_view(L)
     system = persona["system_preamble"]
-    narrate_user = build_narrate_prompt(sid, view, digest, _is_composition(sid))
+    narrate_user = build_narrate_prompt(view, digest, is_composition_lesson(L), grade_label)
 
     # Two-phase path (real clients): narrate in free text, then extract the structured journal from it.
     if EXTRACT_TOOL is not None and hasattr(client, "narrate") and hasattr(client, "ask_tool"):
@@ -68,7 +69,7 @@ def walk_lesson(client, persona: dict, L, digest: str) -> dict:
         err = ""
         if response:
             try:
-                raw = client.ask_tool(system, _extract_prompt(sid, digest, response), EXTRACT_TOOL)
+                raw = client.ask_tool(system, _extract_prompt(sid, digest, response, grade_label), EXTRACT_TOOL)
                 upd = dict(raw) if isinstance(raw, dict) else {}
             except Exception as e:  # extraction must never lose the (already captured) narration
                 err = f"extract failed: {e!r}"

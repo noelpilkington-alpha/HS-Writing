@@ -72,7 +72,8 @@ _REPORT_TOOL = {
         "required": ["makes_sense", "redundancies", "composition_readiness", "test_readiness", "top_findings"]}}
 
 
-def _build_evidence(gathered: dict, redundancies: list) -> str:
+def _build_evidence(gathered: dict, redundancies: list, comp_ids=None) -> str:
+    comp_ids = set(comp_ids or ())
     parts = ["DETERMINISTIC REDUNDANCY TABLE (from students' own felt_repeated flags):"]
     for r in redundancies:
         parts.append(f"- {r['lesson']} felt like a repeat of {r['echoes_lesson']} ({r['corroboration']}; raised by {', '.join(r['raised_by'])}): {r['what']}")
@@ -81,7 +82,8 @@ def _build_evidence(gathered: dict, redundancies: list) -> str:
         for e in data.get("journal", []):
             parts.append(f"[{e['lesson']}] can_do={e.get('skills_i_can_now_do')}; struggled={e.get('where_i_struggled')}; open={e.get('open_questions')}; conf={e.get('confidence')}")
         for t in data.get("transcript", []):
-            if any(t["lesson"].startswith(p) for p in ("g9_l18", "g9_l23", "g9_l24", "g9_l26", "g9_l27")):
+            # a transcript is a composition probe if its lesson id is in comp_ids (structural, grade-general)
+            if t["lesson"] in comp_ids or t.get("is_composition"):
                 parts.append(f"[COMPOSITION {t['lesson']}] response: {t['response'][:1200]}")
     for tk, tr in gathered["tests"].items():
         na = [a for a in tr["attempts"] if not a["can_attempt"]]
@@ -90,23 +92,47 @@ def _build_evidence(gathered: dict, redundancies: list) -> str:
     return "\n".join(parts)[:120000]
 
 
-def synthesize(run_dir: str, anthropic_key: str, model: str = "claude-fable-5") -> str:
+_CROSS_GRADE_PROMPT = (
+    "You are an instructional-design analyst reviewing the VERTICAL PROGRESSION of a G9-G12 writing "
+    "curriculum. One (or more) simulated student walked g9 -> g10 -> g11 -> g12 IN SEQUENCE on a single "
+    "continuous memory (their journal spans all four grades; each lesson id is grade-prefixed, e.g. "
+    "g9_l07, g11_l04). Below is their evidence, including a felt_repeated table where a student flagged a "
+    "lesson as repeating an EARLIER one (possibly in an earlier GRADE). Write a cross-grade evaluation:\n"
+    "(1) makes_sense: does the grade-to-grade progression build coherently, or are there jumps/gaps where a "
+    "grade assumes a skill no earlier grade taught? (2) redundancies: CROSS-GRADE repeats specifically, where "
+    "a later grade re-teaches an earlier grade's skill (cite both grade-prefixed lessons); note within-grade "
+    "repeats only briefly. (3) composition_readiness: do the earlier grades actually prepare the student for "
+    "the later grades' full compositions (use the COMPOSITION transcripts + the per-grade skill rollups in the "
+    "digests)? (4) test_readiness: across grades, do the courses prepare the student for each grade's tests, and "
+    "does rigor escalate? For top_findings, rank the most important CROSS-GRADE progression/redundancy findings.\n\n"
+    "RULES: cite grade-prefixed lesson ids; label CORROBORATED vs PERSONA-SPECIFIC vs SINGLE-MODEL; do NOT invent "
+    "findings; do NOT score writing; NO em dashes; be blunt and concrete.\n\n")
+
+
+def synthesize(run_dir: str, anthropic_key: str, model: str = "claude-fable-5",
+               grade: str = "g9", comp_ids=None) -> str:
     import anthropic
     gathered = gather(run_dir)
     redundancies = detect_redundancies(gathered)
-    evidence = _build_evidence(gathered, redundancies)
-    prompt = (
-        "You are an instructional-design analyst. Four simulated 9th-grade students (two personas: "
-        "on-grade average and high-achiever; each run once by Fable-5 and once by GPT) walked the "
-        "G9 writing course in order, carrying a running memory. Below is their evidence. Write a "
-        "curriculum evaluation answering four questions: (1) do the lessons make sense? (2) are there "
-        "redundancies? (3) do the lessons prepare students for the full compositions? (4) do they "
-        "prepare students for the tests?\n\n"
-        "RULES: Every finding must be specific and cite a lesson (and step if possible) and the walk "
-        "that raised it. Label redundancy/readiness findings CORROBORATED (raised across models or "
-        "personas) vs PERSONA-SPECIFIC vs SINGLE-MODEL. Do NOT invent findings not in the evidence. "
-        "Do NOT score writing. NO em dashes anywhere (use commas, colons, parentheses). Be blunt and "
-        "concrete, never generic.\n\n" + evidence)
+    evidence = _build_evidence(gathered, redundancies, comp_ids)
+    cross = (grade == "crossgrade")
+    g = "G9-G12 (cross-grade)" if cross else grade.upper()
+    n_walks = len(gathered["walks"])
+    if cross:
+        prompt = _CROSS_GRADE_PROMPT + evidence
+    else:
+        prompt = (
+            f"You are an instructional-design analyst. {n_walks} simulated {g} student-walk(s) (personas: "
+            "on-grade average and/or high-achiever; run by Fable-5 and/or GPT) went through the "
+            f"{g} writing course in order, carrying a running memory. Below is their evidence. Write a "
+            "curriculum evaluation answering four questions: (1) do the lessons make sense? (2) are there "
+            "redundancies? (3) do the lessons prepare students for the full compositions? (4) do they "
+            "prepare students for the tests?\n\n"
+            "RULES: Every finding must be specific and cite a lesson (and step if possible) and the walk "
+            "that raised it. Label redundancy/readiness findings CORROBORATED (raised across models or "
+            "personas) vs PERSONA-SPECIFIC vs SINGLE-MODEL. Do NOT invent findings not in the evidence. "
+            "Do NOT score writing. NO em dashes anywhere (use commas, colons, parentheses). Be blunt and "
+            "concrete, never generic.\n\n" + evidence)
     c = anthropic.Anthropic(api_key=anthropic_key)
     r = c.messages.create(model=model, max_tokens=6000, tools=[_REPORT_TOOL],
                           tool_choice={"type": "tool", "name": "write_report"},
@@ -115,8 +141,8 @@ def synthesize(run_dir: str, anthropic_key: str, model: str = "claude-fable-5") 
     for b in r.content:
         if getattr(b, "type", "") == "tool_use":
             rep = b.input
-    md = ["# Simulated-Student Curriculum Evaluation - G9 Pilot", "",
-          "> Signal, not proof. Four simulated students are a design signal to investigate, "
+    md = [f"# Simulated-Student Curriculum Evaluation - {g}", "",
+          "> Signal, not proof. Simulated students are a design signal to investigate, "
           "NOT field evidence of efficacy. No writing was scored (grading is not yet wired); "
           "findings are the students' lived experience plus deterministic multiple-choice matches.", "",
           "## Most severe findings (ranked)", "", rep.get("top_findings", "(none)"), "",
