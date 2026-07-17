@@ -18,6 +18,37 @@ Confirmed while writing this: the grader's `ScoreResponse` already returns `brea
 
 ---
 
+## Grounding: the survival assessment (every finding → its fix)
+
+The full Fable-5 "what survives contact with Timeback" audit, verbatim by category, each item tagged with the plan item that addresses it. This is the audit trail — nothing below is left unrouted.
+
+### WORKS AS-IS — protect, do not touch (→ Tier 3)
+| Move | Finding | Disposition |
+|---|---|---|
+| Discrimination minimal pairs (129) | "The strongest-fitting move in the whole course." Native MCQ + per-wrong-choice feedback + hard-gate retry is exactly what it needs. | **KEEP** (Tier 3). T1-C *enriches* it (distractor = named misconception) without changing the mechanic. |
+| Predict-the-fix (94) | Diagnose → pick fix → reveal maps cleanly. | **KEEP** (Tier 3). T1-C targets each item at one misconception code. |
+| Teach / stimulus / annotated before-after (404) | Static styled HTML covers it; annotations frozen (no progressive reveal) but it is fundamentally a reading move, nothing real lost. | **KEEP** (Tier 3). T1-D adds *scored* exemplars alongside. |
+| Independent + transfer essays, holistic AI grading | One box, one aggregate score, one feedback blob = a legitimate **summative** essay experience. | **KEEP** (Tier 3). T1-A/T1-B upgrade the *feedback text* (still one item, still one outcome). |
+| SRSD as a *fixed* ladder | "Gradual release survives as long as nobody expects it to be *responsive* release." | **KEEP** (Tier 3) — and protect it as our edge over AP One (they lack the strategy-instruction half). |
+
+### DEGRADED — fix within the ceiling (ranked by severity, as Fable ranked them)
+| # | Move | Finding | Fix |
+|---|---|---|---|
+| 1 | **MPO planning** — badly degraded | "We show a structured grid, then hand them one undifferentiated plain-text box; the structure exists only in their willingness to retype it." Aggregate score gives no signal about which row failed. Our table-grid is "a workaround, not the design." | **F3** (rides on **T1-A**: row-by-row feedback restores the per-row signal MPO needs) + keep the labeled-row template, labeled as a workaround. |
+| 2 | **Multi-trait rubric grading** — significantly degraded | STAAR/AP traits are "marketed as the assessment spine," but the student gets one aggregate + prose; no per-trait scores → "your Evidence row improved" tracking impossible. "The rubric is real on the grader's side; invisible as structured feedback on the student's side." | **T1-A** (surface the rows the grader already computes, as feedback text) + **T1-B** (quote-anchor them). This is the plan's #1 lever. |
+| 3 | **Diagnosis / self-revision** (94) — near the fiction line | Card can't embed the student's just-written draft (they scroll/copy-paste); grader scores the revision **standalone** — never sees the original, so cannot assess improvement, and an unchanged resubmit scores identically, undetected. | **F2**: target the diagnosis at the T1-A row breakdown; reword any copy implying the system detects improvement (it does not). True improvement-scoring = a platform gap, not a course fix. |
+| 4 | **Supported write** — mildly degraded | "A sentence starter sheet, not a writing coach... acceptable if we stop describing it as guided." | **F5 (new)**: copy sweep — stop calling the static scaffold "guided"/"coaching"; frame it honestly as a starter frame. Folds into the F4 copy pass. |
+
+### FICTION — does not function; must not ship as-is
+| Move | Finding | Fix |
+|---|---|---|
+| **self_score calibration** (21 slots) | The one that genuinely won't work: predict-your-score → system-compares-to-grader **cannot close** (no branching, no way to pipe the grader result into the self_score item). "What ships is an ungated rating click followed by nothing." | **F1**: reframe as calibration *against the T1-A row breakdown* ("compare to your self-score; the row you missed by >1 point is your revision target"). Converts a dead click into a real move without branching. True closed loop waits on external-app/platform. |
+| **Per-part scoring anywhere** | Any lesson copy implying "each outline row / rubric section is assessed" is false — composite items return one aggregate. Promising part-level accountability misleads the student. | **F4**: copy sweep across essay/MPO lessons — reword to what the platform actually delivers (one aggregate + row-by-row *feedback text*, not row *scores*). |
+
+**Net:** every WORKS item is protected, every DEGRADED item has a within-ceiling fix, and both FICTION items are either reframed (self_score) or corrected in copy (per-part). Nothing in the assessment is left unaddressed.
+
+---
+
 ## What we are NOT doing (decided by the two audits)
 
 - **Not** copying XP / day-streaks / a single "accuracy" number — Fable: engagement veneer; "psychometrically incoherent for a construct like rhetorical analysis; the rows are the real signal."
@@ -69,6 +100,9 @@ Structured grid in, one plain-text box out; aggregate score gives no per-row sig
 **F4 · Per-part promises — copy audit.** [cheap, do with T1-A]
 Any lesson text implying "each outline row / rubric section will be scored" is false on Timeback (one aggregate). Sweep the essay/MPO lessons and reword to what the platform actually delivers.
 
+**F5 · Supported-write honesty — copy fix.** [cheap, do with F4]
+The "supported write" scaffold is a static starter frame, not responsive coaching (Timeback forbids mid-draft feedback). Fable: "a sentence starter sheet, not a writing coach... acceptable if we stop describing it as guided." Sweep the supported-write slots and drop any "guided"/"coaching"/"as you write" language; frame it as a starter frame. Same copy pass as F4.
+
 ---
 
 ## TIER 3 — Keep as-is (both audits agree these WORK)
@@ -79,7 +113,7 @@ No action — verified strong on Timeback: **discrimination minimal pairs** (bes
 
 ## Sequencing (do in this order)
 
-1. **T1-A + T1-B + F4** (one grader-output change + a copy sweep) — highest impact, no platform work, unblocks F1 and F3. **Start here.**
+1. **T1-A + T1-B + F4 + F5** (one grader-output change + a single copy sweep covering both per-part promises and "guided"-write language) — highest impact, no platform work, unblocks F1 and F3. **Start here.**
 2. **T1-C** (misconception taxonomy) — content-team spreadsheet, then wire into distractors + grader prompt.
 3. **F1 + F2** (reframe self_score + diagnosis around the new row feedback) — course-copy edits.
 4. **T1-D** (scored exemplars) — new native slots in essay lessons.
