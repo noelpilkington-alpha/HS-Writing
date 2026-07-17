@@ -58,6 +58,22 @@ Last session I marked the "blank MC steps" finding **FALSE** and said discard. T
 
 ---
 
+### Class D — Sequencing (deterministic order check, run 2026-07-17)
+| Finding | Artifact verified | Verdict | Evidence |
+|---|---|---|---|
+| **D-a "Name the type" taught AFTER lessons that require choosing the type** | G11 + G12 lesson order | **CONFIRMED (both grades)** | G12: "Name the FRQ Type" is #12, but #9/#10/#11 ("Rehearse a Complete Argument/Analysis/Synthesis") already presuppose it. G11: "Match the Moves to the Task Type" (#28) / "Name the Task Type" (#29) follow the full multi-perspective essay (#22) + rehearsal (#27). Both walks flagged this independently. |
+| **D-b Difficulty inversion: ordering/transitions lesson after paragraph/essay work** | G9 + G10 order | **CONFIRMED but LOW** | g9 #21 "Order the Paragraphs" after 6 paragraph/essay lessons; g10 #11 "Order Sentences" after counterclaim-paragraph work. Real, but arguably defensible as a distinct sub-skill / spaced practice; not a correctness issue. |
+
+### Class C — Source-set exhaustion (deterministic, run 2026-07-17)
+| Finding | Artifact verified | Verdict | Evidence |
+|---|---|---|---|
+| **C-src Gate sources are NOT cold — the gate topic already appeared in ≥2 (here 6+) prior lessons** | topic-keyword scan across each grade | **CONFIRMED — strongest structural finding** | g9 GATE #26 reuses "volcano" (also lessons 4,12,14,19,20,21,25); g10 GATE #24 reuses "congestion pricing" (1,3,15,17,18,20,23); g11 mid-gate #16 reuses "workforce" (1,2,3,4,5,13). A gate meant to test cold transfer runs on a memorized topic. |
+
+### G10 Chopin twist inside a wrong answer
+| Finding | Artifact verified | Verdict | Evidence |
+|---|---|---|---|
+| **A wrong l05 option reveals the story's ending** | g10 l05 discrimination options | **UNCONFIRMED (low)** | Keyword scan of wrong options found no ending/twist spoiler. The report's specific claim does not reproduce deterministically; treat as low / not actionable without the exact quote. |
+
 ## Findings NOT yet deterministically verified (routed, not adopted)
 
 - **Class C redundancy** — hundreds of felt_repeated flags, all single-model, high-retention personas. **Adversarial verify (weaker-learner lens) REFUTED the 5 strongest cross-grade/opening pairs (high conf):** each later lesson adds a genuine increment (arguable→specific+stakes; attribution→integration; produce-warrant→detect-circular-warrant; single-paragraph weave→whole-essay architecture; scope→value-tension), i.e. defensible spaced practice a weak learner needs, not pure duplication. **The high-retention personas flagged review that a struggling student requires.** NOT a redundancy-deletion mandate. Residual to still check: within-lesson triple-testing (Steps 6/7/8 same exercise 3×) — a *tightening* opportunity, distinct from cross-lesson redundancy — and source-set exhaustion (below).
@@ -78,7 +94,9 @@ Last session I marked the "blank MC steps" finding **FALSE** and said discard. T
 | B3 | none — **REFUTED** | closed, no fix |
 | C (cross-grade/opening pairs) | none — **REFUTED** (defensible spaced practice) | closed, no fix |
 | C (within-lesson triple-test + source exhaustion) | **F8** — tighten Steps 6/7/8; diversify gate/transfer sources | HELD, medium — still to verify |
-| D | **F9** (resequence) | HELD — pending order check |
+| D-a (confirmed) | **F9** — move "name the type" BEFORE the rehearsal/timed lessons (G11 + G12) | HELD, medium |
+| D-b (low) | **F9** — optional; defensible as-is | HELD, low |
+| C-src (confirmed) | **F8** — swap gate/transfer sources to genuinely-unseen topics | HELD, **high** (gate validity) |
 | E | **F1** (self_score reframe) — corroborated | already in plan |
 | F-a counterclaim | **F-a** — teach counterclaim in G9 U4 *or* drop it from the l27 gate + mastery to match what G9 teaches | HELD, **high priority** |
 | F-b l02 checklist | restore q3 to the l01 standard | HELD |

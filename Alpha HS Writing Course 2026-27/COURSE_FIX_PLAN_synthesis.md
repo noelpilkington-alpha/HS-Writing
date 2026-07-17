@@ -123,6 +123,80 @@ No action — verified strong on Timeback: **discrimination minimal pairs** (bes
 
 ---
 
+## TIER 4 — Learning-science integration (from the BrainLift audit, 2026-07-17)
+
+*Source: `BRAINLIFT_INTEGRATION.md` — five-reader audit of the Learning Scientists' BrainLift canon against this course. These items are all Timeback-fixable NOW (authoring / copy / QC / grader-prompt / item-metadata). Deeper items that need cross-session state are logged there as the external-app fork, not here. Several items VALIDATE and sharpen the Tier-1/2 fixes above; the rest are new and independently corroborated by the G9 sim-student eval.*
+
+**B1 · Check-validity: novel-stimulus rule + sync-check taxonomy.** [top lever; free; own gate] The sim-student eval found in-lesson MCQs pass ~100% for the wrong reason — the correct option is the worked-example's AFTER sentence verbatim (~16 lessons); the check measures recognition, not skill. BrainLift standard: a valid item is answerable *from the stem alone* and must not reuse just-read material. Fix: a new deterministic gate `gate_sync_check_novelty` (no verbatim-echo correct option; no self-confessing distractor; ≥1 check-for-understanding per lesson on a NEW example), plus a copy rule that stops calling a checkpoint pass "mastery." **Full spec in `BRAINLIFT_INTEGRATION.md` Part 4. This is the executable next step.**
+
+**B2 · Misconception-mapped distractors REQUIRE coupled feedback.** [sharpens T1-C] "Distractor quality and feedback quality are coupled — you cannot set one without the other"; a plausible distractor without feedback *implants* the error. Hardens T1-C: every distractor maps to one NAMED error and its feedback corrects that specific error. Seed the taxonomy from the discipline's catalogued writing misconceptions (persuasion=emotion, evidence-speaks-for-itself, counterclaim=weakness-to-hide, more-devices=better-analysis).
+
+**B3 · Grade the logic; zero out unexplained warrants + generic evidence.** [sharpens T1-A/B — the #1 lever] Adopt the AP-History/Social-Studies scoring rule into the grader prompt + rubric: a conclusion without a mechanism earns zero; a below-specificity claim earns zero; sourcing scores as *explanation of significance to the argument*, not label-spotting. Give each production KC an **Assessment Pack** (decisive attributes + named forbidden shortcuts + near-misses) so the external grader is defensible.
+
+**B4 · Add stateless item TYPES beyond MCQ.** [new mechanics] Ordering (unscramble sentences into a coherent argument), cloze (supply the missing thesis/transition/warrant), claim↔evidence matching, tri-state sort with a "Neither" bin, and level-tagged MCQ (each option = a rubric level 0/1/2). All auto-scorable + stateless; measure writing structure, not recognition. The level-tagged MCQ also powers T1-D and B5.
+
+**B5 · self_score as a prediction-gap (not a verdict).** [completes F1] Capture a confidence prior before the check; after revealing the T1-A row breakdown, show the gap between predicted and actual row scores — the gap IS the calibration signal, and it closes statelessly. This is the concrete mechanic F1's reframe was reaching for.
+
+**B6 · Name the tools; teach moves as named procedures.** [copy + sequence] The sim-student tracked "6+ unnamed 3-question checklists" (extraneous load). Consolidate + NAME recurring tools the way we name HIT/PROVE/S³. Teach counterclaim/analysis/synthesis as named, reusable routines with acceptance criteria BEFORE the integrated essay assembles them.
+
+**B7 · Cheap MCQ QC + multimedia wins.** [fold into `writing-card-qc`] Balance the answer key (correct answers cluster in B/C); ban all-of/none-of-the-above + T/F in summative pools; run a cue-sweep for self-confessing distractors. Build SVG diagrams element-by-element with narration (never show the final state first); write narration in conversational "you/we" register.
+
+**M2 · Pre-write comprehension gate (reading-access risk).** [new; important] A student who can't parse the stimulus writes a weak essay — and the grader misattributes it to weak *writing*. Add a fast stimulus-comprehension check gating each FRQ, so a reading failure isn't scored as a writing failure. Consider a few anchor topics taught in depth over many shallow ones.
+
+**M4 · Motivation layer (the underbuilt whole component).** [copy + config; high leverage] Attribution-engineered per-choice feedback (credit strategy not ability; "Not quite — here's why," never "Wow, you got it!"); practice-vs-assessment error climate (no red X on practice); XP tied to mastery not completion, personal-best not leaderboards; a stateless "approval/LFG" rationale-then-acknowledge beat at lesson open; author checks toward an ~80-85% first-try success rate.
+
+**M5 · Retry rotates a fresh item.** [important] Hard-gate retry currently re-shows the identical MCQ → certifies grind-through, not repair. Give each checkpoint a small item POOL that rotates a fresh variant on each retry.
+
+**M6 · Expert difficulty bands (NOT IRT).** [metadata] Tag each item with a KDT-rubric difficulty band + provenance. At our volume, data-driven calibration is statistically impossible and LLMs underestimate difficulty — so use expert-set bands, and treat "90% to pass" as a convention to calibrate, not a fixed truth.
+
+**M1-partial · Convert redundancy into interleaved cumulative retrieval.** [sequence] The ~11 whole-lesson repeats are *massed* practice; the fix is not deletion but conversion — later lessons should RECRUIT earlier KCs to do new work (interleaved retrieval), turning redundancy productive. (Full spacing + a fluency stage need the external app — logged there.)
+
+---
+
+## TIER 5 — Simulated-student audit findings (2026-07-17, all five grades)
+
+*Source: the 5 simulated-student walk reports (G9/G10/G11/G12/cross-grade), triaged in `SIM_STUDENT_FINDING_LEDGER.md`. Method: classify each finding by the artifact it concerns → verify against THAT artifact → adversarial refute-pass on judgment-class findings → route only survivors here. Calibration: one model (Fable), two high-retention personas, so nothing is cross-model corroborated and "too easy / nothing new" is partly a persona artifact. **~400 raw instance-flags reduced to the short list below; nothing bulk-adopted.** The harness bug that confounded every rendering claim was found and FIXED first (see S0).*
+
+**S0 · Audit-harness rendering bug — FIXED (not a course fix).** [done] `render_student_experience` (the renderer the sim-student + readiness audits walk) parsed MCQ options from slot `body` prose only; 8 discrimination slots (G9:4, G10:2, G11:1, G12:1) carry options only in `choices[]` with an empty body, so the audit lens showed a prompt with ZERO options — which the students reported as "blank/unanswerable MC steps." The pushed QTI renders those options correctly (verified: 6 `qti-simple-choice` each), so this was an audit-lens divergence from production, **not a ship defect.** Fixed in `pipeline/lesson_review.py` + regression test `test_student_view_options.py`; full sweep now 0/129 broken. *This corrects a prior wrong "FALSE/discard" verdict — the students were right; the check had verified the wrong render path.*
+
+**S1 · Recognition-not-application: correct MC option == a prior worked-example AFTER, verbatim.** [CONFIRMED — 12 instances; sharpens Tier-4 B1] Deterministically verified (text-overlap ≥0.70): g9 C901-0001 s4, C902-0007 s4 (.93), C902-0009 s4, C906-0027 s4; g10 C1001-0001 s4, C1002-0008 s4 (.91); g11 C1101-0001 s5, C1101-0002 s4, C1101-0003 s4; g12 C1201-0001 s4, C1201-0002 s4, D1201-0015 s4. The student picks by memory, not skill. **Fix:** regenerate either the AFTER text or the correct-option wording so they differ (the discrimination must be answerable from the stem, testing the skill not recall). This is exactly the `gate_sync_check_novelty` gate Tier-4 **B1** specifies — these 12 are its concrete initial worklist.
+
+**S2 · Counterclaim required by the G9 gate but never taught in G9.** [CONFIRMED — high severity; cross-audit corroborated] "counterclaim" appears 0× in G9 l01–l26 but `ACC-W910-L-G9-C904-0029` (l27 gate) requires it in the task line, the one-reminder, the checklist, the sentence frame, AND the PP100 mastery pass criteria. Independently corroborates the earlier readiness finding (C904-0029) and Tier-4 B6. **Fix (choose one):** (a) teach counterclaim as a named routine in G9 Unit 4 *before* the l27 gate (G10 already opens with it — pull a lightweight recognition-level version earlier), OR (b) drop the counterclaim requirement from the l27 gate + its PP100 to match what G9 actually teaches. **(b) is the lower-risk, in-scope fix** (aligns the gate to the taught content; counterclaim then enters properly at G10). Decision needed. Within-KC (C904); no renderer/pipeline change.
+
+**S3 · G10 l02 checklist weakened its q3 on the student's weakest skill.** [CONFIRMED] `ACC-W910-L-G10-C1001-0002` q3 = "Is there a reason for the side you hold?" vs l01's stronger q3 = "Does the reason answer that objection, not just repeat your side?" The l02 version drops the answer-the-objection bar precisely where the student struggles. **Fix:** restore q3 to the l01 standard (answer-the-objection, not merely reason-exists). One-slot copy edit.
+
+**S4 · Calibration lessons instruct SUBMIT→grader→compare, but no such loop exists.** [CONFIRMED — corroborates F1] g11 C1103-0015, g12 C1201-0007, g12 C1202-0014 literally say "SUBMIT: send to the grader… the grader returns its score… compare against it." This is the F1 self_score fiction, independently confirmed by the students. **No new fix — folds into F1** (reframe as calibration against the T1-A row breakdown). Confirms F1 is must-fix, not optional.
+
+**S5 · "Name the task type" taught AFTER lessons that require choosing the type.** [CONFIRMED — G11 + G12] G12: "Name the FRQ Type" is #12, but #9/#10/#11 (rehearse a complete argument / analysis / synthesis) already presuppose it. G11: "Match the Moves to the Task Type" (#28) / "Name the Task Type" (#29) follow the full multi-perspective essay (#22) + rehearsal (#27). **Fix (F9 — new):** move the type-identification lesson BEFORE the rehearsal/timed lessons in both grades. Resequencing only (lesson IDs stable; reorder the course_sequence + any unit framing). Medium priority.
+
+**S6 · Gate sources are not cold — the gate topic already appeared in 6+ prior lessons.** [CONFIRMED — strongest structural finding; sharpens M1] g9 gate #26 reuses "volcano" (also 4,12,14,19,20,21,25); g10 gate #24 reuses "congestion pricing" (1,3,15,17,18,20,23); g11 mid-gate #16 reuses "workforce" (1,2,3,4,5,13). A gate meant to test cold transfer runs on a memorized topic, inflating the pass. **Fix (F8 — new):** swap each gate's (and late transfer steps') stimulus to a genuinely-unseen topic from the Source Cache. High priority — this is gate *validity*, and it is the productive half of the redundancy signal (the source-exhaustion Tier-4 M1 flags). Content-swap within existing slots; no structural change.
+
+**S7 · "Summarize" defined (g9 l05) but never practiced, then warned against for 3 grades.** [CONFIRMED — low] No G9 production task asks the student to summarize, yet g10/g11 lean on "analysis is not summary." **Fix (low):** either add one summarize practice task in G9, or stop framing summarize as a taught mode in l05. Defer unless a copy pass is already touching l05.
+
+**S8 · Unresolved solo-student conceptual questions ("no one to ask").** [CONFIRMED — low, persona-specific (average_fable)] Recurring open questions the course never closes: good-vs-weak reason (g9 l01), scoped-vs-hedged / "does most count?" (g11 l01–l02), does one exception sink a claim, can an exact number sit in a paraphrase (g9 l05). **Fix (F10 — new, low):** add a one-line answer or a tooltip/aside at the point each question first arises. Copy-only; batch into the F4/F5 copy pass.
+
+### Sim-student findings REFUTED (verified NOT defects — do not act)
+- **Write task on same source as its worked example** — SRSD guided-practice fade; adversarial refute-pass found 0 copy-the-answer defects (several AFTERs are truncated stubs). REFUTED high-conf.
+- **"Checks that run themselves"** — all sampled are the sanctioned coping-model (modeled think-aloud on a PROVIDED weak draft, then an independent student turn; several re-run the checks on the student's own writing). REFUTED high-conf.
+- **Cross-grade / opening-run redundancy (5 strongest pairs)** — each later lesson adds a genuine increment (arguable→specific+stakes; attribution→integration; produce-warrant→detect-circular-warrant; single-paragraph weave→whole-essay architecture; scope→value-tension). High-retention personas flagged review a *weak* learner needs. REFUTED high-conf. (The productive residue — within-lesson triple-testing + gate source reuse — is handled by S6/F8 and Tier-4 M1, not by deleting lessons.)
+- **G12 l06 under-teaches synthesize/weight** — REFUTED: weight taught 326 words across s1/s2/s4, all before the composition. A thin-teaching *perception*, not a gap.
+- **g9 l13 sequence-vs-cause** — REFUTED: "sequence" is the safer, correct choice (a cause signpost would be factually false); the lesson applies its own rule consistently.
+- **G10 l05 Chopin twist in a wrong answer** — UNCONFIRMED: the specific claim did not reproduce; no wrong option leaks the ending. Low / not actionable.
+
+### New fix items introduced by Tier 5 (all HELD until go)
+| Item | What | Priority | Scope |
+|---|---|---|---|
+| **S1→B1** | de-duplicate correct option vs worked-example AFTER (12 instances) | high | content, within-lesson |
+| **S2** | counterclaim: teach in G9 *or* drop from the l27 gate + PP100 | **high — decision needed** | within-KC C904 |
+| **S3** | restore G10 l02 checklist q3 to the answer-the-objection standard | medium | 1-slot copy |
+| **S4→F1** | (folds into F1) | — | — |
+| **F8 (S6)** | swap gate/late-transfer sources to unseen topics (all 3 grades) | **high — gate validity** | content-swap in slots |
+| **F9 (S5)** | move "name the type" before the rehearsal/timed lessons (G11+G12) | medium | resequence |
+| **F10 (S8)** | one-line/tooltip answers to recurring solo-student questions | low | copy, batch w/ F4/F5 |
+| **S7** | summarize: practice once in G9 or stop warning against it | low | copy |
+
+---
+
 ## Sequencing (do in this order)
 
 1. **T1-A + T1-B + F4 + F5** (one grader-output change + a single copy sweep covering both per-part promises and "guided"-write language) — highest impact, no platform work, unblocks F1. **Start here.**
@@ -132,6 +206,13 @@ No action — verified strong on Timeback: **discrimination minimal pairs** (bes
 5. **F1 + F2** (reframe self_score + diagnosis around the new row feedback) — course-copy edits.
 6. **T1-D** (scored exemplars) — new native slots in essay lessons.
 7. **Wire + calibrate `rc.ap`** so the AP rows in T1-A are real for G11/G12 (deferred grader work; STAAR rows work now).
+
+**Tier-5 sim-student fixes — interleave by cost, gated on the audit-review sign-off:**
+- **S0** audit-harness fix — **DONE** (committed; unblocks all future audits).
+- **S2 counterclaim + F8 gate-sources** — **high priority, decide first.** S2 needs a routing decision (teach-in-G9 vs drop-from-gate); F8 (swap gate/transfer sources to unseen topics) is the single biggest validity win and pairs naturally with the Source Cache. Do these before re-running any readiness/graded pilot, since both distort the gate result.
+- **S1→B1** (de-dup the 12 recognition items) — fold into the Tier-4 **B1** `gate_sync_check_novelty` build; these 12 are its first worklist.
+- **S3 (l02 checklist), S5→F9 (resequence type lessons), S7, S8→F10** — batch the copy/1-slot edits into the F4/F5 copy sweep; F9 resequence is a separate small course_sequence change.
+- **S4** — already covered by F1.
 
 ## Honest scope line
 Tiers 1–2 make the Timeback courses materially better *within the ceiling* and kill the one misleading move. What they **cannot** fix (per-section scores surfaced structurally, live mid-draft coaching, true improvement-aware revision, a closed adaptive calibration loop) are the exact things the external-app option would unlock — so this plan and the platform decision are complementary, not competing: ship these fixes now regardless of the platform call.
