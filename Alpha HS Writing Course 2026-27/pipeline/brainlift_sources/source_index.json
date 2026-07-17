@@ -1,0 +1,885 @@
+{
+  "by_file": {
+    "01_ccss_adherence_map.md": [
+      "http://education.ohio.gov/Topics/Learning-in-Ohio/English-Language-Art/English-Language-Arts-Standards",
+      "https://cpalmsmediaprod.blob.core.windows.net/uploads/docs/standards/best/la/elabeststandardsfinal2108.pdf",
+      "https://dese.ade.arkansas.gov/Files/AR_2023_9-12_ELA_Standards_and_Notes_1.25_LS.pdf",
+      "https://dese.mo.gov/college-career-readiness/curriculum/missouri-learning-standards",
+      "https://doe.nv.gov/offices/office-of-teaching-and-learning/english-language-arts",
+      "https://doe.sd.gov/contentstandards/ela.aspx",
+      "https://dpi.wi.gov/ela/standards",
+      "https://ed.sc.gov/instruction/standards/english-language-arts/standards/2023-sc-ccr-ela-standards-approved/",
+      "https://edu.wyoming.gov/wp-content/uploads/2024/08/final-2012-ela-standards.pdf",
+      "https://educate.iowa.gov/media/8158/download",
+      "https://education.alaska.gov/akstandards/ela/Adopted_ELA.pdf",
+      "https://education.delaware.gov/educators/academic-support/standards-and-assessments/english-and-language-arts/standards/",
+      "https://education.mn.gov/MDE/dse/stds/ela/",
+      "https://education.vermont.gov/student-learning/content-areas",
+      "https://files.eric.ed.gov/fulltext/ED572264.pdf",
+      "https://kystandards.org/standards-resources/rw-resources/composition-resources/",
+      "https://mdek12.org/wp-content/uploads/sites/38/2025/07/2025_MS_CCRS_for_ELA.pdf",
+      "https://media.doe.in.gov/standards/indiana-academic-standards-grade-9-10-english_language-arts.pdf",
+      "https://oklahoma.gov/content/dam/ok/en/osde/documents/services/standards-learning/english-language-arts/ela-standards/Crosswalk%20Grades%206-12.pdf",
+      "https://opi.mt.gov/Educators/Teaching-Learning/K-12-Content-Standards/English-Language-Arts-Literacy-Standards",
+      "https://ospi.k12.wa.us/student-success/resources-subject-area/english-language-arts/english-language-arts-learning-standards",
+      "https://osse.dc.gov/service/common-core-state-standards",
+      "https://portal.ct.gov/sde/ct-core-standards",
+      "https://ride.ri.gov/instruction-assessment/curriculum/curriculum-frameworks/ela-curriculum-frameworks",
+      "https://tea.texas.gov/about-tea/laws-and-rules/texas-administrative-code/19-tac-chapter-110",
+      "https://wveis.k12.wv.us/wvboe/policies/policy.php?p=2520.1A",
+      "https://www.alabamaachieves.org/wp-content/uploads/2021/08/2021-Alabama-English-Language-Arts-Course-of-Study.pdf",
+      "https://www.azed.gov/standards/englishlanguagearts",
+      "https://www.cde.ca.gov/be/st/ss/documents/finalelaccssstandards.pdf",
+      "https://www.cde.state.co.us/coreadingwriting/2020cas-rw-hs",
+      "https://www.doe.mass.edu/frameworks/ela/2017-06.pdf",
+      "https://www.doe.virginia.gov/teaching-learning-assessment/k-12-standards-instruction/english-reading-literacy/standards-of-learning/2024-english-standards-of-learning",
+      "https://www.dpi.nc.gov/districts-schools/classroom-resources/office-teaching-and-learning/standard-course-study/english-language-arts/standard-course-study-supporting-resources",
+      "https://www.education.ne.gov/wp-content/uploads/2022/08/ELA-Standards-2021-6-12-Horizontal-8.25.22.pdf",
+      "https://www.education.nh.gov/who-we-are/division-of-learner-support/bureau-of-instructional-support/career-and-college-ready-standards",
+      "https://www.gadoe.org/learning/english-language-arts/",
+      "https://www.hawaiipublicschools.org/academics/subject-matter-standards/",
+      "https://www.isbe.net/documents/ccs_faq.pdf",
+      "https://www.ksde.gov/docs/default-source/csas/ela-standards-horizontal-document.pdf",
+      "https://www.maine.gov/doe/learning/standards/ela/review",
+      "https://www.marylandpublicschools.org/programs/Pages/ELA/MCCR.aspx",
+      "https://www.michigan.gov/mde/services/academic-standards",
+      "https://www.nd.gov/dpi/sites/www/files/documents/Academic%20Support/ELA%20Content%20Standards%202023%20FINAL10.21.24.pdf",
+      "https://www.nj.gov/education/standards/ela/",
+      "https://www.nysed.gov/curriculum-instruction/new-york-state-next-generation-english-language-arts-learning-standards",
+      "https://www.oregon.gov/ode/educator-resources/standards/ELA/Documents/ODE_2026_ELA_Standards%20-%20Grade%20%28K12%29_Final.pdf",
+      "https://www.pa.gov/agencies/stateboard/resources/regulations--policy/state-academic-standards",
+      "https://www.schools.utah.gov/curr/elasecondary",
+      "https://www.sde.idaho.gov/wp-content/uploads/2025/09/Idaho-K-12-State-Standards-for-ELA-Literacy.pdf",
+      "https://www.srca.nm.gov/parts/title06/06.029.0013.html",
+      "https://www.tn.gov/education/districts/academic-standards/english-language-arts-standards.html"
+    ],
+    "02_deviation_states_deepdive.md": [
+      "https://ed.sc.gov/instruction/standards-learning/english-language-arts/`",
+      "https://ed.sc.gov/sites/scdoe/assets/file/programs-services/59/documents/ELA2015SCCCRStandards.pdf`",
+      "https://education.alaska.gov/akstandards/ela/Adopted_ELA.pdf`",
+      "https://education.alaska.gov/standards/english-language-arts`",
+      "https://oklahoma.gov/content/dam/ok/en/osde/documents/services/literacy-policy-and-programs/oklahoma-academic-standards/2021-OAS-English-Language-Arts-Standards.pdf`",
+      "https://oklahoma.gov/education/services/standards-learning/oklahoma-academic-standards.html`",
+      "https://tea.texas.gov/about-tea/laws-and-rules/texas-administrative-code/19-tac-chapter-110`",
+      "https://www.cpalms.org/Public/search/Standard`",
+      "https://www.doe.virginia.gov/teaching-learning-assessment/k-12-standards-instruction/english-reading-literacy/standards-of-learning`",
+      "https://www.education.ne.gov/contentareastandards/english-language-arts/`",
+      "https://www.education.ne.gov/wp-content/uploads/2022/08/ELA-Standards-2021-6-12-Horizontal-8.25.22.pdf`",
+      "https://www.education.ne.gov/wp-content/uploads/2022/08/ELA-Standards-2021-8-25-22.pdf`",
+      "https://www.fldoe.org/core/fileparse.php/7539/urlt/elabeststandardsfinal.pdf`",
+      "https://www.in.gov/doe/files/Grade-11-12-ELA-Standards-Dec-2020.pdf`",
+      "https://www.in.gov/doe/files/Grade-9-10-ELA-Standards-Dec-2020.pdf`",
+      "https://www.in.gov/doe/students/indiana-academic-standards/english-language-arts/`"
+    ],
+    "04_item_formats_and_rubrics.md": [
+      "https://apcentral.collegeboard.org/courses/ap-english-language-and-composition/exam",
+      "https://apcentral.collegeboard.org/courses/ap-english-literature-and-composition/exam",
+      "https://apcentral.collegeboard.org/media/pdf/ap-english-language-and-composition-frqs-1-2-3-scoring-rubrics.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap-english-literature-and-composition-frqs-1-2-3-scoring-rubrics.pdf",
+      "https://nces.ed.gov/nationsreportcard/about/",
+      "https://nces.ed.gov/nationsreportcard/guides/scores_achv.aspx",
+      "https://nces.ed.gov/nationsreportcard/tdw/scoring/",
+      "https://nces.ed.gov/nationsreportcard/writing/whatmeasure.aspx",
+      "https://portal.smarterbalanced.org/library/en/brief-write-rubrics.pdf",
+      "https://portal.smarterbalanced.org/library/en/elaliteracy-summative-assessment-blueprint.pdf",
+      "https://portal.smarterbalanced.org/library/en/estimated-testing-times.pdf",
+      "https://portal.smarterbalanced.org/library/en/performance-task-writing-rubric-argumentative.pdf",
+      "https://portal.smarterbalanced.org/library/en/performance-task-writing-rubric-explanatory.pdf",
+      "https://portal.smarterbalanced.org/library/en/performance-task-writing-rubric-narrative.pdf",
+      "https://tea.texas.gov/assessment-and-accountability/assessment-initiatives/staar-redesign",
+      "https://tea.texas.gov/data-reports/staar/hybrid-scoring-key-questions-2.pdf",
+      "https://tea.texas.gov/data-reports/staar/released-test-questions/2023-staar-english-i-rationale.pdf",
+      "https://tea.texas.gov/data-reports/staar/scoring-process-staar-constructed-response-1.pdf",
+      "https://tea.texas.gov/data-reports/staar/staar-english-i-blueprint-schematic-pdf.pdf",
+      "https://tea.texas.gov/data-reports/staar/staar-english-ii-blueprint-schematic.pdf",
+      "https://tea.texas.gov/data-reports/staar/staar-redesign-scoring-and-reporting-for-new-question-types-guide-rla.pdf",
+      "https://tea.texas.gov/data-reports/staar/tx-staar-arg-opinion-rubric-g6-e2.pdf",
+      "https://tea.texas.gov/data-reports/staar/tx-staar-informational-rubric-g6-e2.pdf",
+      "https://www.act.org/content/act/en/products-and-services/the-act.html",
+      "https://www.act.org/content/act/en/products-and-services/the-act/scores/understanding-your-scores.html",
+      "https://www.act.org/content/act/en/products-and-services/the-act/scores/writing-test-scores.html",
+      "https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/description-of-english-test.html",
+      "https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/description-of-writing-test.html",
+      "https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/writing-sample-essays.html",
+      "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/writing.stml",
+      "https://www.fldoe.org/file/20102/4-6BESTWritingExpositoryRubric.pdf",
+      "https://www.fldoe.org/file/20102/7-10BESTWritingArgumentationRubric.pdf",
+      "https://www.fldoe.org/file/20102/7-10BESTWritingExpositoryRubric.pdf",
+      "https://www.fldoe.org/file/5663/2526BESTWritingFactSheet.pdf",
+      "https://www.nagb.gov/content/dam/nagb/en/documents/publications/frameworks/writing/2017-writing-framework.pdf",
+      "https://www.nysed.gov/sites/default/files/programs/state-assessment/ela-regents-examinations-what-to-expect.pdf",
+      "https://www.nysed.gov/sites/default/files/programs/state-assessment/english-language-arts-educator-guide-2025rev.pdf",
+      "https://www.nysed.gov/sites/default/files/programs/state-assessment/next-gen-english-regents-written-response-sampler.pdf",
+      "https://www.nysed.gov/state-assessment/high-school-english-language-arts",
+      "https://www.nysedregents.org/hsela/",
+      "https://www.smarterbalanced.org/assessments/samples/"
+    ],
+    "06a_deviation_AL_AR.md": [
+      "https://commonstandardsproject.com/api/v1/standard_sets/B838B98D043045748F3814B9E43CAC85_D21193752_grade-09`",
+      "https://dese.ade.arkansas.gov/Files/AR_2023_9-12_ELA_Standards_and_Notes_1.25_LS.pdf`",
+      "https://www.alabamaachieves.org/wp-content/uploads/2021/08/2021-Alabama-English-Language-Arts-Course-of-Study.pdf`",
+      "https://www.alsde.edu/sec/sct/COS/2021%20Alabama%20English%20Language%20Arts%20Course%20of%20Study.pdf`"
+    ],
+    "06b_deviation_ID_ME.md": [
+      "https://www.maine.gov/doe/learning/standards/ela/review",
+      "https://www.maine.gov/doe/sites/maine.gov.doe/files/inline-files/2020%20Maine%20ELA%20Standards_3.docx",
+      "https://www.maine.gov/doe/sites/maine.gov.doe/files/inline-files/ELA%20Anchor%20Standards%202020_0.docx",
+      "https://www.maine.gov/doe/sites/maine.gov.doe/files/inline-files/WRITING%20preamble.docx",
+      "https://www.maine.gov/doe/sites/maine.gov.doe/files/inline-files/Writing%20Standards%20Horizontal%20Progression_0.docx",
+      "https://www.sde.idaho.gov/academic/standards/",
+      "https://www.sde.idaho.gov/wp-content/uploads/2025/09/Idaho-K-12-State-Standards-for-ELA-Literacy.pdf"
+    ],
+    "06c_deviation_ND_WI.md": [
+      "https://dpi.wi.gov/ela/standards",
+      "https://dpi.wi.gov/media/54346/download?inline",
+      "https://www.nd.gov/dpi/districtsschools/academic-standards",
+      "https://www.nd.gov/dpi/sites/www/files/documents/Academic%20Support/ELA%20Content%20Standards%202023%20FINAL10.21.24.pdf"
+    ],
+    "AnchorSets/G10_anchor_forms.md": [
+      "http://www.nysed.gov/state-assessment/high-school-english-language-arts",
+      "https://doe.louisiana.gov/docs/default-source/assessment-guidance/leap-2025-assessment-guide-for-english-i-and-english-ii.pdf",
+      "https://doe.louisiana.gov/resources/library/practice-tests",
+      "https://doe.louisiana.gov/school-system-leaders/measuring-results/assessment-guidance",
+      "https://education.ohio.gov/Topics/Learning-in-Ohio/English-Language-Art/Assessments-for-English-Language-Arts",
+      "https://mcas.cognia.org/item-catalog/",
+      "https://nj.mypearsonsupport.com/",
+      "https://oh-ost.portal.cambiumast.com/content/contentresources/en/HighSchool_ELA_Test_Specifications%2001.09.24.pdf",
+      "https://oh-ost.portal.cambiumast.com/content/contentresources/en/OST_Sp25_IRSG_ELA%20II_FBL_061325.pdf",
+      "https://oh-ost.portal.cambiumast.com/resource-list/en/ela-item-release-scoring-guides",
+      "https://oh-ost.portal.cambiumast.com/resource-list/en/spring-2025-ela-item-release-scoring-guides",
+      "https://oh-ost.portal.cambiumast.com/resources/student-practice-resources/item-release-scoring-guides",
+      "https://resources.newmeridiancorp.org/released-items/?fwp_subject_facet=english-language-arts",
+      "https://resources.newmeridiancorp.org/wp-content/uploads/2019/12/G10_ELA_2015_ReleasedItems_ResearchSimulationTask-ItemSet_Final_unb.pdf",
+      "https://resources.newmeridiancorp.org/wp-content/uploads/2019/12/G10_ELA_ReleasedItems_LiteraryAnalysisTask-SampleStudentResponses_Final_012617_w_Media.pdf",
+      "https://resources.newmeridiancorp.org/wp-content/uploads/2020/01/Grade-10-S-M-Info-Banana-2019_AR_BV-1.pdf",
+      "https://resources.newmeridiancorp.org/wp-content/uploads/2020/02/Grade-10-LAT-Animal-Farm-2019_AR_BV.2V.pdf",
+      "https://resources.newmeridiancorp.org/wp-content/uploads/2020/02/Grade-10-LAT-Animal-Farm-Handscored-Materials-V.pdf",
+      "https://resources.newmeridiancorp.org`",
+      "https://stmaryk12-my.sharepoint.com/:b:/g/personal/sdupre_stmaryk12_net/ER9Zana9oXFKtp43lXxj0-IB9G6SQt-jPO7Wc3yr55CmJw?e=eW7fOu",
+      "https://stmaryk12-my.sharepoint.com/:b:/g/personal/sdupre_stmaryk12_net/ETv40RLYVRlJhLe89FNWwSkB61OqRWeGupYZ7JfNm9g8Xw?e=8PrGQ6",
+      "https://tea.texas.gov/data-reports/staar/2021-staar-english-2-scoring-guide-tagged.pdf",
+      "https://tea.texas.gov/data-reports/staar/2022-staar-released-english-ii-persuasive-writing-scoring-guide.pdf",
+      "https://tea.texas.gov/data-reports/staar/2023-eng-ii-staar-pld.pdf",
+      "https://tea.texas.gov/data-reports/staar/2023-english-ii-assessed-curriculum-rla.pdf",
+      "https://tea.texas.gov/data-reports/staar/2023-staar-english-ii-scoring-guide.pdf",
+      "https://tea.texas.gov/data-reports/staar/2024-staar-english-ii-scoring-guide.pdf",
+      "https://tea.texas.gov/data-reports/staar/2025-staar-english-ii-scoring-guide.pdf",
+      "https://tea.texas.gov/data-reports/staar/scoring-process-staar-constructed-response-1.pdf",
+      "https://tea.texas.gov/data-reports/staar/staar-english-ii-blueprint-schematic.pdf",
+      "https://tea.texas.gov/data-reports/staar/staar-reading-language-arts-resources",
+      "https://tea.texas.gov/data-reports/staar/tx-staar-arg-opinion-rubric-g6-e2.pdf",
+      "https://tea.texas.gov/data-reports/staar/tx-staar-informational-rubric-g6-e2.pdf",
+      "https://wbte.drcedirect.com/LA/#portal/la/510848/ott/8/username/password/false",
+      "https://www.doe.mass.edu/mcas/2026/release/g10-ela.pdf",
+      "https://www.doe.mass.edu/mcas/release.html",
+      "https://www.doe.mass.edu/mcas/student/",
+      "https://www.doe.mass.edu/mcas/student/2025/grade10/ela-q22.pdf",
+      "https://www.doe.mass.edu/mcas/student/2025/grade10/ela-q9.pdf",
+      "https://www.doe.mass.edu/mcas/student/2025/grade10/ela.html",
+      "https://www.doe.mass.edu/mcas/tdd/resources/2019-g10-essay-rubric.docx",
+      "https://www.doe.mass.edu/mcas/tdd/testdesign/g10-ela.docx",
+      "https://www.doe.mass.edu/mcas/testitems.html",
+      "https://www.doe.mass.edu`",
+      "https://www.nj.gov/education/assessment/",
+      "https://www.nj.gov/education/assessment/resources/district/blueprtsguide/elagrade9.shtml",
+      "https://www.nysedregents.org/hsela/",
+      "https://www.nysedregents.org/hsela/625/reela-62025-cc.pdf",
+      "https://www.nysedregents.org/hsela/625/reela-62025-exam.pdf",
+      "https://www.nysedregents.org/hsela/625/reela-62025-rga.pdf",
+      "https://www.nysedregents.org/hsela/625/reela-62025-rgb.pdf",
+      "https://www.nysedregents.org/hsela/625/reela-62025-rgc.pdf",
+      "https://www.nysedregents.org/hsela/625/reela-62025-sk.pdf",
+      "https://www.nysedregents.org/hsela/`",
+      "https://www.texasassessment.gov/practice-tests.html"
+    ],
+    "AnchorSets/G11_anchor_ACT.md": [
+      "https://www.act.org/content/act/en/products-and-services/the-act.html",
+      "https://www.act.org/content/act/en/products-and-services/the-act/scores/understanding-your-scores.html",
+      "https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/description-of-writing-test.html",
+      "https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/writing-sample-essays.html",
+      "https://www.act.org`"
+    ],
+    "AnchorSets/G11_anchor_AP_Lang.md": [
+      "https://apcentral.collegeboard.org/courses/ap-english-language-and-composition",
+      "https://apcentral.collegeboard.org/courses/ap-english-language-and-composition/exam",
+      "https://apcentral.collegeboard.org/courses/ap-english-language-and-composition/exam/past-exam-questions",
+      "https://apcentral.collegeboard.org/media/pdf/ap-english-language-and-composition-course-and-exam-description.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap24-frq-english-language-set-1.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap25-apc-english-language-q1-set-1.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap25-apc-english-language-q1-set-2.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap25-apc-english-language-q2-set-1.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap25-apc-english-language-q2-set-2.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap25-apc-english-language-q3-set-1.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap25-apc-english-language-q3-set-2.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap25-cr-report-english-language-set-1.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap25-cr-report-english-language-set-2.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap25-english-language-score-distributions.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap25-english-language-scoring-statistics-set-1.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap25-frq-english-language-set-1.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap25-frq-english-language-set-2.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap25-sg-english-language-set-1.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap25-sg-english-language-set-2.pdf",
+      "https://apcentral.collegeboard.org/media/pdf/ap26-frq-english-language.pdf",
+      "https://apcentral.collegeboard.org`"
+    ],
+    "AnchorSets/G11_anchor_SBAC.md": [
+      "https://cdnsm5-ss12.sharpschool.com/UserFiles/Servers/Server_538005/File/Curriculum/Teachers/Assessment/ELA_Practice_Test_Scoring_Guide_Grade_11_PT.pdf",
+      "https://contentexplorer.smarterbalanced.org/",
+      "https://csaa.wested.org/resource/practice-and-training-resources/",
+      "https://ospi.k12.wa.us/sites/default/files/2022-12/c1elareadingrubricsgrades6-hs.pdf",
+      "https://ospi.k12.wa.us/sites/default/files/2022-12/c2_t4_ela_full_write_rubric_explanatory.pdf",
+      "https://ospi.k12.wa.us/sites/default/files/2022-12/c2_t7_ela_full_write_rubric_argumentative.pdf",
+      "https://ospi.k12.wa.us/sites/default/files/2022-12/c2briefwriterubrics.pdf",
+      "https://ospi.k12.wa.us/student-success/testing/state-testing/washington-state-smarter-balanced-assessment-consortium/ela-assessment",
+      "https://portal.smarterbalanced.org/library/en/appendix-b-grade-level-tables.pdf",
+      "https://portal.smarterbalanced.org/library/en/elaliteracy-adjusted-blueprint.pdf",
+      "https://portal.smarterbalanced.org/library/en/english-language-artsliteracy-content-specifications.pdf",
+      "https://resources.finalsite.net/images/v1685635979/vusdorg/epzwqbarhmzrvmmoiy64/ELAFullWritesScoringGuide_2014_.pdf",
+      "https://scoringguides.cambiumast.com/",
+      "https://smart.smarterbalanced.org/",
+      "https://smarterbalanced.alohahsap.org/content/contentresources/en/Argumentative-Rubric.pdf",
+      "https://www.caaspp-elpac.org/assessments/caaspp/sb-ela-math",
+      "https://www.cde.ca.gov/ta/tg/sa/sbacsummative.asp"
+    ],
+    "03_state_assessment_format_map.md": [],
+    "TestDesign_Reference.md": [],
+    "TestBank_Blueprint.md": []
+  },
+  "all_urls": {
+    "http://education.ohio.gov/Topics/Learning-in-Ohio/English-Language-Art/English-Language-Arts-Standards": [
+      "01_ccss_adherence_map.md"
+    ],
+    "http://www.nysed.gov/state-assessment/high-school-english-language-arts": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://apcentral.collegeboard.org/courses/ap-english-language-and-composition": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/courses/ap-english-language-and-composition/exam": [
+      "04_item_formats_and_rubrics.md",
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/courses/ap-english-language-and-composition/exam/past-exam-questions": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/courses/ap-english-literature-and-composition/exam": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap-english-language-and-composition-course-and-exam-description.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap-english-language-and-composition-frqs-1-2-3-scoring-rubrics.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap-english-literature-and-composition-frqs-1-2-3-scoring-rubrics.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap24-frq-english-language-set-1.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap25-apc-english-language-q1-set-1.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap25-apc-english-language-q1-set-2.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap25-apc-english-language-q2-set-1.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap25-apc-english-language-q2-set-2.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap25-apc-english-language-q3-set-1.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap25-apc-english-language-q3-set-2.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap25-cr-report-english-language-set-1.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap25-cr-report-english-language-set-2.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap25-english-language-score-distributions.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap25-english-language-scoring-statistics-set-1.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap25-frq-english-language-set-1.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap25-frq-english-language-set-2.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap25-sg-english-language-set-1.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap25-sg-english-language-set-2.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org/media/pdf/ap26-frq-english-language.pdf": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://apcentral.collegeboard.org`": [
+      "AnchorSets/G11_anchor_AP_Lang.md"
+    ],
+    "https://cdnsm5-ss12.sharpschool.com/UserFiles/Servers/Server_538005/File/Curriculum/Teachers/Assessment/ELA_Practice_Test_Scoring_Guide_Grade_11_PT.pdf": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://commonstandardsproject.com/api/v1/standard_sets/B838B98D043045748F3814B9E43CAC85_D21193752_grade-09`": [
+      "06a_deviation_AL_AR.md"
+    ],
+    "https://contentexplorer.smarterbalanced.org/": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://cpalmsmediaprod.blob.core.windows.net/uploads/docs/standards/best/la/elabeststandardsfinal2108.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://csaa.wested.org/resource/practice-and-training-resources/": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://dese.ade.arkansas.gov/Files/AR_2023_9-12_ELA_Standards_and_Notes_1.25_LS.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://dese.ade.arkansas.gov/Files/AR_2023_9-12_ELA_Standards_and_Notes_1.25_LS.pdf`": [
+      "06a_deviation_AL_AR.md"
+    ],
+    "https://dese.mo.gov/college-career-readiness/curriculum/missouri-learning-standards": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://doe.louisiana.gov/docs/default-source/assessment-guidance/leap-2025-assessment-guide-for-english-i-and-english-ii.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://doe.louisiana.gov/resources/library/practice-tests": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://doe.louisiana.gov/school-system-leaders/measuring-results/assessment-guidance": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://doe.nv.gov/offices/office-of-teaching-and-learning/english-language-arts": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://doe.sd.gov/contentstandards/ela.aspx": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://dpi.wi.gov/ela/standards": [
+      "01_ccss_adherence_map.md",
+      "06c_deviation_ND_WI.md"
+    ],
+    "https://dpi.wi.gov/media/54346/download?inline": [
+      "06c_deviation_ND_WI.md"
+    ],
+    "https://ed.sc.gov/instruction/standards-learning/english-language-arts/`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://ed.sc.gov/instruction/standards/english-language-arts/standards/2023-sc-ccr-ela-standards-approved/": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://ed.sc.gov/sites/scdoe/assets/file/programs-services/59/documents/ELA2015SCCCRStandards.pdf`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://edu.wyoming.gov/wp-content/uploads/2024/08/final-2012-ela-standards.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://educate.iowa.gov/media/8158/download": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://education.alaska.gov/akstandards/ela/Adopted_ELA.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://education.alaska.gov/akstandards/ela/Adopted_ELA.pdf`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://education.alaska.gov/standards/english-language-arts`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://education.delaware.gov/educators/academic-support/standards-and-assessments/english-and-language-arts/standards/": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://education.mn.gov/MDE/dse/stds/ela/": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://education.ohio.gov/Topics/Learning-in-Ohio/English-Language-Art/Assessments-for-English-Language-Arts": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://education.vermont.gov/student-learning/content-areas": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://files.eric.ed.gov/fulltext/ED572264.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://kystandards.org/standards-resources/rw-resources/composition-resources/": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://mcas.cognia.org/item-catalog/": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://mdek12.org/wp-content/uploads/sites/38/2025/07/2025_MS_CCRS_for_ELA.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://media.doe.in.gov/standards/indiana-academic-standards-grade-9-10-english_language-arts.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://nces.ed.gov/nationsreportcard/about/": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://nces.ed.gov/nationsreportcard/guides/scores_achv.aspx": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://nces.ed.gov/nationsreportcard/tdw/scoring/": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://nces.ed.gov/nationsreportcard/writing/whatmeasure.aspx": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://nj.mypearsonsupport.com/": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://oh-ost.portal.cambiumast.com/content/contentresources/en/HighSchool_ELA_Test_Specifications%2001.09.24.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://oh-ost.portal.cambiumast.com/content/contentresources/en/OST_Sp25_IRSG_ELA%20II_FBL_061325.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://oh-ost.portal.cambiumast.com/resource-list/en/ela-item-release-scoring-guides": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://oh-ost.portal.cambiumast.com/resource-list/en/spring-2025-ela-item-release-scoring-guides": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://oh-ost.portal.cambiumast.com/resources/student-practice-resources/item-release-scoring-guides": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://oklahoma.gov/content/dam/ok/en/osde/documents/services/literacy-policy-and-programs/oklahoma-academic-standards/2021-OAS-English-Language-Arts-Standards.pdf`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://oklahoma.gov/content/dam/ok/en/osde/documents/services/standards-learning/english-language-arts/ela-standards/Crosswalk%20Grades%206-12.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://oklahoma.gov/education/services/standards-learning/oklahoma-academic-standards.html`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://opi.mt.gov/Educators/Teaching-Learning/K-12-Content-Standards/English-Language-Arts-Literacy-Standards": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://ospi.k12.wa.us/sites/default/files/2022-12/c1elareadingrubricsgrades6-hs.pdf": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://ospi.k12.wa.us/sites/default/files/2022-12/c2_t4_ela_full_write_rubric_explanatory.pdf": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://ospi.k12.wa.us/sites/default/files/2022-12/c2_t7_ela_full_write_rubric_argumentative.pdf": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://ospi.k12.wa.us/sites/default/files/2022-12/c2briefwriterubrics.pdf": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://ospi.k12.wa.us/student-success/resources-subject-area/english-language-arts/english-language-arts-learning-standards": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://ospi.k12.wa.us/student-success/testing/state-testing/washington-state-smarter-balanced-assessment-consortium/ela-assessment": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://osse.dc.gov/service/common-core-state-standards": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://portal.ct.gov/sde/ct-core-standards": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://portal.smarterbalanced.org/library/en/appendix-b-grade-level-tables.pdf": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://portal.smarterbalanced.org/library/en/brief-write-rubrics.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://portal.smarterbalanced.org/library/en/elaliteracy-adjusted-blueprint.pdf": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://portal.smarterbalanced.org/library/en/elaliteracy-summative-assessment-blueprint.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://portal.smarterbalanced.org/library/en/english-language-artsliteracy-content-specifications.pdf": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://portal.smarterbalanced.org/library/en/estimated-testing-times.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://portal.smarterbalanced.org/library/en/performance-task-writing-rubric-argumentative.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://portal.smarterbalanced.org/library/en/performance-task-writing-rubric-explanatory.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://portal.smarterbalanced.org/library/en/performance-task-writing-rubric-narrative.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://resources.finalsite.net/images/v1685635979/vusdorg/epzwqbarhmzrvmmoiy64/ELAFullWritesScoringGuide_2014_.pdf": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://resources.newmeridiancorp.org/released-items/?fwp_subject_facet=english-language-arts": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://resources.newmeridiancorp.org/wp-content/uploads/2019/12/G10_ELA_2015_ReleasedItems_ResearchSimulationTask-ItemSet_Final_unb.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://resources.newmeridiancorp.org/wp-content/uploads/2019/12/G10_ELA_ReleasedItems_LiteraryAnalysisTask-SampleStudentResponses_Final_012617_w_Media.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://resources.newmeridiancorp.org/wp-content/uploads/2020/01/Grade-10-S-M-Info-Banana-2019_AR_BV-1.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://resources.newmeridiancorp.org/wp-content/uploads/2020/02/Grade-10-LAT-Animal-Farm-2019_AR_BV.2V.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://resources.newmeridiancorp.org/wp-content/uploads/2020/02/Grade-10-LAT-Animal-Farm-Handscored-Materials-V.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://resources.newmeridiancorp.org`": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://ride.ri.gov/instruction-assessment/curriculum/curriculum-frameworks/ela-curriculum-frameworks": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://scoringguides.cambiumast.com/": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://smart.smarterbalanced.org/": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://smarterbalanced.alohahsap.org/content/contentresources/en/Argumentative-Rubric.pdf": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://stmaryk12-my.sharepoint.com/:b:/g/personal/sdupre_stmaryk12_net/ER9Zana9oXFKtp43lXxj0-IB9G6SQt-jPO7Wc3yr55CmJw?e=eW7fOu": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://stmaryk12-my.sharepoint.com/:b:/g/personal/sdupre_stmaryk12_net/ETv40RLYVRlJhLe89FNWwSkB61OqRWeGupYZ7JfNm9g8Xw?e=8PrGQ6": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://tea.texas.gov/about-tea/laws-and-rules/texas-administrative-code/19-tac-chapter-110": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://tea.texas.gov/about-tea/laws-and-rules/texas-administrative-code/19-tac-chapter-110`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://tea.texas.gov/assessment-and-accountability/assessment-initiatives/staar-redesign": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/2021-staar-english-2-scoring-guide-tagged.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/2022-staar-released-english-ii-persuasive-writing-scoring-guide.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/2023-eng-ii-staar-pld.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/2023-english-ii-assessed-curriculum-rla.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/2023-staar-english-ii-scoring-guide.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/2024-staar-english-ii-scoring-guide.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/2025-staar-english-ii-scoring-guide.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/hybrid-scoring-key-questions-2.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/released-test-questions/2023-staar-english-i-rationale.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/scoring-process-staar-constructed-response-1.pdf": [
+      "04_item_formats_and_rubrics.md",
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/staar-english-i-blueprint-schematic-pdf.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/staar-english-ii-blueprint-schematic.pdf": [
+      "04_item_formats_and_rubrics.md",
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/staar-reading-language-arts-resources": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/staar-redesign-scoring-and-reporting-for-new-question-types-guide-rla.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/tx-staar-arg-opinion-rubric-g6-e2.pdf": [
+      "04_item_formats_and_rubrics.md",
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://tea.texas.gov/data-reports/staar/tx-staar-informational-rubric-g6-e2.pdf": [
+      "04_item_formats_and_rubrics.md",
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://wbte.drcedirect.com/LA/#portal/la/510848/ott/8/username/password/false": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://wveis.k12.wv.us/wvboe/policies/policy.php?p=2520.1A": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.act.org/content/act/en/products-and-services/the-act.html": [
+      "04_item_formats_and_rubrics.md",
+      "AnchorSets/G11_anchor_ACT.md"
+    ],
+    "https://www.act.org/content/act/en/products-and-services/the-act/scores/understanding-your-scores.html": [
+      "04_item_formats_and_rubrics.md",
+      "AnchorSets/G11_anchor_ACT.md"
+    ],
+    "https://www.act.org/content/act/en/products-and-services/the-act/scores/writing-test-scores.html": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/description-of-english-test.html": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/description-of-writing-test.html": [
+      "04_item_formats_and_rubrics.md",
+      "AnchorSets/G11_anchor_ACT.md"
+    ],
+    "https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/writing-sample-essays.html": [
+      "04_item_formats_and_rubrics.md",
+      "AnchorSets/G11_anchor_ACT.md"
+    ],
+    "https://www.act.org`": [
+      "AnchorSets/G11_anchor_ACT.md"
+    ],
+    "https://www.alabamaachieves.org/wp-content/uploads/2021/08/2021-Alabama-English-Language-Arts-Course-of-Study.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.alabamaachieves.org/wp-content/uploads/2021/08/2021-Alabama-English-Language-Arts-Course-of-Study.pdf`": [
+      "06a_deviation_AL_AR.md"
+    ],
+    "https://www.alsde.edu/sec/sct/COS/2021%20Alabama%20English%20Language%20Arts%20Course%20of%20Study.pdf`": [
+      "06a_deviation_AL_AR.md"
+    ],
+    "https://www.azed.gov/standards/englishlanguagearts": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.caaspp-elpac.org/assessments/caaspp/sb-ela-math": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://www.cde.ca.gov/be/st/ss/documents/finalelaccssstandards.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.cde.ca.gov/ta/tg/sa/sbacsummative.asp": [
+      "AnchorSets/G11_anchor_SBAC.md"
+    ],
+    "https://www.cde.state.co.us/coreadingwriting/2020cas-rw-hs": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.cpalms.org/Public/search/Standard`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://www.doe.mass.edu/frameworks/ela/2017-06.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.doe.mass.edu/mcas/2026/release/g10-ela.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.doe.mass.edu/mcas/release.html": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.doe.mass.edu/mcas/student/": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.doe.mass.edu/mcas/student/2025/grade10/ela-q22.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.doe.mass.edu/mcas/student/2025/grade10/ela-q9.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.doe.mass.edu/mcas/student/2025/grade10/ela.html": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.doe.mass.edu/mcas/tdd/resources/2019-g10-essay-rubric.docx": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.doe.mass.edu/mcas/tdd/testdesign/g10-ela.docx": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.doe.mass.edu/mcas/testitems.html": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.doe.mass.edu`": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.doe.virginia.gov/teaching-learning-assessment/k-12-standards-instruction/english-reading-literacy/standards-of-learning/2024-english-standards-of-learning": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.doe.virginia.gov/teaching-learning-assessment/k-12-standards-instruction/english-reading-literacy/standards-of-learning`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://www.dpi.nc.gov/districts-schools/classroom-resources/office-teaching-and-learning/standard-course-study/english-language-arts/standard-course-study-supporting-resources": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.education.ne.gov/contentareastandards/english-language-arts/`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://www.education.ne.gov/wp-content/uploads/2022/08/ELA-Standards-2021-6-12-Horizontal-8.25.22.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.education.ne.gov/wp-content/uploads/2022/08/ELA-Standards-2021-6-12-Horizontal-8.25.22.pdf`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://www.education.ne.gov/wp-content/uploads/2022/08/ELA-Standards-2021-8-25-22.pdf`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://www.education.nh.gov/who-we-are/division-of-learner-support/bureau-of-instructional-support/career-and-college-ready-standards": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/writing.stml": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://www.fldoe.org/core/fileparse.php/7539/urlt/elabeststandardsfinal.pdf`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://www.fldoe.org/file/20102/4-6BESTWritingExpositoryRubric.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://www.fldoe.org/file/20102/7-10BESTWritingArgumentationRubric.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://www.fldoe.org/file/20102/7-10BESTWritingExpositoryRubric.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://www.fldoe.org/file/5663/2526BESTWritingFactSheet.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://www.gadoe.org/learning/english-language-arts/": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.hawaiipublicschools.org/academics/subject-matter-standards/": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.in.gov/doe/files/Grade-11-12-ELA-Standards-Dec-2020.pdf`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://www.in.gov/doe/files/Grade-9-10-ELA-Standards-Dec-2020.pdf`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://www.in.gov/doe/students/indiana-academic-standards/english-language-arts/`": [
+      "02_deviation_states_deepdive.md"
+    ],
+    "https://www.isbe.net/documents/ccs_faq.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.ksde.gov/docs/default-source/csas/ela-standards-horizontal-document.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.maine.gov/doe/learning/standards/ela/review": [
+      "01_ccss_adherence_map.md",
+      "06b_deviation_ID_ME.md"
+    ],
+    "https://www.maine.gov/doe/sites/maine.gov.doe/files/inline-files/2020%20Maine%20ELA%20Standards_3.docx": [
+      "06b_deviation_ID_ME.md"
+    ],
+    "https://www.maine.gov/doe/sites/maine.gov.doe/files/inline-files/ELA%20Anchor%20Standards%202020_0.docx": [
+      "06b_deviation_ID_ME.md"
+    ],
+    "https://www.maine.gov/doe/sites/maine.gov.doe/files/inline-files/WRITING%20preamble.docx": [
+      "06b_deviation_ID_ME.md"
+    ],
+    "https://www.maine.gov/doe/sites/maine.gov.doe/files/inline-files/Writing%20Standards%20Horizontal%20Progression_0.docx": [
+      "06b_deviation_ID_ME.md"
+    ],
+    "https://www.marylandpublicschools.org/programs/Pages/ELA/MCCR.aspx": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.michigan.gov/mde/services/academic-standards": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.nagb.gov/content/dam/nagb/en/documents/publications/frameworks/writing/2017-writing-framework.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://www.nd.gov/dpi/districtsschools/academic-standards": [
+      "06c_deviation_ND_WI.md"
+    ],
+    "https://www.nd.gov/dpi/sites/www/files/documents/Academic%20Support/ELA%20Content%20Standards%202023%20FINAL10.21.24.pdf": [
+      "01_ccss_adherence_map.md",
+      "06c_deviation_ND_WI.md"
+    ],
+    "https://www.nj.gov/education/assessment/": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.nj.gov/education/assessment/resources/district/blueprtsguide/elagrade9.shtml": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.nj.gov/education/standards/ela/": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.nysed.gov/curriculum-instruction/new-york-state-next-generation-english-language-arts-learning-standards": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.nysed.gov/sites/default/files/programs/state-assessment/ela-regents-examinations-what-to-expect.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://www.nysed.gov/sites/default/files/programs/state-assessment/english-language-arts-educator-guide-2025rev.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://www.nysed.gov/sites/default/files/programs/state-assessment/next-gen-english-regents-written-response-sampler.pdf": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://www.nysed.gov/state-assessment/high-school-english-language-arts": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://www.nysedregents.org/hsela/": [
+      "04_item_formats_and_rubrics.md",
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.nysedregents.org/hsela/625/reela-62025-cc.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.nysedregents.org/hsela/625/reela-62025-exam.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.nysedregents.org/hsela/625/reela-62025-rga.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.nysedregents.org/hsela/625/reela-62025-rgb.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.nysedregents.org/hsela/625/reela-62025-rgc.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.nysedregents.org/hsela/625/reela-62025-sk.pdf": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.nysedregents.org/hsela/`": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.oregon.gov/ode/educator-resources/standards/ELA/Documents/ODE_2026_ELA_Standards%20-%20Grade%20%28K12%29_Final.pdf": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.pa.gov/agencies/stateboard/resources/regulations--policy/state-academic-standards": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.schools.utah.gov/curr/elasecondary": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.sde.idaho.gov/academic/standards/": [
+      "06b_deviation_ID_ME.md"
+    ],
+    "https://www.sde.idaho.gov/wp-content/uploads/2025/09/Idaho-K-12-State-Standards-for-ELA-Literacy.pdf": [
+      "01_ccss_adherence_map.md",
+      "06b_deviation_ID_ME.md"
+    ],
+    "https://www.smarterbalanced.org/assessments/samples/": [
+      "04_item_formats_and_rubrics.md"
+    ],
+    "https://www.srca.nm.gov/parts/title06/06.029.0013.html": [
+      "01_ccss_adherence_map.md"
+    ],
+    "https://www.texasassessment.gov/practice-tests.html": [
+      "AnchorSets/G10_anchor_forms.md"
+    ],
+    "https://www.tn.gov/education/districts/academic-standards/english-language-arts-standards.html": [
+      "01_ccss_adherence_map.md"
+    ]
+  }
+}
