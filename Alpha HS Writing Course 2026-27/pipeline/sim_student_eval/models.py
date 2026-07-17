@@ -59,6 +59,49 @@ STUDENT_TOOL = {
     },
 }
 
+# Fable-5 intermittently serializes a NESTED tool-object as a string of pseudo-XML
+# <parameter name="KEY">JSON_VALUE</parameter> blocks instead of a real object. When that happens,
+# journal_update arrives as a str and dict(...) on it throws. _coerce_dict recovers the object so a
+# malformed nested field never crashes the walk or loses the turn. (The top-level `response` string
+# is unaffected by this quirk; we only need to repair the nested journal_update.)
+import json as _json
+import re as _re
+
+_PARAM_RE = _re.compile(r'<parameter\s+name="([^"]+)">(.*?)</parameter>', _re.DOTALL)
+
+
+def _coerce_dict(val):
+    """Return val as a dict. Already-dict -> unchanged. String -> try JSON, then the
+    <parameter name=..> pseudo-XML form; each extracted value is JSON-parsed when possible.
+    Anything unrecoverable -> {} (never raises)."""
+    if isinstance(val, dict):
+        return val
+    if not isinstance(val, str):
+        return {}
+    s = val.strip()
+    try:
+        parsed = _json.loads(s)
+        return parsed if isinstance(parsed, dict) else {}
+    except Exception:
+        pass
+    out = {}
+    for k, raw in _PARAM_RE.findall(s):
+        raw = raw.strip()
+        try:
+            out[k] = _json.loads(raw)
+        except Exception:
+            out[k] = raw
+    return out
+
+
+def _normalize_turn(inp: dict) -> dict:
+    """Normalize a report_student_turn tool input: guarantee response is a str and
+    journal_update is a dict, repairing the Fable pseudo-XML string form when present."""
+    resp = inp.get("response", "")
+    if not isinstance(resp, str):
+        resp = str(resp)
+    return {"response": resp, "journal_update": _coerce_dict(inp.get("journal_update"))}
+
 
 class FableClient:
     def __init__(self, api_key: str, model: str = "claude-fable-5"):
@@ -77,7 +120,7 @@ class FableClient:
             messages=[{"role": "user", "content": user}])
         for b in r.content:
             if getattr(b, "type", "") == "tool_use" and getattr(b, "name", "") == "report_student_turn":
-                return dict(b.input)
+                return _normalize_turn(dict(b.input))
         return {"response": "", "journal_update": {}, "error": "no tool call"}
 
     def ask_tool(self, system: str, user: str, tool: dict) -> dict:
@@ -113,7 +156,7 @@ class GptClient:
             max_completion_tokens=3000)
         msg = r.choices[0].message
         if msg.tool_calls:
-            return dict(_json.loads(msg.tool_calls[0].function.arguments))
+            return _normalize_turn(dict(_json.loads(msg.tool_calls[0].function.arguments)))
         return {"response": msg.content or "", "journal_update": {}, "error": "no tool call"}
 
     def ask_tool(self, system: str, user: str, tool: dict) -> dict:

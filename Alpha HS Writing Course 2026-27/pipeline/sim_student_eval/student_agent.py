@@ -36,9 +36,15 @@ def walk_lesson(client, persona: dict, L, digest: str) -> dict:
     view = student_view(L)
     user = build_user_prompt(sid, view, digest, _is_composition(sid))
     out = client.ask(persona["system_preamble"], user)
-    upd = dict(out.get("journal_update") or {})
+    # journal_update should be a dict (clients normalize it), but stay defensive: a malformed
+    # field must never crash the lesson or discard the student's response.
+    ju = out.get("journal_update")
+    upd = dict(ju) if isinstance(ju, dict) else {}
     upd["lesson"] = sid
     # seq is assigned by the orchestrator (it knows position); default 0 here, overwritten in run_eval
     upd.setdefault("seq", 0)
+    err = out.get("error", "")
+    if ju is not None and not isinstance(ju, dict):
+        err = (err + "; " if err else "") + f"journal_update was {type(ju).__name__}, not dict"
     return {"lesson": sid, "response": out.get("response", ""),
-            "journal_update": upd, "raw_error": out.get("error", "")}
+            "journal_update": upd, "raw_error": err}
