@@ -36,7 +36,7 @@ REMEMBER = (
 '<ol style="color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px">'
 '<li style="margin:2px 0">Did you name a real objection (concede)?</li>'
 '<li style="margin:2px 0">After conceding, do you still hold a clear side?</li>'
-'<li style="margin:2px 0">Is there a reason for the side you hold?</li></ol>'
+'<li style="margin:2px 0">Does your reason answer that objection, not just repeat your side?</li></ol>'
 '<div style="color:#0f766e;font-size:13px;margin-top:6px">If the middle answer is no, the claim has collapsed. Hold a side.</div></div>')
 
 # coping-model think-aloud panel: a WRITTEN drafting process (concede -> catch the collapse -> hold), then endpoints.
@@ -107,7 +107,7 @@ LESSON = Lesson(
                 "playbook": "_phase2/playbook_T2_STAND.md",
                 "template": "locked v3.1 L01 template (lesson_g9_l01_arguable_claim_v3_1); CLAIM-TIER binds issue_frame.",
                 "one_idea": "Conceding is a strength only if you still HOLD your position.",
-                "one_reminder": "3-question test: conceded a real objection? still hold a side? reason for it?",
+                "one_reminder": "3-question test: conceded a real objection? still hold a side? does the reason answer that objection?",
                 "version_note": ("V3.1: rebuilt to the locked v3.1 spine - ONE_IDEA teal callout + minimal list "
                                  "teach, coping-model think-aloud (concede -> catch collapse -> hold) with "
                                  "literal BEFORE/AFTER, named CONCEDE/HOLD moves + REMEMBER check tool, "
@@ -243,7 +243,9 @@ LESSON = Lesson(
                  checklist_block=checklist(title="Run the test:", rows=[
                      ("Did it name a real objection (concede)?", "Yes, evening light is a real point."),
                      ("After conceding, does it hold a clear side?", "No, 'hard to know' collapses. State a side."),
-                     ("Is there a reason for that side?", "No. Add one with 'because'."),
+                     ("Does the reason answer that objection, not just repeat your side?",
+                      "No. There is no reason yet. Add one that answers the evening-light point, such as morning "
+                      "safety outweighing it."),
                  ]),
                  closer="Now rewrite the weak draft into one concede-and-hold claim that passes all three. Then "
                         "name your held position in a few words.")),
