@@ -39,8 +39,8 @@ Last session I marked the "blank MC steps" finding **FALSE** and said discard. T
 | Finding | Artifact verified | Verdict | Evidence |
 |---|---|---|---|
 | **B1 Recognition-not-application: correct MC option = a prior worked-example AFTER, verbatim** | lesson source (option text vs AFTER text, `SequenceMatcher`) | **CONFIRMED — 12 instances ≥0.70** | g9: C901-0001 s4 (.72), C902-0007 s4 (.93), C902-0009 s4 (.86), C906-0027 s4 (.78); g10: C1001-0001 s4 (.75), C1002-0008 s4 (.91); g11: C1101-0001 s5 (.85), C1101-0002 s4 (.84), C1101-0003 s4 (.85); g12: C1201-0001 s4 (.86), C1201-0002 s4 (.76), D1201-0015 s4 (.87). Spot-verified C902-0007: S3 AFTER *is* the S4 answer, verbatim. |
-| **B2 Write task sits on the same source as its worked example** | lesson source (slot adjacency) | **INDETERMINATE — 281 heuristic hits** | Cannot deterministically separate the *defect* (example pre-writes the exact answer) from *intended SRSD guided practice* (write on the source just studied). → adversarial verify, NOT counted as 281 defects. |
-| **B3 "Checks that run themselves"** (diagnosis prompt answers its own check) | lesson source | **INDETERMINATE — 67/94 diagnosis_frq self-answer** | Of 67, my `own_turn` regex split 34 coping-model / 33 give-away, but manual read shows most "give-away" are the sanctioned coping-model ("run the check on this *provided weak draft*, then rewrite"). Deterministic scan **cannot** separate the two. → adversarial verify. |
+| **B2 Write task sits on the same source as its worked example** | lesson source + **adversarial verify** | **REFUTED (high conf)** | Skeptic prompted to refute found 0 genuine copy-the-answer defects across 8 sampled lessons. Every lesson culminates in a NEW artifact the AFTER doesn't contain (own claim, fresh draft to fix, whole essay, synthesis position); several AFTERs are truncated stubs with nothing to copy. This is textbook SRSD guided-practice fade, not a defect. |
+| **B3 "Checks that run themselves"** (diagnosis prompt answers its own check) | lesson source + **adversarial verify** | **REFUTED (high conf)** | Skeptic found 0 pure give-aways across 14 sampled items; all 14 are the sanctioned coping-model (the stated answers diagnose only a PROVIDED weak draft, then the student does an independent turn — 4 items explicitly re-run the checks on the student's OWN fresh writing). The "diagnosis is never tested" premise is false. |
 
 ### Class E — Broken feedback loops (corroborates F1)
 | Finding | Artifact verified | Verdict | Evidence |
@@ -54,13 +54,13 @@ Last session I marked the "blank MC steps" finding **FALSE** and said discard. T
 | **F-b G10 l02 checklist weakened q3 on the student's weakest skill** | l01 vs l02 checklists | **CONFIRMED** | l01 q3 = "Does the reason answer that objection, not just repeat your side?"; l02 q3 = "Is there a reason for the side you hold?" Standard genuinely lowered. |
 | **F-c G12 l06 under-teaches synthesize/weight ("one sentence each")** | l06 slot order + teach word-counts | **REFUTED (overstated)** | weight/synthesis taught in s1, s2, and s4 (326 words, weight×5 synth×6) — all *before* the s8 composition. Thin-teaching *perception* by the average persona, not a content gap. No fix. |
 | **F-d "Summarize" defined (g9 l05) but never practiced** | all G9 write prompts | **CONFIRMED — low severity** | No production_frq asks the student to summarize; 3 grades later warn "don't summarize." |
-| **F-e g9 l13 Step 8 forces sequence signposts where the real relation is cause** | l13 write prompts | **JUDGMENT CALL** | Prompt says "use sequence signposts for the steps" on photosynthesis (are the steps sequence or cause? genuinely arguable). Real pedagogical tension, not a clean bug. → adversarial verify. |
+| **F-e g9 l13 Step 8 forces sequence signposts where the real relation is cause** | l13 full lesson + **adversarial verify** | **REFUTED (high conf) — NOT a correctness bug** | "Sequence" is the *safer* choice, not wrong: a cause signpost ("sunlight in → as a result → water in") would be factually FALSE (sunlight doesn't cause water uptake). The lesson applies its own rule consistently — it correctly uses a CAUSE signpost at s5 where the link is a genuine consequence, and contrast for the energy-loss step. No student following it writes a logically wrong sentence. |
 
 ---
 
 ## Findings NOT yet deterministically verified (routed, not adopted)
 
-- **Class C redundancy** — hundreds of felt_repeated flags, all single-model, high-retention personas. The within-lesson triple-test (Steps 6/7/8) and cross-grade re-teach are the strongest; the l01→l02→l03 opening run and the analysis run (g10 l04→l06) are the costliest. → **adversarial verify against a weaker-learner lens**, then F3/F8.
+- **Class C redundancy** — hundreds of felt_repeated flags, all single-model, high-retention personas. **Adversarial verify (weaker-learner lens) REFUTED the 5 strongest cross-grade/opening pairs (high conf):** each later lesson adds a genuine increment (arguable→specific+stakes; attribution→integration; produce-warrant→detect-circular-warrant; single-paragraph weave→whole-essay architecture; scope→value-tension), i.e. defensible spaced practice a weak learner needs, not pure duplication. **The high-retention personas flagged review that a struggling student requires.** NOT a redundancy-deletion mandate. Residual to still check: within-lesson triple-testing (Steps 6/7/8 same exercise 3×) — a *tightening* opportunity, distinct from cross-lesson redundancy — and source-set exhaustion (below).
 - **Class D sequencing** — "which-type after lessons that require the type" (g11/g12), difficulty inversion (g9 l13, g10 l11), rubric shown too late (g11 l15). Checkable against lesson order. → **F9** (deterministic order check next).
 - **Class G conceptual gaps** — good-vs-weak reason, scoped-vs-hedged, exception-sinks-claim, number-in-paraphrase. Real solo-student gaps, average persona. → **F10** (copy/tooltip answers).
 - **G10 Chopin twist revealed only inside a wrong answer** (l05) — specific, checkable, not yet run.
@@ -74,16 +74,21 @@ Last session I marked the "blank MC steps" finding **FALSE** and said discard. T
 |---|---|---|
 | A | (harness) | **DONE** — committed |
 | B1 (12 confirmed) | **F7** — regenerate the AFTER text or the correct option so they differ | drafted, HELD |
-| B2/B3 (indeterminate) | **F7** — after adversarial verify | pending verify |
-| C | **F3** (orphan planners) + **F8** (redundancy consolidation) | pending verify |
-| D | **F9** (resequence) | pending order check |
+| B2 | none — **REFUTED** | closed, no fix |
+| B3 | none — **REFUTED** | closed, no fix |
+| C (cross-grade/opening pairs) | none — **REFUTED** (defensible spaced practice) | closed, no fix |
+| C (within-lesson triple-test + source exhaustion) | **F8** — tighten Steps 6/7/8; diversify gate/transfer sources | HELD, medium — still to verify |
+| D | **F9** (resequence) | HELD — pending order check |
 | E | **F1** (self_score reframe) — corroborated | already in plan |
-| F-a counterclaim | **F-a** — teach counterclaim in G9 U4 *or* drop it from the l27 gate + mastery to match what G9 teaches | HELD, high priority |
+| F-a counterclaim | **F-a** — teach counterclaim in G9 U4 *or* drop it from the l27 gate + mastery to match what G9 teaches | HELD, **high priority** |
 | F-b l02 checklist | restore q3 to the l01 standard | HELD |
 | F-d summarize | teach/practice it once in G9, or stop warning against it | HELD, low |
-| F-e l13, C, B2, B3 | adversarial verify before any fix | pending |
+| F-e l13 | none — **REFUTED** (not a correctness bug) | closed, no fix |
 | G | **F10** — copy/tooltip answers to the recurring solo-student questions | HELD, low |
 
 **Verified-real and high-value right now:** Class A (fixed), B1 (12 instances), E (corroborates F1), F-a (counterclaim gap), F-b (checklist weakening).
-**Refuted / overstated:** F-c (G12 l06 under-teaching).
-**Cannot be settled deterministically — must go to adversarial verify:** B2, B3, C, F-e.
+**Refuted / overstated / closed:** F-c (G12 l06 under-teaching), **B2** (SRSD guided practice), **B3** (sanctioned coping-model), **C cross-grade/opening pairs** (defensible spaced practice), **F-e** (l13 sequence is defensible).
+**Still open (deterministic checks not yet run):** D sequencing (order check), C within-lesson triple-test + source-set exhaustion (F8), G conceptual gaps, G10 Chopin-twist-in-wrong-answer.
+
+## What the adversarial pass changed
+Four "indeterminate/judgment" findings all **REFUTED at high confidence** by skeptics prompted to refute and shown the real (post-harness-fix) artifacts. This is the counterweight to my earlier error: last session I wrongly called a REAL finding false; here, the disciplined refute-pass correctly clears four findings that *looked* real to a fast-learner persona but don't survive a weaker-learner / correctness lens. The surviving high-value set is small and specific (B1, E→F1, F-a, F-b) — which is the point of triage: the raw ~400 flags reduce to a handful of genuine, actionable fixes, none bulk-adopted.
