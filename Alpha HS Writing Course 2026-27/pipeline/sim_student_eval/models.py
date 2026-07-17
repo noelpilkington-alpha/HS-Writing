@@ -59,6 +59,24 @@ STUDENT_TOOL = {
     },
 }
 
+# EXTRACT_TOOL: the journal schema FLATTENED to top-level tool parameters (no nested object). The
+# live pilot showed Fable stochastically empties a NESTED tool-object; a flat tool (each field a
+# top-level parameter, exactly like the test-taker's reliable report_item_attempt) does not have that
+# failure mode. Phase 2 of walk_lesson uses this to extract the structured journal FROM the student's
+# already-written narration, so the structured signal no longer depends on the model self-structuring
+# while it narrates.
+EXTRACT_TOOL = {
+    "name": "record_learning_state",
+    "description": ("Read the student's narration of the lesson they just did and record their "
+                    "learning state in structured form. Extract only what the narration supports; "
+                    "do not invent skills or struggles the student did not express."),
+    "input_schema": {
+        "type": "object",
+        "properties": dict(_JOURNAL_SCHEMA["properties"]),
+        "required": ["skills_i_can_now_do", "where_i_struggled", "open_questions", "confidence"],
+    },
+}
+
 # Fable-5 intermittently serializes a NESTED tool-object as a string of pseudo-XML
 # <parameter name="KEY">JSON_VALUE</parameter> blocks instead of a real object. When that happens,
 # journal_update arrives as a str and dict(...) on it throws. _coerce_dict recovers the object so a
@@ -163,6 +181,16 @@ class FableClient:
                 return dict(b.input)
         return {}
 
+    def narrate(self, system: str, user: str) -> str:
+        """Plain-text call (no tool): the student does the lesson and reacts in free text. No nested
+        object to skip, so the response is reliably full - the structured journal is extracted from it
+        in a second step (ask_tool + EXTRACT_TOOL)."""
+        r = self._c.messages.create(
+            model=self._model, max_tokens=3000, system=system,
+            messages=[{"role": "user", "content": user}])
+        parts = [getattr(b, "text", "") for b in r.content if getattr(b, "type", "") == "text"]
+        return "\n".join(p for p in parts if p).strip()
+
 
 class GptClient:
     def __init__(self, api_key: str, model: str = "gpt-5.5"):
@@ -205,3 +233,10 @@ class GptClient:
         if msg.tool_calls:
             return dict(_json.loads(msg.tool_calls[0].function.arguments))
         return {}
+
+    def narrate(self, system: str, user: str) -> str:
+        r = self._c.chat.completions.create(
+            model=self._model,
+            messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
+            max_completion_tokens=3000)
+        return (r.choices[0].message.content or "").strip()
