@@ -134,7 +134,11 @@ LESSON = Lesson(
                    "title=\"Thesis means the arguable claim your whole response defends. You do not need this "
                    "word to finish today's task.\">thesis</dfn>, but you do not need that word for "
                    "today's task.) One habit first: when a task says 'argue' or 'should schools ... ?', it wants "
-                   "a side; 'explain' wants no side. Today's task asks you to argue.")),
+                   "a side; 'explain' wants no side. Today's task asks you to argue. One thing this lesson does "
+                   "NOT ask yet: whether your reason is a strong one. Today a reason just has to be present and "
+                   "on-topic; judging a reason as strong or weak is its own skill you will build in later "
+                   "lessons. So if you finish and wonder 'is my reason good enough?', that is the right question "
+                   "at the wrong time: get the side plus a real reason down first.")),
         Slot("TEACH", "stimulus_display", "The debate: a four-day school week",
              ref="ACC-W910-FRAME-FOURDAYWEEK", bank="four_day_week",
              body=("Read the short framing of the debate. In a moment you will watch a claim get built, then "

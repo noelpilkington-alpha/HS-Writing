@@ -100,9 +100,9 @@ Last session I marked the "blank MC steps" finding **FALSE** and said discard. T
 | E | **F1** (self_score reframe) — corroborated | already in plan |
 | F-a counterclaim | **DECIDED (Noel 2026-07-17): DROP from l27 gate + PP100; counterclaim stays G10.** It's a G10 KC (C.10.01/STAAR Eng II), not a G9 KC; no irrefutable evidence it earns its keep in G9. | HELD (decided), high |
 | F-b l02 checklist | restore q3 to the l01 standard | HELD |
-| F-d summarize | teach/practice it once in G9, or stop warning against it | HELD, low |
+| F-d summarize (S7) | **DONE 2026-07-18** — reframed g9 l05 so summarize is named as the mode for writing from a whole source (quote/paraphrase = today's focus); no false "you'll drill it later" promise | done |
 | F-e l13 | none — **REFUTED** (not a correctness bug) | closed, no fix |
-| G | **F10** — copy/tooltip answers to the recurring solo-student questions | HELD, low |
+| G (S8/F10) | **PARTIAL DONE 2026-07-18** — added the highest-value note to g9 l01 (answers the average persona's carried "is my reason good enough?" by scoping it to later lessons). Remaining questions (scoped-vs-hedged g11, number-in-paraphrase, exception-sinks-claim) left as deferred-low: marginal, and adding tooltips across many lessons is scope not justified by severity. | l01 done; rest deferred-low |
 
 **Verified-real and high-value right now:** Class A (fixed), B1 (12 instances), E (corroborates F1), F-a (counterclaim gap), F-b (checklist weakening).
 **Refuted / overstated / closed:** F-c (G12 l06 under-teaching), **B2** (SRSD guided practice), **B3** (sanctioned coping-model), **C cross-grade/opening pairs** (defensible spaced practice), **F-e** (l13 sequence is defensible).
