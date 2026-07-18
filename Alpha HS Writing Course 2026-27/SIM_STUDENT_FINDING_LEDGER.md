@@ -61,13 +61,13 @@ Last session I marked the "blank MC steps" finding **FALSE** and said discard. T
 ### Class D — Sequencing (deterministic order check, run 2026-07-17)
 | Finding | Artifact verified | Verdict | Evidence |
 |---|---|---|---|
-| **D-a "Name the type" taught AFTER lessons that require choosing the type** | G11 + G12 lesson order | **CONFIRMED (both grades)** | G12: "Name the FRQ Type" is #12, but #9/#10/#11 ("Rehearse a Complete Argument/Analysis/Synthesis") already presuppose it. G11: "Match the Moves to the Task Type" (#28) / "Name the Task Type" (#29) follow the full multi-perspective essay (#22) + rehearsal (#27). Both walks flagged this independently. |
+| **D-a "Name the type" taught AFTER lessons that require choosing the type** | G11 + G12 lesson order + lesson TARGETS | **DOWNGRADED to felt-friction, NOT a broken dependency; F9 SKIPPED (Noel 2026-07-17)** | On inspection the rehearsal lessons each rehearse ONE *named* type (G12 l09 "Rehearse a Complete **Argument** Essay", l10 analysis, l11 synthesis; G11 l27 synthesis; l28 "Match the Moves to the Task Type" already teaches type-spotting before l29). The student is never asked to identify the type unaided before it is taught, so the prerequisite is not broken. Severity MEDIUM, and a renumber is a multi-file cascade (loader/push order + course_sequence self-test) with real regression surface. Decision: leave order as-is. |
 | **D-b Difficulty inversion: ordering/transitions lesson after paragraph/essay work** | G9 + G10 order | **CONFIRMED but LOW** | g9 #21 "Order the Paragraphs" after 6 paragraph/essay lessons; g10 #11 "Order Sentences" after counterclaim-paragraph work. Real, but arguably defensible as a distinct sub-skill / spaced practice; not a correctness issue. |
 
 ### Class C — Source-set exhaustion (deterministic, run 2026-07-17)
 | Finding | Artifact verified | Verdict | Evidence |
 |---|---|---|---|
-| **C-src Gate sources are NOT cold — the gate topic already appeared in ≥2 (here 6+) prior lessons** | topic-keyword scan across each grade | **CONFIRMED — strongest structural finding** | g9 GATE #26 reuses "volcano" (also lessons 4,12,14,19,20,21,25); g10 GATE #24 reuses "congestion pricing" (1,3,15,17,18,20,23); g11 mid-gate #16 reuses "workforce" (1,2,3,4,5,13). A gate meant to test cold transfer runs on a memorized topic. |
+| **C-src Gate sources are NOT cold — the gate topic already appeared in ≥2 (here 6+) prior lessons** | topic-keyword scan across each grade | **CONFIRMED — strongest structural finding. G9 + G10 FIXED 2026-07-18; G11 needs a new source (flagged)** | g9 GATE #26 reused "volcano" (also 4,12,14,19,20,21,25) → **FIXED**: gate 2nd write swapped to HIGHWAYS (Interstate system, 0 prior G9 use, verified 46,876-mi figure). g10 GATE #24 reused "congestion pricing" (1,3,15,17,18,20,23) → **FIXED**: gate swapped to ARG-OPP-0003 nuclear power (0 prior G10 use, genuine two-sided source). g11 mid-gate #16 reused "workforce" (1,2,3,4,5,13) → **NOT FIXED**: the only free synthesis set (SET-0003) is *water*, which is ALSO heavily used in G11 (99 water / 10 scarcity / 322-billion figure ×2). A genuinely-cold G11 synthesis gate needs a **newly-authored** multi-source set on an unseen topic (real sourcing work per the Source Cache decision), not a swap. Flagged, not forced. |
 
 ### G10 Chopin twist inside a wrong answer
 | Finding | Artifact verified | Verdict | Evidence |
@@ -94,9 +94,9 @@ Last session I marked the "blank MC steps" finding **FALSE** and said discard. T
 | B3 | none — **REFUTED** | closed, no fix |
 | C (cross-grade/opening pairs) | none — **REFUTED** (defensible spaced practice) | closed, no fix |
 | C (within-lesson triple-test + source exhaustion) | **F8** — tighten Steps 6/7/8; diversify gate/transfer sources | HELD, medium — still to verify |
-| D-a (confirmed) | **F9** — move "name the type" BEFORE the rehearsal/timed lessons (G11 + G12) | HELD, medium |
-| D-b (low) | **F9** — optional; defensible as-is | HELD, low |
-| C-src (confirmed) | **F8** — swap gate/transfer sources to genuinely-unseen topics | HELD, **high** (gate validity) |
+| D-a | **F9 SKIPPED** — felt-friction, not a broken dependency (types are named in the rehearsal lessons); renumber blast-radius not justified | closed, no fix |
+| D-b (low) | none — defensible as-is | closed, no fix |
+| C-src (confirmed) | **F8** — G9 gate → HIGHWAYS, G10 gate → nuclear (both DONE 2026-07-18); G11 mid-gate needs a NEWLY-AUTHORED cold synthesis set (water is also used in G11) | G9/G10 **DONE**; G11 flagged for source-authoring |
 | E | **F1** (self_score reframe) — corroborated | already in plan |
 | F-a counterclaim | **DECIDED (Noel 2026-07-17): DROP from l27 gate + PP100; counterclaim stays G10.** It's a G10 KC (C.10.01/STAAR Eng II), not a G9 KC; no irrefutable evidence it earns its keep in G9. | HELD (decided), high |
 | F-b l02 checklist | restore q3 to the l01 standard | HELD |

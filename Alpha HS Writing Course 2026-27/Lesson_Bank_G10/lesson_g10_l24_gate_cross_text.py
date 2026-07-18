@@ -101,7 +101,8 @@ LESSON = Lesson(
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.10.06", "sot": "icm course-G10.md L24 (COURSE GATE)",
                 "taught_stimulus": "ACC-W910-ARG-OPP-LESSON-SCHOOLYEAR",
-                "transfer_stimulus": "ACC-W910-ARG-OPP-LESSON-CONGESTION",
+                "transfer_stimulus": "ACC-W910-ARG-OPP-0003",
+                "f8_note": "2026-07-18 F8 cold-gate swap: gate stimulus changed from ARG-OPP-LESSON-CONGESTION (used in 7 prior G10 lessons) to ARG-OPP-0003 (nuclear power, 0 prior G10 appearances) so the gate tests genuinely cold transfer.",
                 "playbook": "_phase2/playbook_T7_BUILD.md",
                 "template": "v3.1 spine; locked L01 template; SYNTHESIS-TIER binds full source sets; GATE = cold full cross-text production, UNTIMED.",
                 "one_idea": "A strong cross-text essay is a plan, built out and woven (synthesis claim, woven sources, counterclaim answered, upshot).",
@@ -146,38 +147,39 @@ LESSON = Lesson(
                    "from the other side, then answer it.</li>"
                    "<li style=\"margin:4px 0\"><strong>Conclusion</strong>: land the upshot.</li></ul>"
                    "There is no clock; take the time you need. Plan first, then weave.")),
-        # ===== the HELD-OUT source (congestion): boxed, stays on screen through the cold write =====
-        Slot("TEACH", "stimulus_display", "Read the source set: congestion pricing (both sides)",
-             ref="ACC-W910-ARG-OPP-LESSON-CONGESTION", bank="congestion_pricing",
-             body=("Read this two-source set on congestion pricing, charging tolls to drive downtown at busy "
-                   "hours. This is the gate: you will write one complete cross-text argument essay from it. Read "
-                   "both sources and gather a synthesis claim plus the objection you will answer. The texts stay "
-                   "on screen while you work.")),
+        # ===== the HELD-OUT source (nuclear power, F8 cold-gate swap): boxed, stays on screen through the cold write =====
+        Slot("TEACH", "stimulus_display", "Read the source: building more nuclear power (both sides)",
+             ref="ACC-W910-ARG-OPP-0003", bank="nuclear_power",
+             body=("Read this source on whether the country should build more nuclear power. It lays out the case "
+                   "for building and the strongest objection against it (the unsolved waste problem). This is a "
+                   "topic the course has not used before, so it is a genuinely cold gate: you will write one "
+                   "complete cross-text argument essay from it. Gather a synthesis claim plus the objection you "
+                   "will answer. The text stays on screen while you work.")),
         # ===== UNSCORED plan affordance (not a certification write; a map for the cold essay) =====
         Slot("SUPPORTED", "production_frq", "Plan your essay (not graded)",
-             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=False, unit="essay",
+             ref="", bank="nuclear_power", rubric_ref="rc.staar", scored=False, unit="essay",
              body=frq_prompt(
                  intro="Before you write, jot a quick plan. This plan is not graded; it is your map for the cold "
-                       "essay. The task: should cities charge tolls to drive downtown during busy hours "
-                       "(congestion pricing)? Use both sources.",
+                       "essay. The task: should the country build more nuclear power? Use the source, including "
+                       "both the case for it and the objection it raises.",
                  setapart_block=setapart("Fill in this plan:",
-                                         "Synthesis claim: ______ (the side you take and defend using the set). Point 1: ______ (weaves both sources). Point 2: ______ (weaves both). Counterclaim point: names ______ from the other side, then answers it with ______."),
+                                         "Synthesis claim: ______ (the side you take and defend using the source). Point 1: ______ (uses the source's evidence). Point 2: ______ (uses the source). Counterclaim point: names ______ from the other side, then answers it with ______."),
                  closer="Then write the full essay from this plan.")),
         # ===== the GATE: ONE cold cross-text essay on the held-out set (the certification write) =====
         Slot("TRANSFER", "production_frq", "GATE: write the complete cross-text essay",
-             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="essay",
+             ref="", bank="nuclear_power", rubric_ref="rc.staar", scored=True, unit="essay",
              body=frq_prompt(
                  intro="The gate. On your own now, write the whole cross-text essay from your plan. The task: "
-                       "should cities charge tolls to drive downtown during busy hours (congestion pricing)? Use "
-                       "both sources.",
+                       "should the country build more nuclear power? Use the source, including both the case for "
+                       "it and the objection it raises.",
                  closer="Write a complete cross-text argument essay: an introduction that states a synthesis "
-                        "claim, body paragraphs that weave both sources and one that concedes and answers the "
-                        "counterclaim, and a conclusion that lands the upshot. This is the terminal task the "
-                        "whole course led to, and you are ready to do it cold. Take the time you need; there is "
-                        "no time limit.")),
+                        "claim, body paragraphs that weave the source's evidence and one that concedes and "
+                        "answers the counterclaim, and a conclusion that lands the upshot. This is the terminal "
+                        "task the whole course led to, and you are ready to do it cold. Take the time you need; "
+                        "there is no time limit.")),
         # ===== POST-HOC self-score: judge your finished essay against the reread check (calibration) =====
         Slot("INDEPENDENT", "self_score", "Score your own essay, then predict the gate result",
-             ref="", bank="congestion_pricing",
+             ref="", bank="nuclear_power",
              body=("Predict, then see your grade. Reread your finished essay and run the three-question check: "
                    "is there a synthesis claim you defend from the set, are the sources woven rather than listed, "
                    "and is the counterclaim named and answered? Based on that, did your essay earn the gate?"),
