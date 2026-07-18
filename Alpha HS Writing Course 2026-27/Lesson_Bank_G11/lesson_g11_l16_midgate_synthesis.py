@@ -12,8 +12,9 @@ SCAFFOLD-FREE rebuild: a gate certifies INDEPENDENT transfer, so it is the SRSD 
 lesson. No annotated model, no discrimination, no predict-the-fix, no diagnosis. Just: a bare moves-checklist
 cue (recall, not re-teach) -> the HELD-OUT source (boxed, stays on screen) -> an UNSCORED plan affordance ->
 ONE cold synthesis essay (the certification write) -> a POST-HOC self-score. The unit taught these moves; the
-gate observes them cold. Only the held-out set (SET-0002, AI and the workforce) is used; the previously-taught
-SET-0003 (water scarcity) is dropped.
+gate observes them cold. Uses the held-out set SET-0004 (national parks, a COLD topic that appears nowhere
+else in the G11 unit); F8 cold-gate swap 2026-07-18 replaced the prior SET-0002 (AI/workforce, used across
+the unit) so the mid-gate finally tests genuinely cold synthesis transfer.
 
 Preserved EXACTLY from the prior L16: id="ACC-W1112-L-G11-C1102-0016", lesson_type=8, mnemonic_status="proposal",
 kc="C.11.02", unit family, acc_tags, and the essay grain. lesson_class="gate" added.
@@ -46,8 +47,12 @@ LESSON = Lesson(
     acc_tags=["ACC.W.SRC.1", "ACC.W.INQ.1", "CCSS.W.11-12.7", "CCSS.W.11-12.8"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.11.02", "sot": "icm course-G11.md L16 (MID-GATE)",
-                "taught_stimulus": "ACC-W910-SYNTH-SET-0002",
-                "transfer_stimulus": "ACC-W910-SYNTH-SET-0002",
+                "taught_stimulus": "ACC-W910-SYNTH-SET-0004",
+                "transfer_stimulus": "ACC-W910-SYNTH-SET-0004",
+                "f8_note": ("2026-07-18 F8 cold-gate swap: the mid-gate stimulus changed from SET-0002 "
+                            "(AI/workforce, used across the G11 unit) to SET-0004 (national parks, 0 prior G11 "
+                            "appearances) so the gate finally tests genuinely cold synthesis transfer. SET-0004 "
+                            "reuses only already-verified NPS/DOI figures (no new fabrication)."),
                 "playbook": "_phase2/playbook_T8_WEAVE.md",
                 "template": ("SCAFFOLD-FREE GATE spine; SYNTHESIS-TIER binds full sets; MID-GATE = cold full "
                              "synthesis on a HELD-OUT set, UNTIMED (no Timeback timer). NOT the course gate."),
@@ -58,8 +63,8 @@ LESSON = Lesson(
                                  "annotated before/after, the discrimination, the predict-the-fix, and the "
                                  "diagnosis_frq; kept only a bare moves-checklist cue -> the held-out source -> an "
                                  "UNSCORED plan affordance -> ONE cold synthesis essay -> a POST-HOC self-score. "
-                                 "Uses ONLY the held-out set (SET-0002, AI and the workforce); the previously "
-                                 "taught SET-0003 (water scarcity) is dropped. Preserved id, type 8, kc C.11.02, "
+                                 "Now uses the held-out set SET-0004 (national parks, cold topic; F8 swap "
+                                 "2026-07-18 from SET-0002). Preserved id, type 8, kc C.11.02, "
                                  "mnemonic_status=proposal, unit, acc_tags, and the essay grain; added "
                                  "lesson_class=gate."),
                 "council": ("T8/WEAVE MID-GATE: SCAFFOLD-FREE synthesis-competence checkpoint. A bare recall cue "
@@ -90,15 +95,17 @@ LESSON = Lesson(
                    "<li style=\"margin:4px 0\"><strong>Conclusion</strong>: name what the set supports and where "
                    "it stops short.</li></ul>"
                    "There is no clock; take the time you need. Plan first, then weave.")),
-        # ===== the HELD-OUT source (AI and the workforce): boxed, stays on screen through the cold write =====
-        Slot("TEACH", "stimulus_display", "Read the source set: AI and the workforce",
-             ref="ACC-W910-SYNTH-SET-0002", bank="ai_workforce_synthesis",
-             body=("Read this source set on AI and the workforce. This is the mid-gate: you will write one "
-                   "complete synthesis essay from it. Read the whole set, gather a synthesis claim the set builds, "
-                   "and note what each source can carry. The texts stay on screen while you work.")),
+        # ===== the HELD-OUT source (national parks, F8 cold-gate swap): boxed, stays on screen through the cold write =====
+        Slot("TEACH", "stimulus_display", "Read the source set: using vs. preserving the national parks",
+             ref="ACC-W910-SYNTH-SET-0004", bank="national_parks_synthesis",
+             body=("Read this source set on how the country should balance letting the public use the national "
+                   "parks against preserving them for the future. This is a topic the unit has not used before, "
+                   "so it is a genuinely cold mid-gate: you will write one complete synthesis essay from it. Read "
+                   "the whole set, gather a synthesis claim the set builds, and note what each source can carry. "
+                   "The texts stay on screen while you work.")),
         # ===== UNSCORED plan affordance (not a certification write; a map for the cold essay) =====
         Slot("SUPPORTED", "production_frq", "Plan your synthesis (not graded)",
-             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.ap", scored=False, unit="essay",
+             ref="", bank="national_parks_synthesis", rubric_ref="rc.ap", scored=False, unit="essay",
              body=frq_prompt(
                  intro="Before you write, jot a quick plan. This plan is not graded; it is your map for the cold "
                        "essay. Use every source in the set.",
@@ -107,7 +114,7 @@ LESSON = Lesson(
                  closer="Then write the full synthesis from this plan.")),
         # ===== the GATE: ONE cold synthesis essay on the held-out set (the certification write) =====
         Slot("TRANSFER", "production_frq", "THE MID-GATE: write the complete synthesis",
-             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="national_parks_synthesis", rubric_ref="rc.ap", scored=True, unit="essay",
              body=frq_prompt(
                  intro="The gate. On your own now, write the whole synthesis from your plan. Use every source in "
                        "the set.",
@@ -118,7 +125,7 @@ LESSON = Lesson(
                         "cold. Take the time you need; there is no time limit.")),
         # ===== POST-HOC self-score: judge your finished synthesis against the reread check (calibration) =====
         Slot("INDEPENDENT", "self_score", "Score your own synthesis, then predict the result",
-             ref="", bank="ai_workforce_synthesis",
+             ref="", bank="national_parks_synthesis",
              body=("Predict, then see your grade. Reread your finished synthesis: is there one synthesis claim the "
                    "whole set builds, are the sources woven and weighted rather than toured, and does the "
                    "conclusion name the limit? Based on that, did your essay earn the gate?"),
