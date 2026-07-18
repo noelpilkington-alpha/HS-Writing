@@ -91,9 +91,9 @@ LESSON = Lesson(
     id="ACC-W910-L-G9-C904-0023", grade="9-10", lesson_type=7,
     unit="G9 U4 - Build essay (full argument essay)",
     title="Write a Full Argument Essay From Your Plan",
-    target=("Plan and write a complete single-source argument essay: SPO plan, an intro that frames the "
-            "thesis, ordered body paragraphs (claim + evidence + warrant, linked), and a conclusion that lands "
-            "the upshot. Written at the essay. Trait: Development/Organization/Purpose."),
+    target=("Plan and write a complete single-source argument essay: a multiple-paragraph outline, an intro "
+            "that frames the thesis, ordered body paragraphs (claim + evidence + warrant, linked), and a "
+            "conclusion that lands the upshot. Written at the essay. Trait: Development/Organization/Purpose."),
     acc_tags=["ACC.W.PROD.1", "ACC.W.ARG.5", "CCSS.W.9-10.1", "CCSS.W.9-10.4"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.9.04", "sot": "icm course-G9.md L23",
@@ -120,9 +120,12 @@ LESSON = Lesson(
                    "You have practiced every one of these moves on its own. A full essay puts them together, in "
                    "order:"
                    "<ul style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
-                   "<li style=\"margin:4px 0\"><strong>Plan first</strong>: a single-paragraph outline, or SPO, "
-                   "is a short plan, one line for your thesis plus your ordered body points, each naming the "
-                   "evidence it will use.</li>"
+                   "<li style=\"margin:4px 0\"><strong>Plan first, at two levels</strong>: a single-paragraph "
+                   "outline is a plan for ONE paragraph, which you already know. An essay is bigger, so it needs "
+                   "a bigger plan, the multiple-paragraph outline: one governing thesis on top, then ordered body "
+                   "paragraphs under it (each pairing a point with the evidence it will use), framed by an "
+                   "introduction and a conclusion. Write the thesis, then lay out the body paragraphs in order "
+                   "before you draft.</li>"
                    "<li style=\"margin:4px 0\"><strong>Thesis</strong>: a thesis is a one-sentence claim that "
                    "takes a side, and your whole essay defends it.</li>"
                    "<li style=\"margin:4px 0\"><strong>Body</strong>: one paragraph per planned point, each a "
