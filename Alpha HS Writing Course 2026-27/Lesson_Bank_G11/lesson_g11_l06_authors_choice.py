@@ -90,7 +90,7 @@ LESSON = Lesson(
     title="Analyze the Choice and Its Effect on the Audience",
     target=("Do rhetorical analysis: name a rhetorical choice the author makes and explain why it works on the "
             "AUDIENCE, rather than analyzing the content or subject of the text. Written at the sentence. "
-            "Trait: Evidence and Commentary (Row B)."),
+            "Trait: Evidence and Commentary."),
     acc_tags=["ACC.W.INFO.6", "CCSS.W.11-12.9", "CCSS.RI.11-12.6"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.11.03",

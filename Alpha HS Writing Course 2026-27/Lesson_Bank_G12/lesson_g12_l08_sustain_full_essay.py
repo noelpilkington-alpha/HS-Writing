@@ -91,8 +91,8 @@ LESSON = Lesson(
     unit="G12 U2 - Sustain a full essay (pace end to end)",
     title="Sustain the Whole Essay, Do Not Front-Load It",
     target=("Carry a full essay end to end under a budget (recycling time-budget and fast-plan) so quality "
-            "holds from intro to conclusion, rather than front-loading and fading. A transferable exam strategy "
-            "(Timeback delivery is untimed). Written at the essay. Trait: Development, Organization, and "
+            "holds from intro to conclusion, rather than front-loading and fading. A transferable timed-writing "
+            "strategy (Timeback delivery is untimed). Written at the essay. Trait: Development, Organization, and "
             "process."),
     acc_tags=["ACC.W.PROD.4", "CCSS.W.11-12.4"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
@@ -135,7 +135,7 @@ LESSON = Lesson(
                    "<li style=\"margin:4px 0\"><strong>Pace the draft</strong>: give each body paragraph a rough "
                    "share of the drafting minutes, and move on when its share is up.</li></ul>"
                    "The failure mode is front-loading: a beautiful intro and first paragraph, then a collapse. "
-                   "You will practice this without a clock so the habit is ready when a real exam has one.")),
+                   "You will practice this without a clock so the habit is ready when a timed writing has one.")),
         Slot("TEACH", "teach_card", "How to pace it, stage by stage",
              body=("Here is the order of work. Follow it and the minutes take care of themselves:"
                    "<ol style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
@@ -151,11 +151,11 @@ LESSON = Lesson(
                    "confirm the ending got finished work.</li></ol>"
                    "You already own the budget and the plan; the new discipline is spending the drafting minutes "
                    "evenly so quality holds to the end. To watch the minutes here, keep a clock or a phone timer "
-                   "in view and glance at it as you finish each paragraph; on a real exam the proctor's clock does "
+                   "in view and glance at it as you finish each paragraph; in a timed writing the room's clock does "
                    "the same job.")),
         Slot("TEACH", "stimulus_display", "Read the source: water for food or power?",
              ref="ACC-W910-ARG-LESSON-WATERTRADEOFF", bank="automation_policy",
-             body=("Read this source on protecting water for food or for power. Picture an exam window: budget "
+             body=("Read this source on protecting water for food or for power. Picture a single sitting: budget "
                    "the stages, then plan the whole essay so you can pace the body evenly. The text stays on "
                    "screen while you work.")),
 
@@ -238,7 +238,7 @@ LESSON = Lesson(
                         "the conclusion are as finished as the first. There is no platform timer, so keep a clock "
                         "or phone timer in view and run your own budget and pacing, then reread to confirm every "
                         "paragraph got finished work and the "
-                        "conclusion is complete. This even pacing is what every strong exam essay is built on, "
+                        "conclusion is complete. This even pacing is what every strong timed essay is built on, "
                         "and you are ready to do it cold. Take the time you need.")),
 
         # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the 3-question pacing check on it,

@@ -86,10 +86,10 @@ LESSON = Lesson(
     id="ACC-W1112-L-G11-C1103-0031", grade="9-10", lesson_type=7,
     unit="G11 U2 - Rhetorical-analysis essay (C.11.03 gateway capstone)",
     title="Write a Full Rhetorical-Analysis Essay",
-    target=("Plan and write a complete rhetorical-analysis essay (AP Lang FRQ2 shape): a thesis that names the "
+    target=("Plan and write a complete rhetorical-analysis essay: a thesis that names the "
             "author's overall rhetorical purpose, body paragraphs that each move choice to effect on the "
-            "audience to purpose, and an intro and conclusion. Written at the essay. Trait: Thesis (Row A) and "
-            "Evidence and Commentary (Row B)."),
+            "audience to purpose, and an intro and conclusion. Written at the essay. Trait: Thesis, and "
+            "Evidence and Commentary."),
     acc_tags=["ACC.W.INFO.6", "ACC.W.PROD.1", "CCSS.W.11-12.9", "CCSS.RI.11-12.6"],
     provenance={"copyright": "own_authored", "authored": "2026-07-14", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.11.03",

@@ -33,7 +33,7 @@ ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
 'font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif">'
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">The one idea</div>'
-'<div style="color:#0f2f28;font-size:15px;margin-top:2px">On the real exam two prompts of different kinds come '
+'<div style="color:#0f2f28;font-size:15px;margin-top:2px">In a single sitting two prompts of different kinds come '
 'back to back. Before you plan the second one, <strong>re-name its type and switch the move-set</strong>, or '
 'the moves from the first prompt bleed into the second.</div></div>')
 
@@ -87,8 +87,8 @@ BEFORE_AFTER_HTML = (
 LESSON = Lesson(
     id="ACC-W910-L-G12-C1202-0013", grade="9-10", lesson_type=7,
     unit="G12 U2 - Interleaved FRQ pair (switch move-sets)",
-    title="Switch Move-Sets Between Two Different FRQs",
-    target=("Rehearse two different FRQ types back to back, re-naming the type and switching the move-set "
+    title="Switch Move-Sets Between Two Different Writing Tasks",
+    target=("Rehearse two different writing task types back to back, re-naming the type and switching the move-set "
             "between them (argument then synthesis), under a self-imposed budget, rather than carrying one "
             "move-set into the next prompt. Delivery untimed. Written at the essay. Trait: task analysis, "
             "Development, and process."),
@@ -202,7 +202,7 @@ LESSON = Lesson(
                  closer="Write a complete argument essay on the water trade-off: a thesis that takes a "
                         "defensible position, body paragraphs that carry it with specific examples, and a "
                         "conclusion that holds the tension. There is no platform timer. Switching the move-set "
-                        "between two back-to-back prompts is what every real exam pair is built on, and you are "
+                        "between two back-to-back prompts is what every real writing pair is built on, and you are "
                         "ready to do it cold. When you finish, note that the next prompt is a synthesis and you "
                         "will switch move-sets.")),
 

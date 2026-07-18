@@ -32,7 +32,7 @@ ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
 'font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif">'
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">The one idea</div>'
-'<div style="color:#0f2f28;font-size:15px;margin-top:2px">A mastery writer can <strong>predict a full-write&#39;s '
+'<div style="color:#0f2f28;font-size:15px;margin-top:2px">A mastery writer can <strong>predict a full essay&#39;s '
 'scores before the grader returns them</strong>, but only by reading the <strong>whole essay</strong>, not the '
 'strong opening. Calibration means predicting each rubric row with a reason, then naming the gap to the grader, '
 'usually a pacing gap where the second half faded.</div></div>')
@@ -70,14 +70,14 @@ BEFORE_AFTER_HTML = (
     '<span style="color:#166534;font-size:13px;font-weight:600"> predicts across the whole essay, names the gap</span>'
     '<p style="margin:8px 0 0;font-size:15px">'
       '<span style="background:#dbeafe;color:#1e3a8a;padding:1px 6px;border-radius:3px;font-size:11px;'
-      'font-weight:700">PREDICT + REASON</span> I predict Evidence 2, Sophistication no: the opening held the '
+      'font-weight:700">PREDICT + REASON</span> I predict Evidence 2, Complexity no: the opening held the '
       'tension, but body three ran thin and the ending was cut short. '
       '<span style="background:#fef9c3;color:#854d0e;padding:1px 6px;border-radius:3px;font-size:11px;'
       'font-weight:700">NAME THE GAP</span> If the grader agrees, the gap is that pacing let the last '
-      'paragraph fade, which is what cost the Sophistication row.</p>'
+      'paragraph fade, which is what cost the Complexity row.</p>'
     '<p style="margin:6px 0 0;color:#166534;font-size:13px">Same essay, but now the prediction reads the whole '
     'piece and names the pacing gap instead of coasting on the strong start. That is calibration on a '
-    'full-write.</p>'
+    'full essay.</p>'
   '</div>'
 '</div>')
 
@@ -85,11 +85,11 @@ BEFORE_AFTER_HTML = (
 LESSON = Lesson(
     id="ACC-W910-L-G12-C1202-0014", grade="9-10", lesson_type=8,
     unit="G12 U2 - Calibrate a full-write (predict, grader-reveal, name the pacing gap)",
-    title="Predict Your Full-Write Scores, Then Name the Pacing Gap",
-    target=("Predict your own full-write's rubric scores across the rows (Evidence, Sophistication) with reasons "
+    title="Predict Your Full Essay Scores, Then Name the Pacing Gap",
+    target=("Predict your own full essay's rubric scores across the rows (Evidence, Complexity) with reasons "
             "drawn from the WHOLE essay, submit, then name the gap between your prediction and the grader, "
             "especially where pacing let the essay fade, rather than predicting from the strong opening. Written "
-            "at the essay. Trait: self-assessment across the AP rows."),
+            "at the essay. Trait: self-assessment across the rubric rows."),
     acc_tags=["ACC.W.PROD.3", "CCSS.W.11-12.5"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.12.02", "sot": "icm course-G12.md L14",
@@ -122,7 +122,7 @@ LESSON = Lesson(
                    "finished essay before the grader does. Run this routine:"
                    "<ul style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
                    "<li style=\"margin:4px 0\"><strong>PREDICT</strong>: for each rubric row (Evidence 1 to 4, "
-                   "Sophistication yes or no), write your predicted score.</li>"
+                   "Complexity yes or no), write your predicted score.</li>"
                    "<li style=\"margin:4px 0\"><strong>REASON</strong>: tie each prediction to a specific part "
                    "of the essay, drawn from the whole piece, not just the opening.</li>"
                    "<li style=\"margin:4px 0\"><strong>SUBMIT</strong>: send the essay to the grader and read "
@@ -132,7 +132,7 @@ LESSON = Lesson(
                    "The trap is predicting from the strong start. A great intro feels like a top score, but the "
                    "grader also reads the paragraphs you wrote when you were running low on time.")),
         Slot("TEACH", "teach_card", "The pacing failure mode: a strong start, a fading finish",
-             body=("Most miscalibration on a full-write comes from one place. You feel best about the parts you "
+             body=("Most miscalibration on a full essay comes from one place. You feel best about the parts you "
                    "wrote first, when you were fresh, so you predict high. But budget pressure shows up late, "
                    "and the grader reads all of it. Watch for these:"
                    "<ol style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
@@ -141,7 +141,7 @@ LESSON = Lesson(
                    "<li style=\"margin:4px 0\"><strong>The cut ending</strong>: the conclusion is one rushed "
                    "line, or missing, so nothing lands.</li>"
                    "<li style=\"margin:4px 0\"><strong>The dropped tension</strong>: the essay stops holding "
-                   "both sides of the trade-off near the end, which is what the Sophistication row rewards.</li></ol>"
+                   "both sides of the trade-off near the end, which is what the Complexity row rewards.</li></ol>"
                    "So predict across the essay: name where it stayed strong AND where pacing let it fade. "
                    "Committing to a whole-essay prediction is what surfaces the fade the opening hides.")),
         Slot("TEACH", "stimulus_display", "Read the source: water for food or power?",
@@ -165,7 +165,7 @@ LESSON = Lesson(
                    "(A) I predict a top score on every row, because my introduction was sharp and my first body "
                    "paragraph laid out strong, clearly organized evidence that read cleanly and made a confident "
                    "early impression.  "
-                   "(B) I predict Evidence 2 and no Sophistication, because the opening was strong but my third "
+                   "(B) I predict Evidence 2 and no Complexity, because the opening was strong but my third "
                    "body paragraph ran thin and my ending was cut short, so the case faded before it landed.  "
                    "(C) I predict a high overall score, because the essay opened with a polished, confident "
                    "first paragraph that set an impressive tone and showed the grader right away that I "
@@ -176,7 +176,7 @@ LESSON = Lesson(
                  {"id": "A", "text": "I predict a top score on every row, because my introduction was sharp and my first body paragraph laid out strong, clearly organized evidence that read cleanly and made a confident early impression.",
                   "correct": False,
                   "why": "This reads the opening only. A sharp intro and first paragraph are not the whole essay; the prediction never looks at the late paragraphs or the ending, where pacing costs points."},
-                 {"id": "B", "text": "I predict Evidence 2 and no Sophistication, because the opening was strong but my third body paragraph ran thin and my ending was cut short, so the case faded before it landed.",
+                 {"id": "B", "text": "I predict Evidence 2 and no Complexity, because the opening was strong but my third body paragraph ran thin and my ending was cut short, so the case faded before it landed.",
                   "correct": True,
                   "why": "Correct. This predicts each row from the whole essay, names the specific parts that faded, and can be compared to the grader row by row."},
                  {"id": "C", "text": "I predict a high overall score, because the essay opened with a polished, confident first paragraph that set an impressive tone and showed the grader right away that I understood the whole prompt.",
@@ -200,16 +200,16 @@ LESSON = Lesson(
                        "guess (C), or ignoring the ending (D) all repeat the opening-only error.")),
 
         # ===== SUPPORTED: predict a sample full-write then reveal (K2), then write + predict with a frame =====
-        Slot("SUPPORTED", "self_score", "Predict a sample full-write, then see the grader",
+        Slot("SUPPORTED", "self_score", "Predict a sample full essay, then see the grader",
              ref="", bank="automation_policy",
              body=("Predict, then reveal. Sample essay: a strong situated intro and first paragraph, a shorter "
-                   "second, a one-line third, and no conclusion (the budget ran out). Predict its Sophistication "
+                   "second, a one-line third, and no conclusion (the budget ran out). Predict its Complexity "
                    "row, then check the reveal."),
              choices=[
-                 {"id": "no", "text": "Sophistication no, the tension faded at the end",
+                 {"id": "no", "text": "Complexity no, the tension faded at the end",
                   "correct": True,
-                  "why": "Correct. The strong start cannot offset a thin third paragraph and a missing conclusion. The Sophistication row needs the trade-off held to the end, and the pacing fade breaks it. Predicting from the whole essay catches this; predicting from the opening does not."},
-                 {"id": "yes", "text": "Sophistication yes, the opening was excellent",
+                  "why": "Correct. The strong start cannot offset a thin third paragraph and a missing conclusion. The Complexity row needs the trade-off held to the end, and the pacing fade breaks it. Predicting from the whole essay catches this; predicting from the opening does not."},
+                 {"id": "yes", "text": "Complexity yes, the opening was excellent",
                   "correct": False,
                   "why": "Look again. A strong opening is not the whole essay. The grader also reads the thin third paragraph and the missing conclusion, and the tension dropped at the end, so this row scores no. That is the opening-only pull."},
              ]),
@@ -219,20 +219,20 @@ LESSON = Lesson(
                  intro="Under your own budget, write a full argument essay on the water trade-off end to end, "
                        "then predict its scores using this frame.",
                  setapart_block=setapart("Fill in this prediction frame:",
-                                         "Evidence __ because __ (name the part). Sophistication yes/no because __ (name where the tension held or faded)."),
+                                         "Evidence __ because __ (name the part). Complexity yes/no because __ (name where the tension held or faded)."),
                  closer="Write the complete essay first (introduction, body paragraphs, conclusion). Then fill "
                         "the frame with a reason for each row drawn from the WHOLE essay. The grader will score "
                         "the essay; your prediction is what you will compare against.")),
 
         # ===== INDEPENDENT: calibrate a full-write cold (no frame) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "Calibrate a full-write on your own",
+        Slot("INDEPENDENT", "production_frq", "Calibrate a full essay on your own",
              ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, no frame. Under your own budget, write a fresh full essay on the water "
                        "trade-off.",
                  closer="Predict your scores across the rows with a reason for each drawn from the whole essay, "
                         "and after the grader returns them, name the gap and whether pacing caused it. Predicting "
-                        "your own full-write from the whole piece is what every calibrated writer is built on, "
+                        "your own full essay from the whole piece is what every calibrated writer is built on, "
                         "and you are ready to do it cold. Take the budget you need.")),
 
         # ===== DIAGNOSIS = run the gap-naming check on the student's OWN just-written draft (self-revision) =====

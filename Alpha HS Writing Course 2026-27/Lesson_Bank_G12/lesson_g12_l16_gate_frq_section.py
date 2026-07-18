@@ -31,8 +31,8 @@ ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
 'font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif">'
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">The one idea</div>'
-'<div style="color:#0f2f28;font-size:15px;margin-top:2px">A full FRQ section is <strong>one routine, run '
-'three times</strong>: name the type from its tell, run that type\'s moves, and budget the whole section so '
+'<div style="color:#0f2f28;font-size:15px;margin-top:2px">A set of three writing tasks is <strong>one routine, run '
+'three times</strong>: name the type from its tell, run that type\'s moves, and budget the whole set so '
 'every essay, including the last, gets finished. Match the moves to the type; do not force one approach onto '
 'all three.</div></div>')
 
@@ -42,7 +42,7 @@ REMEMBER = (
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">Your check tool: the section check</div>'
 '<div style="color:#1f2a44;font-size:14px;margin:4px 0 0">Before you commit to a plan, run these three questions:</div>'
 '<ol style="color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px">'
-'<li style="margin:2px 0">Have I named each FRQ\'s type from its tell?</li>'
+'<li style="margin:2px 0">Have I named each writing task\'s type from its tell?</li>'
 '<li style="margin:2px 0">Do my moves match that type, instead of one reused approach?</li>'
 '<li style="margin:2px 0">Does a section budget protect the last essay?</li></ol>'
 '<div style="color:#0f766e;font-size:13px;margin-top:6px">If any answer is no, fix it before you write.</div></div>')
@@ -59,8 +59,8 @@ BEFORE_AFTER_HTML = (
     '<p style="margin:8px 0 0;font-size:15px">The writer treats all three prompts the same way, writing a '
     'personal-opinion essay for each, spends most of the section on the first, and leaves the third barely '
     'started.</p>'
-    '<p style="margin:6px 0 0;color:#991b1b;font-size:13px">One approach cannot fit three FRQ types, and with '
-    'no section budget the last essay dies. The gate measures type-matching AND pacing.</p>'
+    '<p style="margin:6px 0 0;color:#991b1b;font-size:13px">One approach cannot fit three writing task types, and with '
+    'no budget across the set the last essay dies. The gate measures type-matching AND pacing.</p>'
   '</div>'
   '<div style="background:#f0fdf4;padding:12px 14px">'
     '<span style="display:inline-block;background:#15803d;color:#fff;font-size:11px;font-weight:700;'
@@ -73,8 +73,8 @@ BEFORE_AFTER_HTML = (
       'font-weight:700">ANALYSIS</span> tie the writer\'s choices to their effect. '
       '<span style="background:#ede9fe;color:#5b21b6;padding:1px 6px;border-radius:3px;font-size:11px;'
       'font-weight:700">ARGUMENT</span> take a position and anchor it with specific examples. Each essay gets '
-      'its own moves and a fair share of the section budget.</p>'
-    '<p style="margin:6px 0 0;color:#166534;font-size:13px">Same section, but now each prompt is read for its '
+      'its own moves and a fair share of the budget for the set.</p>'
+    '<p style="margin:6px 0 0;color:#166534;font-size:13px">Same set, but now each prompt is read for its '
     'tell, matched to its own moves, and given time to finish. That is the whole course, run once on your own.</p>'
   '</div>'
 '</div>')
@@ -83,11 +83,11 @@ BEFORE_AFTER_HTML = (
 LESSON = Lesson(
     id="ACC-W910-L-G12-C1202-0016", grade="9-10", lesson_type=8, lesson_class="gate",
     unit="G12 U2 - COURSE GATE: full AP Lang FRQ section (synthesis, analysis, argument)",
-    title="G12 Gate: Write a Full FRQ Section, Type by Type",
-    target=("The course gate: across three cold FRQs, independently name each type (synthesis, rhetorical "
-            "analysis, argument), run its move-set, sustain quality end to end under a self-imposed section "
-            "budget, and aim for sophistication, assembling everything the course taught. Written at the "
-            "essay, untimed. Trait: Sophistication, Development, Evidence, and process."),
+    title="G12 Gate: Write Across Three Writing Tasks, Type by Type",
+    target=("The course gate: across three cold writing tasks, independently name each type (synthesis, rhetorical "
+            "analysis, argument), run its move-set, sustain quality end to end under a self-imposed budget across "
+            "the set, and aim for real complexity, assembling everything the course taught. Written at the "
+            "essay, untimed. Trait: complexity, Development, Evidence, and process."),
     acc_tags=["ACC.W.SRC.1", "ACC.W.INFO.6", "ACC.W.ARG.1", "ACC.W.PROD.4",
               "CCSS.W.11-12.1", "CCSS.W.11-12.7", "CCSS.W.11-12.9"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
@@ -120,7 +120,7 @@ LESSON = Lesson(
         # ===== TEACH: a BARE recall cue only (the three FRQ types + the two governing decisions) - NO teaching =====
         Slot("TEACH", "teach_card", "Before you write: the routine you already own",
              body=(ONE_IDEA +
-                   "This is the course gate: a full AP Lang FRQ section, written cold, on your own. No new "
+                   "This is the course gate: a set of three writing tasks, written cold, on your own. No new "
                    "teaching and no worked example; here is the checklist to run from memory. For each of three "
                    "prompts, read the tell, name the type, and run that type\'s moves:"
                    "<ul style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
@@ -132,81 +132,81 @@ LESSON = Lesson(
                    "<li style=\"margin:4px 0\"><strong>ARGUMENT</strong> (tell: a general question, NO passage): "
                    "take a position, which becomes your thesis. A thesis is a one-sentence claim that states the "
                    "position your whole essay defends, and you anchor it with specific examples.</li></ul>"
-                   "Two decisions govern the whole section: name the TYPE from its tell before you plan, and "
-                   "BUDGET the section so the third essay is never abandoned. Aim for the sophistication point. "
+                   "Two decisions govern the whole set: name the TYPE from its tell before you plan, and "
+                   "BUDGET the set so the third essay is never abandoned. Aim for real complexity. "
                    "There is no clock; take the time you need.")),
         # ===== UNSCORED section-budget plan (a map for the three cold writes; not a certification write).
         # BUDGET only: it precedes the sources, so it does NOT ask the student to name types yet (no tell is
         # visible) and does NOT pre-label the FRQ types (that naming IS the assessed skill, done at each FRQ). =====
-        Slot("SUPPORTED", "production_frq", "Plan your section budget (not graded)",
+        Slot("SUPPORTED", "production_frq", "Plan your budget for the set (not graded)",
              ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=False, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="This section has three FRQs. Before you start, set a budget so the third essay is never "
-                       "abandoned. This plan is not graded; it is your map. You will name each FRQ's type and "
+                 intro="This set has three writing tasks. Before you start, set a budget so the third essay is never "
+                       "abandoned. This plan is not graded; it is your map. You will name each task's type and "
                        "plan its moves when you reach it, once you can read its tell.",
                  setapart_block=setapart("Set your budget:",
-                                         "FRQ 1 ______ share of your time. FRQ 2 ______ share. FRQ 3 ______ share. As you reach each FRQ, name its type from the tell, then run that type's moves."),
-                 closer="Then work through the three FRQs in order, keeping to your budget so all three finish.")),
+                                         "Task 1 ______ share of your time. Task 2 ______ share. Task 3 ______ share. As you reach each task, name its type from the tell, then run that type's moves."),
+                 closer="Then work through the three tasks in order, keeping to your budget so all three finish.")),
 
         # ===== FRQ 1: held-out multi-source set, cold write. Type NOT named (naming it is the assessed skill). =====
-        Slot("TEACH", "stimulus_display", "FRQ 1: read the prompt and name its type",
+        Slot("TEACH", "stimulus_display", "Task 1: read the prompt and name its type",
              ref="ACC-W910-SYNTH-SET-0001", bank="renewable_grid_synthesis",
-             body=("Here is the first FRQ, a set of four sources on whether the United States power grid can run "
+             body=("Here is the first writing task, a set of four sources on whether the United States power grid can run "
                    "mostly on renewable energy. Read the tell and name the type yourself, then run that type's "
                    "moves and write the full response. The texts stay on screen while you work.")),
-        Slot("TRANSFER", "production_frq", "GATE: write FRQ 1",
+        Slot("TRANSFER", "production_frq", "GATE: write Task 1",
              ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=True, unit="essay",
              body=frq_prompt(
-                 intro="The gate, FRQ 1. Name the type from the tell, then on your own write the full response to "
-                       "this FRQ.",
+                 intro="The gate, Task 1. Name the type from the tell, then on your own write the full response to "
+                       "this writing task.",
                  closer="Run the moves that match the type you named, use the sources as that type requires, and "
                         "write a complete, situated response with a conclusion that lands what that type calls "
                         "for (a synthesis lands the argument you wove from the set; an analysis lands the "
-                        "writer's overall effect; an argument defends your position). Keep to your section "
-                        "budget so FRQs 2 and 3 still get finished. There is no time limit.")),
+                        "writer's overall effect; an argument defends your position). Keep to your budget for the "
+                        "set so tasks 2 and 3 still get finished. There is no time limit.")),
 
         # ===== FRQ 2: a DIFFERENT type + held-out passage, cold write. Type NOT named for the student. =====
-        Slot("TRANSFER", "stimulus_display", "FRQ 2: read the prompt and name its type",
+        Slot("TRANSFER", "stimulus_display", "Task 2: read the prompt and name its type",
              ref="ACC-W910-RA-SINGLE-0002", bank="ra_speech_2",
-             body=("Here is the second FRQ: a single passage with its own tell. Read it, name the type yourself, "
-                   "and notice it is a different type from FRQ 1, so it needs different moves. Keep to your "
-                   "section budget. The text stays on screen while you work.")),
-        Slot("TRANSFER", "production_frq", "GATE: write FRQ 2",
+             body=("Here is the second writing task: a single passage with its own tell. Read it, name the type yourself, "
+                   "and notice it is a different type from Task 1, so it needs different moves. Keep to your "
+                   "budget for the set. The text stays on screen while you work.")),
+        Slot("TRANSFER", "production_frq", "GATE: write Task 2",
              ref="", bank="ra_speech_2", rubric_ref="rc.ap", scored=True, unit="essay",
              body=frq_prompt(
-                 intro="FRQ 2. Name the type from the tell, then write the full response.",
+                 intro="Task 2. Name the type from the tell, then write the full response.",
                  closer="Run the moves that match the type you named and write a complete, situated response with "
-                        "a conclusion, aiming for the sophistication point. A different type from FRQ 1, so "
-                        "different moves. Keep to your section budget; there is no time limit.")),
+                        "a conclusion, aiming for real complexity. A different type from Task 1, so "
+                        "different moves. Keep to your budget for the set; there is no time limit.")),
 
         # ===== FRQ 3 (argument, no source): the THIRD type, cold write. Different prompt from the PP100 mastery
         # FRQ 3 so mastery stays a fresh cold task; bank partitioned from the taught set. =====
-        Slot("TRANSFER", "production_frq", "GATE: write FRQ 3",
+        Slot("TRANSFER", "production_frq", "GATE: write Task 3",
              ref="", bank="argument_no_source", rubric_ref="rc.ap", scored=True, unit="essay",
              body=frq_prompt(
-                 intro="The last FRQ. Read the tell and name its type yourself: notice there is no passage this "
+                 intro="The last writing task. Read the tell and name its type yourself: notice there is no passage this "
                        "time, only a general question. Name the type, then write the full response.",
                  setapart_block=setapart("Your prompt:",
                                          "Some people hold that a willingness to fail is necessary for real achievement, while others argue that failure mostly discourages people and slows them down. Take a position on the role that failure should play in the pursuit of worthwhile goals."),
                  closer="Run the moves that match the type you named: a thesis that states your position, body "
                         "paragraphs that anchor it with specific examples, and a conclusion. With no passage, "
-                        "your evidence comes from your own knowledge. Keep to your section budget so all three "
-                        "FRQs finish, and aim for the sophistication point. This completes the full section.")),
+                        "your evidence comes from your own knowledge. Keep to your budget for the set so all three "
+                        "tasks finish, and aim for real complexity. This completes the full set.")),
         # ===== POST-HOC self-score: judge the finished section against the section check (calibration) =====
-        Slot("INDEPENDENT", "self_score", "Score your own section, then predict the gate result",
+        Slot("INDEPENDENT", "self_score", "Score your own set, then predict the gate result",
              ref="", bank="argument_no_source",
-             body=("Predict, then see your grades. Reread your three essays and run the section check: did you "
+             body=("Predict, then see your grades. Reread your three essays and run the check across the set: did you "
                    "name each type correctly, match each essay\'s moves to its type, and finish all three? Based "
-                   "on that, did your section earn the gate?"),
+                   "on that, did your set earn the gate?"),
              choices=[
                  {"id": "pass", "text": "Yes: right type, matched moves, all three finished.", "correct": True,
-                  "why": "If each FRQ is the right type with type-matched moves and all three are complete, the "
-                         "section meets the gate. Compare this prediction to your grades: matching them is how "
-                         "you learn to judge your own full-section writing."},
+                  "why": "If each task is the right type with type-matched moves and all three are complete, the "
+                         "set meets the gate. Compare this prediction to your grades: matching them is how "
+                         "you learn to judge your own writing across a full set."},
                  {"id": "gap", "text": "Not yet: a wrong type, a mismatched move-set, or an unfinished essay.",
                   "correct": False,
-                  "why": "Then fix it before you submit. Rename any mistyped FRQ and run its correct moves, or "
-                         "finish the abandoned essay, because a wrong type or an unfinished FRQ keeps the section "
+                  "why": "Then fix it before you submit. Rename any mistyped task and run its correct moves, or "
+                         "finish the abandoned essay, because a wrong type or an unfinished task keeps the set "
                          "below the gate."},
              ]),
     ],

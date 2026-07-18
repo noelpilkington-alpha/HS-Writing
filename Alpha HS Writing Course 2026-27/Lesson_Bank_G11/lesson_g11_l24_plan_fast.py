@@ -89,7 +89,7 @@ LESSON = Lesson(
     title="Make a Fast Plan: Position Plus Ordered Points",
     target=("Make a quick two or three line plan (the position plus ordered points) that steers the draft, "
             "rather than skipping the plan or writing a full-page outline that eats the window. A transferable "
-            "exam strategy (Timeback delivery is untimed). Written at the essay. Trait: Organization and process."),
+            "timed-writing strategy (Timeback delivery is untimed). Written at the essay. Trait: Organization and process."),
     acc_tags=["ACC.W.PROD.4", "CCSS.W.11-12.4", "CCSS.W.11-12.5"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.11.05", "sot": "icm course-G11.md L24",

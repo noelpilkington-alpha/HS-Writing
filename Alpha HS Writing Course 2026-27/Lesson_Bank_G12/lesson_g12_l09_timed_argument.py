@@ -58,8 +58,8 @@ BEFORE_AFTER_HTML = (
       'faster than the roughly 3.1 percent expected across all jobs, a society should invest first in preparing '
       'more people for that work, but only if it also cushions the workers the shift displaces."</p>'
     '<p style="margin:6px 0 0;color:#991b1b;font-size:13px">A sharp opening thesis, and then the draft stops. No '
-    'body carries the claim and no conclusion defends it, so this rehearsal never trains the ending an FRQ has to '
-    'reach.</p>'
+    'body carries the claim and no conclusion defends it, so this rehearsal never trains the ending a writing task '
+    'has to reach.</p>'
   '</div>'
   '<div style="background:#f0fdf4;padding:12px 14px">'
     '<span style="display:inline-block;background:#15803d;color:#fff;font-size:11px;font-weight:700;'
@@ -89,9 +89,9 @@ LESSON = Lesson(
     id="ACC-W910-L-G12-C1202-0009", grade="9-10", lesson_type=7,
     unit="G12 U2 - Sustain a full argument FRQ",
     title="Rehearse a Complete Argument, End to End",
-    target=("Rehearse a full AP argument essay under a self-imposed budget, sustaining quality from a situated "
+    target=("Rehearse a complete argument essay under a self-imposed budget, sustaining quality from a situated "
             "claim through a defended conclusion, rather than practicing only the opening moves. Delivery "
-            "untimed. Written at the essay. Trait: Sophistication, Development, and process."),
+            "untimed. Written at the essay. Trait: complexity, Development, and process."),
     acc_tags=["ACC.W.ARG.1", "ACC.W.PROD.4", "CCSS.W.11-12.1", "CCSS.W.11-12.4"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.12.02", "sot": "icm course-G12.md L09",
@@ -119,7 +119,7 @@ LESSON = Lesson(
         # ===== TEACH: the one idea + the parts (as a list), then the order of work (as a list) =====
         Slot("TEACH", "teach_card", "The one idea: rehearse the whole argument, not just the start",
              body=(ONE_IDEA +
-                   "You already own each of these moves. A full-write rehearsal puts them together, in one "
+                   "You already own each of these moves. A complete-essay rehearsal puts them together, in one "
                    "paced sitting, and carries them to the end:"
                    "<ul style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
                    "<li style=\"margin:4px 0\"><strong>Situated thesis</strong>: a thesis is a one-sentence "
@@ -155,14 +155,14 @@ LESSON = Lesson(
         Slot("TEACH", "stimulus_display", "Read the source: prepare workers or protect them?",
              ref="ACC-W910-ARG-LESSON-WORKFORCEINVEST", bank="public_health",
              body=("Read this source on preparing more people for growing technical fields or protecting the "
-                   "workers the change leaves behind. Because your job is a full FRQ, read the whole thing and "
+                   "workers the change leaves behind. Because your job is a complete essay, read the whole thing and "
                    "gather a position worth defending plus the facts (with their sources) you can carry across "
                    "body paragraphs. The text stays on screen while you work.")),
 
         # ===== MODEL (before the quiz): coping-model before/after + check tool, then discrimination =====
-        Slot("MODEL", "annotated_before_after", "Watch opening-only practice become a full-write rehearsal",
+        Slot("MODEL", "annotated_before_after", "Watch opening-only practice become a complete-essay rehearsal",
              bank="public_health",
-             body=("Here is opening-only practice rebuilt into a full-write rehearsal. Read the BEFORE, then the "
+             body=("Here is opening-only practice rebuilt into a complete-essay rehearsal. Read the BEFORE, then the "
                    "AFTER." + BEFORE_AFTER_HTML +
                    " The BEFORE polishes the start and stops. The AFTER runs the same argument end to end: a "
                    "body beat that holds the tension and a conclusion that defends a priority. Running the "
@@ -171,7 +171,7 @@ LESSON = Lesson(
                    "submit.")),
         Slot("MODEL", "discrimination", "Which rehearsal builds full-essay endurance?",
              ref="", labeled_grade_c=True, bank="public_health",
-             body=("You have watched opening-only practice become a full-write rehearsal. Now spot the target: "
+             body=("You have watched opening-only practice become a complete-essay rehearsal. Now spot the target: "
                    "which sitting builds endurance for a complete essay, and which trains only the opening? "
                    "(A) Polish the introduction and first body paragraph over and over until every sentence "
                    "reads perfectly, then stop working once the opening finally feels strong enough to submit.  "
@@ -196,7 +196,7 @@ LESSON = Lesson(
              bank="public_health",
              body=("Diagnose before the reveal. A student always produces a strong opening and never a finished "
                    "essay, because every practice sitting stops after the first paragraph. Which single change "
-                   "would most improve exam performance? "
+                   "would most improve the writing? "
                    "(A) rehearse the complete argument end to end under a budget, so the conclusion gets "
                    "finished work too  "
                    "(B) keep polishing the introduction and opening paragraph until they read even more sharply "
@@ -236,7 +236,7 @@ LESSON = Lesson(
                         "body paragraphs that hold the tension, and a conclusion that defends a priority. There "
                         "is no platform timer; run your own budget and pacing, then run the reread check and fix "
                         "any part that fails. Carrying a complete argument to a finished conclusion is what every "
-                        "real AP argument is built on, and you are ready to do it cold. Take the time you need.")),
+                        "strong argument essay is built on, and you are ready to do it cold. Take the time you need.")),
 
         # DIAGNOSIS = self-revision: reread your OWN just-written essay and run the 3-question check on it,
         # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the

@@ -91,10 +91,10 @@ LESSON = Lesson(
     id="ACC-W910-L-G12-C1202-0011", grade="9-10", lesson_type=8,
     unit="G12 U2 - Sustain a full synthesis FRQ",
     title="Rehearse a Complete Synthesis, End to End",
-    target=("Rehearse a full AP synthesis essay under a self-imposed budget, capping reading and pacing the "
-            "writing so a woven, weighted, sophisticated synthesis is finished end to end, rather than reading "
+    target=("Rehearse a complete synthesis essay under a self-imposed budget, capping reading and pacing the "
+            "writing so a woven, weighted, nuanced synthesis is finished end to end, rather than reading "
             "out the clock and defaulting to a survey. Delivery untimed. Written at the essay. Trait: "
-            "Development (synthesis), Sophistication, and process."),
+            "Development (synthesis), complexity, and process."),
     acc_tags=["ACC.W.SRC.1", "ACC.W.PROD.4", "CCSS.W.11-12.7", "CCSS.W.11-12.4"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.12.02", "sot": "icm course-G12.md L11",
@@ -120,7 +120,7 @@ LESSON = Lesson(
         # ===== TEACH: the one idea + the parts (as a list), then the order of work (as a list) =====
         Slot("TEACH", "teach_card", "The one idea: a synthesis is a paced rehearsal",
              body=(ONE_IDEA +
-                   "You already know how to weave sources. A full synthesis FRQ puts that under a budget. To "
+                   "You already know how to weave sources. A full synthesis writing task puts that under a budget. To "
                    "synthesize means to combine several sources into one argument the set builds, rather than "
                    "reporting each source on its own. A finished synthesis has these parts:"
                    "<ul style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
@@ -154,7 +154,7 @@ LESSON = Lesson(
         Slot("TEACH", "stimulus_display", "Read the source set: AI and the workforce",
              ref="ACC-W910-SYNTH-SET-0002", bank="ai_workforce_synthesis",
              body=("Read this source set on how artificial intelligence will reshape the American workforce. "
-                   "Picture a full FRQ: cap the reading to find the one argument the set builds and which source "
+                   "Picture a full writing task: cap the reading to find the one argument the set builds and which source "
                    "carries each point, then plan the whole synthesis. Do not read out the clock. The texts stay "
                    "on screen while you work.")),
 
@@ -194,7 +194,7 @@ LESSON = Lesson(
              bank="ai_workforce_synthesis",
              body=("Diagnose before the reveal. A student reads all four sources on AI and the workforce "
                    "thoroughly and then, out of time, writes a source-by-source summary. For a full synthesis "
-                   "FRQ, which single change would most improve the result? "
+                   "writing task, which single change would most improve the result? "
                    "(A) cap the reading and move to planning the weave once the one argument and the source for "
                    "each point are clear  "
                    "(B) read each of the four sources a second time so every figure and detail is fully "
@@ -227,7 +227,7 @@ LESSON = Lesson(
                         "argument that assigns each point to the source that carries it, citing each source you "
                         "use, and a real conclusion that lands the upshot. Run your own reading cap; there is no "
                         "platform timer. Then confirm it is one woven argument, not a survey, and that it is "
-                        "finished. Pacing a whole synthesis end to end is what every real synthesis FRQ is built "
+                        "finished. Pacing a whole synthesis end to end is what every real synthesis writing task is built "
                         "on, and you are ready to do it cold. Take the time you need.")),
 
         # DIAGNOSIS = self-revision: reread your OWN just-written synthesis and run the 3-question pacing check on

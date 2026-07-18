@@ -34,7 +34,7 @@ ONE_IDEA = (
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">The one idea</div>'
 '<div style="color:#0f2f28;font-size:15px;margin-top:2px">A synthesis under pressure is a <strong>ROUTINE you '
 'run</strong>, not a race to summarize. Budget the stages, fast-plan the ONE argument the set builds, weave by '
-'point, and check. You rehearse the whole routine so it holds when a real exam puts a clock on it.</div></div>')
+'point, and check. You rehearse the whole routine so it holds when timed writing puts a clock on it.</div></div>')
 
 REMEMBER = (
 '<div style="border:1px dashed #0d9488;border-radius:8px;padding:10px 14px;margin:8px 0;background:#f8fffd;'
@@ -149,12 +149,12 @@ LESSON = Lesson(
                    "argument (not a survey), is each source at the point it carries, did you reserve minutes to "
                    "check?</li></ol>"
                    "Delivery here has no clock, so the budget is your own discipline. That is the point: you "
-                   "rehearse the routine untimed so it is ready when a real exam has a timer.")),
+                   "rehearse the routine untimed so it is ready when timed writing has a timer.")),
         Slot("TEACH", "stimulus_display", "Read the source set: a renewable grid",
              ref="ACC-W910-SYNTH-SET-0001", bank="renewable_grid_synthesis",
              body=("Read this source set on whether the United States grid can run mostly on renewables. Picture "
-                   "an exam window: budget your reading, then look for the one argument the set builds and which "
-                   "source carries each point, as a fast plan. The texts stay on screen while you work.")),
+                   "a timed-writing window: budget your reading, then look for the one argument the set builds and "
+                   "which source carries each point, as a fast plan. The texts stay on screen while you work.")),
 
         # ===== MODEL (before the quiz): coping-model before/after + check tool, then the discrimination =====
         Slot("MODEL", "annotated_before_after", "Watch a panic-survey become a budgeted synthesis",

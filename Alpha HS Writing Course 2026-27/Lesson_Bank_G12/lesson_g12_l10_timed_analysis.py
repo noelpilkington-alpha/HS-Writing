@@ -85,9 +85,9 @@ LESSON = Lesson(
     id="ACC-W910-L-G12-C1202-0010", grade="9-10", lesson_type=7,
     unit="G12 U2 - Sustain a full rhetorical-analysis FRQ",
     title="Rehearse a Complete Rhetorical Analysis, End to End",
-    target=("Rehearse a full AP rhetorical-analysis essay under a self-imposed budget, capping annotation and "
+    target=("Rehearse a complete rhetorical-analysis essay under a self-imposed budget, capping annotation and "
             "pacing the writing so a situated, choice-to-effect analysis is finished end to end, rather than "
-            "over-reading and rushing. Delivery untimed. Written at the essay. Trait: Sophistication, Evidence "
+            "over-reading and rushing. Delivery untimed. Written at the essay. Trait: complexity, Evidence "
             "and Commentary, and process."),
     acc_tags=["ACC.W.INFO.6", "ACC.W.PROD.4", "CCSS.W.11-12.9", "CCSS.RI.11-12.6"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
@@ -162,7 +162,7 @@ LESSON = Lesson(
         # ===== MODEL (before the quiz): coping-model before/after + check tool, then discrimination + predict ==
         Slot("MODEL", "annotated_before_after", "Watch over-annotation become a paced analysis",
              bank="ra_speech_1",
-             body=("Here is an over-annotated approach rebuilt into a paced full-write. Read the BEFORE, then the "
+             body=("Here is an over-annotated approach rebuilt into a paced complete essay. Read the BEFORE, then the "
                    "AFTER." + BEFORE_AFTER_HTML +
                    " The BEFORE marks the speech and stalls at a retell. The AFTER caps the reading and finishes "
                    "a real analysis, naming a choice, its effect on the audience, and the purpose. Cap the "

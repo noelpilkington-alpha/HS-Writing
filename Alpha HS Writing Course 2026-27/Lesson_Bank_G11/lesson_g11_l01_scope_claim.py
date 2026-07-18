@@ -99,7 +99,7 @@ LESSON = Lesson(
     unit="G11 U1 - Nuance (scope the claim)",
     title="Scope the Claim: Narrow It to What You Can Defend",
     target=("Scope a claim by narrowing which case, whom, or when it covers, so it is defensible rather than a "
-            "sweeping everyone/always overreach. Written at the sentence. Trait: Thesis (Row A)."),
+            "sweeping everyone/always overreach. Written at the sentence. Trait: Thesis."),
     acc_tags=["ACC.W.ARG.1", "CCSS.W.11-12.1a"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.11.01", "sot": "icm course-G11.md L01",

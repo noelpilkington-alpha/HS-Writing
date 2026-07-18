@@ -31,7 +31,7 @@ ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
 'font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif">'
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">The one idea</div>'
-'<div style="color:#0f2f28;font-size:15px;margin-top:2px">Sophisticated analysis <strong>situates</strong> the '
+'<div style="color:#0f2f28;font-size:15px;margin-top:2px">Analysis with depth <strong>situates</strong> the '
 'author\'s choices in the whole rhetorical situation and <strong>holds the tension</strong> in the strategy. '
 'Naming techniques is the floor; explaining why THESE choices for THIS audience under THIS pressure is the '
 'point.</div></div>')
@@ -60,7 +60,7 @@ BEFORE_AFTER_HTML = (
     'strong diction. These techniques make his speech powerful and help him persuade the audience.</p>'
     '<p style="margin:6px 0 0;color:#991b1b;font-size:13px">Running the check: is the rhetorical situation named? '
     'No. Is a tension named? No. So this lists tools and calls the speech powerful. That is the competent floor, '
-    'not sophistication.</p>'
+    'not depth.</p>'
   '</div>'
   '<div style="background:#f0fdf4;padding:12px 14px">'
     '<span style="display:inline-block;background:#15803d;color:#fff;font-size:11px;font-weight:700;'
@@ -73,7 +73,7 @@ BEFORE_AFTER_HTML = (
       'turn it into the measure of Black exclusion lets him accuse without alienating, holding a hostile crowd he '
       'cannot afford to lose.</p>'
     '<p style="margin:6px 0 0;color:#166534;font-size:13px">Now the analysis places the choices in the speaker\'s '
-    'bind and holds the tension in his strategy. Situating the rhetoric is the sophistication move.</p>'
+    'bind and holds the tension in his strategy. Situating the rhetoric is the depth move.</p>'
   '</div>'
 '</div>')
 
@@ -81,11 +81,11 @@ BEFORE_AFTER_HTML = (
 LESSON = Lesson(
     id="ACC-W910-L-G12-C1201-0005", grade="9-10", lesson_type=7,
     unit="G12 U1 - BUILD: sophisticated rhetorical analysis",
-    title="Analyze the Rhetoric With Sophistication",
-    target=("Write a full rhetorical-analysis essay that analyzes the author's choices AND earns sophistication "
+    title="Analyze the Rhetoric With Depth",
+    target=("Write a full rhetorical-analysis essay that analyzes the author's choices AND reaches real depth "
             "by situating them in the whole rhetorical situation and holding the tension in the author's "
             "strategy, rather than a mechanical device-hunt. Written at the essay, untimed. Trait: "
-            "Sophistication (Row C) with Evidence and Commentary."),
+            "Depth and Significance with Evidence and Commentary."),
     acc_tags=["ACC.W.INFO.6", "CCSS.W.11-12.9", "CCSS.RI.11-12.6"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.12.01", "sot": "icm course-G12.md L05",
@@ -115,7 +115,7 @@ LESSON = Lesson(
              body=(ONE_IDEA +
                    "The rhetorical situation is a set of pressures on the speaker: who the audience is, what the "
                    "speaker needs from them, and the bind the speaker is caught in. A device-hunt is when a writer "
-                   "just lists techniques and calls the speech powerful. Sophistication asks a harder set of "
+                   "just lists techniques and calls the speech powerful. Depth asks a harder set of "
                    "questions:"
                    "<ul style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
                    "<li style=\"margin:4px 0\"><strong>Situate</strong>: place each choice in the audience and "
@@ -141,7 +141,7 @@ LESSON = Lesson(
                    "the situation and tension, do not just label it.</li>"
                    "<li style=\"margin:4px 0\"><strong>CHECK</strong>: reread and ask whether the analysis "
                    "explains WHY the choices fit the moment.</li></ol>"
-                   "This is the sophistication move applied to analysis, planned first, then built.")),
+                   "This is the depth move applied to analysis, planned first, then built.")),
         Slot("TEACH", "stimulus_display", "Read the source: Frederick Douglass, 1852 address (excerpt)",
              ref="ACC-W910-ANALYSIS-LESSON-DOUGLASS", bank="douglass_1852",
              body=("Read this excerpt from Douglass's 1852 address. Because your job is to write a full "
@@ -186,16 +186,16 @@ LESSON = Lesson(
                   "why": "Correct. This situates the choice in the audience and the speaker's bind and holds the strategic tension, indict without alienating."},
                  {"id": "B", "text": "Douglass fills the address with rhetorical questions, repetition, vivid imagery, and strong emotional diction, and because his audience expects patriotic oratory these techniques work together to make the whole speech sound powerful, forceful, and deeply persuasive to everyone present.",
                   "correct": False,
-                  "why": "This is a device-hunt. It names techniques and calls the speech powerful, which is the competent floor, not sophistication."},
+                  "why": "This is a device-hunt. It names techniques and calls the speech powerful, which is the competent floor, not depth."},
                  {"id": "C", "text": "Douglass reminds his audience that the country loudly celebrates its own freedom even while millions of people remain enslaved, retelling for the crowd how the promise of independence has never actually reached every American.",
                   "correct": False,
                   "why": "This retells what the speech says. Summary is not analysis; it never explains why a choice fits the audience or the speaker's bind."},
              ]),
-        Slot("MODEL", "predict_the_fix", "What lifts this analysis to sophistication?",
+        Slot("MODEL", "predict_the_fix", "What lifts this analysis to real depth?",
              bank="douglass_1852",
              body=("Diagnose before the reveal. A draft correctly identifies Douglass's rhetorical questions and "
                    "parallelism and says they make the speech more forceful. Which single change would most "
-                   "likely earn the sophistication point? "
+                   "likely reach real depth? "
                    "(A) situate those choices in the rhetorical situation, why they fit this audience and the "
                    "speaker's bind, and hold the tension in his strategy  "
                    "(B) identify still more techniques, adding the metaphors, allusions, and tone shifts the "
@@ -204,23 +204,23 @@ LESSON = Lesson(
                    "so the analysis praises its emotional effect more strongly  "
                    "(D) summarize what Douglass argues, retelling his main points about freedom and hypocrisy so "
                    "a reader can follow the content of the speech clearly"),
-             feedback=("Correct: A. Naming techniques and their force is competent, not sophisticated. The lift "
+             feedback=("Correct: A. Naming techniques and their force is competent, not deep. The lift "
                        "situates the choices in the audience and purpose and holds the strategic tension, indict "
                        "without alienating. More techniques (B), stronger praise (C), or summary (D) do not "
                        "situate the rhetoric. There is no clock, so there is time to plan the situation.")),
 
         # ===== SUPPORTED: plan the analysis (multi_paragraph) - the frame is the highest-value scaffold =====
-        Slot("SUPPORTED", "production_frq", "Plan the sophisticated analysis",
+        Slot("SUPPORTED", "production_frq", "Plan the analysis with depth",
              ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="Plan a sophisticated analysis of Douglass before you write the essay.",
+                 intro="Plan an analysis of Douglass with real depth before you write the essay.",
                  setapart_block=setapart("Fill in this plan:",
                                          "Situation: ______ (audience, purpose, the speaker's bind). Tension: ______ (what he must manage at once). Choice 1: ______ tied to the situation. Choice 2: ______ tied to the situation. Choice 3: ______ tied to the situation."),
                  closer="Write the rhetorical SITUATION, the strategic TENSION he must manage, and the two or "
                         "three CHOICES, each tied to that situation. This plan is what you will build the "
                         "analysis from.")),
         # ===== INDEPENDENT: build the whole analysis essay from the plan (essay ceiling) + say-the-standard =====
-        Slot("INDEPENDENT", "production_frq", "BUILD: write the sophisticated analysis",
+        Slot("INDEPENDENT", "production_frq", "BUILD: write the analysis with depth",
              ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, build the whole analysis essay from your plan.",
@@ -234,7 +234,7 @@ LESSON = Lesson(
         # DIAGNOSIS = self-revision: reread your OWN just-written analysis essay and run the three-question
         # checklist on it, fixing any line that fails. Same taught source (load balance). Self-contained: the
         # checklist is the scaffold and the grader scores the diagnosis within the item.
-        Slot("MODEL", "diagnosis_frq", "Check a plan before the full write",
+        Slot("MODEL", "diagnosis_frq", "Check a plan before the full essay",
              ref="", bank="douglass_1852", scored=True,
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",

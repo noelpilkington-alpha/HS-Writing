@@ -32,9 +32,10 @@ ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
 'font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif">'
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">The one idea</div>'
-'<div style="color:#0f2f28;font-size:15px;margin-top:2px">You can predict your own <strong>Row C</strong> result '
-'before the grader does, but only if you predict against the actual <strong>criterion</strong>, not against a '
-'feeling. "It sounded smart" is not the test; "the tension was held across the whole essay" is.</div></div>')
+'<div style="color:#0f2f28;font-size:15px;margin-top:2px">You can predict whether your own essay reaches '
+'<strong>real complexity</strong> before the grader does, but only if you predict against the actual '
+'<strong>criterion</strong>, not against a feeling. "It sounded smart" is not the test; "the tension was held '
+'across the whole essay" is.</div></div>')
 
 REMEMBER = (
 '<div style="border:1px dashed #0d9488;border-radius:8px;padding:10px 14px;margin:8px 0;background:#f8fffd;'
@@ -42,7 +43,7 @@ REMEMBER = (
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">Your check tool: calibrate the prediction</div>'
 '<div style="color:#1f2a44;font-size:14px;margin:4px 0 0">Before and after the grader returns, ask:</div>'
 '<ol style="color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px">'
-'<li style="margin:2px 0">Did I predict yes or no against the Row C criterion (situated question plus tension held throughout), not a feeling?</li>'
+'<li style="margin:2px 0">Did I predict yes or no against the depth-and-significance criterion (situated question plus tension held throughout), not a feeling?</li>'
 '<li style="margin:2px 0">Did I point to the exact place in my essay that meets or misses it?</li>'
 '<li style="margin:2px 0">After the reveal, can I name the specific gap between my prediction and the grader?</li></ol>'
 '<div style="color:#0f766e;font-size:13px;margin-top:6px">If any answer is no, your read was a feel-guess, not a calibration.</div></div>')
@@ -55,11 +56,12 @@ BEFORE_AFTER_HTML = (
   '<div style="background:#fef2f2;padding:12px 14px;border-bottom:1px solid #fecaca">'
     '<span style="display:inline-block;background:#dc2626;color:#fff;font-size:11px;font-weight:700;'
     'padding:2px 8px;border-radius:4px">BEFORE</span>'
-    '<span style="color:#991b1b;font-size:13px;font-weight:600"> a feel-guess about sophistication</span>'
-    '<p style="margin:8px 0 0;font-size:15px"><i>First try:</i> I think I earned the sophistication point '
-    'because my essay sounded smart and used some big ideas.</p>'
-    '<p style="margin:6px 0 0;color:#991b1b;font-size:13px">"Sounded smart" is not the Row C criterion. The '
-    'grader looks for a situated question and a real tension held across the whole essay, not a tone.</p>'
+    '<span style="color:#991b1b;font-size:13px;font-weight:600"> a feel-guess about complexity</span>'
+    '<p style="margin:8px 0 0;font-size:15px"><i>First try:</i> I think my essay reached real complexity '
+    'because it sounded smart and used some big ideas.</p>'
+    '<p style="margin:6px 0 0;color:#991b1b;font-size:13px">"Sounded smart" is not the depth-and-significance '
+    'criterion. The grader looks for a situated question and a real tension held across the whole essay, not a '
+    'tone.</p>'
   '</div>'
   '<div style="background:#fffbeb;padding:12px 14px;border-bottom:1px solid #fde68a">'
     '<span style="display:inline-block;background:#d97706;color:#fff;font-size:11px;font-weight:700;'
@@ -74,13 +76,14 @@ BEFORE_AFTER_HTML = (
     '<span style="color:#166534;font-size:13px;font-weight:600"> predicts on the criterion, then names the gap</span>'
     '<p style="margin:8px 0 0;font-size:15px">'
       '<span style="background:#dbeafe;color:#1e3a8a;padding:1px 6px;border-radius:3px;font-size:11px;'
-      'font-weight:700">PREDICT + REASON</span> I predict no Row C: I situated the question but flattened the '
-      'tension in body two. '
+      'font-weight:700">PREDICT + REASON</span> I predict it does not reach real complexity: I situated the '
+      'question but flattened the tension in body two. '
       '<span style="background:#fef9c3;color:#854d0e;padding:1px 6px;border-radius:3px;font-size:11px;'
-      'font-weight:700">GAP</span> The grader agreed, no Row C; the gap is that one flattened paragraph sank the '
-      'sophistication for the whole essay.</p>'
-    '<p style="margin:6px 0 0;color:#166534;font-size:13px">Same essay, but now the read is tied to the Row C '
-    'criterion and points to the exact paragraph that missed it. That is calibration on sophistication.</p>'
+      'font-weight:700">GAP</span> The grader agreed, no complexity credit; the gap is that one flattened '
+      'paragraph sank the complexity for the whole essay.</p>'
+    '<p style="margin:6px 0 0;color:#166534;font-size:13px">Same essay, but now the read is tied to the '
+    'depth-and-significance criterion and points to the exact paragraph that missed it. That is calibration on '
+    'complexity.</p>'
   '</div>'
 '</div>')
 
@@ -88,10 +91,11 @@ BEFORE_AFTER_HTML = (
 LESSON = Lesson(
     id="ACC-W910-L-G12-C1201-0007", grade="9-10", lesson_type=8,
     unit="G12 U1 - Calibrate your own sophistication (predict, grader-reveal, name the gap)",
-    title="Predict Whether You Earned Sophistication, Then Name the Gap",
-    target=("Predict whether your own essay earns the sophistication point (Row C) with a reason tied to the "
-            "criterion, submit it, then name the gap between your prediction and the grader, rather than "
-            "guessing from feel. Written at the essay. Trait: self-assessment against Sophistication (Row C)."),
+    title="Predict Whether Your Essay Reaches Real Complexity",
+    target=("Predict whether your own essay reaches real complexity (the depth-and-significance criterion) with a "
+            "reason tied to the criterion, submit it, then name the gap between your prediction and the grader, "
+            "rather than guessing from feel. Written at the essay. Trait: self-assessment against Depth and "
+            "Significance."),
     acc_tags=["ACC.W.PROD.3", "CCSS.W.11-12.5"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.12.01", "sot": "icm course-G12.md L07",
@@ -119,8 +123,8 @@ LESSON = Lesson(
         # ===== TEACH: the one idea + what the Row C criterion is (as a list), then the routine (as a list) =====
         Slot("TEACH", "teach_card", "The one idea: predict against the criterion, not the feeling",
              body=(ONE_IDEA +
-                   "A mastery writer can call the sophistication point before the grader does. Row C rewards a "
-                   "consistently sophisticated argument, and it has parts you can check:"
+                   "A mastery writer can call the result before the grader does. Depth and significance rewards a "
+                   "consistently complex argument, and it has parts you can check:"
                    "<ul style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
                    "<li style=\"margin:4px 0\"><strong>Situate the question</strong>: the thesis question sits "
                    "inside a broader frame or tension, not on its own. A thesis is a one-sentence claim that "
@@ -128,7 +132,7 @@ LESSON = Lesson(
                    "<li style=\"margin:4px 0\"><strong>Hold the tension</strong>: a real tension is carried, not "
                    "flattened, across every body paragraph. One paragraph that dismisses the other side as 'just "
                    "wrong' breaks it.</li>"
-                   "<li style=\"margin:4px 0\"><strong>Carry it throughout</strong>: Row C is holistic, so a "
+                   "<li style=\"margin:4px 0\"><strong>Carry it throughout</strong>: depth and significance is holistic, so a "
                    "strong opening plus one flat paragraph is inconsistent and falls short.</li></ul>"
                    "The weak move is guessing from feel ('it sounded smart', 'I worked hard'). Predict against "
                    "the criterion instead.")),
@@ -136,98 +140,98 @@ LESSON = Lesson(
              body=("Run this routine on your own essay. Follow it in order and the calibration teaches you where "
                    "your read is off:"
                    "<ol style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
-                   "<li style=\"margin:4px 0\"><strong>PREDICT</strong>: Row C yes or no, with the reason from "
+                   "<li style=\"margin:4px 0\"><strong>PREDICT</strong>: real complexity yes or no, with the reason from "
                    "your text ('no, because body two flattened the tension').</li>"
                    "<li style=\"margin:4px 0\"><strong>SUBMIT</strong>: send the essay to the grader, which "
-                   "scores the sophistication.</li>"
-                   "<li style=\"margin:4px 0\"><strong>READ THE REVEAL</strong>: see the grader's Row C result.</li>"
+                   "scores the complexity.</li>"
+                   "<li style=\"margin:4px 0\"><strong>READ THE REVEAL</strong>: see the grader's result.</li>"
                    "<li style=\"margin:4px 0\"><strong>NAME THE GAP</strong>: if your prediction and the grader "
-                   "differ, say what you misjudged ('I thought one clever line earned it; Row C needs the "
-                   "sophistication carried throughout').</li></ol>"
+                   "differ, say what you misjudged ('I thought one clever line earned it; real complexity needs the "
+                   "tension carried throughout').</li></ol>"
                    "Committing to a criterion-based prediction before the reveal is what surfaces the blind spot; "
                    "a feel-guess hides it.")),
         Slot("TEACH", "stimulus_display", "Read the source: prepare workers or protect them?",
              ref="ACC-W910-ARG-LESSON-WORKFORCEINVEST", bank="public_health",
              body=("Read this source on whether a society should invest first in preparing more people for "
                    "fast-growing technical fields or first in protecting the workers the change leaves behind. "
-                   "Because you will write a sophisticated argument on it and then predict your own Row C result, "
-                   "read for the larger question and the real tension between the future workforce and the "
+                   "Because you will write a complex argument on it and then predict whether it reaches real "
+                   "complexity, read for the larger question and the real tension between the future workforce and the "
                    "present one. The text stays on screen while you work.")),
 
         # ===== MODEL (before the quiz): coping-model before/after + the check tool, then discrimination =====
         Slot("MODEL", "annotated_before_after", "Watch a feel-guess become a criterion-based prediction",
              bank="public_health",
-             body=("Here is a feel-guess rebuilt into a prediction tied to the Row C criterion, with the gap "
+             body=("Here is a feel-guess rebuilt into a prediction tied to the depth-and-significance criterion, with the gap "
                    "named after the reveal. Read the BEFORE, then the SECOND TRY, then the AFTER." +
                    BEFORE_AFTER_HTML +
                    " The BEFORE guesses from feel. The AFTER predicts against the criterion and names the exact "
                    "gap. Predicting on the criterion is the move." + REMEMBER +
-                   "When you predict your own Row C, run this check first, then name the gap after the grader returns.")),
+                   "When you predict whether your own essay reaches real complexity, run this check first, then name the gap after the grader returns.")),
         Slot("MODEL", "discrimination", "Which self-prediction can be compared against the grader?",
              ref="", labeled_grade_c=True, bank="public_health",
              body=("You have watched a feel-guess become a criterion-based prediction. Now spot the target: "
-                   "which self-prediction is tied to the Row C criterion, so it can actually be checked against "
-                   "the grader? "
-                   "(A) I predict no Row C: I situated the question in the broader tension but flattened it in "
-                   "one body paragraph, and Row C needs it held throughout.  "
-                   "(B) I think I earned Row C because the essay sounded genuinely smart, used ambitious "
+                   "which self-prediction is tied to the depth-and-significance criterion, so it can actually be "
+                   "checked against the grader? "
+                   "(A) I predict it does not reach real complexity: I situated the question in the broader tension but flattened it in "
+                   "one body paragraph, and real complexity needs it held throughout.  "
+                   "(B) I think it reaches real complexity because the essay sounded genuinely smart, used ambitious "
                    "vocabulary, and honestly felt deep and impressive to me the whole time I was writing it.  "
-                   "(C) I predict Row C because I worked hard on this piece, spent a long time revising every "
+                   "(C) I predict it reaches real complexity because I worked hard on this piece, spent a long time revising every "
                    "paragraph, and it came out longer and more polished than my usual drafts. "
                    "Correct: A. It predicts against the actual criterion (situate the question, hold the tension "
                    "throughout) and points to the exact place it misses. B rests on tone and word choice; C "
-                   "rests on effort and length. Neither B nor C is the Row C criterion, so neither can be "
+                   "rests on effort and length. Neither B nor C is the depth-and-significance criterion, so neither can be "
                    "compared against the grader."),
              choices=[
-                 {"id": "A", "text": "I predict no Row C: I situated the question in the broader tension but flattened it in one body paragraph, and Row C needs it held throughout.",
+                 {"id": "A", "text": "I predict it does not reach real complexity: I situated the question in the broader tension but flattened it in one body paragraph, and real complexity needs it held throughout.",
                   "correct": True,
-                  "why": "Correct. This predicts against the actual Row C criterion (situate the question, hold the tension throughout) and points to the exact paragraph that misses it, so it can be checked against the grader."},
-                 {"id": "B", "text": "I think I earned Row C because the essay sounded genuinely smart, used ambitious vocabulary, and honestly felt deep and impressive to me the whole time I was writing it.",
+                  "why": "Correct. This predicts against the actual depth-and-significance criterion (situate the question, hold the tension throughout) and points to the exact paragraph that misses it, so it can be checked against the grader."},
+                 {"id": "B", "text": "I think it reaches real complexity because the essay sounded genuinely smart, used ambitious vocabulary, and honestly felt deep and impressive to me the whole time I was writing it.",
                   "correct": False,
                   "why": "This rests on tone and word choice, not the criterion. 'Sounded smart' is a feeling, so there is nothing specific to compare against the grader."},
-                 {"id": "C", "text": "I predict Row C because I worked hard on this piece, spent a long time revising every paragraph, and it came out longer and more polished than my usual drafts.",
+                 {"id": "C", "text": "I predict it reaches real complexity because I worked hard on this piece, spent a long time revising every paragraph, and it came out longer and more polished than my usual drafts.",
                   "correct": False,
-                  "why": "Effort, time, and length are not the Row C criterion. A holistic point is not earned by how hard the draft was, so this cannot be checked against the grader."},
+                  "why": "Effort, time, and length are not the depth-and-significance criterion. A holistic result is not earned by how hard the draft was, so this cannot be checked against the grader."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this self-prediction most need?",
              bank="public_health",
-             body=("Diagnose before the reveal. A student wrote: 'I probably got the sophistication point "
+             body=("Diagnose before the reveal. A student wrote: 'I probably reached real complexity "
                    "because I worked hard and it felt deep.' Which single move would most improve the "
                    "prediction? "
-                   "(A) predict yes or no against the Row C criterion (situated question plus tension held "
+                   "(A) predict yes or no against the depth-and-significance criterion (situated question plus tension held "
                    "throughout) and cite the reason from the essay  "
                    "(B) predict yes with even more confidence, since the essay already felt quite deep and used "
                    "plenty of big, smart-sounding ideas all the way through to the end  "
                    "(C) describe how many hours went into the draft and how much effort the whole thing took, "
                    "and let that stand in for the actual prediction of the result  "
-                   "(D) skip predicting anything at all and simply wait for the grader to reveal the Row C "
+                   "(D) skip predicting anything at all and simply wait for the grader to reveal the "
                    "result and explain the reasoning for you"),
-             feedback=("Correct: A. Effort and 'felt deep' (B, C) are not the Row C criterion, and skipping the "
+             feedback=("Correct: A. Effort and 'felt deep' (B, C) are not the depth-and-significance criterion, and skipping the "
                        "prediction (D) throws away the calibration. The fix predicts against the actual "
                        "criterion and cites the specific place the essay meets or misses it.")),
 
         # ===== SUPPORTED: calibration warmup (self_score, predict THEN reveal) + the framed production write =====
-        Slot("SUPPORTED", "self_score", "Predict a sample essay's Row C, then see the grader",
+        Slot("SUPPORTED", "self_score", "Predict whether a sample essay reaches real complexity, then see the grader",
              ref="", bank="public_health",
              body=("Predict, then reveal. Sample essay on the workforce prompt: it situates the choice in the "
                    "broader question and holds the tension in body one, but body two dismisses the other side as "
-                   "'just wrong' and the conclusion only restates the position. Does it earn Row C?"),
+                   "'just wrong' and the conclusion only restates the position. Does it reach real complexity?"),
              choices=[
-                 {"id": "A", "text": "No: the sophistication is not carried throughout, so it falls short.",
+                 {"id": "A", "text": "No: the complexity is not carried throughout, so it falls short.",
                   "correct": True,
-                  "why": "Correct. Row C is holistic: a strong opening plus one flattened paragraph and a flat conclusion is inconsistent, so it does not earn the point."},
+                  "why": "Correct. Depth and significance is holistic: a strong opening plus one flattened paragraph and a flat conclusion is inconsistent, so it does not reach real complexity."},
                  {"id": "B", "text": "Yes: the situated question and the strong first body paragraph are enough.",
                   "correct": False,
-                  "why": "A good start does not earn a holistic point. Row C needs the tension held across every body paragraph, and body two flattened it."},
+                  "why": "A good start does not earn a holistic result. Real complexity needs the tension held across every body paragraph, and body two flattened it."},
              ]),
-        Slot("SUPPORTED", "production_frq", "Write your essay, then predict its Row C",
+        Slot("SUPPORTED", "production_frq", "Write your essay, then predict whether it reaches real complexity",
              ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="essay",
              body=frq_prompt(
-                 intro="Write a sophisticated argument on the workforce prompt: situate the question in the "
-                       "broader tension, and hold that tension throughout. Then predict your Row C result.",
+                 intro="Write a complex argument on the workforce prompt: situate the question in the "
+                       "broader tension, and hold that tension throughout. Then predict whether it reaches real complexity.",
                  setapart_block=setapart("Predict in one line:",
-                                         "Row C yes or no, because ______ (name the exact place in your essay that meets or misses the criterion)."),
-                 closer="The grader will score the sophistication; your one-line prediction is what you will "
+                                         "Reaches real complexity, yes or no, because ______ (name the exact place in your essay that meets or misses the criterion)."),
+                 closer="The grader will score the complexity; your one-line prediction is what you will "
                         "compare against it. Write the full essay, then the prediction.")),
 
         # ===== INDEPENDENT: calibrate cold, no frame + say-the-standard =====
@@ -235,9 +239,9 @@ LESSON = Lesson(
              ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, with no frame.",
-                 closer="Write a fresh sophisticated argument on the workforce prompt, predict your Row C result "
+                 closer="Write a fresh complex argument on the workforce prompt, predict whether it reaches real complexity "
                         "against the criterion with a reason, and after the grader returns its score, name the "
-                        "gap. Predicting against the Row C criterion and then naming the gap is what every "
+                        "gap. Predicting against the depth-and-significance criterion and then naming the gap is what every "
                         "calibrated writer is built on, and you are ready to do it cold. Take the time you need.")),
 
         # ===== DIAGNOSIS = run the same 3-question check on your OWN just-written draft (scaffolded self-revision) =====
@@ -247,7 +251,7 @@ LESSON = Lesson(
                  intro="Here is what naming a gap looks like:",
                  checklist_block=checklist(title="Example (naming a gap):", rows=[
                      ("Where did the essay meet the criterion?", "It situated the question in the broader tension."),
-                     ("Where did it miss?", "One body paragraph flattened the tension, so the sophistication was not consistent."),
+                     ("Where did it miss?", "One body paragraph flattened the tension, so the complexity was not consistent."),
                      ("What was the blind spot?", "Counting the strong opening as enough for a holistic point."),
                  ]),
                  closer="Now do the same on YOUR draft: reread the essay you just wrote, run these three questions "

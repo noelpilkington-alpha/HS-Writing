@@ -229,7 +229,7 @@ LESSON = Lesson(
                         "that type's moves (source-free: a defensible position plus specific examples, developed "
                         "across body paragraphs, with a conclusion that lands the upshot). There is no platform "
                         "timer; run your own budget and check. Before you submit, confirm the moves match the "
-                        "task type. Spotting the type and running its moves cold is what every real exam essay is "
+                        "task type. Spotting the type and running its moves cold is what every real timed essay is "
                         "built on, and you are ready to do it. Take the time you need.")),
 
         # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the 3-question check on it,

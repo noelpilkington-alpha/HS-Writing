@@ -105,7 +105,7 @@ LESSON = Lesson(
     title="Nuance: Say What Your Position Is NOT",
     target=("Write a nuanced claim in the not-X-but-Y shape: name the close position you are rejecting so your "
             "exact stance is unmistakable, instead of a flat one-sided assertion or fence-sitting. Written at "
-            "the sentence. Trait: Thesis (Row A, sophistication-adjacent)."),
+            "the sentence. Trait: Thesis."),
     acc_tags=["ACC.W.ARG.1", "CCSS.W.11-12.1a"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.11.01", "sot": "icm course-G11.md L02",
@@ -144,7 +144,7 @@ LESSON = Lesson(
                    "alternative out loud. (Scoring calls your governing claim a "
                    "<dfn class=\"tb-glossary-term\" data-catalog-idref=\"def-thesis\" "
                    "title=\"Thesis means the arguable claim your whole response defends. You do not need this "
-                   "word to finish today's task.\">thesis</dfn>, and a nuanced one reads as more sophisticated, "
+                   "word to finish today's task.\">thesis</dfn>, and a nuanced one reads with more depth, "
                    "but you do not need that word for today's task.) Goal today: write one not-X-but-Y claim "
                    "that pins your position against the close one.")),
         Slot("TEACH", "stimulus_display", "The debate: build capacity or fix the grid first",
@@ -247,7 +247,7 @@ LESSON = Lesson(
                  intro="On your own now, no frame. The task: should energy money go first to new clean-power "
                        "capacity, or first to the grid?",
                  closer="Write ONE nuanced claim in the not-X-but-Y shape: name the close position you reject, "
-                        "then commit to yours. This not-X-but-Y move is what every sophisticated thesis is built "
+                        "then commit to yours. This not-X-but-Y move is what every nuanced thesis is built "
                         "on, and you are ready to do it cold. Check it against the 3 questions before you submit.")),
 
         # ===== TRANSFER: same move, the OTHER bound stimulus (partitioned bank) =====

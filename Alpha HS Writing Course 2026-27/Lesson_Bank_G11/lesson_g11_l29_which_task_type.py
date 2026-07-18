@@ -116,7 +116,7 @@ LESSON = Lesson(
         # ===== TEACH: ONE idea, hammered (callout + the three task types as a list; routine moved to model card) =====
         Slot("TEACH", "teach_card", "The one idea: name the type before you write",
              body=(ONE_IDEA +
-                   "On the exam you meet three argument task types, and each has a tell you can spot in seconds. "
+                   "In these writing tasks you meet three argument task types, and each has a tell you can spot in seconds. "
                    "To synthesize is when you combine several sources into one argument of your own. Watch for "
                    "these three types and their tells:"
                    "<ul style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
@@ -233,7 +233,7 @@ LESSON = Lesson(
                        "them.\" Write a short plan that names its task type (with the tell that gives it away) and "
                        "lists the first moves that type rewards.",
                  closer="Before you submit, check yourself: is the type named from a real tell, and do the moves "
-                        "match it? Naming the type before you plan is what every real exam response is built on, "
+                        "match it? Naming the type before you plan is what every real written response is built on, "
                         "and you are ready to do it cold.")),
 
         # ===== TRANSFER: same name-the-type move, a NEW prompt (standardized testing), bank-partitioned =====

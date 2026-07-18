@@ -32,7 +32,7 @@ ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
 'font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif">'
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">The one idea</div>'
-'<div style="color:#0f2f28;font-size:15px;margin-top:2px">On a timed exam, the writers who finish well do not '
+'<div style="color:#0f2f28;font-size:15px;margin-top:2px">In timed writing, the writers who finish well do not '
 'write faster; they <strong>budget the minutes</strong>. A time budget gives each stage, reading, planning, '
 'drafting, and checking, its own protected minutes decided before you write a word.</div></div>')
 
@@ -83,8 +83,8 @@ LESSON = Lesson(
     unit="G11 U6 - Exam readiness (budget the minutes)",
     title="Budget Your Minutes Across Read, Plan, Draft, Check",
     target=("Plan a time budget that allots minutes to reading, planning, drafting, and checking so a full "
-            "essay fits an exam window, rather than drafting until time runs out. A transferable exam strategy "
-            "(Timeback delivery is untimed). Written at the essay. Trait: Purpose and process."),
+            "essay fits a single sitting, rather than drafting until time runs out. A transferable timed-writing "
+            "strategy (Timeback delivery is untimed). Written at the essay. Trait: Purpose and process."),
     acc_tags=["ACC.W.PROD.4", "CCSS.W.11-12.4"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.11.05", "sot": "icm course-G11.md L23",
@@ -143,9 +143,9 @@ LESSON = Lesson(
                    "leftovers.")),
         Slot("TEACH", "stimulus_display", "Read the source: build the power, or build the grid?",
              ref="ACC-W910-ARG-LESSON-GRIDSPENDING", bank="infrastructure_spending",
-             body=("Read this source on grid and generation spending. Picture a 40-minute exam window: as you "
-                   "read, notice how much time understanding the prompt and gathering evidence would take, so "
-                   "you can budget the stages. The text stays on screen while you work.")),
+             body=("Read this source on grid and generation spending. Picture a 40-minute timed-writing window: "
+                   "as you read, notice how much time understanding the prompt and gathering evidence would take, "
+                   "so you can budget the stages. The text stays on screen while you work.")),
 
         # ===== MODEL (before the quiz): coping-model before/after + the budget check, then the sort =====
         Slot("MODEL", "annotated_before_after", "Watch draft-until-out become a budgeted window",
@@ -156,14 +156,14 @@ LESSON = Lesson(
                    "order: allot the minutes, hold each stage to them, and defend planning and checking. Budget "
                    "the minutes is the move." + REMEMBER +
                    "When you set your own budget, run this check on the four numbers before you draft.")),
-        Slot("MODEL", "discrimination", "Which approach budgets the exam window?",
+        Slot("MODEL", "discrimination", "Which approach budgets the timed-writing window?",
              ref="", labeled_grade_c=True, bank="infrastructure_spending",
              body=("You have watched a no-budget draft become a budgeted window. Now sort these three approaches: "
                    "which one BUDGETS the minutes, and which two do not? "
                    "(A) Allot minutes up front, read 7, plan 6, draft 23, check 4, and move to the next stage the "
                    "moment its minutes run out.  "
-                   "(B) Open the exam, start drafting the essay right away, and keep writing without stopping "
-                   "until the proctor finally calls time at the end.  "
+                   "(B) Open the prompt, start drafting the essay right away, and keep writing without stopping "
+                   "until time is finally called at the end.  "
                    "(C) Spend nearly the whole window drafting a long body and leave just a single minute at the "
                    "very end for reading and planning together. "
                    "Correct: A. Only A gives each stage its own protected minutes; B protects nothing and C "
@@ -172,19 +172,19 @@ LESSON = Lesson(
                  {"id": "A", "text": "Allot minutes up front, read 7, plan 6, draft 23, check 4, and move to the next stage the moment its minutes run out.",
                   "correct": True,
                   "why": "Correct. Every stage gets its own protected minutes decided before writing, so planning and checking survive and the essay finishes complete."},
-                 {"id": "B", "text": "Open the exam, start drafting the essay right away, and keep writing without stopping until the proctor finally calls time at the end.",
+                 {"id": "B", "text": "Open the prompt, start drafting the essay right away, and keep writing without stopping until time is finally called at the end.",
                   "correct": False,
                   "why": "This is drafting until time runs out. No stage is protected, so reading is rushed and there is no reserved planning or checking time."},
                  {"id": "C", "text": "Spend nearly the whole window drafting a long body and leave just a single minute at the very end for reading and planning together.",
                   "correct": False,
                   "why": "One shared minute for reading and planning starves the stages that make an essay coherent. Drafting is not the only thing that needs protected minutes."},
              ]),
-        Slot("MODEL", "predict_the_fix", "What does this exam approach most need?",
+        Slot("MODEL", "predict_the_fix", "What does this timed-writing approach most need?",
              bank="infrastructure_spending",
-             body=("Diagnose before the reveal. A student says: 'On the exam I just write as much as I can until "
-                   "they call time.' Which single move would most improve the result? "
+             body=("Diagnose before the reveal. A student says: 'In timed writing I just write as much as I can "
+                   "until time is called.' Which single move would most improve the result? "
                    "(A) set a minute budget for reading, planning, drafting, and checking before writing one word  "
-                   "(B) write faster and pack in as many words as possible before the exam window finally closes  "
+                   "(B) write faster and pack in as many words as possible before the writing window finally closes  "
                    "(C) skip writing the conclusion entirely so there are more minutes free to draft a longer body  "
                    "(D) make the opening paragraph much longer so the essay looks developed right from the start"),
              feedback=("Correct: A. Writing as much as possible with no budget is exactly what leaves essays "
@@ -214,7 +214,7 @@ LESSON = Lesson(
                         "grid-spending prompt: plan in the planning minutes, draft in the drafting minutes, and "
                         "reserve the check minutes to fix gaps before submitting. There is no platform timer; "
                         "treat the budget as your own discipline. Confirm every stage got its minutes and the "
-                        "essay is complete and checked. Budgeting the minutes is what every timed exam essay is "
+                        "essay is complete and checked. Budgeting the minutes is what every timed essay is "
                         "built on, and you are ready to do it cold.")),
 
         # DIAGNOSIS = metacognitive pacing check: reread your OWN draft and run the three-question budget check on

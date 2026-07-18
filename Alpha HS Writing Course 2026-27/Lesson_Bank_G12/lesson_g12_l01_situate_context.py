@@ -29,7 +29,7 @@ ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
 'font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif">'
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">The one idea</div>'
-'<div style="color:#0f2f28;font-size:15px;margin-top:2px">To earn the sophistication point, '
+'<div style="color:#0f2f28;font-size:15px;margin-top:2px">To reach real complexity, '
 '<strong>SITUATE</strong> the question: name the broader question your specific prompt is one instance of, '
 'then answer <strong>within</strong> that frame.</div></div>')
 
@@ -53,7 +53,7 @@ COPING_HTML = (
   '<div style="padding:12px 14px;color:#1f2a44;font-size:14px;line-height:1.6">'
     '<p style="margin:0 0 8px"><strong>First try:</strong> "The country should protect its water for food, '
     'because people need to eat." Check it: what larger question is this an instance of? I have not named one, '
-    'I just answered the literal prompt as a standalone puzzle. That earns no sophistication. Go deeper.</p>'
+    'I just answered the literal prompt as a standalone puzzle. That adds no complexity. Go deeper.</p>'
     '<p style="margin:0 0 8px"><strong>Second try:</strong> Name the larger question. This choice is really '
     'about how a society rations a necessity it can no longer fully supply. Good, but is that frame in the '
     'claim, and does the claim still commit to an answer? The frame is there; the answer is not yet. Join them.</p>'
@@ -80,9 +80,9 @@ LESSON = Lesson(
     unit="G12 U1 - Sophistication (situate in a broader context)",
     title="Situate the Question in the Larger One It Belongs To",
     target=("Place the specific prompt inside the broader question it is an instance of, then answer within "
-            "that frame, rather than treating the prompt as a standalone puzzle. The AP sophistication move "
-            "(Row C). Written at the sentence (a situated thesis; the move is practiced at the sentence before "
-            "the full essay). Trait: Sophistication (Row C)."),
+            "that frame, rather than treating the prompt as a standalone puzzle. The complexity move. "
+            "Written at the sentence (a situated thesis; the move is practiced at the sentence before "
+            "the full essay). Trait: Depth and Significance."),
     acc_tags=["ACC.W.ARG.2", "CCSS.W.11-12.1"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.12.01", "sot": "icm course-G12.md L01",
@@ -107,8 +107,8 @@ LESSON = Lesson(
         # ===== TEACH: ONE idea, then the minimum teaching as a real list (no wall of text) =====
         Slot("TEACH", "teach_card", "The one idea: name the larger question, then answer within it",
              body=(ONE_IDEA +
-                   "At the mastery level, a top essay can earn the sophistication point (Row C of the rubric). One "
-                   "reliable way to earn it is to situate the prompt. Three kinds of answer look similar but do "
+                   "At the mastery level, a top essay reaches real complexity, which the rubric names depth and "
+                   "significance. One reliable way to reach it is to situate the prompt. Three kinds of answer look similar but do "
                    "different jobs, so keep them apart:"
                    "<ul style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
                    "<li style=\"margin:4px 0\"><strong>NARROW</strong>: takes a side on the literal prompt only "
@@ -118,7 +118,7 @@ LESSON = Lesson(
                    "commits to a position inside that frame.</li>"
                    "<li style=\"margin:4px 0\"><strong>THE TRAP</strong>: going so broad you never answer the "
                    "actual prompt. So situate, then commit.</li></ul>"
-                   "The situated answer is what earns Row C. Scoring calls the single sentence stating your "
+                   "The situated answer is what reaches real complexity. Scoring calls the single sentence stating your "
                    "position a <dfn class=\"tb-glossary-term\" data-catalog-idref=\"def-thesis\" "
                    "title=\"Thesis means the one-sentence claim your whole response defends.\">thesis</dfn>; a "
                    "thesis is a claim, so a situated thesis is a claim that names the larger question before it "
@@ -193,16 +193,16 @@ LESSON = Lesson(
                   "correct": False,
                   "why": "The bigger question it names just reworks the same food-or-power prompt in other words, so the frame is not actually larger and the claim has not zoomed out."},
              ]),
-        Slot("MODEL", "predict_the_fix", "What earns this claim the sophistication point?",
+        Slot("MODEL", "predict_the_fix", "What gives this claim real complexity?",
              bank="automation_policy",
              body=("Diagnose before the reveal. A student wrote a clear, correct position: 'Protect power first, "
-                   "because everything depends on the grid.' It is defensible but earns no sophistication. Which "
-                   "single move would most likely earn Row C? "
+                   "because everything depends on the grid.' It is defensible but adds no complexity. Which "
+                   "single move would most likely reach real complexity? "
                    "(A) situate the choice in the larger question it is one instance of, then answer within it  "
                    "(B) restate the same position in stronger, more forceful words so its urgency lands harder  "
                    "(C) add another federal statistic about water or power use to back the identical position  "
                    "(D) stretch the sentence with extra clauses and formal vocabulary so it reads as developed"),
-             feedback=("Correct: A. The position is fine but freestanding; sophistication comes from placing it in "
+             feedback=("Correct: A. The position is fine but freestanding; complexity comes from placing it in "
                        "the larger question (how a society rations shared necessities) so the answer speaks to the "
                        "real stakes. Stronger words (B), another statistic (C), or added length (D) never situate "
                        "the argument.")),
@@ -240,7 +240,7 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="On your own now, no frame. The prompt: when water is scarce, should a region protect its "
                        "water for growing food or for generating power?",
-                 closer="Situating a question inside the larger one it belongs to is what every sophisticated "
+                 closer="Situating a question inside the larger one it belongs to is what every complex "
                         "argument is built on, and you are ready to do it cold. Before you submit, check: is the "
                         "larger question named, and does the claim still commit to an answer within it? If not, "
                         "fix it first.")),

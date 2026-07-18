@@ -72,8 +72,8 @@ LESSON = Lesson(
     unit="G12 U1 - Sophistication (genuine complexity, not formula)",
     title="Show a Real Tension, Not a Formulaic Both-Sides",
     target=("Show genuine complexity by naming a real tension the sources create and letting it shape the "
-            "claim, rather than a formulaic 'on the other hand' that concedes nothing real. The AP "
-            "sophistication move (Row C). Written at the sentence. Trait: Sophistication (Row C)."),
+            "claim, rather than a formulaic 'on the other hand' that concedes nothing real. The complexity "
+            "move. Written at the sentence. Trait: Depth and Significance."),
     acc_tags=["ACC.W.ARG.2", "CCSS.W.11-12.1"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.12.01", "sot": "icm course-G12.md L02",
@@ -217,7 +217,7 @@ LESSON = Lesson(
                  intro="On your own now, no frame. The task: as the workforce shifts, should a society invest first in preparing more people, or first in protecting the workers displaced now?",
                  closer="Pick the priority you can actually defend, then write ONE claim whose complexity names a "
                         "real, specific cost that choice pays and lets it shape the position. This tension-naming "
-                        "move is what every real sophisticated argument is built on, and you are ready to do it "
+                        "move is what every genuinely complex argument is built on, and you are ready to do it "
                         "cold. Check it against the 3 questions before you submit.")),
 
         # ===== TRANSFER: same move, the OTHER bound source (bank-partitioned) =====

@@ -83,7 +83,7 @@ LESSON = Lesson(
     title="Qualify Without Waffling",
     target=("Write a qualified claim that names its limit with a qualifier and a reason (when/in most cases, "
             "because ...) yet still commits, rather than a waffle that hedges until it says nothing. Written at "
-            "the sentence. Trait: Thesis (Row A, sophistication)."),
+            "the sentence. Trait: Thesis."),
     acc_tags=["ACC.W.ARG.2", "CCSS.W.11-12.1"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.11.01", "sot": "icm course-G11.md L03",
@@ -120,7 +120,7 @@ LESSON = Lesson(
                    "<dfn class=\"tb-glossary-term\" data-catalog-idref=\"def-thesis\" "
                    "title=\"Thesis means the governing claim your whole response defends. You do not need this "
                    "word to finish today's task.\">thesis</dfn>, and a well-qualified one signals "
-                   "sophistication, but you do not need that word for today's task.) The trap is mistaking "
+                   "real depth, but you do not need that word for today's task.) The trap is mistaking "
                    "hedging for nuance. Today: bound your claim, and still commit.")),
         Slot("TEACH", "stimulus_display", "The debate: government and the AI workforce",
              ref="ACC-W910-FRAME-AIWORKFORCE", bank="ai_workforce_policy",

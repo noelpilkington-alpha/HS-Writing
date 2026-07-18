@@ -33,7 +33,7 @@ ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
 'font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif">'
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">The one idea</div>'
-'<div style="color:#0f2f28;font-size:15px;margin-top:2px">Sophistication is <strong>carried across the whole '
+'<div style="color:#0f2f28;font-size:15px;margin-top:2px">Complexity is <strong>carried across the whole '
 'essay</strong>, not dropped in as one clever line. The reader rewards it when every part of the piece situates '
 'the question, holds the tension, and defends a real position.</div></div>')
 
@@ -57,19 +57,19 @@ BEFORE_AFTER_HTML = (
   '<div style="background:#fef2f2;padding:12px 14px;border-bottom:1px solid #fecaca">'
     '<span style="display:inline-block;background:#dc2626;color:#fff;font-size:11px;font-weight:700;'
     'padding:2px 8px;border-radius:4px">BEFORE</span>'
-    '<span style="color:#991b1b;font-size:13px;font-weight:600"> competent, but not sophisticated</span>'
+    '<span style="color:#991b1b;font-size:13px;font-weight:600"> competent, but not yet complex</span>'
     '<p style="margin:8px 0 0;font-size:15px"><i>Thesis:</i> The country should fund job training, because '
     'training helps people get the new jobs. <i>Body:</i> Training works and gives people skills. The other '
     'side says we should help displaced workers, but that view is wrong. <i>Conclusion:</i> So the country '
     'should fund training.</p>'
     '<p style="margin:6px 0 0;color:#991b1b;font-size:13px">Clear and organized, but it answers only the narrow '
     'prompt and calls the other side wrong. It never situates the question and it flattens the tension, so it '
-    'earns no sophistication.</p>'
+    'adds no complexity.</p>'
   '</div>'
   '<div style="background:#f0fdf4;padding:12px 14px">'
     '<span style="display:inline-block;background:#15803d;color:#fff;font-size:11px;font-weight:700;'
     'padding:2px 8px;border-radius:4px">AFTER</span>'
-    '<span style="color:#166534;font-size:13px;font-weight:600"> sophistication woven through the essay</span>'
+    '<span style="color:#166534;font-size:13px;font-weight:600"> complexity woven through the essay</span>'
     '<p style="margin:8px 0 0;font-size:15px">'
       '<span style="background:#dbeafe;color:#1e3a8a;padding:1px 6px;border-radius:3px;font-size:11px;'
       'font-weight:700">SITUATE (thesis)</span> "Whether to fund training or protect displaced workers is one '
@@ -84,7 +84,7 @@ BEFORE_AFTER_HTML = (
       'for transition support answers both needs, so even a reader who favors the displaced would have to take '
       'it seriously."</p>'
     '<p style="margin:6px 0 0;color:#166534;font-size:13px">Same prompt, but the thesis situates the question, '
-    'the body holds the tension instead of dismissing a side, and the conclusion defends a rule. Sophistication '
+    'the body holds the tension instead of dismissing a side, and the conclusion defends a rule. Complexity '
     'carried across the whole essay is the move.</p>'
   '</div>'
 '</div>')
@@ -93,11 +93,11 @@ BEFORE_AFTER_HTML = (
 LESSON = Lesson(
     id="ACC-W910-L-G12-C1201-0004", grade="9-10", lesson_type=7,
     unit="G12 U1 - BUILD: sophisticated argument full-write",
-    title="Write a Full Argument That Earns Sophistication",
+    title="Write a Full Argument With Real Complexity",
     target=("Plan and write a complete argument essay that situates the question in a broader context and holds "
-            "the tension without flattening it, so sophistication is carried across the whole piece, rather than "
+            "the tension without flattening it, so complexity is carried across the whole piece, rather than "
             "a competent essay that answers only the narrow prompt. Written at the essay, untimed. Trait: "
-            "Sophistication (Row C) with Development and Evidence."),
+            "Depth and Significance with Development and Evidence."),
     acc_tags=["ACC.W.ARG.1", "ACC.W.ARG.2", "ACC.W.PROD.1", "CCSS.W.11-12.1", "CCSS.W.11-12.4"],
     provenance={"copyright": "own_authored", "authored": "2026-07-12", "revised": "2026-07-15",
                 "mnemonic_status": "proposal", "kc": "C.12.01", "sot": "icm course-G12.md L04",
@@ -124,9 +124,9 @@ LESSON = Lesson(
     fade_ledger_moves=["sophisticated-argument-essay", "situate-and-hold-across-the-essay"],
     slots=[
         # ===== TEACH: the one idea + the three moves (as a list), then the order of work (as a list) =====
-        Slot("TEACH", "teach_card", "The one idea: sophistication runs through the whole essay",
+        Slot("TEACH", "teach_card", "The one idea: complexity runs through the whole essay",
              body=(ONE_IDEA +
-                   "You have met each of these moves on its own. A sophisticated argument puts them together and "
+                   "You have met each of these moves on its own. A complex argument puts them together and "
                    "keeps them running from the first line to the last:"
                    "<ul style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
                    "<li style=\"margin:4px 0\"><strong>SITUATE</strong>: your thesis is a one-sentence statement "
@@ -137,10 +137,10 @@ LESSON = Lesson(
                    "setting it aside.</li>"
                    "<li style=\"margin:4px 0\"><strong>DEFEND</strong>: your conclusion lands a real position, "
                    "often a rule or a priority that a thoughtful opponent would still have to respect.</li></ul>"
-                   "A competent essay (clear thesis, evidence, organization) is the floor. Sophistication is what "
+                   "A competent essay (clear thesis, evidence, organization) is the floor. Complexity is what "
                    "lifts it, and it has to run through the whole piece.")),
         Slot("TEACH", "teach_card", "How to build it, part by part",
-             body=("Here is the order of work. Plan the sophistication first, then draft from the plan:"
+             body=("Here is the order of work. Plan the complexity first, then draft from the plan:"
                    "<ol style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
                    "<li style=\"margin:4px 0\"><strong>PLAN</strong>: write your situated thesis (the larger "
                    "question plus your position within it), then the tension each body paragraph will hold and "
@@ -153,29 +153,29 @@ LESSON = Lesson(
                    "<li style=\"margin:4px 0\"><strong>CONCLUSION</strong>: defend the rule or priority.</li>"
                    "<li style=\"margin:4px 0\"><strong>CHECK</strong>: reread and confirm the thesis situates, "
                    "every paragraph holds its tension, and the conclusion defends a real position.</li></ol>"
-                   "Plan the sophistication, draft from the plan, then self-check that it runs through the whole "
+                   "Plan the complexity, draft from the plan, then self-check that it runs through the whole "
                    "essay.")),
         Slot("TEACH", "stimulus_display", "Read the source: prepare workers or protect them?",
              ref="ACC-W910-ARG-LESSON-WORKFORCEINVEST", bank="public_health",
              body=("Read this source on preparing more workers for growing fields or protecting those a change "
-                   "displaces. Because your job is to write a full sophisticated argument from it, read the whole "
+                   "displaces. Because your job is to write a full, complex argument from it, read the whole "
                    "thing and gather the larger question you can situate the choice in, plus the real tension the "
                    "body will hold and the federal figures you can use as evidence. The text stays on screen "
                    "while you work.")),
 
         # ===== MODEL (before the quiz): coping-model before/after + check tool, then discrimination + predict =====
-        Slot("MODEL", "annotated_before_after", "Watch a competent essay gain sophistication",
+        Slot("MODEL", "annotated_before_after", "Watch a competent essay gain complexity",
              bank="public_health",
-             body=("Here is a competent-but-flat essay rebuilt to carry sophistication across all three parts. "
+             body=("Here is a competent-but-flat essay rebuilt to carry complexity across all three parts. "
                    "Read the BEFORE, then the AFTER." + BEFORE_AFTER_HTML +
                    " The BEFORE is organized but narrow and dismissive. The AFTER situates the question, holds "
-                   "the tension, and defends a rule. Sophistication carried across the whole essay is the move." +
+                   "the tension, and defends a rule. Complexity carried across the whole essay is the move." +
                    REMEMBER +
                    "When you build your own, run these three questions before you submit.")),
-        Slot("MODEL", "discrimination", "Which essay plan earns sophistication?",
+        Slot("MODEL", "discrimination", "Which essay plan reaches real complexity?",
              ref="", labeled_grade_c=True, bank="public_health",
-             body=("You have watched a competent essay gain sophistication. Now spot the target: which plan earns "
-                   "sophistication, and which is only competent? "
+             body=("You have watched a competent essay gain complexity. Now spot the target: which plan reaches "
+                   "real complexity, and which is only competent? "
                    "(A) Open with one clear thesis, give three tidy paragraphs of evidence that all back the same "
                    "side, treat the opposing view as simply mistaken and set it quietly aside, then restate the "
                    "opening thesis in fresh words to close the whole essay out neatly.  "
@@ -185,27 +185,27 @@ LESSON = Lesson(
                    "(C) Load the essay with more advanced vocabulary and longer, more formal sentences, add a "
                    "fourth supporting paragraph that stacks on one more example for the same side, and write a "
                    "much longer conclusion that walks back through every reason once again in fuller detail. "
-                   "Correct: B earns sophistication; A and C do not. (A) is organized and clear, but setting the "
+                   "Correct: B reaches real complexity; A and C do not. (A) is organized and clear, but setting the "
                    "other side aside as simply mistaken is exactly the flattening this lesson tells you to fix, so "
-                   "it stays at the competent floor and never rises to sophistication; (C) polishes the surface but "
+                   "it stays at the competent floor and never rises to complexity; (C) polishes the surface but "
                    "never situates or holds the tension. (B) situates, holds the tension, and defends. "
-                   "Sophistication across the essay is the move."),
+                   "Complexity across the essay is the move."),
              choices=[
                  {"id": "A", "text": "Open with one clear thesis, give three tidy paragraphs of evidence that all back the same side, treat the opposing view as simply mistaken and set it quietly aside, then restate the opening thesis in fresh words to close the whole essay out neatly.",
                   "correct": False,
-                  "why": "It is organized and clear, so it clears the competent floor, but it never rises above it: it answers only the narrow prompt and calls the other side mistaken. Dismissing a side that way is the flattening the lesson tells you to fix, so this plan carries no sophistication."},
+                  "why": "It is organized and clear, so it clears the competent floor, but it never rises above it: it answers only the narrow prompt and calls the other side mistaken. Dismissing a side that way is the flattening the lesson tells you to fix, so this plan carries no complexity."},
                  {"id": "B", "text": "Situate the choice inside the larger question of how a society splits a fixed budget between the future and the present workforce, hold that tension in every paragraph, and defend a splitting rule the other side would still respect.",
                   "correct": True,
-                  "why": "Correct. It situates the choice in a larger question, holds the tension paragraph by paragraph instead of dismissing a side, and defends a rule an opponent must respect. Sophistication runs through the whole essay."},
+                  "why": "Correct. It situates the choice in a larger question, holds the tension paragraph by paragraph instead of dismissing a side, and defends a rule an opponent must respect. Complexity runs through the whole essay."},
                  {"id": "C", "text": "Load the essay with more advanced vocabulary and longer, more formal sentences, add a fourth supporting paragraph that stacks on one more example for the same side, and write a much longer conclusion that walks back through every reason once again in fuller detail.",
                   "correct": False,
                   "why": "Fancier words, one more paragraph, and a longer conclusion polish the surface but never situate the question or hold the tension. The reader rewards the reasoning, not the packaging."},
              ]),
-        Slot("MODEL", "predict_the_fix", "What lifts this essay to sophistication?",
+        Slot("MODEL", "predict_the_fix", "What lifts this essay to real complexity?",
              bank="public_health",
              body=("Diagnose before the reveal. A draft is well organized with a clear thesis and solid evidence, "
                    "but it answers only the literal prompt and calls the other side mistaken. Which single change "
-                   "would most likely earn sophistication? "
+                   "would most likely reach real complexity? "
                    "(A) situate the question in its broader frame and hold the tension across the body instead of "
                    "dismissing the other side  "
                    "(B) add a fourth body paragraph that stacks one more supporting example onto the same "
@@ -214,17 +214,17 @@ LESSON = Lesson(
                    "sounds more scholarly and formal  "
                    "(D) write a much longer conclusion that restates the thesis and walks back through each body "
                    "reason in fuller detail"),
-             feedback=("Correct: A. Organization and evidence make it competent, not sophisticated. The lift comes "
+             feedback=("Correct: A. Organization and evidence make it competent, not complex. The lift comes "
                        "from situating the question and holding the tension throughout, then defending a position "
                        "that answers it. More evidence (B), bigger vocabulary (C), or a longer conclusion (D) do "
-                       "not carry sophistication. There is no clock, so there is time to plan the sophistication.")),
+                       "not carry complexity. There is no clock, so there is time to plan the complexity.")),
 
         # ===== SUPPORTED: plan the sophisticated argument (multi_paragraph) - the frame is the top scaffold =====
-        Slot("SUPPORTED", "production_frq", "Plan the sophisticated argument",
+        Slot("SUPPORTED", "production_frq", "Plan the complex argument",
              ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="Use the outline grid below so you can see the shape of a sophisticated plan. Copy it into "
-                       "the box and fill each blank to plan a sophisticated argument on the workforce prompt "
+                 intro="Use the outline grid below so you can see the shape of a complex plan. Copy it into "
+                       "the box and fill each blank to plan a complex argument on the workforce prompt "
                        "before you draft a word of it.",
                  setapart_block=outline_table(title="Copy this outline, then fill in each blank:", rows=[
                      ("SITUATED THESIS", "______ (the larger question + my position)"),
@@ -236,7 +236,7 @@ LESSON = Lesson(
                         "the real tension it holds and its evidence, then the rule your conclusion defends. This "
                         "plan is what you will build the essay from.")),
         # ===== INDEPENDENT: build the whole sophisticated essay from the plan (essay ceiling) + say-standard =====
-        Slot("INDEPENDENT", "production_frq", "Write the full sophisticated argument",
+        Slot("INDEPENDENT", "production_frq", "Write the full, complex argument",
              ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, build the whole essay from your plan.",
@@ -244,8 +244,8 @@ LESSON = Lesson(
                         "the choice in its broader question, body paragraphs that each hold a real tension and "
                         "reason from it with evidence, and a conclusion that defends a rule or priority a "
                         "thoughtful opponent must respect. Then run the reread check (situated, tension held, "
-                        "position defended) and fix any part that fails. Carrying sophistication across a whole "
-                        "argument is what every strong AP essay is built on, and you are ready to do it cold. "
+                        "position defended) and fix any part that fails. Carrying complexity across a whole "
+                        "argument is what every strong essay is built on, and you are ready to do it cold. "
                         "There is no time limit; take the time you need.")),
 
         # DIAGNOSIS = self-revision: reread your OWN just-written essay and run the 3-question check on it,
