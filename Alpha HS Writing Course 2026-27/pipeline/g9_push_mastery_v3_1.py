@@ -133,7 +133,7 @@ HELDOUT = {
     "ACC-W910-L-G9-C906-0016": "ACC-W910-ARG-LESSON-GRIDSPENDING",# revise cohesion (paragraph)
     "ACC-W910-L-G9-C906-0017": "ACC-W910-ARG-LESSON-AIWORKFORCE", # build paragraph
     "ACC-W910-L-G9-C906-0018": "ACC-W910-ARG-LESSON-GRIDSPENDING",# fresh paragraph + self-check
-    "ACC-W910-L-G9-C904-0019": "ACC-W910-INFO-LESSON-HIGHWAYS",   # SPO plan
+    # C904-0019 (standalone MPO) RETIRED 2026-07-18 (F3): teaching folded into C904-0023/0024; mastery dropped.
     "ACC-W910-L-G9-C904-0020": "ACC-W910-INFO-LESSON-RECYCLING",  # multi-para order
     "ACC-W910-L-G9-C904-0021": "ACC-W910-INFO-LESSON-ENERGYMIX",  # intro/conclusion
     "ACC-W910-L-G9-C901-0022": "ACC-W910-FRAME-SCHOOLYEAR",       # essay-mode interleave

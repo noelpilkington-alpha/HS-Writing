@@ -6,9 +6,11 @@ if PIPE not in sys.path:
 from sim_student_eval.render_course import load_g9_lessons, student_view, short_id
 
 
-def test_loads_27_lessons_in_order():
+def test_loads_26_lessons_in_order():
+    # G9 dropped 27 -> 26 when the standalone MPO lesson (l20 / C904-0019) was retired (F3 orphan-planning fix);
+    # its teaching folded into the full-essay lessons C904-0023/0024.
     ls = load_g9_lessons()
-    assert len(ls) == 27
+    assert len(ls) == 26
     # first is l01 arguable claim, last is l27 gate argument essay (filename order)
     assert short_id(ls[0]).startswith("g9_l01")
     assert short_id(ls[-1]).startswith("g9_l27")
@@ -45,8 +47,8 @@ def test_all_grades_load_in_lesson_order():
         nums = [int(re.search(r"_l(\d+)", s).group(1)) for s in sids]
         assert nums == sorted(nums), f"{g} out of lesson order: {nums}"
         counts[g] = len(ls)
-    # the built course sizes (G9 27, G10 26, G11 31, G12 16)
-    assert counts == {"g9": 27, "g10": 26, "g11": 31, "g12": 16}, counts
+    # the built course sizes after the F3 orphan-planning retire (G9 27->26; G10 26->25 once C1006-0020 is retired)
+    assert counts == {"g9": 26, "g10": 25, "g11": 31, "g12": 16}, counts
 
 
 def test_composition_probes_are_structural_and_cover_original_g9_set():

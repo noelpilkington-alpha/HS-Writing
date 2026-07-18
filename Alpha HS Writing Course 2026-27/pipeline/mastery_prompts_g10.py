@@ -277,15 +277,10 @@ MASTERY = {
                 "Then REVISE it into a woven paragraph that builds ONE point from the sources in the set above, "
                 "with the sources feeding that point together.")},
 
-    # C1006-0020 - plan a cross-text essay point by point (multi_paragraph). Taught CONGESTION/DST -> held-out SCHOOLYEAR.
-    "ACC-W910-L-G10-C1006-0020": {"source": "ACC-W910-ARG-OPP-LESSON-SCHOOLYEAR", "unit": "multi_paragraph",
-        "rubric_ref": "rc.staar", "prompt_html": _INTRO
-        + _box("Your planning task:",
-               "Plan an essay on whether the school year should be lengthened, using the source set above.", "teal")
-        + _task("Do NOT write the essay. Write the PLAN, organized around POINTS.",
-                "Give a synthesis claim, then list your body points, and next to each point name which sources "
-                "from the set you would weave in to serve it.",
-                "Organize by point, not by giving each source its own paragraph.")},
+    # C1006-0020 (standalone cross-text planner) RETIRED 2026-07-18 (F3 orphan-planning fix): the "plan by
+    # points, not by sources" teaching was folded into the cross-text essay lessons C1006-0021/0022 (which plan
+    # AND write from the plan), so the standalone plan-only lesson + its plan-only mastery are removed.
+    # See docs/superpowers/plans/2026-07-17-retire-orphan-planning-lessons.md.
 
     # C1006-0021 - CROSS-TEXT ANALYSIS essay (essay). The lesson teaches device-to-effect craft analysis WOVEN
     # ACROSS TWO texts (taught on HOUR + HIGHWAYS). Held-out mastery = ANALYSIS-PAIR-0001, a genuine analysis-mode

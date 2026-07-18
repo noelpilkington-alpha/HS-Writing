@@ -124,8 +124,10 @@ LESSON = Lesson(
                    "<li style=\"margin:4px 0\"><strong>Counterclaim</strong>: a counterclaim is a strong "
                    "objection from the other side, often the point one of the sources makes against your "
                    "position. You concede it, then answer it.</li>"
-                   "<li style=\"margin:4px 0\"><strong>Weave</strong>: use the sources together on a shared "
-                   "point, not one source per paragraph in isolation.</li></ul>"
+                   "<li style=\"margin:4px 0\"><strong>Weave, and plan by points</strong>: use the sources "
+                   "together on a shared point, not one source per paragraph in isolation. Lay the plan out as "
+                   "ordered body points under the synthesis claim, weaving each source into whichever point it "
+                   "serves. Let the argument set the paragraphs, not the number of sources.</li></ul>"
                    "The trap is a one-sided essay that leans on a single source and ignores the objection. "
                    "Defend one position, weave the sources, and answer the other side.")),
         Slot("TEACH", "teach_card", "How to build it, part by part",

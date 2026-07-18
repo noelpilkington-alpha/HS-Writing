@@ -204,17 +204,9 @@ MASTERY = {
                 "Then run the yes/no self-check on your own paragraph before you submit: Does it state a clear "
                 "claim? Is the evidence attributed? Does the warrant explain why? Fix any No.")},
 
-    # L19 - single-paragraph outline (plan). Held-out: HIGHWAYS.
-    "ACC-W910-L-G9-C904-0019": {"source": "ACC-W910-INFO-LESSON-HIGHWAYS", "unit": "multi_paragraph",
-        "rubric_ref": "rc.staar", "prompt_html": _INTRO
-        + _box("Your essay task:",
-               "Explain how the Interstate Highway System began, how big it grew, and how the country paid for "
-               "it.", "teal")
-        + _task("Do NOT write the essay. Write the PLAN as a multiple-paragraph outline (the MPO this lesson "
-                "taught).",
-                "Give a governing thesis for the whole essay, an introduction line, then ordered body rows that "
-                "each pair a main idea with its details and the specific evidence from the source, and a "
-                "conclusion line that restates the thesis. Do not write a single-paragraph plan.")},
+    # L19 (C904-0019, standalone MPO) RETIRED 2026-07-18 (F3 orphan-planning fix): the MPO teaching was folded
+    # into the full-essay lessons C904-0023/0024 (which plan AND write from the plan), so the standalone
+    # plan-only lesson + its plan-only mastery are removed. See docs/superpowers/plans/2026-07-17-retire-orphan-planning-lessons.md.
 
     # L20 - order the body paragraphs so the essay builds (plan). Held-out: RECYCLING.
     "ACC-W910-L-G9-C904-0020": {"source": "ACC-W910-INFO-LESSON-RECYCLING", "unit": "multi_paragraph",

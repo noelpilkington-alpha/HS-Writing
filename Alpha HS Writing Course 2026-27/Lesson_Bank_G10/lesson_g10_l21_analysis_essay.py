@@ -127,9 +127,12 @@ LESSON = Lesson(
                    "to the reader, then add a warrant. A warrant is a sentence that explains why that effect "
                    "matters to the author's purpose.</li>"
                    "<li style=\"margin:4px 0\"><strong>The weave</strong>: name where the two texts do the same "
-                   "thing or differ, so the claim spans both instead of sitting on one.</li></ul>"
+                   "thing or differ, so the claim spans both instead of sitting on one.</li>"
+                   "<li style=\"margin:4px 0\"><strong>Plan by points, not by sources</strong>: lay the plan out "
+                   "as ordered body points under the claim, weaving each text into whichever point it serves. Let "
+                   "the analysis set the paragraphs; do not give each text its own paragraph.</li></ul>"
                    "The trap is summarizing each text in turn instead of supporting one claim across both. Plan "
-                   "the claim first, then build.")),
+                   "the claim first, by points, then build.")),
         Slot("TEACH", "teach_card", "How to build it, part by part",
              body=("Here is the order of work. Follow it and the essay assembles itself from moves you already "
                    "own:"
