@@ -147,26 +147,27 @@ LESSON = Lesson(
                    "When you fix your own sentence, do the same: find the flat 'and' string, subordinate a minor "
                    "idea, and move the point to the emphatic spot before you submit.")),
         Slot("MODEL", "discrimination", "Which sentence uses syntax for emphasis?",
-             ref="", labeled_grade_c=True, bank="public_health",
-             body=("You have watched one built. Now spot the target. All three state the same idea. Which one "
-                   "uses a SYNTACTIC choice for emphasis, and which are FLAT or bury the point? "
-                   "(A) Training helps the next generation, and it does not help the worker displaced today, and "
-                   "a fixed budget still has to choose, and that last part is the hard one.  "
-                   "(B) Although training helps the next generation, it does nothing for the worker displaced "
-                   "today, and that is the choice a fixed budget cannot avoid.  "
-                   "(C) Although a fixed budget must in the end choose, training still helps the next generation "
-                   "and support still helps the worker displaced today. "
+             ref="", labeled_grade_c=True, bank="school_phone_policy",
+             body=("You have watched one built. Now spot the target on a different idea. A school is weighing a "
+                   "phone ban, and all three sentences state the same idea. Which one uses a SYNTACTIC choice for "
+                   "emphasis, and which are FLAT or bury the point? "
+                   "(A) A phone ban helps students focus, and it takes away the tool a student needs in an "
+                   "emergency, and a school still has to set one rule, and that last part is the hard one.  "
+                   "(B) Although a phone ban helps students focus, it strips away the tool a student needs in an "
+                   "emergency, and that is the cost a single rule cannot escape.  "
+                   "(C) Although a school must in the end set one rule, a phone ban helps students focus and "
+                   "keeping phones helps students stay reachable. "
                    "Correct: B uses syntax for emphasis. B subordinates the minor idea and ends on the point; "
                    "A strings equal clauses with 'and,' and C subordinates the main decision, so its point is "
                    "buried."),
              choices=[
-                 {"id": "A", "text": "Training helps the next generation, and it does not help the worker displaced today, and a fixed budget still has to choose, and that last part is the hard one.",
+                 {"id": "A", "text": "A phone ban helps students focus, and it takes away the tool a student needs in an emergency, and a school still has to set one rule, and that last part is the hard one.",
                   "correct": False,
                   "why": "This is the flat compound string: four clauses joined by 'and' at equal weight, so the point never stands out, no matter how long the sentence runs."},
-                 {"id": "B", "text": "Although training helps the next generation, it does nothing for the worker displaced today, and that is the choice a fixed budget cannot avoid.",
+                 {"id": "B", "text": "Although a phone ban helps students focus, it strips away the tool a student needs in an emergency, and that is the cost a single rule cannot escape.",
                   "correct": True,
-                  "why": "Correct. It subordinates the minor idea in an 'although' clause and ends on the point, so the choice lands. That arrangement is the voice move."},
-                 {"id": "C", "text": "Although a fixed budget must in the end choose, training still helps the next generation and support still helps the worker displaced today.",
+                  "why": "Correct. It subordinates the minor idea in an 'although' clause and ends on the point, so the cost lands. That arrangement is the voice move."},
+                 {"id": "C", "text": "Although a school must in the end set one rule, a phone ban helps students focus and keeping phones helps students stay reachable.",
                   "correct": False,
                   "why": "It opens with 'although,' but it subordinates the main decision and ends on a flat list of both goods, so the point is buried. Subordinating the MINOR idea is what carries emphasis."},
              ]),

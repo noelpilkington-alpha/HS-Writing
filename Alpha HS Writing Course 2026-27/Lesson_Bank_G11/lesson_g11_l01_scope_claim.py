@@ -162,24 +162,24 @@ LESSON = Lesson(
                    "When you write your own, do the same: narrow whom, then narrow what it asks, and run the 3 "
                    "scope questions before you submit.")),
         Slot("MODEL", "discrimination", "Which claim is scoped, not sweeping?",
-             ref="", labeled_grade_c=True, bank="ai_workforce_policy",
-             body=("Now that you have seen one scoped, spot the target. Which claim is SCOPED (defensible), and "
-                   "which two overreach? "
-                   "(A) The government should always decide which career every citizen enters, no matter the field or age.  "
-                   "(B) For workers whose industries are shrinking, the government should fund retraining toward growing fields.  "
-                   "(C) In today's economy, the government should direct all workers into whichever careers it forecasts will grow. "
-                   "Correct: B. It names whom (displaced workers) and what (fund retraining), so one exception "
-                   "cannot sink it."),
+             ref="", labeled_grade_c=True, bank="college_access_policy",
+             body=("Now that you have seen one scoped, spot the target on a different debate: public funding for "
+                   "college. Which claim is SCOPED (defensible), and which two overreach? "
+                   "(A) The government should always cover the full cost of any degree for every student, no matter the program or its price.  "
+                   "(B) For students from low-income families, the government should cover tuition at in-state public colleges.  "
+                   "(C) In today's economy, the government should pay whatever tuition any student is charged at any college they choose. "
+                   "Correct: B. It names whom (students from low-income families) and which case (in-state public "
+                   "colleges), so one exception cannot sink it."),
              choices=[
-                 {"id": "A", "text": "The government should always decide which career every citizen enters, no matter the field or age.",
+                 {"id": "A", "text": "The government should always cover the full cost of any degree for every student, no matter the program or its price.",
                   "correct": False,
-                  "why": "This overreaches: 'always' plus 'every citizen' claims more than anyone can defend, and one exception sinks it."},
-                 {"id": "B", "text": "For workers whose industries are shrinking, the government should fund retraining toward growing fields.",
+                  "why": "This overreaches: 'always' plus 'every student' claims more than anyone can defend, and one exception sinks it."},
+                 {"id": "B", "text": "For students from low-income families, the government should cover tuition at in-state public colleges.",
                   "correct": True,
-                  "why": "Correct. It names whom (displaced workers) and narrows what it asks (fund retraining), so a single counterexample no longer collapses it."},
-                 {"id": "C", "text": "In today's economy, the government should direct all workers into whichever careers it forecasts will grow.",
+                  "why": "Correct. It names whom (students from low-income families) and narrows which case it covers (in-state public colleges), so a single counterexample no longer collapses it."},
+                 {"id": "C", "text": "In today's economy, the government should pay whatever tuition any student is charged at any college they choose.",
                   "correct": False,
-                  "why": "The opening phrase sounds narrow, but 'all workers' plus 'direct into careers' is still a sweeping overreach. A qualifier at the front does not scope a claim if the action stays universal."},
+                  "why": "The opening phrase sounds narrow, but 'any student' plus 'any college' is still a sweeping overreach. A qualifier at the front does not scope a claim if the action stays universal."},
              ]),
         Slot("MODEL", "discrimination", "Which claim is scoped, not just softened?",
              ref="", labeled_grade_c=True, bank="ai_workforce_policy",

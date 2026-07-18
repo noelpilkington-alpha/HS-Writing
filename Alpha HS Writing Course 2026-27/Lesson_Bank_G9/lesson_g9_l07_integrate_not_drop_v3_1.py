@@ -150,22 +150,22 @@ LESSON = Lesson(
              ref="", labeled_grade_c=True, bank="phone_ban",
              body=("Now that you have seen one built, spot the target. All three use the same quoted number. "
                    "Which one INTEGRATES the quote, folding it into a built sentence with the source named, instead of dropping it? "
-                   "(A) The National Center for Education Statistics said it in a report from that year. "
-                   "\"76.9 percent.\" That really is a lot of schools with limits.  "
-                   "(B) The National Center for Education Statistics reports that \"76.9 percent\" of public "
-                   "schools already restricted non-academic phone use.  "
-                   "(C) Lots of schools limit phones these days. \"76.9 percent.\" Rules like that are common "
-                   "all across the country now. "
+                   "(A) The National Center for Education Statistics said it in a detailed report from that same year. "
+                   "\"90.9 percent.\" That really is a lot of schools with limits in place.  "
+                   "(B) The National Center for Education Statistics reports that \"90.9 percent\" of public "
+                   "schools enforced such a rule back in the 2009-10 school year.  "
+                   "(C) Lots of schools limited phones back then. \"90.9 percent.\" Rules like that were common "
+                   "all across the country. "
                    "Correct: B. It folds the quote into one sentence the writer built, with the source "
                    "introduced, so it flows. (A) and (C) still park the number as its own fragment."),
              choices=[
-                 {"id": "A", "text": "The National Center for Education Statistics said it in a report from that year. \"76.9 percent.\" That really is a lot of schools with limits.",
+                 {"id": "A", "text": "The National Center for Education Statistics said it in a detailed report from that same year. \"90.9 percent.\" That really is a lot of schools with limits in place.",
                   "correct": False,
                   "why": "This names the source, but the number is still dropped in as its own fragment. Naming who said it is not enough; the quote has to be folded into the sentence."},
-                 {"id": "B", "text": "The National Center for Education Statistics reports that \"76.9 percent\" of public schools already restricted non-academic phone use.",
+                 {"id": "B", "text": "The National Center for Education Statistics reports that \"90.9 percent\" of public schools enforced such a rule back in the 2009-10 school year.",
                   "correct": True,
                   "why": "Correct. The quote is folded into one sentence the writer built, introduced and attributed with a tag, so a reader sees exactly how it fits. That is integrating, not dropping."},
-                 {"id": "C", "text": "Lots of schools limit phones these days. \"76.9 percent.\" Rules like that are common all across the country now.",
+                 {"id": "C", "text": "Lots of schools limited phones back then. \"90.9 percent.\" Rules like that were common all across the country.",
                   "correct": False,
                   "why": "The number sits alone as its own fragment and no source is named, so the reader has to guess how it connects. That is a dropped quote."},
              ]),

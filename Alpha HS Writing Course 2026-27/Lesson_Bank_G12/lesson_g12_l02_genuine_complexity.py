@@ -126,28 +126,29 @@ LESSON = Lesson(
                    "When you write your own, build it the same way: name the real cost first, then let it shape "
                    "the position, and run the 3 questions before you submit.")),
         Slot("MODEL", "discrimination", "Which claim shows genuine complexity?",
-             ref="", labeled_grade_c=True, bank="public_health",
-             body=("Now that you have seen one built, spot the target. Which claim shows GENUINE complexity (names "
-                   "a real cost the position pays), and which only runs a formula? "
-                   "(A) We should fund training for growing fields, yet other people clearly disagree with that "
-                   "plan, so after weighing every side the training option is still the strongest choice for us "
+             ref="", labeled_grade_c=True, bank="school_phone_policy",
+             body=("Now that you have seen one built, spot the target on a different question. A school is deciding "
+                   "whether to ban phones during the day. Which claim shows GENUINE complexity (names a real cost "
+                   "the position pays), and which only runs a formula? "
+                   "(A) A school should ban phones during the day, yet other people clearly disagree with that "
+                   "rule, so after weighing every side a full ban is still the strongest choice for the school "
                    "overall.  "
-                   "(B) Funding training aims at the next generation, yet the same dollar could protect the worker "
-                   "displaced now, so preparation holds only if it admits it chooses the future over the present.  "
-                   "(C) Funding training for growing fields is clearly the smartest, most forward-looking policy, "
-                   "and nobody who genuinely cares about the economy could reasonably argue against putting the "
-                   "money there first.  "
-                   "Correct: B names a real, specific cost (the dollar cannot also protect the displaced worker) "
-                   "and lets it shape the claim. A uses 'yet' and 'so' but concedes nothing real; C just asserts "
-                   "force. Genuine complexity is the move."),
+                   "(B) A phone ban protects the lesson, yet the same rule cuts off the one tool a student in "
+                   "crisis reaches for, so a ban is fair only if it admits it trades away that safety for focus.  "
+                   "(C) A school phone ban is clearly the smartest, most responsible policy there is, and nobody "
+                   "who genuinely cares about students could reasonably argue against putting the rule in place "
+                   "right away.  "
+                   "Correct: B names a real, specific cost (the ban cuts off the tool a student in crisis reaches "
+                   "for) and lets it shape the claim. A uses 'yet' and 'so' but concedes nothing real; C just "
+                   "asserts force. Genuine complexity is the move."),
              choices=[
-                 {"id": "A", "text": "We should fund training for growing fields, yet other people clearly disagree with that plan, so after weighing every side the training option is still the strongest choice for us overall.",
+                 {"id": "A", "text": "A school should ban phones during the day, yet other people clearly disagree with that rule, so after weighing every side a full ban is still the strongest choice for the school overall.",
                   "correct": False,
                   "why": "This has the tension words 'yet' and 'so,' but 'other people disagree' names no real cost the position pays. A transition on an empty gesture is still a formula, not genuine complexity."},
-                 {"id": "B", "text": "Funding training aims at the next generation, yet the same dollar could protect the worker displaced now, so preparation holds only if it admits it chooses the future over the present.",
+                 {"id": "B", "text": "A phone ban protects the lesson, yet the same rule cuts off the one tool a student in crisis reaches for, so a ban is fair only if it admits it trades away that safety for focus.",
                   "correct": True,
-                  "why": "Correct. It names a real, specific cost (the same dollar cannot also protect the displaced worker) and lets that cost shape the claim. The tension is genuine, not a transition word standing in for one."},
-                 {"id": "C", "text": "Funding training for growing fields is clearly the smartest, most forward-looking policy, and nobody who genuinely cares about the economy could reasonably argue against putting the money there first.",
+                  "why": "Correct. It names a real, specific cost (the ban cuts off the tool a student in crisis reaches for) and lets that cost shape the claim. The tension is genuine, not a transition word standing in for one."},
+                 {"id": "C", "text": "A school phone ban is clearly the smartest, most responsible policy there is, and nobody who genuinely cares about students could reasonably argue against putting the rule in place right away.",
                   "correct": False,
                   "why": "This just asserts the position more forcefully and denies any real opposing cost. Force is not complexity; it names no tension the argument has to answer."},
              ]),

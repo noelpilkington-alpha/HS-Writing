@@ -162,24 +162,25 @@ LESSON = Lesson(
                    "When you write your own, build it the same way: name what it is NOT, state what it IS, then "
                    "run the 3 questions before you submit.")),
         Slot("MODEL", "discrimination", "Which claim is nuanced, not flat or fence-sitting?",
-             ref="", labeled_grade_c=True, bank="energy_spending_priority",
-             body=("Now that you have seen one built, spot the target. Which sentence is NUANCED (not-X-but-Y), "
-                   "not a flat one-sided claim and not fence-sitting? "
-                   "(A) The country should spend its energy money on the power grid, because a strong and modern grid is what keeps the clean power we already generate flowing steadily to homes and businesses.  "
-                   "(B) Building more clean power and fixing the aging grid are both genuinely important goals, and honestly it is not at all easy to say which one should truly come first.  "
-                   "(C) The problem is not that the country builds too little clean power but that it cannot move and store what it builds, so its energy money should go first to the grid. "
-                   "Correct: C. It names what its position is NOT (a capacity shortage), then what it IS (a grid "
-                   "problem). A only picks a side, and B has the word 'not' but never commits to one."),
+             ref="", labeled_grade_c=True, bank="voting_age_policy",
+             body=("Now that you have seen one built, spot the target on a different debate: lowering the voting "
+                   "age to sixteen. Which sentence is NUANCED (not-X-but-Y), not a flat one-sided claim and not "
+                   "fence-sitting? "
+                   "(A) The country should lower the voting age to sixteen, because teenagers pay attention to the news and clearly care a great deal about the issues that will shape their own future.  "
+                   "(B) Extending the vote to sixteen-year-olds and keeping it at eighteen are both genuinely reasonable positions, and honestly it is not at all easy to say which one is truly right.  "
+                   "(C) The real question is not whether sixteen-year-olds care enough to vote but whether the ballot alone can reach them, so schools should register students to vote. "
+                   "Correct: C. It names what its position is NOT (a question of whether teens care), then what it "
+                   "IS (a question of reach). A only picks a side, and B has the word 'not' but never commits to one."),
              choices=[
-                 {"id": "A", "text": "The country should spend its energy money on the power grid, because a strong and modern grid is what keeps the clean power we already generate flowing steadily to homes and businesses.",
+                 {"id": "A", "text": "The country should lower the voting age to sixteen, because teenagers pay attention to the news and clearly care a great deal about the issues that will shape their own future.",
                   "correct": False,
-                  "why": "This commits to a side and even gives a reason, but it never names the close rival it is rejecting, so it is flat, not nuanced. A reader still cannot tell it from someone who just wants to build less."},
-                 {"id": "B", "text": "Building more clean power and fixing the aging grid are both genuinely important goals, and honestly it is not at all easy to say which one should truly come first.",
+                  "why": "This commits to a side and even gives a reason, but it never names the close rival it is rejecting, so it is flat, not nuanced. A reader still cannot tell it from anyone who simply likes the idea."},
+                 {"id": "B", "text": "Extending the vote to sixteen-year-olds and keeping it at eighteen are both genuinely reasonable positions, and honestly it is not at all easy to say which one is truly right.",
                   "correct": False,
-                  "why": "This has the word 'not,' but it fence-sits: it says both matter and refuses to pick a side. Nuance is not the same as refusing to commit."},
-                 {"id": "C", "text": "The problem is not that the country builds too little clean power but that it cannot move and store what it builds, so its energy money should go first to the grid.",
+                  "why": "This has the word 'not,' but it fence-sits: it says both sides are reasonable and refuses to pick one. Nuance is not the same as refusing to commit."},
+                 {"id": "C", "text": "The real question is not whether sixteen-year-olds care enough to vote but whether the ballot alone can reach them, so schools should register students to vote.",
                   "correct": True,
-                  "why": "Correct. It names what its position is NOT (a capacity shortage), then states what it IS (a grid problem). Not-X-but-Y is the nuance, and it is the structure, not any single word, that makes it work."},
+                  "why": "Correct. It names what its position is NOT (a question of whether teens care), then states what it IS (a question of reach). Not-X-but-Y is the nuance, and it is the structure, not any single word, that makes it work."},
              ]),
         Slot("MODEL", "discrimination", "Which one names the rival AND states its own side?",
              ref="", labeled_grade_c=True, bank="energy_spending_priority",

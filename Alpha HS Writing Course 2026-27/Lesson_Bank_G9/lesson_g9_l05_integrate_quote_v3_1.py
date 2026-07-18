@@ -146,23 +146,23 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Which sentence names its source?",
              ref="", labeled_grade_c=True, bank="school_lunch",
              body=("You have seen a source brought in the right way. Now spot the target. All three sentences "
-                   "use the same fact, but which one brings it in correctly by naming who said it? "
-                   "(A) The program hands out a giant number of lunches every single year, and honestly the "
-                   "total is so big that you can just tell the whole program really matters to students.  "
-                   "(B) According to the U.S. Department of Agriculture, the National School Lunch Program "
-                   "served more than 4.8 billion lunches in a recent year.  "
-                   "(C) Experts say the program serves billions of lunches every year, which really goes to "
-                   "show how much good it does for students across the country. "
+                   "use the program's yearly cost, but which one brings it in correctly by naming who said it? "
+                   "(A) The program costs an enormous amount of money every single year, and honestly the total "
+                   "is so huge that you can just tell it matters to students.  "
+                   "(B) According to the U.S. Department of Agriculture, the National School Lunch Program cost "
+                   "about 17.7 billion dollars in a recent year.  "
+                   "(C) Experts say the program costs billions of dollars every year, which really goes to show "
+                   "how much good it does for students across the country. "
                    "Correct: B. It names a specific source, the U.S. Department of Agriculture, so a reader can "
                    "trust and check the fact."),
              choices=[
-                 {"id": "A", "text": "The program hands out a giant number of lunches every single year, and honestly the total is so big that you can just tell the whole program really matters to students.",
+                 {"id": "A", "text": "The program costs an enormous amount of money every single year, and honestly the total is so huge that you can just tell it matters to students.",
                   "correct": False,
                   "why": "This gestures at the fact but names no source and gives no exact number, so a reader cannot check it or trust it. A dropped fact is not attributed evidence."},
-                 {"id": "B", "text": "According to the U.S. Department of Agriculture, the National School Lunch Program served more than 4.8 billion lunches in a recent year.",
+                 {"id": "B", "text": "The U.S. Department of Agriculture reports that the program cost about 17.7 billion dollars to run in a recent year.",
                   "correct": True,
                   "why": "Correct. It names a specific source, the U.S. Department of Agriculture, so the reader knows where the fact comes from and can trust it. That is attributed evidence."},
-                 {"id": "C", "text": "Experts say the program serves billions of lunches every year, which really goes to show how much good it does for students across the country.",
+                 {"id": "C", "text": "Experts say the program costs billions of dollars every year, which really goes to show how much good it does for students across the country.",
                   "correct": False,
                   "why": "'Experts say' sounds like attribution, but it names no specific source a reader could check. Naming who actually reported it is what makes evidence trustworthy, not a vague 'experts say.'"},
              ]),

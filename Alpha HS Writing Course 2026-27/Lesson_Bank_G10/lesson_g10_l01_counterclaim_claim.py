@@ -133,25 +133,26 @@ LESSON = Lesson(
                    "answers the objection, and run the 3 questions before you submit.")),
         Slot("MODEL", "discrimination", "Which claim answers the other side?",
              ref="", labeled_grade_c=True, bank="congestion_pricing",
-             body=("Now that you have seen one built, spot the target. Which claim is counterclaim-aware: it "
-                   "concedes a real point AND then holds the position with a reason that answers it? "
-                   "(A) Cities should charge drivers a toll to enter downtown at rush hour because it cuts traffic, speeds up the buses, and keeps the crowded streets moving for everyone.  "
-                   "(B) Although tolls speed up traffic for everyone, they can still burden the drivers who cannot shift their hours away from the peak charge downtown.  "
-                   "(C) Although tolls can burden drivers who cannot shift their hours, cities should still charge them because the money funds the transit those drivers need. "
+             body=("Now that you have seen one built, spot the target on a fresh angle of the same debate. Which "
+                   "claim is counterclaim-aware: it concedes a real point AND then holds the position with a "
+                   "reason that answers it? "
+                   "(A) The city should charge every driver a toll to enter downtown at rush hour because it clears the crowded streets, cuts the smog that hangs over the blocks, keeps the sidewalks safer, and lets the buses and delivery trucks run on time for everyone.  "
+                   "(B) Although a downtown toll would keep the busiest streets clear, it could still drive away the shoppers whom downtown stores depend on to survive.  "
+                   "(C) Although a downtown toll could scare off some shoppers who dislike paying to drive in, the city should still charge it because the toll money can fund frequent buses that bring even more customers to those same stores. "
                    "Correct: C. (A) piles on same-side reasons but never concedes the objection, so a reader "
-                   "worried about cost is unanswered. (B) opens with 'although' but then holds the OTHER side, so "
+                   "worried about losing shoppers is unanswered. (B) opens with 'although' but then holds the OTHER side, so "
                    "it never states your position. (C) concedes the objection and then holds the position with a "
                    "reason that answers it. Concede and hold is the move, not any single word."),
              choices=[
-                 {"id": "A", "text": "Cities should charge drivers a toll to enter downtown at rush hour because it cuts traffic, speeds up the buses, and keeps the crowded streets moving for everyone.",
+                 {"id": "A", "text": "The city should charge every driver a toll to enter downtown at rush hour because it clears the crowded streets, cuts the smog that hangs over the blocks, keeps the sidewalks safer, and lets the buses and delivery trucks run on time for everyone.",
                   "correct": False,
-                  "why": "This has 'because' and three reasons, but every one is on your side. It never concedes the objection, so a reader worried about cost is left unanswered. Piling on same-side reasons is not conceding."},
-                 {"id": "B", "text": "Although tolls speed up traffic for everyone, they can still burden the drivers who cannot shift their hours away from the peak charge downtown.",
+                  "why": "This has 'because' and four reasons, but every one is on your side. It never concedes the objection, so a reader worried about downtown stores losing shoppers is left unanswered. Piling on same-side reasons is not conceding."},
+                 {"id": "B", "text": "Although a downtown toll would keep the busiest streets clear, it could still drive away the shoppers whom downtown stores depend on to survive.",
                   "correct": False,
                   "why": "This opens with 'although' but then swings to the OTHER side and holds their point, so it never states or holds your position. An 'although' clause alone is not counterclaim-aware."},
-                 {"id": "C", "text": "Although tolls can burden drivers who cannot shift their hours, cities should still charge them because the money funds the transit those drivers need.",
+                 {"id": "C", "text": "Although a downtown toll could scare off some shoppers who dislike paying to drive in, the city should still charge it because the toll money can fund frequent buses that bring even more customers to those same stores.",
                   "correct": True,
-                  "why": "Correct. It concedes the strongest objection ('although ...'), holds the position ('cities should still charge them'), and the reason answers the objection (the money funds transit those drivers need). Concede, hold, and answer."},
+                  "why": "Correct. It concedes the strongest objection ('although ...'), holds the position ('the city should still charge it'), and the reason answers the objection (the toll money funds frequent buses that bring even more customers to those same stores). Concede, hold, and answer."},
              ]),
         # SECOND minimal pair: all three keep the same Although X, Y because Z surface (both cue words present),
         # so the confound is now semantic, not the surface tokens. Different axis than the slot above (which

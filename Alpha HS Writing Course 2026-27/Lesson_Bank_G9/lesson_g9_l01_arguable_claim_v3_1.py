@@ -156,20 +156,20 @@ LESSON = Lesson(
              ref="", labeled_grade_c=True, bank="four_day_week",
              body=("Now that you have seen one built, spot the target. Which sentence is an arguable claim, not a "
                    "fact and not a bare opinion? "
-                   "(A) Some districts switched to a four-day week because an old budget shortfall forced their hand.  "
+                   "(A) Some districts switched to a four-day week because an old budget shortfall forced their hand during a difficult year.  "
                    "(B) Honestly, a four-day school week just sounds like a really nice idea to me and my friends.  "
-                   "(C) Schools should switch to a four-day week; the extra day would give students real rest. "
+                   "(C) Districts should keep the five-day week, because students lose ground when a full teaching day is cut. "
                    "Correct: C. It takes a side someone could disagree with AND gives a reason."),
              choices=[
-                 {"id": "A", "text": "Some districts switched to a four-day week because an old budget shortfall forced their hand.",
+                 {"id": "A", "text": "Some districts switched to a four-day week because an old budget shortfall forced their hand during a difficult year.",
                   "correct": False,
                   "why": "This has the word 'because,' but it only explains a past fact nobody argues with. A because-clause on a fact is still not a claim."},
                  {"id": "B", "text": "Honestly, a four-day school week just sounds like a really nice idea to me and my friends.",
                   "correct": False,
                   "why": "This is a bare opinion, a preference with no reason attached. An opinion is not yet a claim."},
-                 {"id": "C", "text": "Schools should switch to a four-day week; the extra day would give students real rest.",
+                 {"id": "C", "text": "Districts should keep the five-day week, because students lose ground when a full teaching day is cut.",
                   "correct": True,
-                  "why": "Correct. It takes a side someone could disagree with AND gives a reason, even without the word 'because.' The side plus the reason is what makes a claim, not any single word."},
+                  "why": "Correct. It takes a side someone could disagree with (keep five days) AND gives a reason (lost teaching time). The side plus the reason is what makes a claim, not any single word."},
              ]),
         Slot("MODEL", "discrimination", "Which sentence takes a side AND gives a reason?",
              ref="", labeled_grade_c=True, bank="four_day_week",

@@ -141,27 +141,30 @@ LESSON = Lesson(
                    "When you write your own, build it the same way: name the larger question first, commit inside "
                    "it, then run the 3 questions before you submit.")),
         Slot("MODEL", "discrimination", "Which claim situates the question?",
-             ref="", labeled_grade_c=True, bank="automation_policy",
-             body=("Now that you have seen one built, spot the target. Which claim SITUATES the question in a "
-                   "broader one AND still answers it? "
-                   "(A) The country should protect its water for growing food rather than for generating power, "
-                   "because families must eat every day and farmland lost in a dry year may never come back.  "
-                   "(B) The food-or-power choice is one instance of how a society rations a necessity it can no "
-                   "longer fully supply, so protecting food is defensible only alongside a rule for the grid.  "
-                   "(C) This prompt is really about the largest question there is, namely how any fair society "
-                   "should divide every scarce resource among all of the people who could possibly need some of it. "
+             ref="", labeled_grade_c=True, bank="school_phone_policy",
+             body=("Now that you have seen one built, spot the target, this time on a different question. A school "
+                   "is deciding whether to ban phones during the school day. Which claim SITUATES that question in "
+                   "a broader one AND still answers it? "
+                   "(A) A school should ban phones during the day, because phones pull students' attention away "
+                   "from the teacher and the lesson in front of them.  "
+                   "(B) The phone-ban question is one instance of when an institution may limit a personal freedom "
+                   "for the good of the group, so a ban is fair only if it leaves alone the freedoms that cost the "
+                   "group nothing.  "
+                   "(C) This question is really about the single largest issue there is, namely how much say any "
+                   "authority anywhere should ever be allowed to have over the private, personal choices of every "
+                   "individual living in a genuinely free society. "
                    "Correct: B situates and commits. (A) answers only the literal prompt; (C) names a larger "
                    "question but is so broad it never answers this one."),
              choices=[
-                 {"id": "A", "text": "The country should protect its water for growing food rather than for generating power, because families must eat every day and farmland lost in a dry year may never come back.",
+                 {"id": "A", "text": "A school should ban phones during the day, because phones pull students' attention away from the teacher and the lesson in front of them.",
                   "correct": False,
-                  "why": "This is a clear, defensible answer, but it is NARROW: it takes a side on the literal prompt only and never names the larger question the choice belongs to."},
-                 {"id": "B", "text": "The food-or-power choice is one instance of how a society rations a necessity it can no longer fully supply, so protecting food is defensible only alongside a rule for the grid.",
+                  "why": "This is a clear, defensible answer, but it is NARROW: it takes a side on the literal phone prompt only and never names the larger question the choice belongs to."},
+                 {"id": "B", "text": "The phone-ban question is one instance of when an institution may limit a personal freedom for the good of the group, so a ban is fair only if it leaves alone the freedoms that cost the group nothing.",
                   "correct": True,
-                  "why": "Correct. It names the broader question (how a society rations a necessity it cannot fully supply) AND commits to a position inside it. Naming plus committing is what situating means."},
-                 {"id": "C", "text": "This prompt is really about the largest question there is, namely how any fair society should divide every scarce resource among all of the people who could possibly need some of it.",
+                  "why": "Correct. It names the broader question (when an institution may limit a personal freedom for the group's good) AND commits to a position inside it. Naming plus committing is what situating means."},
+                 {"id": "C", "text": "This question is really about the single largest issue there is, namely how much say any authority anywhere should ever be allowed to have over the private, personal choices of every individual living in a genuinely free society.",
                   "correct": False,
-                  "why": "This names a larger question, but it falls into the trap: it goes so broad it never answers the actual water prompt. Situating requires you to commit within the frame, not just gesture at a big idea."},
+                  "why": "This names a larger question, but it falls into the trap: it goes so broad it never answers the actual phone prompt. Situating requires you to commit within the frame, not just gesture at a big idea."},
              ]),
         Slot("MODEL", "discrimination", "A closer pair: which claim actually situates?",
              ref="", labeled_grade_c=True, bank="automation_policy",

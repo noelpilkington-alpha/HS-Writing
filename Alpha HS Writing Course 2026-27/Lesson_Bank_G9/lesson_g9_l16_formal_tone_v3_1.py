@@ -128,24 +128,25 @@ LESSON = Lesson(
                    "and run the 3 questions before you submit.")),
         Slot("MODEL", "discrimination", "Which version is formal and keeps the position?",
              ref="", labeled_grade_c=True, bank="four_day_week",
-             body=("Now that you have seen one built, spot the target. The informal draft was: 'Honestly, I feel "
-                   "like a four-day week is a way better deal for kids because they get a ton more rest.' Which "
-                   "rewrite is formal and objective AND keeps the same position? "
-                   "(A) A four-day week just feels like the right call for everyone, and you would agree if you "
-                   "thought about how tired students really get these days.  "
-                   "(B) School schedules have changed many times over the past century as districts tried new calendars.  "
-                   "(C) A four-day week would benefit students because the extra day gives them more time to rest. "
-                   "Correct: C. It drops the I-feel, the slang, and the reader-address while keeping the claim and its reason."),
+             body=("Now that you have seen one built, spot the target. Here is a DIFFERENT informal draft: 'Trust "
+                   "me, cramming five days into four is gonna wear kids out big time, so it is honestly a bad "
+                   "move.' Which rewrite is formal and objective AND keeps the same position? "
+                   "(A) A compressed four-day week is honestly just too rough on kids, and anyone can see the days "
+                   "would drag on forever and leave everyone worn out.  "
+                   "(B) Many districts have experimented with compressed weekly calendars over the past decade.  "
+                   "(C) A compressed four-day week would tire students, because packing five days of instruction "
+                   "into four lengthens each school day. "
+                   "Correct: C. It drops the 'trust me,' the slang, and the reader-address while keeping the claim and its reason."),
              choices=[
-                 {"id": "A", "text": "A four-day week just feels like the right call for everyone, and you would agree if you thought about how tired students really get these days.",
+                 {"id": "A", "text": "A compressed four-day week is honestly just too rough on kids, and anyone can see the days would drag on forever and leave everyone worn out.",
                   "correct": False,
-                  "why": "Still informal: 'just feels like,' 'the right call,' and 'you would agree' keep the casual, reader-directed tone. Sounding certain is not the same as sounding formal and objective."},
-                 {"id": "B", "text": "School schedules have changed many times over the past century as districts tried new calendars.",
+                  "why": "Still informal: 'honestly,' 'too rough on kids,' and 'anyone can see' keep the casual, reader-directed tone. Sounding certain is not the same as sounding formal and objective."},
+                 {"id": "B", "text": "Many districts have experimented with compressed weekly calendars over the past decade.",
                   "correct": False,
-                  "why": "This IS formal and objective, but it changed the point: it no longer takes the position that a four-day week benefits students. Formal tone must keep the original claim, not drop it."},
-                 {"id": "C", "text": "A four-day week would benefit students because the extra day gives them more time to rest.",
+                  "why": "This IS formal and objective, but it changed the point: it no longer takes the position that a compressed week tires students. Formal tone must keep the original claim, not drop it."},
+                 {"id": "C", "text": "A compressed four-day week would tire students, because packing five days of instruction into four lengthens each school day.",
                   "correct": True,
-                  "why": "Correct. The first person, the slang, and the 'you' are gone, and the position plus its reason are intact. Formal tone AND same claim is the target."},
+                  "why": "Correct. The 'trust me,' the slang, and the direct address are gone, and the position plus its reason are intact. Formal tone AND same claim is the target."},
              ]),
         Slot("MODEL", "discrimination", "Which rewrite removes every informal marker?",
              ref="", labeled_grade_c=True, bank="four_day_week",

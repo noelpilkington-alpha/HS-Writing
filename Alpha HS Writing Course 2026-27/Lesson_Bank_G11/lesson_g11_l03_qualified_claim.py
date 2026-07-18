@@ -138,28 +138,29 @@ LESSON = Lesson(
                    "When you write your own, build it the same way: bound the claim, commit, add the reason, "
                    "then run the 3 questions before you submit.")),
         Slot("TEACH", "discrimination", "Which one is a qualified claim, not a waffle?",
-             ref="", labeled_grade_c=True, bank="ai_workforce_policy",
-             body=("Now that you have seen one built, spot the target. Which sentence is a qualified claim, "
-                   "bounded but committed, and not a waffle or a one-sided overreach? "
-                   "(A) When it comes to workers, maybe the government should sometimes step in, but honestly it "
+             ref="", labeled_grade_c=True, bank="transit_fare_policy",
+             body=("Now that you have seen one built, spot the target on a different debate: whether a city should "
+                   "cut bus and train fares. Which sentence is a qualified claim, bounded but committed, and not "
+                   "a waffle or a one-sided overreach? "
+                   "(A) When it comes to fares, maybe the city should sometimes lower them, but honestly it "
                    "really depends and is hard to say for sure either way.  "
-                   "(B) The government should always steer every worker into the fastest-growing fields, because "
-                   "a central plan beats leaving the whole thing to the open market and the choices of employers.  "
-                   "(C) When a worker's industry is closing, the government should fund retraining, because "
-                   "private hiring is too slow to catch a mid-career worker whose plant has shut. "
+                   "(B) The city should always make every bus and train ride completely free, because free "
+                   "transit beats asking riders to pay any fare at all under any circumstances.  "
+                   "(C) When a bus route runs far below capacity, the city should cut its fares, because empty "
+                   "seats cost the city the same to run as full ones. "
                    "Correct: C. It bounds the claim to a stated case AND still commits AND gives a reason. "
                    "(A) hedges until no position survives; (B) commits and has a reason but sets no limit, so "
-                   "it overreaches to every worker in every case."),
+                   "it overreaches to every ride in every case."),
              choices=[
-                 {"id": "A", "text": "When it comes to workers, maybe the government should sometimes step in, but honestly it really depends and is hard to say for sure either way.",
+                 {"id": "A", "text": "When it comes to fares, maybe the city should sometimes lower them, but honestly it really depends and is hard to say for sure either way.",
                   "correct": False,
                   "why": "This opens like it will set a limit, but then 'maybe', 'sometimes', 'it depends', and 'hard to say' pile up until no position is left. Hedging is not bounding."},
-                 {"id": "B", "text": "The government should always steer every worker into the fastest-growing fields, because a central plan beats leaving the whole thing to the open market and the choices of employers.",
+                 {"id": "B", "text": "The city should always make every bus and train ride completely free, because free transit beats asking riders to pay any fare at all under any circumstances.",
                   "correct": False,
-                  "why": "This commits and even gives a reason ('because ...'), but it sets no limit: 'always' and 'every worker' overreach. A qualified claim bounds the case; this does not."},
-                 {"id": "C", "text": "When a worker's industry is closing, the government should fund retraining, because private hiring is too slow to catch a mid-career worker whose plant has shut.",
+                  "why": "This commits and even gives a reason ('because ...'), but it sets no limit: 'always' and 'every ride' overreach. A qualified claim bounds the case; this does not."},
+                 {"id": "C", "text": "When a bus route runs far below capacity, the city should cut its fares, because empty seats cost the city the same to run as full ones.",
                   "correct": True,
-                  "why": "Correct. It bounds the claim ('when a worker's industry is closing'), still commits ('should fund retraining'), and gives a reason. Bound plus commit plus reason is what makes it qualified, not any single word."},
+                  "why": "Correct. It bounds the claim ('when a bus route runs far below capacity'), still commits ('should cut its fares'), and gives a reason. Bound plus commit plus reason is what makes it qualified, not any single word."},
              ]),
         Slot("MODEL", "discrimination", "Spot the qualified claim: real limit, a commitment, and a reason",
              ref="", labeled_grade_c=True, bank="ai_workforce_policy",
