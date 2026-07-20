@@ -82,10 +82,13 @@ def _generation_type(slot) -> str:
 
 # ---- lesson loading (for qc_item by id) ------------------------------------
 def _find_lesson(lesson_id: str):
-    """Locate a Lesson by its .id across the four grade lesson banks. Returns the Lesson or None.
+    """Locate a Lesson by id across the four grade lesson banks. Returns the Lesson or None.
 
-    Only used when qc_item is called without an explicit `lesson=`. Import kept local so the module
-    imports cleanly (and tests that pass `lesson=` never touch the bank on disk)."""
+    Accepts either the full id (ACC-W910-L-G9-C901-0001) or the short canonical id (C901-0001) -- the
+    short id matches as a suffix of the full id. Also checks a module's singular LESSON, not just its
+    LESSONS list. Kept in lockstep with incept_video._find_lesson so a short id resolves the same way
+    in both. Only used when qc_item is called without an explicit `lesson=`. Import kept local so the
+    module imports cleanly (and tests that pass `lesson=` never touch the bank on disk)."""
     import glob
     import importlib.util
 
@@ -103,8 +106,15 @@ def _find_lesson(lesson_id: str):
                 mod = None
             except Exception:
                 continue
-            for L in getattr(mod, "LESSONS", []) if mod else []:
-                if getattr(L, "id", None) == lesson_id:
+            if not mod:
+                continue
+            candidates = list(getattr(mod, "LESSONS", []) or [])
+            single = getattr(mod, "LESSON", None)
+            if single is not None:
+                candidates.append(single)
+            for L in candidates:
+                lid = getattr(L, "id", None)
+                if lid == lesson_id or (lid and lid.endswith(lesson_id)):
                     return L
     return None
 
