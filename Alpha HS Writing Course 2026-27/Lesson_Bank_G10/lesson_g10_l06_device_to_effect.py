@@ -163,11 +163,13 @@ LESSON = Lesson(
                    "(B) Chopin uses spring imagery at the open window, so many outdoor details packed into the "
                    "reader's view that this is easily the most descriptive paragraph in the whole story.  "
                    "(C) Chopin uses spring imagery at the open window so a scene that should feel like grief "
-                   "begins to feel like renewal, easing the reader toward Mrs. Mallard's sense of release. "
+                   "begins to feel like renewal, easing the reader toward Mrs. Mallard's sense of release.  "
+                   "(D) Chopin's spring imagery at the open window is a symbol of new life and rebirth. "
                    "Correct: C. It says what the imagery DOES to the reader (turns grief toward renewal). (A) "
                    "names and describes the device but stops there. (B) has the word \"so\" and the word "
                    "\"reader,\" but it only comments on how much description there is (a remark about her craft), "
-                   "not on what the imagery makes the reader feel or understand."),
+                   "not on what the imagery makes the reader feel or understand. (D) decodes what the imagery "
+                   "stands for (rebirth) but never says what that does to the reader, so it stops at a label too."),
              choices=[
                  {"id": "A", "text": "Chopin uses spring imagery in the scene at the open window, describing the aquiver treetops, the delicious breath of coming rain, a distant song, and patches of blue sky between the clouds.",
                   "correct": False,
@@ -178,6 +180,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Chopin uses spring imagery at the open window so a scene that should feel like grief begins to feel like renewal, easing the reader toward Mrs. Mallard's sense of release.",
                   "correct": True,
                   "why": "Correct. It names the device AND states its effect: the imagery turns a scene that should feel like grief into one that feels like renewal for the reader. Naming plus effect is the move that scores."},
+                 {"id": "D", "text": "Chopin's spring imagery at the open window is a symbol of new life and rebirth.",
+                  "correct": False,
+                  "why": "This decodes what the imagery stands for (rebirth), but naming a symbol is still a label. It never says what that imagery does to the reader, so it stops short of the effect."},
              ]),
         Slot("MODEL", "discrimination", "Effect on the reader, or just the character?",
              ref="", labeled_grade_c=True, bank="story_of_an_hour",
@@ -188,11 +193,15 @@ LESSON = Lesson(
                    "(B) Chopin repeats the word 'free' so that Mrs. Mallard, alone in her quiet room, lets "
                    "herself believe at last that her long years of marriage are finally and truly behind her.  "
                    "(C) Chopin repeats the hushed word 'free' so that with each whisper the reader feels the "
-                   "release building, until her joy is impossible to miss. "
+                   "release building, until her joy is impossible to miss.  "
+                   "(D) Chopin repeats the word 'free' again and again to emphasize just how free Mrs. Mallard "
+                   "has finally become. "
                    "Correct: C. It says what the repetition DOES to the reader (each whisper makes the release "
                    "build). (A) names the device and notes that readers notice it, but states no effect it "
                    "produces. (B) uses 'so' and states a result, but the result is what Mrs. Mallard comes to "
-                   "believe, a point about the character, not what the repetition makes the reader feel."),
+                   "believe, a point about the character, not what the repetition makes the reader feel. (D) says "
+                   "the repetition emphasizes how free she is, but that just restates the repeated word louder, "
+                   "which is a label, not an effect on the reader."),
              choices=[
                  {"id": "A", "text": "Chopin repeats the hushed word 'free' several times, a repetition many readers notice as Mrs. Mallard sits alone at the open window.",
                   "correct": False,
@@ -203,6 +212,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Chopin repeats the hushed word 'free' so that with each whisper the reader feels the release building, until her joy is impossible to miss.",
                   "correct": True,
                   "why": "This names the device and states its effect on the reader: each whispered repetition makes the sense of release build until it is impossible to miss."},
+                 {"id": "D", "text": "Chopin repeats the word 'free' again and again to emphasize just how free Mrs. Mallard has finally become.",
+                  "correct": False,
+                  "why": "Saying the repetition emphasizes how free she is just restates the repeated word more loudly. That is a label dressed up, not a statement of what the repetition does to the reader."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this label most need?",
              bank="story_of_an_hour",

@@ -163,9 +163,13 @@ LESSON = Lesson(
                    "(B) Although fixed time has trade-offs, the country should still end the twice-a-year "
                    "switch, since a steady clock spares people lost sleep every spring.  "
                    "(C) Although fixed time has trade-offs, the issue stays complicated, since reasonable people "
-                   "are going to keep on disagreeing about it for a long time. "
+                   "are going to keep on disagreeing about it for a long time.  "
+                   "(D) Although fixed time has trade-offs, is ending the twice-a-year switch really worth all "
+                   "the disruption it would cause to people's daily routines? "
                    "Correct: B holds. (B) concedes the trade-off but keeps its position with a reason. (A) and "
-                   "(C) concede and then abandon their position, leaving no thesis. Concede-and-hold is the move."),
+                   "(C) concede and then abandon their position, leaving no thesis. (D) concedes and then turns "
+                   "into a question, handing the decision back to the reader instead of taking a side. Concede-"
+                   "and-hold is the move."),
              choices=[
                  {"id": "A",
                   "text": "Although fixed time has trade-offs, both sides make fair points, and because each side has real evidence it is honestly hard to say what the whole country should end up deciding.",
@@ -179,6 +183,10 @@ LESSON = Lesson(
                   "text": "Although fixed time has trade-offs, the issue stays complicated, since reasonable people are going to keep on disagreeing about it for a long time.",
                   "correct": False,
                   "why": "This concedes, then collapses into 'the issue stays complicated' and never takes a side. Conceding is not supposed to end in a shrug."},
+                 {"id": "D",
+                  "text": "Although fixed time has trade-offs, is ending the twice-a-year switch really worth all the disruption it would cause to people's daily routines?",
+                  "correct": False,
+                  "why": "This concedes, then turns into a question and hands the decision back to the reader. Asking a question is not holding a side, so it collapses too."},
              ]),
         Slot("MODEL", "discrimination", "Which one concedes a REAL point from the other side?",
              ref="", labeled_grade_c=True, bank="daylight_saving",
@@ -190,10 +198,13 @@ LESSON = Lesson(
                    "(B) Although the twice-a-year change costs people real sleep, the country should end the "
                    "switch, because that same lost sleep is exactly what makes the change so harmful to families.  "
                    "(C) Although nearly everyone checks a clock many times a day, the country should end the "
-                   "switch, because one fixed time keeps ordinary routines simpler. "
+                   "switch, because one fixed time keeps ordinary routines simpler.  "
+                   "(D) Although a few people just hate any kind of change at all, the country should end the "
+                   "switch, since clinging to an old habit is no reason to keep it. "
                    "Correct: A concedes. (A) names a real benefit the other side points to, popular evening "
-                   "light, then still holds its side. (B) only dresses up its own reason as a concession, and "
-                   "(C) concedes a neutral fact nobody disputes, so neither truly faces the other side."),
+                   "light, then still holds its side. (B) only dresses up its own reason as a concession, "
+                   "(C) concedes a neutral fact nobody disputes, and (D) mocks a weak caricature of the other "
+                   "side instead of their real point, so none of those three truly faces the other side."),
              choices=[
                  {"id": "A",
                   "text": "Although later evening light is genuinely popular with many families, the country should still end the switch, since steady sleep matters more.",
@@ -207,6 +218,10 @@ LESSON = Lesson(
                   "text": "Although nearly everyone checks a clock many times a day, the country should end the switch, because one fixed time keeps ordinary routines simpler.",
                   "correct": False,
                   "why": "The 'although' clause states a neutral fact nobody is arguing about, so nothing the other side holds is actually conceded."},
+                 {"id": "D",
+                  "text": "Although a few people just hate any kind of change at all, the country should end the switch, since clinging to an old habit is no reason to keep it.",
+                  "correct": False,
+                  "why": "The 'although' clause mocks a weak caricature ('people just hate change') instead of the other side's real point, so it never fairly faces the actual objection."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this collapsing claim most need?",
              bank="daylight_saving",

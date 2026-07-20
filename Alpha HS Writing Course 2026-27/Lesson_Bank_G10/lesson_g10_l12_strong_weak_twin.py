@@ -126,7 +126,7 @@ LESSON = Lesson(
                    "Once you can name the exact difference, you can make the same fix in your own drafts. That is "
                    "the goal today: pick the stronger twin, name the reason, and use it to improve a weak draft.")),
         Slot("TEACH", "stimulus_display", "Read the source: how recycling works",
-             ref="ACC-W910-INFO-LESSON-RECYCLING", bank="recycling",
+             ref="ACC-W910-INFO-LESSON-RECYCLING", bank="recycling", tag="buy_in",
              body=("The draft twins you judge are about recycling. Read this source so the topic is familiar. You "
                    "are not writing a recycling essay from scratch here; you are judging and improving single "
                    "sentences. The text stays on screen while you work.")),
@@ -158,6 +158,11 @@ LESSON = Lesson(
                   "correct": False,
                   "why": "They are not equal. Only Twin B gives a reason a reader could verify; Twin A sounds like "
                          "it has a reason but only restates the claim, so the twins differ on that one move."},
+                 {"id": "D", "text": "Twin B, because it is the longer sentence and packs in more words, and a longer sentence always reads as more thorough to a reader.",
+                  "correct": False,
+                  "why": "This picks the right twin for the wrong reason. Twin B is stronger because its reason is "
+                         "specific and checkable, not because it is longer. Length is not the move; a long sentence "
+                         "with a circular reason would still be the weaker twin."},
              ]),
         Slot("MODEL", "predict_the_fix", "Which revision turns the weak twin into a strong one?",
              bank="recycling",
@@ -195,6 +200,11 @@ LESSON = Lesson(
                   "correct": False,
                   "why": "Being general is not the same as being strong; Twin P names nothing a reader could verify, "
                          "while Twin Q gives a specific, checkable cause."},
+                 {"id": "D", "text": "Twin Q, because it sounds more serious and uses more grown-up, formal-sounding words than Twin P does.",
+                  "correct": False,
+                  "why": "This picks the right twin for the wrong reason. Twin Q is stronger because its reason "
+                         "names a checkable cause, not because it sounds more formal. How grown-up a sentence sounds "
+                         "is just tone; a formal-sounding sentence can still hide a circular reason."},
              ]),
 
         # ===== SUPPORTED: predict the score (calibration MCQ) -> then rewrite with a fill-in frame =====

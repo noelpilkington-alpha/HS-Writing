@@ -153,7 +153,9 @@ LESSON = Lesson(
                    "(B) In the 1950s the government began funding a national network. Planners first had to "
                    "decide who would pay for it. Today the interstate carries most long-haul freight.  "
                    "(C) Planners first had to decide who would pay for it. In the 1950s the government began "
-                   "funding a national network. Today the interstate carries most long-haul freight. "
+                   "funding a national network. Today the interstate carries most long-haul freight.  "
+                   "(D) Today the interstate carries most long-haul freight. Planners first had to decide who "
+                   "would pay for it. In the 1950s the government began funding a national network. "
                    "Correct: C. It moves from the first question to the founding to the present-day result."),
              choices=[
                  {"id": "A", "text": "Today the interstate carries most long-haul freight. In the 1950s the government began funding a national network. Planners first had to decide who would pay for it.",
@@ -165,6 +167,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Planners first had to decide who would pay for it. In the 1950s the government began funding a national network. Today the interstate carries most long-haul freight.",
                   "correct": True,
                   "why": "Correct. Question, then founding, then present-day result: each sentence leads into the next, so the reader never has to jump back. Ordering to build is the move."},
+                 {"id": "D", "text": "Today the interstate carries most long-haul freight. Planners first had to decide who would pay for it. In the 1950s the government began funding a national network.",
+                  "correct": False,
+                  "why": "This leads with the most impressive present-day fact, then drops back to the first question and the founding. Opening with the biggest result feels strong, but it forces the reader to rebuild the timeline backward, so it does not build."},
              ]),
         # SECOND minimal pair, DIFFERENT confound than the first: the first pair permutes three plain sentences
         # (pure content order); this one dresses a wrong order in signpost words (First/Next/Finally) so students
@@ -180,7 +185,9 @@ LESSON = Lesson(
                    "(B) Heavy trucks pounded the pavement for years. That pavement cracked and broke into "
                    "potholes. Now crews repave long stretches of the road every summer.  "
                    "(C) That pavement cracked and broke into potholes. Heavy trucks pounded the pavement for "
-                   "years. Now crews repave long stretches of the road every summer. "
+                   "years. Now crews repave long stretches of the road every summer.  "
+                   "(D) Now crews repave long stretches of the road every summer. That pavement cracked and broke "
+                   "into potholes. Heavy trucks pounded the pavement for years. "
                    "Correct: B. It runs cause to effect even without any signpost words like First or Finally."),
              choices=[
                  {"id": "A", "text": "First, crews now repave long stretches of the road every summer. Next, heavy trucks pounded the pavement for years. Finally, that pavement cracked and broke into potholes.",
@@ -192,6 +199,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "That pavement cracked and broke into potholes. Heavy trucks pounded the pavement for years. Now crews repave long stretches of the road every summer.",
                   "correct": False,
                   "why": "This states the cracked pavement before the heavy trucks that caused it, so the reader meets the effect before its cause and has to work backward."},
+                 {"id": "D", "text": "Now crews repave long stretches of the road every summer. That pavement cracked and broke into potholes. Heavy trucks pounded the pavement for years.",
+                  "correct": False,
+                  "why": "This tells the whole story backward, newest to oldest: today's repaving, then the cracking, then the trucks. Running effect all the way back to first cause makes the reader reverse the order to follow it, so it does not build."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this draft most need?",
              bank="interstate_highways",

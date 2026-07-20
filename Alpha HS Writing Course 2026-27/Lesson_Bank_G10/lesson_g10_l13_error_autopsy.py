@@ -136,7 +136,7 @@ LESSON = Lesson(
                    "So an error autopsy has two parts: name the error TYPE, then give the fix that type calls "
                    "for. The trap is a vague verdict (\"it is weak\") that names no type and guides no repair.")),
         Slot("TEACH", "stimulus_display", "The topic: how weather forecasts work",
-             ref="ACC-W910-INFO-LESSON-WEATHER", bank="weather",
+             ref="ACC-W910-INFO-LESSON-WEATHER", bank="weather", tag="buy_in",
              body=("The drafts you diagnose are about weather forecasting. Read this short source so the topic "
                    "is familiar. You are not writing a forecasting essay from scratch here; you are naming the "
                    "error type in drafts that are given to you, then giving each one its fix.")),
@@ -159,9 +159,11 @@ LESSON = Lesson(
                    "concrete, specific details.  "
                    "(C) The draft is off-purpose: one sentence wanders away from the main topic, so the fix is "
                    "to cut the straying part.  "
-                   "Correct: B. (A) and (C) name real error types, but neither fits this draft: nothing is "
-                   "scrambled and nothing wanders. (B) names the type that fits (too general) and the fix it "
-                   "calls for (add specifics). A named type points straight at the repair."),
+                   "(D) The draft has a circular reason: 'made with science' and 'help people' just restate each "
+                   "other, so the fix is to give a real, specific reason.  "
+                   "Correct: B. (A), (C), and (D) name real error types, but none fits this draft: nothing is "
+                   "scrambled, nothing wanders, and no reason is even given. (B) names the type that fits (too "
+                   "general) and the fix it calls for (add specifics). A named type points straight at the repair."),
              choices=[
                  {"id": "A",
                   "text": "The draft is out of order: its sentences are scrambled out of their proper sequence, so the fix is to reorder them into a clear, logical order.",
@@ -175,6 +177,10 @@ LESSON = Lesson(
                   "text": "The draft is off-purpose: one sentence wanders away from the main topic, so the fix is to cut the straying part.",
                   "correct": False,
                   "why": "Off-purpose is a real type, but nothing here wanders off the topic. Both sentences stay on forecasting; they are simply too general."},
+                 {"id": "D",
+                  "text": "The draft has a circular reason: 'made with science' and 'help people' just restate each other, so the fix is to give a real, specific reason.",
+                  "correct": False,
+                  "why": "Circular reason is a real type, but it does not fit here: the draft never even gives a reason, circular or not. It just states two general facts, so the type is too general, not circular."},
              ]),
         Slot("MODEL", "predict_the_fix", "What error type is this, and what fixes it?",
              bank="weather",

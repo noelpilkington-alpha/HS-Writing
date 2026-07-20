@@ -154,8 +154,12 @@ LESSON = Lesson(
                    "the spring imagery outside the open window, the irony of grief turning to relief, the "
                    "repetition of the word free. You will pair it with a technique from text 2. The text stays "
                    "on screen while you work.")),
+        # tag="buy_in": this is the SECOND source-orientation read (a cross-text analysis binds two texts, so it
+        # has two source displays). A get-familiar read is orientation, not a load-bearing teach segment that
+        # needs an intervening check, so it counts 0 toward the check-cadence run (LS-feedback #3), keeping the
+        # pre-check run of counted teach segments within the full_essay_build ceiling of 4. No teaching is cut.
         Slot("TEACH", "stimulus_display", "Read text 2: Building the Interstate Highway System",
-             ref="ACC-W910-INFO-LESSON-HIGHWAYS", bank="interstate_highways",
+             ref="ACC-W910-INFO-LESSON-HIGHWAYS", bank="interstate_highways", tag="buy_in",
              body=("Read this explanatory article. Note one authorial choice you could analyze: how the writer "
                    "opens with the road as an everyday thing that drivers pass without thinking, then sets that "
                    "against its vast scale and cost. You will pair a technique here with one from text 1. The "
@@ -182,9 +186,13 @@ LESSON = Lesson(
                    "closing line says both texts were clear and worth the time.  "
                    "(C) Every paragraph studies Chopin's spring imagery in close, quoted detail across both "
                    "texts, while the highways article is named once at the very end and is never actually "
-                   "analyzed for any technique at all. "
+                   "analyzed for any technique at all.  "
+                   "(D) One paragraph analyzes a device in the Chopin story with its effect, the next analyzes a "
+                   "device in the highways article with its effect, but no single claim ties the two texts "
+                   "together into one point. "
                    "Correct: A. It makes one analytical claim and supports it with device-effect-warrant from "
-                   "both texts. B double-summarizes; C analyzes only one text and leaves the other unexamined."),
+                   "both texts. B double-summarizes; C analyzes only one text and leaves the other unexamined; "
+                   "D analyzes each text well but never joins them under one cross-text claim."),
              choices=[
                  {"id": "A", "text": "One analytical claim names a technique both authors use, then each body paragraph runs device to effect to warrant, drawing evidence from Chopin and from the highways article and naming where the two texts line up.",
                   "correct": True,
@@ -195,6 +203,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Every paragraph studies Chopin's spring imagery in close, quoted detail across both texts, while the highways article is named once at the very end and is never actually analyzed for any technique at all.",
                   "correct": False,
                   "why": "This analyzes only one text. A cross-text analysis must carry its claim into both texts, not leave one unexamined."},
+                 {"id": "D", "text": "One paragraph analyzes a device in the Chopin story with its effect, the next analyzes a device in the highways article with its effect, but no single claim ties the two texts together into one point.",
+                  "correct": False,
+                  "why": "This is two single-text analyses side by side. Each text is analyzed, but with no one claim carried across both, so the texts are never actually connected. A cross-text analysis needs that shared claim."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this cross-text draft most need?",
              bank="story_of_an_hour",

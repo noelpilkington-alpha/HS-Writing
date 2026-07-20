@@ -152,7 +152,8 @@ LESSON = Lesson(
                    "support wildlife. Which one sentence does NOT serve that point and should be cut? "
                    "(A) Wetlands give fish, birds, and frogs places to feed, hide, and nest.  "
                    "(B) More than one-third of the nation's rarest species live only in wetlands.  "
-                   "(C) Much of the country's wetland was drained for farms and roads long ago. "
+                   "(C) Much of the country's wetland was drained for farms and roads long ago.  "
+                   "(D) Salamanders and turtles also raise their young in the shallow water of the marsh. "
                    "Correct: C. Draining for farms and roads is about land loss, not about supporting wildlife."),
              choices=[
                  {"id": "A", "text": "Wetlands give fish, birds, and frogs places to feed, hide, and nest.",
@@ -164,6 +165,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Much of the country's wetland was drained for farms and roads long ago.",
                   "correct": True,
                   "why": "Correct. This is true, but it is about how wetland was lost, not about supporting wildlife. A true fact that does not serve the point still gets cut."},
+                 {"id": "D", "text": "Salamanders and turtles also raise their young in the shallow water of the marsh.",
+                  "correct": False,
+                  "why": "This looks like it repeats sentence A, so it is tempting to cut it as extra. But it names different animals doing something for the wildlife point, so it serves the point and stays. Deleting on-purpose detail because it feels repetitive is the wrong cut."},
              ]),
         # Second minimal pair: the OTHER move (ADD for purpose). Different confound from the delete pair above:
         # here two options are on-topic wetlands content, but only one supplies the missing HOW the point needs.
@@ -174,7 +178,8 @@ LESSON = Lesson(
                    "if added, best serves that point? "
                    "(A) The plants and soft ground soak up the force of the waves before they reach dry land. "
                    "(B) Wetlands can be found along the coasts, rivers, and lakes in nearly every part of the country, from north to south. "
-                   "(C) Storms have become a growing worry for many towns built near the water. "
+                   "(C) Storms have become a growing worry for many towns built near the water.  "
+                   "(D) This is why wetlands really are so good at protecting the shoreline from storm waves. "
                    "Correct: A. It shows HOW the wetland stops the waves, which is what the point needs."),
              choices=[
                  {"id": "A", "text": "The plants and soft ground soak up the force of the waves before they reach dry land.",
@@ -186,6 +191,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Storms have become a growing worry for many towns built near the water.",
                   "correct": False,
                   "why": "This sets a mood about storms but never shows how a wetland protects the shore, so the point stays unsupported."},
+                 {"id": "D", "text": "This is why wetlands really are so good at protecting the shoreline from storm waves.",
+                  "correct": False,
+                  "why": "This just restates the point in bigger words; it adds no new information about HOW the wetland stops the waves. Repeating the claim is not the same as adding the piece the point needs."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this draft most need?",
              bank="wetlands",

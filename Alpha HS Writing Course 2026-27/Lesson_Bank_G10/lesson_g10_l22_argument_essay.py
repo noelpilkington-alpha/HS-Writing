@@ -165,15 +165,19 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Which one is a cross-text argument?",
              ref="", labeled_grade_c=True, bank="daylight_saving",
              body=("You have watched a one-sided draft become a cross-text argument. Now spot the target: which "
-                   "essay is a real cross-text argument, and which is not? "
+                   "essay is a real cross-text argument, and which three are not? "
                    "(A) The essay holds one position on the switch, uses both sources together on each point, and "
                    "spends one paragraph naming the strongest objection and then answering it head on.  "
                    "(B) The essay argues to end the switch by quoting the health source across several paragraphs, "
                    "piling up its points about sleep and safety, and it never once mentions the second source.  "
                    "(C) The essay lays out the first source in full, then lays out the second source in full, and "
-                   "summarizes each in turn without ever picking a side or answering either one of them. "
+                   "summarizes each in turn without ever picking a side or answering either one of them.  "
+                   "(D) The essay takes one position and pulls evidence from both sources on each point, but it "
+                   "never brings up the strongest objection from the other side, so it leaves that counterclaim "
+                   "unanswered. "
                    "Correct: A. It holds one position, weaves both sources, and answers the objection. (B) uses "
-                   "one source and ignores the other; (C) summarizes both but takes no position and answers nothing."),
+                   "one source and ignores the other; (C) summarizes both but takes no position and answers "
+                   "nothing; (D) weaves both sources but never names or answers the objection."),
              choices=[
                  {"id": "A", "text": "The essay holds one position on the switch, uses both sources together on each point, and spends one paragraph naming the strongest objection and then answering it head on.",
                   "correct": True,
@@ -184,6 +188,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The essay lays out the first source in full, then lays out the second source in full, and summarizes each in turn without ever picking a side or answering either one of them.",
                   "correct": False,
                   "why": "Summarizing each source in turn is not an argument. It takes no position, never weaves the sources on a shared point, and answers no objection."},
+                 {"id": "D", "text": "The essay takes one position and pulls evidence from both sources on each point, but it never brings up the strongest objection from the other side, so it leaves that counterclaim unanswered.",
+                  "correct": False,
+                  "why": "This weaves the sources under one position but skips the counterclaim. A cross-text argument must also concede and answer the strongest objection; leaving it unanswered is the common half-finished version."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this cross-text argument most need?",
              bank="daylight_saving",

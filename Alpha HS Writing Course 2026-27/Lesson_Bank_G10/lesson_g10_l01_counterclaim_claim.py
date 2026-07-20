@@ -138,10 +138,12 @@ LESSON = Lesson(
                    "reason that answers it? "
                    "(A) The city should charge every driver a toll to enter downtown at rush hour because it clears the crowded streets, cuts the smog that hangs over the blocks, keeps the sidewalks safer, and lets the buses and delivery trucks run on time for everyone.  "
                    "(B) Although a downtown toll would keep the busiest streets clear, it could still drive away the shoppers whom downtown stores depend on to survive.  "
-                   "(C) Although a downtown toll could scare off some shoppers who dislike paying to drive in, the city should still charge it because the toll money can fund frequent buses that bring even more customers to those same stores. "
+                   "(C) Although a downtown toll could scare off some shoppers who dislike paying to drive in, the city should still charge it because the toll money can fund frequent buses that bring even more customers to those same stores.  "
+                   "(D) Although a downtown toll could annoy some drivers who resent paying new fees, the city should still charge it to enter downtown at rush hour. "
                    "Correct: C. (A) piles on same-side reasons but never concedes the objection, so a reader "
                    "worried about losing shoppers is unanswered. (B) opens with 'although' but then holds the OTHER side, so "
-                   "it never states your position. (C) concedes the objection and then holds the position with a "
+                   "it never states your position. (D) concedes and holds but stops there, giving no reason at all, "
+                   "so it never answers the objection. (C) concedes the objection and then holds the position with a "
                    "reason that answers it. Concede and hold is the move, not any single word."),
              choices=[
                  {"id": "A", "text": "The city should charge every driver a toll to enter downtown at rush hour because it clears the crowded streets, cuts the smog that hangs over the blocks, keeps the sidewalks safer, and lets the buses and delivery trucks run on time for everyone.",
@@ -153,6 +155,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Although a downtown toll could scare off some shoppers who dislike paying to drive in, the city should still charge it because the toll money can fund frequent buses that bring even more customers to those same stores.",
                   "correct": True,
                   "why": "Correct. It concedes the strongest objection ('although ...'), holds the position ('the city should still charge it'), and the reason answers the objection (the toll money funds frequent buses that bring even more customers to those same stores). Concede, hold, and answer."},
+                 {"id": "D", "text": "Although a downtown toll could annoy some drivers who resent paying new fees, the city should still charge it to enter downtown at rush hour.",
+                  "correct": False,
+                  "why": "This concedes an objection and holds the position, but it stops there with no 'because' reason at all, so nothing answers the objection. Concede-and-hold without a reason is only two of the three moves."},
              ]),
         # SECOND minimal pair: all three keep the same Although X, Y because Z surface (both cue words present),
         # so the confound is now semantic, not the surface tokens. Different axis than the slot above (which
@@ -166,11 +171,13 @@ LESSON = Lesson(
                    "reason that answers that objection? "
                    "(A) Although a downtown toll would cost daily commuters more money out of pocket each and every week, the city should still charge it because rush-hour traffic downtown keeps getting worse and slower for everyone.  "
                    "(B) Although a downtown toll is a smart, forward-looking policy, the city should charge it because the money can fund the cheaper buses that low-income riders need.  "
-                   "(C) Although a downtown toll would cost daily commuters more, the city should charge it because the revenue can fund cheaper transit passes those commuters can switch to. "
+                   "(C) Although a downtown toll would cost daily commuters more, the city should charge it because the revenue can fund cheaper transit passes those commuters can switch to.  "
+                   "(D) Although drivers would have to set up a new toll account before entering downtown, the city should still charge the toll because the revenue can repave the worn downtown streets. "
                    "Correct: C. (A) concedes a real cost but the reason only adds a same-side point and never "
                    "answers that cost. (B) praises your own policy instead of naming the other side's objection, "
-                   "so nothing is actually conceded. (C) concedes the real objection, holds the position, and the "
-                   "reason answers it. The move is semantic, not the words although or because."),
+                   "so nothing is actually conceded. (D) concedes only a minor setup hassle, not the strongest "
+                   "objection, so it dodges the real cost concern. (C) concedes the real objection, holds the "
+                   "position, and the reason answers it. The move is semantic, not the words although or because."),
              choices=[
                  {"id": "A", "text": "Although a downtown toll would cost daily commuters more money out of pocket each and every week, the city should still charge it because rush-hour traffic downtown keeps getting worse and slower for everyone.",
                   "correct": False,
@@ -181,6 +188,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Although a downtown toll would cost daily commuters more, the city should charge it because the revenue can fund cheaper transit passes those commuters can switch to.",
                   "correct": True,
                   "why": "Correct. It concedes the real objection that the toll costs commuters more, holds the position, and the reason answers that objection because the revenue funds cheaper transit those same commuters can use."},
+                 {"id": "D", "text": "Although drivers would have to set up a new toll account before entering downtown, the city should still charge the toll because the revenue can repave the worn downtown streets.",
+                  "correct": False,
+                  "why": "This concedes only a minor setup hassle instead of the strongest objection, so it sidesteps the real cost concern. Conceding a weak point and ignoring the strong one is not a fair concession."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this one-sided claim most need?",
              bank="congestion_pricing",
@@ -204,7 +214,7 @@ LESSON = Lesson(
                  intro="Use the frame below so you can focus on the two moves.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
                                          "Although ______ [the other side's strongest point], ______ [your "
-                                         "position], because ______ [a reason that answers the objection]."),
+                                         "position] because ______ [a reason that answers the objection]."),
                  closer="Concede a real point, then hold your position with a reason that answers it. Do not "
                         "ignore the other side. Then check it against the 3 questions.")),
         # DIAGNOSIS = a CHECK-and-FIX exercise on a PROVIDED weak draft (stays on the taught topic; no new source).

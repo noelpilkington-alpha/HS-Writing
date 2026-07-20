@@ -122,7 +122,7 @@ LESSON = Lesson(
                    "the side you argue. You will first practice on PROVIDED drafts, then run the same pass on a "
                    "draft you write here.")),
         Slot("TEACH", "stimulus_display", "The topic: wetlands",
-             ref="ACC-W910-INFO-LESSON-WETLANDS", bank="wetlands",
+             ref="ACC-W910-INFO-LESSON-WETLANDS", bank="wetlands", tag="buy_in",
              body=("The provided drafts you revise are about wetlands. Read this short orientation so the topic is "
                    "familiar. A wetland is land where water covers the soil for much of the year, and the source "
                    "reports that wetlands store floodwater (one Mississippi River stretch once held 60 days of it, "
@@ -151,7 +151,10 @@ LESSON = Lesson(
                    "with an exact function the source names, such as storing floodwater and sheltering rare "
                    "wildlife.  "
                    "(C) Leave the wording as it is but attach three more facts from the source, since a sentence "
-                   "carrying more detail overall will read as more precise. "
+                   "carrying more detail overall will read as more precise.  "
+                   "(D) Replace 'extremely important' with 'really special' and 'help the whole planet in every "
+                   "possible way' with 'do a lot of good for nature,' since fresh wording will make the sentence "
+                   "feel more polished. "
                    "Correct: B."),
              choices=[
                  {"id": "A", "text": "Rewrite the claim to say that wetlands are the single most important landscape anywhere on the entire planet, because a bolder and bigger claim will make the whole sentence land much harder with the reader.",
@@ -163,6 +166,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Leave the wording as it is but attach three more facts from the source, since a sentence carrying more detail overall will read as more precise.",
                   "correct": False,
                   "why": "Adding facts is not a precision pass. The vague, overreaching, puffed-up words are still there, so the sentence is longer but no more exact. Precision comes from sharpening the words you have, not piling on more."},
+                 {"id": "D", "text": "Replace 'extremely important' with 'really special' and 'help the whole planet in every possible way' with 'do a lot of good for nature,' since fresh wording will make the sentence feel more polished.",
+                  "correct": False,
+                  "why": "This just swaps vague words for other vague words: 'really special' and 'do a lot of good for nature' name no exact function either. A precision pass replaces a vague word with the exact thing the source shows, not with a different fuzzy phrase."},
              ]),
         Slot("MODEL", "predict_the_fix", "What is the precision fix for this sentence?",
              bank="wetlands",

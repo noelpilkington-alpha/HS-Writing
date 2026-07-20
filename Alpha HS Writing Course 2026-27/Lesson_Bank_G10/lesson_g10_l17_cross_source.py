@@ -160,9 +160,12 @@ LESSON = Lesson(
                    "deal of money.  "
                    "(C) The first source explains that summer learning loss builds over the long break, and the "
                    "writer then keeps pulling more and more detail from that same first source without bringing "
-                   "the second source into the point at all. "
+                   "the second source into the point at all.  "
+                   "(D) Both the first source and the second source talk about the longer school year, and "
+                   "together they give the reader plenty of useful information about the whole debate. "
                    "Correct: A. It makes a fact from each source meet on one claim; B lists the two in separate "
-                   "sentences, and C leans on only one source and never brings the second in."),
+                   "sentences, C leans on only one source and never brings the second in, and D mentions both "
+                   "but connects no specific facts and builds no claim, so it stays a vague comment."),
              choices=[
                  {"id": "A", "text": "The summer-slide harm the first source documents lands on the very low-income students the second source grants a longer year would reach, so the added days aim straight at the gap the sources describe.",
                   "correct": True,
@@ -173,6 +176,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The first source explains that summer learning loss builds over the long break, and the writer then keeps pulling more and more detail from that same first source without bringing the second source into the point at all.",
                   "correct": False,
                   "why": "This leans on only one source. Weaving needs a fact from each source meeting on one claim; the second source never enters the point."},
+                 {"id": "D", "text": "Both the first source and the second source talk about the longer school year, and together they give the reader plenty of useful information about the whole debate.",
+                  "correct": False,
+                  "why": "This names both sources but connects no specific fact from either and states no claim. Mentioning that two sources both cover a topic is not weaving them; the facts never meet on one point."},
              ]),
         # SECOND minimal pair: a DIFFERENT confound than the first discrimination. The first tested woven vs
         # separate sentences and woven vs single-source. This one holds BOTH sources in one sentence in every
@@ -188,9 +194,12 @@ LESSON = Lesson(
                    "source says taxpayers fund, so the spending buys the learning summer would erase.  "
                    "(C) The first source shows a longer year is worth adopting because students remember more, and "
                    "the second source shows it is worth adopting because working families gain reliable childcare, "
-                   "so two separate reasons support it. "
+                   "so two separate reasons support it.  "
+                   "(D) The first source shows a longer year raises reading scores, and the second source agrees "
+                   "that a longer year is a good idea, so both sources back the same conclusion. "
                    "Correct: B. Only B makes a fact from each source meet on one claim; A merely joins the two with "
-                   "'and,' and C splits into two separate reasons instead of one woven point."),
+                   "'and,' C splits into two separate reasons instead of one woven point, and D uses only the first "
+                   "source's fact while the second just echoes agreement, adding no fact of its own to meet it."),
              choices=[
                  {"id": "A", "text": "The first source reports that a longer year lifts reading scores, and the second source reports that it pushes up the district's budget.",
                   "correct": False,
@@ -201,6 +210,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The first source shows a longer year is worth adopting because students remember more, and the second source shows it is worth adopting because working families gain reliable childcare, so two separate reasons support it.",
                   "correct": False,
                   "why": "Both sources appear, but each backs a separate reason, so the sentence builds two claims rather than weaving into one."},
+                 {"id": "D", "text": "The first source shows a longer year raises reading scores, and the second source agrees that a longer year is a good idea, so both sources back the same conclusion.",
+                  "correct": False,
+                  "why": "Only the first source supplies a fact; the second merely echoes agreement and adds no fact of its own. With nothing from the second source to meet the first, the two facts never connect, so it is not woven."},
              ]),
         Slot("MODEL", "predict_the_fix", "What turns this into cross-source integration?",
              bank="school_year",
@@ -226,7 +238,7 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Weave the two school-year sources into one point before you write it out.",
                  setapart_block=setapart("Fill in this frame:",
-                                         "______ (my point), because ______ (a fact from the first source) meets ______ (a fact from the second source) in a way that ______ (why the two build one claim)."),
+                                         "______ (my point) because ______ (a fact from the first source) meets ______ (a fact from the second source) in a way that ______ (why the two build one claim)."),
                  closer="Write ONE point that puts both school-year sources in the service of a single claim: "
                         "connect a fact from each, do not list them in separate sentences.")),
         # DIAGNOSIS = check-and-fix on a PROVIDED weak point (not a fresh production), so it does not repeat the

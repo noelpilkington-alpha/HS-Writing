@@ -153,11 +153,13 @@ LESSON = Lesson(
                    "point, and which does not? "
                    "(A) The author names the household mistake with the recycling industry's own word, calling it 'contamination,' a precise and technical term that instantly makes the writing sound authoritative and gives the whole passage a serious, credible, expert tone.  "
                    "(B) The author lists the ordinary items that foul a load, a greasy box and a jar of food, then shows how the bags jam the machines and the food ruins the paper, so a small household slip reads as a real threat to the whole system.  "
-                   "(C) The author warns that a dirty load can be sent to the landfill, and elsewhere notes that recycling supports jobs and wages across the country, two separate points that each tell the reader something different. "
+                   "(C) The author warns that a dirty load can be sent to the landfill, and elsewhere notes that recycling supports jobs and wages across the country, two separate points that each tell the reader something different.  "
+                   "(D) The author both calls the everyday mistake by the industry's own word, 'contamination,' and lists the greasy box and the jar of food that cause it, giving the reader two separate details about what can foul a load. "
                    "Correct: B. It links two choices, the list of items that foul a load and the account of how they jam the machines and ruin the paper, and both build the "
                    "SAME point: a small household slip threatens the whole load. (A) names one choice and only praises it, so it "
                    "is single-shot. (C) names two choices, but they pull toward different ideas and are not "
-                   "linked to one point."),
+                   "linked to one point. (D) links two choices that do point the same way, but it never names the "
+                   "single point they build, so the chain is left unfinished."),
              choices=[
                  {"id": "A", "text": "The author names the household mistake with the recycling industry's own word, calling it 'contamination,' a precise and technical term that instantly makes the writing sound authoritative and gives the whole passage a serious, credible, expert tone.",
                   "correct": False,
@@ -168,6 +170,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The author warns that a dirty load can be sent to the landfill, and elsewhere notes that recycling supports jobs and wages across the country, two separate points that each tell the reader something different.",
                   "correct": False,
                   "why": "This names two choices, but they pull toward different ideas (the risk of a contaminated load and the economic benefits of recycling) and are not linked to one point. Stacking unrelated choices is not a chain."},
+                 {"id": "D", "text": "The author both calls the everyday mistake by the industry's own word, 'contamination,' and lists the greasy box and the jar of food that cause it, giving the reader two separate details about what can foul a load.",
+                  "correct": False,
+                  "why": "This links two choices that do point the same way, but it stops before naming the single point they build. A chain is not finished until you say the one point out loud, so this is still incomplete."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this single-shot analysis most need?",
              bank="recycling",
@@ -195,7 +200,7 @@ LESSON = Lesson(
                  intro="Use the frame below so you can focus on linking two of the recycling author's choices "
                        "toward ONE point.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
-                                         "The author ______ [choice 1], then ______ [choice 2], so ______ [the single point the two choices build]."),
+                                         "The author ______ [choice 1], then ______ [choice 2] so ______ [the single point the two choices build]."),
                  closer="Pick two choices that push toward the SAME point, name each one, and name the point they "
                         "build together. Do not make one observation and stop. Then run the chain check before "
                         "you submit.")),

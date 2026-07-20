@@ -164,10 +164,12 @@ LESSON = Lesson(
                    "the relationship between the sources, and which two do not? "
                    "(A) The first source says that tolls cut downtown traffic, and the second source says that tolls burden low-income drivers, so the two sources clearly disagree with one another about congestion pricing overall.  "
                    "(B) Both sources agree that downtown congestion is a real problem, but they clash on who should pay for a toll, so the real disagreement is about fairness rather than whether the traffic problem is real.  "
-                   "(C) The first source is much longer and packs in far more detail than the second one, so it gives the reader the fuller and far more trustworthy picture of what these tolls actually do downtown. "
+                   "(C) The first source is much longer and packs in far more detail than the second one, so it gives the reader the fuller and far more trustworthy picture of what these tolls actually do downtown.  "
+                   "(D) Both sources agree that a toll is unfair to drivers, so there is really no disagreement between the two of them at all. "
                    "Correct: B. It names where the sources agree (congestion is a real problem) and where they clash (who pays), "
                    "pinpointing the real issue; A only lists the two reports and slaps on 'disagree' without "
-                   "saying where, and C compares the sources' length, which is not their relationship."),
+                   "saying where, C compares the sources' length, which is not their relationship, and D invents "
+                   "a shared position the sources do not hold, erasing the real clash instead of naming it."),
              choices=[
                  {"id": "A", "text": "The first source says that tolls cut downtown traffic, and the second source says that tolls burden low-income drivers, so the two sources clearly disagree with one another about congestion pricing overall.",
                   "correct": False,
@@ -178,6 +180,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The first source is much longer and packs in far more detail than the second one, so it gives the reader the fuller and far more trustworthy picture of what these tolls actually do downtown.",
                   "correct": False,
                   "why": "This compares the length of the sources. Length is not the relationship between their ideas, so nothing is named."},
+                 {"id": "D", "text": "Both sources agree that a toll is unfair to drivers, so there is really no disagreement between the two of them at all.",
+                  "correct": False,
+                  "why": "This invents an agreement the sources do not share: the pro source does not call the toll unfair. Manufacturing a fake consensus erases the real clash over who pays instead of naming it."},
              ]),
         # SECOND minimal pair, DIFFERENT confound than the first: the first pair tested named-relationship vs.
         # bare list vs. off-target (length). This one tests a FULL relationship (agreement + clash + real issue)
@@ -189,10 +194,12 @@ LESSON = Lesson(
                    "sentence below does both, and which two name only one half? "
                    "(A) Both sources agree that downtown gridlock wastes commuters' time and the city's money, and they treat that shared worry as the reason the toll question is worth debating at all.  "
                    "(B) Both sources agree that downtown gridlock is a genuine problem, but they clash over whether a flat daily toll is a fair fix, so the real split is about fairness, not the traffic itself.  "
-                   "(C) Both sources clash over the flat daily toll, since the first source treats it as a fair price that every driver should pay for smoother streets while the second treats it as an unfair burden on low-income commuters. "
+                   "(C) Both sources clash over the flat daily toll, since the first source treats it as a fair price that every driver should pay for smoother streets while the second treats it as an unfair burden on low-income commuters.  "
+                   "(D) Both sources agree downtown gridlock is a real problem, and they clash over the flat daily toll, though what deeper issue that clash comes down to is left for the reader to work out. "
                    "Correct: B. It names the agreement (downtown gridlock is a real problem), the clash (whether a "
                    "flat toll is fair), and the real issue underneath (fairness); A names only the shared worry and "
-                   "never reaches the clash, and C names only the clash and leaves out the common ground."),
+                   "never reaches the clash, C names only the clash and leaves out the common ground, and D names "
+                   "the agreement and the clash but stops short of pinpointing the real disagreement."),
              choices=[
                  {"id": "A", "text": "Both sources agree that downtown gridlock wastes commuters' time and the city's money, and they treat that shared worry as the reason the toll question is worth debating at all.",
                   "correct": False,
@@ -203,6 +210,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Both sources clash over the flat daily toll, since the first source treats it as a fair price that every driver should pay for smoother streets while the second treats it as an unfair burden on low-income commuters.",
                   "correct": False,
                   "why": "This names only the clash and leaves out the common ground both sources accept, so the shared point is missing."},
+                 {"id": "D", "text": "Both sources agree downtown gridlock is a real problem, and they clash over the flat daily toll, though what deeper issue that clash comes down to is left for the reader to work out.",
+                  "correct": False,
+                  "why": "This names the agreement and the clash but stops there, leaving the reader to figure out the real issue. Naming the relationship means pinpointing that underlying disagreement (fairness), not handing that last step back to the reader."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this pair of reports most need?",
              bank="congestion_pricing",
@@ -224,7 +234,7 @@ LESSON = Lesson(
                  intro="Using the congestion-pricing set, write ONE sentence that names the relationship between "
                        "the two sources.",
                  setapart_block=setapart("Fill in this frame:",
-                                         "The sources agree that ______, but they clash on ______, so the real disagreement is about ______."),
+                                         "The sources agree that ______, but they clash on ______ so the real disagreement is about ______."),
                  closer="State where the sources agree, where they conflict, and the real issue underneath. Do "
                         "not just report each source in turn.")),
         # DIAGNOSIS = check-and-fix on a PROVIDED weak draft (not a fresh production), so it does not repeat the

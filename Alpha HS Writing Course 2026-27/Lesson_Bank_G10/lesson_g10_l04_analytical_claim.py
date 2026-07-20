@@ -161,10 +161,12 @@ LESSON = Lesson(
                    "(B) Chopin fills the view through the open window with fresh spring imagery, tilting a scene "
                    "of grief toward renewal and priming the reader for the freedom Mrs. Mallard is about to feel.  "
                    "(C) Chopin wrote a moving and genuinely surprising story, and by the final line a great many "
-                   "readers find that they are still thinking hard about it long after reaching the very last page. "
-                   "Correct: B is analytical; A is summary and C is opinion. (A) retells what happens. (C) judges "
-                   "the story overall. (B) names a choice (the spring imagery) AND what it is doing (turning "
-                   "grief toward renewal), which is the analytical claim."),
+                   "readers find that they are still thinking hard about it long after reaching the very last page.  "
+                   "(D) Chopin uses imagery, irony, and symbolism at several points across the story. "
+                   "Correct: B is analytical; A is summary, C is opinion, and D just lists devices. (A) retells "
+                   "what happens. (C) judges the story overall. (D) names techniques in general but points to no "
+                   "specific choice and no effect. (B) names a choice (the spring imagery) AND what it is doing "
+                   "(turning grief toward renewal), which is the analytical claim."),
              choices=[
                  {"id": "A", "text": "Chopin has Mrs. Mallard hear that her husband has died, weep at once in her sister's arms, then go away to her room alone and sink into the comfortable, roomy armchair that faces the wide open window.",
                   "correct": False,
@@ -175,6 +177,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Chopin wrote a moving and genuinely surprising story, and by the final line a great many readers find that they are still thinking hard about it long after reaching the very last page.",
                   "correct": False,
                   "why": "This is an opinion about the story as a whole. It names no specific choice and no effect of a choice, so it is a judgment, not analysis of the craft."},
+                 {"id": "D", "text": "Chopin uses imagery, irony, and symbolism at several points across the story.",
+                  "correct": False,
+                  "why": "This lists techniques in general but points to no one specific choice and says what none of them is doing. Naming devices is not the same as claiming a choice and its purpose."},
              ]),
         # SECOND minimal pair, DIFFERENT confounds than the first (which was summary vs opinion): here the two
         # traps are (B) naming a real craft choice but only REPORTING it, no purpose, and (C) a bare thematic
@@ -194,12 +199,14 @@ LESSON = Lesson(
                    "trouble.  "
                    "(C) Chopin suggests that a person can feel quietly trapped inside a marriage even when nothing "
                    "looks wrong from the outside, and that a first taste of freedom can be so overwhelming it is "
-                   "impossible to hold on to for very long. "
+                   "impossible to hold on to for very long.  "
+                   "(D) Chopin has Mrs. Mallard weep in her sister's arms, then go alone to her room and slowly "
+                   "begin to whisper the word free. "
                    "Correct: A is the analytical claim. (A) names a choice (the ironic turn from expected grief to "
                    "a rising sense of freedom) AND what it does (making the reader feel how confining the marriage "
                    "had been). (B) names a choice but only reports it, never saying what it accomplishes. (C) "
                    "states the story's overall meaning but points to no specific choice, so it is a claim about "
-                   "theme, not craft."),
+                   "theme, not craft. (D) retells what happens, step by step, so it is summary, not analysis."),
              choices=[
                  {"id": "A", "text": "Chopin has the newly widowed Mrs. Mallard feel a rising sense of freedom rather than only grief, turning the moment we expect to be pure mourning into release and making us feel how confining her marriage had been.",
                   "correct": True,
@@ -210,6 +217,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Chopin suggests that a person can feel quietly trapped inside a marriage even when nothing looks wrong from the outside, and that a first taste of freedom can be so overwhelming it is impossible to hold on to for very long.",
                   "correct": False,
                   "why": "This interprets the story's overall meaning but points to no specific choice the author makes, so it is a claim about theme rather than about the craft."},
+                 {"id": "D", "text": "Chopin has Mrs. Mallard weep in her sister's arms, then go alone to her room and slowly begin to whisper the word free.",
+                  "correct": False,
+                  "why": "This retells what happens, step by step. It is accurate summary, but it names no choice and no purpose, so it is not an analytical claim."},
              ]),
         Slot("MODEL", "predict_the_fix", "What turns this summary into analysis?",
              bank="story_of_an_hour",

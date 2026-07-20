@@ -93,6 +93,7 @@ DISC_B = ("Chopin places the word 'free' right after the grief so the release se
           "it.")
 DISC_C = ("Chopin makes it clear that the single word 'free' captures just how happy and relieved Mrs. Mallard "
           "feels inside.")
+DISC_D = ("Chopin makes the reader feel a sudden rush of hope near the middle of the unfolding story.")
 
 # SECOND discrimination options - a DIFFERENT confound than the first pair. The first pair's distractors name no
 # technique at all (only a feeling). This pair's key distractor (D2_A) DOES name a real technique (the open-window
@@ -106,6 +107,7 @@ D2_B = ("Chopin sets the open window in front of Mrs. Mallard so its view of new
         "coming rebirth before she admits it.")
 D2_C = ("Chopin makes it clear that Mrs. Mallard feels lighter and far more hopeful than she has felt in years "
         "while she keeps gazing out at the bright open sky beyond her small, quiet room.")
+D2_D = ("Chopin sets the open window before Mrs. Mallard so that she begins to feel her own freedom returning.")
 
 LESSON = Lesson(
     id="ACC-W910-L-G10-C1002-0005", grade="9-10", lesson_type=4,
@@ -177,11 +179,13 @@ LESSON = Lesson(
                    "Which one claims the CRAFT (a technique plus its effect), and which are dressed-up CONTENT? "
                    "(A) " + DISC_A + "  "
                    "(B) " + DISC_B + "  "
-                   "(C) " + DISC_C + " "
+                   "(C) " + DISC_C + "  "
+                   "(D) " + DISC_D + " "
                    "Correct: B. It names a technique (placing 'free' right after the grief) and its effect (the "
                    "release seems to surface before she names it). (A) and (C) only report what Mrs. Mallard "
-                   "feels, just with an author verb in front, so they are content. Quoting the word 'free,' as "
-                   "(C) does, does not make a claim about craft."),
+                   "feels, just with an author verb in front, so they are content. (D) names an effect on the "
+                   "reader but never names the technique that creates it, so it is only half a craft claim. "
+                   "Quoting the word 'free,' as (C) does, does not make a claim about craft."),
              choices=[
                  {"id": "A", "text": DISC_A, "correct": False,
                   "why": "This leads with 'Chopin shows,' but it only reports what Mrs. Mallard feels (relieved, joyful). It names no technique and no effect on the reader, so it is dressed-up content."},
@@ -189,6 +193,8 @@ LESSON = Lesson(
                   "why": "Correct. It names a technique Chopin uses (placing 'free' right after the grief) and its effect (the release seems to surface before she names it). Naming the technique and its effect is the craft claim."},
                  {"id": "C", "text": DISC_C, "correct": False,
                   "why": "This quotes the word 'free' and sounds close, but it still only reports how happy Mrs. Mallard feels. Quoting a text word is not the same as naming a technique and its effect, so this is content."},
+                 {"id": "D", "text": DISC_D, "correct": False,
+                  "why": "This names an effect on the reader (a rush of hope), but it never names the technique Chopin uses to create it, so it is only half a craft claim. An effect with no technique is not yet analysis."},
              ]),
         # SECOND discrimination: a DIFFERENT confound. The first pair's wrong options name NO technique (only a
         # feeling). Here the key distractor (A) DOES name a real technique (the open-window image) but stops with
@@ -200,11 +206,14 @@ LESSON = Lesson(
                    "one names a technique AND says what it does to the reader. Which is the craft claim? "
                    "(A) " + D2_A + "  "
                    "(B) " + D2_B + "  "
-                   "(C) " + D2_C + " "
+                   "(C) " + D2_C + "  "
+                   "(D) " + D2_D + " "
                    "Correct: B. It names a technique (setting the open window in front of Mrs. Mallard) and its "
                    "effect (the view of new life turns the reader toward her coming rebirth). (A) names the same "
                    "image but stops before any effect, so it is only half the claim. (C) only reports how Mrs. "
-                   "Mallard feels, with an author verb in front, so it is content."),
+                   "Mallard feels, with an author verb in front, so it is content. (D) names the technique but "
+                   "its 'so that' effect lands on the character, what Mrs. Mallard feels, not on the reader, so "
+                   "it slides back into content."),
              choices=[
                  {"id": "A", "text": D2_A, "correct": False,
                   "why": "This names a real technique, the open-window image, but it never says what that choice does to the reader, so it is only half of a craft claim."},
@@ -212,6 +221,8 @@ LESSON = Lesson(
                   "why": "Correct. It names a technique (setting the open window in front of Mrs. Mallard) and its effect on the reader (the view of new life turns the reader toward her coming rebirth), which is what makes a claim about craft."},
                  {"id": "C", "text": D2_C, "correct": False,
                   "why": "This only reports how Mrs. Mallard feels, hopeful and light, even with an author verb in front, so it names no technique and stays content."},
+                 {"id": "D", "text": D2_D, "correct": False,
+                  "why": "This names the technique, but its 'so that' effect is only what Mrs. Mallard feels, not an effect on the reader, so the claim slides back into content."},
              ]),
         Slot("MODEL", "predict_the_fix", "Why is this claim still content, not craft?",
              bank="story_of_an_hour",

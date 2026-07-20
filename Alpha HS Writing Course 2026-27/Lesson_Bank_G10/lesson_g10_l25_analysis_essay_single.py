@@ -173,10 +173,13 @@ LESSON = Lesson(
                    "story was moving and beautifully written.  "
                    "(C) The essay opens with a long paragraph explaining who Kate Chopin was and when she lived, "
                    "then briefly mentions that the story uses imagery, without ever quoting a line or saying what "
-                   "any image does to the reader. "
+                   "any image does to the reader.  "
+                   "(D) The essay points out several techniques in turn, quoting an image in one paragraph and a "
+                   "repeated word in another and noting what each does, but it never commits to one overall claim "
+                   "about Chopin's craft that the paragraphs all support. "
                    "Correct: A. It states one analytical thesis and proves it with quoted device, effect, and "
-                   "warrant; B retells the plot and rates it, and C gives biography and a label with no analyzed "
-                   "evidence."),
+                   "warrant; B retells the plot and rates it, C gives biography and a label with no analyzed "
+                   "evidence, and D tours devices without ever landing the single thesis that ties them together."),
              choices=[
                  {"id": "A", "text": "The essay states one analytical thesis about a choice Chopin makes, then each body paragraph quotes a device, names its effect on the reader, and gives a warrant tying that effect to the thesis.",
                   "correct": True,
@@ -187,6 +190,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The essay opens with a long paragraph explaining who Kate Chopin was and when she lived, then briefly mentions that the story uses imagery, without ever quoting a line or saying what any image does to the reader.",
                   "correct": False,
                   "why": "Biography plus an unproven label is not analysis. A device must be quoted and its effect explained, then tied to the thesis with a warrant."},
+                 {"id": "D", "text": "The essay points out several techniques in turn, quoting an image in one paragraph and a repeated word in another and noting what each does, but it never commits to one overall claim about Chopin's craft that the paragraphs all support.",
+                  "correct": False,
+                  "why": "This analyzes devices but never lands a single analytical thesis. A tour of techniques with no controlling claim leaves the paragraphs pulling in different directions, so it is not yet one unified analysis."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this analysis draft most need?",
              bank="story_of_an_hour",

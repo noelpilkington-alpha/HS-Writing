@@ -159,16 +159,19 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Which paragraph weaves the sources?",
              ref="", labeled_grade_c=True, bank="weather",
              body=("You have watched a list become woven. Now spot the target: which paragraph WEAVES two sources "
-                   "into one point, and which two are SOURCE-BY-SOURCE? "
+                   "into one point, and which three do not? "
                    "(A) The upper-air readings Source A describes feed the models, while the forecasters Source B "
                    "describes correct those models, so measurement and judgment build one reliable forecast.  "
                    "(B) Source A explains that forecasters launch weather balloons to read the upper air, and "
                    "Source B explains that local offices adjust the computer models before release, and both "
                    "sources accurately describe separate steps in the forecasting process.  "
                    "(C) Source A reports that Doppler radar detects storms as they move. Source B reports that "
-                   "river centers predict when rivers will rise. Each source covers one kind of work the agency does. "
+                   "river centers predict when rivers will rise. Each source covers one kind of work the agency does.  "
+                   "(D) Source A shows the upper-air readings give the models their starting data, so measurement "
+                   "is what makes the forecast reliable. Source B is named at the end but adds nothing to that point. "
                    "Correct: A. It connects both sources on ONE point (measurement feeding judgment); B and C "
-                   "report each source in its own block with no shared point, so they read as lists. Weaving is the move."),
+                   "report each source in its own block with no shared point, and D builds a point from Source A "
+                   "alone while Source B does no work. Weaving both sources on one point is the move."),
              choices=[
                  {"id": "A",
                   "text": "The upper-air readings Source A describes feed the models, while the forecasters Source B describes correct those models, so measurement and judgment build one reliable forecast.",
@@ -182,6 +185,10 @@ LESSON = Lesson(
                   "text": "Source A reports that Doppler radar detects storms as they move. Source B reports that river centers predict when rivers will rise. Each source covers one kind of work the agency does.",
                   "correct": False,
                   "why": "Source-by-source. Two separate reports, one per source, with no single point built from both. Naming both sources is not weaving them."},
+                 {"id": "D",
+                  "text": "Source A shows the upper-air readings give the models their starting data, so measurement is what makes the forecast reliable. Source B is named at the end but adds nothing to that point.",
+                  "correct": False,
+                  "why": "Single-source. It builds one point, but only from Source A; Source B is named yet does no work, so the sources are not woven. If you could cut Source B and lose nothing, it is not synthesis."},
              ]),
         Slot("MODEL", "predict_the_fix", "Why does this paragraph score as source-by-source?",
              bank="weather",
@@ -212,7 +219,7 @@ LESSON = Lesson(
                                          "about making a forecast.", "red"),
                  checklist_block=setapart("Weave it with this frame:",
                                          "Both sources show that ______ (one point). The ______ Source A "
-                                         "describes ______, and the ______ Source B describes ______, so ______."),
+                                         "describes ______, and the ______ Source B describes ______ so ______."),
                  closer="Rewrite the paragraph using the frame. Goal: woven, not a list. Then run the "
                         "woven-or-listed check and fix any answer that is no.")),
         # DIAGNOSIS = watch the check run on a PROVIDED weak paragraph, then write a fresh one and run it. Same
