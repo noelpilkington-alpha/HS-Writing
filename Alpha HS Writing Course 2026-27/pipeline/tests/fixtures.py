@@ -38,9 +38,29 @@ def _load_module(path):
     return m
 
 
+def _pad_discriminations_to_four(L):
+    """The 4-option rule (#8, LS-feedback 2026-07): structural_item now requires EXACTLY 4 options on a
+    discrimination. The real bank lesson this golden loads still carries 3-option discriminations (that is
+    the Task-11 rollout worklist, fixed in the real files there, NOT here). To keep the golden a clean
+    baseline under the new rule WITHOUT editing any real lesson, pad the deep-copied slots' choices[] to 4
+    with a plausible named-misconception distractor. Kept SHORTER than the correct option so it never makes
+    the key the lone-longest (gate_distractor_length_cue) and text distinct (no duplicate-option flag)."""
+    for s in L.slots:
+        if s.kind == "discrimination" and getattr(s, "choices", None) and len(s.choices) == 3:
+            s.choices.append({
+                "id": "D",
+                "text": "It names the source but leaves the number sitting on its own as a fragment.",
+                "correct": False,
+                "why": "Naming who reported the figure is not enough; the quote is still dropped because "
+                       "the number is not folded into a sentence the writer built.",
+            })
+    return L
+
+
 def golden_lesson():
     """A real, passing lesson from the bank (G9 L07 integrate_quote: has teach/model/discrim/
-    production, bound refs, options). Baseline for known-bad mutations."""
+    production, bound refs, options). Baseline for known-bad mutations. Discriminations are padded to the
+    4-option rule (#8) in-fixture so the golden stays clean without touching any real lesson."""
     import sys
     if PIPE not in sys.path:
         sys.path.insert(0, PIPE)
@@ -49,7 +69,7 @@ def golden_lesson():
     m = _load_module(cands[0])
     lessons = getattr(m, "LESSONS", [])
     assert lessons, "no LESSONS in golden baseline module"
-    return copy.deepcopy(lessons[0])
+    return _pad_discriminations_to_four(copy.deepcopy(lessons[0]))
 
 
 # ---- KNOWN-BAD MUTATIONS (each introduces exactly one defect) ----
@@ -104,12 +124,26 @@ def _mut_unlabeled_grade_c(L):
 
 def _mut_structural_all_of_above(L):
     # Insert an "all of the above" option into a discrimination -> banned option FORM (structural_item).
-    # The golden's discriminations carry a structured choices=[] array; add the banned form there (a wrong
-    # option, so option-count stays 4 and exactly-one-correct is preserved -> isolates the banned-form defect).
+    # The golden's discriminations carry a structured choices=[] array (padded to 4 by golden_lesson()); rewrite
+    # one WRONG option's text to the banned form (option-count stays 4 and exactly-one-correct is preserved ->
+    # isolates the banned-form defect; appending would break the new exactly-4 rule and duplicate an id).
+    # ISOLATION: the banned form ("All of the above") is short, which would leave the correct option the
+    # lone-longest and ALSO trip gate_distractor_length_cue -> dual-fire, violating one-defect-per-known-bad.
+    # So we length-balance: set every OTHER option (correct + remaining wrongs) to the same short length as
+    # the banned option, so ONLY the banned-form defect remains isolated for structural_item.
     for s in L.slots:
         if s.kind == "discrimination" and getattr(s, "choices", None):
-            s.choices.append({"id": "D", "text": "All of the above", "correct": False,
-                              "why": "banned option form injected for the checker corpus"})
+            banned = "All of the above"
+            filler = "A plausible option of about the same length here now."  # ~ matched length, distinct
+            done = False
+            for c in s.choices:
+                if not c.get("correct") and not done:
+                    c["text"] = banned
+                    c["why"] = "banned option form injected for the checker corpus"
+                    done = True
+                else:
+                    # keep texts distinct + length-balanced so no key is lone-longest (isolate the banned form)
+                    c["text"] = (filler[:-1] + f" {c.get('id','')}.")
             return L
         if s.kind == "discrimination" and s.body:
             # prose fallback: append a "(D) All of the above" option before the Correct: tail

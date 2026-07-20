@@ -907,8 +907,9 @@ def gate_structural_item(L) -> tuple[bool, str]:
     item-writing defect families 'no LLM natively avoids' (TestBuilder doc) that gate_distractor_length_cue
     does NOT already cover (length-cueing is handled there; this does not duplicate it):
       (a) banned option FORMS: 'all/none of the above', 'both A and B', Type-K roman-numeral combinations;
-      (b) option COUNT: our standard is exactly 3 options; flag 2 or >4 (self_score - a 2-point predict-your-
-          own-result item - is not a discrimination/predict item and is not inspected here);
+      (b) option COUNT: a discrimination needs EXACTLY 4 options (LS-feedback #8, 2026-07; each a named
+          misconception); other choice items (e.g. predict_the_fix) allow 2-4 (self_score - a 2-point
+          predict-your-own-result item - is not a discrimination/predict item and is not inspected here);
       (c) EXACTLY-ONE-CORRECT: exactly one option flagged correct (0 or 2+ correct = defect);
       (d) NO DUPLICATE OPTIONS: two option texts identical/near-identical after normalization.
     Reads s.choices when present, else the '(A)...(B)...'/'Correct: X' prose in s.body/feedback. An
@@ -925,12 +926,15 @@ def gate_structural_item(L) -> tuple[bool, str]:
         for oid, txt in opts:
             if _BANNED_OPTION_FORM.search(txt) or _BANNED_TYPE_K.search(txt):
                 problems.append(f"{tag}: banned option form in ({oid}) '{txt.strip()[:36]}'")
-        # (b) option count: allow 2-4. A 2-option discrimination is a LEGITIMATE binary pick-better-of-two
-        # minimal pair ("which paragraph analyzes vs summarizes?"), a valid design - not a defect. Flag only
-        # <2 (not a choice) or >4 (Haladyna: too many options). (Relaxed from ==2||>4 after the gate over-
-        # flagged 5 real binary minimal-pair discriminations - the over-strict-gate failure mode.)
+        # (b) option count. DISCRIMINATION requires EXACTLY 4 options (LS-feedback #8, 2026-07: 4 lowers the
+        # guess rate vs 3, and each 4th is a named misconception). OTHER choice items (predict_the_fix) allow
+        # 2-4: a 2-option predict is a legitimate binary pick-better-of-two minimal pair, so for non-
+        # discrimination we flag only <2 (not a choice) or >4 (Haladyna: too many options).
         n = len(opts)
-        if n < 2 or n > 4:
+        if s.kind == "discrimination":
+            if n != 4:
+                problems.append(f"{tag}: discrimination has {n} options (need exactly 4; each a named misconception)")
+        elif n < 2 or n > 4:
             problems.append(f"{tag}: {n} options (a choice item needs 2-4)")
         # (c) exactly one correct
         if len(correct) != 1:
