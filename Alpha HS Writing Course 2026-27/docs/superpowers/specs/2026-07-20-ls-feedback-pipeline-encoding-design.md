@@ -36,10 +36,23 @@ Praise (#1) needs no action. The other 8:
 
 **#3 — Check cadence: flip card→check often enough to force recall.**
 - Claim: students scroll past great content; we want frequent small checks so they recall tools (e.g. the 3-question test).
-- L2: playbook rule — no more than N consecutive teach/stimulus segments without an intervening checkpoint (discrimination / predict_the_fix / self_score). Propose **N = 3** (tunable in review).
-- L3: new `gate_check_cadence` — walk the slot sequence; fail if > N teach-family slots occur with no checkpoint between them. Exempt scaffold-free GATE lessons (they are certification, not instruction) and the final write block.
-- Fixtures: BAD = 4 teach cards in a row, no check; GOOD = teach, teach, check, teach.
-- Open question for review: is N=3 right, or per-archetype?
+- **Cadence decided by the council-of-writing-instruction (2026-07-20; KH/WH/DI/SRSD/Yeager, adjudicated by evidence, losers named).** N is a per-archetype CEILING, not a quota:
+
+  | Archetype | N ceiling (max consecutive counted segments before a mandatory check) |
+  |---|---|
+  | concept-teaching | **3**, tightened to **2** in the window right after any memorizable-tool card |
+  | checking/revision | **2** |
+  | full-essay-build | **4**, at production milestones only (after-plan, after-paragraph), never mid-draft |
+
+- L2 playbook: author to these ceilings; check-type shifts along the arc (recall → apply → self-regulation).
+- L3: new `gate_check_cadence` — walk the slot sequence; fail if a run of counted segments exceeds the archetype ceiling with no intervening qualifying check.
+  - **Segment counting:** each teach_card / annotated_before_after / stimulus_display = +1; a worked example (annotated_before_after) counts as **ONE** regardless of length; buy-in/Discuss-It teach cards count **+0** (tagged); narration/glossary not counted.
+  - **What resets the counter (a qualifying check):** a discrimination / predict_the_fix / self_score that is a use/apply item (not verbatim recall of the last card) AND has per-choice reveal for every option. (The "per-choice reveal exists" half is gateable via `structural_item`; the "is a use item / genuinely process-level" half is playbook + review — see PLAYBOOK-NOT-GATE.)
+  - **Memorizable-tool trigger:** if the most recent counted card introduces a named tool/mnemonic (e.g. the 3-question test), the effective ceiling until the next check = min(archetype-N, 2), and that check should be a recall item.
+  - **Worked-example rule (firm, near-unanimous):** NEVER place a check inside a worked example; the check fires at the seam immediately after, on a NEW prompt (tests transfer, not echo).
+  - **Exemptions:** scaffold-free GATE/assessment lessons (no teaching checks required); mid-worked-example; the final independent write/draft block; buy-in/Discuss-It cards (count 0).
+- Fixtures: BAD = 4 counted teach cards in a row, no check (concept archetype); BAD = a check placed inside a worked example; GOOD = teach, teach, check, teach; GOOD = a worked example (long, multi-card) counted as one, check at the seam after.
+- **Requires a card/lesson tagging layer** (archetype + per-card type incl. memorizable-tool, buy-in, worked-example, production-block). Tagging integrity is load-bearing per the council (mis-tag → wrong gate); add a tagging-presence check.
 
 **#6 — "Check and fix" must make the student ANSWER the 3 questions, not read pre-answered ones.**
 - Claim: the diagnosis prompt currently answers its own check ("Does it take a side? No…"); the student should answer each check AND then improve.
@@ -74,14 +87,19 @@ Praise (#1) needs no action. The other 8:
 - Static **SVG** (puzzle-piece "arguable claim = side + reason") + narration audio: buildable now via the existing visual-design-protocol Track A; L2 playbook note.
 - Hosted/embedded-question **video** (Peter Bates style): the player strips `iframe`/script, so NOT possible in the current gated format. Log to the external-app track. NOT auto-solved by Platform3 (that is a content-surface change, not a confirmed richer player) — do not promise it there without evidence.
 
+**Council items that are authoring guidance, NOT the deterministic gate (go to the playbook + review):**
+- **Feedback quality wording** (WH): the gate enforces per-choice reveal *exists* for every option; it cannot enforce that the wording is genuinely process-level / feed-up-back-forward. Authoring rule + review.
+- **Tone / status-respect framing** (Yeager): say the standard out loud up front; presume competence in item difficulty; wise-feedback reveal (no person-praise, no compliment-sandwich). If ignored, a frequent-check cadence reads as surveillance and backfires — but it is not a build check.
+- **Test-out / skip-ahead** (Yeager): pass a cold check → skip intervening cards. Recommended as an OPTIONAL UX enhancement, NOT part of the deterministic minimum gate; it also answers SRSD's worry (a *real* cold check is self-gating, so struggling writers can't skip past the retrieval they most need). Log as a product enhancement, not built here.
+
 ## Pilot-first workflow
 
 1. **Build L1 helper changes + L3 gates + L2 playbook edits**, each gate with its paired BAD/GOOD fixtures. Gates go in green (fixtures pass) but are NOT yet applied course-wide.
-2. **Apply to ONE pilot lesson: G9 L01 `arguable_claim`** (`lesson_g9_l01_arguable_claim_v3_1.py`). It exercises the most new gates at once: the side+reason frame (#2), the "check and fix" diagnosis (#6), 3-option MCQs (#8), teach→check cadence (#3). Also the highest-traffic foundational lesson, so its "voice" sets the template.
-3. **Render before/after; Noel compares.**
-4. **On sign-off:** run `tier_a_regression.py` course-wide → the new gates emit the exact non-compliant-lesson list → roll out (parallel-agent authoring pass for #8's ~118 items; targeted edits for the rest), gate as backstop.
-
-**Pilot coverage gap (flagged):** #7 lives in l04/l06 and #9 in l03, so the G9 L01 pilot will not show those two. Verify them on a second spot-check lesson (l03 or l04) before full rollout.
+2. **Apply to TWO pilot lessons (Noel):**
+   - **G9 L01 `arguable_claim`** (`lesson_g9_l01_arguable_claim_v3_1.py`) — exercises the most new gates at once: the side+reason frame (#2), the "check and fix" diagnosis (#6), MCQ option count (#8), teach→check cadence (#3). Highest-traffic foundational lesson; sets the "voice."
+   - **one of `l03` (controlling_idea) or `l04` (interleave)** — chosen so #7 (odd stem wording) and #9 (repeat-gloss of "controlling idea") are also piloted. `l03` is the stronger pick (it re-uses "controlling idea," directly exercising #9); confirm during planning.
+3. **Render before/after for both; Noel compares.**
+4. **On sign-off:** run `tier_a_regression.py` course-wide → the new gates emit the exact non-compliant-lesson list → roll out. The #8 4th-distractor pass (~118 items) runs **immediately after the pilot** (Noel) as a parallel-agent authoring pass with the gate as backstop; the cheaper edits (#2/#3/#6/#9) roll out in the same wave.
 
 ## What we are NOT doing
 - Not adding gates for phrasing quality (#7) or visual choices (#5/#4-partial) — not mechanically checkable; playbook + review.
@@ -96,7 +114,10 @@ Praise (#1) needs no action. The other 8:
 - The gates, run course-wide, produce a concrete, complete rollout worklist (no silent misses).
 - Playbooks updated so a fresh authoring agent generating a new lesson would comply without seeing this doc.
 
-## Open questions for review
-1. **Check cadence N** (#3): N=3 global, or per-archetype (e.g. denser for T5 CHECK)?
-2. **#8 rollout sequencing:** do the ~118-item 4th-distractor pass immediately after the pilot, or batch it as its own tracked project after the cheaper items ship?
-3. **Pilot scope:** G9 L01 only, or L01 + one of {l03, l04} so #7/#9 are also piloted before rollout?
+## Decisions (open questions resolved)
+1. **Check cadence N** (#3): **per-archetype ceiling** (concept 3→2-after-tool / checking 2 / build 4), decided by the council — see #3 above. NOT a global N.
+2. **#8 rollout sequencing** (Noel): do the ~118-item 4th-distractor authoring pass **immediately after the pilot**.
+3. **Pilot scope** (Noel): **G9 L01 + one of {l03, l04}** so #7 (odd stem wording) and #9 (repeat-gloss) are also piloted before rollout.
+
+## Cross-lesson caveat (council, grade A — do not lose)
+The in-lesson cadence gate is **necessary but not sufficient** for durable recall (spacing g=0.74). The same tools must be retrieved again in *later* lessons — a course-sequence-level requirement owned by `pipeline/course_sequence_g9_12.py` / the sequence builder, NOT the per-lesson gate. The cadence gate must not create false confidence that retention is handled.
