@@ -514,6 +514,53 @@ def gate_frame_comma(L) -> tuple[bool, str]:
         return False, "comma before 'because'/'so' in a fill-in frame (drop it): " + "; ".join(hits[:4])
     return True, "no frame punctuation-model errors"
 
+_SELF_ANSWER_RE = re.compile(r"\?\s*(yes|no)[,\.\s]", re.I)
+# own-turn signal = an independent student turn AFTER a coping-model demo. Recognizes "now write",
+# "now rewrite" (the sanctioned coping-model turn: rewrite the provided weak draft), "now revise", and
+# "now you [do work]" UNLESS it is the giveaway phrasing "now you have/'ve [the fixed version]"
+# (possessing the answer, not doing the work).
+_OWN_TURN_RE = re.compile(r"\b(now (?:(?:re)?write|revise|you\b(?!\s*(?:have|'ve)\b))|your own|a fresh|write and check)\b", re.I)
+# A COPING-MODEL marker: pre-answered checks are OK only when they model the check on a supplied specimen
+# and THEN hand the student their own turn, OR when the student runs the check on their OWN just-written
+# draft (a self-check). Both are sanctioned; a bare "...No. Now rewrite it." with neither is a giveaway.
+# Two structural signals cover every real bank pattern:
+#   (a) "watch/run the check ON a <specimen>" demo -> "weak/provided/example <draft|paragraph|plan|map|
+#       sentence|judgment|read|pool|version|claim>", "<specimen> to (fix|check)", "example:", "here is what".
+#   (b) an OWN-draft self-check -> "your own draft", "the essay you just wrote", "reread your draft" (the
+#       _WRITTEN_DRAFT_SIGNATURES vocabulary): the student IS answering the check, on their own writing.
+_PROVIDED_DRAFT_RE = re.compile(
+    r"\b(?:(?:weak|provided|example|this)\s+"
+    r"(?:draft|paragraph|plan|map|sentence|judgment|read|pool|version|claim|essay|argument)"
+    r"|(?:draft|paragraph|plan|map|read|judgment)\s+to\s+(?:fix|check)"
+    r"|watch\s+(?:the\s+)?(?:check|precision pass|\w+\s+pass)\s+run"
+    r"|here\s+is\s+what|example:\s|for example)\b", re.I)
+_OWN_DRAFT_SELFCHECK_RE = re.compile(
+    r"\b(your own draft|the essay you just wrote|essay you just wrote|reread (?:your|the) (?:draft|essay)"
+    r"|run this checklist on your|check your own draft)\b", re.I)
+def gate_self_answered_check(L) -> tuple[bool, str]:
+    """#6: a diagnosis must make the student ANSWER the check, not read pre-answered ones. Pre-answered
+    checks are OK ONLY as a coping-model demo: the answers must diagnose a PROVIDED specimen (a named weak
+    draft) AND be followed by an independent student turn (own-turn signal). A prompt that pre-answers with
+    an own-turn tail but NO provided specimen ('...No. Now rewrite it.') still fails - that is a giveaway
+    wearing a fig leaf, not a coping model."""
+    for i, s in enumerate(L.slots, 1):
+        if s.kind != "diagnosis_frq":
+            continue
+        text = re.sub(r"<[^>]+>", " ", s.body or "")
+        if not _SELF_ANSWER_RE.search(text):
+            continue
+        # sanctioned = (a) coping-model demo on a supplied specimen + an independent own-turn, OR
+        #              (b) the student runs the check on their OWN just-written draft (a self-check).
+        coping_demo = bool(_OWN_TURN_RE.search(text)) and bool(_PROVIDED_DRAFT_RE.search(text))
+        own_selfcheck = bool(_OWN_DRAFT_SELFCHECK_RE.search(text))
+        sanctioned = coping_demo or own_selfcheck
+        if not sanctioned:
+            return False, (f"slot {i}: diagnosis pre-answers its own check without the sanctioned coping-model "
+                           f"shape (a named PROVIDED weak draft to diagnose + an independent student turn). "
+                           f"Make the student answer the check, or frame it as 'check this weak draft ... now "
+                           f"write your own'.")
+    return True, "diagnosis checks are student-answered (or a sanctioned coping-model: provided draft + own turn)"
+
 # --- Direct-Instruction / completeness gates (Instructional_Design_KB rules 1,2,4 + Engelmann faultless
 #     communication). These enforce that a lesson is a FINISHED, teachable artifact, not a thin blueprint. ---
 
@@ -967,6 +1014,7 @@ GATES = [
     ("no_source_markup", gate_no_source_markup),
     ("no_prior_work_reference", gate_no_prior_work_reference),
     ("frame_comma", gate_frame_comma),
+    ("self_answered_check", gate_self_answered_check),
     ("define_before_use", gate_define_before_use),
     ("content_depth", gate_content_depth),
     ("model_before_required", gate_model_before_required),

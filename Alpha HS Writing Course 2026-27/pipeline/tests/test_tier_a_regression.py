@@ -30,7 +30,7 @@ from g9_push_dryrun import STIM  # noqa: E402
 #  - _INFLIGHT_MSG_SUBSTRINGS: for a TIGHTENED existing gate (e.g. structural_item's new "exactly 4
 #    options" rule), we cannot allowlist the whole gate (it still catches real defects), so we match
 #    the specific new rule's message substring.
-_INFLIGHT_GATES = ("frame_comma",)          # extend as Tasks 4,6 land (self_answered_check, check_cadence); emptied at T11
+_INFLIGHT_GATES = ("frame_comma", "self_answered_check")   # extend as Task 6 lands (check_cadence); emptied at T11
 _INFLIGHT_MSG_SUBSTRINGS = ("need exactly 4",)   # Task 3: structural_item's new 4-option-rule message; emptied at T11
 
 
