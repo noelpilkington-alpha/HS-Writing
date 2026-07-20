@@ -18,6 +18,16 @@ WHAT THIS ENCODES (validated by the __main__ self-test):
   - PREREQ_DAG         : the internal HS prerequisite graph (acyclic, forward-only across grades)
   - Helpers            : owning_grade, kcs_for_acc, is_owned, inherited_at, unit_order, ...
 
+OPEN SEQUENCE-BUILDER FLAG - CROSS-LESSON SPACING (council, KH, grade-A; LS-feedback 2026-07-20):
+  The per-lesson `gate_check_cadence` (in lesson_contract.py) enforces retrieval-practice WITHIN a lesson
+  (a check every N teach cards). That is necessary but NOT sufficient for durable recall: the same taught
+  tools (the 3-question tests, warrant, synthesis, counterclaim, etc.) must be RE-RETRIEVED in LATER
+  lessons (distributed practice; spacing effect g=0.74). That is a SEQUENCE-level responsibility this
+  module owns, and it is NOT yet encoded here (no gate can check it per-lesson). TODO for a future
+  spacing/interleaving pass: add a cross-lesson retrieval schedule (which earlier KCs each lesson should
+  recruit) so a tool taught in lesson L is deliberately retrieved again in L+k. Do not mistake a green
+  in-lesson cadence gate for handled retention. See INCEPT_INTEGRATION.md / the LS-feedback plan for context.
+
 Dependency-free (stdlib). Run: python pipeline/course_sequence_g9_12.py   (prints self-test result)
 Exit 0 iff ALL invariants hold.
 
@@ -38,7 +48,7 @@ ACC_SPINE = [
     dict(code="ACC.W.ARG.1",  name="Precise defensible claim; distinguish opposing", section="core", need="hs"),
     dict(code="ACC.W.ARG.2",  name="Develop claims AND counterclaims fairly", section="core", need="hs"),
     dict(code="ACC.W.ARG.3",  name="Transitions/cohesion linking claim-reason-evidence", section="core", need="hs"),
-    dict(code="ACC.W.ARG.4",  name="Formal style / objective tone", section="core", need="external"),
+    dict(code="ACC.W.ARG.4",  name="Formal style / objective tone", section="core", need="hs"),
     dict(code="ACC.W.ARG.5",  name="Concluding statement following from argument", section="core", need="hs"),
     dict(code="ACC.W.INFO.1", name="Introduce & organize complex ideas", section="core", need="hs"),
     dict(code="ACC.W.INFO.2", name="Develop with facts/details/examples", section="core", need="hs"),
@@ -96,13 +106,15 @@ HS_KCS = [
     dict(id="C.9.02", grade="G9", type="P",    gateway=False, funnel="evidence",
          name="Attributed-evidence sentence", acc=["ACC.W.SRC.2"], ccss=["W.9-10.1b", "W.9-10.8"], teks=["EI.11.H"], sec=["AP.3"]),
     dict(id="C.9.03", grade="G9", type="P",    gateway=True,  funnel="reasoning",
-         name="Reason/warrant sentence", acc=["ACC.W.ARG.2"], ccss=["W.9-10.1b"], teks=["EI.10.C"], sec=["AP.5", "ACT.4"]),
+         name="Reason/warrant sentence", acc=["ACC.W.INFO.2"], ccss=["W.9-10.1b", "W.9-10.2b"], teks=["EI.10.C"], sec=["AP.5", "ACT.4"]),
     dict(id="C.9.06", grade="G9", type="D->P", gateway=False, funnel="production_of_writing",
-         name="Transitions & cohesion", acc=["ACC.W.ARG.3", "ACC.W.INFO.3"], ccss=["W.9-10.1c", "W.9-10.2c"], teks=["EI.9.C"], sec=["ACT.9"]),
+         name="Transitions, cohesion & formal tone", acc=["ACC.W.ARG.3", "ACC.W.INFO.3", "ACC.W.ARG.4"],
+         ccss=["W.9-10.1c", "W.9-10.2c", "W.9-10.1d"], teks=["EI.9.C"], sec=["ACT.9"]),
     dict(id="C.9.04", grade="G9", type="I",    gateway=True,  funnel="essay",
          name="Single-source essay (argument + informational)",
-         acc=["ACC.W.PROD.1", "ACC.W.ARG.5", "ACC.W.INFO.2", "ACC.W.INFO.3", "ACC.W.INFO.5"],
-         ccss=["W.9-10.1", "W.9-10.2", "W.9-10.4"], teks=["EI.10.C", "EI.9.B"], sec=[]),
+         acc=["ACC.W.PROD.1", "ACC.W.ARG.5", "ACC.W.INFO.2", "ACC.W.INFO.3", "ACC.W.INFO.5", "ACC.W.PROC.1"],
+         ccss=["W.9-10.1", "W.9-10.1e", "W.9-10.2", "W.9-10.2e", "W.9-10.4", "W.9-10.5", "W.9-10.9"],
+         teks=["EI.10.C", "EI.9.B"], sec=[]),
     # G10
     dict(id="C.10.01", grade="G10", type="P", gateway=True,  funnel="counterargument",
          name="Counterclaim-aware claim", acc=["ACC.W.ARG.2"], ccss=["W.9-10.1a"], teks=["EII.10.C"], sec=["ACT.2"]),
@@ -136,18 +148,23 @@ HS_KCS = [
     dict(id="C.11.06", grade="G11", type="P->I", gateway=True, funnel="source_free_argument",
          name="Argue from own knowledge (source-free)", acc=["ACC.W.ARG.1"], ccss=["W.11-12.1"], teks=[], sec=["AP.4"]),
     dict(id="C.11.07", grade="G11", type="P->I", gateway=False, funnel="multi_perspective",
-         name="Multi-perspective argument (3 given perspectives)", acc=["ACC.W.ARG.2"], ccss=["W.11-12.1"], teks=[], sec=["ACT.2", "ACT.3"]),
+         name="Multi-perspective argument (3 given perspectives)", acc=["ACC.W.ARG.2"], ccss=["W.11-12.1"], teks=[], sec=["ACT.2", "ACT.3"],
+         overlay="ACT/AP exam overlay on CCSS W.11-12.1 argument; the given-perspectives format is an exam construct on the core argument standard"),
     dict(id="C.11.04", grade="G11", type="woven", gateway=False, funnel="production_of_writing",
          name="Rhetorical concision/style (applied revision pass, woven)", acc=["ACC.W.PROC.2"],
          ccss=["W.11-12.4", "W.11-12.5"], teks=[], sec=["ACT.10"]),
     dict(id="C.11.05", grade="G11", type="P", gateway=False, funnel="timed",
-         name="Timed-writing strategy", acc=["ACC.W.PROC.1"], ccss=["W.11-12.4"], teks=[], sec=["AP.9"]),
+         name="Timed-writing strategy", acc=["ACC.W.PROC.1"], ccss=["W.11-12.4", "W.11-12.10"], teks=[], sec=["AP.9"],
+         overlay="AP/ACT exam overlay on CCSS W.11-12.4/10 (produce coherent writing + write routinely on demand); the clock is an exam condition, not a CCSS construct"),
     # G12
     dict(id="C.12.01", grade="G12", type="I", gateway=True, funnel="sophistication",
          name="AP sophistication (significance/context/complexity) [intro G11]", acc=["ACC.W.ARG.2"],
-         ccss=["W.11-12.1", "W.11-12.2"], teks=[], sec=["AP.8", "ACT.5"]),
+         ccss=["W.11-12.1", "W.11-12.2", "W.11-12.8", "W.11-12.9"], teks=[], sec=["AP.8", "ACT.5"],
+         overlay="AP exam overlay (Row C sophistication) on CCSS W.11-12.1/2; sophistication is an AP rubric band, not a standalone CCSS construct"),
     dict(id="C.12.02", grade="G12", type="I", gateway=True, funnel="timed",
-         name="Sustained AP writing under timed conditions", acc=["ACC.W.PROD.1"], ccss=["W.11-12.4"], teks=[], sec=["AP.9"]),
+         name="Budget-managed sustained AP writing (self-imposed budget; external proctored timed-mock before AP.9 sign-off)",
+         acc=["ACC.W.PROD.1"], ccss=["W.11-12.4", "W.11-12.5", "W.11-12.9", "W.11-12.10"], teks=[], sec=["AP.9"],
+         overlay="AP exam overlay on CCSS W.11-12.4/5/10; timed on-demand production is an exam condition (Timeback has no clock -> external proctored mock)"),
     dict(id="D.12.01", grade="G12", type="woven", gateway=False, funnel="voice",
          name="Voice through syntactic choice (woven)", acc=["ACC.W.CONV.3"], ccss=["W.11-12.4"], teks=[], sec=[]),
 ]
@@ -177,9 +194,9 @@ DESCOPED = {
 UNITS = {
     "G9": [
         dict(id="G9.U1", title="Claim/controlling-idea + evidence", kcs=["C.9.01", "C.9.05", "C.9.02"], gateway="C.9.01", course_gate=False),
-        dict(id="G9.U2", title="Reasoning", kcs=["C.9.03"], gateway="C.9.03", course_gate=False),
-        dict(id="G9.U3", title="Cohesion", kcs=["C.9.06"], gateway=None, course_gate=False),
-        dict(id="G9.U4", title="Single-source essay", kcs=["C.9.04"], gateway="C.9.04", course_gate=True),
+        dict(id="G9.U2", title="Reasoning + the complete paragraph", kcs=["C.9.03"], gateway="C.9.03", course_gate=False),
+        dict(id="G9.U3", title="Cohesion, tone & paragraph mastery", kcs=["C.9.06"], gateway="C.9.06", course_gate=False),
+        dict(id="G9.U4", title="Single-source essay + gate", kcs=["C.9.04"], gateway="C.9.04", course_gate=True),
     ],
     "G10": [
         dict(id="G10.U1", title="Counterargument", kcs=["C.10.01"], gateway="C.10.01", course_gate=False),
@@ -190,14 +207,14 @@ UNITS = {
     "G11": [
         dict(id="G11.U1", title="Nuance", kcs=["C.11.01"], gateway="C.11.01", course_gate=False),
         dict(id="G11.U2", title="Rhetorical analysis", kcs=["C.11.03"], gateway="C.11.03", course_gate=False),
-        dict(id="G11.U3", title="Synthesis + source evaluation", kcs=["C.11.02", "C.11.08"], gateway="C.11.02", course_gate=True),
+        dict(id="G11.U3", title="Synthesis + source evaluation", kcs=["C.11.02", "C.11.08"], gateway="C.11.02", course_gate=False),
         dict(id="G11.U4", title="Source-free argument", kcs=["C.11.06"], gateway="C.11.06", course_gate=False),
-        dict(id="G11.U5", title="Multi-perspective argument", kcs=["C.11.07"], gateway=None, course_gate=False),
-        dict(id="G11.U6", title="Timing + calibration", kcs=["C.11.05", "C.11.04"], gateway=None, course_gate=False),
+        dict(id="G11.U5", title="Multi-perspective argument", kcs=["C.11.07"], gateway="C.11.07", course_gate=False),
+        dict(id="G11.U6", title="Timing, calibration + task-type gate", kcs=["C.11.05", "C.11.04"], gateway="C.11.05", course_gate=True),
     ],
     "G12": [
         dict(id="G12.U1", title="Sophistication mastery", kcs=["C.12.01"], gateway="C.12.01", course_gate=False),
-        dict(id="G12.U2", title="Timed AP mastery", kcs=["C.12.02", "D.12.01"], gateway="C.12.02", course_gate=True),
+        dict(id="G12.U2", title="Budget-managed sustained AP writing", kcs=["C.12.02", "D.12.01"], gateway="C.12.02", course_gate=True),
     ],
 }
 
