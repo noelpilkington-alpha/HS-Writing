@@ -233,7 +233,8 @@ def test_self_score_two_option_still_passes():
 - [ ] **Step 4: Run tests, verify pass** — `pytest pipeline/tests/test_gate_four_options.py -v` → 3 PASS. Also `pytest pipeline/tests/test_render_fidelity.py -q` (the golden lesson there uses 3-option items — see Step 5).
 
 - [ ] **Step 5: Fix the fixtures/goldens that now break** — the existing `golden_lesson()` fixture and any in-repo test lesson with 3-option discriminations will now fail. Update ONLY the test fixtures (`pipeline/fixtures.py` golden + the demo lesson in `lesson_contract.__main__`) to 4 options so the test suite reflects the new rule. Do NOT touch real lessons here.
-- Record the course-wide flag count (the ~118 real items): `python pipeline/tier_a_regression.py G9 2>&1 | grep -c "discrimination has 3 options"` and same for G10/G11/G12. This is the Task-11 rollout worklist.
+- [ ] **Step 5b: Register the new rule in the in-flight allowlist** — the 4-option rule flags ~118 legacy lessons via the EXISTING `structural_item` gate, which cannot be allowlisted by gate-name. In `pipeline/tests/test_tier_a_regression.py`, add your exact new failure-message substring to `_INFLIGHT_MSG_SUBSTRINGS` (e.g. `("need exactly 4",)` if your message says "need exactly 4"). Then `python -m pytest pipeline/tests/test_tier_a_regression.py -q` must PASS (the course-clean invariants tolerate the known 4-option flags but still catch anything else). Keep the substring SPECIFIC to this rule so it can't mask a real structural_item defect.
+- Record the course-wide flag count (the ~118 real items): `python pipeline/tier_a_regression.py G9 2>&1 | grep -c "options (need exactly 4"` and same for G10/G11/G12. This is the Task-11 rollout worklist.
 
 - [ ] **Step 6: Commit**
 ```bash
@@ -316,7 +317,15 @@ git commit -m "feat(gates): gate_self_answered_check (#6) - diagnosis must not p
 
 ---
 
-### Task 5: Extend `gate_define_before_use` for HARD-TERM re-gloss (#9)
+### Task 5: HARD-TERM re-gloss (#9) — ALREADY ENFORCED (no-op, closed 2026-07-20)
+
+**Outcome:** BLOCKED-then-closed. The task's premise was wrong: `gate_define_before_use` is NOT course-first-only — it is ALREADY fully per-lesson (takes a single `Lesson`, checks THIS lesson's TEACH bodies for a `_DEF_CUE` near each `_TECH_TERMS` term), and all four hard terms (controlling idea, warrant, synthesis, counterclaim) are ALREADY in `_TECH_TERMS`. Verified end-to-end: a lesson using "controlling idea" with no in-lesson gloss already FAILS today; a glossed one passes; course-wide `define_before_use` flags = 0. So #9 (an odd term must be glossed in every lesson that uses it) is already enforced. No code added (adding a redundant HARD_TERMS set + a "re-gloss" message that can never fire would be dead code, and the required guard test would force a course-memory regression).
+
+**Residual (routed to T8 playbook, not a gate):** the LS asked specifically for a *bracketed* re-gloss on re-introduction; the gate accepts any definitional cue on first in-lesson use, not specifically brackets, and does not force a re-gloss on every later mention within one lesson. That bracketing/style nuance is a playbook authoring note (T8), not worth a hard gate. **#9 rollout worklist = 0.**
+
+<details><summary>Original task text (superseded)</summary>
+
+#### (superseded) Extend gate_define_before_use for HARD-TERM re-gloss (#9)
 
 **Files:**
 - Modify: `pipeline/lesson_contract.py` (`gate_define_before_use` + a `HARD_TERMS` set)
@@ -362,6 +371,8 @@ def test_hard_term_reglossed_passes():
 git add "Alpha HS Writing Course 2026-27/pipeline/lesson_contract.py" "Alpha HS Writing Course 2026-27/pipeline/tests/test_gate_reglossing.py"
 git commit -m "feat(gates): define_before_use re-glosses HARD_TERMS per-lesson (#9)"
 ```
+
+</details>
 
 ---
 
@@ -516,7 +527,7 @@ git commit -m "feat(helpers): claim_frame() emits comma-free side/reason frame (
   - **4 options per discrimination, each a named misconception** (never filler). Reference `gate_structural_item`.
   - **Diagnosis = student answers the check, then improves** (coping-model demo may pre-answer a PROVIDED draft, but must be followed by an independent turn). Reference `gate_self_answered_check`.
   - **No comma before "because"/"so" in fill-in frames**; use `claim_frame()`. Reference `gate_frame_comma`.
-  - **Re-gloss HARD_TERMS** (controlling idea, warrant, synthesis, counterclaim) in every lesson that uses them. Reference `gate_define_before_use`.
+  - **Re-gloss HARD_TERMS** (controlling idea, warrant, synthesis, counterclaim): the `gate_define_before_use` gate ALREADY requires an in-lesson gloss for these (they are in `_TECH_TERMS`), so this is enforced, not optional. Playbook nuance (#9, LS): prefer a BRACKETED gloss right after the term on re-introduction in a later lesson (the gate accepts any definitional cue, but brackets are the LS-requested style). Reference `gate_define_before_use`.
   - **Stem wording (#7):** name the move directly ("Which sentence explains?"), not meta-phrasings ("which fits the verb"). [playbook-only]
   - **Tone (#5/Yeager):** state the standard up front; per-choice reveal uses wise-feedback (no person-praise). [playbook-only]
   - **Pair a stand-alone improve-write with a predict_the_fix (#4)** where feasible. [playbook-only]
