@@ -135,8 +135,12 @@ LESSON = Lesson(
                    "would drag on forever and leave everyone worn out.  "
                    "(B) Many districts have experimented with compressed weekly calendars over the past decade.  "
                    "(C) A compressed four-day week would tire students, because packing five days of instruction "
-                   "into four lengthens each school day. "
-                   "Correct: C. It drops the 'trust me,' the slang, and the reader-address while keeping the claim and its reason."),
+                   "into four lengthens each school day.  "
+                   "(D) It is my firm belief that a compressed four-day week would exhaust students by lengthening "
+                   "each school day. "
+                   "Correct: C. It drops the 'trust me,' the slang, and the reader-address while keeping the claim "
+                   "and its reason. (A) stays informal; (B) is formal but drops the position; (D) sounds dressed "
+                   "up but keeps the first person ('my firm belief')."),
              choices=[
                  {"id": "A", "text": "A compressed four-day week is honestly just too rough on kids, and anyone can see the days would drag on forever and leave everyone worn out.",
                   "correct": False,
@@ -147,6 +151,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "A compressed four-day week would tire students, because packing five days of instruction into four lengthens each school day.",
                   "correct": True,
                   "why": "Correct. The 'trust me,' the slang, and the direct address are gone, and the position plus its reason are intact. Formal tone AND same claim is the target."},
+                 {"id": "D", "text": "It is my firm belief that a compressed four-day week would exhaust students by lengthening each school day.",
+                  "correct": False,
+                  "why": "The wording sounds dressed up, but 'It is my firm belief' is still first person. Formal tone states the point as a claim about the issue, not as your personal belief, however formal the phrasing looks."},
              ]),
         Slot("MODEL", "discrimination", "Which rewrite removes every informal marker?",
              ref="", labeled_grade_c=True, bank="four_day_week",
@@ -157,8 +164,11 @@ LESSON = Lesson(
                    "(A) A four-day week is a strong improvement, so you should really get behind it once you "
                    "notice how run down students actually get by Friday.  "
                    "(B) A four-day week is a strong improvement for students because it gives them a full day to rest.  "
-                   "(C) In my opinion a four-day week is a real game changer for students because they get a full day to rest. "
-                   "Correct: B. It cuts the first person, the slang, and the reader-address together, while the others each leave one behind."),
+                   "(C) In my opinion a four-day week is a real game changer for students because they get a full day to rest.  "
+                   "(D) A four-day week is a total game changer for students because it gives them a full day to rest. "
+                   "Correct: B. It cuts the first person, the slang, and the reader-address together, while the "
+                   "others each leave one behind: (A) keeps the reader-address, (C) keeps the first person and "
+                   "slang, and (D) keeps the slang ('total game changer')."),
              choices=[
                  {"id": "A", "text": "A four-day week is a strong improvement, so you should really get behind it once you notice how run down students actually get by Friday.",
                   "correct": False,
@@ -169,6 +179,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "In my opinion a four-day week is a real game changer for students because they get a full day to rest.",
                   "correct": False,
                   "why": "This stops talking to the reader but keeps 'In my opinion' and 'game changer,' so first person and slang still make it informal."},
+                 {"id": "D", "text": "A four-day week is a total game changer for students because it gives them a full day to rest.",
+                  "correct": False,
+                  "why": "The first person and reader-address are gone, but 'total game changer' is still slang. One informal marker is enough to keep the tone casual."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this sentence most need for tone?",
              bank="four_day_week",

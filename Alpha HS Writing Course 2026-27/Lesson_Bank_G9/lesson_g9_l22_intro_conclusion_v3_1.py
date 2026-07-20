@@ -145,9 +145,11 @@ LESSON = Lesson(
                    "(B) Feeding every student is not charity: a school that removes hunger removes one real "
                    "barrier between a child and a fair chance to learn.  "
                    "(C) In conclusion, plenty of students eat lunch at school each day, so free meals are a good "
-                   "idea that helps them succeed. "
-                   "Correct: B. It says why the argument matters and what follows, while (A) restates and (C) only "
-                   "adds a fact."),
+                   "idea that helps them succeed.  "
+                   "(D) In conclusion, free meals help students, and schools should also add later start times, "
+                   "because more sleep would help students focus even more. "
+                   "Correct: B. It says why the argument matters and what follows, while (A) restates, (C) only "
+                   "adds a fact, and (D) opens a brand-new argument."),
              choices=[
                  {"id": "A", "text": "In conclusion, as I explained, schools should offer free meals to all students, because the reasons I already gave clearly show that free meals really do help students in many ways.",
                   "correct": False,
@@ -158,6 +160,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "In conclusion, plenty of students eat lunch at school each day, so free meals are a good idea that helps them succeed.",
                   "correct": False,
                   "why": "This ends on an extra fact and a vague 'good idea,' not an upshot. A conclusion lands when it says why the argument matters, not when it adds one more detail."},
+                 {"id": "D", "text": "In conclusion, free meals help students, and schools should also add later start times, because more sleep would help students focus even more.",
+                  "correct": False,
+                  "why": "This opens a brand-new argument (later start times) the essay never made. A conclusion lands the point you already argued; raising a fresh claim leaves the reader with an idea that was never supported."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this conclusion most need?",
              bank="school_lunch",
@@ -180,7 +185,7 @@ LESSON = Lesson(
                  intro="Use the frame below so you can focus on the two moves: orient the reader, then state the thesis.",
                  setapart_block=outline_table(title="Copy this frame, then fill in the blanks:", rows=[
                      ("ORIENT", "______ [one sentence showing why free meals matter for a hungry student]."),
-                     ("THESIS", "That is why schools should offer free meals to every student, because ______ [your reason]."),
+                     ("THESIS", "That is why schools should offer free meals to every student because ______ [your reason]."),
                  ]),
                  closer="Write the INTRODUCTION for an essay arguing that schools should offer free meals to all "
                         "students. Orient the reader in a sentence, then state the thesis. Do not announce 'this "

@@ -148,16 +148,18 @@ LESSON = Lesson(
                    "said it, then run the 3 questions before you submit.")),
         Slot("MODEL", "discrimination", "Which sentence integrates the quote?",
              ref="", labeled_grade_c=True, bank="phone_ban",
-             body=("Now that you have seen one built, spot the target. All three use the same quoted number. "
+             body=("Now that you have seen one built, spot the target. All four use the same quoted number. "
                    "Which one INTEGRATES the quote, folding it into a built sentence with the source named, instead of dropping it? "
                    "(A) The National Center for Education Statistics said it in a detailed report from that same year. "
                    "\"90.9 percent.\" That really is a lot of schools with limits in place.  "
                    "(B) The National Center for Education Statistics reports that \"90.9 percent\" of public "
                    "schools enforced such a rule back in the 2009-10 school year.  "
                    "(C) Lots of schools limited phones back then. \"90.9 percent.\" Rules like that were common "
-                   "all across the country. "
+                   "all across the country.  "
+                   "(D) Schools had limits, \"90.9 percent,\" and rules like that were common back then. "
                    "Correct: B. It folds the quote into one sentence the writer built, with the source "
-                   "introduced, so it flows. (A) and (C) still park the number as its own fragment."),
+                   "introduced, so it flows. (A) and (C) park the number as its own fragment; (D) wedges it into "
+                   "the sentence but names no source and gives no lead-in."),
              choices=[
                  {"id": "A", "text": "The National Center for Education Statistics said it in a detailed report from that same year. \"90.9 percent.\" That really is a lot of schools with limits in place.",
                   "correct": False,
@@ -168,6 +170,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Lots of schools limited phones back then. \"90.9 percent.\" Rules like that were common all across the country.",
                   "correct": False,
                   "why": "The number sits alone as its own fragment and no source is named, so the reader has to guess how it connects. That is a dropped quote."},
+                 {"id": "D", "text": "Schools had limits, \"90.9 percent,\" and rules like that were common back then.",
+                  "correct": False,
+                  "why": "The number is wedged into the sentence with commas, but no source is named and there is no lead-in, so the reader cannot tell whose figure it is. That is a floating quote, still dropped."},
              ]),
         # SECOND minimal pair, same skill, DIFFERENT confound: the existing pair breaks on folding (a wrong
         # option names the source yet parks the number as a fragment). This pair breaks on ATTRIBUTION - the
@@ -175,15 +180,18 @@ LESSON = Lesson(
         # tag" is the only invariant that separates it from the correct answer. Fresh figure (65.8 percent).
         Slot("MODEL", "discrimination", "Which sentence names the source AND folds the quote in?",
              ref="", labeled_grade_c=True, bank="phone_ban",
-             body=("Same target skill, a new number. All three sentences use the same reported figure. "
+             body=("Same target skill, a new number. All four sentences use the same reported figure. "
                    "Which one INTEGRATES it: folded into a sentence the writer built AND with the source named? "
                    "(A) Federal data from the National Center for Education Statistics show that only "
                    "\"65.8 percent\" of public schools banned such phone use by 2015-16.  "
                    "(B) By 2015-16 the share of public schools with such a phone rule had slipped to just "
                    "\"65.8 percent\" before it later climbed back up again toward earlier levels.  "
-                   "(C) The rule got less common for a while. \"65.8 percent\" by 2015-16. Then it went back up. "
+                   "(C) The rule got less common for a while. \"65.8 percent\" by 2015-16. Then it went back up.  "
+                   "(D) The National Center for Education Statistics studied this closely. \"65.8 percent\" by "
+                   "2015-16. The trend had shifted. "
                    "Correct: A. It folds the number into one sentence the writer built and names the source with "
-                   "a tag. (B) folds it in and flows but names no source. (C) parks the number as its own fragment."),
+                   "a tag. (B) folds it in and flows but names no source. (C) parks the number as its own "
+                   "fragment. (D) names the source but still leaves the number as its own separate fragment."),
              choices=[
                  {"id": "A", "text": "Federal data from the National Center for Education Statistics show that only \"65.8 percent\" of public schools banned such phone use by 2015-16.",
                   "correct": True,
@@ -194,6 +202,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The rule got less common for a while. \"65.8 percent\" by 2015-16. Then it went back up.",
                   "correct": False,
                   "why": "The number sits alone as its own fragment with no lead-in, so it is dropped rather than woven into a built sentence."},
+                 {"id": "D", "text": "The National Center for Education Statistics studied this closely. \"65.8 percent\" by 2015-16. The trend had shifted.",
+                  "correct": False,
+                  "why": "The source is named in the first sentence, but the number is still parked as its own separate fragment, so the quote is dropped rather than folded into a built sentence. Naming the source is not enough on its own."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this dropped quote most need?",
              bank="phone_ban",

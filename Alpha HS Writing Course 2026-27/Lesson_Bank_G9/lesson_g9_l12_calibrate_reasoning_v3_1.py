@@ -151,7 +151,7 @@ LESSON = Lesson(
                    "just the claim again? If it is the claim again, the warrant is empty and scores low. Today "
                    "you will judge warrants, predict their scores, see the real score, then repair a weak one.")),
         Slot("TEACH", "stimulus_display", "The topic: volcanoes",
-             ref="ACC-W910-FRAME-VOLCANOES", bank="volcanoes",
+             ref="ACC-W910-FRAME-VOLCANOES", bank="volcanoes", tag="buy_in",
              body=("The drafts you will check are about volcanoes. Read this short orientation so the topic is "
                    "familiar. You are not writing about volcanoes from scratch here; you are checking and "
                    "repairing reasoning in drafts that are given to you.")),
@@ -166,16 +166,17 @@ LESSON = Lesson(
                    "When you judge or repair a warrant, run these questions before you commit.")),
         Slot("MODEL", "discrimination", "Which warrant explains, and which only restates?",
              ref="", labeled_grade_c=True, bank="volcanoes",
-             body=("Now that you have seen one checked, spot the target. All three attach because to the same "
+             body=("Now that you have seen one checked, spot the target. All four attach because to the same "
                    "claim. Which one is a real warrant, the sentence that EXPLAINS why volcanoes are dangerous, "
                    "not one that only RESTATES the claim? "
                    "(A) Volcanoes are dangerous because they are risky, unsafe, and genuinely hazardous places that can end up seriously hurting the people who happen to live somewhere close by.  "
                    "(B) Volcanoes are dangerous because an eruption can send ash, gas, and molten rock over nearby towns with little warning.  "
-                   "(C) Volcanoes are dangerous because a government science agency has counted a large number of active volcanoes sitting close to where many people live. "
+                   "(C) Volcanoes are dangerous because a government science agency has counted a large number of active volcanoes sitting close to where many people live.  "
+                   "(D) Volcanoes are dangerous because most people find them frightening and feel nervous whenever they live somewhere near one. "
                    "Correct: B. It names what an eruption actually does, so it explains WHY. (A) uses because but "
                    "only restates the claim ('dangerous because risky'), so it explains nothing. (C) states a "
                    "fact with because but never says why that fact makes a volcano dangerous, so it stops at "
-                   "claim-plus-fact."),
+                   "claim-plus-fact. (D) names how people feel about volcanoes, not what a volcano actually does, so it explains nothing real."),
              choices=[
                  {"id": "A", "text": "Volcanoes are dangerous because they are risky, unsafe, and genuinely hazardous places that can end up seriously hurting the people who happen to live somewhere close by.",
                   "correct": False,
@@ -186,19 +187,23 @@ LESSON = Lesson(
                  {"id": "C", "text": "Volcanoes are dangerous because a government science agency has counted a large number of active volcanoes sitting close to where many people live.",
                   "correct": False,
                   "why": "This drops in a fact with because but never says why that fact makes a volcano dangerous. It stops at claim-plus-fact, so the reasoning, the why, is still missing."},
+                 {"id": "D", "text": "Volcanoes are dangerous because most people find them frightening and feel nervous whenever they live somewhere near one.",
+                  "correct": False,
+                  "why": "This gives a reason, but the reason is how people feel about volcanoes, not what a volcano actually does. A fear is not the physical cause of the danger, so the warrant explains nothing real."},
              ]),
         Slot("MODEL", "discrimination", "Find the warrant that truly explains", ref="",
              labeled_grade_c=True, bank="volcanoes",
              body=("A fresh claim to check: people near an active volcano should keep an emergency kit ready. "
-                   "All three warrants use because. Which one EXPLAINS why the kit matters, instead of only "
+                   "All four warrants use because. Which one EXPLAINS why the kit matters, instead of only "
                    "restating the claim or answering a different question? "
                    "(A) People near an active volcano should keep an emergency kit ready because an eruption can cut off power and clean water for days, so stored supplies let a family last until help arrives.  "
                    "(B) People near an active volcano should keep an emergency kit ready because being prepared is just what keeping a ready kit is all about.  "
-                   "(C) People near an active volcano should keep an emergency kit ready because volcanoes have erupted many times all across the world throughout recorded human history, on nearly every inhabited continent. "
+                   "(C) People near an active volcano should keep an emergency kit ready because volcanoes have erupted many times all across the world throughout recorded human history, on nearly every inhabited continent.  "
+                   "(D) People near an active volcano should keep an emergency kit ready because a good kit usually holds bottled water, canned food, a flashlight, and a small first aid pack. "
                    "Correct: A. It names what an eruption actually does, cutting off power and water, and links that "
                    "to why the kit matters. (B) loops the claim back on itself: prepared because a kit is for being "
                    "prepared says nothing new. (C) states a true fact about eruptions but answers a different "
-                   "question, how often they happen, not why a family needs supplies."),
+                   "question, how often they happen, not why a family needs supplies. (D) describes what a kit holds, not why keeping one ready near a volcano matters."),
              choices=[
                  {"id": "A", "text": "People near an active volcano should keep an emergency kit ready because an eruption can cut off power and clean water for days, so stored supplies let a family last until help arrives.",
                   "correct": True,
@@ -209,6 +214,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "People near an active volcano should keep an emergency kit ready because volcanoes have erupted many times all across the world throughout recorded human history, on nearly every inhabited continent.",
                   "correct": False,
                   "why": "This states a true fact about eruptions but answers a different question, how often they happen, not why a family needs supplies, so the reason never connects to the claim."},
+                 {"id": "D", "text": "People near an active volcano should keep an emergency kit ready because a good kit usually holds bottled water, canned food, a flashlight, and a small first aid pack.",
+                  "correct": False,
+                  "why": "This describes what is inside a kit, not why keeping one ready near a volcano matters. Listing the contents is not the reason, so the warrant never explains why the claim holds."},
              ]),
         Slot("MODEL", "predict_the_fix", "Predict: is this warrant strong or weak, and why?",
              bank="volcanoes",

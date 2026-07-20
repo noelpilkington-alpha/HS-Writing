@@ -172,9 +172,10 @@ LESSON = Lesson(
                    "which writer built the essay from a plan, and which did not? "
                    "(A) The writer first makes a short outline, a thesis plus three ordered points that each name their evidence, then drafts the intro, one paragraph per point, and a conclusion.  "
                    "(B) The writer opens a blank page and types whatever thoughts about community service come to mind, adding each new idea as it arrives and stopping only once the essay finally feels long enough to be done.  "
-                   "(C) The writer starts with a big, impressive-sounding introduction and keeps adding paragraphs until the page looks full, planning nothing in advance. "
+                   "(C) The writer starts with a big, impressive-sounding introduction and keeps adding paragraphs until the page looks full, planning nothing in advance.  "
+                   "(D) The writer jots a list of every fact they know about community service, then writes one paragraph per fact in the order the facts were listed, never deciding a thesis. "
                    "Correct: A. It fixes a thesis and an order first, so every paragraph defends the thesis in a "
-                   "building sequence; B and C pile on text with no thesis and no order, so they drift and repeat."),
+                   "building sequence; B and C pile on text with no thesis and no order, and D lists facts with no thesis, so all three drift and repeat."),
              choices=[
                  {"id": "A", "text": "The writer first makes a short outline, a thesis plus three ordered points that each name their evidence, then drafts the intro, one paragraph per point, and a conclusion.",
                   "correct": True,
@@ -185,6 +186,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The writer starts with a big, impressive-sounding introduction and keeps adding paragraphs until the page looks full, planning nothing in advance.",
                   "correct": False,
                   "why": "A big introduction and more paragraphs are not a plan. With no thesis and no order set first, the essay still drifts and repeats."},
+                 {"id": "D", "text": "The writer jots a list of every fact they know about community service, then writes one paragraph per fact in the order the facts were listed, never deciding a thesis.",
+                  "correct": False,
+                  "why": "A fact list is not a plan for an argument. Without a thesis, the paragraphs have nothing to defend, so the essay reports facts in list order instead of building one case."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this essay approach most need?",
              bank="community_service",

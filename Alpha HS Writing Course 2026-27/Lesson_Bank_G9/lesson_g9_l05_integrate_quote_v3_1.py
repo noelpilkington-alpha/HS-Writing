@@ -147,16 +147,19 @@ LESSON = Lesson(
                    "it, name the source, and run the 3 questions before you submit.")),
         Slot("MODEL", "discrimination", "Which sentence names its source?",
              ref="", labeled_grade_c=True, bank="school_lunch",
-             body=("You have seen a source brought in the right way. Now spot the target. All three sentences "
+             body=("You have seen a source brought in the right way. Now spot the target. All four sentences "
                    "use the program's yearly cost, but which one brings it in correctly by naming who said it? "
                    "(A) The program costs an enormous amount of money every single year, and honestly the total "
                    "is so huge that you can just tell it matters to students.  "
                    "(B) According to the U.S. Department of Agriculture, the National School Lunch Program cost "
                    "about 17.7 billion dollars in a recent year.  "
                    "(C) Experts say the program costs billions of dollars every year, which really goes to show "
-                   "how much good it does for students across the country. "
+                   "how much good it does for students across the country.  "
+                   "(D) The article says the program costs a large amount of money each year, so clearly it makes "
+                   "a real difference for students. "
                    "Correct: B. It names a specific source, the U.S. Department of Agriculture, so a reader can "
-                   "trust and check the fact."),
+                   "trust and check the fact. (D) points at the article but never names who actually reported the "
+                   "cost, so a reader still cannot tell which source to check."),
              choices=[
                  {"id": "A", "text": "The program costs an enormous amount of money every single year, and honestly the total is so huge that you can just tell it matters to students.",
                   "correct": False,
@@ -167,11 +170,14 @@ LESSON = Lesson(
                  {"id": "C", "text": "Experts say the program costs billions of dollars every year, which really goes to show how much good it does for students across the country.",
                   "correct": False,
                   "why": "'Experts say' sounds like attribution, but it names no specific source a reader could check. Naming who actually reported it is what makes evidence trustworthy, not a vague 'experts say.'"},
+                 {"id": "D", "text": "The article says the program costs a large amount of money each year, so clearly it makes a real difference for students.",
+                  "correct": False,
+                  "why": "'The article says' points at where the fact lives but never names who actually reported it, so a reader still cannot tell which source to check. Naming the specific source, like the U.S. Department of Agriculture, is what makes it trustworthy."},
              ]),
         Slot("MODEL", "discrimination", "Which sentence reports the number the source really gives?",
              ref="", labeled_grade_c=True, bank="school_lunch",
              body=("You named the source and it checks out. Now run the last question: is the fact really in the "
-                   "reading? All three sentences name the same source, the National Center for Education "
+                   "reading? All four sentences name the same source, the National Center for Education "
                    "Statistics, but only one reports the number the source actually gives. Which one? "
                    "(A) The National Center for Education Statistics reports that about 10.5 million students "
                    "attended high-poverty public schools in a recent year.  "
@@ -179,9 +185,12 @@ LESSON = Lesson(
                    "attended high-poverty public schools, a shockingly large share of every student in the "
                    "whole country.  "
                    "(C) The National Center for Education Statistics reports that every student in the country "
-                   "attends a high-poverty public school. "
+                   "attends a high-poverty public school.  "
+                   "(D) The National Center for Education Statistics reports that students at high-poverty "
+                   "schools graduate at far lower rates than students everywhere else. "
                    "Correct: A. It names the source and reports the exact figure the reading gives, about 10.5 "
-                   "million students, so a reader who checks the source will find it."),
+                   "million students, so a reader who checks the source will find it. (D) names the source but "
+                   "reports a graduation-rate fact the reading never gives at all."),
              choices=[
                  {"id": "A", "text": "The National Center for Education Statistics reports that about 10.5 million students attended high-poverty public schools in a recent year.",
                   "correct": True,
@@ -192,6 +201,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The National Center for Education Statistics reports that every student in the country attends a high-poverty public school.",
                   "correct": False,
                   "why": "It names a real source, but the reading never says every student attends such a school, so the sentence stretches the fact past what the source supports."},
+                 {"id": "D", "text": "The National Center for Education Statistics reports that students at high-poverty schools graduate at far lower rates than students everywhere else.",
+                  "correct": False,
+                  "why": "It names a real source, but the reading never gives any graduation-rate fact, so this attributes a claim to the source that is not there at all. Naming a source does not help if the fact was never in it."},
              ]),
         Slot("MODEL", "predict_the_fix", "Is this evidence ready, and if not, what fixes it?",
              bank="school_lunch",

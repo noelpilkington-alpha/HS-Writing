@@ -148,7 +148,8 @@ LESSON = Lesson(
                    "reference so the reader knows exactly what it points to? "
                    "(A) This makes the whole crossing risky for nearly every bird that sets out on the long journey.  "
                    "(B) This problem makes the crossing risky for the birds.  "
-                   "(C) This mix of long distance and sudden storms makes the crossing risky. "
+                   "(C) This mix of long distance and sudden storms makes the crossing risky.  "
+                   "(D) This long distance makes the whole crossing risky. "
                    "Correct: C. It names the exact thing the reference points to."),
              choices=[
                  {"id": "A", "text": "This makes the whole crossing risky for nearly every bird that sets out on the long journey.",
@@ -160,6 +161,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "This mix of long distance and sudden storms makes the crossing risky.",
                   "correct": True,
                   "why": "Correct. 'This mix of long distance and sudden storms' names the exact thing the reference points to. Naming the real referent is the anchor."},
+                 {"id": "D", "text": "This long distance makes the whole crossing risky.",
+                  "correct": False,
+                  "why": "'This long distance' does anchor to a real noun, but it names only one of the two things the sentence gave (the distance) and drops the storms, so it still does not point to the full thing you meant."},
              ]),
         # Second minimal pair (different confound): under-reference (bare pronoun) vs OVER-reference (restate the
         # whole prior sentence to dodge the pronoun) vs a concise naming phrase. Correct (C) is NOT the longest;
@@ -172,7 +176,8 @@ LESSON = Lesson(
                    "to? "
                    "(A) This is the most dangerous part of the whole journey.  "
                    "(B) Swimming across the wide rivers while hungry predators wait at the crossings is the most dangerous part of the whole journey.  "
-                   "(C) This river crossing is the most dangerous part of the whole journey. "
+                   "(C) This river crossing is the most dangerous part of the whole journey.  "
+                   "(D) This situation is the most dangerous part of the whole journey. "
                    "Correct: C. A short naming phrase points the reference at the exact thing it stands for."),
              choices=[
                  {"id": "A", "text": "This is the most dangerous part of the whole journey.",
@@ -184,6 +189,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "This river crossing is the most dangerous part of the whole journey.",
                   "correct": True,
                   "why": "Correct. 'This river crossing' names the exact thing the reference points to, so the link between the sentences stays clear."},
+                 {"id": "D", "text": "This situation is the most dangerous part of the whole journey.",
+                  "correct": False,
+                  "why": "'This situation' tacks on a noun, but 'situation' is a vague placeholder that still does not say which thing you mean. A naming phrase has to point to the real referent, not just any noun."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this vague reference most need?",
              bank="animal_migration",

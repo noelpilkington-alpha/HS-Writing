@@ -159,7 +159,10 @@ LESSON = Lesson(
                    "migration is amazing and insists that readers everywhere must act now to protect every "
                    "migrating bird species.  "
                    "(C) An essay that piles up true facts about how far the different birds fly, in no set order "
-                   "at all, and never names a single controlling focus for the reader to follow. "
+                   "at all, and never names a single controlling focus for the reader to follow.  "
+                   "(D) A planned essay with a controlling idea, ordered parts, and no side, but one that fills "
+                   "each part with the writer's own guesses about why birds probably migrate rather than facts "
+                   "drawn from the source. "
                    "Correct: A. It holds a focus, explains with attributed evidence, and takes no side."),
              choices=[
                  {"id": "A",
@@ -174,6 +177,10 @@ LESSON = Lesson(
                   "text": "An essay that piles up true facts about how far the different birds fly, in no set order at all, and never names a single controlling focus for the reader to follow.",
                   "correct": False,
                   "why": "These are true facts, but with no focus and no order the essay explains nothing clearly. A controlling idea and ordered parts are what hold an explanation together."},
+                 {"id": "D",
+                  "text": "A planned essay with a controlling idea, ordered parts, and no side, but one that fills each part with the writer's own guesses about why birds probably migrate rather than facts drawn from the source.",
+                  "correct": False,
+                  "why": "It has the focus and the order and takes no side, but it explains with guesses instead of attributed evidence. An explain essay has to inform from the source, so unsupported guesses do not hold the mode."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this informational essay most need?",
              bank="animal_migration",

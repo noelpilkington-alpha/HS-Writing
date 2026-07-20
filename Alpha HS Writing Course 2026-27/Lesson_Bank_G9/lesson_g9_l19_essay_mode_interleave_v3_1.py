@@ -162,11 +162,13 @@ LESSON = Lesson(
                    "thesis matches that verb? "
                    "(A) Photosynthesis is easily the most important natural process on Earth, and it deserves far more study than any other topic in science.  "
                    "(B) Photosynthesis is honestly one of the most amazing and fascinating things that green plants are able to do.  "
-                   "(C) Photosynthesis turns sunlight, water, and carbon dioxide into sugar and oxygen through steps in a plant's leaves. "
+                   "(C) Photosynthesis turns sunlight, water, and carbon dioxide into sugar and oxygen through steps in a plant's leaves.  "
+                   "(D) This essay will be about photosynthesis and the many different things that green plants manage to do. "
                    "Correct: C. The verb is explain, so the right mode is informational: a thesis that sets a "
                    "focus and takes no side. (A) argues a side (most important, deserves study), an argument "
-                   "mode, wrong for an explain task. (B) is a bare opinion with no focus. Only (C) sets a "
-                   "no-side focus that previews the parts."),
+                   "mode, wrong for an explain task. (B) is a bare opinion with no focus. (D) only announces the "
+                   "topic; it sets no focus and previews no parts, so a reader cannot tell what the essay will "
+                   "explain. Only (C) sets a no-side focus that previews the parts."),
              choices=[
                  {"id": "A", "text": "Photosynthesis is easily the most important natural process on Earth, and it deserves far more study than any other topic in science.",
                   "correct": False,
@@ -177,6 +179,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Photosynthesis turns sunlight, water, and carbon dioxide into sugar and oxygen through steps in a plant's leaves.",
                   "correct": True,
                   "why": "Correct. The verb is explain, so the thesis should be a controlling idea: a focus that previews the parts and takes no side. This one does."},
+                 {"id": "D", "text": "This essay will be about photosynthesis and the many different things that green plants manage to do.",
+                  "correct": False,
+                  "why": "This only announces the topic. It sets no focus and previews none of the parts, so a reader cannot tell what the explain essay will actually cover."},
              ]),
         Slot("MODEL", "annotated_before_after", "Watch the essay mode get matched to the verb",
              bank="photosynthesis",

@@ -148,7 +148,7 @@ LESSON = Lesson(
                    "because, but, or so hinge that shows HOW the fact supports the claim.")),
         Slot("MODEL", "discrimination", "Which sentence links the fact to the claim?",
              ref="", labeled_grade_c=True, bank="school_lunch",
-             body=("Now that you have seen one built, spot the target. All three use the same claim and the same "
+             body=("Now that you have seen one built, spot the target. All four use the same claim and the same "
                    "fact about free meals. Which sentence LINKS the fact to the claim with a hinge that shows HOW "
                    "the fact supports it? "
                    "(A) Schools should offer free meals to all students. The National School Lunch Program already "
@@ -156,9 +156,12 @@ LESSON = Lesson(
                    "(B) Schools should offer free meals to all students, because free meals for all students would "
                    "clearly be a good and fair policy for a caring school to adopt.  "
                    "(C) The program already reaches millions who would otherwise go hungry, so schools should make "
-                   "meals free for everyone and keep those students fed. "
-                   "Correct: C. B has the word 'because,' but its clause just restates the claim; only C's hinge "
-                   "links the actual fact to the claim."),
+                   "meals free for everyone and keep those students fed.  "
+                   "(D) The program already reaches millions who would otherwise go hungry, so it is honestly very "
+                   "sad that any child in the country ever has to sit through class hungry. "
+                   "Correct: C. B has the word 'because,' but its clause just restates the claim; D has a hinge "
+                   "and a real fact, but the 'so' leads to a feeling, not the claim. Only C's hinge links the "
+                   "actual fact to the claim."),
              choices=[
                  {"id": "A", "text": "Schools should offer free meals to all students. The National School Lunch Program already serves billions of low-cost lunches to hungry children in schools all across the country.",
                   "correct": False,
@@ -169,6 +172,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The program already reaches millions who would otherwise go hungry, so schools should make meals free for everyone and keep those students fed.",
                   "correct": True,
                   "why": "Correct. It uses the hinge 'so' to show HOW the fact (the program reaches millions who would go hungry) supports the claim. The hinge does the linking, not the word 'because' specifically."},
+                 {"id": "D", "text": "The program already reaches millions who would otherwise go hungry, so it is honestly very sad that any child in the country ever has to sit through class hungry.",
+                  "correct": False,
+                  "why": "This has a hinge and a real fact, but the 'so' leads to a feeling about the fact, not to the claim, so the fact is never actually linked to the claim you are arguing."},
              ]),
         Slot("MODEL", "discrimination", "Which connector does the reasoning job?",
              ref="", labeled_grade_c=True, bank="school_lunch",
@@ -185,6 +191,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Many students who count on the program would otherwise go hungry in class, so schools should offer free meals to all students.",
                   "correct": True,
                   "why": "Correct. The hinge 'so' states the consequence, showing that the fact about hungry students is exactly why the claim holds."},
+                 {"id": "D", "text": "Many students who count on the program would otherwise go hungry in class, then schools should offer free meals to all students.",
+                  "correct": False,
+                  "why": "The word 'then' marks time order, not reasoning, so it lines the two ideas up in sequence without showing how the fact supports the claim."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this pair of sentences most need?",
              bank="school_lunch",
@@ -209,7 +218,7 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the one move: linking a fact to your claim.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
-                                         "______ [your claim about free meals], because ______ [a fact from the source, and the reason it supports your claim]."),
+                                         "______ [your claim about free meals] because ______ [a fact from the source, and the reason it supports your claim]."),
                  closer="You may use but or so instead of because if that fits your reasoning better. Write one "
                         "sentence, and do not just place the fact next to the claim.")),
         # DIAGNOSIS = check-and-fix on a PROVIDED weak draft (produces a fresh sentence, not a look-back at

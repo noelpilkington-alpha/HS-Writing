@@ -152,14 +152,13 @@ LESSON = Lesson(
                    "time, make your side specific and say why it matters.")),
 
         # ===== MODEL first (before the quiz): coping-model think-aloud -> decompose + the check tool =====
-        Slot("MODEL", "annotated_before_after", "Watch a vague claim get sharp and reach its stakes",
+        Slot("MODEL", "annotated_before_after", "Watch a vague claim get sharp, then take it apart",
              bank="pay_for_grades",
              body=("Here is the skill in action. Follow the writer's thinking below. " + COPING_HTML +
                    " Notice what turned the BEFORE into the AFTER: the writer made the side specific (a real "
-                   "amount), added a reason, and then said why it matters.")),
-        Slot("MODEL", "teach_card", "Decompose it, and get your check tool",
-             body=("Now take the finished claim apart to see how it is built, then keep the tool you will use to "
-                   "check your own." + DECOMPOSE_HTML + REMEMBER +
+                   "amount), added a reason, and then said why it matters. Now take the finished claim apart to "
+                   "see how it is built, then keep the tool you will use to check your own." + DECOMPOSE_HTML +
+                   REMEMBER +
                    "When you write your own, build it the same way: pick a specific side, add a reason, then say "
                    "why it matters, and run the 3 questions before you submit.")),
         Slot("MODEL", "discrimination", "Which claim is specific AND says why it matters?",
@@ -168,12 +167,15 @@ LESSON = Lesson(
                    "also says why it matters, not a vague one? "
                    "(A) Paying students for their grades is honestly a really good and worthwhile idea, because it clearly matters a great deal to a whole lot of students and their families all across the country today.  "
                    "(B) Schools ought to go ahead and start paying at least some of their students a bit of money at some point whenever those students manage to earn themselves some good grades in their classes.  "
-                   "(C) Schools should pay fifty dollars for every A, because a reward pulls back in students who quit trying, which matters because those students most often drop out. "
+                   "(C) Schools should pay fifty dollars for every A, because a reward pulls back in students who quit trying, which matters because those students most often drop out.  "
+                   "(D) Schools should pay fifty dollars for every A, and this matters because fewer students would end up dropping out of school. "
                    "Correct: C. Watch the trap: (A) sounds positive and even uses 'because' and 'matters,' but it "
                    "is vague and circular, it names no specific side and gives no real reason. (B) takes a side "
-                   "but stays vague (how much? for which grades?) and never says why it matters. Only (C) names a "
-                   "specific amount, gives a reason, and reaches the so-what. It is the specific side plus the "
-                   "reason plus the why-it-matters that makes the claim strong, not any single word.")),
+                   "but stays vague (how much? for which grades?) and never says why it matters. (D) names a "
+                   "specific amount and even reaches a why-it-matters, but it skips the reason entirely, so "
+                   "nothing connects the payment to fewer dropouts. Only (C) names a specific amount, gives a "
+                   "reason, AND reaches the so-what. It is the specific side plus the reason plus the "
+                   "why-it-matters that makes the claim strong, not any single word.")),
         Slot("MODEL", "discrimination", "Which claim has BOTH a specific side and its stakes?",
              ref="", labeled_grade_c=True, bank="pay_for_grades",
              body=("Each option below argues for paying for grades. A strong claim needs a specific side and a "
@@ -200,6 +202,12 @@ LESSON = Lesson(
                   "correct": True,
                   "why": ("It names an exact amount, gives a reason, and then says why it matters, so it is "
                           "specific and reaches the stakes.")},
+                 {"id": "D",
+                  "text": ("Schools should pay twenty dollars for each report-card A, which matters because more "
+                           "students would go on to finish high school."),
+                  "correct": False,
+                  "why": ("It names an exact amount and reaches a why-it-matters, but it skips the reason, so "
+                          "nothing links the payment to more students finishing.")},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this vague claim most need, and what fixes it?",
              bank="pay_for_grades",
@@ -224,7 +232,7 @@ LESSON = Lesson(
                  intro="Use the frame below so you can focus on the moves.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
                                          "Schools should ______ [a SPECIFIC side on paying for grades, name an "
-                                         "amount or kind], because ______ [a reason], which matters because "
+                                         "amount or kind] because ______ [a reason], which matters because "
                                          "______ [the stakes]."),
                  closer="Make the side specific, give a reason a reader could weigh, and say why it matters. "
                         "Then check it against the 3 questions (specific? reason? why it matters?).")),

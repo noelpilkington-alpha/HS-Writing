@@ -146,7 +146,9 @@ LESSON = Lesson(
                    "(C) Technology jobs are growing fast, which is honestly pretty exciting to think about, and "
                    "lots of students seem to be really interested in going into them these days, so studying one "
                    "of those fields is probably a smart and sensible idea for just about anyone who happens to be "
-                   "thinking ahead about the future. "
+                   "thinking ahead about the future.  "
+                   "(D) Technology jobs are growing far faster than jobs overall. The Bureau projects data-science "
+                   "jobs will grow about 33.5 percent, and all jobs only about 3.1 percent. "
                    "Correct: B. Two facts that add up (the tech rate AND the overall baseline), ordered, plus a warrant sentence that explains why the gap matters."),
              choices=[
                  {"id": "A", "text": "Technology jobs are growing fast. The source says that data-science jobs will grow a great deal over the coming decade, and it also says, in another sentence a little later on, that data-science jobs are one of the quickest-expanding fields around right now, which really goes to show just how fast these particular technology jobs are growing overall.",
@@ -158,6 +160,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Technology jobs are growing fast, which is honestly pretty exciting to think about, and lots of students seem to be really interested in going into them these days, so studying one of those fields is probably a smart and sensible idea for just about anyone who happens to be thinking ahead about the future.",
                   "correct": False,
                   "why": "No attributed facts from the source at all, just opinions and asides. Developing a point needs real evidence that adds up, not general enthusiasm."},
+                 {"id": "D", "text": "Technology jobs are growing far faster than jobs overall. The Bureau projects data-science jobs will grow about 33.5 percent, and all jobs only about 3.1 percent.",
+                  "correct": False,
+                  "why": "The two facts do add up (tech rate and overall baseline), but the paragraph stops there. It never writes the warrant that ties both figures to the point, so the reader is left to guess why the gap matters. Two facts still need one sentence explaining what they show."},
              ]),
         Slot("MODEL", "predict_the_fix", "This paragraph has two facts. What does it most need?",
              bank="ai_workforce",

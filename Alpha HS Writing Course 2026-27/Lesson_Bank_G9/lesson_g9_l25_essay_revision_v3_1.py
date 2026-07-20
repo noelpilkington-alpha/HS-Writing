@@ -131,8 +131,10 @@ LESSON = Lesson(
                    "You cannot see your own gaps easily, so you will first practice on PROVIDED paragraphs: "
                    "predict the score, see the reveal, then revise. After that you run the same observable "
                    "checklist on a paragraph you write here.")),
+        # tag="buy_in": this is a get-familiar topic-orientation read (the provided paragraphs you revise are on
+        # this topic), not a counted teach segment, so it does not tighten the checking_revision cadence ceiling.
         Slot("TEACH", "stimulus_display", "The topic: volcanoes",
-             ref="ACC-W910-FRAME-VOLCANOES", bank="volcanoes",
+             ref="ACC-W910-FRAME-VOLCANOES", bank="volcanoes", tag="buy_in",
              body=("The provided paragraphs you revise are about volcanoes. Read this short orientation so the "
                    "topic is familiar. You are not writing a volcano essay from scratch here; you are finding "
                    "and fixing gaps in paragraphs that are given to you.")),
@@ -155,7 +157,9 @@ LESSON = Lesson(
                    "(B) Add a sentence explaining why the tracked signs support the claim that the volcano is "
                    "worth monitoring.  "
                    "(C) Restate the claim in bolder wording, because a stronger claim can make the whole "
-                   "paragraph feel convincing. "
+                   "paragraph feel convincing.  "
+                   "(D) Add a transition like 'therefore' between the two sentences so the paragraph flows more "
+                   "smoothly. "
                    "Correct: B."),
              choices=[
                  {"id": "A", "text": "Add a second fact from the source about the small quakes, and also make every sentence noticeably longer and more detailed.",
@@ -167,6 +171,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Restate the claim in bolder wording, because a stronger claim can make the whole paragraph feel convincing.",
                   "correct": False,
                   "why": "A bolder claim does not close the gap. The paragraph still never explains why the evidence supports the claim, so the warrant is still missing. Notice the word 'because' here sits on the claim, not on a warrant."},
+                 {"id": "D", "text": "Add a transition like 'therefore' between the two sentences so the paragraph flows more smoothly.",
+                  "correct": False,
+                  "why": "A smoother link between the sentences is a cohesion fix, not the gap here. The paragraph still never says why the tracked signs support the claim, so the missing warrant is still missing."},
              ]),
         Slot("MODEL", "predict_the_fix", "What is the specific gap in this paragraph?",
              bank="volcanoes",

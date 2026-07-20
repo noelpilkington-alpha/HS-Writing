@@ -146,7 +146,8 @@ LESSON = Lesson(
                    "real relationship between them? "
                    "(A) In addition, some of that energy is lost as the plant uses it.  "
                    "(B) As a result, some of that energy is lost as the plant uses it.  "
-                   "(C) However, some of that energy is lost as the plant uses it. "
+                   "(C) However, some of that energy is lost as the plant uses it.  "
+                   "(D) Next, some of that energy is lost as the plant uses it. "
                    "Correct: C. The second idea contrasts with the first."),
              choices=[
                  {"id": "A", "text": "In addition, some of that energy is lost as the plant uses it.",
@@ -158,6 +159,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "However, some of that energy is lost as the plant uses it.",
                   "correct": True,
                   "why": "Correct. The second idea contrasts with the first (the plant makes energy, then loses some), so 'however' names the true relationship."},
+                 {"id": "D", "text": "Next, some of that energy is lost as the plant uses it.",
+                  "correct": False,
+                  "why": "'Next' signals sequence or time order, as if the loss were simply the following step. But the loss goes against making the energy, so this names a sequence where the real relationship is a contrast."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this transition most need?",
              bank="photosynthesis",

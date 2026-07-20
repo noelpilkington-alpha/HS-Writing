@@ -20,18 +20,15 @@ if PIPE not in sys.path:
 from tier_a_regression import audit_lesson, run_all, _ISSUE_FRAME_NA_GATES  # noqa: E402
 from g9_push_dryrun import STIM  # noqa: E402
 
-# --- IN-FLIGHT GATES (LS-feedback pipeline encoding, 2026-07-20) ---------------------------------
-# New/tightened deterministic gates land in Tasks 2-8 of the LS-feedback plan and INTENTIONALLY flag
-# legacy lessons that the course-wide rollout (Task 11) then fixes. During that build window these two
-# course-clean invariants would go red on the KNOWN in-flight gates and mask any UNEXPECTED regression.
-# So we allowlist ONLY the in-flight signals: the tests still fail on any OTHER blocker.
-# REMOVE this allowlist (empty both tuples) at Task 11 Step 4 and re-assert full green.
-#  - _INFLIGHT_GATES: whole new gates, matched on the delimited gate name ":name:".
-#  - _INFLIGHT_MSG_SUBSTRINGS: for a TIGHTENED existing gate (e.g. structural_item's new "exactly 4
-#    options" rule), we cannot allowlist the whole gate (it still catches real defects), so we match
-#    the specific new rule's message substring.
-_INFLIGHT_GATES = ("frame_comma", "self_answered_check", "check_cadence")   # Task 6 landed check_cadence; emptied at T11
-_INFLIGHT_MSG_SUBSTRINGS = ("need exactly 4",)   # Task 3: structural_item's new 4-option-rule message; emptied at T11
+# --- IN-FLIGHT GATES allowlist: EMPTIED at Task 11 (2026-07-20) -----------------------------------
+# The LS-feedback gates (frame_comma, structural_item 4-option, self_answered_check, check_cadence,
+# define_before_use re-gloss) were built in Tasks 2-6 and INTENTIONALLY flagged legacy lessons; the
+# course-wide rollout (Task 11) then fixed all 90 flagged lessons. The course is now GENUINELY clean on
+# every gate, so the temporary build-window allowlist is removed: both course-clean invariants below
+# re-assert full green with no exemptions. (Kept as empty tuples + helper so a future gate-build phase
+# can re-use the same mechanism.)
+_INFLIGHT_GATES = ()
+_INFLIGHT_MSG_SUBSTRINGS = ()
 
 
 def _blocker_is_inflight(b: str) -> bool:

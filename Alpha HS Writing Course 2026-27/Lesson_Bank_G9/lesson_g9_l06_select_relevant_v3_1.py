@@ -149,14 +149,16 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Which fact proves the claim?",
              ref="", labeled_grade_c=True, bank="animal_migration",
              body=("Now that you have seen one built, spot the target. The claim is: birds migrate to survive "
-                   "the seasons. All three facts are true and all three name the source. Which one PROVES the "
+                   "the seasons. All four facts are true and all four name the source. Which one PROVES the "
                    "claim? "
                    "(A) According to the passage, the Arctic tern flies about 12,000 miles in each direction, the longest migration of any animal on Earth.  "
                    "(B) According to the passage, birds follow set seasonal routes, called flyways, that run between their breeding grounds and their winter grounds.  "
-                   "(C) According to the passage, birds migrate mainly to find food and to raise their young when cold weather hides the food they eat. "
+                   "(C) According to the passage, birds migrate mainly to find food and to raise their young when cold weather hides the food they eat.  "
+                   "(D) According to the passage, scientists track where migrating birds travel by fitting them with small numbered leg bands. "
                    "Correct: C. It is about WHY birds migrate, which is exactly what the claim says. (A) is "
                    "about distance and (B) is about the route, so both are off-point even though they are true "
-                   "and named."),
+                   "and named. (D) is about how scientists STUDY migration, not why birds migrate, so it is "
+                   "off-point too."),
              choices=[
                  {"id": "A", "text": "According to the passage, the Arctic tern flies about 12,000 miles in each direction, the longest migration of any animal on Earth.",
                   "correct": False,
@@ -167,6 +169,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "According to the passage, birds migrate mainly to find food and to raise their young when cold weather hides the food they eat.",
                   "correct": True,
                   "why": "Correct. It is about WHY birds migrate, to find food when cold weather hides it, which is exactly what the claim says, even though it never repeats the words 'survive' or 'seasons.' The fact that fits the claim is what proves it, not the fact with the matching word."},
+                 {"id": "D", "text": "According to the passage, scientists track where migrating birds travel by fitting them with small numbered leg bands.",
+                  "correct": False,
+                  "why": "This is true and names the source, but it is about how scientists STUDY migration, not why birds migrate to survive. A fact about the tracking method does not prove the claim's reason."},
              ]),
         # Second minimal pair on the SAME skill (select the fact that PROVES the claim), a DIFFERENT claim from
         # the same source and a DIFFERENT confound than the first: here the traps are a true-but-off-point big
@@ -175,14 +180,16 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Which fact proves the banding claim?",
              ref="", labeled_grade_c=True, bank="animal_migration",
              body=("Here is a second claim from the same source: bird banding lets scientists trace the path "
-                   "one bird takes. All three facts below are true and all three name the source. Which one "
+                   "one bird takes. All four facts below are true and all four name the source. Which one "
                    "PROVES that claim? "
                    "(A) According to the passage, the U.S. Geological Survey's Bird Banding Laboratory receives over 60,000 band reports from hunters each year, and each report adds another clue about the hidden paths that birds follow.  "
                    "(B) According to the passage, the U.S. Geological Survey established the national Bird Banding Laboratory in 1920.  "
-                   "(C) According to the passage, a scientist places a numbered band on a bird's leg, and if that bird is later found elsewhere, the band number reveals where it traveled. "
+                   "(C) According to the passage, a scientist places a numbered band on a bird's leg, and if that bird is later found elsewhere, the band number reveals where it traveled.  "
+                   "(D) According to the passage, birds migrate mainly to find food and to raise their young when cold weather hides the food they eat. "
                    "Correct: C. It explains HOW banding traces a bird's path, which is exactly what the claim "
                    "says. (A) is about how many reports arrive and (B) is about when the program began, so both "
-                   "are true and named but off-point."),
+                   "are true and named but off-point. (D) is a true fact from the same source about why birds "
+                   "migrate, a different subject entirely, so it does not prove the banding claim."),
              choices=[
                  {"id": "A", "text": "According to the passage, the U.S. Geological Survey's Bird Banding Laboratory receives over 60,000 band reports from hunters each year, and each report adds another clue about the hidden paths that birds follow.",
                   "correct": False,
@@ -193,6 +200,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "According to the passage, a scientist places a numbered band on a bird's leg, and if that bird is later found elsewhere, the band number reveals where it traveled.",
                   "correct": True,
                   "why": "Correct. It explains the actual method, tag the bird, then read the band number when it turns up somewhere else, which is exactly how banding traces the path a bird takes."},
+                 {"id": "D", "text": "According to the passage, birds migrate mainly to find food and to raise their young when cold weather hides the food they eat.",
+                  "correct": False,
+                  "why": "This is true and names the source, but it is about WHY birds migrate, a different subject from how banding traces one bird's path, so it grabs a fact from elsewhere in the source that does not prove this claim."},
              ]),
         Slot("MODEL", "predict_the_fix", "Why does this evidence not prove the claim?",
              bank="animal_migration",

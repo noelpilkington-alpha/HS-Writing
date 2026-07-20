@@ -165,15 +165,17 @@ LESSON = Lesson(
                    "from the source, and run the 3 questions before you submit.")),
         Slot("MODEL", "discrimination", "Which sentence is a real warrant?",
              ref="", labeled_grade_c=True, bank="community_service",
-             body=("Now that you have seen one built, spot the target. All three attach a causal word to the "
-                   "same claim and the same fact. Which one is a real warrant, the sentence that explains WHY "
+             body=("Now that you have seen one built, spot the target. All four attach a causal word to the "
+                   "same claim. Which one is a real warrant, the sentence that explains WHY "
                    "the evidence supports the claim? "
                    "(A) Schools should require service because a service requirement is exactly the sort of firm rule that a genuinely responsible school really ought to put in place.  "
                    "(B) Schools should require service because most high schools already run service programs, so a rule would extend that workable option to every student.  "
-                   "(C) Schools should require service because a federal survey happened to find that most high schools already have some of their students taking part in service. "
+                   "(C) Schools should require service because a federal survey happened to find that most high schools already have some of their students taking part in service.  "
+                   "(D) Schools should require service because helping other people is one of the most rewarding experiences a young person can have. "
                    "Correct: B. It uses the fact to explain WHY requiring service is workable. (A) uses because "
                    "but only restates the claim, so it explains nothing. (C) states the fact with because but "
-                   "never says why that fact supports requiring it, so it stops at claim-plus-fact."),
+                   "never says why that fact supports requiring it, so it stops at claim-plus-fact. (D) gives a "
+                   "real reason, but it rests on a personal value, not on a fact from the source."),
              choices=[
                  {"id": "A", "text": "Schools should require service because a service requirement is exactly the sort of firm rule that a genuinely responsible school really ought to put in place.",
                   "correct": False,
@@ -184,6 +186,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Schools should require service because a federal survey happened to find that most high schools already have some of their students taking part in service.",
                   "correct": False,
                   "why": "This drops in the fact with because but never says why that fact supports requiring service. It stops at claim-plus-fact, so the warrant, the why, is still missing."},
+                 {"id": "D", "text": "Schools should require service because helping other people is one of the most rewarding experiences a young person can have.",
+                  "correct": False,
+                  "why": "This explains a why, but the reason is a personal value with no fact from the source behind it, so it is not the reasoning that links the source's evidence to the claim."},
              ]),
         Slot("MODEL", "discrimination", "Which reason actually uses a source fact?",
              ref="", labeled_grade_c=True, bank="community_service",
@@ -192,12 +197,13 @@ LESSON = Lesson(
                    "is the real warrant? "
                    "(A) A graduation requirement would change most schools, because it just feels like the bold sort of policy that shakes schools out of their routines.  "
                    "(B) A graduation requirement would change most schools, as a federal survey already found that a strong majority of high schools have at least some of their students regularly taking part in community service in one form or another.  "
-                   "(C) A graduation requirement would change most schools, since fewer than half now build service into their coursework, so a rule would push the majority to do something new. "
+                   "(C) A graduation requirement would change most schools, since fewer than half now build service into their coursework, so a rule would push the majority to do something new.  "
+                   "(D) A graduation requirement would change most schools, since the source makes it very clear that this is exactly the kind of policy schools need right now. "
                    "Correct: C. It uses a source fact, the low share of high schools that build service into their "
                    "coursework, to explain WHY a requirement would change most of them. (A) attaches a causal word "
                    "to a feeling, not a fact, so there is nothing to reason from. (B) cites a real fact, but that "
                    "fact shows service is already common, which does not explain why a rule would change most "
-                   "schools."),
+                   "schools. (D) points at the source but pulls no actual fact from it, only a vague claim about what it shows."),
              choices=[
                  {"id": "A", "text": "A graduation requirement would change most schools, because it just feels like the bold sort of policy that shakes schools out of their routines.",
                   "correct": False,
@@ -208,6 +214,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "A graduation requirement would change most schools, since fewer than half now build service into their coursework, so a rule would push the majority to do something new.",
                   "correct": True,
                   "why": "Correct. It reasons from a real source fact, the low share of schools that build service into their coursework, to explain why a requirement would change most of them."},
+                 {"id": "D", "text": "A graduation requirement would change most schools, since the source makes it very clear that this is exactly the kind of policy schools need right now.",
+                  "correct": False,
+                  "why": "This name-drops the source but never pulls an actual fact from it, so there is no real evidence in the reason, only a vague claim about what the source shows."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this claim-plus-evidence most need?",
              bank="community_service",
@@ -230,7 +239,7 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the reasoning.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
-                                         "Schools should require service because ______ [a fact from the source], so ______ [explain WHY that fact supports requiring service]."),
+                                         "Schools should require service because ______ [a fact from the source] so ______ [explain WHY that fact supports requiring service]."),
                  closer="Use because, since, or as, then give a real reason, do not just restate the claim. "
                         "Write one warrant sentence, then check it against the 3 questions.")),
         # DIAGNOSIS = check-and-fix on a PROVIDED weak draft (self-contained, no look-back at prior work).

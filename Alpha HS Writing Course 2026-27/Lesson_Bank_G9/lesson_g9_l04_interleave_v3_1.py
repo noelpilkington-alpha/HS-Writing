@@ -135,10 +135,13 @@ LESSON = Lesson(
                    "volcano erupts. Which sentence fits that verb? "
                    "(A) Studying volcanoes really should matter a lot more to schools than it currently seems to.  "
                    "(B) Volcanoes are honestly one of the most fascinating and exciting topics in all of science.  "
-                   "(C) A volcano erupts through a series of connected stages, from rising magma to release. "
+                   "(C) A volcano erupts through a series of connected stages, from rising magma to release.  "
+                   "(D) This explanation will be about volcanoes and the different things that happen with them. "
                    "Correct: C. The verb is explain, so the right product is a controlling idea: a focus that "
                    "previews the parts and takes no side. (A) takes a side (an argue move, wrong verb). (B) is a "
-                   "bare opinion. Only (C) sets a no-side focus that previews the stages.")),
+                   "bare opinion. (D) only announces the topic; it sets no focus and previews none of the stages, "
+                   "so a reader still cannot tell what the explanation will do. Only (C) sets a no-side focus that "
+                   "previews the stages.")),
         Slot("MODEL", "discrimination", "Argue task: which sentence is the right product?",
              ref="", labeled_grade_c=True, bank="four_day_week",
              body=("Read the verb, then pick the sentence that is the RIGHT product. The task: ARGUE whether "
@@ -161,6 +164,12 @@ LESSON = Lesson(
                   "correct": True,
                   "why": "This takes a side someone could dispute and backs it with a reason, which is exactly "
                          "what an argue task calls for."},
+                 {"id": "D",
+                  "text": "People make good points on both sides of whether schools should switch to a four-day "
+                          "week.",
+                  "correct": False,
+                  "why": "This names the debate but refuses to commit to a side, so it is not an arguable claim "
+                         "at all; an argue task needs you to pick one side."},
              ]),
         Slot("MODEL", "annotated_before_after", "Watch a writer match the product to the verb",
              bank="volcanoes",
