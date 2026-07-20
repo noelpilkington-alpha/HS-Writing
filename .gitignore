@@ -1,6 +1,9 @@
 # Environment / secrets
 .env
 api/.env
+# Incept credentials (live API key + web login/password in plaintext) - NEVER commit
+Alpha HS Writing Course 2026-27/Incept/Incept Production details.md
+**/Incept Production details.md
 
 # Python
 __pycache__/
