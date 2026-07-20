@@ -1001,6 +1001,39 @@ def gate_structural_item(L) -> tuple[bool, str]:
     return True, "structural items well-formed (option forms, count, single key, no duplicates)"
 
 
+_CHECK_KINDS = {"discrimination", "predict_the_fix", "self_score"}
+_COUNTED_KINDS = {"teach_card", "stimulus_display", "annotated_before_after"}
+def gate_check_cadence(L) -> tuple[bool, str]:
+    """#3 (council): a run of counted teach segments may not exceed the archetype ceiling with no
+    intervening check. Worked-example run = 1; buy_in = 0; memorizable_tool tightens the ceiling to 2
+    until the next check. Gate-class lessons + the final write block are exempt."""
+    if getattr(L, "lesson_class", "practice") == "gate":
+        return True, "gate-class lesson exempt from cadence"
+    ceiling = CADENCE_CEILING[archetype_of(L)]
+    count = 0; eff = ceiling; prev_worked = False; run_start = None
+    for i, s in enumerate(L.slots, 1):
+        if s.kind in _CHECK_KINDS:
+            count = 0; eff = ceiling; prev_worked = False; continue
+        if s.kind not in _COUNTED_KINDS:
+            prev_worked = False                   # a write/other slot breaks worked-example adjacency
+            continue                              # production/diagnosis writes are not teach segments
+        if s.tag == "buy_in":
+            prev_worked = False                   # a buy-in card between two A/B slots breaks the run too
+            continue
+        # collapse a run of DIRECTLY-ADJACENT annotated_before_after into one worked example (anything
+        # between them - a write, a buy-in, a plain teach card - ends the run so the next A/B counts fresh)
+        if s.kind == "annotated_before_after" and prev_worked:
+            continue
+        prev_worked = (s.kind == "annotated_before_after")
+        count += 1
+        if count == 1: run_start = i
+        eff = min(ceiling, MEMORIZABLE_TOOL_CEILING) if s.tag == "memorizable_tool" else eff
+        if count > eff:
+            return False, (f"slots {run_start}-{i}: {count} counted teach segments with no check "
+                           f"(archetype {archetype_of(L)} ceiling {eff})")
+    return True, f"cadence ok (ceiling {ceiling})"
+
+
 GATES = [
     ("shell_completeness", gate_shell_completeness),
     ("model_sequence", gate_model_sequence),
@@ -1030,6 +1063,7 @@ GATES = [
     ("no_em_dash", gate_no_em_dash),
     ("gate_gate_shape", gate_gate_shape),
     ("structural_item", gate_structural_item),
+    ("check_cadence", gate_check_cadence),
 ]
 
 def qc_lesson(L: Lesson) -> dict:
