@@ -124,6 +124,63 @@ def test_low_scoring_omits_passing_high_scores(tmp_path):
     assert "L-A:s0" not in keys
 
 
+# ---- (a2) prose/bank-backed slot: options resolved like the renderer -------
+def test_slot_to_qc_content_resolves_prose_options_when_choices_empty():
+    """Live-discovered (2026-07-20): most course discriminations carry options in prose
+    (bank-backed), so choices[] is EMPTY; QC must resolve them the way the renderer does, not
+    send an empty options list to the judge."""
+    slot = Slot(
+        "SUPPORTED", "discrimination", "Which one is an arguable claim?",
+        body=("Pick the arguable claim. (A) The sky is blue. "
+              "(B) Schools should ban phones during class. (C) Phones exist. "
+              "Correct: B. (A) is a fact. (B) takes a disputable side. (C) is a fact."),
+        choices=[],
+    )
+    content = slot_to_qc_content(slot)
+    assert len(content["options"]) == 3
+    assert content["answer_key"]["answer"] == "Schools should ban phones during class."
+    assert content["answer_key"]["explanation"]  # non-empty, from the reveal
+
+
+# ---- (c2) live envelope: score/axes are NESTED under "verdict" -------------
+class _StubClient:
+    """Mimics the live QC transport: qc() returns the async envelope (status pending), poll()
+    returns a terminal envelope whose score/axes are NESTED under a 'verdict' key (the real shape,
+    confirmed against a live 2026-07-20 response)."""
+    def qc(self, *a, **k):
+        return {"request_id": 999, "run_id": 999, "status": "pending"}
+
+    def poll(self, request_id, kind="qc", live=False):
+        return {
+            "request_id": request_id, "run_id": request_id, "status": "succeeded",
+            "verdict": {
+                "judge_score": 68, "passed": False,
+                "axes": [
+                    {"id": "correctness", "score": 85, "pass": True, "feedback": "leak"},
+                    {"id": "type_contract", "score": 55, "pass": False, "feedback": "leak"},
+                ],
+                "feedback": "should not survive into the receipt",
+            },
+        }
+
+
+def test_qc_item_unwraps_nested_verdict_from_live_envelope(tmp_path):
+    slot = _discrim_slot()
+    L = _wrap_lesson(slot)
+    verdict = qc_item(L.id, 0, live=True, lesson=L, client=_StubClient())
+    # the returned payload is the INNER verdict, not the polling envelope
+    assert verdict["judge_score"] == 68
+    assert verdict["passed"] is False
+    assert len(verdict["axes"]) == 2
+    # and it records cleanly (score/axes present, no leaked feedback)
+    p = str(tmp_path / "receipts.json")
+    record(L.id, 0, verdict, path=p)
+    entry = json.loads(open(p, encoding="utf-8").read())[f"{L.id}:s0"]
+    assert entry["judge_score"] == 68 and entry["flagged"] is True
+    assert len(entry["axes"]) == 2
+    assert "feedback" not in open(p, encoding="utf-8").read()
+
+
 # ---- (c) qc_item dry = would-send, no network ------------------------------
 def test_qc_item_dry_returns_would_send():
     slot = _discrim_slot()

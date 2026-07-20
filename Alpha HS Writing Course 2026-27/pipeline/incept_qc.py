@@ -40,25 +40,58 @@ _TERMINAL = {"complete", "completed", "done", "succeeded", "failed", "error"}
 
 
 # ---- slot -> QC content ----------------------------------------------------
+def _resolve_prose_options(slot):
+    """Fallback for slots whose choices[] is empty: resolve options the SAME way the renderer does.
+
+    Many discrimination/predict slots carry their options in prose (a bank-backed or authored body like
+    "(A) ... (B) ... Correct: C"), not a structured choices[] list. The build path resolves these via
+    g9_push_dryrun._choice_options + gated_reading._parse_reveal; if QC read only slot.choices it would
+    send empty options + no answer key to Incept. This mirrors the renderer so QC judges what STUDENTS
+    actually see. Returns (option_texts, answer_text, explanation); all "" / [] on any failure (never raises)."""
+    try:
+        from g9_push_dryrun import _choice_options
+        opts, correct = _choice_options(slot)
+    except Exception:
+        return [], "", ""
+    if not opts:
+        return [], "", ""
+    texts = [str(o.get("content", "")) for o in opts]
+    answer = next((str(o.get("content", "")) for o in opts if o.get("correct")), "")
+    explanation = ""
+    try:
+        from gated_reading import _parse_reveal
+        correct_text, _wrong = _parse_reveal(slot, correct)
+        explanation = str(correct_text or "")
+    except Exception:
+        explanation = ""
+    return texts, answer, explanation
+
+
 def slot_to_qc_content(slot) -> dict:
     """Map a lesson Slot to the Incept QC `content` shape.
 
     Discrimination (choices=[{id,text,correct,why}]) -> the probe-proven shape:
         {"stem": <title>, "options": [<option texts>],
          "answer_key": {"answer": <correct text>, "explanation": <correct why>}}
+    When choices[] is empty (bank-backed / prose options), fall back to _resolve_prose_options so QC
+    judges the options the renderer actually produces, not an empty list.
     A production_frq (a text artifact, no options) -> {"stem": <title>, "prompt": <body>}.
     """
     kind = getattr(slot, "kind", "")
     choices = getattr(slot, "choices", None) or []
     if kind in ("discrimination", "predict_the_fix", "self_score", "sr_practice") or choices:
-        options = [str(c.get("text", "")) for c in choices]
-        correct = next((c for c in choices if c.get("correct")), None)
-        answer_key = {}
-        if correct is not None:
-            answer_key = {
-                "answer": str(correct.get("text", "")),
-                "explanation": str(correct.get("why", "")),
-            }
+        if choices:
+            options = [str(c.get("text", "")) for c in choices]
+            correct = next((c for c in choices if c.get("correct")), None)
+            answer_key = {}
+            if correct is not None:
+                answer_key = {
+                    "answer": str(correct.get("text", "")),
+                    "explanation": str(correct.get("why", "")),
+                }
+        else:
+            options, answer, explanation = _resolve_prose_options(slot)
+            answer_key = {"answer": answer, "explanation": explanation} if answer else {}
         return {
             "stem": getattr(slot, "title", "") or "",
             "options": options,
@@ -154,15 +187,20 @@ def qc_item(lesson_id: str, slot_idx: int, live: bool = False,
         return resp
 
     # live: poll to a terminal state, then return the verdict payload.
+    # The async envelope is {request_id, run_id, status, verdict:{judge_score,passed,axes,...}, ...}
+    # (confirmed against a live QC response 2026-07-20): status is TOP-LEVEL, but the score/axes the
+    # receipt needs are NESTED under "verdict". Unwrap it so _redact_verdict reads the right level;
+    # fall back to the envelope itself when there is no nested "verdict" (flat shape, tests).
     request_id = resp.get("request_id") or resp.get("id")
-    verdict = resp
+    envelope = resp
     for _ in range(40):
-        status = str(verdict.get("status", "")).lower()
+        status = str(envelope.get("status", "")).lower()
         if status in _TERMINAL or request_id is None:
             break
         time.sleep(2)
-        verdict = client.poll(request_id, kind="qc", live=True)
-    return verdict
+        envelope = client.poll(request_id, kind="qc", live=True)
+    inner = envelope.get("verdict") if isinstance(envelope, dict) else None
+    return inner if isinstance(inner, dict) else envelope
 
 
 # ---- redacted receipt (scores/axes/flag ONLY) ------------------------------
