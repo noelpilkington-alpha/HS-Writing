@@ -1,5 +1,5 @@
 """
-lesson_g9_l04_controlling_idea_v3_1.py  -  G9 KC C.9.05, ARCHETYPE T2 (STAND, sentence). V3.1.
+lesson_g9_l03_controlling_idea_v3_1.py  -  G9 KC C.9.05, ARCHETYPE T2 (STAND, sentence). V3.1.
 
 G9 L04, rebuilt to the v3.1 build spec (icm/_config/v3_1-lesson-build-spec.md). Teaching point PRESERVED
 (distinct from L01/L02): this is an INFORMATIONAL / EXPLAIN lesson (KC C.9.05), NOT argument. It teaches
@@ -153,15 +153,18 @@ LESSON = Lesson(
                    "built, then build your own. You only need the topic and its main parts. Remember, this is an "
                    "explain task, so you take no side.")),
 
-        # ===== MODEL first (before the quiz): coping-model think-aloud -> decompose + the check tool ===
-        Slot("MODEL", "annotated_before_after", "Watch a writer build a controlling idea",
+        # ===== MODEL first (before the quiz): coping-model think-aloud + decompose + the check tool, in ONE
+        # worked-example card. Folded into a single annotated_before_after slot (was two slots) so the run of
+        # counted teach segments before the first check stays within the concept cadence ceiling of 3
+        # (gate_check_cadence, LS-feedback #3); mirrors the L01 sibling merge. No teaching cut: the process
+        # think-aloud, the anatomy decompose, and the 3-question check tool all live here now. ===
+        Slot("MODEL", "annotated_before_after", "Watch a writer build a controlling idea, then take it apart",
              bank="water_cycle",
              body=("Here is the skill in action. Follow the writer's thinking below. " + COPING_HTML +
                    " Notice what turned the BEFORE into the AFTER: the writer dropped the broad label, set a "
-                   "focus a reader can follow, previewed the parts, and took no side.")),
-        Slot("MODEL", "teach_card", "Decompose it, and get your check tool",
-             body=("Now take the finished controlling idea apart to see how it is built, then keep the tool you "
-                   "will use to check your own." + DECOMPOSE_HTML + REMEMBER +
+                   "focus a reader can follow, previewed the parts, and took no side. Now take that finished "
+                   "controlling idea apart to see how it is built, then keep the tool you will use to check your "
+                   "own." + DECOMPOSE_HTML + REMEMBER +
                    "When you write your own, do the same: set the focus first, preview the parts, keep any side "
                    "out, then run the 3 questions before you submit.")),
         Slot("MODEL", "discrimination", "Which one is the controlling idea?",
@@ -174,12 +177,15 @@ LESSON = Lesson(
                    "(B) The water cycle moves through evaporation, condensation, and precipitation, which clearly "
                    "proves it matters far more than any other natural cycle a student could possibly study.  "
                    "(C) The water cycle moves water through four connected stages, evaporation, condensation, "
-                   "precipitation, and collection, in one continuous loop. "
+                   "precipitation, and collection, in one continuous loop.  "
+                   "(D) This explanation will be about the water cycle and the various things that happen with it. "
                    "Correct: C. Watch the trap: (A) takes an arguable SIDE ('most important'), which an explain "
                    "task did not ask for. (B) does name the parts, but it still argues a side ('matters far "
-                   "more'), so previewing the parts alone does not make a controlling idea. Only (C) sets a focus "
-                   "a reader can follow, previews the parts, AND takes no side. It is the no-side focus that "
-                   "makes it a controlling idea, not simply listing the stages.")),
+                   "more'), so previewing the parts alone does not make a controlling idea. (D) only announces "
+                   "the topic and never sets a focusing angle or names the stages, so a reader still cannot tell "
+                   "what the explanation will do. Only (C) sets a focus a reader can follow, previews the parts, "
+                   "AND takes no side. It is the no-side focus that makes it a controlling idea, not simply "
+                   "listing the stages.")),
         Slot("MODEL", "discrimination", "Which one previews the parts, not just a true fact?",
              ref="", labeled_grade_c=True, bank="water_cycle",
              body=("A different test now: every choice below takes no side, so no-side will not decide it. The "
@@ -203,6 +209,11 @@ LESSON = Lesson(
                   "correct": True,
                   "why": ("This sets a clear focus on how the cycle keeps water moving and previews its stages, "
                           "all while taking no side, so it is a controlling idea.")},
+                 {"id": "D",
+                  "text": ("The water cycle is a big topic with a lot of interesting facts worth knowing about."),
+                  "correct": False,
+                  "why": ("This only announces the topic. It sets no focusing angle on how the cycle keeps water "
+                          "moving and previews none of the stages, so it is a topic label, not a controlling idea.")},
              ]),
         Slot("MODEL", "predict_the_fix", "Is this a controlling idea, and if not, what fixes it?",
              bank="water_cycle",
