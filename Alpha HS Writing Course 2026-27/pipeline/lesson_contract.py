@@ -496,6 +496,24 @@ def gate_no_prior_work_reference(L: Lesson) -> tuple[bool, str]:
                            f"are stateless (retake is blank). Make the slot self-contained (write fresh), not a look-back.")
     return True, "no cross-item references to the student's prior work"
 
+# a fill-in frame = student-facing text with fill blanks; comma before a restrictive because/so clause in
+# a FRAME reads as a punctuation model the student copies. Flag ", because"/", so" ONLY inside a frame
+# (a chunk containing "______"), never in ordinary prose.
+_FRAME_COMMA_RE = re.compile(r",\s+(because|so)\b", re.I)
+def gate_frame_comma(L) -> tuple[bool, str]:
+    hits = []
+    for i, s in enumerate(L.slots, 1):
+        body = s.body or ""
+        if "______" not in body:            # only fill-in frames
+            continue
+        # scan each frame-ish sentence containing a blank
+        for seg in re.split(r"(?<=[.!?])\s+", re.sub(r"<[^>]+>", " ", body)):
+            if "______" in seg and _FRAME_COMMA_RE.search(seg):
+                hits.append(f"slot {i}: '{seg.strip()[:60]}'")
+    if hits:
+        return False, "comma before 'because'/'so' in a fill-in frame (drop it): " + "; ".join(hits[:4])
+    return True, "no frame punctuation-model errors"
+
 # --- Direct-Instruction / completeness gates (Instructional_Design_KB rules 1,2,4 + Engelmann faultless
 #     communication). These enforce that a lesson is a FINISHED, teachable artifact, not a thin blueprint. ---
 
@@ -944,6 +962,7 @@ GATES = [
     ("timeback_native", gate_timeback_native),
     ("no_source_markup", gate_no_source_markup),
     ("no_prior_work_reference", gate_no_prior_work_reference),
+    ("frame_comma", gate_frame_comma),
     ("define_before_use", gate_define_before_use),
     ("content_depth", gate_content_depth),
     ("model_before_required", gate_model_before_required),

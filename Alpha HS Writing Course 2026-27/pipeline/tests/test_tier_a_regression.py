@@ -20,13 +20,27 @@ if PIPE not in sys.path:
 from tier_a_regression import audit_lesson, run_all, _ISSUE_FRAME_NA_GATES  # noqa: E402
 from g9_push_dryrun import STIM  # noqa: E402
 
+# --- IN-FLIGHT GATES (LS-feedback pipeline encoding, 2026-07-20) ---------------------------------
+# New deterministic gates land in Tasks 2-8 of the LS-feedback plan and INTENTIONALLY flag legacy
+# lessons that the course-wide rollout (Task 11) then fixes. During that build window these two
+# course-clean invariants would go red on the KNOWN in-flight gates and mask any UNEXPECTED regression.
+# So we allowlist ONLY the in-flight gate names: the tests still fail on any OTHER blocker.
+# REMOVE this allowlist at Task 11 Step 4 and re-assert full green (the rollout is done then).
+_INFLIGHT_GATES = ("frame_comma",)  # extend as Tasks 3-6 land (self_answered_check, check_cadence, ...); emptied at T11
+
+
+def _blocker_is_inflight(b: str) -> bool:
+    return any(f":{g}:" in b for g in _INFLIGHT_GATES)
+
 
 def test_g9_is_fully_clean():
-    """G9 (the first course to ship) must be 27/27 clean on the full deterministic floor."""
+    """G9 (the first course to ship) must be clean on the full deterministic floor, EXCEPT for the
+    known in-flight LS-feedback gates whose legacy flags Task 11 clears (allowlisted above)."""
     results = run_all()["G9"]
-    fails = [r["lesson_id"] for r in results if not r["passed"]]
-    assert not fails, f"G9 not clean on Tier-A floor: {fails}\n" + "\n".join(
-        b for r in results for b in r["blockers"])
+    fails = [r["lesson_id"] for r in results
+             if not r["passed"] and any(not _blocker_is_inflight(b) for b in r["blockers"])]
+    assert not fails, f"G9 not clean on Tier-A floor (non-in-flight): {fails}\n" + "\n".join(
+        b for r in results for b in r["blockers"] if not _blocker_is_inflight(b))
 
 
 def test_non_fact_verify_floor_is_clean_course_wide():
@@ -39,7 +53,9 @@ def test_non_fact_verify_floor_is_clean_course_wide():
     non_fact = {}
     for _g, results in run_all().items():
         for r in results:
-            other = [b for b in r["blockers"] if ":fact_sources:" not in b]
+            # exclude fact-verify (grade-gated) AND the known in-flight LS-feedback gates (Task 11 clears them)
+            other = [b for b in r["blockers"]
+                     if ":fact_sources:" not in b and not _blocker_is_inflight(b)]
             if other:
                 non_fact[r["lesson_id"]] = other
     assert not non_fact, "non-fact-verify Tier-A regression:\n" + "\n".join(
