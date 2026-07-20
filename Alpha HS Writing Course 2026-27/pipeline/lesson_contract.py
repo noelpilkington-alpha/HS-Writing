@@ -63,6 +63,19 @@ LESSON_TYPES = {
     8: ("cross-source-synthesis", "WEAVE", "proposal"),
 }
 
+# ---- council cadence tiers (LS feedback 2026-07) ---------------------------
+# Archetype is DERIVED from lesson_type (no new lesson field). Cadence ceiling = max run of counted
+# teach segments allowed before an intervening check. Type 4 (DEW) = text-dependent-analysis, a
+# concept-teaching move (device -> effect -> warrant). Unknown types default to concept (tightest ceiling).
+CADENCE_CEILING = {"concept": 3, "checking_revision": 2, "full_essay_build": 4}
+MEMORIZABLE_TOOL_CEILING = 2
+_ARCHETYPE_BY_TYPE = {1: "concept", 2: "concept", 3: "concept", 4: "concept", 6: "concept",
+                      5: "checking_revision", 7: "full_essay_build", 8: "full_essay_build"}
+def archetype_of(L) -> str:
+    """Council cadence tier from lesson_type. Type 4 = DEW text-dependent-analysis (concept-teaching).
+    Unknown types default to concept (the tightest ceiling, safest for novices)."""
+    return _ARCHETYPE_BY_TYPE.get(getattr(L, "lesson_type", 0), "concept")
+
 # Unit-of-production ladder (TWR Principle 2: begin at the sentence, then build to paragraphs, then
 # compositions; "a writer who cannot compose a decent sentence will never produce a decent essay",
 # TWR2.0 loc ~1343-1395). KH element-interactivity: do not compose the whole before the parts are fluent
@@ -122,6 +135,8 @@ class Slot:
                              # [{"id":"A","text":"...","correct":bool,"why":"why this option is right/wrong"}].
                              # When present, the renderer uses these directly (reliable per-choice feedback)
                              # instead of parsing options+reveal out of the body prose.
+    tag: str = ""            # "" | "buy_in" | "memorizable_tool" | "worked_example"; cadence-gate hints
+                             # (buy_in counts 0; memorizable_tool tightens the ceiling)
 
 @dataclass
 class Lesson:
