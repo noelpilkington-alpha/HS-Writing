@@ -153,7 +153,9 @@ LESSON = Lesson(
                    "(A) In my own personal opinion, I really do think that thermoelectric power plants are very "
                    "truly the single biggest use of water in this entire country.  "
                    "(B) Power plants use a lot of water.  "
-                   "(C) Thermoelectric power plants are the country's largest single use of water. "
+                   "(C) Thermoelectric power plants are the country's largest single use of water.  "
+                   "(D) It is important to understand that thermoelectric power plants are the country's largest "
+                   "single use of water. "
                    "Correct: C. It cuts the filler and keeps the claim."),
              choices=[
                  {"id": "A", "text": "In my own personal opinion, I really do think that thermoelectric power plants are very truly the single biggest use of water in this entire country.",
@@ -165,6 +167,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Thermoelectric power plants are the country's largest single use of water.",
                   "correct": True,
                   "why": "Correct. The filler is gone and the claim is intact: it still says thermoelectric power plants are the largest single water use, which matches the source (about 133 billion gallons a day, the biggest of the three main uses). That is what a concision pass does, cut the padding, keep the meaning."},
+                 {"id": "D", "text": "It is important to understand that thermoelectric power plants are the country's largest single use of water.",
+                  "correct": False,
+                  "why": "This one keeps the claim but still opens with a throat-clearing phrase ('It is important to understand that'). A concision pass is only done when every filler word is gone, and this one left the opener in, so the pass is unfinished."},
              ]),
         # SECOND minimal pair, DIFFERENT confound: not "did you cut too far" (all three keep the claim here) but
         # "is there leftover filler". A short option (B) still leads with an intensifier; a long option (A) buries
@@ -178,7 +183,9 @@ LESSON = Lesson(
                    "(A) It is important to understand that just three activities account for the vast majority, "
                    "roughly 90 percent, of the nation's daily water use.  "
                    "(B) Basically, three activities take about 90 percent of the nation's daily water use.  "
-                   "(C) Three activities account for about 90 percent of the nation's daily water use. "
+                   "(C) Three activities account for about 90 percent of the nation's daily water use.  "
+                   "(D) First and foremost, three activities account for about 90 percent of the nation's daily "
+                   "water use. "
                    "Correct: C. It is the only version with no filler left."),
              choices=[
                  {"id": "A", "text": "It is important to understand that just three activities account for the vast majority, roughly 90 percent, of the nation's daily water use.",
@@ -190,6 +197,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Three activities account for about 90 percent of the nation's daily water use.",
                   "correct": True,
                   "why": "Every filler word is gone and the claim survives: it still says three activities take about 90 percent of daily water use, which matches the source (around 90 percent from just three categories)."},
+                 {"id": "D", "text": "First and foremost, three activities account for about 90 percent of the nation's daily water use.",
+                  "correct": False,
+                  "why": "It keeps the claim but opens with the redundant pair 'First and foremost,' which says one thing twice and does no work. One kind of filler left in means the concision pass is not finished."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this sentence most need?",
              bank="water_infrastructure",

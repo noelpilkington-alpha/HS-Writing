@@ -168,13 +168,15 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Which rehearsal keeps the synthesis woven under pressure?",
              ref="", labeled_grade_c=True, bank="renewable_grid_synthesis",
              body=("You have watched a survey turn into a woven synthesis. Now spot the target: which writer "
-                   "runs the whole routine, and which panics into a survey? "
+                   "runs the whole routine, and which does not? "
                    "(A) The writer budgets the stages, fast-plans the one argument and which source carries each point, drafts by point, and reserves minutes to check it is woven and weighted.  "
                    "(B) The writer reads every source slowly, then drafts a separate summary paragraph of each one in turn until the window closes, naming no argument and leaving no minutes to check the result.  "
-                   "(C) The writer skims fast, picks the two easiest sources to retell, and gives each its own paragraph, then adds one sentence at the very end that finally announces an argument. "
+                   "(C) The writer skims fast, picks the two easiest sources to retell, and gives each its own paragraph, then adds one sentence at the very end that finally announces an argument.  "
+                   "(D) The writer fast-plans one clear argument and drafts it well, but builds every point from the single source they liked best and never brings in the rest of the set. "
                    "Correct: A. It budgets, fast-plans one argument, and weaves the sources by point, so the "
-                   "synthesis holds; B tours all four sources with no argument, and C retells two sources and "
-                   "bolts an argument on at the end instead of building it."),
+                   "synthesis holds; B tours all four sources with no argument, C retells two sources and "
+                   "bolts an argument on at the end instead of building it, and D has one argument but leans on a "
+                   "single source, so nothing is actually woven across the set."),
              choices=[
                  {"id": "A", "text": "The writer budgets the stages, fast-plans the one argument and which source carries each point, drafts by point, and reserves minutes to check it is woven and weighted.",
                   "correct": True,
@@ -185,6 +187,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The writer skims fast, picks the two easiest sources to retell, and gives each its own paragraph, then adds one sentence at the very end that finally announces an argument.",
                   "correct": False,
                   "why": "Retelling two sources and bolting an argument on at the end is not a woven, weighted argument. The argument has to be planned first and run through the whole draft."},
+                 {"id": "D", "text": "The writer fast-plans one clear argument and drafts it well, but builds every point from the single source they liked best and never brings in the rest of the set.",
+                  "correct": False,
+                  "why": "One argument is not enough on its own. Leaning on a single source leaves the other sources unused, so nothing is woven across the set and the sources are not weighted by what each can carry."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this rehearsal most need?",
              bank="renewable_grid_synthesis",

@@ -177,8 +177,11 @@ LESSON = Lesson(
                    "source that carries it best, then drafts the whole woven synthesis and reserves time to close.  "
                    "(C) The writer reads all four sources to the very bottom, decides the one that seemed most "
                    "interesting is surely right, and spends the little time left defending that single source alone.  "
-                   "Correct: B finishes a woven synthesis; A and C read out the clock and leave no time to weave "
-                   "the set into one argument."),
+                   "(D) The writer caps the reading quickly, then spends most of the remaining time building a long, "
+                   "detailed plan, and starts drafting so late that the synthesis stops partway and never reaches a "
+                   "conclusion.  "
+                   "Correct: B finishes a woven synthesis; A and C read out the clock, and D over-plans, so all "
+                   "three leave the set unwoven or the essay unfinished."),
              choices=[
                  {"id": "A", "text": "The writer reads all four sources to the very bottom, jots the main point of each, then, low on time, writes one paragraph summarizing each source in turn, in the order the sources happen to appear.",
                   "correct": False,
@@ -189,6 +192,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The writer reads all four sources to the very bottom, decides the one source that seemed most interesting is right, and spends the little time left defending that single source on its own.",
                   "correct": False,
                   "why": "This also reads out the clock, and leaning on one source is not a synthesis. The set is never woven into a single argument."},
+                 {"id": "D", "text": "The writer caps the reading quickly, then spends most of the remaining time building a long, detailed plan, and starts drafting so late that the synthesis stops partway and never reaches a conclusion.",
+                  "correct": False,
+                  "why": "Capping the reading was right, but over-planning burns the drafting time. A synthesis that stops before its conclusion is unfinished, so the weave never lands its upshot."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this synthesis rehearsal most need?",
              bank="ai_workforce_synthesis",

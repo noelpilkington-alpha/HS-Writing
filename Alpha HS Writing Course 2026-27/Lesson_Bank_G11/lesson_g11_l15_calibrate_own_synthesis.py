@@ -183,9 +183,11 @@ LESSON = Lesson(
                    "self-prediction is TIED TO THE ROWS, and which is a GUESS the grader cannot check? "
                    "(A) I predict a 5 overall because the piece felt strong when I read it back and I managed to bring in all three of the sources somewhere in it.  "
                    "(B) I predict Development 3 because I weave one argument from the set, and Evidence 2 because I lean on one source harder than it can carry.  "
-                   "(C) I predict a high score because I spent a long time on this piece and worked much harder on it than I did on the last one I wrote. "
+                   "(C) I predict a high score because I spent a long time on this piece and worked much harder on it than I did on the last one I wrote.  "
+                   "(D) I predict Development 4 because I wrote about all three water topics, and Evidence 4 because I mentioned every source somewhere in the essay. "
                    "Correct: B. Only B names each row, a number, and the reason from what the writing does, so "
-                   "the gap to the grader is specific. A and C give feel or effort, which the grader never scores."),
+                   "the gap to the grader is specific. A gives a feeling, C gives effort, and D names the rows "
+                   "but reasons from coverage the rows do not score."),
              choices=[
                  {"id": "A", "text": "I predict a 5 overall because the piece felt strong when I read it back and I managed to bring in all three of the sources somewhere in it.",
                   "correct": False,
@@ -196,6 +198,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "I predict a high score because I spent a long time on this piece and worked much harder on it than I did on the last one I wrote.",
                   "correct": False,
                   "why": "Effort and time are not rubric rows. A prediction built on hard work still hides the blind spot, because the grader scores the writing, not the hours."},
+                 {"id": "D", "text": "I predict Development 4 because I wrote about all three water topics, and Evidence 4 because I mentioned every source somewhere in the essay.",
+                  "correct": False,
+                  "why": "It names the rows and numbers, which looks right, but the reasons come from coverage, not the rubric. Development 4 wants ONE woven argument, not three topics touched; Evidence 4 wants sources weighted by what they carry, not just mentioned. Covering and mentioning are the wrong descriptors, so the gap stays hidden."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this self-prediction most need?",
              bank="water_competing_uses",

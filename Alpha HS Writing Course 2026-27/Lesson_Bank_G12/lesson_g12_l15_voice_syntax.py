@@ -156,10 +156,12 @@ LESSON = Lesson(
                    "(B) Although a phone ban helps students focus, it strips away the tool a student needs in an "
                    "emergency, and that is the cost a single rule cannot escape.  "
                    "(C) Although a school must in the end set one rule, a phone ban helps students focus and "
-                   "keeping phones helps students stay reachable. "
+                   "keeping phones helps students stay reachable.  "
+                   "(D) A phone ban clearly and importantly helps students focus, and it obviously takes away the "
+                   "tool a student needs in an emergency, and the school truly must set one rule.  "
                    "Correct: B uses syntax for emphasis. B subordinates the minor idea and ends on the point; "
-                   "A strings equal clauses with 'and,' and C subordinates the main decision, so its point is "
-                   "buried."),
+                   "A strings equal clauses with 'and,' C subordinates the main decision so its point is "
+                   "buried, and D just piles on emphasis words over a flat 'and' string."),
              choices=[
                  {"id": "A", "text": "A phone ban helps students focus, and it takes away the tool a student needs in an emergency, and a school still has to set one rule, and that last part is the hard one.",
                   "correct": False,
@@ -170,6 +172,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Although a school must in the end set one rule, a phone ban helps students focus and keeping phones helps students stay reachable.",
                   "correct": False,
                   "why": "It opens with 'although,' but it subordinates the main decision and ends on a flat list of both goods, so the point is buried. Subordinating the MINOR idea is what carries emphasis."},
+                 {"id": "D", "text": "A phone ban clearly and importantly helps students focus, and it obviously takes away the tool a student needs in an emergency, and the school truly must set one rule.",
+                  "correct": False,
+                  "why": "Words like 'clearly' and 'obviously' cannot do the work of arrangement. This is still a flat 'and' string with emphasis words dropped in, so the point still sits at equal weight and never lands."},
              ]),
         Slot("MODEL", "discrimination", "Which sentence saves the last spot for the point?",
              ref="", labeled_grade_c=True, bank="public_health",
@@ -181,10 +186,13 @@ LESSON = Lesson(
                    "(B) Although automation raises the plant's output, it erases the entry-level jobs where new "
                    "workers have to start.  "
                    "(C) Automation raises the plant's output, and it erases the entry-level jobs, and new "
-                   "workers lose their first step, and that step matters. "
+                   "workers lose their first step, and that step matters.  "
+                   "(D) It erases the entry-level jobs where new workers start, although automation does raise "
+                   "the plant's output across every shift. "
                    "Correct: B saves the emphatic spot for the point. B subordinates the minor idea and ends on "
                    "the point; A subordinates the minor idea but trails off on a routine detail, so the point "
-                   "sits buried, and C strings equal clauses with 'and,' so nothing lands."),
+                   "sits buried; C strings equal clauses with 'and,' so nothing lands; and D leads with the point "
+                   "and ends on the minor idea, so the last, emphatic spot is wasted."),
              choices=[
                  {"id": "A", "text": "Although automation raises the plant's output, it erases the entry-level jobs, and the new machines now run quietly through every shift.",
                   "correct": False,
@@ -195,6 +203,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Automation raises the plant's output, and it erases the entry-level jobs, and new workers lose their first step, and that step matters.",
                   "correct": False,
                   "why": "Every clause is joined by 'and' at equal weight, so even the last one carries no extra force and the point never stands out."},
+                 {"id": "D", "text": "It erases the entry-level jobs where new workers start, although automation does raise the plant's output across every shift.",
+                  "correct": False,
+                  "why": "This subordinates the minor idea correctly, but it leads with the point and ends on the raised output, so the emphatic last spot goes to the minor idea and the point about lost jobs does not land."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this sentence's syntax most need?",
              bank="public_health",

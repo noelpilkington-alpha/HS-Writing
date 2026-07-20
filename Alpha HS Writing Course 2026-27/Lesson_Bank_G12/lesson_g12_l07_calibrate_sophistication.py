@@ -177,11 +177,14 @@ LESSON = Lesson(
                    "(B) I think it reaches real complexity because the essay sounded genuinely smart, used ambitious "
                    "vocabulary, and honestly felt deep and impressive to me the whole time I was writing it.  "
                    "(C) I predict it reaches real complexity because I worked hard on this piece, spent a long time revising every "
-                   "paragraph, and it came out longer and more polished than my usual drafts. "
+                   "paragraph, and it came out longer and more polished than my usual drafts.  "
+                   "(D) I predict it reaches real complexity because I included every required part, an "
+                   "introduction, three body paragraphs, a counterargument, and a conclusion, so the essay is "
+                   "complete and follows the assignment format. "
                    "Correct: A. It predicts against the actual criterion (situate the question, hold the tension "
                    "throughout) and points to the exact place it misses. B rests on tone and word choice; C "
-                   "rests on effort and length. Neither B nor C is the depth-and-significance criterion, so neither can be "
-                   "compared against the grader."),
+                   "rests on effort and length; D rests on having all the required parts. None of B, C, or D is "
+                   "the depth-and-significance criterion, so none can be compared against the grader."),
              choices=[
                  {"id": "A", "text": "I predict it does not reach real complexity: I situated the question in the broader tension but flattened it in one body paragraph, and real complexity needs it held throughout.",
                   "correct": True,
@@ -192,6 +195,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "I predict it reaches real complexity because I worked hard on this piece, spent a long time revising every paragraph, and it came out longer and more polished than my usual drafts.",
                   "correct": False,
                   "why": "Effort, time, and length are not the depth-and-significance criterion. A holistic result is not earned by how hard the draft was, so this cannot be checked against the grader."},
+                 {"id": "D", "text": "I predict it reaches real complexity because I included every required part, an introduction, three body paragraphs, a counterargument, and a conclusion, so the essay is complete and follows the assignment format.",
+                  "correct": False,
+                  "why": "Having all the required parts is completeness, not the depth-and-significance criterion. A complete format can still flatten the tension, so this cannot be checked against the grader."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this self-prediction most need?",
              bank="public_health",
@@ -230,7 +236,7 @@ LESSON = Lesson(
                  intro="Write a complex argument on the workforce prompt: situate the question in the "
                        "broader tension, and hold that tension throughout. Then predict whether it reaches real complexity.",
                  setapart_block=setapart("Predict in one line:",
-                                         "Reaches real complexity, yes or no, because ______ (name the exact place in your essay that meets or misses the criterion)."),
+                                         "Reaches real complexity (yes or no) because ______ (name the exact place in your essay that meets or misses the criterion)."),
                  closer="The grader will score the complexity; your one-line prediction is what you will "
                         "compare against it. Write the full essay, then the prediction.")),
 

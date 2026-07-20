@@ -146,9 +146,11 @@ LESSON = Lesson(
                    "(B) Society should fund open inquiry, because the study of prime numbers stayed pure "
                    "curiosity for centuries before it became the basis of modern encryption.  "
                    "(C) Society should fund open inquiry, because thoughtful people nearly everywhere agree that "
-                   "funding research is a genuinely worthwhile public good. "
-                   "Correct: B. B names one concrete case the writer supplies. A and C take a side but never land "
-                   "on a specific example, so they stay general."),
+                   "funding research is a genuinely worthwhile public good.  "
+                   "(D) Society should fund open inquiry, because history is full of discoveries that began as "
+                   "pure curiosity and later proved useful. "
+                   "Correct: B. B names one concrete case the writer supplies. A, C, and D take a side but never "
+                   "land on a specific example, so they stay general."),
              choices=[
                  {"id": "A",
                   "text": "Society should fund open inquiry, because curiosity has, all throughout the long history of human civilization, helped many different people in countless important and lasting ways.",
@@ -162,20 +164,26 @@ LESSON = Lesson(
                   "text": "Society should fund open inquiry, because thoughtful people nearly everywhere agree that funding research is a genuinely worthwhile public good.",
                   "correct": False,
                   "why": "An appeal to agreement is not an example. 'People agree it is worthwhile' names no specific case, so this stays general too."},
+                 {"id": "D",
+                  "text": "Society should fund open inquiry, because history is full of discoveries that began as pure curiosity and later proved useful.",
+                  "correct": False,
+                  "why": "This gestures at many discoveries at once but never names one. 'History is full of discoveries' is a whole category, not a single concrete case, so it stays general."},
              ]),
         Slot("MODEL", "discrimination", "Which one takes a defensible position?",
              ref="", labeled_grade_c=True, bank="sfa_curiosity_use",
-             body=("One more, this time watch the POSITION. All three mention research, but a claim floats until "
+             body=("One more, this time watch the POSITION. All four mention research, but a claim floats until "
                    "it takes a side a reasonable person could reject. Which one takes a defensible position, "
                    "rather than restating the topic or stating something no one would dispute? "
                    "(A) Whether a society should pay for research that has no clear use is a question with good "
                    "points on both sides, as the long-running debate over funding deep-space missions reminds us.  "
                    "(B) Society should keep funding basic research that has no clear use, because the laser began "
                    "as pure physics before it became essential to eye surgery.  "
-                   "(C) Research has produced many useful tools, like the light bulb that most people rely on today. "
+                   "(C) Research has produced many useful tools, like the light bulb that most people rely on today.  "
+                   "(D) This essay will look at the reasons a society might choose to fund research that has no "
+                   "clear use. "
                    "Correct: B. B commits to a side a reasonable person could reject and anchors it to one concrete "
-                   "case. A raises the topic but sits on the fence, and C states an agreeable fact no one disputes, "
-                   "so neither takes a position."),
+                   "case. A raises the topic but sits on the fence, C states an agreeable fact no one disputes, and "
+                   "D announces what the essay will cover, so none of those takes a position."),
              choices=[
                  {"id": "A",
                   "text": "Whether a society should pay for research that has no clear use is a question with good points on both sides, as the long-running debate over funding deep-space missions reminds us.",
@@ -189,6 +197,10 @@ LESSON = Lesson(
                   "text": "Research has produced many useful tools, like the light bulb that most people rely on today.",
                   "correct": False,
                   "why": "This states an agreeable fact no one would dispute, so it never takes the arguable funding position the prompt asks for."},
+                 {"id": "D",
+                  "text": "This essay will look at the reasons a society might choose to fund research that has no clear use.",
+                  "correct": False,
+                  "why": "This announces the topic the essay will cover instead of committing to a side. Saying what you will discuss is not the same as taking a position a reader could reject."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this source-free claim most need?",
              bank="sfa_curiosity_use",
@@ -214,7 +226,7 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the two moves: take a side, then anchor it.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
-                                         "Society should ______ [your position on the curiosity prompt], because "
+                                         "Society should ______ [your position on the curiosity prompt] because "
                                          "______ [one specific case from your reading, studies, or experience]."),
                  closer="Take a clear side AND name one concrete example you supply. Do not stay general. Then "
                         "check it against the 3 questions.")),

@@ -146,7 +146,7 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Which synthesis also weights the sources?",
              ref="", labeled_grade_c=True, bank="water_competing_uses",
              body=("You have watched an equal-weight synthesis get weighted. Now spot the target: which of these "
-                   "weaves AND weights the sources, and which do not? "
+                   "weaves AND weights the sources, and which three do not? "
                    "(A) Because the overview source, the power-plant source, and the irrigation source all describe "
                    "water under strain, each one backs the argument every bit as strongly, so the set proves that "
                    "every single region of the country must cut its water use by the very same amount.  "
@@ -155,9 +155,13 @@ LESSON = Lesson(
                    "though no source alone settles which giant a region should cut.  "
                    "(C) The essay reports what the overview source says, then what the power-plant source says, "
                    "then what the irrigation source says, one after another, and never joins them into a single "
-                   "argument. "
-                   "Correct: B. It builds one argument and marks what each source can and cannot carry; A leans on "
-                   "every source equally for one sweeping claim, and C just summarizes source by source."),
+                   "argument.  "
+                   "(D) The essay rates each source in turn, calling the overview source strong on national totals "
+                   "but weak on any one sector and the two sector sources strong on their own draws, then stops "
+                   "without ever stating an argument the set builds. "
+                   "Correct: B. It builds one argument and marks what each source can and cannot carry. A leans on "
+                   "every source equally for one sweeping claim, C just summarizes source by source, and D weighs "
+                   "the sources but never weaves them into a single argument."),
              choices=[
                  {"id": "A", "text": "Because the overview source, the power-plant source, and the irrigation source all describe water under strain, each one backs the argument every bit as strongly, so the set proves that every single region of the country must cut its water use by the very same amount.",
                   "correct": False,
@@ -168,6 +172,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The essay reports what the overview source says, then what the power-plant source says, then what the irrigation source says, one after another, and never joins them into a single argument.",
                   "correct": False,
                   "why": "This is a source-by-source summary, not a synthesis. There is no single woven argument, so there is nothing to weight the sources against."},
+                 {"id": "D", "text": "The essay rates each source in turn, calling the overview source strong on national totals but weak on any one sector and the two sector sources strong on their own draws, then stops without ever stating an argument the set builds.",
+                  "correct": False,
+                  "why": "This does the weighting job but skips the weaving job. Judging each source's strengths is not enough on its own; without one argument the set builds, there is no synthesis to attach the weighting to."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this synthesis most need?",
              bank="water_competing_uses",

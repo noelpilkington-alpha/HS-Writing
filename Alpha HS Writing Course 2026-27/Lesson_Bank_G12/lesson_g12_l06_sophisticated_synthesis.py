@@ -176,10 +176,14 @@ LESSON = Lesson(
                    "clear takeaway: the country should use less water.  "
                    "(C) Read together, the sources each explain a different way water gets used, and after laying "
                    "out what all three say in turn, the essay concludes that water clearly matters a great deal "
-                   "to the country and should be managed with care. "
+                   "to the country and should be managed with care.  "
+                   "(D) Read together, the sources raise the larger question of how a society should share a "
+                   "strained resource, and since power and farming each have a real claim on the water, the essay "
+                   "concludes that the country must weigh both needs and balance them carefully going forward. "
                    "Correct: A situates the woven claim in a larger question and reasons from the sources' "
-                   "conflict to a real position; B and C weave the sources but land flat on 'use less' and "
-                   "'water matters', naming no larger question and dissolving the conflict."),
+                   "conflict to a real position; B and C land flat on 'use less' and 'water matters', and D names "
+                   "the question but dissolves the tension into a vague call to balance both needs, so none of B, "
+                   "C, or D reaches complexity."),
              choices=[
                  {"id": "A", "text": "Read together, the sources make scarcity one case of outrunning a shared resource, and because cutting either use starves the other, the set supports a rationing rule that ranks the two uses over any plain call to use less.",
                   "correct": True,
@@ -190,6 +194,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Read together, the sources each explain a different way water gets used, and after laying out what all three say in turn, the essay concludes that water clearly matters a great deal to the country and should be managed with care.",
                   "correct": False,
                   "why": "This summarizes each source in turn and ends on 'water matters'. Summary is not synthesis, and 'matters' is flat, so it reaches no complexity."},
+                 {"id": "D", "text": "Read together, the sources raise the larger question of how a society should share a strained resource, and since power and farming each have a real claim on the water, the essay concludes that the country must weigh both needs and balance them carefully going forward.",
+                  "correct": False,
+                  "why": "This one does name the larger question, but then it dissolves the tension into a vague 'balance both needs'. Because cutting either use starves the other, 'balance' is not a real position; holding the tension means reasoning to a rule that ranks the uses, so this stays flat."},
              ]),
         Slot("MODEL", "predict_the_fix", "What lifts this synthesis to real complexity?",
              bank="water_competing_uses",

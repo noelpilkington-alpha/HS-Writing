@@ -169,9 +169,12 @@ LESSON = Lesson(
                    "body paragraph ran thin and my ending was cut short, so the case faded before it landed.  "
                    "(C) I predict a high overall score, because the essay opened with a polished, confident "
                    "first paragraph that set an impressive tone and showed the grader right away that I "
-                   "understood the whole prompt. "
+                   "understood the whole prompt.  "
+                   "(D) I predict a strong score because I worked really hard on this essay and felt confident the "
+                   "whole time I was writing it, so it must have turned out well. "
                    "Correct: B covers the whole essay, including the parts pacing tends to hurt, and names the "
-                   "late fade. A and C predict from the strong start only and miss the fade."),
+                   "late fade. A and C predict from the strong start only, and D predicts from effort and feeling "
+                   "instead of the essay, so none of them can be compared to the grader row by row."),
              choices=[
                  {"id": "A", "text": "I predict a top score on every row, because my introduction was sharp and my first body paragraph laid out strong, clearly organized evidence that read cleanly and made a confident early impression.",
                   "correct": False,
@@ -182,6 +185,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "I predict a high overall score, because the essay opened with a polished, confident first paragraph that set an impressive tone and showed the grader right away that I understood the whole prompt.",
                   "correct": False,
                   "why": "This still predicts from the strong start. A polished opening tells you nothing about the rushed third paragraph and the ending that pacing usually hurts."},
+                 {"id": "D", "text": "I predict a strong score because I worked really hard on this essay and felt confident the whole time I was writing it, so it must have turned out well.",
+                  "correct": False,
+                  "why": "This predicts from effort and feeling, not from what is on the page. Hard work does not read the rows; the grader scores the essay, so a prediction has to point to specific parts of the writing to be compared to it."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this self-prediction most need?",
              bank="automation_policy",

@@ -155,7 +155,9 @@ LESSON = Lesson(
                    "(B) We should expand clean power because it looks modern, and because it creates good jobs, "
                    "and finally because a reliable grid prevents the huge losses blackouts cause.  "
                    "(C) We should expand clean power because a reliable grid prevents huge blackout losses, and "
-                   "because it looks modern, and because it can create good jobs for many people. "
+                   "because it looks modern, and because it can create good jobs for many people.  "
+                   "(D) We should expand clean power because it looks modern, and most of all because a reliable "
+                   "grid prevents huge blackout losses, and it can also create good jobs. "
                    "Correct: B. It ends on the strongest reason, the losses blackouts cause."),
              choices=[
                  {"id": "A", "text": "We should expand clean power because it creates jobs, and because a reliable grid prevents huge blackout losses, and most of all because it looks modern and up to date.",
@@ -167,6 +169,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "We should expand clean power because a reliable grid prevents huge blackout losses, and because it looks modern, and because it can create good jobs for many people.",
                   "correct": False,
                   "why": "This one buries the strongest reason (blackout losses) at the front and ends on a middling reason (jobs). The emphatic last slot goes to a weaker point, so it does not land."},
+                 {"id": "D", "text": "We should expand clean power because it looks modern, and most of all because a reliable grid prevents huge blackout losses, and it can also create good jobs.",
+                  "correct": False,
+                  "why": "This one puts the strongest reason (blackout losses) in the middle and labels it 'most of all,' but then trails off on jobs, so the emphatic last slot still lands on a weaker reason. The cue phrase does not decide emphasis; the final slot does."},
              ]),
         Slot("MODEL", "discrimination", "Which string ends on the strongest reason, not opens with it?",
              ref="", labeled_grade_c=True, bank="energy_transition",
@@ -178,7 +183,9 @@ LESSON = Lesson(
                    "(B) We should expand clean power because other countries are doing it, because it can lower "
                    "electricity bills, and finally because cleaner air lowers the health costs that pollution causes.  "
                    "(C) We should expand clean power because cleaner air lowers the health costs pollution causes, "
-                   "because other countries are doing it, and because it can lower electricity bills. "
+                   "because other countries are doing it, and because it can lower electricity bills.  "
+                   "(D) We should expand clean power because it can lower electricity bills, because cleaner air "
+                   "lowers the health costs pollution causes, and because other countries are already doing it. "
                    "Correct: B. It ends on the strongest reason, cleaner air and lower health costs."),
              choices=[
                  {"id": "A", "text": "We should expand clean power because cleaner air lowers the health costs that pollution causes, because it can lower electricity bills, and because other countries are already doing it too.",
@@ -190,6 +197,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "We should expand clean power because cleaner air lowers the health costs pollution causes, because other countries are doing it, and because it can lower electricity bills.",
                   "correct": False,
                   "why": "This string ends on lowering bills, a middling reason, and buries the strongest one up front, so the emphatic last slot is wasted."},
+                 {"id": "D", "text": "We should expand clean power because it can lower electricity bills, because cleaner air lowers the health costs pollution causes, and because other countries are already doing it.",
+                  "correct": False,
+                  "why": "This string sandwiches the strongest reason in the middle and ends on other countries doing it, the weakest reason. Putting the strong point anywhere but the last slot leaves the emphatic position to a weaker one."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this reason string's order most need?",
              bank="energy_transition",
@@ -211,7 +221,7 @@ LESSON = Lesson(
              ref="", bank="energy_transition", rubric_ref="rc.ap", scored=True, unit="sentence",
              body=frq_prompt(
                  intro="Reorder this reason string so the strongest reason lands last. Here is the string to fix: "
-                       "'We should expand clean power because it can create jobs, because a reliable grid prevents "
+                       "'We should expand clean power because it can create jobs, and because a reliable grid prevents "
                        "huge blackout losses, and because it looks modern.'",
                  setapart_block=setapart("Copy this frame, then fill the last slot:",
                                          "We should expand clean power because ______, and most of all because ______ [put your STRONGEST reason here]."),

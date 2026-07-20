@@ -158,10 +158,12 @@ LESSON = Lesson(
                    "CHOICE he makes and its effect on that audience, rather than reporting his content? "
                    "(A) Douglass tells his listeners that the blessings of the Fourth of July are shared by them and not by the enslaved people whom he speaks for.  "
                    "(B) Douglass piles up sharp questions at the very opening to make his listeners feel the distance between them and him before he states it.  "
-                   "(C) Douglass points out to the crowd that the great principles of freedom named in the Declaration were never truly extended to enslaved Americans. "
+                   "(C) Douglass points out to the crowd that the great principles of freedom named in the Declaration were never truly extended to enslaved Americans.  "
+                   "(D) Douglass's decision to open with sharp questions is a powerful and effective technique that surely made a strong impression on everyone in his audience. "
                    "Correct: B. It names a CHOICE (the opening questions) and its effect on the audience "
-                   "(feeling the distance before he states it). (A) and (C) both address the audience, but they "
-                   "only report what Douglass argues, so they stay on content."),
+                   "(feeling the distance before he states it). (A) and (C) address the audience but only report "
+                   "what Douglass argues, so they stay on content, and (D) names the choice but only praises it "
+                   "instead of naming what it does to the audience."),
              choices=[
                  {"id": "A", "text": "Douglass tells his listeners that the blessings of the Fourth of July are shared by them and not by the enslaved people whom he speaks for.",
                   "correct": False,
@@ -172,6 +174,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Douglass points out to the crowd that the great principles of freedom named in the Declaration were never truly extended to enslaved Americans.",
                   "correct": False,
                   "why": "This mentions the crowd, but it reports what Douglass argues about the Declaration (his content). It never names a choice he makes or its effect on those listeners."},
+                 {"id": "D", "text": "Douglass's decision to open with sharp questions is a powerful and effective technique that surely made a strong impression on everyone in his audience.",
+                  "correct": False,
+                  "why": "This names a choice (the opening questions), but it only praises it as 'powerful' and 'effective' and never says what specific effect it has on the audience. Judging a choice is not the same as analyzing how it works on the listeners."},
              ]),
         # SECOND minimal pair, DIFFERENT confound: here every option stays on the crafting (no content trap).
         # The two wrong options each do only HALF the move (name the choice with no effect / assert an effect
@@ -183,10 +188,13 @@ LESSON = Lesson(
                    "its effect on the audience, not just one half? "
                    "(A) Douglass escalates his images from a gentle shower to thunder, a storm, a whirlwind, and an earthquake as the passage builds.  "
                    "(B) Douglass leaves his comfortable holiday audience feeling shaken and unsettled, no longer able to enjoy their celebration as calmly as they did when the speech began.  "
-                   "(C) Douglass escalates from a gentle shower to thunder and an earthquake to jolt his celebrating audience into feeling the violent scale of change he demands. "
+                   "(C) Douglass escalates from a gentle shower to thunder and an earthquake to jolt his celebrating audience into feeling the violent scale of change he demands.  "
+                   "(D) Douglass escalates from a gentle shower to thunder and an earthquake to show how furious he himself has become by the close of his address. "
                    "Correct: C. It names a CHOICE (escalating the weather images) and its effect on the audience "
                    "(jolting them into feeling the scale of change). (A) names the choice but stops before any "
-                   "audience effect, and (B) asserts an effect but names no choice, so each does only half."),
+                   "audience effect, (B) asserts an effect but names no choice, and (D) names the choice but "
+                   "points its effect at Douglass himself rather than the audience, so none of the three does "
+                   "the whole move."),
              choices=[
                  {"id": "A", "text": "Douglass escalates his images from a gentle shower to thunder, a storm, a whirlwind, and an earthquake as the passage builds.",
                   "correct": False,
@@ -197,6 +205,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Douglass escalates from a gentle shower to thunder and an earthquake to jolt his celebrating audience into feeling the violent scale of change he demands.",
                   "correct": True,
                   "why": "Correct. It names the CHOICE (escalating from a gentle shower to thunder and an earthquake) and its effect on the AUDIENCE (jolting them into feeling the scale of change he demands), which is the whole move."},
+                 {"id": "D", "text": "Douglass escalates from a gentle shower to thunder and an earthquake to show how furious he himself has become by the close of his address.",
+                  "correct": False,
+                  "why": "This names the choice and an effect, but the effect lands on Douglass's own feelings, not on the audience. Rhetorical analysis has to say what the choice does to the listeners, not what it reveals about the speaker."},
              ]),
         Slot("MODEL", "predict_the_fix", "What turns this into rhetorical analysis?",
              bank="douglass_1852",

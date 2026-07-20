@@ -182,10 +182,13 @@ LESSON = Lesson(
                    "paragraph and the conclusion still get careful work.  "
                    "(C) Draft the paragraphs in whatever order they happen to occur to you, spend as long on "
                    "each one as it seems to need, and trust that the essay will come out balanced once every "
-                   "idea you thought of has finally made it onto the page. "
+                   "idea you thought of has finally made it onto the page.  "
+                   "(D) Cut the essay down to a single thoroughly developed body paragraph, dropping your other "
+                   "points entirely, so you can polish that one paragraph and the conclusion and never run short "
+                   "on minutes. "
                    "Correct: B. Approach B shares the minutes so the ending gets finished; A front-loads and "
-                   "lets the close starve, and C never budgets, so the earliest paragraphs eat the time the "
-                   "later ones need."),
+                   "lets the close starve, C never budgets, so the earliest paragraphs eat the time the "
+                   "later ones need, and D drops required development instead of pacing it."),
              choices=[
                  {"id": "A", "text": "Pour your strongest effort into a striking introduction and a fully developed first body paragraph, polish them until they truly shine, and then race through the paragraphs and the conclusion that remain with whatever minutes happen to be left over.",
                   "correct": False,
@@ -196,6 +199,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Draft the paragraphs in whatever order they happen to occur to you, spend as long on each one as it seems to need, and trust that the essay will come out balanced once every idea you thought of has finally made it onto the page.",
                   "correct": False,
                   "why": "No budget at all. Without a share per paragraph, the earliest paragraphs eat the minutes the later ones need, and the ending still gets rushed."},
+                 {"id": "D", "text": "Cut the essay down to a single thoroughly developed body paragraph, dropping your other points entirely, so you can polish that one paragraph and the conclusion and never run short on minutes.",
+                  "correct": False,
+                  "why": "This trades away the development the task requires instead of pacing it. Sustaining means carrying all the points to a finished close, not shrinking the argument to fit the minutes."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this essay's pacing most need?",
              bank="automation_policy",

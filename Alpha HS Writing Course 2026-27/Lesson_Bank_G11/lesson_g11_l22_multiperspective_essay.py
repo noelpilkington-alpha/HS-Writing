@@ -172,16 +172,25 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Which plan built the essay by weighing?",
              ref="", labeled_grade_c=True, bank="mp_public_space",
              body=("You have watched a tour become a staked essay. Now spot the target: which plan builds a "
-                   "position by weighing, and which only tours the views? "
+                   "position by weighing the given perspectives? "
                    "(A) The writer states a single position, then plans body paragraphs that each take one given "
                    "perspective, concede what it gets right, name its limit, and advance the position, closing "
                    "with a conclusion that lands the stance.  "
                    "(B) The writer plans body paragraphs that each explain one given perspective fully and "
                    "fairly in turn, then closes with a conclusion noting that all three views raise valid points "
                    "and the issue itself stays genuinely complicated.  "
+                   "(C) The writer picks the single perspective they agree with, argues it hard for the whole "
+                   "essay, and dismisses the other two given perspectives as simply mistaken without conceding "
+                   "anything they get right.  "
+                   "(D) The writer states a position up front, then fills each body paragraph with their own "
+                   "reasons for that position and never returns to the three given perspectives or weighs what "
+                   "any of them gets right.  "
                    "Correct: A. A weighs each perspective (concede, limit, advance) to build one position, so the "
                    "essay enters the conversation. B explains the three fairly and stakes no position, so it "
-                   "tours the views and never commits."),
+                   "tours the views and never commits. C stakes a position but defends only one view and "
+                   "dismisses the rest, so it never weighs what the other perspectives get right. D stakes a "
+                   "position but ignores the given perspectives entirely, arguing from the writer's own reasons "
+                   "instead of weighing the views."),
              choices=[
                  {"id": "A", "text": "The writer states a single position, then plans body paragraphs that each take one given perspective, concede what it gets right, name its limit, and advance the position, closing with a conclusion that lands the stance.",
                   "correct": True,
@@ -189,6 +198,12 @@ LESSON = Lesson(
                  {"id": "B", "text": "The writer plans body paragraphs that each explain one given perspective fully and fairly in turn, then closes with a conclusion noting that all three views raise valid points and the issue itself stays genuinely complicated.",
                   "correct": False,
                   "why": "This is a fair tour. Explaining each view and calling the issue complicated stakes no position, so the essay never weighs the views or commits to a stance."},
+                 {"id": "C", "text": "The writer picks the single perspective they agree with, argues it hard for the whole essay, and dismisses the other two given perspectives as simply mistaken without conceding anything they get right.",
+                  "correct": False,
+                  "why": "This stakes a position but skips the weighing. Dismissing the other views without conceding what they get right is one-sided advocacy, not the concede-limit-advance move a multi-perspective essay is built on."},
+                 {"id": "D", "text": "The writer states a position up front, then fills each body paragraph with their own reasons for that position and never returns to the three given perspectives or weighs what any of them gets right.",
+                  "correct": False,
+                  "why": "This has a position but ignores the given perspectives. Arguing only from the writer's own reasons means no paragraph weighs a view, so the essay never engages the perspectives it was asked to build from."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this multi-perspective essay most need?",
              bank="mp_public_space",

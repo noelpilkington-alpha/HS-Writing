@@ -170,7 +170,7 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Which response matches the moves to the task type?",
              ref="", labeled_grade_c=True, bank="sfa_tradition_progress",
              body=("You have watched a writer switch from one-size moves to matched moves. Now spot the target: "
-                   "which response MATCHES its moves to the task type, and which runs ONE SIZE on every prompt? "
+                   "which response MATCHES its moves to the task type? "
                    "(A) On any argument prompt, the writer runs the same fixed routine: list three perspectives, "
                    "weigh them against one another, and stake a position, applying that identical routine even "
                    "to a general prompt that prints no set perspectives at all for the writer to weigh.  "
@@ -179,9 +179,15 @@ LESSON = Lesson(
                    "printed views and stakes a position in relation to them.  "
                    "(C) On any argument prompt, the writer opens with a personal story and a strong opinion, "
                    "keeps adding more examples from experience, and applies that same fixed routine every time, "
-                   "whether or not the prompt actually prints any set perspectives for the writer to weigh. "
+                   "whether or not the prompt actually prints any set perspectives for the writer to weigh.  "
+                   "(D) The writer decides the task type by how the topic feels: a familiar subject is treated as "
+                   "source-free and answered from experience, while an unfamiliar one is treated as "
+                   "multi-perspective, choosing the moves by comfort with the topic rather than by whether the "
+                   "prompt prints set views. "
                    "Correct: B. It reads the task type first, so its moves match what the prompt rewards; A and C "
-                   "run one fixed routine on every prompt, forcing the wrong moves onto whichever type shows up."),
+                   "run one fixed routine on every prompt, and D checks the prompt but reads the wrong tell "
+                   "(topic familiarity instead of whether perspectives are printed), so the moves still miss the "
+                   "type."),
              choices=[
                  {"id": "A", "text": "On any argument prompt, the writer runs the same fixed routine: list three perspectives, weigh them against one another, and stake a position, applying that identical routine even to a general prompt that prints no set perspectives at all for the writer to weigh.",
                   "correct": False,
@@ -192,6 +198,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "On any argument prompt, the writer opens with a personal story and a strong opinion, keeps adding more examples from experience, and applies that same fixed routine every time, whether or not the prompt actually prints any set perspectives for the writer to weigh.",
                   "correct": False,
                   "why": "This runs source-free moves on every prompt. On a multi-perspective prompt it ignores the printed views the task rewards weighing, so the moves do not match the type."},
+                 {"id": "D", "text": "The writer decides the task type by how the topic feels: a familiar subject is answered from experience as source-free, while an unfamiliar one is treated as multi-perspective, choosing the moves by comfort with the topic rather than by whether the prompt prints set views.",
+                  "correct": False,
+                  "why": "This checks the prompt but reads the wrong tell. Task type is set by whether perspectives are printed, not by how familiar the topic feels, so choosing moves by comfort still mismatches the type."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this rehearsal most need?",
              bank="sfa_tradition_progress",

@@ -156,13 +156,15 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Which one synthesizes the set?",
              ref="", labeled_grade_c=True, bank="water_competing_uses",
              body=("You have watched a survey become a synthesis. Now spot the target: which claim SYNTHESIZES "
-                   "the set (one argument the set builds), and which two only SURVEY it (tour the sources)? "
+                   "the set (one argument the whole set builds), and which three do not? "
                    "(A) Because fresh water is scarce while cooling power plants and irrigating crops each already claim over forty percent of the supply, a drying country cannot protect both giant uses and must decide which one to feed first.  "
                    "(B) Source 1 lays out where the nation's water goes overall, Source 2 describes how thermoelectric power plants draw water for cooling, and Source 3 describes how farms draw water for irrigation, and all three of the sources are clearly about water use.  "
-                   "(C) The first source gives a broad overview of national water use, the second source is all about electricity and the water it needs to run, and the third source is all about farming and the water that it needs, adding more facts each time. "
+                   "(C) The first source gives a broad overview of national water use, the second source is all about electricity and the water it needs to run, and the third source is all about farming and the water that it needs, adding more facts each time.  "
+                   "(D) Because Source 3 shows irrigation alone already draws about 42 percent of the nation's water, farms are the country's biggest water problem and should be the first use forced to cut back. "
                    "Correct: A. It connects scarcity to two near-equal demands and lands a tradeoff conclusion "
-                   "the set builds that no single source states; B and C walk through the sources one at a time "
-                   "and stop at the topic of water, so nothing is built from the set."),
+                   "the set builds that no single source states. B and C walk through the sources one at a time "
+                   "and stop at the topic of water, so nothing is built from the set; D makes an argument but "
+                   "rests on one source instead of drawing the set together."),
              choices=[
                  {"id": "A", "text": "Because fresh water is scarce while cooling power plants and irrigating crops each already claim over forty percent of the supply, a drying country cannot protect both giant uses and must decide which one to feed first.",
                   "correct": True,
@@ -173,6 +175,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The first source gives a broad overview of national water use, the second source is all about electricity and the water it needs to run, and the third source is all about farming and the water that it needs, adding more facts each time.",
                   "correct": False,
                   "why": "This also surveys the set. It adds facts source by source without connecting them, so the sources never combine into one claim."},
+                 {"id": "D", "text": "Because Source 3 shows irrigation alone already draws about 42 percent of the nation's water, farms are the country's biggest water problem and should be the first use forced to cut back.",
+                  "correct": False,
+                  "why": "This makes an argument, but it leans on a single source (Source 3) and never draws the set together, so it fails the check that a synthesis must connect two or more sources."},
              ]),
         Slot("MODEL", "predict_the_fix", "What turns this survey into synthesis?",
              bank="water_competing_uses",

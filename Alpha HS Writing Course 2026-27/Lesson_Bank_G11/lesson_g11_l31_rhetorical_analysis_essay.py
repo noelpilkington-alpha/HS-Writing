@@ -173,9 +173,10 @@ LESSON = Lesson(
                    "writer built a rhetorical-analysis essay around a purpose, and which did not? "
                    "(A) The writer first writes a thesis naming Roosevelt's overall purpose, then plans two or three choices that each pair a quote with its effect on the audience and tie back to that purpose, then drafts.  "
                    "(B) The writer reads the speech once and starts writing down every device that gets noticed, in the order it turns up, adding one more each time another device appears and stopping only when the essay finally seems long enough to hand in.  "
-                   "(C) The writer retells what the speech says paragraph by paragraph, walking through Roosevelt's content from the opening line all the way to the close, and then calls that careful retelling a rhetorical analysis. "
+                   "(C) The writer retells what the speech says paragraph by paragraph, walking through Roosevelt's content from the opening line all the way to the close, and then calls that careful retelling a rhetorical analysis.  "
+                   "(D) The writer decides whether Roosevelt was right about the Depression, states that opinion as the thesis, and then uses lines from the speech as evidence to argue for that position of their own.  "
                    "Correct: A. It fixes the purpose first, so every body paragraph carries a choice to its effect "
-                   "to that purpose; B lists devices with no purpose and C summarizes content, so neither analyzes how the speech works."),
+                   "to that purpose; B lists devices with no purpose, C summarizes content, and D argues the writer's own view of the topic, so none analyzes how the speech works."),
              choices=[
                  {"id": "A", "text": "The writer first writes a thesis naming Roosevelt's overall purpose, then plans two or three choices that each pair a quote with its effect on the audience and tie back to that purpose, then drafts.",
                   "correct": True,
@@ -186,6 +187,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The writer retells what the speech says paragraph by paragraph, walking through Roosevelt's content from the opening line all the way to the close, and then calls that careful retelling a rhetorical analysis.",
                   "correct": False,
                   "why": "This is summary. Retelling the content, however accurately, names no choice, no effect on the audience, and no purpose."},
+                 {"id": "D", "text": "The writer decides whether Roosevelt was right about the Depression, states that opinion as the thesis, and then uses lines from the speech as evidence to argue for that position of their own.",
+                  "correct": False,
+                  "why": "This answers the wrong task. Arguing whether Roosevelt was right is the writer's own position on the topic, not an analysis of the author's choices. A rhetorical-analysis thesis names Roosevelt's purpose and each body paragraph explains how a choice works on the audience, rather than using the speech to back the writer's own view."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this essay approach most need?",
              bank="ra_speech_1",

@@ -173,9 +173,12 @@ LESSON = Lesson(
                    "some streets for cars and some for people.  "
                    "(C) Streets clearly matter a great deal to everyone who lives in a busy city, so local "
                    "leaders really ought to think hard and choose quite carefully before they change any shared "
-                   "street. "
+                   "street.  "
+                   "(D) Perspective One is simply correct that a street's first job is to move traffic, so the "
+                   "city should design every street around keeping cars flowing. "
                    "Correct: B. It measures One against Two and lands the writer's own position. (A) reports "
-                   "the three and commits to nothing. (C) sounds decisive but never engages the given views."),
+                   "the three and commits to nothing. (C) sounds decisive but never engages the given views. (D) "
+                   "adopts one view whole without weighing it against the others."),
              choices=[
                  {"id": "A", "text": "Perspective One favors moving traffic, Perspective Two favors public gathering, and Perspective Three favors letting locals decide, and honestly each of these three views raises a fair and reasonable point about our streets.",
                   "correct": False,
@@ -186,6 +189,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Streets clearly matter a great deal to everyone who lives in a busy city, so local leaders really ought to think hard and choose quite carefully before they change any shared street.",
                   "correct": False,
                   "why": "This sounds decisive and uses 'should,' but it never touches the three given views or measures them against each other. Calling for careful thought is not a position on the issue."},
+                 {"id": "D", "text": "Perspective One is simply correct that a street's first job is to move traffic, so the city should design every street around keeping cars flowing.",
+                  "correct": False,
+                  "why": "This commits to a position and names Perspective One, but it adopts that one view whole without measuring it against Two or Three, so it stakes without weighing."},
              ]),
         Slot("MODEL", "discrimination", "Weigh and stake, or only name the tension?",
              ref="", labeled_grade_c=True, bank="mp_public_space",
@@ -200,10 +206,13 @@ LESSON = Lesson(
                    "wherever cars have nowhere else to go, so the city should add gathering space only on "
                    "streets that already have a parallel route.  "
                    "(C) Residents by themselves should simply decide what their own street becomes, and that is "
-                   "the fairest way to settle it. "
+                   "the fairest way to settle it.  "
+                   "(D) Perspective One cares about traffic, Perspective Two cares about gathering space, and "
+                   "Perspective Three cares about local choice, so the issue of what a street is for turns out to "
+                   "be a genuinely complicated one. "
                    "Correct: B. It measures Two against the traffic view and lands the writer's own rule. (A) "
                    "shows the clash but stops at naming the tension. (C) picks a side without weighing the views "
-                   "against each other."),
+                   "against each other. (D) just reports the three and calls the issue complicated."),
              choices=[
                  {"id": "A", "text": "Perspective One's push for faster traffic runs straight into Perspective Two's call for gathering space, and Perspective Three's demand that residents themselves make the choice only sharpens the clash, so the three given views clearly pull hard against one another here.",
                   "correct": False,
@@ -214,6 +223,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Residents by themselves should simply decide what their own street becomes, and that is the fairest way to settle it.",
                   "correct": False,
                   "why": "This commits to a side, but it just asserts one view without measuring it against the others, so it stakes without weighing."},
+                 {"id": "D", "text": "Perspective One cares about traffic, Perspective Two cares about gathering space, and Perspective Three cares about local choice, so the issue of what a street is for turns out to be a genuinely complicated one.",
+                  "correct": False,
+                  "why": "This reports what each perspective cares about and concludes the issue is complicated. It neither measures the views against each other nor commits to a position, so it does neither move."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this multi-perspective response most need?",
              bank="mp_public_space",

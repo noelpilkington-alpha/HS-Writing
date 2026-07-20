@@ -168,9 +168,11 @@ LESSON = Lesson(
                    "fence-sitting? "
                    "(A) The country should lower the voting age to sixteen, because teenagers pay attention to the news and clearly care a great deal about the issues that will shape their own future.  "
                    "(B) Extending the vote to sixteen-year-olds and keeping it at eighteen are both genuinely reasonable positions, and honestly it is not at all easy to say which one is truly right.  "
-                   "(C) The real question is not whether sixteen-year-olds care enough to vote but whether the ballot alone can reach them, so schools should register students to vote. "
+                   "(C) The real question is not whether sixteen-year-olds care enough to vote but whether the ballot alone can reach them, so schools should register students to vote.  "
+                   "(D) The real problem is not that sixteen-year-olds are too young or too uninformed to cast a ballot. "
                    "Correct: C. It names what its position is NOT (a question of whether teens care), then what it "
-                   "IS (a question of reach). A only picks a side, and B has the word 'not' but never commits to one."),
+                   "IS (a question of reach). A only picks a side, B has the word 'not' but never commits to one, "
+                   "and D rejects a rival but never says what it IS."),
              choices=[
                  {"id": "A", "text": "The country should lower the voting age to sixteen, because teenagers pay attention to the news and clearly care a great deal about the issues that will shape their own future.",
                   "correct": False,
@@ -181,6 +183,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The real question is not whether sixteen-year-olds care enough to vote but whether the ballot alone can reach them, so schools should register students to vote.",
                   "correct": True,
                   "why": "Correct. It names what its position is NOT (a question of whether teens care), then states what it IS (a question of reach). Not-X-but-Y is the nuance, and it is the structure, not any single word, that makes it work."},
+                 {"id": "D", "text": "The real problem is not that sixteen-year-olds are too young or too uninformed to cast a ballot.",
+                  "correct": False,
+                  "why": "This names what its position is NOT and stops there, so the but-Y half is missing: the reader never learns what it thinks the real problem IS. Not-X alone is only half the move."},
              ]),
         Slot("MODEL", "discrimination", "Which one names the rival AND states its own side?",
              ref="", labeled_grade_c=True, bank="energy_spending_priority",
@@ -188,8 +193,9 @@ LESSON = Lesson(
                    "rejects the close rival AND states what it stands for? "
                    "(A) The country should absolutely pour its energy budget into building as much new solar and wind capacity as it possibly can over the next decade, without any further delay.  "
                    "(B) The real issue is not that the country builds too little wind and solar power each year.  "
-                   "(C) The smarter move is not to keep patching the aging grid but to build far more clean capacity now, so the country finally has surplus power to draw on. "
-                   "Correct: C. It rejects the close rival (patching the grid), then states its own side (build more capacity). A commits but never names the rival, and B names what it rejects but never says what it stands for."),
+                   "(C) The smarter move is not to keep patching the aging grid but to build far more clean capacity now, so the country finally has surplus power to draw on.  "
+                   "(D) Both building new clean power and upgrading the grid are important, and reasonable people land on either side. "
+                   "Correct: C. It rejects the close rival (patching the grid), then states its own side (build more capacity). A commits but never names the rival, B names what it rejects but never says what it stands for, and D fence-sits."),
              choices=[
                  {"id": "A", "text": "The country should absolutely pour its energy budget into building as much new solar and wind capacity as it possibly can over the next decade, without any further delay.",
                   "correct": False,
@@ -200,6 +206,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The smarter move is not to keep patching the aging grid but to build far more clean capacity now, so the country finally has surplus power to draw on.",
                   "correct": True,
                   "why": "Correct. It rejects the close rival (patching the grid) and then states its own side (build more capacity), which is the complete not-X-but-Y move."},
+                 {"id": "D", "text": "Both building new clean power and upgrading the grid are important, and reasonable people land on either side.",
+                  "correct": False,
+                  "why": "This fence-sits: it calls both sides important and refuses to pick one, so it never rejects a rival or commits. A nuanced claim takes a side by naming what it is NOT."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this flat claim most need?",
              bank="energy_spending_priority",
@@ -222,7 +231,7 @@ LESSON = Lesson(
                  intro="Use the frame below so you can focus on the two moves.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
                                          "The problem is not ______ [the close position you reject], but ______ "
-                                         "[your position], so ______ [what follows]."),
+                                         "[your position] so ______ [what follows]."),
                  closer="Name the close rival you reject, then commit to your own side. Do not write a flat "
                         "one-sided claim or fence-sit. Then check it against the 3 questions.")),
         # DIAGNOSIS = a CHECK-and-FIX exercise on a PROVIDED weak draft (no new source to read; taught topic).

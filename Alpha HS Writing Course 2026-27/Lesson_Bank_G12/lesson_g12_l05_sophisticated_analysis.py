@@ -176,10 +176,14 @@ LESSON = Lesson(
                    "(C) Douglass reminds his audience that the country loudly celebrates its own freedom even "
                    "while millions of people remain enslaved, retelling for the crowd how the promise of "
                    "independence has never actually reached every American. "
-                   "Correct: A situates the rhetoric; B is a device-hunt and C is a summary. (A) places the "
-                   "choices in the audience and the speaker's bind and holds the tension. (B) lists techniques "
-                   "and calls the speech powerful. (C) retells what the speech says without analyzing any "
-                   "choice."),
+                   "(D) Douglass's address is an extremely convincing and moving speech, and he is right that a "
+                   "nation celebrating its own freedom while holding people in slavery is deeply hypocritical, "
+                   "which is why it still deserves to be admired today. "
+                   "Correct: A situates the rhetoric; B is a device-hunt, C is a summary, and D just evaluates "
+                   "and agrees. (A) places the choices in the audience and the speaker's bind and holds the "
+                   "tension. (B) lists techniques and calls the speech powerful. (C) retells what the speech "
+                   "says without analyzing any choice. (D) judges the speech and agrees with it instead of "
+                   "analyzing any choice."),
              choices=[
                  {"id": "A", "text": "Because Douglass must indict a nation his audience reveres without losing that audience, he voices their pride only to turn it into the very measure of Black exclusion, so he can accuse the crowd while still holding it.",
                   "correct": True,
@@ -190,6 +194,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Douglass reminds his audience that the country loudly celebrates its own freedom even while millions of people remain enslaved, retelling for the crowd how the promise of independence has never actually reached every American.",
                   "correct": False,
                   "why": "This retells what the speech says. Summary is not analysis; it never explains why a choice fits the audience or the speaker's bind."},
+                 {"id": "D", "text": "Douglass's address is an extremely convincing and moving speech, and he is right that a nation celebrating its own freedom while holding people in slavery is deeply hypocritical, which is why it still deserves to be admired today.",
+                  "correct": False,
+                  "why": "This evaluates the speech and agrees with its position. Judging whether the speech is convincing or correct is not analysis; it never explains why a choice fits the audience or the speaker's bind."},
              ]),
         Slot("MODEL", "predict_the_fix", "What lifts this analysis to real depth?",
              bank="douglass_1852",

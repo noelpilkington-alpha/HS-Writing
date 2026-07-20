@@ -147,15 +147,13 @@ LESSON = Lesson(
 
         # ===== MODEL (before the quiz): coping-model think-aloud, then a MOVES decompose folding in the REMEMBER
         # check tool, then discrimination, then predict-the-fix. =====
-        Slot("MODEL", "annotated_before_after", "Watch a sweeping claim get scoped",
+        Slot("MODEL", "annotated_before_after", "Watch a sweeping claim get scoped, then name the two moves",
              bank="ai_workforce_policy",
              body=("Here is the skill in action. Follow the writer's thinking as one sweeping claim is narrowed "
                    "to a defensible one. " + COPING_HTML +
                    " Read the BEFORE, then the AFTER: the writer narrowed whom it covers and what it asks. That "
-                   "narrowing is the whole move.")),
-        Slot("MODEL", "teach_card", "The two moves, and the check that catches an overreach",
-             bank="ai_workforce_policy",
-             body=("Break the scoped claim into its two moves, then keep the check tool for your own writing. " +
+                   "narrowing is the whole move. Now break the scoped claim into its two moves, then keep the "
+                   "check tool for your own writing. " +
                    DECOMPOSE_HTML +
                    "Notice the writer never made the claim louder or added a fact; the writer narrowed it. " +
                    REMEMBER +
@@ -164,10 +162,11 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Which claim is scoped, not sweeping?",
              ref="", labeled_grade_c=True, bank="college_access_policy",
              body=("Now that you have seen one scoped, spot the target on a different debate: public funding for "
-                   "college. Which claim is SCOPED (defensible), and which two overreach? "
+                   "college. Which claim is SCOPED (defensible), and which three do not narrow it? "
                    "(A) The government should always cover the full cost of any degree for every student, no matter the program or its price.  "
                    "(B) For students from low-income families, the government should cover tuition at in-state public colleges.  "
-                   "(C) In today's economy, the government should pay whatever tuition any student is charged at any college they choose. "
+                   "(C) In today's economy, the government should pay whatever tuition any student is charged at any college they choose.  "
+                   "(D) The government should generally do its best to keep college affordable for as many students as it reasonably can. "
                    "Correct: B. It names whom (students from low-income families) and which case (in-state public "
                    "colleges), so one exception cannot sink it."),
              choices=[
@@ -180,6 +179,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "In today's economy, the government should pay whatever tuition any student is charged at any college they choose.",
                   "correct": False,
                   "why": "The opening phrase sounds narrow, but 'any student' plus 'any college' is still a sweeping overreach. A qualifier at the front does not scope a claim if the action stays universal."},
+                 {"id": "D", "text": "The government should generally do its best to keep college affordable for as many students as it reasonably can.",
+                  "correct": False,
+                  "why": "This sounds moderate, but 'generally' and 'as many as it reasonably can' name no particular whom or case, so nothing is actually narrowed. Sounding measured is not the same as scoping."},
              ]),
         Slot("MODEL", "discrimination", "Which claim is scoped, not just softened?",
              ref="", labeled_grade_c=True, bank="ai_workforce_policy",
@@ -187,7 +189,8 @@ LESSON = Lesson(
                    "SCOPED (it names whom or which case), not just hedged or sweeping? "
                    "(A) The government should probably try to help nearly everyone get ready for future careers in some way.  "
                    "(B) When a local industry shuts down, the government should offer the laid-off workers free retraining.  "
-                   "(C) The government must guarantee that every single adult in the country is placed into a secure, high-paying job in whatever field they personally prefer. "
+                   "(C) The government must guarantee that every single adult in the country is placed into a secure, high-paying job in whatever field they personally prefer.  "
+                   "(D) In this economy, the government should retrain every worker for any career path they might want to pursue. "
                    "Correct: B. It names which case (a local industry shutting down) and whom (the laid-off "
                    "workers), so one exception cannot sink it."),
              choices=[
@@ -200,6 +203,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The government must guarantee that every single adult in the country is placed into a secure, high-paying job in whatever field they personally prefer.",
                   "correct": False,
                   "why": "Guaranteeing 'every single adult' a job in any field they prefer overreaches, and one person who cannot be placed sinks it."},
+                 {"id": "D", "text": "In this economy, the government should retrain every worker for any career path they might want to pursue.",
+                  "correct": False,
+                  "why": "The opening 'in this economy' sounds like a condition, but the action still covers 'every worker' for 'any career path,' so the claim stays universal. A phrase at the front does not scope it if what it asks is not narrowed."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this sweeping claim most need?",
              bank="ai_workforce_policy",

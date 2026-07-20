@@ -152,9 +152,13 @@ LESSON = Lesson(
                    "group nothing.  "
                    "(C) This question is really about the single largest issue there is, namely how much say any "
                    "authority anywhere should ever be allowed to have over the private, personal choices of every "
-                   "individual living in a genuinely free society. "
+                   "individual living in a genuinely free society.  "
+                   "(D) Whether to ban phones is one instance of when an institution may limit a personal freedom "
+                   "for the good of the group, and both sides raise fair points, so the school should study the "
+                   "question closely and weigh all the arguments before it settles on any policy. "
                    "Correct: B situates and commits. (A) answers only the literal prompt; (C) names a larger "
-                   "question but is so broad it never answers this one."),
+                   "question but is so broad it never answers this one; (D) names the larger question but then "
+                   "hedges and never commits to a position within it."),
              choices=[
                  {"id": "A", "text": "A school should ban phones during the day, because phones pull students' attention away from the teacher and the lesson in front of them.",
                   "correct": False,
@@ -165,6 +169,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "This question is really about the single largest issue there is, namely how much say any authority anywhere should ever be allowed to have over the private, personal choices of every individual living in a genuinely free society.",
                   "correct": False,
                   "why": "This names a larger question, but it falls into the trap: it goes so broad it never answers the actual phone prompt. Situating requires you to commit within the frame, not just gesture at a big idea."},
+                 {"id": "D", "text": "Whether to ban phones is one instance of when an institution may limit a personal freedom for the good of the group, and both sides raise fair points, so the school should study the question closely and weigh all the arguments before it settles on any policy.",
+                  "correct": False,
+                  "why": "This names the larger question correctly, but then it hedges: it calls for more study instead of committing to a position within the frame. Situating means naming the larger question AND answering inside it, so a claim that never commits is not yet situated."},
              ]),
         Slot("MODEL", "discrimination", "A closer pair: which claim actually situates?",
              ref="", labeled_grade_c=True, bank="automation_policy",
@@ -177,11 +184,14 @@ LESSON = Lesson(
                    "(B) The water choice is one instance of how a community ranks its needs when it cannot meet "
                    "all of them at once, so food should come first and power should take only what is left.  "
                    "(C) This really comes down to the bigger question of whether food matters more than "
-                   "electricity, and because food clearly matters more, the region should protect its water for crops. "
+                   "electricity, and because food clearly matters more, the region should protect its water for crops.  "
+                   "(D) The water choice is one instance of how a community ranks the needs it cannot all meet, and "
+                   "a community should always rank its most basic survival needs ahead of everything else. "
                    "Correct: B. (A) only piles urgent, important-sounding words onto the narrow prompt and never "
                    "names a larger question the choice belongs to. (C) sounds broader, but its bigger question "
-                   "just reworks the same food-or-power prompt, so the frame is not truly larger. Only B names a "
-                   "genuinely larger question and commits inside it."),
+                   "just reworks the same food-or-power prompt, so the frame is not truly larger. (D) names a "
+                   "genuinely larger question but only answers it in the abstract and never comes back to commit "
+                   "on the water. Only B names a genuinely larger question and commits inside it."),
              choices=[
                  {"id": "A", "text": "Deciding whether a drying region should spend its scarce water on growing food or on generating power is one of the most urgent and important questions our society faces today, and I firmly believe we must always put food ahead of power.",
                   "correct": False,
@@ -192,6 +202,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "This really comes down to the bigger question of whether food matters more than electricity, and because food clearly matters more, the region should protect its water for crops.",
                   "correct": False,
                   "why": "The bigger question it names just reworks the same food-or-power prompt in other words, so the frame is not actually larger and the claim has not zoomed out."},
+                 {"id": "D", "text": "The water choice is one instance of how a community ranks the needs it cannot all meet, and a community should always rank its most basic survival needs ahead of everything else.",
+                  "correct": False,
+                  "why": "This names a genuinely larger question, but it only answers in the abstract and never comes back to commit on the actual water choice. Situating means answering the specific prompt within the larger frame, not abandoning the prompt for the principle."},
              ]),
         Slot("MODEL", "predict_the_fix", "What gives this claim real complexity?",
              bank="automation_policy",
@@ -214,7 +227,7 @@ LESSON = Lesson(
                  intro="Use the frame below so you can focus on the two moves: name the larger question, then commit.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
                                          "The choice between ______ and ______ is really one instance of ______ "
-                                         "(the larger question), so I hold that ______ (my position within that frame)."),
+                                         "(the larger question) so I hold that ______ (my position within that frame)."),
                  closer="Name the broader question AND answer within it. Do not answer only the narrow prompt. "
                         "Then check it against the 3 questions.")),
         # DIAGNOSIS = watch a check on a PROVIDED weak draft, then rewrite a fresh one (self-contained; no look-back).

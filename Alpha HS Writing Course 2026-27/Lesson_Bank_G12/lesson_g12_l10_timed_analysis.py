@@ -174,9 +174,11 @@ LESSON = Lesson(
                    "write: which rehearsal FINISHES the analysis, and which OVER-READS? "
                    "(A) Spend most of the working window annotating the speech, marking every appeal instead of picking a few choices, then write a single rushed paragraph and stop before the analysis is finished.  "
                    "(B) Budget the reading to find the rhetorical situation and two or three choices, then move to a fast plan and draft the whole analysis, choice to effect to purpose, and check it.  "
-                   "(C) Budget almost no time for the reading, skim the speech once for its topic, then write a long personal opinion about the speaker's ideas instead of analyzing the choices. "
+                   "(C) Budget almost no time for the reading, skim the speech once for its topic, then write a long personal opinion about the speaker's ideas instead of analyzing the choices.  "
+                   "(D) Skip analyzing this speech's own choices and instead write out a prepared, general essay defining ethos, pathos, and logos and how persuasion works, so a full-length essay is finished no matter which speech appears. "
                    "Correct: B budgets the reading and paces the writing to a finished analysis; A spends the "
-                   "window marking and never finishes; C skips the analysis for personal opinion."),
+                   "window marking and never finishes; C skips the analysis for personal opinion; D fills the "
+                   "page with a canned definition of appeals and never analyzes a choice in this speech."),
              choices=[
                  {"id": "A", "text": "Spend most of the working window annotating the speech, marking every appeal instead of picking a few choices, then write a single rushed paragraph and stop before the analysis is finished.",
                   "correct": False,
@@ -187,6 +189,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Budget almost no time for the reading, skim the speech once for its topic, then write a long personal opinion about the speaker's ideas instead of analyzing the choices.",
                   "correct": False,
                   "why": "This under-reads and drifts into opinion. With no choices found, there is nothing to analyze, so it is a reaction, not an analysis."},
+                 {"id": "D", "text": "Skip analyzing this speech's own choices and instead write out a prepared, general essay defining ethos, pathos, and logos and how persuasion works, so a full-length essay is finished no matter which speech appears.",
+                  "correct": False,
+                  "why": "A canned essay about the appeals in general never ties a choice in this speech to its effect. Defining the terms is not analyzing what this speaker actually does, so it does not finish the analysis."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this analysis rehearsal most need?",
              bank="ra_speech_1",

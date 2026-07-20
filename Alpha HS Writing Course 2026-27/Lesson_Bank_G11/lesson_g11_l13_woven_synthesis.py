@@ -159,14 +159,17 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Which paragraph is woven by point?",
              ref="", labeled_grade_c=True, bank="water_competing_uses",
              body=("You have watched a source tour become woven. Now spot the target: which paragraph is WOVEN "
-                   "(organized by a point that several sources meet on), and which two only tour the sources? "
+                   "(organized by a point that several sources meet on), and which three are not? "
                    "(A) The writer gives Source 1 a paragraph that reports everything it says, then hands Source 2 "
                    "a paragraph of its own, then lets Source 3 fill a third, so each source stays in a box.  "
                    "(B) The writer states one claim about scarcity, then brings Source 1, Source 2, and Source 3 "
                    "onto that single claim, so the three sources meet on the same point in one paragraph.  "
                    "(C) The writer opens with the source that has the biggest figure, then walks down through the "
-                   "others in order of size, giving each its own separate summary in turn. "
-                   "Correct: B is woven. (A) and (C) are both source tours, organized by source; (B) is organized "
+                   "others in order of size, giving each its own separate summary in turn.  "
+                   "(D) The writer packs all three sources into one paragraph, reporting what Source 1 says, then "
+                   "what Source 2 says, then what Source 3 says, back to back, with no claim tying them together. "
+                   "Correct: B is woven. (A) and (C) are source tours organized by source; (D) crowds the sources "
+                   "into one paragraph but still only lists them, with no point they meet on. (B) is organized "
                    "by a point that several sources meet on."),
              choices=[
                  {"id": "A", "text": "The writer gives Source 1 a paragraph that reports everything it says, then hands Source 2 a paragraph of its own, then lets Source 3 fill a third, so each source stays in a box.",
@@ -178,6 +181,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The writer opens with the source that has the biggest figure, then walks down through the others in order of size, giving each its own separate summary in turn.",
                   "correct": False,
                   "why": "Reordering the sources by size is still a tour. Each source gets its own summary, so they still do not meet on one point."},
+                 {"id": "D", "text": "The writer packs all three sources into one paragraph, reporting what Source 1 says, then what Source 2 says, then what Source 3 says, back to back, with no claim tying them together.",
+                  "correct": False,
+                  "why": "One paragraph is not weaving on its own. The sources sit side by side with no point organizing them and no connection shown, so they are listed together, not woven."},
              ]),
         Slot("MODEL", "predict_the_fix", "What turns this source tour into woven synthesis?",
              bank="water_competing_uses",

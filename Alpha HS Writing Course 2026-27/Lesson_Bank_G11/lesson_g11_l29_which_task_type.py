@@ -130,7 +130,7 @@ LESSON = Lesson(
                    "naming the type on PROVIDED prompts: name it, predict its moves, see the reveal. After that you "
                    "plan for a fresh prompt using the same check.")),
         Slot("TEACH", "stimulus_display", "The prompt: a source set on AI and the workforce",
-             ref="ACC-W910-SYNTH-SET-0002", bank="ai_workforce_synthesis",
+             ref="ACC-W910-SYNTH-SET-0002", bank="ai_workforce_synthesis", tag="buy_in",
              body=("Read this prompt and note its shape: how many sources it gives, whether perspectives are "
                    "printed, whether a passage is provided at all. That shape is the tell you use to name the task "
                    "type. The prompt stays on screen while you work.")),
@@ -146,12 +146,14 @@ LESSON = Lesson(
         Slot("MODEL", "discrimination", "Which reading names the task type correctly?",
              ref="", labeled_grade_c=True, bank="ai_workforce_synthesis",
              body=("Sort these before you plan. A prompt gives four sources on AI and the workforce. Which reading "
-                   "names the type from its tell, and which one just defaults? "
+                   "names the type from its tell, and which ones just default? "
                    "(A) It gives four sources to combine, so it is source-free: I will state my own position and "
                    "combine examples from my own life to back it up.  "
                    "(B) It gives a SET of four sources, so it is synthesis: weave one argument from the set and "
                    "weight each source.  "
-                   "(C) There is a lot of text here, so I will just summarize each source in turn and stop there. "
+                   "(C) There is a lot of text here, so I will just summarize each source in turn and stop there.  "
+                   "(D) It gives four sources, so it is multi-perspective: I will treat each source as a viewpoint, "
+                   "weigh them against each other, and side with the one I find most convincing. "
                    "Correct: B."),
              choices=[
                  {"id": "A", "text": "It gives four sources to combine, so it is source-free: I will state my own position and combine examples from my own life to back it up.",
@@ -163,6 +165,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "There is a lot of text here, so I will just summarize each source in turn and stop there.",
                   "correct": False,
                   "why": "Summarizing each source one by one is not synthesis. Synthesis is when you combine the sources into one argument of your own; a string of summaries names no type and runs no argument."},
+                 {"id": "D", "text": "It gives four sources, so it is multi-perspective: I will treat each source as a viewpoint, weigh them against each other, and side with the one I find most convincing.",
+                  "correct": False,
+                  "why": "This misreads the tell. Multi-perspective prints set VIEWS on one issue to weigh; a source SET is given to combine into your own argument, not to pick a winner from. Weighing the four against each other and choosing one runs the wrong moves for synthesis."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this prompt-reading most need?",
              bank="ai_workforce_synthesis",

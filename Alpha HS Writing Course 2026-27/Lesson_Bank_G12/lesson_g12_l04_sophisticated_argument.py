@@ -184,12 +184,15 @@ LESSON = Lesson(
                    "defend a splitting rule the other side would still respect.  "
                    "(C) Load the essay with more advanced vocabulary and longer, more formal sentences, add a "
                    "fourth supporting paragraph that stacks on one more example for the same side, and write a "
-                   "much longer conclusion that walks back through every reason once again in fuller detail. "
-                   "Correct: B reaches real complexity; A and C do not. (A) is organized and clear, but setting the "
-                   "other side aside as simply mistaken is exactly the flattening this lesson tells you to fix, so "
-                   "it stays at the competent floor and never rises to complexity; (C) polishes the surface but "
-                   "never situates or holds the tension. (B) situates, holds the tension, and defends. "
-                   "Complexity across the essay is the move."),
+                   "much longer conclusion that walks back through every reason once again in fuller detail.  "
+                   "(D) Situate the choice inside the larger question of how a society splits a fixed budget "
+                   "between the future and the present, hold that tension in every paragraph, then close by saying "
+                   "the question is genuinely hard and reasonable people will keep disagreeing about it. "
+                   "Correct: B reaches real complexity; A, C, and D do not. (A) is organized and clear, but setting "
+                   "the other side aside as simply mistaken is exactly the flattening this lesson tells you to fix, "
+                   "so it stays at the competent floor; (C) polishes the surface but never situates or holds the "
+                   "tension; (D) situates and holds the tension but never defends a position, ending on a "
+                   "no-answer. (B) situates, holds the tension, and defends. Complexity across the essay is the move."),
              choices=[
                  {"id": "A", "text": "Open with one clear thesis, give three tidy paragraphs of evidence that all back the same side, treat the opposing view as simply mistaken and set it quietly aside, then restate the opening thesis in fresh words to close the whole essay out neatly.",
                   "correct": False,
@@ -200,6 +203,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Load the essay with more advanced vocabulary and longer, more formal sentences, add a fourth supporting paragraph that stacks on one more example for the same side, and write a much longer conclusion that walks back through every reason once again in fuller detail.",
                   "correct": False,
                   "why": "Fancier words, one more paragraph, and a longer conclusion polish the surface but never situate the question or hold the tension. The reader rewards the reasoning, not the packaging."},
+                 {"id": "D", "text": "Situate the choice inside the larger question of how a society splits a fixed budget between the future and the present, hold that tension in every paragraph, then close by saying the question is genuinely hard and reasonable people will keep disagreeing about it.",
+                  "correct": False,
+                  "why": "It situates and holds the tension, but the conclusion refuses to defend a position and ends on 'reasonable people disagree.' Holding a tension is not the end goal; you have to defend a rule or priority that answers it, so this stops one move short."},
              ]),
         Slot("MODEL", "predict_the_fix", "What lifts this essay to real complexity?",
              bank="public_health",

@@ -155,9 +155,13 @@ LESSON = Lesson(
                    "(B) After the argument prompt, open the next one the very same way, giving a personal "
                    "opinion backed by examples drawn from your own life and experience.  "
                    "(C) After the argument prompt, reuse that essay's exact thesis and carry the identical "
-                   "position straight into the next prompt without reading its sources or naming its type. "
-                   "Correct: A switches; B and C bleed. (A) re-names the type and moves to weave-and-weight; "
-                   "(B) carries the argument moves forward; (C) carries the whole position forward."),
+                   "position straight into the next prompt without reading its sources or naming its type.  "
+                   "(D) After the argument prompt, name the next one as a synthesis, then drop any position of "
+                   "your own and simply summarize what each source says, one after another, so the essay covers "
+                   "them all. "
+                   "Correct: A switches; B, C, and D miss it. (A) re-names the type and moves to weave-and-weight; "
+                   "(B) carries the argument moves forward; (C) carries the whole position forward; (D) over-switches "
+                   "into a source-by-source summary with no argument."),
              choices=[
                  {"id": "A", "text": "After the argument prompt, name the next one as a synthesis from its source set, then weave one argument from those sources and weight them before you plan.",
                   "correct": True,
@@ -168,6 +172,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "After the argument prompt, reuse that essay's exact thesis and carry the identical position straight into the next prompt without reading its sources or naming its type.",
                   "correct": False,
                   "why": "This carries the whole position forward and never names the new type. Without reading the sources, there is nothing to weave or weight."},
+                 {"id": "D", "text": "After the argument prompt, name the next one as a synthesis, then drop any position of your own and simply summarize what each source says, one after another, so the essay covers them all.",
+                  "correct": False,
+                  "why": "Naming the type is right, but this over-switches into a source-by-source summary. Synthesis still needs one argument woven from the sources and weighted, not a list that covers every source with no position."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this interleaved pair most need?",
              bank="water_tradeoff",
@@ -190,7 +197,7 @@ LESSON = Lesson(
                  intro="Plan the first prompt (the water argument) before you write, and flag the switch to the "
                        "next prompt.",
                  setapart_block=setapart("Fill in this plan:",
-                                         "Type: ______ (name it). Moves: ______. Thesis: ______ (my position). Switch flag: the next prompt is a ______, so before planning it I will switch to ______."),
+                                         "Type: ______ (name it). Moves: ______. Thesis: ______ (my position). Switch flag: the next prompt is a ______ so before planning it I will switch to ______."),
                  closer="Name this prompt's type and its moves (a position carried by examples), write a "
                         "one-line thesis, then write the switch flag reminding yourself the next prompt is a "
                         "different type you will re-name before planning.")),

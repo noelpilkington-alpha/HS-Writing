@@ -147,10 +147,11 @@ LESSON = Lesson(
                    "(B) The city should always make every bus and train ride completely free, because free "
                    "transit beats asking riders to pay any fare at all under any circumstances.  "
                    "(C) When a bus route runs far below capacity, the city should cut its fares, because empty "
-                   "seats cost the city the same to run as full ones. "
+                   "seats cost the city the same to run as full ones.  "
+                   "(D) When a bus route runs nearly empty, the city should cut its fares on that route. "
                    "Correct: C. It bounds the claim to a stated case AND still commits AND gives a reason. "
                    "(A) hedges until no position survives; (B) commits and has a reason but sets no limit, so "
-                   "it overreaches to every ride in every case."),
+                   "it overreaches to every ride in every case; (D) bounds and commits but gives no reason."),
              choices=[
                  {"id": "A", "text": "When it comes to fares, maybe the city should sometimes lower them, but honestly it really depends and is hard to say for sure either way.",
                   "correct": False,
@@ -161,18 +162,23 @@ LESSON = Lesson(
                  {"id": "C", "text": "When a bus route runs far below capacity, the city should cut its fares, because empty seats cost the city the same to run as full ones.",
                   "correct": True,
                   "why": "Correct. It bounds the claim ('when a bus route runs far below capacity'), still commits ('should cut its fares'), and gives a reason. Bound plus commit plus reason is what makes it qualified, not any single word."},
+                 {"id": "D", "text": "When a bus route runs nearly empty, the city should cut its fares on that route.",
+                  "correct": False,
+                  "why": "This bounds the claim to a real case and commits, but it stops there and never says why, so the reader is given no reason to accept it. A qualified claim also carries the warrant."},
              ]),
         Slot("MODEL", "discrimination", "Spot the qualified claim: real limit, a commitment, and a reason",
              ref="", labeled_grade_c=True, bank="ai_workforce_policy",
-             body=("A fresh set, and all three take a side. Which one is a genuinely qualified claim: it names a "
+             body=("A fresh set, and they all sound careful. Which one is a genuinely qualified claim: it names a "
                    "real limit, commits to a position, AND gives a reason a reader could weigh, instead of faking "
-                   "the limit or skipping the reason? "
+                   "the limit, skipping the reason, or hedging away the position? "
                    "(A) The state should fund retraining seats every so often in various cases, because offering some form of assistance to workers who are affected is generally a reasonable step for a government to take.  "
                    "(B) When local factories automate their lines, the state should fund retraining seats, because laid-off workers cannot reskill fast enough on their own.  "
-                   "(C) When local factories automate their lines, the state should fund retraining seats for displaced workers. "
+                   "(C) When local factories automate their lines, the state should fund retraining seats for displaced workers.  "
+                   "(D) Perhaps the state should sometimes fund a few retraining seats, though in many cases it may be better not to. "
                    "Correct: B. It names a real condition (when factories automate), commits to funding "
                    "retraining, and gives a reason. (A) only pretends to set a limit with 'every so often in "
-                   "various cases'; (C) sets a real limit and commits but never says why."),
+                   "various cases'; (C) sets a real limit and commits but never says why; (D) hedges until no "
+                   "position is left."),
              choices=[
                  {"id": "A", "text": "The state should fund retraining seats every so often in various cases, because offering some form of assistance to workers who are affected is generally a reasonable step for a government to take.",
                   "correct": False,
@@ -183,6 +189,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "When local factories automate their lines, the state should fund retraining seats for displaced workers.",
                   "correct": False,
                   "why": "This sets a real limit and commits, but it stops there and never says why, so the reader is given no reason to accept it."},
+                 {"id": "D", "text": "Perhaps the state should sometimes fund a few retraining seats, though in many cases it may be better not to.",
+                  "correct": False,
+                  "why": "'Perhaps', 'sometimes', and 'it may be better not to' hedge until no position survives. That is a waffle, not a bounded commitment: a qualified claim limits the case but still takes a side."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this waffle most need?",
              bank="ai_workforce_policy",
@@ -206,7 +215,7 @@ LESSON = Lesson(
                  intro="Use the frame below so you can focus on the three moves.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
                                          "When ______ [the limit / which case], the government should ______ "
-                                         "[commit to a position], because ______ [the reason]."),
+                                         "[commit to a position] because ______ [the reason]."),
                  closer="Bound the claim to a real case, still commit, and give a reason a reader could weigh. "
                         "Then check it against the 3 questions. Do not waffle. Write one sentence.")),
         # DIAGNOSIS = a CHECK-and-FIX on a PROVIDED draft (stays on the taught topic; no new source to read).

@@ -158,16 +158,19 @@ LESSON = Lesson(
                    "When you set your own budget, run this check on the four numbers before you draft.")),
         Slot("MODEL", "discrimination", "Which approach budgets the timed-writing window?",
              ref="", labeled_grade_c=True, bank="infrastructure_spending",
-             body=("You have watched a no-budget draft become a budgeted window. Now sort these three approaches: "
-                   "which one BUDGETS the minutes, and which two do not? "
+             body=("You have watched a no-budget draft become a budgeted window. Now sort these four approaches: "
+                   "which one BUDGETS the minutes, and which three do not? "
                    "(A) Allot minutes up front, read 7, plan 6, draft 23, check 4, and move to the next stage the "
                    "moment its minutes run out.  "
                    "(B) Open the prompt, start drafting the essay right away, and keep writing without stopping "
                    "until time is finally called at the end.  "
                    "(C) Spend nearly the whole window drafting a long body and leave just a single minute at the "
-                   "very end for reading and planning together. "
-                   "Correct: A. Only A gives each stage its own protected minutes; B protects nothing and C "
-                   "starves reading, planning, and checking to feed the draft."),
+                   "very end for reading and planning together.  "
+                   "(D) Write out a full read, plan, draft, check budget up front, then ignore the numbers once "
+                   "drafting starts and stay on whichever stage still feels unfinished until time is called. "
+                   "Correct: A. Only A gives each stage its own protected minutes and holds to them; B protects "
+                   "nothing, C starves reading, planning, and checking to feed the draft, and D sets a budget but "
+                   "never defends it, so the numbers do nothing."),
              choices=[
                  {"id": "A", "text": "Allot minutes up front, read 7, plan 6, draft 23, check 4, and move to the next stage the moment its minutes run out.",
                   "correct": True,
@@ -178,6 +181,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Spend nearly the whole window drafting a long body and leave just a single minute at the very end for reading and planning together.",
                   "correct": False,
                   "why": "One shared minute for reading and planning starves the stages that make an essay coherent. Drafting is not the only thing that needs protected minutes."},
+                 {"id": "D", "text": "Write out a full read, plan, draft, check budget up front, then ignore the numbers once drafting starts and stay on whichever stage still feels unfinished until time is called.",
+                  "correct": False,
+                  "why": "A budget you do not hold to is not a budget. Writing the numbers and then ignoring them lets drafting overrun again, so planning and checking still get crowded out. The budget only works when each stage is held to its minutes."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this timed-writing approach most need?",
              bank="infrastructure_spending",

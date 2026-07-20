@@ -175,10 +175,13 @@ LESSON = Lesson(
                    "conclusion.  "
                    "(C) State a position, then plan three body paragraphs that each add stronger adjectives and "
                    "more forceful phrasing about curiosity, with sweeping claims about progress but no named "
-                   "case, then a conclusion. "
+                   "case, then a conclusion.  "
+                   "(D) State a position, then plan three body paragraphs that each develop one named case, but "
+                   "let each paragraph drift into a different point of its own, so the cases never tie back to the "
+                   "single thesis, then a conclusion. "
                    "Correct: A. Plan A gives each paragraph a specific case developed and tied to the thesis, so "
                    "the reader has something concrete to weigh; B and C only restate the opinion, one plainly "
-                   "and one loudly, and name nothing."),
+                   "and one loudly, and name nothing, and D has cases but lets them drift instead of tying back."),
              choices=[
                  {"id": "A", "text": "State a position, then plan one body paragraph per specific named case (Fleming and penicillin; non-Euclidean geometry feeding relativity), each developed and tied to the thesis, then a conclusion.",
                   "correct": True,
@@ -189,6 +192,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "State a position, then plan three body paragraphs that each add stronger adjectives and more forceful phrasing about curiosity, with sweeping claims about progress but no named case, then a conclusion.",
                   "correct": False,
                   "why": "Louder wording is still restated opinion, not evidence. With no named case in any paragraph, this is the same failure as B, just more forceful."},
+                 {"id": "D", "text": "State a position, then plan three body paragraphs that each develop one named case, but let each paragraph drift into a different point of its own, so the cases never tie back to the single thesis, then a conclusion.",
+                  "correct": False,
+                  "why": "This plan does supply named cases, but the essay fails the tie-back check: each example drifts to its own point instead of defending the one thesis, so the paragraphs never add up to a single argument."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this source-free essay most need?",
              bank="sfa_curiosity_use",

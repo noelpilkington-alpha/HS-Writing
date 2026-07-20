@@ -178,9 +178,13 @@ LESSON = Lesson(
                    "(B) Budget the stages, fast-plan the whole case, and draft it from situated claim through "
                    "defended conclusion in one paced pass, then check the finished essay against a list.  "
                    "(C) Spend the sitting gathering more facts and sharper vocabulary to use later, then write "
-                   "one strong opening paragraph and leave the rest of the argument for a different day. "
+                   "one strong opening paragraph and leave the rest of the argument for a different day.  "
+                   "(D) Practice by writing conclusion after conclusion in isolation, a fresh detached ending "
+                   "for a different prompt each time, since the conclusion is the part that always feels rushed "
+                   "and most needs the work. "
                    "Correct: B runs the complete argument end to end, so the conclusion gets finished work; A "
-                   "and C both stop at the opening, so the ending is never rehearsed."),
+                   "and C both stop at the opening, and D drills one part in isolation, so none of them ever "
+                   "assembles a whole essay in one paced pass."),
              choices=[
                  {"id": "A", "text": "Polish the introduction and first body paragraph over and over until every sentence reads perfectly, then stop working once the opening finally feels strong enough to submit.",
                   "correct": False,
@@ -191,6 +195,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Spend the sitting gathering more facts and sharper vocabulary to use later, then write one strong opening paragraph and leave the rest of the argument for a different day.",
                   "correct": False,
                   "why": "Collecting material and writing one opening is still opening-only. The body and conclusion are never rehearsed, so endurance never builds."},
+                 {"id": "D", "text": "Practice by writing conclusion after conclusion in isolation, a fresh detached ending for a different prompt each time, since the conclusion is the part that always feels rushed and most needs the work.",
+                  "correct": False,
+                  "why": "Drilling one part alone never assembles a whole essay in one paced pass. A conclusion detached from its own thesis and body cannot rehearse carrying an argument end to end."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this rehearsal habit most need?",
              bank="public_health",

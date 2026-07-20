@@ -138,9 +138,13 @@ LESSON = Lesson(
                    "(C) A school phone ban is clearly the smartest, most responsible policy there is, and nobody "
                    "who genuinely cares about students could reasonably argue against putting the rule in place "
                    "right away.  "
+                   "(D) A school should ban phones during the day, because leaving phones on only pulls students "
+                   "off the lesson and wastes class time, so once you see what the alternative costs, a full ban "
+                   "is plainly the better call.  "
                    "Correct: B names a real, specific cost (the ban cuts off the tool a student in crisis reaches "
                    "for) and lets it shape the claim. A uses 'yet' and 'so' but concedes nothing real; C just "
-                   "asserts force. Genuine complexity is the move."),
+                   "asserts force; D names a real cost but pins it on the other option, so the ban itself still "
+                   "concedes nothing. Genuine complexity is the move."),
              choices=[
                  {"id": "A", "text": "A school should ban phones during the day, yet other people clearly disagree with that rule, so after weighing every side a full ban is still the strongest choice for the school overall.",
                   "correct": False,
@@ -151,10 +155,13 @@ LESSON = Lesson(
                  {"id": "C", "text": "A school phone ban is clearly the smartest, most responsible policy there is, and nobody who genuinely cares about students could reasonably argue against putting the rule in place right away.",
                   "correct": False,
                   "why": "This just asserts the position more forcefully and denies any real opposing cost. Force is not complexity; it names no tension the argument has to answer."},
+                 {"id": "D", "text": "A school should ban phones during the day, because leaving phones on only pulls students off the lesson and wastes class time, so once you see what the alternative costs, a full ban is plainly the better call.",
+                  "correct": False,
+                  "why": "This does name a real cost, but it is the cost of the OTHER option (leaving phones on). The ban it argues for still pays no cost, so the position concedes nothing. Genuine complexity names a cost your OWN side pays."},
              ]),
         Slot("MODEL", "discrimination", "Which claim lets the tension change the position?",
              ref="", labeled_grade_c=True, bank="public_health",
-             body=("Here is a harder case. All three sentences below admit that preparing workers and "
+             body=("Here is a harder case. All four sentences below admit that preparing workers and "
                    "protecting displaced workers pull against each other, but only one lets that tension "
                    "actually change the position it argues for. Which one shows genuine complexity?"),
              choices=[
@@ -167,6 +174,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Retraining matters and protecting workers matters, and reasonable people can weigh both of these important considerations carefully before they decide.",
                   "correct": False,
                   "why": "This only says both aims matter and never names a specific cost or commits to a position, so it weighs nothing and stays a vague both-sides gesture."},
+                 {"id": "D", "text": "Retraining takes years the displaced worker does not have, which we should keep in mind, but we should still fund as much retraining as possible.",
+                  "correct": False,
+                  "why": "This names the specific cost and even promises to 'keep it in mind,' but the position stays unconditional and unchanged. Gesturing at the tension is not the same as letting it reshape the claim, so it is not yet genuine complexity."},
              ]),
         Slot("MODEL", "predict_the_fix", "What makes this complexity genuine?",
              bank="public_health",
@@ -192,7 +202,7 @@ LESSON = Lesson(
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the one move: naming a real cost, then letting it shape the claim.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
-                                         "______ [your position on the workforce prompt], yet ______ [the specific cost that choice pays the other side], so ______ [how the position still holds]."),
+                                         "______ [your position on the workforce prompt], yet ______ [the specific cost that choice pays the other side] so ______ [how the position still holds]."),
                  closer="Name a genuine, specific tension, not 'on the other hand.' Write one sentence, then check "
                         "it against the 3 questions.")),
         # ===== DIAGNOSIS: watch a check on a PROVIDED weak draft, then write fresh (scaffolded, no Step N prose) =====

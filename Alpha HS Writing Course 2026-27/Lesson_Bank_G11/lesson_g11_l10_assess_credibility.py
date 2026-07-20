@@ -121,8 +121,10 @@ LESSON = Lesson(
                    "(B) The source is credible on the electricity mix because it comes from the U.S. Energy "
                    "Information Administration and reports checkable figures.  "
                    "(C) The source is trustworthy because it is long and detailed and cites a great many numbers, "
-                   "which surely shows careful research stands behind it. "
-                   "Correct: B rests on grounds; A and C rest on feel."),
+                   "which surely shows careful research stands behind it.  "
+                   "(D) The source is credible because it is the top result in a search and many other websites "
+                   "link to it, so that many people relying on it must mean it is right. "
+                   "Correct: B rests on grounds; A, C, and D rest on feel."),
              choices=[
                  {"id": "A", "text": "The source is credible because its confident, professional tone reads exactly the way a knowledgeable expert would sound to a careful reader.",
                   "correct": False,
@@ -133,6 +135,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The source is trustworthy because it is long and detailed and cites a great many numbers, which surely shows careful research stands behind it.",
                   "correct": False,
                   "why": "This rests on feel too. Length and a pile of numbers are surface cues; they do not name who produced the source or show the claims can actually be checked."},
+                 {"id": "D", "text": "The source is credible because it is the top result in a search and many other websites link to it, so that many people relying on it must mean it is right.",
+                  "correct": False,
+                  "why": "This rests on feel too. Ranking high and being widely linked is a popularity cue; it names neither who produced the source nor backing a reader could check."},
              ]),
         Slot("MODEL", "discrimination", "Which judgment names both grounds?",
              ref="", labeled_grade_c=True, bank="energy_transition",
@@ -144,8 +149,10 @@ LESSON = Lesson(
                    "with that kind of reputation would surely never publish any figure that a reader would actually "
                    "need to double-check.  "
                    "(C) The source is credible because its figures come from studies, so the numbers behind them "
-                   "can be trusted. "
-                   "Correct: A names who plus checkable backing; B and C each name only one."),
+                   "can be trusted.  "
+                   "(D) The source is credible because an expert clearly wrote it and it lists the survey data "
+                   "behind each reported figure. "
+                   "Correct: A names who plus checkable backing; B, C, and D each fall short on one ground."),
              choices=[
                  {"id": "A", "text": "The source is credible because the U.S. Energy Information Administration produced it and lists the survey data behind each reported figure.",
                   "correct": True,
@@ -156,6 +163,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "The source is credible because its figures come from studies, so the numbers behind them can be trusted.",
                   "correct": False,
                   "why": "This gestures at studies but names no identifiable producer, so the who behind the claims is missing."},
+                 {"id": "D", "text": "The source is credible because an expert clearly wrote it and it lists the survey data behind each reported figure.",
+                  "correct": False,
+                  "why": "This points to checkable backing (the survey data), but 'an expert' is not an identifiable producer a reader could point to, so the WHO ground is only gestured at, not named."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this credibility judgment most need?",
              bank="energy_transition",

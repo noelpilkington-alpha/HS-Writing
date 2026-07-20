@@ -163,10 +163,13 @@ LESSON = Lesson(
                    "(B) A full page of complete sentences that writes out a topic sentence, a quotation, and a "
                    "closing transition for each and every planned paragraph in the essay before any drafting starts.  "
                    "(C) A blank page and a plan to skip planning, opening straight into paragraph one and adding "
-                   "whatever new reason comes to mind next until the essay finally feels quite long enough to stop. "
+                   "whatever new reason comes to mind next until the essay finally feels quite long enough to stop.  "
+                   "(D) Three quick lines that list the source's main facts and the topic each paragraph will "
+                   "cover, jotted fast, but never naming which side the essay will actually defend. "
                    "Correct: A. It names a position and an order in a few lines, enough to steer the draft while "
-                   "the window stays open; B over-plans and rewrites the essay as an outline, and C skips "
-                   "planning, so the draft wanders."),
+                   "the window stays open; B over-plans and rewrites the essay as an outline, C skips planning so "
+                   "the draft wanders, and D is quick but stakes no position, so the paragraphs have topics but no "
+                   "case to build."),
              choices=[
                  {"id": "A", "text": "Three lines jotted in about two minutes: one line names the position to defend, then P1, P2, and P3 each name a reason, with a shorthand fact beside each point.",
                   "correct": True,
@@ -177,6 +180,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "A blank page and a plan to skip planning, opening straight into paragraph one and adding whatever reason comes to mind next until the essay finally feels long enough to stop.",
                   "correct": False,
                   "why": "This skips planning. With no position and no order set first, the draft wanders and repeats instead of building one case."},
+                 {"id": "D", "text": "Three quick lines that list the source's main facts and the topic each paragraph will cover, but never name which side the essay will actually defend.",
+                  "correct": False,
+                  "why": "This is fast and short but has no position. Listing topics and facts without staking a side gives the paragraphs subjects but no case to build, so the draft has no spine to steer it."},
              ]),
         Slot("MODEL", "predict_the_fix", "What does this planning habit most need?",
              bank="ai_regulation",
