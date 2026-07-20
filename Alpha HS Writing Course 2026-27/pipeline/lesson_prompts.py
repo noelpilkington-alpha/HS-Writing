@@ -29,6 +29,14 @@ def setapart(label, text, tone="amber"):
             f'<div style="font-size:15px;color:#1f2a44;font-style:italic;">{text}</div></div>')
 
 
+def claim_frame(side_label, reason_label, stem="Schools should"):
+    """A side+reason fill-in frame (#2, LS-feedback): NO comma before 'because' (a punctuation model the
+    student copies; the because-clause is restrictive in a frame). Use this instead of hand-writing the
+    frame so gate_frame_comma never has to catch a stray comma. Renders via setapart."""
+    return setapart("Copy this frame, then fill in the blanks:",
+                    f"{stem} ______ [{side_label}] because ______ [{reason_label}].")
+
+
 def checklist(rows, title=""):
     """A numbered checklist rendered as a real <ol>. Each row is either a plain string (one instruction) or a
     (question, answer) tuple rendered as 'question' in bold with the modeled answer beneath. Renders ONCE with a
