@@ -21,16 +21,22 @@ from tier_a_regression import audit_lesson, run_all, _ISSUE_FRAME_NA_GATES  # no
 from g9_push_dryrun import STIM  # noqa: E402
 
 # --- IN-FLIGHT GATES (LS-feedback pipeline encoding, 2026-07-20) ---------------------------------
-# New deterministic gates land in Tasks 2-8 of the LS-feedback plan and INTENTIONALLY flag legacy
-# lessons that the course-wide rollout (Task 11) then fixes. During that build window these two
+# New/tightened deterministic gates land in Tasks 2-8 of the LS-feedback plan and INTENTIONALLY flag
+# legacy lessons that the course-wide rollout (Task 11) then fixes. During that build window these two
 # course-clean invariants would go red on the KNOWN in-flight gates and mask any UNEXPECTED regression.
-# So we allowlist ONLY the in-flight gate names: the tests still fail on any OTHER blocker.
-# REMOVE this allowlist at Task 11 Step 4 and re-assert full green (the rollout is done then).
-_INFLIGHT_GATES = ("frame_comma",)  # extend as Tasks 3-6 land (self_answered_check, check_cadence, ...); emptied at T11
+# So we allowlist ONLY the in-flight signals: the tests still fail on any OTHER blocker.
+# REMOVE this allowlist (empty both tuples) at Task 11 Step 4 and re-assert full green.
+#  - _INFLIGHT_GATES: whole new gates, matched on the delimited gate name ":name:".
+#  - _INFLIGHT_MSG_SUBSTRINGS: for a TIGHTENED existing gate (e.g. structural_item's new "exactly 4
+#    options" rule), we cannot allowlist the whole gate (it still catches real defects), so we match
+#    the specific new rule's message substring.
+_INFLIGHT_GATES = ("frame_comma",)          # extend as Tasks 4,6 land (self_answered_check, check_cadence); emptied at T11
+_INFLIGHT_MSG_SUBSTRINGS = ()               # Task 3 adds structural_item's new 4-option-rule message here; emptied at T11
 
 
 def _blocker_is_inflight(b: str) -> bool:
-    return any(f":{g}:" in b for g in _INFLIGHT_GATES)
+    return (any(f":{g}:" in b for g in _INFLIGHT_GATES)
+            or any(sub in b for sub in _INFLIGHT_MSG_SUBSTRINGS))
 
 
 def test_g9_is_fully_clean():
