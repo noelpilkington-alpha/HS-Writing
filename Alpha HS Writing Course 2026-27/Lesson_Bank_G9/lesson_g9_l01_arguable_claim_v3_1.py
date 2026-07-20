@@ -23,7 +23,7 @@ Passes all 23 lesson_contract gates. Own words, no fabricated figures, no em das
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "pipeline"))
 from lesson_contract import Lesson, Slot, qc_lesson, qc_report
-from lesson_prompts import frq_prompt, setapart, checklist
+from lesson_prompts import frq_prompt, setapart, checklist, claim_frame
 
 ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
@@ -162,7 +162,8 @@ LESSON = Lesson(
                    "fact and not a bare opinion? "
                    "(A) Some districts switched to a four-day week because an old budget shortfall forced their hand during a difficult year.  "
                    "(B) Honestly, a four-day school week just sounds like a really nice idea to me and my friends.  "
-                   "(C) Districts should keep the five-day week, because students lose ground when a full teaching day is cut. "
+                   "(C) Districts should keep the five-day week, because students lose ground when a full teaching day is cut.  "
+                   "(D) Should schools switch to a four-day week, or is the five-day week better for learning? "
                    "Correct: C. It takes a side someone could disagree with AND gives a reason."),
              choices=[
                  {"id": "A", "text": "Some districts switched to a four-day week because an old budget shortfall forced their hand during a difficult year.",
@@ -174,6 +175,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "Districts should keep the five-day week, because students lose ground when a full teaching day is cut.",
                   "correct": True,
                   "why": "Correct. It takes a side someone could disagree with (keep five days) AND gives a reason (lost teaching time). The side plus the reason is what makes a claim, not any single word."},
+                 {"id": "D", "text": "Should schools switch to a four-day week, or is the five-day week better for learning?",
+                  "correct": False,
+                  "why": "This poses the question instead of answering it. A question hands the choice back to the reader and takes no side, so it is not a claim yet."},
              ]),
         Slot("MODEL", "discrimination", "Which sentence takes a side AND gives a reason?",
              ref="", labeled_grade_c=True, bank="four_day_week",
@@ -181,7 +185,8 @@ LESSON = Lesson(
                    "arguable claim: one that takes a side and backs it with a reason? "
                    "(A) In many four-day plans, the school day simply runs longer and one weekday is dropped from the calendar.  "
                    "(B) Schools should keep the five-day week.  "
-                   "(C) A four-day week would help students, since a lighter week keeps them more focused in class. "
+                   "(C) A four-day week would help students, since a lighter week keeps them more focused in class.  "
+                   "(D) The four-day and five-day weeks each have their own upsides and downsides for students. "
                    "Correct: C. It takes a side someone could reject and gives a reason for it, while a side with no reason is not finished."),
              choices=[
                  {"id": "A", "text": "In many four-day plans, the school day simply runs longer and one weekday is dropped from the calendar.",
@@ -193,6 +198,9 @@ LESSON = Lesson(
                  {"id": "C", "text": "A four-day week would help students, since a lighter week keeps them more focused in class.",
                   "correct": True,
                   "why": "Correct. It takes a side someone could disagree with and gives a reason for that side, and a side plus a reason is what makes a claim."},
+                 {"id": "D", "text": "The four-day and five-day weeks each have their own upsides and downsides for students.",
+                  "correct": False,
+                  "why": "This balances both sides and lands on neither. A claim has to commit to one side, so a fence-sitting sentence like this is not a claim yet."},
              ]),
         Slot("MODEL", "predict_the_fix", "Is this an arguable claim, and if not, what fixes it?",
              bank="four_day_week",
@@ -214,8 +222,7 @@ LESSON = Lesson(
              ref="", bank="four_day_week", rubric_ref="rc.staar", scored=True, unit="sentence",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the two moves.",
-                 setapart_block=setapart("Copy this frame, then fill in the blanks:",
-                                         "Schools should ______ [your side on the four-day week], because ______ [your reason]."),
+                 setapart_block=claim_frame("your side on the four-day week", "your reason"),
                  closer="Take a clear side and give a reason a reader could weigh. Then check it against the 3 "
                         "questions.")),
         # DIAGNOSIS = a CHECK-and-FIX exercise on a PROVIDED draft (not a fresh production, so it does not repeat
