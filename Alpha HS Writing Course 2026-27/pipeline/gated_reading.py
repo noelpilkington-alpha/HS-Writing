@@ -32,6 +32,10 @@ try:
     from l01_diagrams import DIAGRAMS as _DIAGRAMS   # authored SVG diagrams keyed by (lesson_id, slot)
 except Exception:
     _DIAGRAMS = {}
+try:
+    from incept_diagrams import INCEPT_DIAGRAMS as _INCEPT_DIAGRAMS  # Incept drawio PNGs keyed by (lesson_id, slot)
+except Exception:
+    _INCEPT_DIAGRAMS = {}
 
 # ---- palette (faithful to the decoded science lesson) ------------------------------------------------------
 NODE_COLORS = [  # cycled per content node (bar/bg/ink), matching the science lesson's color-coded nodes
@@ -578,12 +582,15 @@ def build_lesson_html(L, base_url="") -> tuple[str, list[tuple[str, str]]]:
             # visual-design-protocol Track A: if an authored SVG diagram exists for this (lesson, slot), embed
             # it in the card (replacing the densest paragraph's cognitive load with a labeled diagram).
             diagram = _DIAGRAMS.get((L.id, idx + 1)) if _DIAGRAMS else None
+            # Incept drawio PNG (display-only, bound via img=). SVG wins: a slot never gets both.
+            incept_png = _INCEPT_DIAGRAMS.get((L.id, idx + 1)) if _INCEPT_DIAGRAMS else None
             # teach/model cards carry OWN-AUTHORED HTML (callout boxes, decompose + before/after panels) that must
             # survive verbatim -> render via raw_body. stimulus_display text comes from a bound stimulus -> paras.
             raw_body = s.body if (s.kind in ("teach_card", "annotated_before_after") and s.body) else ""
             if raw_body:
                 _harvest_glossary(raw_body, gloss_defs)   # register any <dfn> tooltips for the catalog
-            card = _content_card(s.title or "", paras, idref, colors, svg=diagram, raw_body=raw_body)
+            card = _content_card(s.title or "", paras, idref, colors, svg=diagram,
+                                 img=(None if diagram else incept_png), raw_body=raw_body)
             segments.append(_node(colors, card, first=first, last=last))
         elif s.kind in ("discrimination", "predict_the_fix", "self_score"):
             cp_id = f"cp-{L.id}-s{idx+1}"
