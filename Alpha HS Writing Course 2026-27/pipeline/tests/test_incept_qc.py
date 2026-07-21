@@ -14,7 +14,7 @@ if PIPE not in sys.path:
     sys.path.insert(0, PIPE)
 
 from incept_client import InceptClient
-from incept_qc import slot_to_qc_content, qc_item, record, low_scoring
+from incept_qc import slot_to_qc_content, qc_item, record, low_scoring, qc_batch
 from lesson_contract import Slot, Lesson
 
 TEST_CACHE = "C:/tmp/incept_cache_test"
@@ -179,6 +179,59 @@ def test_qc_item_unwraps_nested_verdict_from_live_envelope(tmp_path):
     assert entry["judge_score"] == 68 and entry["flagged"] is True
     assert len(entry["axes"]) == 2
     assert "feedback" not in open(p, encoding="utf-8").read()
+
+
+# ---- (d) concurrent qc_batch: workers return, main thread writes once ------
+class _BatchStubClient:
+    """Per-call stub for the concurrent batch: qc() echoes a pending envelope carrying the target's
+    intended score (via the stem); poll() returns it terminal with the score NESTED under verdict."""
+    def __init__(self):
+        self._scores = {}
+
+    def qc(self, gen_type, content, prompt=None, grade_levels=None, subject="writing", live=False):
+        # derive a deterministic score from the stem length so different targets differ
+        score = 90 if "keep" in content.get("stem", "").lower() else 60
+        rid = abs(hash(content.get("stem", ""))) % 100000
+        self._scores[rid] = score
+        return {"request_id": rid, "status": "pending"}
+
+    def poll(self, request_id, kind="qc", live=False):
+        sc = self._scores.get(request_id, 70)
+        return {"request_id": request_id, "status": "succeeded",
+                "verdict": {"judge_score": sc, "passed": sc >= 85,
+                            "axes": [{"id": "correctness", "score": sc, "pass": sc >= 85}],
+                            "feedback": "leak-should-not-persist"}}
+
+
+def _target(lesson_id, idx, stem):
+    return {"lesson_id": lesson_id, "slot_idx": idx, "kind": "discrimination",
+            "lesson": None, "gen_type": "question",
+            "content": {"stem": stem, "options": ["a", "b", "c"],
+                        "answer_key": {"answer": "a", "explanation": "x"}}}
+
+
+def test_qc_batch_concurrent_writes_all_receipts_once(tmp_path):
+    p = str(tmp_path / "receipts.json")
+    targets = [
+        _target("L-A", 0, "keep this strong item"),      # -> 90, passes
+        _target("L-B", 1, "weak item to flag"),           # -> 60, flagged
+        _target("L-C", 2, "another keep item"),           # -> 90, passes
+    ]
+    summary = qc_batch(targets, client=_BatchStubClient(), max_workers=3, path=p)
+    assert summary["total"] == 3 and summary["ok"] == 3 and summary["errors"] == []
+
+    data = json.loads(open(p, encoding="utf-8").read())
+    assert set(data.keys()) == {"L-A:s0", "L-B:s1", "L-C:s2"}
+    # nested verdict was unwrapped + redacted for every row
+    assert data["L-A:s0"]["judge_score"] == 90 and data["L-A:s0"]["flagged"] is False
+    assert data["L-B:s1"]["judge_score"] == 60 and data["L-B:s1"]["flagged"] is True
+    for entry in data.values():
+        assert set(entry.keys()) == {"judge_score", "passed", "axes", "flagged"}
+    # no leaked feedback text anywhere in the written file
+    assert "leak" not in open(p, encoding="utf-8").read()
+    # shortlist surfaces only the flagged one
+    short = [r["key"] for r in low_scoring(85, path=p)]
+    assert short == ["L-B:s1"]
 
 
 # ---- (c) qc_item dry = would-send, no network ------------------------------

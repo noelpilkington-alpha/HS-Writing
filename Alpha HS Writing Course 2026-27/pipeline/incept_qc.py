@@ -290,3 +290,113 @@ def low_scoring(threshold: int = FLAG_THRESHOLD, path: str | None = None) -> lis
             rows.append({"key": key, "judge_score": score, "flagged": flagged})
     rows.sort(key=lambda r: (r["judge_score"] is None, r["judge_score"] if r["judge_score"] is not None else 0))
     return rows
+
+
+# ---- batch (concurrent) QC over the course --------------------------------
+# QC-able discrimination-family kinds whose options are real distractors (self_score buckets excluded
+# by the >=2-real-options check inside all_qc_targets, since their "options" are score bins, not choices).
+_QC_KINDS = ("discrimination", "predict_the_fix")
+
+
+def all_qc_targets(grades=("G9", "G10", "G11", "G12"), kinds=_QC_KINDS):
+    """Enumerate every QC-able (lesson, slot) across the banks, loading each bank ONCE in the caller's
+    thread. Returns a list of dicts: {"lesson_id", "slot_idx", "kind", "lesson", "content", "gen_type"}.
+
+    Lesson selection DELEGATES to tier_a_regression._lessons (the single source of truth for which
+    version file is canonical, e.g. *_v3_1.py, and one Lesson per file). This is what stops the batch
+    from QC-ing stale _v2/_v3 versions or double-counting a file that defines both LESSON and LESSONS.
+
+    Only slots whose resolved QC content has >=2 real options are included (skips self_score calibration
+    slots, whose options are score buckets, not distractors). importlib is NOT thread-safe, so this does
+    ALL bank loading up front; the concurrent qc_batch below then only makes network calls per target."""
+    from tier_a_regression import _lessons
+
+    targets = []
+    for grade in grades:
+        seen_ids = set()
+        for _f, L in _lessons(grade):
+            lid = getattr(L, "id", "")
+            if lid in seen_ids:          # defensive: never QC the same lesson twice
+                continue
+            seen_ids.add(lid)
+            for i, s in enumerate(getattr(L, "slots", []) or []):
+                if getattr(s, "kind", "") not in kinds:
+                    continue
+                content = slot_to_qc_content(s)
+                if len(content.get("options", [])) < 2:
+                    continue  # no real distractors (e.g. self_score) -> skip
+                targets.append({
+                    "lesson_id": lid,
+                    "slot_idx": i,
+                    "kind": getattr(s, "kind", ""),
+                    "lesson": L,
+                    "content": content,
+                    "gen_type": _generation_type(s),
+                })
+    return targets
+
+
+def qc_batch(targets, client: InceptClient | None = None, max_workers: int = 8,
+             prompt: str | None = None, grade_levels=None, subject: str = "writing",
+             path: str | None = None, progress=None) -> dict:
+    """Run QC concurrently over a list of targets (from all_qc_targets), then write ALL receipts ONCE.
+
+    Concurrency is safe because worker threads ONLY make network calls and return their verdict; the
+    receipt file is written a single time by THIS thread after every worker finishes (record()'s
+    read-modify-write is not thread-safe, so it is never called from a worker). Each worker POSTs +
+    polls independently via the shared client (its curl subprocess transport is stateless per call).
+
+    Returns a summary dict {"total", "ok", "errors", "written_path"}. ADVISORY: a worker that errors is
+    counted and skipped, never raised. `progress(done, total, row)` is called after each completion."""
+    import concurrent.futures
+
+    client = client or InceptClient()
+    path = path or RECEIPTS_PATH
+    results = {}   # key -> redacted receipt
+    errors = []
+
+    def _run(t):
+        gl = grade_levels
+        resp = client.qc(t["gen_type"], t["content"], prompt=prompt,
+                         grade_levels=gl, subject=subject, live=True)
+        request_id = resp.get("request_id") or resp.get("id")
+        envelope = resp
+        for _ in range(40):
+            status = str(envelope.get("status", "")).lower()
+            if status in _TERMINAL or request_id is None:
+                break
+            time.sleep(2)
+            envelope = client.poll(request_id, kind="qc", live=True)
+        inner = envelope.get("verdict") if isinstance(envelope, dict) else None
+        return inner if isinstance(inner, dict) else envelope
+
+    done = 0
+    total = len(targets)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as ex:
+        fut_to_t = {ex.submit(_run, t): t for t in targets}
+        for fut in concurrent.futures.as_completed(fut_to_t):
+            t = fut_to_t[fut]
+            key = f"{t['lesson_id']}:s{t['slot_idx']}"
+            try:
+                verdict = fut.result()
+                results[key] = _redact_verdict(verdict)
+            except Exception as e:  # advisory: record the failure, never raise
+                errors.append({"key": key, "error": type(e).__name__})
+            done += 1
+            if progress is not None:
+                progress(done, total, key)
+
+    # write ALL receipts once (merge with any existing file), in the main thread only.
+    data = {}
+    if os.path.exists(path):
+        try:
+            with open(path, "r", encoding="utf-8") as fh:
+                data = json.load(fh)
+        except (OSError, json.JSONDecodeError):
+            data = {}
+    data.update(results)
+    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(data, fh, indent=2, sort_keys=True)
+
+    return {"total": total, "ok": len(results), "errors": errors, "written_path": path}
