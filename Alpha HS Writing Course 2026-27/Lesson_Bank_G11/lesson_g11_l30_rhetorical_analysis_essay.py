@@ -1,5 +1,5 @@
 """
-lesson_g11_l31_rhetorical_analysis_essay.py  -  G11 KC C.11.03, ESSAY-ASSEMBLY (BUILD, ceiling essay). V3.1.
+lesson_g11_l30_rhetorical_analysis_essay.py  -  G11 KC C.11.03, ESSAY-ASSEMBLY (BUILD, ceiling essay). V3.1.
 
 G11 L31, authored to the v3.1 build spec (hand-authored, structure mirrored from the G9 L23 full-essay lesson).
 Teaching point: plan AND write a complete rhetorical-analysis essay in the AP Lang FRQ2 shape - a thesis that

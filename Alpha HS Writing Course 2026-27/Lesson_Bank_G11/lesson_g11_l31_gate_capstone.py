@@ -1,5 +1,5 @@
 """
-lesson_g11_l30_gate_capstone.py  -  G11 KC C.11.02, ARCHETYPE T8: CROSS-SOURCE-SYNTHESIS (WEAVE, essay). COURSE GATE.
+lesson_g11_l31_gate_capstone.py  -  G11 KC C.11.02, ARCHETYPE T8: CROSS-SOURCE-SYNTHESIS (WEAVE, essay). COURSE GATE.
 
 G11 course L30 (Unit 6, COURSE GATE): the course-terminal cumulative capstone, rebuilt to the SCAFFOLD-FREE GATE
 template (spine re-architecture, SPINE_DELIBERATION_verdict.md). Teaching point (KEPT): on a cold prompt the
