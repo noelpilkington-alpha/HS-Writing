@@ -64,24 +64,45 @@ def _write_bytes(dest_dir: str, name: str, data) -> str:
     return safe
 
 
+def _download(url: str, client: InceptClient):
+    """Download raw bytes from a presigned url (live only). Returns bytes or None on failure.
+
+    Uses curl via subprocess (stdlib) so no extra dependency is added. The url is a live presigned
+    SECRET: it is passed to curl at call time only, never logged or persisted."""
+    import subprocess
+    try:
+        proc = subprocess.run(
+            ["curl", "-s", "--ssl-no-revoke", "--max-time", "120", "-L", url],
+            capture_output=True, timeout=180,
+        )
+    except Exception:
+        return None
+    if proc.returncode != 0 or not proc.stdout:
+        return None
+    return proc.stdout
+
+
 def fetch(artifact_id, dest_dir: str, live: bool = False,
           client: InceptClient | None = None) -> dict:
-    """Pull the drawio + PNG for an artifact into dest_dir; return LOCAL relative paths.
+    """Pull the drawio + PNG for an artifact into dest_dir; return LOCAL relative paths + metadata.
 
-    Returns {"drawio": <rel path or None>, "png": <rel path or None>}.
+    Returns {"drawio": <rel path or None>, "png": <rel path or None>, "below_bar": <bool>,
+             "judge_score": <n or None>, "caption": <str>, "alt_text": <str>}.
 
-    LIVE (live=True): read the artifact JSON (client.artifact), locate the inline drawio XML and PNG
-    bytes/url in the response, write them into dest_dir. This path is exercised live only in Task 7.
-    DRY (live=False): read the artifact from the client cache (no network); if the local files are
-    already present in dest_dir, return their relative paths without touching the network.
+    The real drawio artifact (confirmed live 2026-07-20) delivers its files under files[] as
+    {"filename","url"} pairs, each a presigned S3 URL (NOT inline bytes); metadata (caption/alt_text)
+    rides in output_json, and below_bar/judge_score are top-level. LIVE downloads each file by matching
+    its filename extension (.drawio / .png) and curling the presigned url. DRY reuses on-disk assets or
+    reads the client cache. Presigned urls are SECRETS: used at call time only, never persisted/logged.
     """
     if client is None:
         client = InceptClient()
 
     base = f"artifact_{artifact_id}"
-    out = {"drawio": None, "png": None}
+    out = {"drawio": None, "png": None, "below_bar": False, "judge_score": None,
+           "caption": "", "alt_text": ""}
 
-    # Dry short-circuit: if the local assets are already on disk, just return them (no cache read).
+    # Dry short-circuit: if the local assets are already on disk, return them (no cache read).
     if not live:
         for key, ext in (("drawio", ".drawio"), ("png", ".png")):
             cand = os.path.join(dest_dir, base + ext)
@@ -93,17 +114,39 @@ def fetch(artifact_id, dest_dir: str, live: bool = False,
     # Read the artifact JSON (live: fetch + write-through cache; dry: read cache, raises on miss).
     art = client.artifact(artifact_id, live=live)
 
-    drawio_xml = art.get("drawio") or art.get("drawio_xml") or art.get("xml")
-    if drawio_xml:
-        out["drawio"] = _write_bytes(dest_dir, base + ".drawio", drawio_xml)
+    out["below_bar"] = bool(art.get("below_bar"))
+    try:
+        out["judge_score"] = float(art.get("judge_score")) if art.get("judge_score") is not None else None
+    except (TypeError, ValueError):
+        out["judge_score"] = None
+    oj = art.get("output_json") if isinstance(art.get("output_json"), dict) else {}
+    out["caption"] = str(oj.get("caption", "") or "")
+    out["alt_text"] = str(oj.get("alt_text", "") or "")
 
-    png = art.get("png") or art.get("png_bytes") or art.get("image")
-    if png is not None:
-        # png may be raw bytes already; leave URL-download (presigned S3) to the live Task 7 caller.
-        if isinstance(png, (bytes, bytearray)):
-            out["png"] = _write_bytes(dest_dir, base + ".png", png)
-        elif isinstance(png, str) and not png.startswith("http"):
-            out["png"] = _write_bytes(dest_dir, base + ".png", png.encode("latin-1", "ignore"))
+    # Primary path: files[] of {"filename","url"} presigned pairs. Match by extension.
+    files = art.get("files") if isinstance(art.get("files"), list) else []
+    for f in files:
+        if not isinstance(f, dict):
+            continue
+        fname = str(f.get("filename", "") or "")
+        url = f.get("url")
+        if not url or not isinstance(url, str):
+            continue
+        if fname.lower().endswith(".drawio") and out["drawio"] is None:
+            data = _download(url, client) if live else None
+            if data is not None:
+                out["drawio"] = _write_bytes(dest_dir, base + ".drawio", data)
+        elif fname.lower().endswith(".png") and out["png"] is None:
+            data = _download(url, client) if live else None
+            if data is not None:
+                out["png"] = _write_bytes(dest_dir, base + ".png", data)
+
+    # Fallback: some responses may inline the drawio XML directly (older shape).
+    if out["drawio"] is None:
+        drawio_xml = art.get("drawio") or art.get("drawio_xml") or art.get("xml")
+        if drawio_xml and isinstance(drawio_xml, str):
+            out["drawio"] = _write_bytes(dest_dir, base + ".drawio", drawio_xml)
+
     return out
 
 
