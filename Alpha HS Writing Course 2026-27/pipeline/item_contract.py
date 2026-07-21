@@ -17,12 +17,17 @@ from typing import Literal
 sys.path.insert(0, os.path.dirname(__file__))
 import content_screen as cs
 
-Family = Literal["SR", "CR"]
+Family = Literal["SR", "CR", "SCR"]
 QTI_SR = {"choice", "inline-choice", "hottext", "text-entry"}
 QTI_CR = {"extended-text"}
-RUBRIC_CONFIGS = {"rc.staar", "rc.mcas", "rc.ohio", "rc.4trait", "rc.ap"}
+QTI_SCR = {"text-entry"}
+RUBRIC_CONFIGS = {"rc.staar", "rc.mcas", "rc.ohio", "rc.4trait", "rc.ap",
+                  "rc.scr1", "rc.scr2", "rc.scr3"}
 CR_MODES = {"argument", "explanatory", "analysis"}
-SR_SUBSKILLS = {"conventions", "sentence", "organization", "evidence", "language", "scr"}
+SR_SUBSKILLS = {"conventions", "sentence", "organization", "evidence", "language"}  # 'scr' REMOVED -> SCR family
+SCR_SUBTYPES = {"scr_writing", "scr_analysis", "scr_research"}
+SCR_BINDING = {"scr_writing": False, "scr_analysis": True, "scr_research": True}
+SCR_RUBRIC_FOR = {"scr_writing": "rc.scr1", "scr_research": "rc.scr2", "scr_analysis": "rc.scr3"}
 
 STIMULUS_DIR = os.path.join(os.path.dirname(__file__), "..", "Stimulus_Bank_G10")
 # All grade stimulus banks a CR item may bind to (G9/G10/G11/G12). The binding gate scans every one so
@@ -59,8 +64,10 @@ class Item:
 # ---- gates ----------------------------------------------------------------
 
 def gate_schema(it: Item) -> tuple[bool, str]:
-    if it.family not in ("SR", "CR"):
+    if it.family not in ("SR", "CR", "SCR"):
         return False, f"bad family '{it.family}'"
+    if it.family == "SCR":
+        return True, "schema ok (SCR — validated by scr_schema gate)"
     if not it.stem.strip():
         return False, "empty stem"
     if it.family == "SR":
@@ -157,6 +164,51 @@ def gate_no_change_discipline(it: Item) -> tuple[bool, str]:
     has_nc = any(re.match(r"\s*no change\s*$", o.text, re.I) for o in it.options)
     return True, ("NO-CHANGE present" if has_nc else "no NO-CHANGE option")
 
+def _as_cr_for_binding(it: Item) -> Item:
+    """A shim so SCR binding reuses gate_cr_binding's stimulus-existence scan."""
+    return Item(id=it.id, family="CR", grade=it.grade, stem=it.stem,
+                qti_type="extended-text", subskill_or_mode="argument",
+                stimulus_ref=it.stimulus_ref, rubric_ref="rc.staar")
+
+def gate_scr_schema(it: Item) -> tuple[bool, str]:
+    if it.family != "SCR":
+        return True, "n/a (not SCR)"
+    if it.subskill_or_mode not in SCR_SUBTYPES:
+        return False, f"SCR subtype '{it.subskill_or_mode}' not in {SCR_SUBTYPES}"
+    if it.qti_type not in QTI_SCR:
+        return False, f"SCR qti_type '{it.qti_type}' not in {QTI_SCR}"
+    if not it.stem.strip():
+        return False, "empty stem"
+    if not it.answer_key:
+        return False, "SCR needs a model answer_key"
+    if it.options:
+        return False, "SCR (text-entry) takes no options"
+    return True, f"schema ok (SCR {it.subskill_or_mode})"
+
+def gate_scr_binding(it: Item) -> tuple[bool, str]:
+    if it.family != "SCR":
+        return True, "n/a (not SCR)"
+    must_bind = SCR_BINDING.get(it.subskill_or_mode, False)
+    has_ref = bool(it.stimulus_ref.strip())
+    if must_bind and not has_ref:
+        return False, f"{it.subskill_or_mode} must bind a stimulus (stimulus_ref empty)"
+    if not must_bind and has_ref:
+        return False, f"{it.subskill_or_mode} must NOT bind a stimulus (sentence-level)"
+    if must_bind:
+        # reuse CR's stimulus-existence scan
+        ok, detail = gate_cr_binding(_as_cr_for_binding(it))
+        if not ok:
+            return False, detail
+    return True, ("bound to " + it.stimulus_ref) if must_bind else "no stimulus (correct)"
+
+def gate_scr_rubric(it: Item) -> tuple[bool, str]:
+    if it.family != "SCR":
+        return True, "n/a (not SCR)"
+    want = SCR_RUBRIC_FOR.get(it.subskill_or_mode)
+    if it.rubric_ref != want:
+        return False, f"SCR {it.subskill_or_mode} needs rubric_ref '{want}', got '{it.rubric_ref}'"
+    return True, f"rubric {it.rubric_ref}"
+
 def gate_content(it: Item) -> tuple[bool, str]:
     # screen the stem + option texts (SR) for appropriateness bright lines
     class _P:
@@ -184,6 +236,9 @@ GATES = [
     ("rubric_config", gate_rubric_config),
     ("distractor_integrity", gate_distractor_integrity),
     ("no_change_discipline", gate_no_change_discipline),
+    ("scr_schema", gate_scr_schema),
+    ("scr_binding", gate_scr_binding),
+    ("scr_rubric", gate_scr_rubric),
     ("content", gate_content),
     ("no_em_dash", gate_no_em_dash),
 ]
