@@ -36,6 +36,10 @@ try:
     from incept_diagrams import INCEPT_DIAGRAMS as _INCEPT_DIAGRAMS  # Incept drawio PNGs keyed by (lesson_id, slot)
 except Exception:
     _INCEPT_DIAGRAMS = {}
+try:
+    from incept_videos import INCEPT_VIDEOS as _INCEPT_VIDEOS  # lessons with an intro video, keyed by lesson_id
+except Exception:
+    _INCEPT_VIDEOS = {}
 
 # ---- palette (faithful to the decoded science lesson) ------------------------------------------------------
 NODE_COLORS = [  # cycled per content node (bar/bg/ink), matching the science lesson's color-coded nodes
@@ -184,6 +188,40 @@ def _rich_segments(body_html: str):
         segs.append(("raw", h[start:j]))
         i = j
     return segs
+
+
+# The leading "one idea" callout that opens a concept teach_card: a #0d9488 left-border box holding the
+# built TARGET sentence (the <strong> example). Detect by BOTH its signature border color AND the "The one
+# idea" label near the start (either alone is a different structure, e.g. an FRQ source uses the same border).
+_ONE_IDEA_MARKER = "border-left:4px solid #0d9488"
+_ONE_IDEA_LABEL = "The one idea"
+
+
+def _compress_teach_body(body: str) -> str:
+    """COMPRESS an opening teach_card body to just its leading "one idea" callout (Council rule: when the
+    lesson has an intro video, the video teaches the expansion, so the written recap keeps ONLY the callout,
+    which still SHOWS the built target sentence). Returns the balanced callout <div>...</div> (depth-matched
+    so the callout's 2 inner <div>s do not end it early) and DROPS everything after it. If no such callout is
+    found (an unexpected body shape), returns `body` UNCHANGED - never lose content."""
+    h = body or ""
+    # find the opening <div ...> of the callout: its tag must carry the signature border, and the "The one
+    # idea" label must sit near the start of the body (guards against a same-border FRQ source block).
+    m = re.search(r"<div\b[^>]*" + re.escape(_ONE_IDEA_MARKER) + r"[^>]*>", h, re.I)
+    if not m:
+        return body
+    start = m.start()
+    if _ONE_IDEA_LABEL not in h[start:start + 400]:
+        return body
+    # depth-match from this opening <div> to its MATCHING </div> (the callout nests 2 inner divs).
+    depth, end = 0, None
+    for mm in re.finditer(r"<div\b|</div>", h[start:], re.I):
+        depth += 1 if not mm.group(0).lower().startswith("</") else -1
+        if depth == 0:
+            end = start + mm.end()
+            break
+    if end is None:
+        return body   # unbalanced (defensive): do not truncate mid-callout
+    return h[start:end]
 
 
 def _render_body(body_html: str) -> str:
@@ -593,6 +631,12 @@ def build_lesson_html(L, base_url="") -> tuple[str, list[tuple[str, str]]]:
             # teach/model cards carry OWN-AUTHORED HTML (callout boxes, decompose + before/after panels) that must
             # survive verbatim -> render via raw_body. stimulus_display text comes from a bound stimulus -> paras.
             raw_body = s.body if (s.kind in ("teach_card", "annotated_before_after") and s.body) else ""
+            # Council rule (2026-07-21): when THIS lesson has an intro video (id in the INCEPT_VIDEOS
+            # registry), the video teaches the expanded explanation, so the OPENING teach_card (slot 0)
+            # keeps ONLY its leading "one idea" callout (which still SHOWS the built target sentence) and
+            # drops the trailing expansion. Empty registry -> no id matches -> byte-identical to today.
+            if raw_body and s.kind == "teach_card" and idx == 0 and L.id in _INCEPT_VIDEOS:
+                raw_body = _compress_teach_body(raw_body)
             if raw_body:
                 _harvest_glossary(raw_body, gloss_defs)   # register any <dfn> tooltips for the catalog
             card = _content_card(s.title or "", paras, idref, colors, svg=diagram,
