@@ -67,11 +67,21 @@ _GRADE_PREFIX = {"g9": "C9", "g10": "C10", "g11": "C11", "g12": "C12"}
 
 
 def _short_id_grade(short_id: str) -> str:
-    """Infer the grade slug ('g9'..'g12') from a short lesson id like 'C901-0001'. '' if unknown."""
-    m = re.match(r"C(9|10|11|12)\d*-", short_id or "")
-    if not m:
-        return ""
-    return "g" + m.group(1)
+    """Infer the grade slug ('g9'..'g12') from a lesson id. '' if unknown.
+
+    Handles BOTH the full id (e.g. 'ACC-W910-L-G9-C901-0001', 'ACC-W1112-L-G11-C1102-0014') where the
+    grade is explicit as '-G<n>-', AND the bare short id ('C901-0001' -> the C-code prefix encodes it:
+    C9=g9, C10=g10, C11=g11, C12=g12)."""
+    sid = short_id or ""
+    # 1) full id carries the grade explicitly as -G<n>-
+    m = re.search(r"-G(9|10|11|12)-", sid)
+    if m:
+        return "g" + m.group(1)
+    # 2) bare short id: the C-code prefix (C9.. / C10.. / C11.. / C12..)
+    m = re.match(r"C(12|11|10|9)\d*-", sid)
+    if m:
+        return "g" + m.group(1)
+    return ""
 
 
 def video_targets(grade: str) -> list[tuple[str, int]]:
@@ -152,16 +162,21 @@ def generate_video(lesson_id: str, live: bool = False, client: InceptClient | No
     it never raises."""
     lesson = _find_lesson(lesson_id)
     teach = _teach_text(lesson)
+    # No-em-dash rule (same hard rule as diagrams): the narration + captions are student-facing, and
+    # Incept output carries em dashes by default. Append it to every prompt.
+    _NO_DASH = (" Use NO em dashes or en dashes anywhere in the narration or captions; use commas, "
+                "colons, or parentheses instead.")
     if teach:
         title = getattr(lesson, "title", "") or lesson_id
         prompt = (f"A short instructional voiceover video for the lesson '{title}'. Teach the SAME "
-                  f"content the lesson teaches, using this teach text as the source of truth:\n{teach}")
+                  f"content the lesson teaches, using this teach text as the source of truth:\n{teach}"
+                  + _NO_DASH)
         if grade_levels is None:
             grade = _short_id_grade(getattr(lesson, "id", "") or lesson_id) or _short_id_grade(lesson_id)
             grade_levels = [grade] if grade else None
     else:
         # lesson not found (or no teach text): a safe stub prompt keyed on the id. Never raise.
-        prompt = f"A short instructional voiceover video for lesson {lesson_id}."
+        prompt = f"A short instructional voiceover video for lesson {lesson_id}." + _NO_DASH
         if grade_levels is None:
             grade = _short_id_grade(lesson_id)
             grade_levels = [grade] if grade else None
