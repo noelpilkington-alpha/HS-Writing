@@ -99,7 +99,7 @@ DECOMPOSE_HTML = (
 
 LESSON = Lesson(
     id="ACC-W910-L-G9-C901-0022", grade="9-10", lesson_type=7,
-    unit="G9 U4 - Build essay (argue vs explain essay-mode interleave)",
+    unit="G9 U5 - Build essay (argue vs explain essay-mode interleave)",
     title="Argue or Explain? Choose the Essay Mode",
     target=("Given an essay task, decide from the verb whether the whole essay should ARGUE (a thesis that "
             "takes a side) or EXPLAIN (a controlling idea, no side), then plan the matching thesis. Written as "

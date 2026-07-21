@@ -102,6 +102,11 @@ LESSON = Lesson(
                 "playbook": "_phase2/playbook_T7_BUILD.md",
                 "one_idea": "A counterargument paragraph does not just name the other side, it answers it (position, concede, answer).",
                 "one_reminder": "3-part check: position clear? counterclaim fairly conceded? truly answered with evidence + reason?",
+                "spiral_note": ("2026-07-21 spiral reframe: G9 now OWNS introductory counterargument (G9 L21 answers a "
+                                "counterargument with a REASON in a short paragraph). This G10 lesson is the deeper "
+                                "rung: answer with EVIDENCE from the source plus reasoning in a FULL paragraph, and "
+                                "weigh it. Light touch: one opener line ties it to the G9 build; no content surgery, "
+                                "id/type/slots/gates unchanged."),
                 "template": "locked L01 template; EVIDENCE-TIER binds the full opposing-pair sources. T7 BUILD works at paragraph here (below essay ceiling).",
                 "version_note": ("V3.1: rebuilt to the v3.1 standard (G9 L17 v3.1 exemplar). ONE-IDEA + list teach "
                                  "(fixed the prose-wall body), model+check-tool BEFORE the quiz (KH), coping-model "
@@ -119,6 +124,9 @@ LESSON = Lesson(
         # ===== TEACH: ONE idea + the three parts as a LIST; define COUNTERCLAIM in plain words =====
         Slot("TEACH", "teach_card", "Naming the other side is not answering it",
              body=(ONE_IDEA +
+                   "In G9 you answered a counterargument with a reason inside a short paragraph. Here you answer "
+                   "with EVIDENCE and reasoning in a full paragraph, and you weigh that answer against the "
+                   "objection so your position clearly wins. "
                    "A counterclaim is a point that someone who disagrees with you would make, the strongest "
                    "objection to your position. A full counterargument paragraph has three parts:"
                    "<ul style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"

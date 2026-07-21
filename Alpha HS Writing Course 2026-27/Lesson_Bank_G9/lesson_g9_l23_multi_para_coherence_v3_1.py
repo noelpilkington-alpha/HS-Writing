@@ -78,7 +78,7 @@ COPING_HTML = (
 
 LESSON = Lesson(
     id="ACC-W910-L-G9-C904-0020", grade="9-10", lesson_type=7,
-    unit="G9 U4 - Build essay (multi-paragraph coherence and order)",
+    unit="G9 U5 - Build essay (multi-paragraph coherence and order)",
     title="Order the Paragraphs So the Essay Builds",
     target=("Order the body paragraphs so each builds on the one before (for example cause before effect), and "
             "open each with a transition that links it to the last. Written across a multi-paragraph essay. "

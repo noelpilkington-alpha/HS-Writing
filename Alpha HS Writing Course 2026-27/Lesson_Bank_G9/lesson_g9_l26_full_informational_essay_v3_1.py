@@ -80,7 +80,7 @@ COPING_HTML = (
 
 LESSON = Lesson(
     id="ACC-W910-L-G9-C904-0024", grade="9-10", lesson_type=7,
-    unit="G9 U4 - Build essay (full informational essay)",
+    unit="G9 U5 - Build essay (full informational essay)",
     title="Write a Full Informational Essay From Your Plan",
     target=("Plan and write a complete single-source informational essay: a single-paragraph-outline plan with a controlling-idea "
             "thesis, an intro that frames the focus, ordered body paragraphs that explain each part with "

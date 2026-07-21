@@ -26,9 +26,11 @@ ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
 'font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif">'
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">The one idea</div>'
-'<div style="color:#0f2f28;font-size:15px;margin-top:2px">A counterclaim-aware claim <strong>CONCEDES</strong> '
-'the strongest point on the other side, then <strong>HOLDS</strong> your position with a reason that answers it. '
-'The shape is <strong>Although X, Y because Z</strong>.</div></div>')
+'<div style="color:#0f2f28;font-size:15px;margin-top:2px">In G9 you learned the basic move: concede a real '
+'point, then answer it. Here you fold that whole move <strong>into the claim itself</strong>. A counterclaim-aware '
+'claim <strong>CONCEDES</strong> the strongest point on the other side and <strong>HOLDS</strong> your position in '
+'the same sentence, so your argument anticipates the objection from its very first line. The shape is '
+'<strong>Although X, Y because Z</strong>.</div></div>')
 
 REMEMBER = (
 '<div style="border:1px dashed #0d9488;border-radius:8px;padding:10px 14px;margin:8px 0;background:#f8fffd;'
@@ -88,6 +90,12 @@ LESSON = Lesson(
                 "template": "locked L01 template; CLAIM-TIER binds issue_frame.",
                 "one_idea": "A counterclaim-aware claim concedes the strongest opposing point, then holds.",
                 "one_reminder": "3 questions: concede the other side? hold your position? does the reason answer it?",
+                "spiral_note": ("2026-07-21 spiral reframe: G9 now OWNS introductory counterargument (G9 L19 recognize, "
+                                "L20 concede+answer at the sentence, L21 answer in a short paragraph with a reason). "
+                                "This G10 lesson is the deeper rung: it no longer re-teaches the basic concede+answer "
+                                "as brand-new, it folds the whole move INTO the claim sentence (counterclaim-aware "
+                                "claim that anticipates the objection). ONE_IDEA + teach intro + goal reframed to open "
+                                "on the G9 build; id/type/slots/gates unchanged."),
                 "version_note": ("V3.1: rebuilt to the G9 L01 v3.1 archetype - teal ONE_IDEA callout + a real <ul> "
                                  "teach list (no prose wall), coping-model think-aloud with literal BEFORE/AFTER "
                                  "(SRSD model-it), REMEMBER 3-question check tool, discrimination broke the "
@@ -103,19 +111,20 @@ LESSON = Lesson(
         # ===== TEACH: ONE idea only (teal callout + a real list; counterclaim defined with a cue phrase) =====
         Slot("TEACH", "teach_card", "The one idea: concede, then hold",
              body=(ONE_IDEA +
-                   "A strong argument does not pretend the other side is silly; it answers the other side. Two "
-                   "moves do that work:"
+                   "In G9 you built the concede-then-answer move as two beats: name the other side's point, then "
+                   "answer it. This year you make it tighter. You fold the concession and the stand into a single "
+                   "claim sentence, so the claim itself already anticipates the objection. Two moves do that work:"
                    "<ul style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"
                    "<li style=\"margin:4px 0\"><strong>CONCEDE</strong>: name the strongest objection out loud "
                    "with an 'although' clause. A <strong>counterclaim</strong> is a point that someone who "
                    "disagrees with you would make, and naming it shows you have thought the issue through.</li>"
-                   "<li style=\"margin:4px 0\"><strong>HOLD</strong>: state your position anyway, and back it "
-                   "with a reason that answers the objection you just named, not just a fresh point for your own "
-                   "side.</li></ul>"
+                   "<li style=\"margin:4px 0\"><strong>HOLD</strong>: state your position in that same sentence, "
+                   "and back it with a reason that answers the objection you just named, not just a fresh point "
+                   "for your own side.</li></ul>"
                    "Put together, that is the shape <strong>Although X, Y because Z</strong>: <em>Although X (the "
                    "other side's real point), Y (your position) because Z (a reason that still wins).</em> The "
                    "trap is the one-sided claim that ignores the obvious objection, which a reader notices at "
-                   "once. Goal today: write a claim that concedes the counterclaim and then holds your ground.")),
+                   "once. Goal today: write a claim that folds the counterclaim in and holds your ground.")),
         Slot("TEACH", "stimulus_display", "The debate: congestion pricing",
              ref="ACC-W910-FRAME-CONGESTION", bank="congestion_pricing",
              body=("Read the short framing of the debate, then take a side. Notice the strongest point on the "

@@ -108,6 +108,11 @@ LESSON = Lesson(
                 "template": "locked v3.1 L01 template (lesson_g9_l01_arguable_claim_v3_1); CLAIM-TIER binds issue_frame.",
                 "one_idea": "Conceding is a strength only if you still HOLD your position.",
                 "one_reminder": "3-question test: conceded a real objection? still hold a side? does the reason answer that objection?",
+                "spiral_note": ("2026-07-21 spiral reframe: G9 now OWNS introductory counterargument (recognize + basic "
+                                "concede+answer, G9 L19-L21). This G10 lesson stays the deeper rung: it teaches the "
+                                "failure modes G9 defers (concede-and-COLLAPSE) plus conceding the STRONGEST real "
+                                "point (strawman discrimination). Light touch: one opener line ties it to the G9 build; "
+                                "no content surgery, id/type/slots/gates unchanged."),
                 "version_note": ("V3.1: rebuilt to the locked v3.1 spine - ONE_IDEA teal callout + minimal list "
                                  "teach, coping-model think-aloud (concede -> catch collapse -> hold) with "
                                  "literal BEFORE/AFTER, named CONCEDE/HOLD moves + REMEMBER check tool, "
@@ -125,6 +130,8 @@ LESSON = Lesson(
         # ===== TEACH: ONE idea only, minimal list; counterclaim + thesis defined here (define_before_use) =====
         Slot("TEACH", "teach_card", "The one idea: concede, then HOLD",
              body=(ONE_IDEA +
+                   "In G9 you built the concede-and-answer move. Here you master the trap that breaks it (collapse) "
+                   "and learn to concede the other side's STRONGEST real point, not a weak one. "
                    "A counterclaim is a point that someone who disagrees with you would make. When you concede "
                    "one, it can go two ways, and they are easy to mix up:"
                    "<ul style=\"color:#1f2a44;font-size:14px;margin:6px 0 0;padding-left:22px\">"

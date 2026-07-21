@@ -80,7 +80,7 @@ BEFORE_AFTER_HTML = (
 
 LESSON = Lesson(
     id="ACC-W910-L-G9-C904-0025", grade="9-10", lesson_type=5,
-    unit="G9 U4 - Build essay (revise a provided essay + self-check your own)",
+    unit="G9 U5 - Build essay (revise a provided essay + self-check your own)",
     title="Revise Against the Rubric, Then Check Your Own Essay",
     target=("Find the specific gap in a provided essay paragraph, predict its score, see the reveal, and revise "
             "it against the rubric, then run a faultless self-check on your own essay. Written at the "

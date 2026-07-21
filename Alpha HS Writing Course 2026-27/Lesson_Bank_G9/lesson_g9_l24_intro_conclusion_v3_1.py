@@ -78,7 +78,7 @@ COPING_HTML = (
 
 LESSON = Lesson(
     id="ACC-W910-L-G9-C904-0021", grade="9-10", lesson_type=7,
-    unit="G9 U4 - Build essay (introductions and conclusions)",
+    unit="G9 U5 - Build essay (introductions and conclusions)",
     title="Frame the Thesis, Land the Upshot",
     target=("Write an introduction that orients the reader and states the thesis, and a conclusion that lands "
             "the upshot (why it matters) instead of just repeating the claim. Written across an essay. Trait: "

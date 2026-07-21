@@ -6,14 +6,15 @@ if PIPE not in sys.path:
 from sim_student_eval.render_course import load_g9_lessons, student_view, short_id
 
 
-def test_loads_26_lessons_in_order():
-    # G9 dropped 27 -> 26 when the standalone MPO lesson (l20 / C904-0019) was retired (F3 orphan-planning fix);
-    # its teaching folded into the full-essay lessons C904-0023/0024.
+def test_loads_29_lessons_in_order():
+    # G9 was 26; the 2026-07-21 counterargument add (overturning S2) inserted a new U4 Counterargument unit
+    # (3 lessons: l19 recognize / l20 concede-answer / l21 paragraph, KC C.9.07) and renumbered the essay+gate
+    # block l19,l21-l27 -> l22-l29 (now G9 U5). Net G9 = 29 lessons. See docs/plans/2026-07-21-g9-counterargument-add.md.
     ls = load_g9_lessons()
-    assert len(ls) == 26
-    # first is l01 arguable claim, last is l27 gate argument essay (filename order)
+    assert len(ls) == 29
+    # first is l01 arguable claim, last is l29 gate argument essay (filename order)
     assert short_id(ls[0]).startswith("g9_l01")
-    assert short_id(ls[-1]).startswith("g9_l27")
+    assert short_id(ls[-1]).startswith("g9_l29")
 
 
 def test_short_id_has_no_internal_id():
@@ -47,8 +48,8 @@ def test_all_grades_load_in_lesson_order():
         nums = [int(re.search(r"_l(\d+)", s).group(1)) for s in sids]
         assert nums == sorted(nums), f"{g} out of lesson order: {nums}"
         counts[g] = len(ls)
-    # the built course sizes after the F3 orphan-planning retire (G9 27->26; G10 26->25 once C1006-0020 is retired)
-    assert counts == {"g9": 26, "g10": 25, "g11": 31, "g12": 16}, counts
+    # G9 = 29 after the 2026-07-21 counterargument add (+3 new U4 lessons; overturns S2). G10 25, G11 31, G12 16.
+    assert counts == {"g9": 29, "g10": 25, "g11": 31, "g12": 16}, counts
 
 
 def test_composition_probes_are_structural_and_cover_original_g9_set():
@@ -56,8 +57,10 @@ def test_composition_probes_are_structural_and_cover_original_g9_set():
     from sim_student_eval.student_agent import is_composition_lesson
     g9 = load_lessons("g9")
     probes = {short_id(L).rsplit("_", 0)[0] for L in g9 if is_composition_lesson(L)}
-    # structural detection (type 7/8 or gate) must be a SUPERSET of the original hardcoded probes
-    for want in ("g9_l18", "g9_l23", "g9_l24", "g9_l26", "g9_l27"):
+    # structural detection (type 7/8 or gate) must be a SUPERSET of the known composition lessons.
+    # File numbers shifted with the 2026-07-21 counterargument add (essay+gate block renumbered to l22-l29):
+    # the paragraph builders (l17/l18) + the essay/gate block (l22-l26, l28 informational gate, l29 argument gate).
+    for want in ("g9_l18", "g9_l24", "g9_l26", "g9_l28", "g9_l29"):
         assert any(p.startswith(want) for p in probes), f"{want} not detected as a composition probe"
     # every grade produces a non-empty probe set
     for g in ("g10", "g11", "g12"):

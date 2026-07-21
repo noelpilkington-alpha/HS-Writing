@@ -115,6 +115,9 @@ HS_KCS = [
          acc=["ACC.W.PROD.1", "ACC.W.ARG.5", "ACC.W.INFO.2", "ACC.W.INFO.3", "ACC.W.INFO.5", "ACC.W.PROC.1"],
          ccss=["W.9-10.1", "W.9-10.1e", "W.9-10.2", "W.9-10.2e", "W.9-10.4", "W.9-10.5", "W.9-10.9"],
          teks=["EI.10.C", "EI.9.B"], sec=[]),
+    dict(id="C.9.07", grade="G9", type="D->P", gateway=False, funnel="counterargument",
+         name="Acknowledge and answer a counterargument (introductory)", acc=["ACC.W.ARG.2"],
+         ccss=["W.9-10.1a"], teks=[], sec=["ACT.2"]),
     # G10
     dict(id="C.10.01", grade="G10", type="P", gateway=True,  funnel="counterargument",
          name="Counterclaim-aware claim", acc=["ACC.W.ARG.2"], ccss=["W.9-10.1a"], teks=["EII.10.C"], sec=["ACT.2"]),
@@ -196,7 +199,8 @@ UNITS = {
         dict(id="G9.U1", title="Claim/controlling-idea + evidence", kcs=["C.9.01", "C.9.05", "C.9.02"], gateway="C.9.01", course_gate=False),
         dict(id="G9.U2", title="Reasoning + the complete paragraph", kcs=["C.9.03"], gateway="C.9.03", course_gate=False),
         dict(id="G9.U3", title="Cohesion, tone & paragraph mastery", kcs=["C.9.06"], gateway="C.9.06", course_gate=False),
-        dict(id="G9.U4", title="Single-source essay + gate", kcs=["C.9.04"], gateway="C.9.04", course_gate=True),
+        dict(id="G9.U4", title="Counterargument", kcs=["C.9.07"], gateway="C.9.07", course_gate=False),
+        dict(id="G9.U5", title="Single-source essay + gate", kcs=["C.9.04"], gateway="C.9.04", course_gate=True),
     ],
     "G10": [
         dict(id="G10.U1", title="Counterargument", kcs=["C.10.01"], gateway="C.10.01", course_gate=False),
@@ -223,12 +227,13 @@ UNITS = {
 #    edge A -> [B,...] means A is a prerequisite of B. Must be acyclic + forward-only across grades.
 # ===========================================================================
 PREREQ_DAG = {
-    "C.9.01": ["C.9.03", "C.9.04", "C.10.01", "C.10.05"],
+    "C.9.01": ["C.9.03", "C.9.04", "C.10.01", "C.10.05", "C.9.07"],
     "C.9.05": ["C.9.04"],
-    "C.9.02": ["C.9.04", "C.11.02"],
-    "C.9.03": ["C.9.04", "C.10.02"],
+    "C.9.02": ["C.9.04", "C.11.02", "C.9.07"],
+    "C.9.03": ["C.9.04", "C.10.02", "C.9.07"],
     "C.9.06": ["C.9.04"],
     "C.9.04": ["C.10.03", "C.10.06"],
+    "C.9.07": ["C.9.04", "C.10.01"],
     "C.10.01": ["C.11.01", "C.11.07"],
     "C.10.02": ["C.10.03", "C.11.03"],
     "C.10.05": ["C.10.04", "C.11.04"],

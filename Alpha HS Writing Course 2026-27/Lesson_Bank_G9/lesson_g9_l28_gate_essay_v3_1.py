@@ -35,7 +35,7 @@ ONE_IDEA = (
 LESSON = Lesson(
     id="ACC-W910-L-G9-C904-0026", grade="9-10", lesson_type=7,
     lesson_class="gate",
-    unit="G9 U4 - GATE: informational single-source essay (course terminal task, explain mode)",
+    unit="G9 U5 - GATE: informational single-source essay (course terminal task, explain mode)",
     title="G9 Gate: Write a Complete Informational Essay",
     target=("The informational course gate: independently plan, draft, and self-check a complete single-source "
             "INFORMATIONAL essay (a controlling idea, no side), assembling every move the course taught. Paired "

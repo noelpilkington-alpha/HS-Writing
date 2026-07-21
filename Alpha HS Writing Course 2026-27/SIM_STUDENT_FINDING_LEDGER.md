@@ -98,7 +98,7 @@ Last session I marked the "blank MC steps" finding **FALSE** and said discard. T
 | D-b (low) | none — defensible as-is | closed, no fix |
 | C-src (confirmed) | **F8** — G9 gate → HIGHWAYS, G10 gate → nuclear, G11 mid-gate → national parks (new authored SET-0004) — all DONE 2026-07-18 | **DONE** (G11 mastery-prompt cold-vs-unit residual flagged) |
 | E | **F1** (self_score reframe) — corroborated | already in plan |
-| F-a counterclaim | **DECIDED (Noel 2026-07-17): DROP from l27 gate + PP100; counterclaim stays G10.** It's a G10 KC (C.10.01/STAAR Eng II), not a G9 KC; no irrefutable evidence it earns its keep in G9. | HELD (decided), high |
+| F-a counterclaim | ~~DECIDED (Noel 2026-07-17): DROP from l27 gate + PP100; counterclaim stays G10.~~ **SUPERSEDED 2026-07-21 (Noel overturned S2): counterargument is now TAUGHT in G9 as a full 3-lesson unit (new KC C.9.07, G9 U4: recognize / concede-then-answer / answer-in-a-paragraph) and RE-ADDED to the G9 argument gate. G10 U1 stays as the deeper spiral (concede-vs-collapse + evidence rebuttal). Standards basis: CCSS W.9-10.1a is a 9-10 BAND standard incl. distinguishing opposing claims; the earlier G10-only split was a sequencing choice, not a mandate. See docs/plans/2026-07-21-g9-counterargument-add.md.** | SUPERSEDED -> BUILDING |
 | F-b l02 checklist | restore q3 to the l01 standard | HELD |
 | F-d summarize (S7) | **DONE 2026-07-18** — reframed g9 l05 so summarize is named as the mode for writing from a whole source (quote/paraphrase = today's focus); no false "you'll drill it later" promise | done |
 | F-e l13 | none — **REFUTED** (not a correctness bug) | closed, no fix |
