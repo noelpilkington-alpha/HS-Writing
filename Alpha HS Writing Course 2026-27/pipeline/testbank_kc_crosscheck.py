@@ -36,7 +36,8 @@ for _a in sys.argv[1:]:
         _GRADE = _a.upper()
 ITEM_DIR = os.path.join(ROOT, f"Item_Bank_{_GRADE}")
 STIM_DIR = os.path.join(ROOT, f"Stimulus_Bank_{_GRADE}")
-KNOWN_RUBRICS = {"rc.staar", "rc.mcas", "rc.ohio", "rc.4trait", "rc.ap", "rc.sc", "rc.fl"}
+KNOWN_RUBRICS = {"rc.staar", "rc.mcas", "rc.ohio", "rc.4trait", "rc.ap", "rc.sc", "rc.fl",
+                 "rc.scr1", "rc.scr2", "rc.scr3"}
 
 # ACC codes an HS-owned KC carries (taught), and codes external courses own (still legitimately test-measurable at G10)
 TAUGHT_ACC = {a for k in HS_KCS for a in k["acc"]}
