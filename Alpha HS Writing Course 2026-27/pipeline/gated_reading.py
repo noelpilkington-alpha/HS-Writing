@@ -583,7 +583,13 @@ def build_lesson_html(L, base_url="") -> tuple[str, list[tuple[str, str]]]:
             # it in the card (replacing the densest paragraph's cognitive load with a labeled diagram).
             diagram = _DIAGRAMS.get((L.id, idx + 1)) if _DIAGRAMS else None
             # Incept drawio PNG (display-only, bound via img=). SVG wins: a slot never gets both.
+            # Registry stores a base_url-RELATIVE path (e.g. "incept_diagrams/foo.png") so the same
+            # entry works in preview + prod; prepend base_url here to an absolute src the player can
+            # fetch (relative hrefs resolve against the player origin -> 404, same as /items/*.xml).
             incept_png = _INCEPT_DIAGRAMS.get((L.id, idx + 1)) if _INCEPT_DIAGRAMS else None
+            if incept_png:
+                rel, alt = incept_png
+                incept_png = (f"{base_url}/{rel.lstrip('/')}" if base_url else rel, alt)
             # teach/model cards carry OWN-AUTHORED HTML (callout boxes, decompose + before/after panels) that must
             # survive verbatim -> render via raw_body. stimulus_display text comes from a bound stimulus -> paras.
             raw_body = s.body if (s.kind in ("teach_card", "annotated_before_after") and s.body) else ""

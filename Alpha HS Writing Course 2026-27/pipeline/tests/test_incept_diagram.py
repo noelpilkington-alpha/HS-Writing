@@ -33,9 +33,37 @@ def test_request_diagram_dry_is_image_drawio():
     assert r["request_id"] is None
 
 
-def test_registry_ships_empty():
+def test_registry_entries_are_wellformed():
+    # After the first live bind (T7), the registry is populated. Every entry must be
+    # (lesson_id, slot_1based) -> (base_url-RELATIVE path, alt text), with NO em dashes in
+    # the alt text (renders into the DOM) and NO absolute URL in the stored path.
     assert isinstance(INCEPT_DIAGRAMS, dict)
-    assert INCEPT_DIAGRAMS == {}
+    for key, val in INCEPT_DIAGRAMS.items():
+        assert isinstance(key, tuple) and len(key) == 2
+        lid, slot = key
+        assert isinstance(lid, str) and isinstance(slot, int) and slot >= 1
+        rel, alt = val
+        assert rel.startswith("incept_diagrams/") and not rel.startswith("http")
+        assert "—" not in alt and "–" not in alt  # no em/en dash in student-facing alt
+
+
+def test_content_card_img_prepends_base_url():
+    # gated_reading prepends base_url to the relative registry path so the player gets an absolute src.
+    import gated_reading as gr
+    L_slots = [type("S", (), {"kind": "teach_card", "title": "T", "body": "", "ref": "",
+                              "choices": [], "feedback": ""})()]
+    L = type("L", (), {"id": "ACC-W910-L-G9-C903-0012", "slots": L_slots,
+                       "title": "t", "grade": "9-10", "lesson_type": 2, "unit": "u", "target": "x"})()
+    # only assert the prepend helper shape via a direct render check on a bound lesson id
+    saved = dict(gr._INCEPT_DIAGRAMS)
+    try:
+        gr._INCEPT_DIAGRAMS[("ACC-W910-L-G9-C903-0012", 1)] = ("incept_diagrams/x.png", "alt no dash")
+        html, _ = gr.build_lesson_html(L, base_url="https://host.example/g9-l07")
+        assert 'src="https://host.example/g9-l07/incept_diagrams/x.png"' in html
+        assert 'alt="alt no dash"' in html
+    finally:
+        gr._INCEPT_DIAGRAMS.clear()
+        gr._INCEPT_DIAGRAMS.update(saved)
 
 
 def test_content_card_img_path_renders():
