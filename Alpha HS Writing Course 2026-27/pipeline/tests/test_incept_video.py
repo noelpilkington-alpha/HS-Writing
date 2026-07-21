@@ -11,8 +11,28 @@ PIPE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if PIPE not in sys.path:
     sys.path.insert(0, PIPE)
 
-from incept_video import video_targets, generate_video, reconcile_questions, VIDEO_TARGETS
+from incept_video import (video_targets, generate_video, reconcile_questions, VIDEO_TARGETS,
+                          video_resource_plan)
 from lesson_contract import Lesson, Slot
+
+
+# ---- video component-resource plan (type=video, NOT QTI; lessonType on the link only) ----
+def test_video_resource_plan_shape():
+    plan = video_resource_plan("ACC-W910-L-G9-C901-0001",
+                               "https://cdn.inceptstore.com/v/abc/video.mp4",
+                               title="Take a Side", xp=50, topic_id="topic-xyz", sort_order=3)
+    kinds = [row[0] for row in plan]
+    assert kinds == ["resource", "component-resource"]
+    res_body = plan[0][3]["resource"]
+    cr_body = plan[1][3]["componentResource"]
+    # resource: type=video + hosted url; NO lessonType in resource metadata (500-bug gotcha)
+    assert res_body["metadata"]["type"] == "video"
+    assert res_body["metadata"]["url"] == "https://cdn.inceptstore.com/v/abc/video.mp4"
+    assert "lessonType" not in res_body["metadata"]
+    # component-resource link: lessonType lives HERE, points at the leaf topic
+    assert cr_body["metadata"]["lessonType"] == "video"
+    assert cr_body["courseComponent"]["sourcedId"] == "topic-xyz"
+    assert cr_body["resource"]["sourcedId"] == plan[0][1]  # link references the resource id
 
 
 # ---- (a) curated seed list includes the required G9 L01 target --------------

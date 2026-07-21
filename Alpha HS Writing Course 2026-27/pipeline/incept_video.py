@@ -41,13 +41,15 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # the proven probe options shape (artifact 10885): a content-only voiceover video.
 _VIDEO_OPTIONS = {"kind": "voiceover", "mode": "content_only"}
 
-# The near-term delivery target for a generated video: plain voiceover-as-stimulus (mp4 + captions),
-# bound as an OPENING stimulus card before the first teach segment. Interactive-video-in-Timeback is
-# UNRESOLVED, so this caveat rides with every bind_note (a note only; no binding happens here).
+# DELIVERY (resolved 2026-07-21 by the Incept team's instruction): the generated video is uploaded to
+# the Incept video bucket (upload.inceptstore.com -> a permanent public_url) and referenced as its OWN
+# OneRoster component-resource (type=video, metadata.url=public_url) on the lesson's leaf topic. It is
+# NOT embedded in lesson.html and NOT wrapped in QTI. This sidesteps the player <video> sanitizer and
+# CORS questions entirely: the video is a separate activity, not inline content.
 DELIVERY_CAVEAT = (
-    "Interactive-video-in-Timeback is UNRESOLVED. The near-term target is plain "
-    "voiceover-as-stimulus (mp4 + captions) bound as an OPENING stimulus card before the first "
-    "teach segment, NOT an interactive in-player video."
+    "Delivery: the video is hosted on the Incept bucket (upload.inceptstore.com) and referenced as its "
+    "own OneRoster component-resource (type=video, metadata.url=public_url) on the lesson's leaf topic. "
+    "Not embedded in lesson.html, not QTI."
 )
 
 # VIDEO_TARGETS: a CURATED seed list of (short_lesson_id, slot_idx) tuples = the LS-flagged
@@ -406,22 +408,61 @@ def reconcile_questions(video_json, lesson) -> list:
         return []
 
 
-# ---- bind note (a record of HOW a video would bind; no binding happens) ----
+# ---- bind note (a record of HOW a video binds) ----
 def bind_note(lesson_id: str, artifact_id) -> dict:
-    """Return a small note recording HOW a video WOULD bind + the delivery caveat.
+    """Return a small note recording HOW a video binds + the delivery caveat.
 
-    A video binds as an OPENING stimulus card BEFORE the first teach segment (slot index 0). This is a
-    NOTE ONLY: no binding happens here, and NO url/secret is stored. The near-term delivery is plain
-    voiceover-as-stimulus (mp4 + captions); interactive-video-in-Timeback is unresolved (see caveat)."""
+    Delivery (resolved): the video is a SEPARATE OneRoster component-resource (type=video) on the
+    lesson's leaf topic, pointing at its hosted public_url. NOTE ONLY: no binding happens here."""
     return {
         "lesson_id": lesson_id,
         "artifact_id": artifact_id,
-        "bind_as": "opening_stimulus_card",
-        "position": "before_first_teach_segment",
-        "slot_index": 0,
+        "bind_as": "component_resource",
+        "resource_type": "video",
         "delivery_caveat": DELIVERY_CAVEAT,
         "note_only": True,
     }
+
+
+# ---- OneRoster resource plan (video component-resource, NOT QTI) ----
+# Endpoints match g9_assemble_v3_1 (the working G9 push path).
+_ONEROSTER = "https://api.alpha-1edtech.ai"
+_RES_URL = f"{_ONEROSTER}/ims/oneroster/resources/v1p2/resources/"          # trailing slash REQUIRED
+_COMPRES_URL = f"{_ONEROSTER}/ims/oneroster/rostering/v1p2/courses/component-resources"
+
+
+def video_resource_plan(lesson_id: str, public_url: str, title: str = "", xp: int = 0,
+                        topic_id: str = "", sort_order: int = 3) -> list:
+    """Build the OneRoster (resource, component-resource) plan for a hosted lesson video.
+
+    Mirrors the ARTICLE block in g9_assemble_v3_1 exactly, EXCEPT type=video + the inceptstore public_url.
+    Returns a list of ("resource"|"component-resource", sourcedId, endpoint_url, body) tuples (the same
+    plan shape g9_assemble_v3_1.post() consumes), so the caller can dry-print or POST them.
+
+    GOTCHA carried over from the G9 build: `lessonType` in RESOURCE metadata returns HTTP 500 -> it goes
+    on the COMPONENT-RESOURCE link metadata ONLY. The video resource metadata stays lessonType-free.
+
+    topic_id = the leaf topic (courseComponent) the video attaches to; sort_order defaults to 3 so the
+    video sits AFTER the article (1) and mastery (2) on a lesson's topic (adjust per placement)."""
+    title = (title or lesson_id)[:200]
+    vid_rid = f"res-{lesson_id}-video"
+    cr_id = f"cr-{lesson_id}-video"
+    plan = [
+        ("resource", vid_rid, _RES_URL, {"resource": {
+            "sourcedId": vid_rid, "status": "active", "title": title,
+            "importance": "primary", "vendorResourceId": f"{lesson_id}-video", "vendorId": "alpha-incept",
+            "applicationId": "incept",
+            # type=video, NO lessonType here (500 bug); url = the hosted inceptstore public_url.
+            "metadata": {"type": "video", "activityType": "Video", "format": "mp4", "language": "en-US",
+                         "xp": xp, "url": public_url}}}),
+        ("component-resource", cr_id, _COMPRES_URL, {"componentResource": {
+            "sourcedId": cr_id, "status": "active", "title": title,
+            "sortOrder": sort_order, "resource": {"sourcedId": vid_rid},
+            "courseComponent": {"sourcedId": topic_id},
+            # lessonType lives on the LINK (not the resource) per the G9-verified gotcha.
+            "metadata": {"lessonType": "video", "xp": xp}}}),
+    ]
+    return plan
 
 
 if __name__ == "__main__":
