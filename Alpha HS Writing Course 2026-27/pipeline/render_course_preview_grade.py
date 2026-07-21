@@ -87,8 +87,26 @@ def render_mastery_page(grade, lesson_title, prompt_html, writes):
     return _PAGE.format(title=f"Prompts: {html.escape(lesson_title)}", body="\n".join(parts))
 
 
-def unit_title(L):
+def _unit_full(L):
     return re.sub(r"\s+", " ", getattr(L, "unit", "") or "Unit").strip()
+
+
+def unit_key(L):
+    """Group key = the real unit token (e.g. 'G9 U1'), NOT the full unit string. Lessons carry a
+    per-lesson parenthetical sub-topic in .unit ('... (arguable claim)'); keying on the whole string
+    made two lessons with the SAME sub-topic (L01 + L04, both 'arguable claim') collapse into one card
+    out of sequence, and inflated the unit count. Key on 'G<grade> U<n>' so a unit's lessons stay together
+    in course order; fall back to the full string if no U-token is present."""
+    full = _unit_full(L)
+    m = re.match(r"(G\d+\s+U\d+)", full)
+    return m.group(1) if m else full
+
+
+def unit_title(L):
+    """Card heading: the unit's base label (the full unit string minus the trailing parenthetical
+    sub-topic). Stable per unit; the first lesson in each unit supplies the heading."""
+    full = _unit_full(L)
+    return re.sub(r"\s*\([^)]*\)\s*$", "", full).strip() or full
 
 
 def main():
@@ -144,14 +162,18 @@ def main():
     for f in glob.glob(os.path.join(course_dir, "*.html")):
         os.remove(f)
 
+    # group by the real unit token (G9 U1, U2, ...), NOT the full parenthetical string, so a unit's
+    # lessons stay together in course order and the unit count is correct. Heading = the unit's base label.
     rows_by_unit = {}
+    heading = {}
     order = []
     for n, L, _f in lessons:
-        u = unit_title(L)
-        if u not in rows_by_unit:
-            rows_by_unit[u] = []
-            order.append(u)
-        rows_by_unit[u].append((n, L))
+        k = unit_key(L)
+        if k not in rows_by_unit:
+            rows_by_unit[k] = []
+            heading[k] = unit_title(L)
+            order.append(k)
+        rows_by_unit[k].append((n, L))
 
     body = [f'<h1>{grade} Writing Course &mdash; full preview (as it pushes to Timeback)</h1>',
             f'<div class="crumb">{len(lessons)} lessons across {len(order)} units. '
@@ -159,7 +181,7 @@ def main():
             'in the live player; click Mastery to read the exact graded prompt.</div>']
     written_m = 0
     for u in order:
-        body.append(f'<div class="card"><h2 style="margin:0 0 10px;font-size:17px">{html.escape(u)}</h2>')
+        body.append(f'<div class="card"><h2 style="margin:0 0 10px;font-size:17px">{html.escape(heading[u])}</h2>')
         for n, L in rows_by_unit[u]:
             art = article_player_url(grade, n, L, base_url)
             entry = authored.get(L.id, {})
