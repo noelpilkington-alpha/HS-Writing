@@ -2,7 +2,7 @@
 
 **Date:** 2026-07-20
 **Author:** with Noel (HS Writing)
-**Status:** analysis + probe results → integration plan (nothing built yet)
+**Status:** Phases A-E BUILT + first live batch run (T7, 2026-07-21). 10 drawio diagrams bound; QC pass run + shelved (judge artifact); video machinery ready, runs after next full build. See "First live batch (T7)" below.
 **Inputs:** `Incept/Incept API — Agent Guide.md`, live `GET /api/v1/options` (fetched 2026-07-20), 3 live probe calls, and our existing pipeline (`pipeline/lesson_contract.py` gates, `visual-design-protocol.md`, the Timeback QTI ceiling).
 
 > **Access note:** the Incept API is reachable from this environment only with curl's `--ssl-no-revoke` flag (a Windows schannel cert-revocation quirk, not an auth issue). Base URL `https://v2.incept.school`; key in `Incept/Incept Production details.md`. Re-fetch `https://v2.incept.school/docs/agent-guide.md` each session (it changes often). No documented quota endpoint; check the developer portal (`/library/developer/`) for balance.
@@ -86,15 +86,32 @@ Add video **after the course is generated, QC-passed, and content-locked** — a
 
 ---
 
-## Integration roadmap (proposed; nothing built yet)
+## Integration roadmap (BUILT — commits on `hs-writing-spec-baseline`)
 
-| Phase | Work | In-pipeline or post-pass |
+| Phase | Work | Status |
 |---|---|---|
-| **A (now)** | `incept_qc.py` — advisory second-judge on rollout items (the #8 discriminations first) | in-pipeline (advisory) |
-| **B (now)** | `incept_diagram.py` — drawio diagrams for teach slots; store `.drawio` + PNG, bind PNG into `_content_card` | in-pipeline (feeds teach content) |
-| **C (assist)** | Incept `question` seeds → feed the #8 authoring agents (never push direct; gates as backstop) | in-pipeline (raw material only) |
-| **D (after course lock)** | video stage: select → generate from locked lessons → QC → reconcile questions → bind → resolve delivery | **post-pass, separate stage** |
-| **E** | OpenAI: keep as ensemble diversity author/judge; migrate Track-B illustrations toward Incept | cross-cutting |
+| **A** | `incept_qc.py` — advisory second-judge; redacted receipts (scores/axes/flag only) | ✅ built `444bade` + `d72705d`; **ran live T7a, result shelved** (see below) |
+| **B** | `incept_diagram.py` + `incept_diagrams.py` (`_INCEPT_DIAGRAMS`) — drawio → PNG, bound via `_content_card(img=)` | ✅ built `d6e87c5`; `fetch` live-shape fix `e46fa3d`; **10 diagrams bound `ad11cc8`** |
+| **C** | `incept_question_seeds.py` — distractor seeds (raw material, gated downstream) | ✅ built `7a14149` (dry; not exercised live) |
+| **D** | `incept_video.py` — post-lock video machinery (select → generate → fetch → reconcile → bind-note) | ✅ machinery built `a9534d6`; **runs AFTER next full build** (not exercised live) |
+| **E** | `openai_diverse.py` — cross-model diversity author/judge; image role retired in favor of Incept drawio | ✅ built `b950c54` (dry; not exercised live) |
+
+Shared transport `incept_client.py` (`35e7ecf`): dry-by-default, `--live` to spend, key redaction. 178 tests green; G9/G10/G11/G12 tier_a all clean.
+
+## First live batch (T7, 2026-07-21)
+
+**Diagrams (T7b/c) — SHIPPED.** 10 abstract writing-structure drawio diagrams generated live, all score 100 / below_bar false / labels verify_drawio-clean, bound into teach cards across G9-G12 (`Generated_Content/incept_diagrams/`, registry in `incept_diagrams.py`). Display-only, zero gate impact.
+- **Noel review applied:** dropped the "weave vs LIST" split (no *what-NOT-to-do* panel in a first-encounter teach diagram — now a standing rule); regenerated weave positive-only. Kept the relevant_evidence funnel (set-aside facts ARE the concept).
+- **em-dash discipline:** Incept's raw `alt_text` carried em dashes → alt is now HAND-AUTHORED in the registry (alt renders into the DOM). 4 diagrams also had em-dash captions → regenerated with a no-dash instruction.
+
+**QC pass (T7a) — RUN, then SHELVED as a judge artifact.** All 219 canonical discrimination+predict items QC'd live (concurrent, 0 errors, ~26 min). Result: 209/219 "flagged" (mean 45) — **not actionable.** The same verified item (G9 L01 s3) scored 68 in the batch but 85/88/88/86/88 in 5 isolated re-runs (0/5 flagged, stdev 1.3): the judge is **non-deterministic + load-sensitive**, and `grade_fit` penalizes deliberate foundational simplicity ("grade 4-6, too easy") — the same over-flag pattern as the Fable-5 readiness judge. Receipts NOT committed (would imply meaning). If revisited: neutral prompt + 3-sample median + correctness-only triage (~3× quota). **QC is best treated as directional-only, not a shortlist.**
+
+**Live-learned facts (confirmed vs the plan's guessed field names):**
+- QC POST returns `{request_id, status:pending}`; poll to terminal `status:"succeeded"`; **score/axes are NESTED under `verdict`** (was read top-level → fixed `d72705d`).
+- Generate poll terminal envelope carries the artifact id under **`artifact_id`**, not `id`.
+- Discrimination options live in **prose/bank** for 154/299 slots (empty `choices[]`); QC now resolves them like the renderer (`d72705d`).
+- drawio is **slow-lane**: 3-4 min/diagram, and under concurrency several exceeded a 3-min poll window and needed re-polling. Latency: QC ~25-31s/item; POST ~0.8s.
+- Artifact files arrive under `files[]` as **presigned S3 URLs** (secrets), not inline bytes → `fetch` downloads by extension (`e46fa3d`).
 
 ## Guardrails (standing)
 - Everything Incept generates re-enters our contract and passes the 29 gates + anti-slop + provenance before it ships. Incept output is a SOURCE, not a bypass.
@@ -103,6 +120,8 @@ Add video **after the course is generated, QC-passed, and content-locked** — a
 - Never bind an artifact by prompt/title — always by `request_id`/`artifact_id`.
 
 ## Open items
-- **Video delivery in Timeback** — the one unresolved dependency; test one voiceover `.mp4` as a stimulus end-to-end before committing Phase D.
+- **Diagram deploy path** — bound img src resolves to `{base_url}/{lesson-slug}/incept_diagrams/<file>.png`; the next real course deploy must serve `Generated_Content/incept_diagrams/` reachable under each lesson base. Confirm at push time.
+- **Video stage (Phase D)** — machinery built + tested; runs AFTER the next full content lock. Delivery in Timeback (interactive vs plain voiceover-as-stimulus) still unresolved — test one `.mp4` as a stimulus end-to-end first.
+- **QC judge recalibration** — if we want an actionable QC shortlist, needs neutral prompt + multi-sample median + correctness-only triage. Until then, QC is directional-only, not a bulk-fix source.
 - **Incept quota/billing** — no API endpoint; confirm via the developer portal.
-- **Probe artifacts** saved locally at `C:/tmp/incept_probe/` (the drawio + PNG) and on Incept (artifacts 10890 image, 10892 video; QC req 5415).
+- **Live artifacts (T7):** 10 bound diagrams = Incept artifacts 11267/11272/11278/11280/11290/11295/11301/11306/11314/11285; PNGs committed under `Generated_Content/incept_diagrams/`. Probe artifacts still at `C:/tmp/incept_probe/`.
