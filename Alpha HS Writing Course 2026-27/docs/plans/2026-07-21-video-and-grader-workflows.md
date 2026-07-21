@@ -75,29 +75,52 @@ From `WF - AI FRQ Grading System Brai` (Ilma's production grader, validated disc
 4. **The rubric is the program** - atomic one-criterion-per-block; most failures are rubric-shape, not model (SPOV6).
 5. **Fail closed, never retry a verdict** - errored criterion = earned=False + internal_error, never a fabricated pass (SPOV3).
 
-### 2.3 The accuracy bake-off (the core of this workflow)
-Run all three on the SAME student responses, compare to a human-scored blind set (per SPOV4).
-- **Instrument EXISTS**: Writing_Test_Grader/_blind_set_groundtruth.json has Noel-scored ground truth
-  (noel_ideas / noel_org / noel_conv per response) + a _gold_comparison.py harness.
-- **THE GAP (must resolve first)**: that blind set is **G3-G8 only**. Our course is **G9-12**. There is
-  NO G9-12 human-scored blind set yet. The bake-off's verdict is only trustworthy on a G9-12 set with
-  our rubrics (rc.staar / rc.ohio / rc.mcas / rc.ap).
-- So the bake-off has a PREREQUISITE: assemble a small G9-12 blind set (N student responses across the 4
-  rubrics, Noel- or SME-scored blind) before the three-way comparison means anything.
+### 2.3 The calibration reality (UPDATED 2026-07-21 per Noel: no real student responses)
+We do NOT have real G9-12 student responses to blind-grade against. So blind-human-agreement (SPOV4, the
+ideal gate) is not directly runnable. Calibration proceeds against the best available ground truth, in
+priority order:
+1. **SCORING GUIDES / released anchor sets (primary)**: STAAR / Ohio / MCAS / AP all PUBLISH scoring guides
+   with ANCHOR PAPERS - real (or representative) student responses annotated with the official score + why.
+   These ARE human-scored ground truth (the state's own graders). This is the calibration instrument in the
+   absence of our own responses: run each grader on the anchor papers, compare to the official anchor score.
+   Our rubrics already map to these states (rc.staar / rc.ohio / rc.mcas / rc.ap), so the anchor sets align.
+2. **DEEP RESEARCH for more samples (if #1 is too thin)**: if published anchor papers are too few to
+   calibrate (esp. per score-point), run a deep-research pass to find additional released student-writing
+   examples with official scores (state release banks, AP released FRQ samples with commentary, etc.).
+   The /deep-research skill is the tool; the output feeds the same anchor-comparison harness.
+3. **Synthetic-then-flag (last resort)**: only if 1+2 are insufficient, generate representative responses at
+   known score points - but FLAG these as synthetic (not real ground truth) and never let a synthetic set
+   certify a grader for production. Real anchor papers gate; synthetic only smoke-tests.
 
-### 2.4 Bake-off steps
+The existing G3-8 _blind_set_groundtruth.json harness (_gold_comparison.py) is the REUSABLE MACHINERY -
+same comparison shape (per-criterion + signed-bias), just re-pointed at G9-12 anchor papers instead of the
+G3-8 Noel-scored set.
+
+### 2.4 Bake-off steps (anchor-paper calibration, adjacent session)
 1. **Investigate Timeback native SCR grading** (read-only): does the platform natively score SCR/short
    items, on what rubric model, with what accuracy claim? Determine if it removes the need for an external
    grader on checkpoint discriminations + short FRQs (leaving only full essays needing A or B).
-2. **Assemble a G9-12 blind set**: N (~20-40) real student responses across rc.staar/ohio/mcas/ap, scored
-   blind by a human (Noel/SME). This is the prerequisite instrument.
-3. **Run all 3 on that set**: (A) Ilma's English essay route, (B) our grader, (C) Timeback native where
-   applicable. Score each vs the human on within-1, mean signed error (bias direction), per-criterion match.
-4. **Decide by evidence** (not by preference): lowest inflation bias + tightest human agreement wins.
-   Fold the brainlift's per-criterion + fail-closed discipline into the winner if it lacks it.
+2. **Collect anchor papers** across rc.staar/ohio/mcas/ap: pull published scoring-guide anchor papers
+   (real student responses + official score + rationale). If too thin per score-point, run /deep-research
+   for more released samples. This is the calibration instrument (state graders = the human reference).
+3. **Run all 3 on the anchor set**: (A) Ilma's English essay route (ap-grader.inceptstore.com), (B) our
+   grader, (C) Timeback native where applicable. Score each vs the OFFICIAL anchor score on within-1, mean
+   signed error (bias DIRECTION - inflation is the dangerous one per SPOV2), per-criterion match.
+4. **Decide by evidence** (not preference): lowest inflation bias + tightest anchor agreement wins. Fold the
+   brainlift's per-criterion + fail-closed discipline into the winner if it lacks it.
 5. **Wire the winner**: our pipeline ALREADY has g9_wire_grader.py (attaches ExternalApiScore + rubric-block
    via PUT, no content re-push). If A wins -> point it at ap-grader route. If B wins -> deploy our grader +
    point there. If C wins -> native, possibly no external grader for short items.
+
+### 2.4b HOW TO RUN THIS IN AN ADJACENT SESSION (Noel asked how)
+The grader work is SEPARATE from this course repo (it lives in c:/Users/noelp/Writing_Test_Grader/) and
+does not depend on anything the video work touches. To run it in parallel:
+- Open a NEW Claude Code session with working dir c:/Users/noelp/Writing_Test_Grader/grader/ (or add it as
+  the primary dir). Point it at THIS plan doc (docs/plans/2026-07-21-video-and-grader-workflows.md,
+  section 2) + the brainlift (Alpha HS Writing Course 2026-27/WF - AI FRQ Grading System Brai...md).
+- First task there: step 1 (Timeback-native investigation) + step 2 (anchor-paper collection, incl.
+  /deep-research if thin). Those are independent of the video session and of the course-live blocker.
+- The two sessions share NOTHING mutable, so they can run fully concurrently with no coordination.
 
 ### 2.5 What already exists (do not rebuild)
 - `g9_wire_grader.py` - attaches the grader to live FRQs via PUT (Timeback RULE 3 safe: rebuild-from-source
