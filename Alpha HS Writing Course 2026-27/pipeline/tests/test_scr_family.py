@@ -45,3 +45,4 @@ def test_scr_em_dash_rejected():
     it = _scr_writing(stem="Rewrite the sentence — fix the modifier.")
     r = qc_item(it)
     assert not r["passed"]
+    assert r["first_failure"] == "no_em_dash"

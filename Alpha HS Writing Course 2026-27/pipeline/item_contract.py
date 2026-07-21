@@ -67,7 +67,7 @@ def gate_schema(it: Item) -> tuple[bool, str]:
     if it.family not in ("SR", "CR", "SCR"):
         return False, f"bad family '{it.family}'"
     if it.family == "SCR":
-        return True, "schema ok (SCR — validated by scr_schema gate)"
+        return True, "schema ok (SCR: validated by scr_schema gate)"
     if not it.stem.strip():
         return False, "empty stem"
     if it.family == "SR":
