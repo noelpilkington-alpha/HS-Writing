@@ -29,8 +29,8 @@ def test_video_resource_plan_shape():
     assert res_body["metadata"]["type"] == "video"
     assert res_body["metadata"]["url"] == "https://cdn.inceptstore.com/v/abc/video.mp4"
     assert "lessonType" not in res_body["metadata"]
-    # component-resource link: lessonType lives HERE, points at the leaf topic
-    assert cr_body["metadata"]["lessonType"] == "video"
+    # component-resource link: NO lessonType either (enum has no video value); points at the leaf topic
+    assert "lessonType" not in cr_body["metadata"]
     assert cr_body["courseComponent"]["sourcedId"] == "topic-xyz"
     assert cr_body["resource"]["sourcedId"] == plan[0][1]  # link references the resource id
 

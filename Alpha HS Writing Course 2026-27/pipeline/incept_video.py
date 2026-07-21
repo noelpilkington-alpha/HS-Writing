@@ -439,8 +439,12 @@ def video_resource_plan(lesson_id: str, public_url: str, title: str = "", xp: in
     Returns a list of ("resource"|"component-resource", sourcedId, endpoint_url, body) tuples (the same
     plan shape g9_assemble_v3_1.post() consumes), so the caller can dry-print or POST them.
 
-    GOTCHA carried over from the G9 build: `lessonType` in RESOURCE metadata returns HTTP 500 -> it goes
-    on the COMPONENT-RESOURCE link metadata ONLY. The video resource metadata stays lessonType-free.
+    GOTCHAS (both verified live 2026-07-21):
+    - `lessonType` in RESOURCE metadata returns HTTP 500 (server bug), so it is omitted there.
+    - `lessonType` on the LINK is an ENUM that has NO video value (server accepts only powerpath-100 /
+      map-adaptive / quiz / test-out / placement / unit-test / alpha-read-article). A video is none of
+      these, so lessonType is OMITTED from the link too. The `type: "video"` on the resource metadata is
+      what marks it a video; the link carries just {xp} (exactly like the working Article CR).
 
     topic_id = the leaf topic (courseComponent) the video attaches to; sort_order defaults to 3 so the
     video sits AFTER the article (1) and mastery (2) on a lesson's topic (adjust per placement)."""
@@ -452,15 +456,15 @@ def video_resource_plan(lesson_id: str, public_url: str, title: str = "", xp: in
             "sourcedId": vid_rid, "status": "active", "title": title,
             "importance": "primary", "vendorResourceId": f"{lesson_id}-video", "vendorId": "alpha-incept",
             "applicationId": "incept",
-            # type=video, NO lessonType here (500 bug); url = the hosted inceptstore public_url.
+            # type=video marks the resource; NO lessonType (500 bug); url = the hosted public_url.
             "metadata": {"type": "video", "activityType": "Video", "format": "mp4", "language": "en-US",
                          "xp": xp, "url": public_url}}}),
         ("component-resource", cr_id, _COMPRES_URL, {"componentResource": {
             "sourcedId": cr_id, "status": "active", "title": title,
             "sortOrder": sort_order, "resource": {"sourcedId": vid_rid},
             "courseComponent": {"sourcedId": topic_id},
-            # lessonType lives on the LINK (not the resource) per the G9-verified gotcha.
-            "metadata": {"lessonType": "video", "xp": xp}}}),
+            # no lessonType: it is an enum with no video value; match the working Article CR ({xp} only).
+            "metadata": {"xp": xp}}}),
     ]
     return plan
 
