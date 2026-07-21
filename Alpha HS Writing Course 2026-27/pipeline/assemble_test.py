@@ -35,8 +35,9 @@ from bank_loader import load_bank
 BLUEPRINT = [
     {"section": "ECR", "label": "Extended Constructed Response (source-based essay)",
      "family": "CR", "modes": ["argument", "explanatory"], "count": 1, "scoring": "rc.staar (Org/Dev 0-3 + Conv 0-2, x2 = 10)"},
+    # G10 scr items migrated to SCR family; analysis/research types deferred
     {"section": "SCR", "label": "Writing Short Constructed Response (modifier-repair, meaning-preserved)",
-     "family": "SR", "subskills": ["scr"], "count": 1, "scoring": "0-1 generic (grader)"},
+     "family": "SCR", "subskills": ["scr_writing"], "count": 1, "scoring": "0-1 generic (grader)"},
     {"section": "EDIT-conv", "label": "Editing set: conventions & mechanics",
      "family": "SR", "subskills": ["conventions"], "count": 6, "scoring": "auto-key (match_correct)"},
     {"section": "EDIT-sent", "label": "Editing set: sentence structure & boundaries",
@@ -60,6 +61,8 @@ def _pool(ir, spec):
         if spec["family"] == "CR" and key in spec.get("modes", []):
             out.append(it)
         elif spec["family"] == "SR" and key in spec.get("subskills", []):
+            out.append(it)
+        elif spec["family"] == "SCR" and key in spec.get("subskills", []):
             out.append(it)
     return sorted(out, key=lambda i: i.id)
 
