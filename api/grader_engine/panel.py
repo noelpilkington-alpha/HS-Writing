@@ -134,7 +134,7 @@ def _default_panel_model() -> str:
     explicit = os.environ.get("ALPHA_PANEL_MODEL", "").strip()
     if explicit:
         return explicit
-    provider = os.environ.get("ANTHROPIC_PROVIDER", "bedrock").strip().lower()
+    provider = os.environ.get("ANTHROPIC_PROVIDER", "anthropic").strip().lower()
     if provider == "anthropic":
         return "claude-opus-4-8"
     return "us.anthropic.claude-opus-4-8"

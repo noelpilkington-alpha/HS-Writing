@@ -26,7 +26,7 @@ def load_env(env_path: Path) -> None:
 
 def create_client() -> anthropic.Anthropic | anthropic.AnthropicBedrock:
     """Create the appropriate Anthropic client (direct API or Bedrock)."""
-    provider = os.environ.get("ANTHROPIC_PROVIDER", "bedrock").strip().lower()
+    provider = os.environ.get("ANTHROPIC_PROVIDER", "anthropic").strip().lower()
     if provider == "bedrock":
         region = os.environ.get(
             "AWS_REGION", os.environ.get("AWS_DEFAULT_REGION", "us-east-1")
@@ -44,8 +44,8 @@ def get_model() -> str:
     explicit = os.environ.get("ANTHROPIC_MODEL", "").strip()
     if explicit:
         return explicit
-    provider = os.environ.get("ANTHROPIC_PROVIDER", "bedrock").strip().lower()
-    return DEFAULT_MODELS.get(provider, DEFAULT_MODELS["bedrock"])
+    provider = os.environ.get("ANTHROPIC_PROVIDER", "anthropic").strip().lower()
+    return DEFAULT_MODELS.get(provider, DEFAULT_MODELS["anthropic"])
 
 
 def init_env(root: Path) -> None:
