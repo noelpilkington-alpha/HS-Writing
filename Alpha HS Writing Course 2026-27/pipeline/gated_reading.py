@@ -446,18 +446,17 @@ def checkpoint_xml(cp_id: str, slot) -> str:
 
 def _one_beat_list(entry) -> list:
     """Normalize a One-Beat map entry into an ordered list of beats, each {"cue_seconds", "item"}. Accepts:
-      - {"beats": [{"cue_seconds","item"}, ...]}          (multi-beat, council cap 2)
+      - {"beats": [{"cue_seconds","item"}, ...]}          (multi-beat)
       - {"cue_seconds": t, "item": {...}}                 (single-beat, back-compat)
-    Drops any beat without an item. Caps at 2 (council rule). Returns [] for anything else."""
+    Drops any beat without an item. Returns [] for anything else. Rule (2026-07-22): cover EVERY your-turn beat,
+    no cap (the earlier 2-per-video cap was overridden; a scripted your-turn beat must not dangle)."""
     if not isinstance(entry, dict):
         return []
     if isinstance(entry.get("beats"), list):
-        beats = [b for b in entry["beats"] if isinstance(b, dict) and b.get("item")]
-    elif entry.get("item"):
-        beats = [{"cue_seconds": entry.get("cue_seconds"), "item": entry["item"]}]
-    else:
-        beats = []
-    return beats[:2]
+        return [b for b in entry["beats"] if isinstance(b, dict) and b.get("item")]
+    if entry.get("item"):
+        return [{"cue_seconds": entry.get("cue_seconds"), "item": entry["item"]}]
+    return []
 
 
 def one_beat_xml(vq_id: str, item: dict) -> str:

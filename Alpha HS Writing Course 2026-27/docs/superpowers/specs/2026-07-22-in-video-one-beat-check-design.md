@@ -68,9 +68,17 @@ discrimination gate and never a copy of it.
 
 ## The One-Beat Check specification
 
-**Count.** Exactly ONE per qualifying video by default. A second is allowed ONLY on
-a full ~3-minute video with two genuinely distinct taught sub-beats, each with its
-own complete on-screen positive instance. NEVER more than two.
+**Count.** RULE UPDATED 2026-07-22 (Noel): "cover every your-turn beat, no
+exceptions." Every segment where the video explicitly tells the student to pause and
+act (role try_it / your_turn) gets ONE non-gating in-video question. This OVERRIDES
+the council's original cap of two per video: the operating principle is that a
+scripted your-turn beat that dangles with no question is the passivity failure the
+interactivity is meant to fix. The only skips are MECHANICAL, not design exceptions:
+  - a beat at the very END of the video (final segment) has no runtime left to
+    resume, so it cannot carry a pause.
+  - `recap` is a summary, not a your-turn beat, so it gets no question (unless a
+    future rule adds retrieval checks on recaps).
+Observed scope: 45 videos, 96 your-turn beats (39 videos have 2, 6 have 3).
 
 **Placement.** Immediately AFTER the video's first complete on-screen positive
 instance of the target move. In cue-derivation terms, this is the first natural

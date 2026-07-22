@@ -154,24 +154,41 @@ def test_one_beat_list_normalizes_both_shapes():
                        {"cue_seconds": 131.0, "item": _two_beat_item("2")}]}
     assert len(_one_beat_list(single)) == 1
     assert len(_one_beat_list(multi)) == 2
-    # council cap: never more than 2
+    # rule 2026-07-22: cover EVERY your-turn beat, no cap. A 3-beat video keeps all 3.
     over = {"beats": [{"cue_seconds": t, "item": _two_beat_item(str(t))} for t in (10, 20, 30)]}
-    assert len(_one_beat_list(over)) == 2, "capped at 2 beats"
+    assert len(_one_beat_list(over)) == 3, "no cap: every your-turn beat is covered"
     # junk / no item -> []
     assert _one_beat_list({"cue_seconds": 5.0}) == []
     assert _one_beat_list(None) == []
 
 
-def test_prototype_l01_has_two_beats():
-    from incept_one_beats import PROTOTYPE_ONE_BEATS
-    l01 = PROTOTYPE_ONE_BEATS["ACC-W910-L-G9-C901-0001"]
+def test_registry_l01_has_two_beats():
+    from incept_one_beats import ALL_ONE_BEATS
+    l01 = ALL_ONE_BEATS["ACC-W910-L-G9-C901-0001"]
     beats = _one_beat_list(l01)
-    assert len(beats) == 2, "L01 wires both scripted your-turn beats"
+    assert len(beats) == 2, "L01 covers both scripted your-turn beats"
     assert [b["cue_seconds"] for b in beats] == [82.0, 131.0]
     # every authored stem/why must be em-dash free
     for b in beats:
         xml = one_beat_xml("vq-x", b["item"])
         assert "—" not in xml
+
+
+def test_full_registry_all_items_pass_qc():
+    """Every authored item in the committed registry passes the deterministic QC gate + renders non-gating."""
+    import xml.etree.ElementTree as ET
+    from incept_one_beats import ALL_ONE_BEATS
+    import one_beat_extract as obe
+    assert len(ALL_ONE_BEATS) == 45, f"expected 45 lessons, got {len(ALL_ONE_BEATS)}"
+    total = 0
+    for lid, entry in ALL_ONE_BEATS.items():
+        for i, b in enumerate(_one_beat_list(entry)):
+            total += 1
+            assert obe.qc_one_beat(b["item"]) == [], f"{lid} beat {i}: QC failed"
+            x = one_beat_xml(f"vq-{lid}-{i+1}", b["item"])
+            ET.fromstring(x)
+            assert "INTERACTION_VISIBILITY" not in x, f"{lid} beat {i}: gating xml"
+    assert total == 96, f"expected 96 items, got {total}"
 
 
 # ---------------------------------------------------------------------------
@@ -249,14 +266,14 @@ def test_one_beat_cue_never_raises_on_garbage():
         assert out["cue_seconds"] is None or isinstance(out["cue_seconds"], (int, float))
 
 
-def test_one_beat_cues_returns_both_your_turn_beats():
+def test_one_beat_cues_returns_all_your_turn_beats_no_cap():
     vj = _probe_like()  # try_it ends at 61 and 101; recap end 116 == total (excluded)
-    out = vt.one_beat_cues(vj, max_cues=2, min_start=43.0)
-    assert out["cue_seconds"] == [61.0, 101.0], "both try_it beats, recap-at-end excluded"
+    out = vt.one_beat_cues(vj, min_start=43.0)  # default: no cap
+    assert out["cue_seconds"] == [61.0, 101.0], "every try_it beat, recap-at-end excluded"
     assert out["duration_seconds"] == 116.0
 
 
-def test_one_beat_cues_respects_max():
+def test_one_beat_cues_respects_explicit_max():
     vj = _probe_like()
     assert vt.one_beat_cues(vj, max_cues=1, min_start=0.0)["cue_seconds"] == [61.0]
 

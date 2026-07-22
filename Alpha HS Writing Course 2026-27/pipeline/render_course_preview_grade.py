@@ -137,15 +137,16 @@ def main():
         except Exception:
             video_map = {}
 
-    # PREVIEW-SCOPED One-Beat map (council rule 2026-07-22): PROTOTYPE stage wires only the greenlit lessons,
-    # so a matching video renders as an INTERACTIVE tb-video (one non-gating in-video question). Preview-only:
-    # the production push passes no one_beat_map, so it is unaffected.
+    # PREVIEW-SCOPED One-Beat map (rule 2026-07-22): every your-turn beat of a video gets one non-gating
+    # in-video question, so a matching video renders as an INTERACTIVE tb-video. Preview-only: the production
+    # push passes no one_beat_map, so it is unaffected.
     one_beat_map = {}
     try:
-        from incept_one_beats import PROTOTYPE_ONE_BEATS
-        one_beat_map = {lid: b for lid, b in PROTOTYPE_ONE_BEATS.items() if lid in video_map}
+        from incept_one_beats import ALL_ONE_BEATS
+        one_beat_map = {lid: b for lid, b in ALL_ONE_BEATS.items() if lid in video_map}
         if one_beat_map:
-            print(f"one_beat_map: {len(one_beat_map)} {grade} lesson(s) carry an in-video One-Beat Check")
+            _nbeats = sum(len(b.get("beats", [])) for b in one_beat_map.values())
+            print(f"one_beat_map: {len(one_beat_map)} {grade} lesson(s), {_nbeats} in-video One-Beat checks")
     except Exception:
         one_beat_map = {}
 
