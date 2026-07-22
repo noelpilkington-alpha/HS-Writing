@@ -206,7 +206,7 @@ LESSON = Lesson(
                          "draft that names both sides can still leave both synthesis gaps open."},
              ]),
         Slot("SUPPORTED", "production_frq", "Revise the provided cross-text draft",
-             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="Revise the draft below to close both synthesis gaps. Keep the facts from each source; "
                        "weave them and answer the objection.",
@@ -237,7 +237,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: revise a PROVIDED draft with no checklist scaffold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided cross-text draft on your own",
-             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now, no checklist. Revise the draft below to close both synthesis gaps.",
                  setapart_block=setapart("Draft to revise:",
@@ -254,7 +254,7 @@ LESSON = Lesson(
                    "in a draft that is given to you, then self-checking your revision. The texts stay on screen "
                    "while you work.")),
         Slot("TRANSFER", "production_frq", "Revise a cross-text draft on a NEW set",
-             ref="", bank="school_year", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="school_year", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="New set, same move. Revise the draft below to close both synthesis gaps.",
                  setapart_block=setapart("Draft to revise:",

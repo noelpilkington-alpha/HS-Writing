@@ -205,7 +205,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write, build the concede + answer onto a given position =====
         Slot("SUPPORTED", "production_frq", "Concede and answer in two sentences", ref="", bank="school_year",
-             rubric_ref="rc.staar", scored=True, unit="paragraph",
+             rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="Warm up the build. Start from the given position, then add the two parts that answer the other side.",
                  setapart_block=setapart("Start from this position, then build onto it:",
@@ -233,7 +233,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold full-paragraph build on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Write a full counterargument paragraph", ref="", bank="school_year",
-             rubric_ref="rc.staar", scored=True, unit="paragraph",
+             rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, build the whole paragraph.",
                  closer="Write ONE counterargument paragraph on whether the school year should be longer, with all "
@@ -250,7 +250,7 @@ LESSON = Lesson(
                    "whole thing and note a position plus one fact to answer the strongest objection. The text "
                    "stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Write a counterargument paragraph on a NEW topic", ref="",
-             bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New topic, same build. The task: argue a position on congestion pricing.",
                  closer="Write ONE counterargument paragraph on congestion pricing with all three parts: state "

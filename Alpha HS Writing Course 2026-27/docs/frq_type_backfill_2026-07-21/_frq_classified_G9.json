@@ -1,0 +1,692 @@
+[
+ {
+  "file": "lesson_g9_l01_arguable_claim_v3_1.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Finish the claim: fill in the side and the reason",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "claim_frame() fill-in frame (side+reason stems); no draft to revise",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l01_arguable_claim_v3_1.py",
+  "slot_index_in_file": 9,
+  "role": "INDEPENDENT",
+  "title": "Write one arguable claim on paying for grades",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; write a fresh claim from prompt",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l01_arguable_claim_v3_1.py",
+  "slot_index_in_file": 11,
+  "role": "TRANSFER",
+  "title": "Write an arguable claim on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; write a fresh claim on a new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l02_sharpen_stakes_v3_1.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Finish the claim: make it specific, add a reason and the stakes",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "setapart is a fill-in FRAME (Schools should __ because __ which matters because __); no draft to revise",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l02_sharpen_stakes_v3_1.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Write one sharp claim with stakes on paying for grades",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; write a fresh claim with stakes from prompt",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l02_sharpen_stakes_v3_1.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Write a sharp claim with stakes on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; write a fresh claim with stakes, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l03_controlling_idea_v3_1.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Finish the controlling idea: set the focus, preview the parts",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "setapart is a fill-in FRAME (The water cycle __ through __); no draft to revise",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l03_controlling_idea_v3_1.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Write one controlling idea for the water cycle",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; write a controlling idea from prompt",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l03_controlling_idea_v3_1.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Write a controlling idea on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; write a controlling idea, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l04_interleave_v3_1.py",
+  "slot_index_in_file": 8,
+  "role": "SUPPORTED",
+  "title": "Decode the verb, then write the right product",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "setapart is a fill-in FRAME (A volcano erupts __); no draft to revise",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l04_interleave_v3_1.py",
+  "slot_index_in_file": 10,
+  "role": "INDEPENDENT",
+  "title": "Choose the product and write it (volcanoes)",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; choose product and write one sentence from prompt",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l04_interleave_v3_1.py",
+  "slot_index_in_file": 12,
+  "role": "TRANSFER",
+  "title": "Choose the product and write it on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; choose product and write one sentence, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l05_integrate_quote_v3_1.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Bring in a fact and name its source",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "setapart is a fill-in FRAME (According to __, __); no draft to revise",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l05_integrate_quote_v3_1.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Bring in evidence and name its source, on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; produce an attributed sentence from prompt",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l05_integrate_quote_v3_1.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Bring in evidence and name its source (NEW topic)",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; produce an attributed sentence, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l06_select_relevant_v3_1.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Pick the relevant fact and bring it in named",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "setapart is a fill-in FRAME (According to __, __); no draft to revise",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l06_select_relevant_v3_1.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Prove a different claim with the right evidence, on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; select relevant fact and write sentence from prompt",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l06_select_relevant_v3_1.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Pick the relevant evidence on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; select relevant fact and write sentence, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l07_integrate_not_drop_v3_1.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Fold a quote into your own sentence",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "setapart is a fill-in FRAME (__ reports that '__' __); no draft to revise",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l07_integrate_not_drop_v3_1.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Integrate a quote on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; integrate a quote into a new sentence",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l07_integrate_not_drop_v3_1.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Integrate a quote on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; integrate a quote into a new sentence, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l08_reasoning_vehicle_v3_1.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Link a fact to a claim with a hinge",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "setapart is a fill-in FRAME (__ because __); no draft to revise",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l08_reasoning_vehicle_v3_1.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Link evidence to a claim on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; write claim linked to a fact from prompt",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l08_reasoning_vehicle_v3_1.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Link evidence to a claim on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; write claim linked to a fact, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l09_warrant_v3_1.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Write the warrant: explain why the evidence fits",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "setapart is a fill-in FRAME (...because __ so __); no draft to revise",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l09_warrant_v3_1.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Write a warrant on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; write a warrant from prompt",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l09_warrant_v3_1.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Write a warrant on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; write a warrant, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l10_evidence_reasoning_paragraph_v3_1.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Warm up: write the warrant sentence",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "given point+evidence as context; task is to WRITE a NEW warrant sentence, not revise a provided draft",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l10_evidence_reasoning_paragraph_v3_1.py",
+  "slot_index_in_file": 7,
+  "role": "INDEPENDENT",
+  "title": "Build the whole paragraph on the water cycle",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "no frame; build a whole point-evidence-warrant paragraph",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l10_evidence_reasoning_paragraph_v3_1.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Build a paragraph on a NEW topic",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "no frame; build a whole paragraph, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l11_two_evidence_v3_1.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Warm up: pick and order the second fact",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "given point+first fact as context; task is to SELECT and WRITE a second fact in order, not revise a draft",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l11_two_evidence_v3_1.py",
+  "slot_index_in_file": 7,
+  "role": "INDEPENDENT",
+  "title": "Develop the whole paragraph with two facts",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "no frame; develop a whole paragraph with two facts",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l11_two_evidence_v3_1.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Develop a paragraph on a NEW source",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "no frame; develop a whole paragraph, new source",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l12_calibrate_reasoning_v3_1.py",
+  "slot_index_in_file": 7,
+  "role": "SUPPORTED",
+  "title": "Repair the weak warrant",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro 'Revise this provided draft'; setapart embeds weak draft (Volcanic ash is harmful because it is bad for people) to fix",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l12_calibrate_reasoning_v3_1.py",
+  "slot_index_in_file": 9,
+  "role": "INDEPENDENT",
+  "title": "Revise a provided draft on your own",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "setapart 'Provided draft to fix' (Volcanoes are worth studying because studying them is important); revise it",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l12_calibrate_reasoning_v3_1.py",
+  "slot_index_in_file": 11,
+  "role": "TRANSFER",
+  "title": "Revise a provided draft on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "setapart 'Provided draft to fix' (The water cycle is important because it matters a lot); revise it, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l13_transitions_v3_1.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Fix the transitions using the frame",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "intro 'Revise this paragraph so each transition names the real relationship'; whole paragraph provided (ideas fixed) with transition blanks. Frame-with-blanks scaffolds revision of a provided draft; same construct as this lesson's other two revise slots",
+  "review_flag": true
+ },
+ {
+  "file": "lesson_g9_l13_transitions_v3_1.py",
+  "slot_index_in_file": 7,
+  "role": "INDEPENDENT",
+  "title": "Revise a provided paragraph on your own",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "intro 'Revise this paragraph'; setapart 'Paragraph to revise' embeds full flawed paragraph (repeated Also) to fix",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l13_transitions_v3_1.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Revise a provided paragraph on a NEW topic",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Paragraph to revise' embeds full flawed paragraph to fix, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l14_referential_cohesion_v3_1.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Anchor the vague reference",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro 'Here is the sentence to fix: ...' embeds provided sentence with vague This to anchor; frame scaffolds the fix",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l14_referential_cohesion_v3_1.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Fix a vague reference on your own",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro embeds provided sentence to fix (...That is how they prepare); anchor the reference",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l14_referential_cohesion_v3_1.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Fix a vague reference on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro embeds provided sentence to fix (...This can force whole towns to evacuate); anchor the reference, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l15_revise_cohesion_v3_1.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Revise the provided paragraph for cohesion",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "intro 'Revise the paragraph below'; setapart 'Paragraph to revise' embeds draft to fix for cohesion",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l15_revise_cohesion_v3_1.py",
+  "slot_index_in_file": 7,
+  "role": "INDEPENDENT",
+  "title": "Revise a provided paragraph on your own",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Paragraph to revise' embeds draft to fix for cohesion, on your own",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l15_revise_cohesion_v3_1.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Revise a provided paragraph on a NEW topic",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Paragraph to revise' embeds draft to fix for cohesion, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l16_formal_tone_v3_1.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Rewrite the claim in a formal tone",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro 'Rewrite the sentence... Here is the informal sentence to fix: ...' embeds provided draft to rewrite; frame scaffolds the rewrite",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l16_formal_tone_v3_1.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Fix the tone on your own",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro 'Rewrite this sentence...: ...' embeds provided informal sentence to rewrite",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l16_formal_tone_v3_1.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Fix the tone on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro 'Rewrite this sentence...: ...' embeds provided informal sentence to rewrite, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l17_build_paragraph_v3_1.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Build two of the three parts",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "setapart gives a CLAIM and asks to WRITE new evidence+warrant onto it (build); not a flawed draft to fix",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l17_build_paragraph_v3_1.py",
+  "slot_index_in_file": 7,
+  "role": "INDEPENDENT",
+  "title": "Build a complete body paragraph",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "no frame; build a complete body paragraph",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l17_build_paragraph_v3_1.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Build a complete body paragraph on a NEW topic",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "no frame; build a complete body paragraph, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l18_fresh_paragraph_selfcheck_v3_1.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Build a complete paragraph to check",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "setapart is a fill-in FRAME (claim / According to __ / warrant stems); no draft to revise",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l18_fresh_paragraph_selfcheck_v3_1.py",
+  "slot_index_in_file": 6,
+  "role": "INDEPENDENT",
+  "title": "Write a fresh paragraph and self-check it",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "no frame; write a fresh paragraph then self-check (checklist is self-assessment, not a draft)",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l18_fresh_paragraph_selfcheck_v3_1.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Write a fresh paragraph and self-check it (NEW topic)",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "no frame; write a fresh paragraph then self-check, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l19_recognize_counterargument_v3_1.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Name the other side (with a frame)",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "setapart is a fill-in FRAME (Someone who disagrees would say that __); no draft to revise",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l19_recognize_counterargument_v3_1.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Name the other side on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; write a counterargument sentence from prompt",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l19_recognize_counterargument_v3_1.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Name the other side on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; write a counterargument sentence, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l20_concede_answer_v3_1.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Write a concede-and-answer sentence (with a frame)",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "setapart is a fill-in FRAME (Although __, __ because __); no draft to revise",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l20_concede_answer_v3_1.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Write a concede-and-answer sentence on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; write a concede-and-answer sentence from prompt",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l20_concede_answer_v3_1.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Write a concede-and-answer sentence on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; write a concede-and-answer sentence, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l21_counterargument_paragraph_v3_1.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Name the other side, then answer it",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "setapart gives a POSITION plus a fill-in FRAME (It is fair to say __. But __); produce new text, no draft to fix",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l21_counterargument_paragraph_v3_1.py",
+  "slot_index_in_file": 7,
+  "role": "INDEPENDENT",
+  "title": "Write a short counterargument paragraph",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "no frame; write a short counterargument paragraph",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l21_counterargument_paragraph_v3_1.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Write a short counterargument paragraph on a NEW topic",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "no frame; write a short counterargument paragraph, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l22_essay_mode_interleave_v3_1.py",
+  "slot_index_in_file": 7,
+  "role": "SUPPORTED",
+  "title": "Name the mode and plan the thesis",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "setapart is a fill-in FRAME (Mode: __. Thesis: Photosynthesis __); no draft to revise",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l22_essay_mode_interleave_v3_1.py",
+  "slot_index_in_file": 9,
+  "role": "INDEPENDENT",
+  "title": "Choose the mode and plan the thesis (photosynthesis)",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; name mode and write thesis from prompt",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l22_essay_mode_interleave_v3_1.py",
+  "slot_index_in_file": 11,
+  "role": "TRANSFER",
+  "title": "Choose the mode and plan the thesis on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "no frame; name mode and write thesis, new topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l27_essay_revision_v3_1.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Revise the provided paragraph",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "intro 'Revise the paragraph below to close its gap'; setapart 'Paragraph to revise' embeds draft (add missing warrant)",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l27_essay_revision_v3_1.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Revise a provided paragraph and self-check your fix",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Paragraph to revise' embeds draft to close its gap, on your own",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g9_l27_essay_revision_v3_1.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Revise a provided paragraph on a NEW topic",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Paragraph to revise' embeds draft to close its gap, new topic",
+  "review_flag": false
+ }
+]

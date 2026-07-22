@@ -83,6 +83,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ExternalApiScore /score endpoint for the LIVE G9-12 CCSS course (2026-27). The G9-12 analytic-trait grader
+# (SBAC / Regents-4trait essay engines + grain routing + paragraph engine), ported here 2026-07-21 so the
+# course + its grader deploy as one unit (this app -> hs-writing-grading service). App-wide verify_api_key
+# already covers it. Engine vendored under api/grader_engine/ (Anthropic-direct; set ANTHROPIC_PROVIDER=anthropic).
+from external_score import router as external_score_router  # noqa: E402
+app.include_router(external_score_router)
+
 
 # ===== Request / Response Models =====
 

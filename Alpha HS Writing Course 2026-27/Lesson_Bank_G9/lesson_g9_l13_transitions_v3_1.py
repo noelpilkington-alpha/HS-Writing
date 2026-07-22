@@ -183,7 +183,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught topic =====
         Slot("SUPPORTED", "production_frq", "Fix the transitions using the frame",
-             ref="", bank="photosynthesis", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="photosynthesis", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="Revise this paragraph so each transition names the real relationship. The frame shows "
                        "where the transitions go.",
@@ -212,7 +212,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: revise a provided paragraph, no frame, say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided paragraph on your own",
-             ref="", bank="photosynthesis", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="photosynthesis", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now, no frame. Revise this paragraph so every transition names the real relationship.",
                  setapart_block=setapart("Paragraph to revise:",
@@ -230,7 +230,7 @@ LESSON = Lesson(
                    "is familiar. Again, you are improving the transitions in a provided paragraph, not writing "
                    "from scratch. You only need the gist.")),
         Slot("TRANSFER", "production_frq", "Revise a provided paragraph on a NEW topic",
-             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="New topic, same move. Revise this paragraph so every transition names the real relationship.",
                  setapart_block=setapart("Paragraph to revise:",

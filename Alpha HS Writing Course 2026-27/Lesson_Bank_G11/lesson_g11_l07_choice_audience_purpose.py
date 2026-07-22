@@ -194,7 +194,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught source (already read at STEP 2) =====
         Slot("SUPPORTED", "production_frq", "Chain choice, effect, and purpose (with a frame)",
-             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on reaching the purpose. Pick one Douglass choice "
                        "(the repeated 'your,' the pointed questions, or the ideals-versus-practice contrast).",
@@ -223,7 +223,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write, no frame, own choice of move + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Reach the purpose on your own",
-             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="paragraph",
+             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Choose one Douglass choice you have not used yet and write a "
                        "short analytical passage that runs the full chain: the choice, its effect on the "
@@ -242,7 +242,7 @@ LESSON = Lesson(
                    "the line 'We defy them.' Pick one and be ready to run choice, effect on the audience, and "
                    "purpose. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Reach the purpose on a NEW text",
-             ref="", bank="ra_speech_2", rubric_ref="rc.ap", scored=True, unit="paragraph",
+             ref="", bank="ra_speech_2", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New text, same move. Choose one of the speaker's choices in the \"Cross of Gold\" "
                        "excerpt and write a short analytical passage on it.",

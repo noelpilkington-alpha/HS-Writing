@@ -234,7 +234,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: weave one point (sentence) - the fill-in frame is the highest-value scaffold =====
         Slot("SUPPORTED", "production_frq", "Weave two sources into one point",
-             ref="", bank="school_year", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="school_year", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Weave the two school-year sources into one point before you write it out.",
                  setapart_block=setapart("Fill in this frame:",
@@ -259,7 +259,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: weave a point cold (sentence ceiling for this grain) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a woven point on your own",
-             ref="", bank="school_year", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="school_year", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame.",
                  closer="Using the school-year sources, write ONE point that uses both together to build a single "
@@ -275,7 +275,7 @@ LESSON = Lesson(
                    "could build using BOTH at once, a place where one source's fact meets the other's. The texts "
                    "stay on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Write a woven point on a NEW set",
-             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New set. The task: keep the same weave-two-sources move on congestion pricing.",
                  closer="Using the congestion-pricing sources, write ONE point that uses both together to build a "

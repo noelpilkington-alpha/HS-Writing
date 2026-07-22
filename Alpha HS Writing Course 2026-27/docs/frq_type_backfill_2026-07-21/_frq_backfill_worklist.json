@@ -1,0 +1,2151 @@
+[
+  {
+    "file": "lesson_g9_l01_arguable_claim.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Finish the claim: add your side and a reason",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l01_arguable_claim.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write one arguable claim on the phone source",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l01_arguable_claim.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write an arguable claim on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l01_arguable_claim_v2.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write one arguable claim on the phone task",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l01_arguable_claim_v2.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write an arguable claim on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l01_arguable_claim_v3.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Finish the claim: fill in the side and the reason",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l01_arguable_claim_v3.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write one arguable claim on the four-day week",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l01_arguable_claim_v3.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write an arguable claim on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l01_arguable_claim_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Finish the claim: fill in the side and the reason",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l01_arguable_claim_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write one arguable claim on paying for grades",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l01_arguable_claim_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write an arguable claim on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l02_sharpen_stakes_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Finish the claim: make it specific, add a reason and the stakes",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l02_sharpen_stakes_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write one sharp claim with stakes on paying for grades",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l02_sharpen_stakes_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write a sharp claim with stakes on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l02_take_position.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Finish the claim: answer the question, add a reason",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l02_take_position.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write one claim that answers the free-meals question",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l02_take_position.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write a claim that answers a NEW question",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l03_controlling_idea_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Finish the controlling idea: set the focus, preview the parts",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l03_controlling_idea_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write one controlling idea for the water cycle",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l03_controlling_idea_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write a controlling idea on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l03_sharpen_stakes.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Sharpen the claim, add a reason and the stakes",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l03_sharpen_stakes.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write one sharp claim with stakes on community service",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l03_sharpen_stakes.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write a sharp claim with stakes on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l04_controlling_idea.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Set the focus, preview the parts",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l04_controlling_idea.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write one controlling idea for the water cycle",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l04_controlling_idea.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write a controlling idea on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l04_interleave_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Decode the verb, then write the right product",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l04_interleave_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Choose the product and write it (volcanoes)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l04_interleave_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Choose the product and write it on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l05_integrate_quote_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Bring in a fact and name its source",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l05_integrate_quote_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Bring in evidence and name its source, on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l05_integrate_quote_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Bring in evidence and name its source (NEW topic)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l05_write_controlling_idea.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Answer the task, preview the parts",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l05_write_controlling_idea.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write one controlling idea for photosynthesis",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l05_write_controlling_idea.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write a controlling idea on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l06_interleave.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Decode the verb, then write the right product",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l06_interleave.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Choose the product and write it (volcanoes, explain)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l06_interleave.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Choose the product and write it on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l06_select_relevant_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Pick the relevant fact and bring it in named",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l06_select_relevant_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Prove a different claim with the right evidence, on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l06_select_relevant_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Pick the relevant evidence on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l07_integrate_not_drop_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Fold a quote into your own sentence",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l07_integrate_not_drop_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Integrate a quote on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l07_integrate_not_drop_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Integrate a quote on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l07_integrate_quote.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Bring in a fact and name its source",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l07_integrate_quote.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Bring in evidence and name its source, on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l07_integrate_quote.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Bring in evidence and name its source (NEW topic)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l08_reasoning_vehicle_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Link a fact to a claim with a hinge",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l08_reasoning_vehicle_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Link evidence to a claim on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l08_reasoning_vehicle_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Link evidence to a claim on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l08_select_relevant.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Pick the relevant fact and bring it in named",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l08_select_relevant.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Prove a claim with the right evidence, on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l08_select_relevant.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Pick the relevant evidence on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l09_integrate_not_drop.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Fold a quote into your own sentence",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l09_integrate_not_drop.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Integrate a quote on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l09_integrate_not_drop.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Integrate a quote on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l09_warrant_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Write the warrant: explain why the evidence fits",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l09_warrant_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write a warrant on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l09_warrant_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write a warrant on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l10_evidence_reasoning_paragraph_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Warm up: write the warrant sentence",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l10_evidence_reasoning_paragraph_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Build the whole paragraph on the water cycle",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l10_evidence_reasoning_paragraph_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Build a paragraph on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l10_reasoning_vehicle.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Link a fact to a claim with a hinge",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l10_reasoning_vehicle.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Link evidence to a claim on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l10_reasoning_vehicle.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Link evidence to a claim on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l11_two_evidence_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Warm up: pick and order the second fact",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l11_two_evidence_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Develop the whole paragraph with two facts",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l11_two_evidence_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Develop a paragraph on a NEW source",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l11_warrant.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Write the warrant: explain why the evidence fits",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l11_warrant.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write a warrant on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l11_warrant.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write a warrant on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l12_calibrate_reasoning_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Repair the weak warrant",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l12_calibrate_reasoning_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided draft on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l12_calibrate_reasoning_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Revise a provided draft on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l12_evidence_reasoning_paragraph.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Assemble two of the three parts",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l12_evidence_reasoning_paragraph.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write a full point-evidence-warrant paragraph",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l12_evidence_reasoning_paragraph.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write a point-evidence-warrant paragraph on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l13_calibrate_reasoning.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Repair the weak warrant",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l13_calibrate_reasoning.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided draft on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l13_calibrate_reasoning.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Revise a provided draft on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l13_transitions_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Fix the transitions using the frame",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l13_transitions_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided paragraph on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l13_transitions_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Revise a provided paragraph on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l14_referential_cohesion_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Anchor the vague reference",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l14_referential_cohesion_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Fix a vague reference on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l14_referential_cohesion_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Fix a vague reference on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l14_transitions.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Fix the transitions in a provided paragraph",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l14_transitions.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided paragraph on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l14_transitions.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Revise a provided paragraph on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l15_referential_cohesion.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Anchor the vague reference",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l15_referential_cohesion.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Fix a vague reference on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l15_referential_cohesion.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Fix a vague reference on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l15_revise_cohesion_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Revise the provided paragraph for cohesion",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l15_revise_cohesion_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided paragraph on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l15_revise_cohesion_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Revise a provided paragraph on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l16_formal_tone_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Rewrite the claim in a formal tone",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l16_formal_tone_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Fix the tone on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l16_formal_tone_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Fix the tone on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l16_revise_cohesion.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Revise the provided paragraph for cohesion",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l16_revise_cohesion.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided paragraph on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l16_revise_cohesion.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Revise a provided paragraph on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l17_build_paragraph.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Build two of the three parts",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l17_build_paragraph.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Build a complete body paragraph",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l17_build_paragraph.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Build a complete body paragraph on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l17_build_paragraph_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Build two of the three parts",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l17_build_paragraph_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Build a complete body paragraph",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l17_build_paragraph_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Build a complete body paragraph on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l18_fresh_paragraph_selfcheck.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Build a complete paragraph to check",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l18_fresh_paragraph_selfcheck.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write a fresh paragraph and self-check it",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l18_fresh_paragraph_selfcheck.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write a fresh paragraph and self-check it (NEW topic)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l18_fresh_paragraph_selfcheck_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Build a complete paragraph to check",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l18_fresh_paragraph_selfcheck_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write a fresh paragraph and self-check it",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l18_fresh_paragraph_selfcheck_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write a fresh paragraph and self-check it (NEW topic)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l19_recognize_counterargument_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Name the other side (with a frame)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l19_recognize_counterargument_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Name the other side on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l19_recognize_counterargument_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Name the other side on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l20_concede_answer_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Write a concede-and-answer sentence (with a frame)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l20_concede_answer_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write a concede-and-answer sentence on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l20_concede_answer_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write a concede-and-answer sentence on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l21_counterargument_paragraph_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Name the other side, then answer it",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l21_counterargument_paragraph_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write a short counterargument paragraph",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l21_counterargument_paragraph_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write a short counterargument paragraph on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l22_essay_mode_interleave_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Name the mode and plan the thesis",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l22_essay_mode_interleave_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Choose the mode and plan the thesis (photosynthesis)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l22_essay_mode_interleave_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Choose the mode and plan the thesis on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g9_l25_essay_revision.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Revise the provided paragraph",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l25_essay_revision.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided paragraph and self-check your fix",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l25_essay_revision.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Revise a provided paragraph on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l27_essay_revision_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Revise the provided paragraph",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l27_essay_revision_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided paragraph and self-check your fix",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g9_l27_essay_revision_v3_1.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Revise a provided paragraph on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t1_source_reading.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Completion: fill the MARK frame (fade rung 1)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t1_source_reading.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write a full fair they-say, then run the self-check",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t1_source_reading.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Apply MARK to a NEW source (bank-partitioned)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t2_claim_building.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Guided: write ONE defensible STAND claim (frame provided)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t2_claim_building.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write an independent STAND claim with stakes (no frame)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t2_claim_building.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Build a STAND claim on the new topic (bank-partitioned)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t3_evidence.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Guided: write ONE integrated PROVE sentence (frame provided)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t3_evidence.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write an independent PROVE paragraph (no frame)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t3_evidence.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Integrate evidence on the new topic (bank-partitioned)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t3_reasoning.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Completion: the claim and evidence are given, you supply the warrant",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t3_reasoning.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Write a claim-evidence-warrant paragraph on the taught topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t3_reasoning.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Write a warranted argument on the new topic (bank-partitioned)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t5_rubric_revision.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Guided: repair two transitions in a provided draft (frame given)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t5_rubric_revision.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided paragraph for cohesion (self-contained)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t5_rubric_revision.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "TRANSFER",
+    "title": "Revise a provided draft on the new topic for cohesion (bank-partitioned)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t7_essay_assembly.py",
+    "dir": "Lesson_Bank_G9",
+    "role": "SUPPORTED",
+    "title": "Guided: write your plan in the plan box (single-paragraph outline)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_c1001_counterargument.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Guided: write ONE counterclaim-aware claim (frame provided)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_c1001_counterargument.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Write an independent counterclaim-aware claim (no frame)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_c1001_counterargument.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Write a counterclaim-aware claim on the new topic (bank-partitioned)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_c1002_analysis.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Completion: the device is given, you supply Effect + Warrant",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_c1002_analysis.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Full DEW analysis paragraph on the Chopin excerpt",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_c1002_analysis.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Analyze a DIFFERENT author's structural move (bank-partitioned)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_c1003_analysis_essay.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Completion: the device is given, you supply Effect + Warrant",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_c1003_analysis_essay.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Full DEW analysis paragraph on the wetlands article",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_c1003_analysis_essay.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Analyze a DIFFERENT author's imagery or irony (bank-partitioned)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_c1005_revision.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Guided: revise a provided draft with one add and one delete (frame given)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_c1005_revision.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided paragraph against its purpose (self-contained)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_c1005_revision.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Revise a provided draft on the new topic (bank-partitioned)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_c1006_synthesis.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Completion: the claim is given, you supply evidence from EACH source + the warrant",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l01_counterclaim_claim.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Finish the claim: concede, then hold",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l01_counterclaim_claim.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Write a counterclaim-aware claim on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l01_counterclaim_claim.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Write a counterclaim-aware claim on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l02_concede_hold.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Write a concede-and-hold claim",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l02_concede_hold.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Write a concede-and-hold claim on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l02_concede_hold.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Write a concede-and-hold claim on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l03_counterclaim_paragraph.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Concede and answer in two sentences",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l03_counterclaim_paragraph.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Write a full counterargument paragraph",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l03_counterclaim_paragraph.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Write a counterargument paragraph on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l04_analytical_claim.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Write a claim about the craft",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l04_analytical_claim.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Write an analytical claim on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l04_analytical_claim.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Write an analytical claim on a NEW text",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l05_claim_craft_vs_content.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Write a craft claim on a close call",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l05_claim_craft_vs_content.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Write a craft claim on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l05_claim_craft_vs_content.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Write a craft claim on a NEW text",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l06_device_to_effect.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Name a device and state its effect",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l06_device_to_effect.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Write a device-to-effect sentence on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l06_device_to_effect.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Write a device-to-effect sentence on a NEW text",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l07_significance.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Add the warrant to a device-to-effect statement",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l07_significance.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Write a device-effect-warrant passage on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l07_significance.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Write a device-effect-warrant passage on a NEW text",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l08_device_chain.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Chain two choices toward one point",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l08_device_chain.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Write a device-chain paragraph on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l08_device_chain.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Write a device-chain paragraph on a NEW text",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l09_analysis_check.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Revise the summary paragraph into analysis",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l09_analysis_check.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided paragraph on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l09_analysis_check.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Revise a summary paragraph on a NEW text",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l10_add_delete.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Revise: one delete, one add",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l10_add_delete.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided draft on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l10_add_delete.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Revise a provided draft on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l11_logical_sequence.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Reorder a scrambled draft",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l11_logical_sequence.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Reorder a provided draft on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l11_logical_sequence.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Reorder a provided draft on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l12_strong_weak_twin.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Rewrite the weak twin using the frame",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l12_strong_weak_twin.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Improve a weak draft on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l12_strong_weak_twin.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Improve a weak draft on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l13_error_autopsy.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Name the type and fix the draft",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l13_error_autopsy.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Name the type and fix a draft on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l13_error_autopsy.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Name the type and fix a draft on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l14_revise_for_purpose.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Revise the draft for purpose",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l14_revise_for_purpose.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided draft on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l14_revise_for_purpose.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Revise a provided draft on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l17_cross_source.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Weave two sources into one point",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l17_cross_source.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Write a woven point on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l17_cross_source.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Write a woven point on a NEW set",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l18_agreement_tension.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Name the agreement and the tension",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l18_agreement_tension.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Name agreement and tension on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l18_agreement_tension.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Name agreement and tension on a NEW set",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g10_l23_cross_text_revision.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Revise the provided cross-text draft",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l23_cross_text_revision.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided cross-text draft on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l23_cross_text_revision.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Revise a cross-text draft on a NEW set",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l26_precision_pass.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Run a precision pass on the provided draft",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l26_precision_pass.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Run the precision pass on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g10_l26_precision_pass.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Run a precision pass on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t1_source_reading.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Completion: fill the MARK frame (fade rung 1)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t1_source_reading.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Write a full fair they-say, then run the self-check",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t1_source_reading.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Apply MARK to a NEW source (bank-partitioned)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t2_claim_building.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Guided: write ONE defensible STAND claim (frame provided)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t2_claim_building.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Write an independent STAND claim with stakes (no frame)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t2_claim_building.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Build a STAND claim on the new topic (bank-partitioned)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t3_evidence_integration.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Completion: fill the PROVE frame (fade rung 1)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t3_evidence_integration.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Develop a full evidence paragraph on the wetlands source",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t3_evidence_integration.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Integrate evidence into a paragraph on a NEW topic (bank-partitioned)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t4_analysis.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Completion: the device is given, you supply Effect + Warrant",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t4_analysis.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Full DEW analysis of the Chopin excerpt (authored prompt)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t4_analysis.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Analyze a DIFFERENT author's move (weather explanatory, partitioned)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t5_rubric_revision.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Write the paragraph you predicted, then see the gap",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t5_rubric_revision.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Independent performance: write to a 3, then reveal",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t5_rubric_revision.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Transfer the CHECK move to a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t6_editing_in_context.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Short revision: fix the modifier, keep the meaning (highways)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t6_editing_in_context.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "TRANSFER",
+    "title": "Short revision on a NEW passage: fix the modifier, keep the meaning (weather)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t7_essay_assembly.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Complete the partial SPO plan (scaffold)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t7_essay_assembly.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Build the full SPO plan from scratch (scaffold faded)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t7_essay_assembly.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Draft ONE body paragraph from your plan (the paragraph rung)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_t8_synthesis.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "SUPPORTED",
+    "title": "Combine two given facts into one attributed claim (claim provided)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_t8_synthesis.py",
+    "dir": "Lesson_Bank_G10",
+    "role": "INDEPENDENT",
+    "title": "Write ONE synthesis paragraph from both sources (the paragraph rung)",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l01_scope_claim.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Scope the claim: fill in whom and what",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l01_scope_claim.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Scope a claim on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l01_scope_claim.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Scope a claim on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l02_nuanced_claim.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Finish the claim: fill in the not-X and the but-Y",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l02_nuanced_claim.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Write a nuanced claim on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l02_nuanced_claim.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Write a nuanced claim on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l03_qualified_claim.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Finish the claim: fill in the limit, the position, and the reason",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l03_qualified_claim.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Write a qualified claim on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l03_qualified_claim.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Write a qualified claim on a NEW topic",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l04_line_of_reasoning.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Warm up: chain just two reasons",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l04_line_of_reasoning.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Build a line of reasoning on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l04_line_of_reasoning.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Build a line of reasoning on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l05_sufficiency.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Develop the thin claim",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l05_sufficiency.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Develop a claim on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l05_sufficiency.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Develop a claim on a NEW topic",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l06_authors_choice.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Analyze a choice and its audience effect",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l06_authors_choice.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Write a rhetorical-analysis sentence on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l06_authors_choice.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Write a rhetorical-analysis sentence on a NEW text",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l07_choice_audience_purpose.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Chain choice, effect, and purpose (with a frame)",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l07_choice_audience_purpose.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Reach the purpose on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l07_choice_audience_purpose.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Reach the purpose on a NEW text",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l08_evidence_framing.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Warm up: trim and frame one quote",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l08_evidence_framing.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Trim and frame quotes in a full paragraph",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l08_evidence_framing.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Trim and frame quotes on a NEW text",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l09_ra_paragraph_check.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Revise the summary paragraph into analysis",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l09_ra_paragraph_check.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Revise a provided paragraph on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l09_ra_paragraph_check.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Revise a summary paragraph on a NEW text",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l10_assess_credibility.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Warm up: fill in the grounds",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l10_assess_credibility.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Assess credibility on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l10_assess_credibility.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Assess credibility on a NEW source",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l11_bias_limits.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Warm up: fill in a strengths-and-limits frame",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l11_bias_limits.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Evaluate strengths and limits on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l11_bias_limits.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Evaluate strengths and limits on a NEW source",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l17_source_free_position.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Write a position anchored to your own example",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l17_source_free_position.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Anchor a position on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l17_source_free_position.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Anchor a position on a NEW prompt",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l18_specific_example.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Warm up: build the example with a frame",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l18_specific_example.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Develop a specific example on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l18_specific_example.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Develop a specific example on a NEW prompt",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l20_multiperspective_position.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Finish the position: fill in the frame",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l20_multiperspective_position.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Weigh and stake on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l20_multiperspective_position.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Weigh and stake on a NEW set",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l21_weigh_perspectives.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Warm up: write the limit-and-advance turn",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l21_weigh_perspectives.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Weigh a perspective on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l21_weigh_perspectives.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Weigh a perspective on a NEW set",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l25_emphasis_order.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Reorder to end on the strongest reason",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l25_emphasis_order.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Order for emphasis on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l25_emphasis_order.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Order for emphasis on a NEW source",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l26_concision_pass.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Tighten this sentence",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l26_concision_pass.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Run a concision pass on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l26_concision_pass.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Run a concision pass on a NEW source",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g11_l29_which_task_type.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "SUPPORTED",
+    "title": "Name the type and plan its moves",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l29_which_task_type.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "INDEPENDENT",
+    "title": "Name the type and plan on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g11_l29_which_task_type.py",
+    "dir": "Lesson_Bank_G11",
+    "role": "TRANSFER",
+    "title": "Name the type and plan on a NEW prompt",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_c1201_sophistication.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "SUPPORTED",
+    "title": "Completion: the claim is given, you supply the sophistication moves",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_c1202_timed_mastery.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "SUPPORTED",
+    "title": "Guided: write your time budget + plan in the plan box",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g12_l01_situate_context.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "SUPPORTED",
+    "title": "Situate the question, then stake a claim",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g12_l01_situate_context.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "INDEPENDENT",
+    "title": "Situate on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g12_l01_situate_context.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "TRANSFER",
+    "title": "Situate on a NEW source",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g12_l02_genuine_complexity.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "SUPPORTED",
+    "title": "State a claim that names a real tension",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g12_l02_genuine_complexity.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "INDEPENDENT",
+    "title": "Show genuine complexity on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g12_l02_genuine_complexity.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "TRANSFER",
+    "title": "Show genuine complexity on a NEW source",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g12_l03_hold_tension.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "SUPPORTED",
+    "title": "Warm up: write the pivot sentence",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g12_l03_hold_tension.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "INDEPENDENT",
+    "title": "Hold the tension on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g12_l03_hold_tension.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "TRANSFER",
+    "title": "Hold the tension on a NEW source",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g12_l12_which_frq_type.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "SUPPORTED",
+    "title": "Name the type and plan its moves",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g12_l12_which_frq_type.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "INDEPENDENT",
+    "title": "Name the type and plan on your own",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g12_l12_which_frq_type.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "TRANSFER",
+    "title": "Name the type and plan on a NEW writing task",
+    "unit": "paragraph"
+  },
+  {
+    "file": "lesson_g12_l15_voice_syntax.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "SUPPORTED",
+    "title": "Reshape this sentence for emphasis",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g12_l15_voice_syntax.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "INDEPENDENT",
+    "title": "Shape voice with syntax on your own",
+    "unit": "sentence"
+  },
+  {
+    "file": "lesson_g12_l15_voice_syntax.py",
+    "dir": "Lesson_Bank_G12",
+    "role": "TRANSFER",
+    "title": "Shape voice with syntax on a NEW source",
+    "unit": "sentence"
+  }
+]

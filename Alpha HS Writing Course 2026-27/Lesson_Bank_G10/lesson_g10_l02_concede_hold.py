@@ -247,7 +247,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught topic (source already read at STEP 2) =====
         Slot("SUPPORTED", "production_frq", "Write a concede-and-hold claim",
-             ref="", bank="daylight_saving", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="daylight_saving", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the two moves: concede, then hold.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
@@ -274,7 +274,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write on the taught topic (only 2 bound frames), no frame, say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a concede-and-hold claim on your own",
-             ref="", bank="daylight_saving", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="daylight_saving", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. The task: should the United States stop switching the clocks twice a year?",
                  closer="Concede a real objection, then hold a clear side with a reason. This concede-and-hold "
@@ -289,7 +289,7 @@ LESSON = Lesson(
                    "short framing, then take a side. Notice the strongest objection to concede without giving up "
                    "your position. You only need the topic and the two sides.")),
         Slot("TRANSFER", "production_frq", "Write a concede-and-hold claim on a NEW topic",
-             ref="", bank="school_year", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="school_year", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. The task: should the United States lengthen the school year with more instructional days?",
                  closer="Write ONE concede-and-hold claim: concede a real objection, then hold a clear position "

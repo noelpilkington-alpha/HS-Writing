@@ -233,7 +233,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) =====
         Slot("SUPPORTED", "production_frq", "Finish the controlling idea: set the focus, preview the parts",
-             ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the two moves.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
@@ -256,7 +256,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: autonomy (own angle) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write one controlling idea for the water cycle",
-             ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Read the EXACT task and answer it, not just the topic. The "
                        "task: explain how the water cycle RECYCLES the same water again and again.",
@@ -273,7 +273,7 @@ LESSON = Lesson(
                    "before, new topic. You only need the topic and its main parts. Remember, this is an explain "
                    "task, so you take no side.")),
         Slot("TRANSFER", "production_frq", "Write a controlling idea on a NEW topic",
-             ref="", bank="photosynthesis", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="photosynthesis", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic, and again answer the EXACT task, not the whole topic. The task: explain what "
                        "photosynthesis MAKES and RELEASES.",

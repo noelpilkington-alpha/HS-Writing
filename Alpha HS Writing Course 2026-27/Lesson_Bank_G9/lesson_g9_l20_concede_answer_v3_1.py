@@ -270,7 +270,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed concede-and-answer write on the taught topic (source read at STEP 2) =====
         Slot("SUPPORTED", "production_frq", "Write a concede-and-answer sentence (with a frame)",
-             ref="", bank="free_transit", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="free_transit", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="The claim is: cities should make public transit free to ride. Use the frame below so you "
                        "can focus on the two moves: concede, then answer.",
@@ -298,7 +298,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold concede-and-answer write on the taught topic (no frame) =====
         Slot("INDEPENDENT", "production_frq", "Write a concede-and-answer sentence on your own",
-             ref="", bank="free_transit", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="free_transit", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. The task: should cities make public transit free to ride? Take "
                        "a side.",
@@ -314,7 +314,7 @@ LESSON = Lesson(
                    "the short framing, then take a side. Notice the strongest objection to concede without giving "
                    "up your position, and get ready to answer it. You only need the topic and the two sides.")),
         Slot("TRANSFER", "production_frq", "Write a concede-and-answer sentence on a NEW topic",
-             ref="", bank="four_day_week", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="four_day_week", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. The task: should schools switch to a four-day school week? Take a side.",
                  closer="Write ONE concede-and-answer sentence: concede a real objection, then answer it with a "

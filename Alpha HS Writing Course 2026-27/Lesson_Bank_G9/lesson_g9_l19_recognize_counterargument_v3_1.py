@@ -246,7 +246,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed NAMING write on the taught topic (source already read at STEP 2) =====
         Slot("SUPPORTED", "production_frq", "Name the other side (with a frame)",
-             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Here is a claim: schools should require community service to graduate. You are not "
                        "arguing your own side yet. Just name the other side, using the frame below.",
@@ -275,7 +275,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold naming write on the taught topic (no frame) =====
         Slot("INDEPENDENT", "production_frq", "Name the other side on your own",
-             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. The claim is: schools should require community service to "
                        "graduate.",
@@ -292,7 +292,7 @@ LESSON = Lesson(
                    "then picture a writer whose claim is that schools should pay students for good grades. Notice "
                    "the strongest point AGAINST paying. You only need the topic and the two sides.")),
         Slot("TRANSFER", "production_frq", "Name the other side on a NEW topic",
-             ref="", bank="pay_for_grades", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="pay_for_grades", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. The claim is: schools should pay students for good grades.",
                  closer="Write ONE sentence that names the strongest counterargument, the best point someone who "

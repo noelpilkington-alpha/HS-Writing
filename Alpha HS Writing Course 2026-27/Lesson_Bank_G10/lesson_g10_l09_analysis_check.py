@@ -217,7 +217,7 @@ LESSON = Lesson(
                          "an overrate."},
              ]),
         Slot("SUPPORTED", "production_frq", "Revise the summary paragraph into analysis",
-             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="Revise the summary paragraph below into analysis. Keep it accurate to the weather text, "
                        "but make it analyze, not retell.",
@@ -250,7 +250,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: revise a PROVIDED paragraph with no checklist scaffold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided paragraph on your own",
-             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now, no checklist. Revise the summary paragraph below into analysis.",
                  setapart_block=setapart("Paragraph to revise:",
@@ -268,7 +268,7 @@ LESSON = Lesson(
                    "so knowing its choices (its 'wasted ground' opening, its order, its comparisons) lets you "
                    "turn summary into analysis. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Revise a summary paragraph on a NEW text",
-             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="New text, same move. Revise the summary paragraph below into analysis.",
                  setapart_block=setapart("Paragraph to revise:",

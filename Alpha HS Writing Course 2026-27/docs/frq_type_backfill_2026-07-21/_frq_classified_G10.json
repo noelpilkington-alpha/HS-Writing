@@ -1,0 +1,542 @@
+[
+ {
+  "file": "lesson_g10_l01_counterclaim_claim.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Finish the claim: concede, then hold",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in frame 'Although ___, ___ because ___'; produce new claim, no provided draft",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l01_counterclaim_claim.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Write a counterclaim-aware claim on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write, 'no frame'; write ONE counterclaim-aware claim",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l01_counterclaim_claim.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Write a counterclaim-aware claim on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write on NEW topic, no frame",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l02_concede_hold.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Write a concede-and-hold claim",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in frame 'Although ___, ___ because ___'; produce new claim",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l02_concede_hold.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Write a concede-and-hold claim on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write, 'no frame'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l02_concede_hold.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Write a concede-and-hold claim on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write on NEW topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l03_counterclaim_paragraph.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Concede and answer in two sentences",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "given POSITION starter, then WRITE new CONCEDE + ANSWER sentences (build onto position, no draft to fix)",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l03_counterclaim_paragraph.py",
+  "slot_index_in_file": 7,
+  "role": "INDEPENDENT",
+  "title": "Write a full counterargument paragraph",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "'build the whole paragraph' from prompt, no draft",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l03_counterclaim_paragraph.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Write a counterargument paragraph on a NEW topic",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "write full paragraph on NEW topic, no draft",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l04_analytical_claim.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Write a claim about the craft",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in frame 'Chopin uses ___ to ___'; produce new claim",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l04_analytical_claim.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Write an analytical claim on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write, 'no frame'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l04_analytical_claim.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Write an analytical claim on a NEW text",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "write new analytical claim on NEW text",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l05_claim_craft_vs_content.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Write a craft claim on a close call",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in frame 'Chopin ___ so ___'; produce new claim",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l05_claim_craft_vs_content.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Write a craft claim on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write, 'no frame'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l05_claim_craft_vs_content.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Write a craft claim on a NEW text",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "write new craft claim on NEW text",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l06_device_to_effect.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Name a device and state its effect",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in frame 'Chopin uses ___ so ___'; produce new sentence",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l06_device_to_effect.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Write a device-to-effect sentence on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write, 'no frame'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l06_device_to_effect.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Write a device-to-effect sentence on a NEW text",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "write new device-to-effect sentence on NEW text",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l07_significance.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Add the warrant to a device-to-effect statement",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "given device+effect starter, fill-in frame to ADD a warrant (extend, not fix a draft)",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l07_significance.py",
+  "slot_index_in_file": 7,
+  "role": "INDEPENDENT",
+  "title": "Write a device-effect-warrant passage on your own",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "cold write full DEW passage, 'no frame'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l07_significance.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Write a device-effect-warrant passage on a NEW text",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "write new DEW passage on NEW text",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l08_device_chain.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Chain two choices toward one point",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "fill-in frame 'The author ___ then ___ so ___'; produce new paragraph",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l08_device_chain.py",
+  "slot_index_in_file": 7,
+  "role": "INDEPENDENT",
+  "title": "Write a device-chain paragraph on your own",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "cold write chain paragraph, 'no frame'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l08_device_chain.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Write a device-chain paragraph on a NEW text",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "write new chain paragraph on NEW text",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l09_analysis_check.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Revise the summary paragraph into analysis",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Paragraph to revise:' present with embedded summary draft; 'Revise ... into analysis'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l09_analysis_check.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Revise a provided paragraph on your own",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Paragraph to revise:' present with embedded draft; 'Revise the summary paragraph'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l09_analysis_check.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Revise a summary paragraph on a NEW text",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Paragraph to revise:' present with embedded draft on NEW text",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l10_add_delete.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Revise: one delete, one add",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro embeds Draft '...' with off-purpose sentence; 'Revise this draft'; frame is revision scaffold",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l10_add_delete.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Revise a provided draft on your own",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro embeds Draft '...'; 'Revise so every sentence serves the point'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l10_add_delete.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Revise a provided draft on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro embeds Draft '...' on NEW topic; 'Revise so every sentence serves the point'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l11_logical_sequence.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Reorder a scrambled draft",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro embeds three scrambled sentences; 'Reorder these ... write them in the new order'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l11_logical_sequence.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Reorder a provided draft on your own",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro embeds sentences to reorder; 'Reorder a provided draft'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l11_logical_sequence.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Reorder a provided draft on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro embeds sentences to reorder on NEW topic",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l12_strong_weak_twin.py",
+  "slot_index_in_file": 7,
+  "role": "SUPPORTED",
+  "title": "Rewrite the weak twin using the frame",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro embeds weak twin quote; 'Turn this weak twin into a strong one', replace the circular reason (transform draft)",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l12_strong_weak_twin.py",
+  "slot_index_in_file": 9,
+  "role": "INDEPENDENT",
+  "title": "Improve a weak draft on your own",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "setapart 'Weak draft:' present; 'Turn this weak twin into a strong one'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l12_strong_weak_twin.py",
+  "slot_index_in_file": 11,
+  "role": "TRANSFER",
+  "title": "Improve a weak draft on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "setapart 'Weak draft:' present on NEW topic; 'Turn this weak twin into a strong one'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l13_error_autopsy.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Name the type and fix the draft",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Draft to diagnose:' present; 'rewrite the draft'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l13_error_autopsy.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Name the type and fix a draft on your own",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Draft to diagnose:' present; 'rewrite the draft'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l13_error_autopsy.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Name the type and fix a draft on a NEW topic",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Draft to diagnose:' present on NEW topic; 'rewrite the draft'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l14_revise_for_purpose.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Revise the draft for purpose",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Draft to revise:' present; 'Revise the draft ... combining all three moves'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l14_revise_for_purpose.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Revise a provided draft on your own",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Draft to revise:' present; 'Revise the draft'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l14_revise_for_purpose.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Revise a provided draft on a NEW topic",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Draft to revise:' present on NEW topic; 'Revise the draft'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l17_cross_source.py",
+  "slot_index_in_file": 7,
+  "role": "SUPPORTED",
+  "title": "Weave two sources into one point",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "setapart 'Fill in this frame:' (fill-in frame); weave two sources into a new point, no draft",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l17_cross_source.py",
+  "slot_index_in_file": 9,
+  "role": "INDEPENDENT",
+  "title": "Write a woven point on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write woven point, 'no frame'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l17_cross_source.py",
+  "slot_index_in_file": 11,
+  "role": "TRANSFER",
+  "title": "Write a woven point on a NEW set",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "write new woven point on NEW set",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l18_agreement_tension.py",
+  "slot_index_in_file": 7,
+  "role": "SUPPORTED",
+  "title": "Name the agreement and the tension",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "setapart 'Fill in this frame:' (fill-in frame); produce new relationship sentence, no draft",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l18_agreement_tension.py",
+  "slot_index_in_file": 9,
+  "role": "INDEPENDENT",
+  "title": "Name agreement and tension on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write, 'no frame'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l18_agreement_tension.py",
+  "slot_index_in_file": 11,
+  "role": "TRANSFER",
+  "title": "Name agreement and tension on a NEW set",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "write new agreement/tension sentence on NEW set",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l23_cross_text_revision.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Revise the provided cross-text draft",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Draft to revise:' present; 'Revise the draft ... close both synthesis gaps'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l23_cross_text_revision.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Revise a provided cross-text draft on your own",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Draft to revise:' present; 'Revise the draft'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l23_cross_text_revision.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Revise a cross-text draft on a NEW set",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Draft to revise:' present on NEW set; 'Revise the draft'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l26_precision_pass.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Run a precision pass on the provided draft",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Paragraph to revise:' present; 'Run a precision pass on the paragraph below'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l26_precision_pass.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Run the precision pass on your own",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Paragraph to revise:' present; 'Run a precision pass'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g10_l26_precision_pass.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Run a precision pass on a NEW topic",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart 'Paragraph to revise:' present on NEW topic; 'Run a precision pass'",
+  "review_flag": false
+ }
+]

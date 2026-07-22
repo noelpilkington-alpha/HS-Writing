@@ -211,7 +211,7 @@ LESSON = Lesson(
                          "nothing to weave or cite; naming it synthesis would run the wrong moves."},
              ]),
         Slot("SUPPORTED", "production_frq", "Name the type and plan its moves",
-             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=True, unit="paragraph",
+             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="You just read a set of four sources on whether the United States grid can run mostly on "
                        "renewable energy. Write a short plan that names this writing task's type and its first moves.",
@@ -246,7 +246,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: name-the-type-and-plan with no frame + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Name the type and plan on your own",
-             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=True, unit="paragraph",
+             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. For the writing task you read, write a short plan that names its type "
                        "from a real tell and lists the first moves that type rewards.",
@@ -263,7 +263,7 @@ LESSON = Lesson(
                    "or a general question with no passage) so you can name its type from the tell yourself. The "
                    "prompt stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Name the type and plan on a NEW writing task",
-             ref="", bank="ra_speech_2", rubric_ref="rc.ap", scored=True, unit="paragraph",
+             ref="", bank="ra_speech_2", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New writing task, same move. The writing task gives you the single passage above and asks: write an essay "
                        "that analyzes the choices the speaker makes to persuade his audience, using evidence from "

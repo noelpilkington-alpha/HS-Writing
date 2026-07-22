@@ -224,7 +224,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught source (already read at TEACH) =====
         Slot("SUPPORTED", "production_frq", "Fold a quote into your own sentence",
-             ref="", bank="phone_ban", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="phone_ban", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the two moves: name the source, then fold the quote in.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
@@ -251,7 +251,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write on the taught source, no frame; autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Integrate a quote on your own",
-             ref="", bank="phone_ban", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="phone_ban", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Pick one quoted fact you actually find convincing from the phone source.",
                  closer="Fold it into a sentence you build and name the source with an attributive tag, so the "
@@ -266,7 +266,7 @@ LESSON = Lesson(
                    "the whole thing and note one specific fact you could weave into your own sentence, and note "
                    "who reports it. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Integrate a quote on a NEW topic",
-             ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic, same move. Pick one fact from the water-cycle source.",
                  closer="Fold it into a sentence you build and name the source with an attributive tag, so the "

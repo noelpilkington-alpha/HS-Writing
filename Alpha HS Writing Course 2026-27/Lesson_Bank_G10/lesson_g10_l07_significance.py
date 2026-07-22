@@ -197,7 +197,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught source (already read at STEP 2) =====
         Slot("SUPPORTED", "production_frq", "Add the warrant to a device-to-effect statement",
-             ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Start from this device and effect: the author opens with something readers overlook, "
                        "which makes the interstate feel familiar. Use the frame so you can focus on the warrant.",
@@ -227,7 +227,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write, no frame, free choice of device + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a device-effect-warrant passage on your own",
-             ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Choose any one authorial choice in the highways article, how "
                        "it opens, the order of its sections, an organizing question it asks.",
@@ -245,7 +245,7 @@ LESSON = Lesson(
                    "comparisons it draws. Read it once, then find one choice and be ready to reach why its "
                    "effect matters to the author's purpose. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Write a device-effect-warrant passage on a NEW text",
-             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New text, same move. Pick one choice the wetlands author makes, for example opening with "
                        "the old 'wasted ground' view of a swamp.",

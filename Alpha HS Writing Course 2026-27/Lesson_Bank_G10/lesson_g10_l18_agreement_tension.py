@@ -229,7 +229,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: name the relationship with a fill-in FRAME (the highest-value scaffold) =====
         Slot("SUPPORTED", "production_frq", "Name the agreement and the tension",
-             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Using the congestion-pricing set, write ONE sentence that names the relationship between "
                        "the two sources.",
@@ -255,7 +255,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: name the relationship on your own (no frame) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Name agreement and tension on your own",
-             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Using the congestion-pricing set, write ONE sentence that names "
                        "the relationship between the sources.",
@@ -271,7 +271,7 @@ LESSON = Lesson(
                    "twice-yearly clock change and keep one clock). Because your job is to name the relationship, "
                    "read both and ask where they agree and where they clash. The texts stay on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Name agreement and tension on a NEW set",
-             ref="", bank="daylight_saving", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="daylight_saving", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New set. Using the daylight-saving sources, write ONE sentence naming the relationship "
                        "between them.",

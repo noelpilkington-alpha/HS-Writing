@@ -220,7 +220,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write, build the two answering parts onto a given position =====
         Slot("SUPPORTED", "production_frq", "Name the other side, then answer it", ref="", bank="school_lunch",
-             rubric_ref="rc.staar", scored=True, unit="paragraph",
+             rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="Warm up the build. Start from the given position, then add the two parts that answer the other side.",
                  setapart_block=setapart("Copy this frame, then fill in the two blanks:",
@@ -252,7 +252,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold short-paragraph build on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Write a short counterargument paragraph", ref="", bank="school_lunch",
-             rubric_ref="rc.staar", scored=True, unit="paragraph",
+             rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, build the whole short paragraph.",
                  closer="Write ONE short counterargument paragraph on whether schools should give free meals to "
@@ -269,7 +269,7 @@ LESSON = Lesson(
                    "their users are. Read and note the strongest objection to your side and a reason you could use "
                    "to answer it. You only need the topic and the two sides.")),
         Slot("TRANSFER", "production_frq", "Write a short counterargument paragraph on a NEW topic", ref="",
-             bank="social_media_age", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             bank="social_media_age", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New topic, same build. The task: argue a position on whether social media apps should have to check users' ages.",
                  closer="Write ONE short counterargument paragraph with all three parts: state your POSITION, "

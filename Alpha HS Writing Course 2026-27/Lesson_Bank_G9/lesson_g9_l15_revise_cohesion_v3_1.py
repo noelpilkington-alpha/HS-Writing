@@ -180,7 +180,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: scaffolded revision of a PROVIDED paragraph (draft in a set-apart block + a checklist) =====
         Slot("SUPPORTED", "production_frq", "Revise the provided paragraph for cohesion",
-             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="Revise the paragraph below so it reads as one connected point. Keep the ideas; change "
                        "only the transitions, the reference, and small wording needed to fit them.",
@@ -210,7 +210,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: revise a PROVIDED paragraph with no checklist scaffold (still on the taught topic) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided paragraph on your own",
-             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now, no checklist. Revise the paragraph below for cohesion, and watch for one "
                        "link that is really a contrast.",
@@ -228,7 +228,7 @@ LESSON = Lesson(
                    "orientation so the topic is familiar. Again, you are connecting a provided paragraph, not "
                    "writing from scratch.")),
         Slot("TRANSFER", "production_frq", "Revise a provided paragraph on a NEW topic",
-             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="New topic. Revise the paragraph below for cohesion, the same move as the meals "
                        "paragraphs.",

@@ -250,7 +250,7 @@ LESSON = Lesson(
                   "why": "Look again. 'Bad for people' does not name what the ash actually does; it only restates 'harmful,' so no real reason is given. This is the pull to over-rate a warrant that sounds fine but explains nothing. It scores 1."},
              ]),
         Slot("SUPPORTED", "production_frq", "Repair the weak warrant",
-             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="Revise this provided draft so the warrant explains a real reason, not a restatement.",
                  setapart_block=setapart("Weak draft to fix:", "Volcanic ash is harmful because it is bad for people.", "red"),
@@ -273,7 +273,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold revise a provided draft + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided draft on your own",
-             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now. Revise this provided draft so the warrant explains a real reason, not "
                        "a restatement.",
@@ -290,7 +290,7 @@ LESSON = Lesson(
                    "is familiar. Again, you are checking and repairing a provided draft's reasoning, not writing "
                    "from scratch.")),
         Slot("TRANSFER", "production_frq", "Revise a provided draft on a NEW topic",
-             ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="New topic. Revise this provided draft so the warrant explains a real reason (what the "
                        "cycle actually does), not a restatement.",

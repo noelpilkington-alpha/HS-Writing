@@ -220,7 +220,7 @@ LESSON = Lesson(
                          "straying sentence, not add specifics)."},
              ]),
         Slot("SUPPORTED", "production_frq", "Name the type and fix the draft",
-             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="Diagnose the draft below, then fix it. Run the check to find the error type yourself, "
                        "then rewrite the draft so the fix matches that type.",
@@ -253,7 +253,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: name-and-fix a PROVIDED draft with no checklist scaffold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Name the type and fix a draft on your own",
-             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now, no checklist. Diagnose the draft below, then fix it.",
                  setapart_block=setapart("Draft to diagnose:",
@@ -270,7 +270,7 @@ LESSON = Lesson(
                    "Again, you are naming the error type in a draft that is given to you, then giving it the fix "
                    "that type calls for.")),
         Slot("TRANSFER", "production_frq", "Name the type and fix a draft on a NEW topic",
-             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="New topic, same move. Diagnose the draft below, then fix it.",
                  setapart_block=setapart("Draft to diagnose:",

@@ -212,7 +212,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed edit (fill-in frame) on the taught topic (source read at TEACH step 2) =====
         Slot("SUPPORTED", "production_frq", "Revise: one delete, one add",
-             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="Revise this draft so every sentence serves the point. Point: wetlands protect against "
                        "floods. Draft: 'Wetlands protect against floods. Some people think swamps look ugly. They "
@@ -239,7 +239,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold edit on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided draft on your own",
-             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now, no frame. Point: wetlands clean water. Draft: 'Wetlands clean the water "
                        "that flows through them. Wetlands were once seen as wasted ground. The plants and soil "
@@ -258,7 +258,7 @@ LESSON = Lesson(
                    "you are revising a provided draft, not writing from scratch. The text stays on screen while "
                    "you work.")),
         Slot("TRANSFER", "production_frq", "Revise a provided draft on a NEW topic",
-             ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="New topic. Point: the interstate system moves goods efficiently. Draft: 'The interstate "
                        "lets trucks cross the country quickly. The first interstates were funded in 1956. This "

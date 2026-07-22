@@ -49,7 +49,22 @@ KIND_QTI = {
 }
 NATIVE_JSON_SAFE = {"choice", "extended-text", "order", "text-entry"}       # JSON POST safe
 NATIVE_XML_REQUIRED = {"inline-choice", "hottext", "match"}                 # XML POST required (still native)
-RUBRIC_CONFIGS = {"rc.staar", "rc.mcas", "rc.ohio", "rc.4trait", "rc.ap"}
+RUBRIC_CONFIGS = {"rc.staar", "rc.sbac", "rc.mcas", "rc.ohio", "rc.4trait", "rc.ap"}
+# ^ rc.sbac added 2026-07-21 (G9/10 CCSS scorer, bake-off winner) to reconcile drift with the grader.
+
+# GRADING REGENERATION CONTRACT (design: grader repo CCSS_G910/Grading_Regeneration_Contract_DESIGN.md).
+# A scored production_frq declares (unit, frq_type, rubric_ref); the grader routes off (unit, frq_type).
+# frq_type = the CONSTRUCT: revision (transform a provided draft) | writing (produce from a task).
+FRQ_TYPES = {"revision", "writing"}
+# Thin CAPABILITY MIRROR of the grader's SUPPORTED (grader/engine/routing.py is the source of truth).
+# "unit:frq_type" strings the deployed grader accepts. A drift test (pipeline/tests) asserts this equals the
+# grader's capability_manifest()['supported']; if the grader adds/removes a combo, the test fails until synced.
+GRADER_SUPPORTED_TUPLES = {
+    "sentence:revision", "sentence:writing",
+    "paragraph:revision", "paragraph:writing",
+    "multi_paragraph:revision", "multi_paragraph:writing",
+    "essay:revision", "essay:writing",
+}
 
 # the 8 reusable types (G10_Model_Lesson_Specs.md) + their mnemonic + status
 LESSON_TYPES = {
@@ -131,6 +146,10 @@ class Slot:
     unit: str = ""           # production slots: the UNIT of production written here.
                              # "" = not a sized production; else one of UNIT_LADDER (sentence..essay).
                              # Enforces the TWR sentence->paragraph->composition scaffold (see gates below).
+    frq_type: str = ""       # scored production_frq only: the grading CONSTRUCT, one of FRQ_TYPES.
+                             # "revision" = transform a PROVIDED draft; "writing" = produce from a task.
+                             # With `unit`, forms the (unit, frq_type) tuple the grader routes off (regeneration
+                             # contract). REQUIRED for scored sentence/paragraph; essays default to "writing".
     choices: list = field(default_factory=list)   # OPTIONAL explicit MCQ options for discrimination/predict:
                              # [{"id":"A","text":"...","correct":bool,"why":"why this option is right/wrong"}].
                              # When present, the renderer uses these directly (reliable per-choice feedback)
@@ -424,14 +443,40 @@ def gate_calibration_discipline(L: Lesson) -> tuple[bool, str]:
                   else "no self_score slot (n/a); no person-praise")
 
 def gate_grader_routing(L: Lesson) -> tuple[bool, str]:
-    """Every production_frq must carry a valid rc.* rubric config the deployed grader implements."""
+    """Every SCORED production_frq must declare a grading tuple the deployed grader can route + score.
+
+    REGENERATION CONTRACT: grading routes off the DECLARED (unit, frq_type, rubric_ref) tuple, never off
+    content. This gate is the futureproofing lever — a regenerated/authored lesson whose declared tuple the
+    grader can't grade FAILS HERE (at authoring, via tier_a_regression), not silently at grade time. Checks:
+      - rubric_ref in RUBRIC_CONFIGS (the standard family the grader implements)
+      - unit in UNIT_LADDER
+      - frq_type in FRQ_TYPES, REQUIRED for scored sentence/paragraph (load-bearing there; essays default writing)
+      - (unit:frq_type) in GRADER_SUPPORTED_TUPLES (the grader's mirrored capability set)
+    Unscored production_frq (e.g. a SUPPORTED plan) only needs a valid rubric_ref (it isn't graded).
+    """
     prods = [s for s in L.slots if s.kind == "production_frq"]
     if not prods:
         return False, "no production_frq slot (a lesson must reach production)"
     for s in prods:
         if s.rubric_ref not in RUBRIC_CONFIGS:
             return False, f"production_frq '{s.title[:30]}' rubric_ref '{s.rubric_ref}' not in {RUBRIC_CONFIGS}"
-    return True, f"{len(prods)} production FRQ(s), all routed to a valid rc.* config"
+        if not getattr(s, "scored", False):
+            continue  # unscored (plan/scaffold) — not graded, tuple not required
+        unit = getattr(s, "unit", "") or ""
+        if unit and unit not in UNIT_RANK:
+            return False, f"production_frq '{s.title[:30]}' unit '{unit}' not in {UNIT_LADDER}"
+        frq_type = getattr(s, "frq_type", "") or ""
+        # sentence/paragraph MUST declare the construct; essay/multi_paragraph may default to "writing".
+        if unit in ("sentence", "paragraph") and frq_type not in FRQ_TYPES:
+            return False, (f"scored production_frq '{s.title[:30]}' (unit={unit}) must declare frq_type "
+                           f"in {sorted(FRQ_TYPES)} (regeneration contract); got '{frq_type}'")
+        eff_type = frq_type or "writing"
+        tuple_key = f"{unit or 'essay'}:{eff_type}"
+        if tuple_key not in GRADER_SUPPORTED_TUPLES:
+            return False, (f"scored production_frq '{s.title[:30]}' declares ({tuple_key}) which the grader "
+                           f"does not support; accepts {sorted(GRADER_SUPPORTED_TUPLES)}")
+    scored = [s for s in prods if getattr(s, "scored", False)]
+    return True, f"{len(prods)} production FRQ(s) ({len(scored)} scored); all tuples routable to the grader"
 
 def gate_timeback_native(L: Lesson) -> tuple[bool, str]:
     """Every slot's interaction must be a supported Timeback type. Flag which need XML POST."""

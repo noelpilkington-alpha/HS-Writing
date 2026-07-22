@@ -170,7 +170,7 @@ LESSON = Lesson(
                        "Perspective One cares about) and advances the writer's own position with an example. "
                        "Warmer agreement (B), fuller restatement (C), or more praise (D) add no weighing.")),
         Slot("SUPPORTED", "production_frq", "Warm up: write the limit-and-advance turn",
-             ref="", bank="mp_public_space", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="mp_public_space", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Warm up with just the turn. Here is a concede clause already written for you:",
                  setapart_block=setapart("Concede clause given:",
@@ -193,7 +193,7 @@ LESSON = Lesson(
                         "three moves in order. Use the limit you identified as your middle move, then finish by "
                         "advancing your own position with an example.")),
         Slot("INDEPENDENT", "production_frq", "Weigh a perspective on your own",
-             ref="", bank="mp_public_space", rubric_ref="rc.ap", scored=True, unit="paragraph",
+             ref="", bank="mp_public_space", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, weigh one perspective on the streets issue in a full paragraph.",
                  closer="Write ONE body paragraph that does all three moves in order: concede what the perspective "
@@ -206,7 +206,7 @@ LESSON = Lesson(
                    "perspective to weigh. There is no passage, so your example comes from your own knowledge. The "
                    "prompt stays on screen while you work. Same three moves, new topic.")),
         Slot("TRANSFER", "production_frq", "Weigh a perspective on a NEW set",
-             ref="", bank="mp_privacy_safety", rubric_ref="rc.ap", scored=True, unit="paragraph",
+             ref="", bank="mp_privacy_safety", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New set. Weigh one perspective on the privacy-and-safety issue in a full paragraph.",
                  closer="Write ONE body paragraph that concedes what the perspective gets right, names its limit, "

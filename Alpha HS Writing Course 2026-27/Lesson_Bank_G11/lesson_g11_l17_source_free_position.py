@@ -222,7 +222,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write on the taught prompt (source already read at TEACH) =====
         Slot("SUPPORTED", "production_frq", "Write a position anchored to your own example",
-             ref="", bank="sfa_curiosity_use", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="sfa_curiosity_use", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the two moves: take a side, then anchor it.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
@@ -250,7 +250,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write, no frame, autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Anchor a position on your own",
-             ref="", bank="sfa_curiosity_use", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="sfa_curiosity_use", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. The prompt: should a society support inquiry that has no "
                        "foreseeable use?",
@@ -266,7 +266,7 @@ LESSON = Lesson(
                    "the example must come from you. Note specific cases you know that could anchor a position. "
                    "The prompt stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Anchor a position on a NEW prompt",
-             ref="", bank="sfa_tradition_progress", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="sfa_tradition_progress", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New prompt. The task: does genuine progress require breaking with tradition?",
                  closer="Same position-plus-anchor move as the curiosity prompt, new topic. Take a defensible "

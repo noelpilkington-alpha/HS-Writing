@@ -222,7 +222,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught source (already read at TEACH) =====
         Slot("SUPPORTED", "production_frq", "Bring in a fact and name its source",
-             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the two moves: name the source, and bring in one real fact.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
@@ -249,7 +249,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write on the taught source + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Bring in evidence and name its source, on your own",
-             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Bring one fact from the free-meals source into a sentence.",
                  closer="Choose to quote the exact words or put the fact in your own words, then name who said "
@@ -265,7 +265,7 @@ LESSON = Lesson(
                    "Park Service and the U.S. Geological Survey. Pick one fact you could bring into a sentence. "
                    "The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Bring in evidence and name its source (NEW topic)",
-             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. Bring one fact from the migration source into a sentence, and name its source with an attributive tag.",
                  closer="Same move as the meals sentence, new topic: name who said it, and bring in one real "

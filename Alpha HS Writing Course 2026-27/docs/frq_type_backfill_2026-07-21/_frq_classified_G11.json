@@ -1,0 +1,542 @@
+[
+ {
+  "file": "lesson_g11_l01_scope_claim.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Scope the claim: fill in whom and what",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in FRAME ('For ___ the government should ___'); produces a scoped claim, no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l01_scope_claim.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Scope a claim on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write, no frame; produces a scoped claim from the prompt",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l01_scope_claim.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Scope a claim on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "produces ONE scoped claim on a new topic; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l02_nuanced_claim.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Finish the claim: fill in the not-X and the but-Y",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in FRAME (not-X-but-Y); produces a nuanced claim, no draft to fix",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l02_nuanced_claim.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Write a nuanced claim on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write, no frame; produces a nuanced claim",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l02_nuanced_claim.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Write a nuanced claim on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "produces a nuanced claim on a new topic; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l03_qualified_claim.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Finish the claim: fill in the limit, the position, and the reason",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in FRAME ('When ___ the government should ___ because ___'); produces a qualified claim",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l03_qualified_claim.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Write a qualified claim on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write, no frame; produces a qualified claim",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l03_qualified_claim.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Write a qualified claim on a NEW topic",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "produces a qualified claim on a new topic; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l04_line_of_reasoning.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Warm up: chain just two reasons",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "given a claim + two loose reasons as raw material; produces ONE new chained sentence (not a draft to fix)",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l04_line_of_reasoning.py",
+  "slot_index_in_file": 7,
+  "role": "INDEPENDENT",
+  "title": "Build a line of reasoning on your own",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "cold write; produces a line-of-reasoning paragraph from the claim",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l04_line_of_reasoning.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Build a line of reasoning on a NEW topic",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "produces a reasoning paragraph on a new topic; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l05_sufficiency.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Develop the thin claim",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart('Thin claim to develop:','The government should fund retraining... It is the right thing to do.') embeds a complete draft; closer 'Rewrite the whole claim as a paragraph'. Provided draft to transform; 'develop' keyword hence flagged",
+  "review_flag": true
+ },
+ {
+  "file": "lesson_g11_l05_sufficiency.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Develop a claim on your own",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "'no frame. Write a claim... and develop it'; produces new text, no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l05_sufficiency.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Develop a claim on a NEW topic",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "'Write a claim about energy-spending priorities and develop it'; produces new text, no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l06_authors_choice.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Analyze a choice and its audience effect",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in FRAME ('Douglass ___ to ___'); produces an analysis sentence, no draft to fix",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l06_authors_choice.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Write a rhetorical-analysis sentence on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write, no frame; produces an RA sentence",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l06_authors_choice.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Write a rhetorical-analysis sentence on a NEW text",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "produces an RA sentence on a new text; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l07_choice_audience_purpose.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Chain choice, effect, and purpose (with a frame)",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in FRAME ('Douglass ___ which ___ so that ___'); produces analysis, no draft to fix",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l07_choice_audience_purpose.py",
+  "slot_index_in_file": 7,
+  "role": "INDEPENDENT",
+  "title": "Reach the purpose on your own",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "cold write, no frame; produces an analytical passage",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l07_choice_audience_purpose.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Reach the purpose on a NEW text",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "produces an analytical passage on a new text; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l08_evidence_framing.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Warm up: trim and frame one quote",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in FRAME ('[set up], \"[quote]\", [interpret]'); produces a framed sentence, no draft to fix",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l08_evidence_framing.py",
+  "slot_index_in_file": 7,
+  "role": "INDEPENDENT",
+  "title": "Trim and frame quotes in a full paragraph",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "produces an analytical paragraph with trimmed/framed quotes; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l08_evidence_framing.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Trim and frame quotes on a NEW text",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "produces a paragraph on a new text; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l09_ra_paragraph_check.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Revise the summary paragraph into analysis",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart('Paragraph to revise:','Douglass talks about... He feels strongly.') embeds a provided draft; 'Revise the summary paragraph... Write the full revised paragraph'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l09_ra_paragraph_check.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Revise a provided paragraph on your own",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart('Paragraph to revise:','Douglass criticizes...') embeds a provided draft; 'Revise the summary paragraph below into rhetorical analysis'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l09_ra_paragraph_check.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Revise a summary paragraph on a NEW text",
+  "unit": "paragraph",
+  "frq_type": "revision",
+  "evidence": "setapart('Paragraph to revise:','Roosevelt says...') embeds a provided draft; 'Revise the summary paragraph below'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l10_assess_credibility.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Warm up: fill in the grounds",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in FRAME ('This source is credible on ___ because ___'); produces a judgment, no draft to fix",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l10_assess_credibility.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Assess credibility on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write, no frame; produces a credibility judgment",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l10_assess_credibility.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Assess credibility on a NEW source",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "produces a credibility judgment on a new source; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l11_bias_limits.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Warm up: fill in a strengths-and-limits frame",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in FRAME ('strong evidence for ___ but ___'); produces an evaluation, no draft to fix",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l11_bias_limits.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Evaluate strengths and limits on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write; produces a strengths-and-limits evaluation",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l11_bias_limits.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Evaluate strengths and limits on a NEW source",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "produces an evaluation on a new source; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l17_source_free_position.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Write a position anchored to your own example",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in FRAME ('Society should ___ because ___'); produces a position, no draft to fix",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l17_source_free_position.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Anchor a position on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write, no frame; produces an anchored position",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l17_source_free_position.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Anchor a position on a NEW prompt",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "produces an anchored position on a new prompt; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l18_specific_example.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Warm up: build the example with a frame",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "fill-in FRAME ('Claim: ___. When ___, ___; this shows ___'); produces a paragraph, no draft to fix",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l18_specific_example.py",
+  "slot_index_in_file": 7,
+  "role": "INDEPENDENT",
+  "title": "Develop a specific example on your own",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "cold write; produces a body paragraph on one specific example",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l18_specific_example.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Develop a specific example on a NEW prompt",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "produces a body paragraph on a new prompt; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l20_multiperspective_position.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Finish the position: fill in the frame",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "fill-in FRAME ('Perspective ___ is right that ___, but ___, so I hold that ___'); produces a position",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l20_multiperspective_position.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Weigh and stake on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "cold write, no frame; produces a weighed/staked position",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l20_multiperspective_position.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Weigh and stake on a NEW set",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "produces a position on a new perspective set; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l21_weigh_perspectives.py",
+  "slot_index_in_file": 5,
+  "role": "SUPPORTED",
+  "title": "Warm up: write the limit-and-advance turn",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "given a concede clause as a stem to continue; 'Write ONE sentence that finishes the turn' (produce, not fix a complete draft)",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l21_weigh_perspectives.py",
+  "slot_index_in_file": 7,
+  "role": "INDEPENDENT",
+  "title": "Weigh a perspective on your own",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "produces a body paragraph weighing a perspective; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l21_weigh_perspectives.py",
+  "slot_index_in_file": 9,
+  "role": "TRANSFER",
+  "title": "Weigh a perspective on a NEW set",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "produces a weighing paragraph on a new set; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l25_emphasis_order.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Reorder to end on the strongest reason",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro embeds a complete reason string to fix ('We should expand clean power because it can create jobs...'); 'Reorder this reason string so the strongest reason lands last' + cut the weakest",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l25_emphasis_order.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Order for emphasis on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "'Write ONE reason string... that ends on its strongest reason'; produces a new ordered string, no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l25_emphasis_order.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Order for emphasis on a NEW source",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "'Write ONE reason string on the water-use topic...'; produces a new ordered string, no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l26_concision_pass.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Tighten this sentence",
+  "unit": "sentence",
+  "frq_type": "revision",
+  "evidence": "intro embeds a complete padded sentence to fix ('In my own personal opinion...'); 'Run a concision pass on this padded sentence' / 'Tighten this sentence'",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l26_concision_pass.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Run a concision pass on your own",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "'write it first as a padded sentence, then tighten it'; student produces then self-tightens, no provided draft (self-revision framing hence flagged)",
+  "review_flag": true
+ },
+ {
+  "file": "lesson_g11_l26_concision_pass.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Run a concision pass on a NEW source",
+  "unit": "sentence",
+  "frq_type": "writing",
+  "evidence": "'write it first as a padded sentence, then run a concision pass'; student produces then self-tightens, no provided draft (self-revision framing hence flagged)",
+  "review_flag": true
+ },
+ {
+  "file": "lesson_g11_l29_which_task_type.py",
+  "slot_index_in_file": 6,
+  "role": "SUPPORTED",
+  "title": "Name the type and plan its moves",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "produces a short plan (name the task type + first moves); no draft to fix",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l29_which_task_type.py",
+  "slot_index_in_file": 8,
+  "role": "INDEPENDENT",
+  "title": "Name the type and plan on your own",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "produces a plan naming type + moves; no draft provided",
+  "review_flag": false
+ },
+ {
+  "file": "lesson_g11_l29_which_task_type.py",
+  "slot_index_in_file": 10,
+  "role": "TRANSFER",
+  "title": "Name the type and plan on a NEW prompt",
+  "unit": "paragraph",
+  "frq_type": "writing",
+  "evidence": "produces a plan on a new prompt; no draft provided",
+  "review_flag": false
+ }
+]

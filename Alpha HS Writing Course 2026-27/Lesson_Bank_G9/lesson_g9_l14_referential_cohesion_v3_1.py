@@ -209,7 +209,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed edit (fill-in frame) on the taught topic (source read at TEACH step 2) =====
         Slot("SUPPORTED", "production_frq", "Anchor the vague reference",
-             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="Anchor the reference so it points to one clear thing. Here is the sentence to fix: 'Birds "
                        "must find food, dodge storms, and cross open water. This is what makes migration so hard.'",
@@ -235,7 +235,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold edit on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Fix a vague reference on your own",
-             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now, no frame. Anchor the reference in this sentence so 'that' names exactly "
                        "what it points to: 'Young birds learn the route, build up fat, and wait for the right "
@@ -251,7 +251,7 @@ LESSON = Lesson(
                    "familiar. Again, you are anchoring a vague reference in a provided sentence, not writing "
                    "from scratch.")),
         Slot("TRANSFER", "production_frq", "Fix a vague reference on a NEW topic",
-             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="New topic. Anchor the reference in this sentence so 'this' names exactly what it points "
                        "to: 'A volcano can release ash, gas, and lava all at once. This can force whole towns to "

@@ -231,7 +231,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught source (already read at STEP 2) =====
         Slot("SUPPORTED", "production_frq", "Name a device and state its effect",
-             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the move: name a device you can point to, then "
                        "state what it does to the reader.",
@@ -260,7 +260,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write, no frame + autonomy on the device + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a device-to-effect sentence on your own",
-             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Choose any device Chopin uses in the story: the open-window "
                        "imagery, the irony of her reaction, the repeated word \"free,\" a shift in tone.",
@@ -278,7 +278,7 @@ LESSON = Lesson(
                    "phone). Read it once, then find one such choice and be ready to say what it does to the "
                    "reader. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Write a device-to-effect sentence on a NEW text",
-             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New text, same move. This time the choices are structural and wording choices, not "
                        "literary images.",

@@ -221,7 +221,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught claim (source already read at STEP 2) =====
         Slot("SUPPORTED", "production_frq", "Pick the relevant fact and bring it in named",
-             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on picking the fact that fits the claim: birds "
                        "migrate to survive the seasons.",
@@ -251,7 +251,7 @@ LESSON = Lesson(
         # ===== INDEPENDENT: cold write, SAME source but a DIFFERENT claim (cannot reuse the supported
         #        sentence) + autonomy on form + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Prove a different claim with the right evidence, on your own",
-             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame, and a different claim from the same source: scientists depend "
                        "on reports from everyday people to learn where birds travel.",
@@ -269,7 +269,7 @@ LESSON = Lesson(
                    "bullying, and on how many schools already limit phones. In a moment you will match one fact "
                    "to a claim. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Pick the relevant evidence on a NEW topic",
-             ref="", bank="phone_ban", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="phone_ban", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic, same move. The claim: phones make it harder for students to focus in class.",
                  closer="Find the fact in the phone source that actually proves THIS claim, not a true-but-"

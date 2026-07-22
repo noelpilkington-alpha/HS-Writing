@@ -184,7 +184,7 @@ LESSON = Lesson(
                        "data). Counting numbers (B), stressing tone (C), and trusting length (D) are all "
                        "trust-by-feel.")),
         Slot("SUPPORTED", "production_frq", "Warm up: fill in the grounds",
-             ref="", bank="energy_transition", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="energy_transition", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Warm up with the frame. Fill both blanks so the verdict rests on grounds, not feel:",
                  setapart_block=setapart("Copy and complete this frame:",
@@ -205,7 +205,7 @@ LESSON = Lesson(
                  closer="Now write ONE fresh grounds-based credibility judgment about the electricity-mix source, "
                         "then name which of the three questions your version fixes.")),
         Slot("INDEPENDENT", "production_frq", "Assess credibility on your own",
-             ref="", bank="energy_transition", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="energy_transition", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Write ONE credibility judgment about the electricity-mix source "
                        "that rests on grounds: name who produced it and how its claims are backed.",
@@ -218,7 +218,7 @@ LESSON = Lesson(
                    "produced its figures (the U.S. Geological Survey) and whether they can be checked. The text "
                    "stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Assess credibility on a NEW source",
-             ref="", bank="water_infrastructure", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="water_infrastructure", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New source, same move. Write ONE credibility judgment about the water-use source that rests "
                        "on grounds: name who produced it and how its claims are backed.",

@@ -218,7 +218,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed edit (fill-in frame) on the taught topic (source read at TEACH step 2) =====
         Slot("SUPPORTED", "production_frq", "Reorder to end on the strongest reason",
-             ref="", bank="energy_transition", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="energy_transition", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="Reorder this reason string so the strongest reason lands last. Here is the string to fix: "
                        "'We should expand clean power because it can create jobs, and because a reliable grid prevents "
@@ -246,7 +246,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold edit on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Order for emphasis on your own",
-             ref="", bank="energy_transition", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="energy_transition", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Write ONE reason string on the electricity-mix topic that ends "
                        "on its strongest reason (the emphatic last slot) and drops any weak filler reason.",
@@ -262,7 +262,7 @@ LESSON = Lesson(
                    "reason string for emphasis. Again, you are reordering reasons on a given topic, not writing "
                    "from scratch. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Order for emphasis on a NEW source",
-             ref="", bank="water_infrastructure", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="water_infrastructure", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New source. Write ONE reason string on the water-use topic that ends on its strongest "
                        "reason (such as aquifers being slow to refill once they are drawn down) and cuts the "

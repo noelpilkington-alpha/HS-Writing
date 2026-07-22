@@ -214,7 +214,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (name the mode + plan the thesis) on the explain task =====
         Slot("SUPPORTED", "production_frq", "Name the mode and plan the thesis",
-             ref="", bank="photosynthesis", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="photosynthesis", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="The task: EXPLAIN how photosynthesis turns light into food. The verb is explain, so "
                        "plan an informational essay: a thesis that is a controlling idea, a focus with no side.",
@@ -242,7 +242,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: no frame; autonomy + say-the-standard (Yeager). Explain task, photosynthesis. =====
         Slot("INDEPENDENT", "production_frq", "Choose the mode and plan the thesis (photosynthesis)",
-             ref="", bank="photosynthesis", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="photosynthesis", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Task: explain how photosynthesis turns light into food.",
                  closer="Name the mode the verb calls for, then write the one thesis sentence that mode calls "
@@ -256,7 +256,7 @@ LESSON = Lesson(
              body=("The next task is about volcanoes. Read this short orientation. The task will ask you to "
                    "explain, so decide which mode that calls for and plan the matching thesis.")),
         Slot("TRANSFER", "production_frq", "Choose the mode and plan the thesis on a NEW topic",
-             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. Task: explain how volcanoes form and erupt.",
                  closer="Name the mode the verb calls for, then write the one thesis sentence that mode calls "

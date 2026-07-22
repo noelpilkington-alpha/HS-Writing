@@ -189,7 +189,7 @@ LESSON = Lesson(
                        "interpret the effect. Adding a second quote (B), dropping the marks (C), or a vague "
                        "'important' label (D) neither trim nor frame.")),
         Slot("SUPPORTED", "production_frq", "Warm up: trim and frame one quote",
-             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Warm up with a single framed sentence. Here is the shape to fill in:",
                  setapart_block=setapart("Fill-in frame:",
@@ -211,7 +211,7 @@ LESSON = Lesson(
                  closer="Now write a fresh trimmed-and-framed sentence of your own on the Douglass excerpt. For "
                         "each 'no' above, apply the fix. Finish by naming the exact phrase you quoted.")),
         Slot("INDEPENDENT", "production_frq", "Trim and frame quotes in a full paragraph",
-             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="paragraph",
+             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now. Write a short analytical paragraph about the Douglass excerpt that uses "
                        "one or two TRIMMED quotes, each framed (set up and interpreted), to support one "
@@ -225,7 +225,7 @@ LESSON = Lesson(
                    "quote as proof, and think about how to trim and frame them. The text stays on screen while "
                    "you work.")),
         Slot("TRANSFER", "production_frq", "Trim and frame quotes on a NEW text",
-             ref="", bank="ra_essay_1", rubric_ref="rc.ap", scored=True, unit="paragraph",
+             ref="", bank="ra_essay_1", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New text. Write a short analytical paragraph about the Emerson excerpt that uses one or "
                        "two TRIMMED quotes, each framed, to support one analytical point.",

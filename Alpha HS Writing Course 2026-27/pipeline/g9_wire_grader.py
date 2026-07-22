@@ -13,8 +13,11 @@ GRADER CONTRACT (verified 2026-07-16 against the writing-grader service, api/ext
   - endpoint: POST {BASE}/score  (router mounted at root, NO prefix - NOT the older /timeback/score)
   - request: RUBRIC-BASED {response, rubric, grade, prompt, passage} (defensive superset), routed by the
     `rubric` field server-side - NOT the older {identifier}-parsing design.
-  - rc.staar (G9/G10, STAAR CR: Dev/Org 0-3 + Conventions 0-2 = 5 pts) is the CALIBRATED path via
-    panel_staar. All G9 scored FRQs use rc.staar. (rc.ap is deliberately uncalibrated -> 503, G11/G12.)
+  - REGENERATION CONTRACT (2026-07-21): each scored FRQ declares (unit, frq_type, rubric_ref). The wirer bakes
+    the DECLARED grain+frq_type into the grader URL (?grain=&frq_type=) so /score routes off them; rubric_ref
+    stays in the rubricBlock. sentence -> panel sentence scorers (Skill/Answer + Conv); essay/multi_paragraph
+    -> the essay engines (rc.sbac scores rc.staar items via the route-only alias). paragraph is reserved
+    (grader 501 until G9-12 calibrated). rc.ap deprecated -> 503 (G11/G12 now use rc.4trait).
 The grader URL is carried in the item's customOperator.definition; the rubric is carried in the rubricBlock.
 
 Usage:
@@ -35,6 +38,7 @@ RETRY_ON = {429, 500, 502, 503, 504}
 BACKOFF = [5, 15, 30]
 
 # rubric_ref -> the scorer rubricBlock data-part divs the platform requires to display/route grading.
+# ESSAY-grain blocks (the standard family the essay engines score against).
 _RUBRIC_BLOCKS = {
     "rc.staar": '<div data-part="development">STAAR Organization &amp; Development of Ideas (0-3)</div>'
                 '<div data-part="conventions">STAAR Conventions (0-2)</div>',
@@ -42,6 +46,35 @@ _RUBRIC_BLOCKS = {
              '<div data-part="evidence">AP Row B Evidence &amp; Commentary (0-4)</div>'
              '<div data-part="sophistication">AP Row C Sophistication (0-1)</div>',
 }
+
+# SHORT-GRAIN blocks (regeneration contract): a sentence task is scored by the sentence panel scorers
+# (Skill/Answer + Conventions), NOT the essay rubric — so the student-visible block must match. Keyed by
+# (grain, frq_type). Paragraph is reserved (grader returns 501 until G9-12 calibrated) — no block emitted yet.
+_GRAIN_RUBRIC_BLOCKS = {
+    ("sentence", "revision"): '<div data-part="skill">Skill Application (0-1)</div>'
+                              '<div data-part="conventions">Conventions (0-1)</div>',
+    ("sentence", "writing"):  '<div data-part="answer">Answer Quality (0-2)</div>'
+                              '<div data-part="conventions">Conventions (0-1)</div>',
+    # paragraph -> panel_joey 3-trait /10 (G9-12 analytical-paragraph band)
+    ("paragraph", "revision"): '<div data-part="ideas">Ideas &amp; Content (0-3)</div>'
+                               '<div data-part="organization">Organization &amp; Structure (0-3)</div>'
+                               '<div data-part="conventions">Conventions (0-4)</div>',
+    ("paragraph", "writing"):  '<div data-part="ideas">Ideas &amp; Content (0-3)</div>'
+                               '<div data-part="organization">Organization &amp; Structure (0-3)</div>'
+                               '<div data-part="conventions">Conventions (0-4)</div>',
+}
+
+
+def _grader_url_for(base_url: str, unit: str, frq_type: str) -> str:
+    """Bake the DECLARED (grain, frq_type) into the grader definition URL (regeneration contract).
+
+    The grader routes off these query params; rubric_ref stays stable in the item. Essay/multi_paragraph
+    carry no grain (back-compat: the grader defaults absent-grain -> essay). Sentence/paragraph carry both.
+    """
+    if unit in ("sentence", "paragraph"):
+        sep = "&" if "?" in base_url else "?"
+        return f"{base_url}{sep}grain={unit}&frq_type={frq_type or 'writing'}"
+    return base_url
 
 
 def g9_production_frq_items():
@@ -92,10 +125,17 @@ def wire_payload(item_id, slot, grader_url, source_html=None):
     """
     p = frq_payload(item_id, slot, source_html=source_html)   # identical to what was pushed live (prompt + source)
     rubric = getattr(slot, "rubric_ref", "") or "rc.staar"
+    unit = getattr(slot, "unit", "") or ""
+    frq_type = getattr(slot, "frq_type", "") or ""
+    # REGENERATION CONTRACT: bake the declared (grain, frq_type) into the grader URL so /score routes off them.
+    definition = _grader_url_for(grader_url, unit, frq_type)
     p["responseProcessing"] = {"templateType": "custom",
                                "customOperator": {"class": "com.alpha-1edtech.ExternalApiScore",
-                                                  "definition": grader_url}}
-    p["rubricBlock"] = {"view": "scorer", "content": _RUBRIC_BLOCKS.get(rubric, _RUBRIC_BLOCKS["rc.staar"])}
+                                                  "definition": definition}}
+    # rubricBlock must MATCH the scorer the grain routes to: sentence -> short-grain block; else essay block.
+    grain_block = _GRAIN_RUBRIC_BLOCKS.get((unit, frq_type or "writing"))
+    block = grain_block if grain_block else _RUBRIC_BLOCKS.get(rubric, _RUBRIC_BLOCKS["rc.staar"])
+    p["rubricBlock"] = {"view": "scorer", "content": block}
     p["outcomeDeclarations"] = [
         {"identifier": "SCORE", "cardinality": "single", "baseType": "float"},
         {"identifier": "FEEDBACK", "cardinality": "single", "baseType": "identifier"},

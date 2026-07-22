@@ -227,7 +227,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) =====
         Slot("SUPPORTED", "production_frq", "Finish the claim: make it specific, add a reason and the stakes",
-             ref="", bank="pay_for_grades", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="pay_for_grades", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the moves.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
@@ -254,7 +254,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: autonomy (own side) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write one sharp claim with stakes on paying for grades",
-             ref="", bank="pay_for_grades", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="pay_for_grades", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. The task: should schools pay students for good grades?",
                  closer="Pick the side you actually hold, then write ONE claim that is specific (name an amount "
@@ -268,7 +268,7 @@ LESSON = Lesson(
              body=("A new debate. Read the short framing, then take a side. Same move as before, new topic: make "
                    "your side specific and say why it matters. You only need the topic and the two sides.")),
         Slot("TRANSFER", "production_frq", "Write a sharp claim with stakes on a NEW topic",
-             ref="", bank="free_transit", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="free_transit", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. The task: should cities make public transit free to ride?",
                  closer="Write ONE arguable claim that is specific (a specific side), gives a reason, and reaches "

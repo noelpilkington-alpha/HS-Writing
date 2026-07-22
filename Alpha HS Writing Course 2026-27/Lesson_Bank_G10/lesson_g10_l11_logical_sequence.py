@@ -219,7 +219,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed reorder (fill-in frame) on the taught topic (source read at TEACH step 2) =====
         Slot("SUPPORTED", "production_frq", "Reorder a scrambled draft",
-             ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="Reorder these three sentences so each builds on the one before, then write them in the "
                        "new order: 'Today the interstate carries most long-haul freight. In the 1950s the "
@@ -251,7 +251,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold reorder on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Reorder a provided draft on your own",
-             ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now, no frame. Reorder these sentences so each builds on the one before, then "
                        "write them in the new order: 'Today, whole suburbs cluster around the interstate exits. "
@@ -268,7 +268,7 @@ LESSON = Lesson(
                    "familiar. Again, you are reordering sentences that are given to you, not writing from "
                    "scratch. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Reorder a provided draft on a NEW topic",
-             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="New topic. Reorder these sentences so each builds on the one before, then write them in "
                        "the new order: 'Finally, factories turn the sorted material into new products. A truck "

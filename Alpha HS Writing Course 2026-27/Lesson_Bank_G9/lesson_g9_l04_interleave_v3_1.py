@@ -196,7 +196,7 @@ LESSON = Lesson(
                        "stages'). More reasons (B), a longer sentence (C), or a stronger opinion (D) all keep it "
                        "an argue product, still wrong for this verb.")),
         Slot("SUPPORTED", "production_frq", "Decode the verb, then write the right product",
-             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="The task: EXPLAIN how a volcano erupts. The verb is explain, so the product is a "
                        "controlling idea: a focus that previews the parts, no side.",
@@ -217,7 +217,7 @@ LESSON = Lesson(
                  closer="Now rewrite the weak draft into one controlling idea that fits EXPLAIN, then name which "
                         "check your rewrite fixed.")),
         Slot("INDEPENDENT", "production_frq", "Choose the product and write it (volcanoes)",
-             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. The task: EXPLAIN how a volcano erupts.",
                  closer="Read the verb, decide the product, and write ONE sentence that fits it: a controlling "
@@ -229,7 +229,7 @@ LESSON = Lesson(
              body=("A new topic. Read the short framing. The task will name a verb, and your job is to write the "
                    "product that verb calls for.")),
         Slot("TRANSFER", "production_frq", "Choose the product and write it on a NEW topic",
-             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. The task: EXPLAIN why some animals migrate.",
                  closer="Read the verb, decide the product, and write ONE sentence that fits it: here, a "

@@ -204,7 +204,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed edit (fill-in frame) on the taught topic (source read at TEACH step 2) =====
         Slot("SUPPORTED", "production_frq", "Rewrite the claim in a formal tone",
-             ref="", bank="four_day_week", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="four_day_week", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="Rewrite the sentence in a formal, objective tone, keeping the position. Here is the "
                        "informal sentence to fix: 'I really think a four-day week is a great idea because kids "
@@ -231,7 +231,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold edit on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Fix the tone on your own",
-             ref="", bank="four_day_week", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="four_day_week", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now, no frame. Rewrite this sentence in a formal, objective tone, keeping its "
                        "position: 'I feel like schools totally should keep five days, because honestly kids need "
@@ -248,7 +248,7 @@ LESSON = Lesson(
                    "topic is familiar. Again, you are fixing the tone of a provided sentence, keeping its "
                    "position, not writing from scratch.")),
         Slot("TRANSFER", "production_frq", "Fix the tone on a NEW topic",
-             ref="", bank="free_transit", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="free_transit", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="New topic. Rewrite this sentence in a formal, objective tone, keeping its position and "
                        "its reason: 'Honestly I think free transit would be awesome, because it would get a ton "

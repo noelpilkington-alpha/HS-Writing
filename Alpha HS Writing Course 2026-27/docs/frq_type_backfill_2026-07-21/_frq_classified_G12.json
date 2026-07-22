@@ -1,0 +1,36 @@
+[
+  {"file":"lesson_g12_l01_situate_context.py","slot_index_in_file":6,"role":"SUPPORTED","title":"Situate the question, then stake a claim","unit":"sentence",
+   "frq_type":"writing","evidence":"Fill-in FRAME ('The choice between ___ and ___ is really one instance of ___ so I hold that ___') to PRODUCE a new situated claim. No provided draft to transform; a frame is still writing.","review_flag":false},
+  {"file":"lesson_g12_l01_situate_context.py","slot_index_in_file":8,"role":"INDEPENDENT","title":"Situate on your own","unit":"sentence",
+   "frq_type":"writing","evidence":"Cold write, no frame: 'when water is scarce, should a region protect its water for food or power?' Produce a fresh situated claim from the prompt.","review_flag":false},
+  {"file":"lesson_g12_l01_situate_context.py","slot_index_in_file":10,"role":"TRANSFER","title":"Situate on a NEW source","unit":"sentence",
+   "frq_type":"writing","evidence":"New source; produce a situated claim on the workforce prompt. No draft supplied.","review_flag":false},
+
+  {"file":"lesson_g12_l02_genuine_complexity.py","slot_index_in_file":6,"role":"SUPPORTED","title":"State a claim that names a real tension","unit":"sentence",
+   "frq_type":"writing","evidence":"Fill-in FRAME ('___ [position], yet ___ [cost] so ___') to PRODUCE a new claim naming a real tension. Frame = writing.","review_flag":false},
+  {"file":"lesson_g12_l02_genuine_complexity.py","slot_index_in_file":8,"role":"INDEPENDENT","title":"Show genuine complexity on your own","unit":"sentence",
+   "frq_type":"writing","evidence":"Cold write, no frame: produce ONE claim on the workforce prompt whose complexity names a real cost. Generate text from prompt.","review_flag":false},
+  {"file":"lesson_g12_l02_genuine_complexity.py","slot_index_in_file":10,"role":"TRANSFER","title":"Show genuine complexity on a NEW source","unit":"sentence",
+   "frq_type":"writing","evidence":"New source (water); produce ONE tension-naming claim. No draft to revise.","review_flag":false},
+
+  {"file":"lesson_g12_l03_hold_tension.py","slot_index_in_file":5,"role":"SUPPORTED","title":"Warm up: write the pivot sentence","unit":"sentence",
+   "frq_type":"writing","evidence":"Provides a 'Truth to start from' sentence but asks the student to WRITE a NEW 'and yet ...' sentence granting the opposing truth. The given sentence is a starting point, not a draft to transform; student produces new text.","review_flag":false},
+  {"file":"lesson_g12_l03_hold_tension.py","slot_index_in_file":7,"role":"INDEPENDENT","title":"Hold the tension on your own","unit":"paragraph",
+   "frq_type":"writing","evidence":"Cold write: produce ONE body paragraph on the water trade-off that holds the tension. Generate text from prompt.","review_flag":false},
+  {"file":"lesson_g12_l03_hold_tension.py","slot_index_in_file":9,"role":"TRANSFER","title":"Hold the tension on a NEW source","unit":"paragraph",
+   "frq_type":"writing","evidence":"New source (workforce); produce ONE body paragraph. No provided draft.","review_flag":false},
+
+  {"file":"lesson_g12_l12_which_frq_type.py","slot_index_in_file":6,"role":"SUPPORTED","title":"Name the type and plan its moves","unit":"paragraph",
+   "frq_type":"writing","evidence":"Fill-in FRAME + checklist to PRODUCE a short plan naming the writing-task type and its first moves ('name the writing-task type and plan' is explicitly a writing task). No draft to transform.","review_flag":false},
+  {"file":"lesson_g12_l12_which_frq_type.py","slot_index_in_file":8,"role":"INDEPENDENT","title":"Name the type and plan on your own","unit":"paragraph",
+   "frq_type":"writing","evidence":"Cold, no frame: write a short plan naming the type from its tell and its first moves. Produce new text.","review_flag":false},
+  {"file":"lesson_g12_l12_which_frq_type.py","slot_index_in_file":10,"role":"TRANSFER","title":"Name the type and plan on a NEW writing task","unit":"paragraph",
+   "frq_type":"writing","evidence":"New writing task (single passage); write a short plan naming the type and moves. Generate text.","review_flag":false},
+
+  {"file":"lesson_g12_l15_voice_syntax.py","slot_index_in_file":6,"role":"SUPPORTED","title":"Reshape this sentence for emphasis","unit":"sentence",
+   "frq_type":"revision","evidence":"Body EMBEDS a complete draft: 'Flat sentence to fix: \"Training helps the young, and it does not help older workers, and a budget must choose, and that is hard.\"' then a fill-in frame to reshape/fix it. Provided draft to transform = revision.","review_flag":false},
+  {"file":"lesson_g12_l15_voice_syntax.py","slot_index_in_file":8,"role":"INDEPENDENT","title":"Shape voice with syntax on your own","unit":"sentence",
+   "frq_type":"writing","evidence":"'no frame. Take one idea from the source, WRITE it as a flat compound string, then reshape it.' Student generates their own base text then self-revises; NO provided draft embedded. Write-then-self-revise in an editing-construct (T6 SPOT) lesson is genuinely dual-readable, so defaulted to writing.","review_flag":true},
+  {"file":"lesson_g12_l15_voice_syntax.py","slot_index_in_file":10,"role":"TRANSFER","title":"Shape voice with syntax on a NEW source","unit":"sentence",
+   "frq_type":"writing","evidence":"New source: 'Take one idea from the water source, WRITE it as a flat \"and\" string, then reshape it.' Student produces own base text then self-revises; no provided draft. Same write-then-self-revise ambiguity as idx 8.","review_flag":true}
+]

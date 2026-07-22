@@ -219,7 +219,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught topic (source already read at STEP 2) =====
         Slot("SUPPORTED", "production_frq", "Finish the claim: fill in the side and the reason",
-             ref="", bank="four_day_week", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="four_day_week", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the two moves.",
                  setapart_block=claim_frame("your side on the four-day week", "your reason"),
@@ -248,7 +248,7 @@ LESSON = Lesson(
              body=("A different debate now, so you build a fresh claim instead of reusing the last one. Read the "
                    "short framing, then take a side. You only need the topic and the two sides.")),
         Slot("INDEPENDENT", "production_frq", "Write one arguable claim on paying for grades",
-             ref="", bank="pay_for_grades", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="pay_for_grades", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. The task: should schools pay students for good grades?",
                  closer="Pick the side you actually believe, then add a reason. This side-plus-reason move is "
@@ -261,7 +261,7 @@ LESSON = Lesson(
              body=("One more new debate. Read the short framing, then take a side. Same move, a fresh topic, so "
                    "again you write a new claim. You only need the topic and the two sides.")),
         Slot("TRANSFER", "production_frq", "Write an arguable claim on a NEW topic",
-             ref="", bank="free_transit", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="free_transit", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. The task: should cities make public transit free to ride?",
                  closer="Write ONE arguable claim: pick a side, then add a reason. Check it against the 3 "

@@ -185,7 +185,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write, build two of the three parts onto a given claim =====
         Slot("SUPPORTED", "production_frq", "Build two of the three parts", ref="", bank="phone_ban",
-             rubric_ref="rc.staar", scored=True, unit="paragraph",
+             rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="Warm up the build. Start from the given claim, then add the other two parts.",
                  setapart_block=setapart("Start from this claim, then build onto it:",
@@ -212,7 +212,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold full-paragraph build on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Build a complete body paragraph", ref="", bank="phone_ban",
-             rubric_ref="rc.staar", scored=True, unit="paragraph",
+             rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, build the whole paragraph.",
                  closer="Write ONE complete body paragraph arguing a claim about phones in class, with all three "
@@ -228,7 +228,7 @@ LESSON = Lesson(
                    "evidence, read the whole thing and note one fact you can quote or paraphrase, and who reports "
                    "it. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Build a complete body paragraph on a NEW topic", ref="",
-             bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New topic, same build. The task: argue a claim about free school meals.",
                  closer="Write ONE complete body paragraph with all three parts in order: CLAIM, EVIDENCE "

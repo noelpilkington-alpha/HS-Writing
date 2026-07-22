@@ -209,7 +209,7 @@ LESSON = Lesson(
                          "lightly-changed draft can look revised without being fixed."},
              ]),
         Slot("SUPPORTED", "production_frq", "Revise the draft for purpose",
-             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="Purpose: explain why coastal towns value wetlands for flood protection. Revise the draft "
                        "below by combining all three moves.",
@@ -241,7 +241,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: revise a PROVIDED draft with no checklist scaffold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided draft on your own",
-             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now, no checklist. Purpose: explain how wetlands clean water. Revise the "
                        "draft below by combining the moves.",
@@ -259,7 +259,7 @@ LESSON = Lesson(
                    "Again, you are revising a draft that is given to you, then checking your revision. The text "
                    "stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Revise a provided draft on a NEW topic",
-             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="New topic, same move. Purpose: explain how materials recovery turns old material into new "
                        "products. Revise the draft below by combining the moves.",

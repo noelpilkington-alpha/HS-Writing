@@ -226,7 +226,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught source (already read at the TEACH step) =====
         Slot("SUPPORTED", "production_frq", "Analyze a choice and its audience effect",
-             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the move: name a choice Douglass makes and "
                        "explain its effect on his celebrating audience.",
@@ -254,7 +254,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write, no frame, student picks the choice + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Write a rhetorical-analysis sentence on your own",
-             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Pick any one choice Douglass makes in the excerpt.",
                  closer="Write ONE rhetorical-analysis sentence: name the choice and explain its effect on his "
@@ -271,7 +271,7 @@ LESSON = Lesson(
                    "the speaker argues, then again for one CHOICE he makes and its effect on that audience. The "
                    "text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Write a rhetorical-analysis sentence on a NEW text",
-             ref="", bank="ra_speech_1", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="ra_speech_1", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New text, same move as the Douglass sentence. Analyze one choice the speaker makes.",
                  closer="Write ONE rhetorical-analysis sentence about a choice the speaker makes: name the "

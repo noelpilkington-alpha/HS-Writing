@@ -223,7 +223,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: fill-in FRAME on the taught topic (source already read) =====
         Slot("SUPPORTED", "production_frq", "Scope the claim: fill in whom and what",
-             ref="", bank="ai_workforce_policy", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="ai_workforce_policy", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the two moves.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
@@ -247,7 +247,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write, no frame, autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Scope a claim on your own",
-             ref="", bank="ai_workforce_policy", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="ai_workforce_policy", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. The question: should the government steer workers toward "
                        "growing fields, or leave it to the market?",
@@ -262,7 +262,7 @@ LESSON = Lesson(
                    "short framing, then take a scoped position on where energy money should go first. You only "
                    "need the topic and the two sides.")),
         Slot("TRANSFER", "production_frq", "Scope a claim on a NEW topic",
-             ref="", bank="energy_spending_priority", rubric_ref="rc.ap", scored=True, unit="sentence",
+             ref="", bank="energy_spending_priority", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. The question: should energy money go first to new clean-power capacity, or "
                        "first to the grid that carries and stores it?",

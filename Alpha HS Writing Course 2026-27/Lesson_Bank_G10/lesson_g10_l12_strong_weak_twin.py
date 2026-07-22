@@ -224,7 +224,7 @@ LESSON = Lesson(
                          "empty."},
              ]),
         Slot("SUPPORTED", "production_frq", "Rewrite the weak twin using the frame",
-             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="Turn this weak twin into a strong one: \"Recycling is important because it matters for the "
                        "planet.\" Keep the claim, but replace the circular reason with a specific, checkable one. "
@@ -256,7 +256,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: rewrite a weak twin with no frame + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Improve a weak draft on your own",
-             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now, no frame. Turn this weak twin into a strong one:",
                  setapart_block=setapart("Weak draft:", "Recycling programs are good because they help."),
@@ -272,7 +272,7 @@ LESSON = Lesson(
                    "familiar. Again, you are improving a single sentence by giving it a specific reason. The text "
                    "stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Improve a weak draft on a NEW topic",
-             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="New topic, same move. Turn this weak twin into a strong one:",
                  setapart_block=setapart("Weak draft:", "Weather forecasts are useful because they are important."),

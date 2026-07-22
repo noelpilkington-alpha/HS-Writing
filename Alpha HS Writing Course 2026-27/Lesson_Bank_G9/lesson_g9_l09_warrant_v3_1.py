@@ -235,7 +235,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught topic (source read at TEACH step) =====
         Slot("SUPPORTED", "production_frq", "Write the warrant: explain why the evidence fits",
-             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the reasoning.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
@@ -258,7 +258,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write on the taught topic, no frame + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a warrant on your own",
-             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Take whichever side on the service requirement you actually "
                        "hold.",
@@ -274,7 +274,7 @@ LESSON = Lesson(
                    "this source about phones in school and note one fact, then think about the reason it backs a "
                    "claim about phones. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Write a warrant on a NEW topic",
-             ref="", bank="phone_ban", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="phone_ban", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. Write one warrant for a claim about phones in school.",
                  closer="State the claim, then use because, since, or as to explain WHY a fact from the source "

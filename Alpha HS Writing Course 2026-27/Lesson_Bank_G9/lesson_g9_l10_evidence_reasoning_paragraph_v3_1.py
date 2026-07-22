@@ -142,7 +142,7 @@ LESSON = Lesson(
                        "shows no new water is made, so the same water is reused.' A second fact (B), reordering "
                        "(C), or a longer point (D) do not supply the missing reasoning link.")),
         Slot("SUPPORTED", "production_frq", "Warm up: write the warrant sentence",
-             ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Warm up the build with just the warrant. Here is a point and its evidence:",
                  setapart_block=setapart("Point + evidence given:",
@@ -163,7 +163,7 @@ LESSON = Lesson(
                  closer="Now rewrite it as a complete paragraph with all three parts in order. Then name which "
                         "part your rewrite added or fixed.")),
         Slot("INDEPENDENT", "production_frq", "Build the whole paragraph on the water cycle",
-             ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, build the whole paragraph about the water cycle.",
                  closer="Write ONE paragraph with all three parts in order: Point (your claim), Evidence (an "
@@ -175,7 +175,7 @@ LESSON = Lesson(
              body=("A new source. Read it and pick a point you could make plus a fact that supports it. Same "
                    "three-part build, new topic.")),
         Slot("TRANSFER", "production_frq", "Build a paragraph on a NEW topic",
-             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. Build ONE paragraph about animal migration.",
                  closer="Put all three parts in order: Point, Evidence (attributed), Warrant. Run the 3-part "

@@ -214,7 +214,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught source =====
         Slot("SUPPORTED", "production_frq", "Link a fact to a claim with a hinge",
-             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the one move: linking a fact to your claim.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
@@ -239,7 +239,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write on the taught source + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Link evidence to a claim on your own",
-             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Make a claim about free school meals and link one fact from "
                        "the source to it.",
@@ -255,7 +255,7 @@ LESSON = Lesson(
                    "same: pick one fact you could use, then think about the reason it supports a claim. The text "
                    "stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Link evidence to a claim on a NEW topic",
-             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. The task: should community service be required to graduate? Make a claim, then "
                        "link one fact from the source to it.",

@@ -241,7 +241,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught source (already read at STEP 2) =====
         Slot("SUPPORTED", "production_frq", "Write a claim about the craft",
-             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the move: name a choice Chopin makes, then name "
                        "what it is doing. Pick one of these choices to write about: the open-window imagery, the "
@@ -270,7 +270,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write, no frame, a DIFFERENT choice + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write an analytical claim on your own",
-             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Write ONE analytical claim about a DIFFERENT choice Chopin "
                        "makes than the one you used above, so you cannot reuse that sentence.",
@@ -287,7 +287,7 @@ LESSON = Lesson(
                    "the sections, the questions used to organize it. Read it once for what it says, then find "
                    "one such choice you could make a claim about. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Write an analytical claim on a NEW text",
-             ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="interstate_highways", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New text, different genre, same move. Write ONE analytical claim about a STRUCTURAL or "
                        "wording choice the highways author makes: name the choice and claim its effect or purpose.",

@@ -199,7 +199,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught topic =====
         Slot("SUPPORTED", "production_frq", "Build a complete paragraph to check",
-             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on getting all three parts in.",
                  setapart_block=setapart("Fill in each part of this frame:",
@@ -209,7 +209,7 @@ LESSON = Lesson(
                         "the paragraph you will self-check next.")),
         # ===== INDEPENDENT: cold write on the taught topic + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a fresh paragraph and self-check it",
-             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Write ONE complete body paragraph arguing a claim about "
                        "required community service: a claim, a fact from the source with its source named, and "
@@ -249,7 +249,7 @@ LESSON = Lesson(
                    "real evidence, read the whole thing and pick one fact you can quote or paraphrase, and note "
                    "who reports it. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Write a fresh paragraph and self-check it (NEW topic)",
-             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. Write ONE complete body paragraph making a point about animal migration: a "
                        "claim, a fact from the source with its source named, and a warrant, all connected.",

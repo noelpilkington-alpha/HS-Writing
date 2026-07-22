@@ -209,7 +209,7 @@ LESSON = Lesson(
                          "sentence can feel strong while its words stay vague."},
              ]),
         Slot("SUPPORTED", "production_frq", "Run a precision pass on the provided draft",
-             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="Run a precision pass on the paragraph below. Keep the position (wetlands matter and are "
                        "worth protecting); sharpen the words.",
@@ -242,7 +242,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: run the pass on a PROVIDED draft with no checklist scaffold + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Run the precision pass on your own",
-             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now, no checklist. Run a precision pass on the paragraph below.",
                  setapart_block=setapart("Paragraph to revise:",
@@ -261,7 +261,7 @@ LESSON = Lesson(
                    "construction cost, and that about one quarter of all miles driven in the country happen on it. "
                    "Again, you are running a precision pass on a draft that is given to you.")),
         Slot("TRANSFER", "production_frq", "Run a precision pass on a NEW topic",
-             ref="", bank="highways", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="highways", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="New topic, same move. Run a precision pass on the paragraph below.",
                  setapart_block=setapart("Paragraph to revise:",

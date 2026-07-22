@@ -211,7 +211,7 @@ LESSON = Lesson(
                          "can look finished while missing the warrant."},
              ]),
         Slot("SUPPORTED", "production_frq", "Revise the provided paragraph",
-             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="Revise the paragraph below to close its gap. Keep the claim and the attributed evidence; "
                        "add the missing warrant.",
@@ -242,7 +242,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: revise a PROVIDED paragraph with no checklist scaffold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided paragraph and self-check your fix",
-             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now, no checklist. Revise the paragraph below to close its gap.",
                  setapart_block=setapart("Paragraph to revise:",
@@ -259,7 +259,7 @@ LESSON = Lesson(
                    "orientation so the topic is familiar. Again, you are finding and fixing a gap in a paragraph "
                    "that is given to you, then self-checking your revision.")),
         Slot("TRANSFER", "production_frq", "Revise a provided paragraph on a NEW topic",
-             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="New topic, same move. Revise the paragraph below to close its gap.",
                  setapart_block=setapart("Paragraph to revise:",

@@ -218,7 +218,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught topic =====
         Slot("SUPPORTED", "production_frq", "Finish the claim: concede, then hold",
-             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the two moves.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
@@ -244,7 +244,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write on the taught topic (no frame) + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a counterclaim-aware claim on your own",
-             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. The task: should cities charge a toll to drive downtown at "
                        "rush hour?",
@@ -261,7 +261,7 @@ LESSON = Lesson(
                    "short framing, then take a side. Notice the strongest point on the other side to concede. You "
                    "only need the topic and the two sides.")),
         Slot("TRANSFER", "production_frq", "Write a counterclaim-aware claim on a NEW topic",
-             ref="", bank="daylight_saving", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="daylight_saving", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. The task: should the United States stop switching the clocks twice a year?",
                  closer="Write ONE counterclaim-aware claim: concede the strongest point on the other side, then "

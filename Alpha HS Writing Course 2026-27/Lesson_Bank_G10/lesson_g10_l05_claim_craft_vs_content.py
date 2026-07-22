@@ -241,7 +241,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on a Chopin technique (source already read at TEACH) =====
         Slot("SUPPORTED", "production_frq", "Write a craft claim on a close call",
-             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on keeping the claim on the author's craft, not on "
                        "the character's feeling.",
@@ -270,7 +270,7 @@ LESSON = Lesson(
         # ===== INDEPENDENT: cold write, SAME source but a DIFFERENT technique (cannot reuse the supported
         #        sentence) + autonomy on the technique + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a craft claim on your own",
-             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Pick a Chopin technique you have not written about yet (the "
                        "open-window imagery, the irony of the calm before the whispered word, or the point of "
@@ -289,7 +289,7 @@ LESSON = Lesson(
                    "uses. Read it once, then find one such choice to claim about, not just what recycling is. The "
                    "text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Write a craft claim on a NEW text",
-             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New text, same move. Write ONE claim about a STRUCTURAL or wording choice the recycling "
                        "author makes, not about what recycling is.",

@@ -221,7 +221,7 @@ LESSON = Lesson(
                          "so notice how praise words can pass for analysis."},
              ]),
         Slot("SUPPORTED", "production_frq", "Revise the summary paragraph into analysis",
-             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="paragraph",
+             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="Revise the summary paragraph below into rhetorical analysis. Keep it accurate, but make "
                        "it analyze a choice instead of retelling.",
@@ -254,7 +254,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: revise a PROVIDED paragraph with no scaffold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided paragraph on your own",
-             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="paragraph",
+             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="On your own now, no build list. Revise the summary paragraph below into rhetorical "
                        "analysis.",
@@ -272,7 +272,7 @@ LESSON = Lesson(
              body=("Read this new address so the material is familiar. The paragraph you revise is about this "
                    "text. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Revise a summary paragraph on a NEW text",
-             ref="", bank="ra_speech_1", rubric_ref="rc.ap", scored=True, unit="paragraph",
+             ref="", bank="ra_speech_1", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="New speaker, same move. Revise the summary paragraph below into rhetorical analysis.",
                  setapart_block=setapart("Paragraph to revise:",

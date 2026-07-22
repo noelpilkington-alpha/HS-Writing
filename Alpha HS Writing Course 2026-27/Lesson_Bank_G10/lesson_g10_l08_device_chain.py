@@ -195,7 +195,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught source (already read at STEP 2) =====
         Slot("SUPPORTED", "production_frq", "Chain two choices toward one point",
-             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on linking two of the recycling author's choices "
                        "toward ONE point.",
@@ -224,7 +224,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write, no frame + autonomy on which choices + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a device-chain paragraph on your own",
-             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Write a short analytical paragraph that chains two or more of "
                        "the recycling author's choices toward ONE point.",
@@ -243,7 +243,7 @@ LESSON = Lesson(
                    "definition. Look for two or more that build the SAME point, and be ready to link them. The "
                    "text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Write a device-chain paragraph on a NEW text",
-             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New text, same move. Write a short analytical paragraph that chains two or more of the "
                        "weather author's choices toward ONE point.",

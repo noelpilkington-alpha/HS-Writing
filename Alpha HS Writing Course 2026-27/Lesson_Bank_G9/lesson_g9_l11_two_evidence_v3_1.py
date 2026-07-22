@@ -182,7 +182,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed build (pick + order the two facts) on the taught source =====
         Slot("SUPPORTED", "production_frq", "Warm up: pick and order the second fact",
-             ref="", bank="ai_workforce", rubric_ref="rc.staar", scored=True, unit="sentence",
+             ref="", bank="ai_workforce", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Warm up the build. Here is a point and its first fact, from the source:",
                  setapart_block=setapart("Point + first fact given:",
@@ -207,7 +207,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: full paragraph on the taught source + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Develop the whole paragraph with two facts",
-             ref="", bank="ai_workforce", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="ai_workforce", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, develop one paragraph from the source using two facts that add up.",
                  closer="Write ONE paragraph: a point, two attributed facts from the source that add up (ordered "
@@ -222,7 +222,7 @@ LESSON = Lesson(
              body=("A new source. Read it and find two facts that add up for a point you could make. Same "
                    "two-evidence build, new topic.")),
         Slot("TRANSFER", "production_frq", "Develop a paragraph on a NEW source",
-             ref="", bank="grid_spending", rubric_ref="rc.staar", scored=True, unit="paragraph",
+             ref="", bank="grid_spending", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New source. Develop ONE paragraph from it with two facts that add up.",
                  closer="Point, two attributed facts that add up (ordered), and one warrant tying both to the "
