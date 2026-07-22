@@ -577,12 +577,21 @@ def _sentences_to_paras(text: str, per=2) -> list[str]:
     return out
 
 
-def build_lesson_html(L, base_url="") -> tuple[str, list[tuple[str, str]]]:
+def build_lesson_html(L, base_url="", video_map=None) -> tuple[str, list[tuple[str, str]]]:
     """Return (lesson_html, [(item_id, xml)]) for a lesson. Content slots -> narration segments; discrimination/
     predict/self_score -> checkpoint gates; production/diagnosis_frq -> extended-text writing items. base_url =
     the absolute URL where items/*.xml are hosted (the player resolves tb-qti-config hrefs against ITS OWN
-    origin, so relative hrefs 404; base_url must be our host, e.g. https://<vercel>.vercel.app)."""
+    origin, so relative hrefs 404; base_url must be our host, e.g. https://<vercel>.vercel.app).
+
+    video_map (optional): {lesson_id -> {"mp4":url,"vtt":url}}. When THIS lesson is in it, an intro <video>
+    segment is emitted first (council placement: title -> video -> compressed prose) AND the opening teach
+    prose is compressed (council rule). Callers that pass video_map opt INTO video behavior explicitly; the
+    production push path passes nothing, so it is unaffected by the empty module-level INCEPT_VIDEOS. This
+    keeps the real push + tier_a gate-checks free of compression until videos genuinely ship."""
     base_url = (base_url or "").rstrip("/")
+    # video behavior triggers off the explicit video_map when given, else the module INCEPT_VIDEOS (empty in prod).
+    _videos = video_map if video_map is not None else _INCEPT_VIDEOS
+    _this_video = _videos.get(L.id) if _videos else None
     segments = []
     catalog_defs, catalog_audio, catalog_items = [], [], []
     gloss_defs = {}   # catalog id -> full definition text, harvested from authored <dfn> tooltips
@@ -631,11 +640,12 @@ def build_lesson_html(L, base_url="") -> tuple[str, list[tuple[str, str]]]:
             # teach/model cards carry OWN-AUTHORED HTML (callout boxes, decompose + before/after panels) that must
             # survive verbatim -> render via raw_body. stimulus_display text comes from a bound stimulus -> paras.
             raw_body = s.body if (s.kind in ("teach_card", "annotated_before_after") and s.body) else ""
-            # Council rule (2026-07-21): when THIS lesson has an intro video (id in the INCEPT_VIDEOS
-            # registry), the video teaches the expanded explanation, so the OPENING teach_card (slot 0)
-            # keeps ONLY its leading "one idea" callout (which still SHOWS the built target sentence) and
-            # drops the trailing expansion. Empty registry -> no id matches -> byte-identical to today.
-            if raw_body and s.kind == "teach_card" and idx == 0 and L.id in _INCEPT_VIDEOS:
+            # Council rule (2026-07-21): when THIS lesson has an intro video, the video teaches the expanded
+            # explanation, so the OPENING teach_card (slot 0) keeps ONLY its leading "one idea" callout (which
+            # still SHOWS the built target sentence) and drops the trailing expansion. Triggered by _this_video
+            # (from the explicit video_map when given, else the module INCEPT_VIDEOS, empty in prod) -> so the
+            # production push (no video_map, empty registry) is byte-identical to today.
+            if raw_body and s.kind == "teach_card" and idx == 0 and _this_video:
                 raw_body = _compress_teach_body(raw_body)
             if raw_body:
                 _harvest_glossary(raw_body, gloss_defs)   # register any <dfn> tooltips for the catalog
@@ -693,6 +703,25 @@ def build_lesson_html(L, base_url="") -> tuple[str, list[tuple[str, str]]]:
               f'background:linear-gradient(135deg,#eef6ff 0%,#f6f2ff 55%,#ffffff 100%); color:#1d3b7a; '
               f'font-weight:900; font-size:24px; text-align:center; padding:18px; margin-bottom:14px;">'
               f'{esc(L.title or L.id)}</div>')
+    # Council placement rule (2026-07-21): when this lesson has an intro video, insert it as the FIRST
+    # segment (its own gated reveal), so the order is title -> video -> compressed prose. The teach prose
+    # was already compressed above (idx==0 teach_card hook). video_map is preview-scoped; prod push passes
+    # none, so this never fires on the real push.
+    if _this_video and _this_video.get("mp4"):
+        _vtt = _this_video.get("vtt")
+        # XHTML/XML-valid boolean attrs (controls="controls", default="default"): the player + render_qc
+        # parse the body as XML, which rejects bare boolean attributes.
+        _track = (f'<track kind="captions" srclang="en" src="{esc(_vtt)}" default="default"/>' if _vtt else "")
+        _vcard = (
+            '<div style="border-radius:18px; border:1px solid #d7d2f7; background:#f6f4ff; '
+            'box-shadow:0 12px 22px rgba(43,42,85,.08); padding:16px 18px;">'
+            '<div style="font-weight:900; color:#3b3a88; font-size:16px; margin-bottom:8px;">Watch: the one idea</div>'
+            f'<video controls="controls" preload="metadata" style="width:100%; max-width:720px; border-radius:12px; '
+            f'display:block; margin:0 auto;"><source src="{esc(_this_video["mp4"])}" type="video/mp4"/>{_track}'
+            'Your browser does not support video playback.</video>'
+            '<div style="margin-top:6px; color:#5a5d77; font-size:13px; text-align:center;">'
+            'A short video of this lesson\'s core idea. The reading that follows covers the same idea.</div></div>')
+        segments.insert(0, _node(NODE_COLORS[0], _vcard, first=True))
     if segments:
         # place the banner as the first child of the first segment, so it shares that segment's reveal step
         # (the student sees title + first teaching card together, no empty title tile / extra Continue click).

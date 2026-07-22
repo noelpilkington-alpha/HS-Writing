@@ -17,7 +17,7 @@ render defect, so the preview can never ship a broken article.
 Run: python pipeline/render_course_preview_grade.py G10 [--deploy DIR] [--base-url URL]
 """
 from __future__ import annotations
-import os, sys, re, glob, html, argparse, urllib.parse
+import os, sys, re, glob, html, json, argparse, urllib.parse
 
 HERE = os.path.dirname(__file__)
 ROOT = os.path.join(HERE, "..")
@@ -124,13 +124,26 @@ def main():
     lessons = lessons_for(grade)
     authored = _authored(grade)
 
+    # PREVIEW-SCOPED video map: if a hosted-video manifest exists for this grade, pass it to
+    # build_lesson_html so the preview embeds the intro video + compresses the opening teach (council rule).
+    # This is preview-only: the production push passes no video_map, so it is unaffected. Manifest shape:
+    # {lesson_id -> {"mp4":url, "vtt":url}} at C:/tmp/incept_videos/<grade>_videos.json.
+    video_map = {}
+    _vm_path = os.path.join("C:/tmp/incept_videos", f"{grade.lower()}_videos.json")
+    if os.path.exists(_vm_path):
+        try:
+            video_map = json.load(open(_vm_path, encoding="utf-8"))
+            print(f"video_map: {len(video_map)} {grade} lessons carry an intro video (preview embed + compress)")
+        except Exception:
+            video_map = {}
+
     # 1) render each lesson's gated ARTICLE (lesson.html + items/*.xml) into its own subfolder
     qc_failures = []
     for n, L, _f in lessons:
         art_dir = os.path.join(args.deploy, slug(grade, n).replace("/", os.sep))
         items_dir = os.path.join(art_dir, "items")
         os.makedirs(items_dir, exist_ok=True)
-        html_str, checkpoints = build_lesson_html(L, base_url=f"{base_url}/{slug(grade, n)}")
+        html_str, checkpoints = build_lesson_html(L, base_url=f"{base_url}/{slug(grade, n)}", video_map=video_map)
         # pass the source lesson so render_qc also runs the OPTION-INTEGRITY choices[] cross-check (A6) - the
         # full Tier-A render gate, not the lighter artifact-only pass. Tier-A already proved all 100 pass it.
         problems = render_qc(html_str, checkpoints, lessons=L)
