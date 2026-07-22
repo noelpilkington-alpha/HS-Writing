@@ -444,6 +444,22 @@ def checkpoint_xml(cp_id: str, slot) -> str:
             f'{response_processing}</qti-assessment-item>')
 
 
+def _one_beat_list(entry) -> list:
+    """Normalize a One-Beat map entry into an ordered list of beats, each {"cue_seconds", "item"}. Accepts:
+      - {"beats": [{"cue_seconds","item"}, ...]}          (multi-beat, council cap 2)
+      - {"cue_seconds": t, "item": {...}}                 (single-beat, back-compat)
+    Drops any beat without an item. Caps at 2 (council rule). Returns [] for anything else."""
+    if not isinstance(entry, dict):
+        return []
+    if isinstance(entry.get("beats"), list):
+        beats = [b for b in entry["beats"] if isinstance(b, dict) and b.get("item")]
+    elif entry.get("item"):
+        beats = [{"cue_seconds": entry.get("cue_seconds"), "item": entry["item"]}]
+    else:
+        beats = []
+    return beats[:2]
+
+
 def one_beat_xml(vq_id: str, item: dict) -> str:
     """A NON-GATING in-video One-Beat Check QTI item (council rule 2026-07-22). A choice interaction with
     per-wrong-choice teaching feedback and a persistent 'correct' feedback-block, BUT (unlike checkpoint_xml)
@@ -792,16 +808,27 @@ def build_lesson_html(L, base_url="", video_map=None, one_beat_map=None) -> tupl
         # parse the body as XML, which rejects bare boolean attributes.
         _track = (f'<track kind="captions" srclang="en" src="{esc(_vtt)}" default="default"/>' if _vtt else "")
         _caption = ('A short video of this lesson\'s core idea. The reading that follows covers the same idea.')
-        if _this_beat and _this_beat.get("item"):
-            # INTERACTIVE tb-video (council rule 2026-07-22): a tb-video figure carrying ONE non-gating
-            # tb-interaction that pauses at cue_seconds, shows the One-Beat item, and resumes. Same tb-* family
-            # as the gated-reading checkpoints (decoded from live MS Chemistry), NOT a separate video system.
-            vq_id = f"vq-{L.id}-1"
-            _cue = float(_this_beat.get("cue_seconds") or 0)
-            _dur = float(_this_beat.get("duration_seconds") or 0)
+        _beat_list = _one_beat_list(_this_beat)
+        if _beat_list:
+            # INTERACTIVE tb-video (council rule 2026-07-22): a tb-video figure carrying up to TWO non-gating
+            # tb-interactions, ONE per scripted "your turn"/recap beat, each pausing at its cue_seconds, showing
+            # the One-Beat item, then resuming. Same tb-* family as the gated-reading checkpoints (decoded from
+            # live MS Chemistry), NOT a separate video system. Council caps in-video questions at 2 per video.
+            _dur = float(_this_beat.get("duration_seconds") or 0) if isinstance(_this_beat, dict) else 0
             _dur_attr = f' data-duration-seconds="{_dur:g}"' if _dur > 0 else ""
-            _interaction = (f'<div class="tb-interaction tb-qti-assessment-item" '
-                            f'data-timestamp-seconds="{_cue:g}" data-catalog-idref="{vq_id}"></div>')
+            _interactions = []
+            for _i, _b in enumerate(_beat_list, start=1):
+                vq_id = f"vq-{L.id}-{_i}"
+                _cue = float(_b.get("cue_seconds") or 0)
+                _interactions.append(f'<div class="tb-interaction tb-qti-assessment-item" '
+                                     f'data-timestamp-seconds="{_cue:g}" data-catalog-idref="{vq_id}"></div>')
+                # register each One-Beat item XML (hosted at items/<vq_id>.xml) + its catalog config.
+                checkpoints.append((vq_id, one_beat_xml(vq_id, _b["item"])))
+                catalog_items.append(f'<div class="tb-qti-config" id="{vq_id}"><a href="{base_url}/items/{vq_id}.xml" '
+                                     f'type="application/xml"></a></div>')
+            _n = len(_beat_list)
+            _pause_note = ("It pauses once for a quick, no-penalty check." if _n == 1
+                           else f"It pauses {_n} times for a quick, no-penalty check.")
             _vcard = (
                 '<div style="border-radius:18px; border:1px solid #d7d2f7; background:#f6f4ff; '
                 'box-shadow:0 12px 22px rgba(43,42,85,.08); padding:16px 18px;">'
@@ -811,13 +838,9 @@ def build_lesson_html(L, base_url="", video_map=None, one_beat_map=None) -> tupl
                 f'style="width:100%; max-width:720px; border-radius:12px; display:block; margin:0 auto;">'
                 f'<source src="{esc(_this_video["mp4"])}" type="video/mp4"/>{_track}'
                 'Your browser does not support video playback.</video>'
-                f'{_interaction}</figure>'
+                f'{"".join(_interactions)}</figure>'
                 '<div style="margin-top:6px; color:#5a5d77; font-size:13px; text-align:center;">'
-                f'{_caption} It pauses once for a quick, no-penalty check.</div></div>')
-            # register the One-Beat item XML (hosted at items/<vq_id>.xml) + its catalog config.
-            checkpoints.append((vq_id, one_beat_xml(vq_id, _this_beat["item"])))
-            catalog_items.append(f'<div class="tb-qti-config" id="{vq_id}"><a href="{base_url}/items/{vq_id}.xml" '
-                                 f'type="application/xml"></a></div>')
+                f'{_caption} {_pause_note}</div></div>')
         else:
             # plain (non-interactive) intro video: exempt archetype, or no One-Beat authored for this lesson.
             _vcard = (

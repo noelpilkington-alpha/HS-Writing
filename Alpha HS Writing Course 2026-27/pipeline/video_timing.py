@@ -127,6 +127,27 @@ def _questions(video_json) -> list:
     return []
 
 
+def one_beat_cues(video_json, max_cues: int = 2, min_start: float = 0.0) -> dict:
+    """Up to `max_cues` default cue times for One-Beat Checks: the check-role (try_it / recap / ...) segment
+    ENDS at/after `min_start`, in playback order, EXCLUDING the final segment end (== total, no runtime left to
+    resume). The council rule caps in-video questions at TWO per video (default one), so max_cues defaults to 2:
+    one cue per scripted "your turn" beat. If no check-role boundary qualifies, falls back to the midpoint.
+    Returns {"cue_seconds": [t, ...], "duration_seconds": total}. NEVER raises."""
+    try:
+        script = _script(video_json)
+        ends = _segment_ends(script)
+        total = ends[-1] if ends else 0.0
+        check_ends = [ends[i] for i, s in enumerate(script)
+                      if i < len(ends) and str((s or {}).get("role", "")).lower() in CHECK_ROLES]
+        cues = [e for e in check_ends if e >= min_start and e < total]
+        if not cues and total > 0:
+            mid = round(total / 2.0, 3)
+            cues = [mid if mid >= min_start else min(min_start, total)]
+        return {"cue_seconds": cues[:max(0, max_cues)], "duration_seconds": total}
+    except Exception:
+        return {"cue_seconds": [], "duration_seconds": 0.0}
+
+
 def one_beat_cue(video_json, min_start: float = 0.0) -> dict:
     """Derive the SINGLE default cue time for a One-Beat Check (council rule 2026-07-22): the FIRST check-role
     (try_it / recap / ...) segment END at or after `min_start`, which is the video's first natural "your turn"

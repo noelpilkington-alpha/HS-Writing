@@ -23,7 +23,7 @@ PIPE = os.path.dirname(HERE)
 if PIPE not in sys.path:
     sys.path.insert(0, PIPE)
 
-from gated_reading import build_lesson_html, one_beat_xml  # noqa: E402
+from gated_reading import build_lesson_html, one_beat_xml, _one_beat_list  # noqa: E402
 import gated_reading as gr                                 # noqa: E402
 import video_timing as vt                                  # noqa: E402
 
@@ -123,6 +123,58 @@ def test_interactive_vq_item_is_non_gating_and_clean():
 
 
 # ---------------------------------------------------------------------------
+# 2b. Multi-beat: a video with TWO scripted "your turn" beats -> TWO tb-interactions + TWO vq items.
+# ---------------------------------------------------------------------------
+
+def _two_beat_item(letter):
+    return {"title": f"Check {letter}", "note": "No penalty.",
+            "stem": f"Beat {letter}: which move is missing?",
+            "options": [{"id": "A", "text": "the reason", "correct": True, "why": "yes"},
+                        {"id": "B", "text": "the side", "correct": False, "why": "no"}]}
+
+
+def test_two_beats_emit_two_interactions_and_items():
+    L = _find_g9_concept_lesson()
+    vm = {L.id: {"mp4": "https://cdn/v.mp4", "vtt": "https://cdn/v.vtt"}}
+    obm = {L.id: {"duration_seconds": 169.0, "beats": [
+        {"cue_seconds": 82.0, "item": _two_beat_item("1")},
+        {"cue_seconds": 131.0, "item": _two_beat_item("2")},
+    ]}}
+    html, cps = build_lesson_html(L, base_url="https://x", video_map=vm, one_beat_map=obm)
+    assert 'data-timestamp-seconds="82"' in html and 'data-timestamp-seconds="131"' in html, "both cues render"
+    assert f'data-catalog-idref="vq-{L.id}-1"' in html and f'data-catalog-idref="vq-{L.id}-2"' in html
+    vq_ids = [cid for cid, _ in cps if cid.startswith("vq-")]
+    assert vq_ids == [f"vq-{L.id}-1", f"vq-{L.id}-2"], f"two hosted vq items in order: {vq_ids}"
+    assert "pauses 2 times" in html, "the caption reflects two pauses"
+
+
+def test_one_beat_list_normalizes_both_shapes():
+    single = {"cue_seconds": 82.0, "item": _two_beat_item("1")}
+    multi = {"beats": [{"cue_seconds": 82.0, "item": _two_beat_item("1")},
+                       {"cue_seconds": 131.0, "item": _two_beat_item("2")}]}
+    assert len(_one_beat_list(single)) == 1
+    assert len(_one_beat_list(multi)) == 2
+    # council cap: never more than 2
+    over = {"beats": [{"cue_seconds": t, "item": _two_beat_item(str(t))} for t in (10, 20, 30)]}
+    assert len(_one_beat_list(over)) == 2, "capped at 2 beats"
+    # junk / no item -> []
+    assert _one_beat_list({"cue_seconds": 5.0}) == []
+    assert _one_beat_list(None) == []
+
+
+def test_prototype_l01_has_two_beats():
+    from incept_one_beats import PROTOTYPE_ONE_BEATS
+    l01 = PROTOTYPE_ONE_BEATS["ACC-W910-L-G9-C901-0001"]
+    beats = _one_beat_list(l01)
+    assert len(beats) == 2, "L01 wires both scripted your-turn beats"
+    assert [b["cue_seconds"] for b in beats] == [82.0, 131.0]
+    # every authored stem/why must be em-dash free
+    for b in beats:
+        xml = one_beat_xml("vq-x", b["item"])
+        assert "—" not in xml
+
+
+# ---------------------------------------------------------------------------
 # 3. Exempt path: a video but NO One-Beat -> plain <video>, no tb-video figure, no vq item.
 # ---------------------------------------------------------------------------
 
@@ -195,3 +247,20 @@ def test_one_beat_cue_never_raises_on_garbage():
     for bad in (None, 42, "x", {"output_json": "nope"}):
         out = vt.one_beat_cue(bad)
         assert out["cue_seconds"] is None or isinstance(out["cue_seconds"], (int, float))
+
+
+def test_one_beat_cues_returns_both_your_turn_beats():
+    vj = _probe_like()  # try_it ends at 61 and 101; recap end 116 == total (excluded)
+    out = vt.one_beat_cues(vj, max_cues=2, min_start=43.0)
+    assert out["cue_seconds"] == [61.0, 101.0], "both try_it beats, recap-at-end excluded"
+    assert out["duration_seconds"] == 116.0
+
+
+def test_one_beat_cues_respects_max():
+    vj = _probe_like()
+    assert vt.one_beat_cues(vj, max_cues=1, min_start=0.0)["cue_seconds"] == [61.0]
+
+
+def test_one_beat_cues_never_raises_on_garbage():
+    for bad in (None, 42, "x", {"output_json": "nope"}):
+        assert isinstance(vt.one_beat_cues(bad)["cue_seconds"], list)
