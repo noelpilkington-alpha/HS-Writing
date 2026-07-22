@@ -127,6 +127,33 @@ def _questions(video_json) -> list:
     return []
 
 
+def one_beat_cue(video_json, min_start: float = 0.0) -> dict:
+    """Derive the SINGLE default cue time for a One-Beat Check (council rule 2026-07-22): the FIRST check-role
+    (try_it / recap / ...) segment END at or after `min_start`, which is the video's first natural "your turn"
+    beat. This NARROWS the general timing map (one cue, not one-per-check-role).
+
+    `min_start` lets a caller require the cue to fall after the first on-screen positive instance of the target
+    move (never test ahead of instruction). If no check-role boundary qualifies, fall back to the video
+    midpoint (still after min_start when possible). Returns {"cue_seconds": t, "duration_seconds": total}.
+    NEVER raises."""
+    try:
+        script = _script(video_json)
+        ends = _segment_ends(script)
+        total = ends[-1] if ends else 0.0
+        check_ends = [ends[i] for i, s in enumerate(script)
+                      if i < len(ends) and str((s or {}).get("role", "")).lower() in CHECK_ROLES]
+        # first check-role boundary at/after min_start (and strictly before the end, so the video still resumes)
+        cue = next((e for e in check_ends if e >= min_start and e < total), None)
+        if cue is None:
+            cue = next((e for e in check_ends if e < total), None)  # any check boundary before the end
+        if cue is None and total > 0:
+            mid = round(total / 2.0, 3)
+            cue = mid if mid >= min_start else min(min_start, total)  # midpoint fallback
+        return {"cue_seconds": cue, "duration_seconds": total}
+    except Exception:
+        return {"cue_seconds": None, "duration_seconds": 0.0}
+
+
 def timing_map(video_json) -> dict:
     """Full derived timing map for one interactive video: the questions paired with their cue times.
 

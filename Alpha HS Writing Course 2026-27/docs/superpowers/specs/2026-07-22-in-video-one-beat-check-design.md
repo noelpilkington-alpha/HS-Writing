@@ -182,8 +182,16 @@ the real push stay byte-identical to today.
 - **One-Beat authoring** — a builder that reads a lesson's locked teach text and the
   first-encounter target move, and emits ONE recognition item (stem + 2 options +
   per-option why + correct why) to the QC template, for qualifying lessons only.
-  Author-time output is a reviewable artifact (drafted, then surfaced) before any
-  push.
+  **Review posture (decided 2026-07-22):** trust the QC template as the gate; the
+  drafted stems are NOT hand-reviewed before push for now. (Revisit if a batch shows
+  quality drift.)
+
+## Build sequencing (decided 2026-07-22)
+
+Prototype ONE G9 concept lesson end-to-end in the preview FIRST (see it pause and
+resume in the player), then generalize the authoring + render across the qualifying
+45. The prototype validates the `tb-video` + `tb-interaction` render shape, the
+non-gating item XML, and the cue timing before any fan-out.
 
 ## Archetype qualification (which of the 45)
 
