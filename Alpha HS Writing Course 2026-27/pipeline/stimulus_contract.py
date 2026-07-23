@@ -29,7 +29,8 @@ Mode = Literal["argument", "explanatory", "analysis"]
 #   synthesis_set  = a SOURCE SET of 3-6 passages (SBAC 4 / AP Lang 6) for cross-source synthesis
 #   perspective_set= an issue + given PERSPECTIVES, NO source passage (ACT Writing 3-perspective)
 #   prompt_only    = a source-free prompt, NO passage (AP Lang Q3 argue-from-own-knowledge)
-Family = Literal["single", "complementary", "opposing", "synthesis_set", "perspective_set", "prompt_only"]
+Family = Literal["single", "complementary", "opposing", "synthesis_set", "perspective_set", "prompt_only",
+                 "issue_frame"]
 
 # ---------------------------------------------------------------------------
 # 1. THE EMIT CONTRACT
@@ -116,6 +117,15 @@ def gate_structure(s: StimulusRecord) -> tuple[bool, str]:
         if len(s.perspectives) < 2:
             return False, f"perspective_set needs >=2 given perspectives, got {len(s.perspectives)}"
         return True, f"perspective set: {len(s.perspectives)} given perspectives, no source passage"
+    if s.family == "issue_frame":
+        # a short own-words two-sided claim-task framing (bound to a T2 claim slot). Exactly one framing
+        # passage; word-floor / Lexile-band exempt by design (like a topic prompt, not an evidence passage).
+        if len(s.passages) != 1:
+            return False, f"issue_frame needs exactly 1 framing passage, got {len(s.passages)}"
+        w = _words(s.passages[0].text)
+        if w > WORD_MAX:
+            return False, f"issue_frame framing '{s.passages[0].title}' is {w} words, over {WORD_MAX}"
+        return True, f"issue frame: 1 two-sided framing ({w} words; word-floor exempt)"
     if s.family == "synthesis_set":
         n = len(s.passages)
         if not (SYNTHESIS_SET_MIN <= n <= SYNTHESIS_SET_MAX):
@@ -187,7 +197,7 @@ def gate_fact_sources(s: StimulusRecord, receipts_path: str | None = None) -> tu
     well-FORMED, not that the cited figure is actually ON the page. verify_facts.py fetches each URL
     and writes a receipt (fact_verification.json). If a receipt EXISTS for this stimulus, every row
     must be marked verified or the gate fails. No receipt -> unchanged (offline CI stays green)."""
-    if s.family in ("perspective_set", "prompt_only"):
+    if s.family in ("perspective_set", "prompt_only", "issue_frame"):
         for fsrc in s.fact_sources:  # optional, but if present must be well-formed
             if not re.match(r"^https?://", (fsrc.url_fetched or "").strip()):
                 return False, f"fact-source '{fsrc.fact[:40]}' has no valid fetched URL"
@@ -232,7 +242,7 @@ def gate_citable_facts(s: StimulusRecord) -> tuple[bool, str]:
     PUBLIC-DOMAIN (analysis): the student cites the TEXT itself (lines/moves), not external facts, so
     only the source-documentation row(s) are required (>=1)."""
     n = len(s.fact_sources)
-    if s.family in ("perspective_set", "prompt_only"):
+    if s.family in ("perspective_set", "prompt_only", "issue_frame"):
         return True, "source-free family: student supplies own evidence (no citable-fact requirement)"
     if s.family == "synthesis_set":
         # a synthesis set's "citable facts" are the sources themselves; own-authored needs >=3 sources, PD >=1
@@ -271,6 +281,8 @@ def gate_source_config(s: StimulusRecord) -> tuple[bool, str]:
         return True, f"perspective set ({len(s.perspectives)} given perspectives; ACT multi-perspective form)"
     if s.family == "prompt_only":
         return True, "source-free prompt (AP Lang Q3 argue-from-knowledge form)"
+    if s.family == "issue_frame":
+        return True, "issue frame (short two-sided claim-task framing; argue from framing + own knowledge)"
 
     if s.family == "single":
         if is_prop_member or is_theme_member:
@@ -295,6 +307,10 @@ def gate_source_config(s: StimulusRecord) -> tuple[bool, str]:
 
 def gate_lexile(s: StimulusRecord) -> tuple[bool, str]:
     """Every passage must land in the grade's Lexile band (per the record's grade) via the readability gate."""
+    # issue_frame is a short topic-framing (not an evidence passage): Lexile-band exempt by design, same as its
+    # word-floor exemption. A 110-word two-sided framing can estimate slightly out of band without being wrong.
+    if s.family == "issue_frame":
+        return True, "issue_frame: Lexile-band exempt (short claim-task framing, like a topic prompt)"
     grade = _lexile_grade_for(s)
     results = []
     for p in s.passages:

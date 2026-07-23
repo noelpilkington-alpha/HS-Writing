@@ -23,15 +23,16 @@ import mastery_forms as MF
 
 
 def test_single_form_lesson_keeps_legacy_ids():
-    """Every G9 lesson is single-form today, so each must yield the CURRENT live ids and nothing else."""
+    """A still-single-form lesson (C901-0003) must yield the CURRENT live ids and nothing else.
+    (C901-0001 is now a real 30-form bank, so it is no longer the single-form fixture.)"""
     plan, skipped = PM.build_plan("G9", "https://grader.example/score")
     items = [oid for k, oid, *_ in plan if k == "item"]
     tests = [oid for k, oid, *_ in plan if k == "test"]
-    # a known lesson's ids are the legacy (unsuffixed) ones
-    assert "ACC-W910-L-G9-C901-0001-MASTERY-FRQ" in items
-    assert "ACC-W910-L-G9-C901-0001-MASTERY" in tests
+    # a known single-form lesson's ids are the legacy (unsuffixed) ones
+    assert "ACC-W910-L-G9-C901-0003-MASTERY-FRQ" in items
+    assert "ACC-W910-L-G9-C901-0003-MASTERY" in tests
     # and NOT the suffixed form ids (bank of 1 uses legacy ids)
-    assert "ACC-W910-L-G9-C901-0001-MASTERY-FRQ-f1" not in items
+    assert "ACC-W910-L-G9-C901-0003-MASTERY-FRQ-f1" not in items
     # every test has a matching FRQ item
     for t in tests:
         assert t.replace("-MASTERY", "-MASTERY-FRQ") in items or (t + "-FRQ") in items

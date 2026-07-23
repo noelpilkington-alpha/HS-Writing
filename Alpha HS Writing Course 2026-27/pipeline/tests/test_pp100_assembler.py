@@ -31,10 +31,14 @@ def _crs(plan):
     return {oid: body for k, oid, url, body in plan if k == "component-resource"}
 
 
+# C901-0003 is still single-form (C901-0001 is now a 30-form bank prototype), so it is the single-form fixture.
+_SINGLE = "ACC-W910-L-G9-C901-0003"
+
+
 def test_single_form_pp100_points_at_single_test():
     plan, lessons, units = CA.build_plan("G9", "https://base.example")
     res = _resources(plan)
-    lid = "ACC-W910-L-G9-C901-0001"
+    lid = _SINGLE
     pp = res.get(f"res-{lid}-pp100")
     assert pp is not None, "single-form PP100 resource missing"
     md = pp["resource"]["metadata"]
@@ -47,7 +51,7 @@ def test_single_form_pp100_points_at_single_test():
 def test_single_form_cr_points_at_pp100_resource():
     plan, *_ = CA.build_plan("G9", "https://base.example")
     crs = _crs(plan)
-    lid = "ACC-W910-L-G9-C901-0001"
+    lid = _SINGLE
     cr = crs.get(f"cr-{lid}-pp100")
     assert cr is not None
     assert cr["componentResource"]["resource"]["sourcedId"] == f"res-{lid}-pp100"
