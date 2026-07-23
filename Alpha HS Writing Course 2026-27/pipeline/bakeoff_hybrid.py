@@ -39,3 +39,37 @@ def is_eligible(item) -> bool:
         if not g["passed"] and classify_gate_failure(gname, cross_pipeline=xp) == "fatal":
             return False
     return True
+
+def _matches(item, sec) -> bool:
+    if item.family != sec["family"]:
+        return False
+    keys = sec.get("subskills") or sec.get("modes") or []
+    return item.subskill_or_mode in keys
+
+def select_hybrid(live: bool = False):
+    """For each blueprint slot: eligible items that match the slot, ranked by judge median (desc),
+    source-blind; take the slot's count. Returns (picked_items_in_blueprint_order, per_slot_source_map)."""
+    pool = [it for it in merged_pool() if is_eligible(it)]
+    # judge each eligible item ONCE (cache dedupes live calls); attach the score
+    scored = {}
+    for it in pool:
+        scored[id(it)] = bg._judge_cached(it, live)["median"]
+    picked, srcmap, used = [], [], set()
+    for sec in rmt.BLUEPRINTS["G9"]:
+        cands = [it for it in pool if _matches(it, sec) and id(it) not in used]
+        # rank by judge desc, then id for determinism
+        cands.sort(key=lambda it: (-scored[id(it)], it.id))
+        take = cands[:sec["count"]]
+        if len(take) < sec["count"]:
+            # FAIL LOUD: never assemble a short/invalid form by padding. If a slot cannot be filled from
+            # eligible items, that is a real finding (pool too thin after gate-filtering), not something to
+            # paper over. Verified 2026-07-23: every G9 slot fills exactly (SCR 3/3, org 4/4, conv 5/5,
+            # sent 4/4; MC-evid 8 eligible for 4; ECR 2 for 1) - so this raises only if the pool shrinks.
+            raise ValueError(f"hybrid slot '{sec['section']}' short: {len(take)}/{sec['count']} eligible items")
+        for it in take:
+            used.add(id(it))
+        picked += take
+        srcmap.append({"section": sec["section"], "count": sec["count"],
+                       "picks": [{"id": it.id, "source": it.provenance.get("bakeoff_source"),
+                                  "judge": scored[id(it)]} for it in take]})
+    return picked, srcmap

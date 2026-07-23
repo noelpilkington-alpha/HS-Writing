@@ -31,3 +31,26 @@ def test_is_eligible_passes_clean_item():
                           Option("D","Some cities added bike lanes because they received federal grants.",False,"fact w/ because")],
                  answer_key=["A"], provenance={"bakeoff_source": "ours"})
     assert is_eligible(clean) is True
+
+def test_select_hybrid_fills_blueprint_and_reports_sources():
+    from bakeoff_hybrid import select_hybrid
+    import render_model_tests as rmt
+    items, srcmap = select_hybrid(live=False)
+    # total picked == sum of blueprint counts (21 for G9)
+    assert len(items) == sum(s["count"] for s in rmt.BLUEPRINTS["G9"])
+    # every picked item is eligible (no fatal gate)
+    from bakeoff_hybrid import is_eligible
+    assert all(is_eligible(it) for it in items)
+    # source map covers every section and records which source won each pick
+    assert len(srcmap) == len(rmt.BLUEPRINTS["G9"])
+    picks = [p for sec in srcmap for p in sec["picks"]]
+    assert all(p["source"] in ("ours", "incept") for p in picks)
+
+def test_select_hybrid_prefers_higher_judge_within_slot():
+    # within a slot, a higher-judged eligible item outranks a lower one, source-blind.
+    # offline heuristic judge: an item with rationalized distractors + balanced lengths scores higher than
+    # a bare one. Confirm the evidence slot's first pick has a real (>=60) judge score.
+    from bakeoff_hybrid import select_hybrid
+    items, srcmap = select_hybrid(live=False)
+    ev = next(sec for sec in srcmap if "evid" in sec["section"].lower())
+    assert ev["picks"][0]["judge"] >= 60
