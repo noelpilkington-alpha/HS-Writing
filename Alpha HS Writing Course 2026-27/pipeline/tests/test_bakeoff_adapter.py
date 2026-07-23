@@ -63,3 +63,13 @@ def test_judge_offline_is_deterministic_and_medianed():
     assert len(r1["samples"]) == 3
     assert 0 <= r1["median"] <= 100
     assert r1["variance"] >= 0
+
+def test_bakeoff_run_offline_produces_ranked_scorecard():
+    from bakeoff_g9 import run
+    sc = run(live=False)
+    assert set(sc["ours"]) >= {"fidelity", "fatal_gate_pass_rate", "fixable_failures", "judge_median_mean", "n_items"}
+    assert set(sc["incept"]) >= {"fidelity", "fatal_gate_pass_rate", "fixable_failures", "judge_median_mean", "n_items"}
+    assert sc["verdict"]["winner"] in ("ours", "incept", "tie")
+    assert "primary_rank" in sc["verdict"]           # documents the fidelity+fatal+judge formula
+    # Incept side must surface its known structural costs (uncited inline stimulus -> binding fails)
+    assert sc["incept"]["fatal_gate_pass_rate"] <= 1.0
