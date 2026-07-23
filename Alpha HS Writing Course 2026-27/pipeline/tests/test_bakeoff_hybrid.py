@@ -54,3 +54,18 @@ def test_select_hybrid_prefers_higher_judge_within_slot():
     items, srcmap = select_hybrid(live=False)
     ev = next(sec for sec in srcmap if "evid" in sec["section"].lower())
     assert ev["picks"][0]["judge"] >= 60
+
+def test_run_3way_scores_all_three_and_hybrid_fidelity_full():
+    from bakeoff_hybrid import run_3way
+    sc = run_3way(live=False)
+    assert set(sc) >= {"ours", "incept", "hybrid", "verdict", "hybrid_source_map"}
+    for side in ("ours", "incept", "hybrid"):
+        assert "fidelity" in sc[side] and "fatal_gate_pass_rate" in sc[side] and "judge_median_mean" in sc[side]
+    # hybrid is assembled to the full blueprint -> fidelity 1.0 and no fatal-gate failures
+    assert sc["hybrid"]["fidelity"] == 1.0
+    assert sc["hybrid"]["fatal_gate_pass_rate"] == 1.0
+    # ranks present for all three; winner is one of them
+    assert sc["verdict"]["winner"] in ("ours", "incept", "hybrid", "tie")
+    assert "25" in sc["verdict"]["primary_rank"] and "50" in sc["verdict"]["primary_rank"]
+    # source composition reported: how many slots incept won
+    assert "incept_slot_wins" in sc["verdict"]

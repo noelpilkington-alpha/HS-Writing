@@ -73,3 +73,70 @@ def select_hybrid(live: bool = False):
                        "picks": [{"id": it.id, "source": it.provenance.get("bakeoff_source"),
                                   "judge": scored[id(it)]} for it in take]})
     return picked, srcmap
+
+def _rank(sc):
+    return round(sc["fidelity"] * 25 + sc["fatal_gate_pass_rate"] * 25 + sc["judge_median_mean"] / 100 * 50, 2)
+
+def run_3way(live: bool = False) -> dict:
+    ours = bg._load_our_g9_items()
+    incept, _w = parse(load_cached_output_json())
+    hybrid_items, srcmap = select_hybrid(live=live)
+
+    ours_sc = bg._score_side(ours, cross_pipeline=False, live=live); ours_sc["fidelity"] = bg._fidelity(ours)
+    inc_sc = bg._score_side(incept, cross_pipeline=True, live=live); inc_sc["fidelity"] = bg._fidelity(incept)
+    # hybrid: ours-side gate rule for our-authored picks and incept rule for incept picks is already baked into
+    # eligibility; for scoring parity score the hybrid as a mixed form with cross_pipeline=False (its Incept
+    # picks already passed the stricter-for-us gates during selection, so no acc_tags/binding exclusion needed).
+    hyb_sc = bg._score_side(hybrid_items, cross_pipeline=False, live=live); hyb_sc["fidelity"] = bg._fidelity(hybrid_items)
+
+    ranks = {"ours": _rank(ours_sc), "incept": _rank(inc_sc), "hybrid": _rank(hyb_sc)}
+    winner = max(ranks, key=ranks.get)
+    incept_slot_wins = sum(1 for sec in srcmap for p in sec["picks"] if p["source"] == "incept")
+    total_slots = sum(len(sec["picks"]) for sec in srcmap)
+    verdict = {"winner": winner, "ranks": ranks,
+               "primary_rank": "fidelity*25 + fatal_gate_pass*25 + judge_median_mean/100*50 "
+                               "(fixable + excluded reported separately, not in rank)",
+               "incept_slot_wins": incept_slot_wins, "total_slots": total_slots,
+               "note": "hybrid = best gate-passing, highest-judged item per slot, source-blind; Incept pool is "
+                       "8 items (mostly evidence) so most slots are ours by availability, not preference"}
+    sc = {"ours": ours_sc, "incept": inc_sc, "hybrid": hyb_sc, "verdict": verdict, "hybrid_source_map": srcmap}
+    with open("C:/tmp/bakeoff_3way_scorecard.json", "w", encoding="utf-8") as fh:
+        json.dump(sc, fh, indent=1)
+    _write_html(sc)
+    return sc
+
+def _write_html(sc):
+    def esc(s): return html.escape(str(s))
+    v = sc["verdict"]
+    rows = []
+    for side in ("ours", "incept", "hybrid"):
+        s = sc[side]
+        rows.append(f"<tr><td>{side}</td><td>{v['ranks'][side]}</td><td>{s['fidelity']}</td>"
+                    f"<td>{s['fatal_gate_pass_rate']}</td><td>{s['judge_median_mean']}</td>"
+                    f"<td>{s.get('judge_variance_mean')}</td><td>{s['n_items']}</td></tr>")
+    slot_rows = "".join(
+        f"<tr><td>{esc(sec['section'])}</td><td>"
+        + ", ".join(f"{esc(p['source'])}:{esc(p['id'])} ({esc(p['judge'])})" for p in sec["picks"])
+        + "</td></tr>" for sec in sc["hybrid_source_map"])
+    doc = (f"<!DOCTYPE html><html><head><meta charset='UTF-8'><title>G9 3-Way Bake-Off</title></head><body>"
+           f"<h1>G9 3-Way Bake-Off: winner = {esc(v['winner'])}</h1>"
+           f"<p>{esc(v['primary_rank'])}</p>"
+           f"<p>Incept won {esc(v['incept_slot_wins'])} of {esc(v['total_slots'])} hybrid slots. {esc(v['note'])}</p>"
+           f"<table border=1 cellpadding=6><tr><th>side</th><th>rank</th><th>fidelity</th><th>fatal pass</th>"
+           f"<th>judge</th><th>judge var</th><th>items</th></tr>{''.join(rows)}</table>"
+           f"<h2>Hybrid per-slot source map</h2>"
+           f"<table border=1 cellpadding=6><tr><th>slot</th><th>picks (source:id (judge))</th></tr>{slot_rows}</table>"
+           f"</body></html>")
+    with open("C:/tmp/bakeoff_3way.html", "w", encoding="utf-8") as fh:
+        fh.write(doc)
+
+if __name__ == "__main__":
+    live = "--live" in sys.argv
+    sc = run_3way(live=live)
+    v = sc["verdict"]
+    print(f"winner={v['winner']} ranks={v['ranks']}")
+    print(f"incept won {v['incept_slot_wins']}/{v['total_slots']} hybrid slots")
+    for side in ("ours", "incept", "hybrid"):
+        s = sc[side]
+        print(f"  {side}: fid={s['fidelity']} fatal={s['fatal_gate_pass_rate']} judge={s['judge_median_mean']} n={s['n_items']}")
+    print("wrote C:/tmp/bakeoff_3way_scorecard.json + C:/tmp/bakeoff_3way.html")
