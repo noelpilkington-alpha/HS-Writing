@@ -134,6 +134,49 @@ remaining path to certainty is a PLATFORM-TEAM ANSWER (the PowerPath API is a se
 `api.alpha-1edtech.ai/scalar?api=powerpath-api`, whose attempt/next-question semantics are not in these docs),
 or an authenticated student-runtime observation. HOLD bank-depth + build until this is answered.
 
+### ANSWERED (2026-07-23) — PowerPath API spec confirms round-robin form rotation on retry
+
+Fetched the PowerPath OpenAPI spec (`GET api.alpha-1edtech.ai/powerpath/openapi.yaml`, authed, 352KB). The
+`/powerpath/createNewAttempt` endpoint states the behavior VERBATIM:
+
+> "For Assessment Bank lessons: ... If the lesson is taken again by the student, a different test may be served
+> ... The sub-test is determined using **round-robin logic over the sub-resources of the lesson's Assessment
+> Bank Resource object**. So for example, if a lesson configures 2 sub-tests, the first attempt serves test 1,
+> the second attempt serves test 2, the third attempt serves test 1 again, and so on."
+
+This RESOLVES the design. The decided mechanism + semantics:
+
+- **Mechanism = Assessment Bank (option b), NOT question-pool-in-one-test (option a).** The engine rotates over
+  the SUB-RESOURCES of an `assessment-bank` Resource, one whole test per attempt. So each PP100 form is its own
+  single-item test, and the lesson's PP100 ComponentResource points at an `assessment-bank` Resource whose
+  `resources: [<form-test ids>]`. (`getNextQuestion` serves questions one at a time WITHIN the currently-served
+  test; `createNewAttempt` picks WHICH test for the new attempt.) The `type:"assessment-bank"` value from the
+  api-guide is the correct resource type (probe used type:"qti").
+- **Selection = ROUND-ROBIN, deterministic, by attempt number** (not random). Attempt 1 -> form 1, attempt 2 ->
+  form 2, ... attempt N+1 wraps to form 1. `createNewAttempt` only issues a new attempt when the current one is
+  completed.
+- **Retries are gated by attempt completion; `resetAttempt` soft-deletes responses + zeroes the score** (a
+  reset, distinct from a new attempt). No documented hard attempt cap in these endpoints.
+- **A single-test PP100 (our CURRENT shape) does NOT rotate** — a retake re-serves the same one test. This is
+  exactly the gap Noel flagged; the fix is to convert each lesson's PP100 into an assessment-bank of N form-tests.
+
+**Bank-depth is now a clean decision:** with round-robin, depth N = "a student sees a form again only on attempt
+N+1." So depth is chosen by "how many distinct attempts before repeat is acceptable," bounded by the
+anti-over-coverage concern and the source pool. The spec's recommended **3** means a form repeats only on the
+4th attempt — ample for an honest test-out. (Depth can now be SET; the runtime unknown that blocked it is
+resolved.)
+
+### Build shape (decided, ready after grader fix)
+
+Per lesson, the PP100 becomes:
+- N form-tests: `<lesson>-MASTERY-f{k}` -> `<lesson>-MASTERY-FRQ-f{k}` (k=1..N), each a single-item test over one
+  authored equivalent FRQ form (grader-wired, held-out source, per the equivalence contract above).
+- One `assessment-bank` Resource `res-<lesson>-pp100` with `type:"assessment-bank"`,
+  `resources: [<the N form-test ids>]`, `vendorResourceId` REQUIRED.
+- The lesson topic's PP100 component-resource points at the bank Resource (not a single test).
+- `course_push_mastery_v3_1.py` pushes N form-tests + N FRQ items per lesson; `course_assemble_v3_1.py` emits
+  the bank Resource + the CR link to it. A bank of 1 == today (prod-safe fallback).
+
 ## Delivery mechanism (platform-native, already documented)
 
 Use the timeback **Assessment Bank Pattern** (create-course.md):
