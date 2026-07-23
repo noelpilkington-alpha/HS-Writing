@@ -20,7 +20,7 @@ def test_mc_correct_id_resolved_by_text_match():
         correct = [o for o in it.options if o.correct]
         assert len(correct) == 1                       # exactly one keyed correct option
         assert it.answer_key == [correct[0].id]        # answer_key matches the correct Option id
-        assert all(o.rationale for o in it.options if not o.correct)  # distractors carry rationale
+        assert all(o.rationale.strip() for o in it.options if not o.correct), "distractors need non-empty rationales"
 
 def test_text_entry_becomes_scr_or_cr_with_model_answer():
     items, _ = parse(_output_json())
