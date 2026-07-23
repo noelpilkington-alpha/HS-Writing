@@ -91,6 +91,49 @@ we still need confirmed (authenticated student-runtime observation, or a platfor
 proceed to STAGE the banks (structure is known-good) but must not be presented as "rotating on retry" until the
 runtime behavior is confirmed.
 
+### Timeback Documentation review (2026-07-23) — reframes the mechanism
+
+Read the project's Timeback docs (`HS Writing/Timeback documentation/timeback-api-guide.md`, `qti-api.yaml`,
+`oneroster-api.yaml`; `Writing Custom Courses/Timeback documentation/alphatest-claude-code-context.md`). Key
+findings that change the design:
+
+1. **PP100 is driven by the PowerPath ENGINE, not by QTI test structure** (api-guide §7): "PP100 is not a
+   separate content type... the PowerPath engine handles the adaptive behavior." So retry/attempt behavior is a
+   PowerPath-layer concern, not something a QTI `selectionCount` on the test controls.
+2. **`FastFailConfig` reveals the real PP100 model** (oneroster-api.yaml `FastFailConfig`): PP100 adapts at the
+   QUESTION level WITHIN one test — `consecutive_failures` (e.g. 3 wrong in a row) and `stagnation_limit`
+   (e.g. 5 questions without score improvement) auto-finalize an attempt. This is a **question-pool-in-one-test**
+   mastery model (serve questions until pass or fast-fail), NOT a "rotate across separate equivalent essay
+   forms" model. Implication for a WRITING PP100: the natural fit may be a POOL OF FRQ FORMS INSIDE ONE PP100
+   test that the engine draws from across attempts, rather than N separate single-item tests behind a bank
+   resource.
+3. **`selectionCount`/`qti-selection` are NOT in the formal QTI spec** (grep of qti-api.yaml: absent) — they are
+   Timeback metadata conventions. Consistent with the probe: the field persisted on the RESOURCE but was
+   dropped from the TEST. So if selection happens, it is a PowerPath/Timeback behavior over the resource-level
+   pool, not QTI-standard test selection.
+4. **`assessment-bank` is the correct resource type** (api-guide "Handling Assessment Banks"):
+   `metadata.type == "assessment-bank"`, `resources: [test-id...]`. My probe used `type:"qti"` — for a real
+   bank use `type:"assessment-bank"`.
+5. **A delivery-layer rotation exists too** (alphatest "Assignment Variants" v4/v5): "assigns FIRST UNTAKEN test
+   for grade/subject", and "completed or abandoned assignments can be reassigned." So at the assignment layer,
+   the platform can hand out an untaken form from a set. This is a SECOND possible rotation mechanism, at the
+   MasteryTrack/alphatest delivery layer, distinct from in-course PowerPath.
+
+**Revised understanding of the options for "more forms":**
+- **(a) Question-pool inside one PP100 test** — put multiple FRQ forms as items in ONE test; let the PowerPath
+  engine + FastFailConfig serve/adapt. Closest to the documented PP100 model. Needs: confirm the engine serves
+  a DIFFERENT FRQ across attempts (vs re-serving the same first item).
+- **(b) assessment-bank resource over N single-item tests** — the bank pattern (probe-confirmed to store). Needs:
+  confirm PowerPath/runtime picks among them per attempt.
+- **(c) alphatest delivery "first untaken"** — a delivery-layer assign of an untaken form. Different integration
+  surface (the alphatest assign API), likely not how the in-course student runtime already delivers our PP100s.
+
+**All three still require the SAME unanswered fact:** does the engine actually serve a different form on a
+retry? The docs describe mechanisms but none states the retry-form-selection behavior explicitly. The cleanest
+remaining path to certainty is a PLATFORM-TEAM ANSWER (the PowerPath API is a separate service,
+`api.alpha-1edtech.ai/scalar?api=powerpath-api`, whose attempt/next-question semantics are not in these docs),
+or an authenticated student-runtime observation. HOLD bank-depth + build until this is answered.
+
 ## Delivery mechanism (platform-native, already documented)
 
 Use the timeback **Assessment Bank Pattern** (create-course.md):
