@@ -48,3 +48,18 @@ def test_load_cached_output_json_roundtrips_to_adapter():
     assert "items" in oj and len(oj["items"]) == 8
     items, warnings = parse(oj)          # cached -> adapter must work end to end offline
     assert len(items) == 8
+
+def test_judge_offline_is_deterministic_and_medianed():
+    from bakeoff_judge import judge_item
+    from item_contract import Item, Option
+    it = Item(id="X", family="SR", grade="9-10", stem="Which is an arguable claim?",
+              qti_type="choice", subskill_or_mode="evidence", acc_tags=["CCSS.W.9-10.1"],
+              options=[Option("A","Schools should start later, because teens need sleep.",True,""),
+                       Option("B","School starts at 8am.",False,"a fact")],
+              answer_key=["A"])
+    r1 = judge_item(it, n=3, live=False)
+    r2 = judge_item(it, n=3, live=False)
+    assert r1["median"] == r2["median"]          # offline judge is deterministic
+    assert len(r1["samples"]) == 3
+    assert 0 <= r1["median"] <= 100
+    assert r1["variance"] >= 0
