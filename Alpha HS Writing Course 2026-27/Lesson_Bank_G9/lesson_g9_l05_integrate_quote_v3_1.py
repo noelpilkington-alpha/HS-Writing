@@ -240,9 +240,9 @@ LESSON = Lesson(
                                          "Free or reduced-price meals reach students under 185 percent of the poverty line. This helps a lot of families.",
                                          "red"),
                  checklist_block=checklist(title="Run the test:", rows=[
-                     ("Did the writer name who said it?", "No, the fact is dropped in with no source. Add an attributive tag naming who reported it."),
+                     ("Did the writer name who said it?", "your call: yes / no"),
                      ("Did the writer choose quote, paraphrase, or summarize on purpose?", "It is a paraphrase (the writer's own words, no quotation marks), so that choice is fine, it just needs its source named."),
-                     ("Is the fact really in the source?", "Yes, the 185 percent figure is in the reading."),
+                     ("Is the fact really in the source?", "your call: yes / no"),
                  ]),
                  closer="Now rewrite the weak draft into one sentence that names its source. Then name which "
                         "question your rewrite fixed.")),

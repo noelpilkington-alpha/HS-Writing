@@ -238,9 +238,9 @@ LESSON = Lesson(
                  intro="Run the 3 scope questions on this weak draft, then rewrite it into a scoped claim.",
                  setapart_block=setapart("Weak draft to fix:", "The government should always manage the job market.", "red"),
                  checklist_block=checklist(title="Run the test:", rows=[
-                     ("Does a sweeping word overreach?", "Yes, 'always' claims too much. Drop it and add a condition."),
-                     ("Is whom or which case named?", "No. Name the workers or the situation it covers."),
-                     ("Could one exception sink it?", "Yes. Narrow it until a single counterexample no longer collapses it."),
+                     ("Does a sweeping word overreach?", "your call: yes / no"),
+                     ("Is whom or which case named?", "your call: yes / no"),
+                     ("Could one exception sink it?", "your call: yes / no"),
                  ]),
                  closer="Now rewrite the weak draft into one scoped claim that passes all three. Then name what "
                         "your claim is scoped to (whom, which case, or when).")),

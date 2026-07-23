@@ -264,9 +264,9 @@ LESSON = Lesson(
                                          "Each perspective on streets has a good point, and the answer is "
                                          "somewhere in the middle.", "red"),
                  checklist_block=checklist(title="Run the check:", rows=[
-                     ("Does it WEIGH the views against each other?", "No, it just says each has a point. Name where one holds, or where one depends on another."),
-                     ("Does it STAKE a position of your own?", "No, 'somewhere in the middle' is not a position. Commit to what you hold."),
-                     ("Could a reader tell what YOU hold?", "No. Word it so your own position is unmistakable."),
+                     ("Does it WEIGH the views against each other?", "your call: yes / no"),
+                     ("Does it STAKE a position of your own?", "your call: yes / no"),
+                     ("Could a reader tell what YOU hold?", "your call: yes / no"),
                  ]),
                  closer="Now rewrite the weak draft into one weighed, staked position on the streets issue that "
                         "passes all three. Then name which question your rewrite fixed.")),

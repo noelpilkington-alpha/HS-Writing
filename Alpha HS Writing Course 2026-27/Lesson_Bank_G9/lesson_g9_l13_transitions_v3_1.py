@@ -204,7 +204,7 @@ LESSON = Lesson(
                      ("What is the real relationship at each link?",
                       "Sunlight then absorb is a sequence; absorb versus blocked-by-shade is a contrast."),
                      ("Does the transition match it?",
-                      "No, both are 'also,' so replace them (next, however)."),
+                      "your call: yes / no"),
                  ]),
                  closer="Now write a fresh two-or-three-sentence paragraph on photosynthesis. Check each "
                         "transition against the two questions and fix any filler before you submit. Finish by "

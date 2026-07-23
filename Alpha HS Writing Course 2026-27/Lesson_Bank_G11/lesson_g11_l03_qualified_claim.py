@@ -226,9 +226,9 @@ LESSON = Lesson(
                  setapart_block=setapart("Weak draft to fix:",
                                          "Perhaps the government could sometimes assist, depending on the situation.", "red"),
                  checklist_block=checklist(title="Run the test:", rows=[
-                     ("Does it commit to a position?", "No, 'perhaps' and 'sometimes' hedge. Commit to one side."),
-                     ("Is the limit stated as a bound (when ..., in most cases)?", "No, 'depending on the situation' is vague. Name the bound."),
-                     ("Is there a reason (a warrant)?", "No. Add one with 'because'."),
+                     ("Does it commit to a position?", "your call: yes / no"),
+                     ("Is the limit stated as a bound (when ..., in most cases)?", "your call: yes / no"),
+                     ("Is there a reason (a warrant)?", "your call: yes / no"),
                  ]),
                  closer="Now rewrite the weak draft into one qualified claim that passes all three. Then name "
                         "which limit your claim sets.")),

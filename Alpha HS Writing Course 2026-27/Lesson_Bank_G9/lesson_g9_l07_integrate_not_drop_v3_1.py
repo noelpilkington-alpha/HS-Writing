@@ -242,9 +242,9 @@ LESSON = Lesson(
                  setapart_block=setapart("Weak draft to fix:",
                                          "Schools limit phones. \"90.9 percent\" in 2009-10. Rules were strict.", "red"),
                  checklist_block=checklist(title="Run the check:", rows=[
-                     ("Is the quote folded into a built sentence?", "No, the number is its own fragment. Weave it into a sentence you build."),
-                     ("Did you name who said it?", "No source is named. Add an attributive tag (who reports it)."),
-                     ("Does it flow?", "No, it is choppy. Fix the first two and it will."),
+                     ("Is the quote folded into a built sentence?", "your call: yes / no"),
+                     ("Did you name who said it?", "your call: yes / no"),
+                     ("Does it flow?", "your call: yes / no"),
                  ]),
                  closer="Now rewrite the weak draft into one sentence that folds the quote in, names the source, "
                         "and flows. Then name which question your rewrite fixed.")),

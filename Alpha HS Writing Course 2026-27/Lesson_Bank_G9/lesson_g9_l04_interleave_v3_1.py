@@ -149,11 +149,15 @@ LESSON = Lesson(
                    "AND backs it with a reason. Which sentence is that finished product?"),
              choices=[
                  {"id": "A",
-                  "text": "A four-day school week touches students, teachers, and families in several important "
-                          "and interconnected ways.",
+                  # COUNCIL FIX (confound): distractor A now carries a connective ('because') on a NEUTRAL,
+                  # side-less sentence, so the connective no longer signals the correct answer; the student must
+                  # test for a SIDE, not spot 'because'. Mirrors the L01 confound fix.
+                  "text": "A four-day school week touches students, teachers, and families in many ways, because "
+                          "the schedule shapes how everyone spends their time.",
                   "correct": False,
-                  "why": "This sets a neutral focus and takes no side, so it answers an explain task, not an "
-                         "argue task."},
+                  "why": "This has a connective ('because'), but it only links two neutral facts and takes no "
+                         "side, so it answers an explain task, not an argue task. The connective is not what "
+                         "makes a claim; the side is."},
                  {"id": "B",
                   "text": "Schools should switch to a four-day week.",
                   "correct": False,
@@ -211,8 +215,8 @@ LESSON = Lesson(
                  setapart_block=setapart("Weak draft to fix:", "Volcanoes should be studied more.", "red"),
                  checklist_block=checklist(title="Run the check:", rows=[
                      ("What is the verb, argue or explain?", "Explain, so I need a controlling idea, not a claim."),
-                     ("Is this a no-side focus?", "No, it takes a side, that is an argue product. Drop the side."),
-                     ("Does it preview the parts?", "No. Add the focus and the stages."),
+                     ("Is this a no-side focus?", "your call: yes / no"),
+                     ("Does it preview the parts?", "your call: yes / no"),
                  ]),
                  closer="Now rewrite the weak draft into one controlling idea that fits EXPLAIN, then name which "
                         "check your rewrite fixed.")),

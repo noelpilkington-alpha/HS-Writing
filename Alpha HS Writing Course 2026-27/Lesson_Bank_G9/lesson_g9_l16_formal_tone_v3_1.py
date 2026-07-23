@@ -223,8 +223,8 @@ LESSON = Lesson(
                                          "I think you can tell a four-day week is a no-brainer, because kids these days just need way more of a break.", "red"),
                  checklist_block=checklist(title="Run the check:", rows=[
                      ("Did I cut the first person?", "Not yet, 'I think' is first person. Cut it."),
-                     ("Did I cut slang and casual words?", "No, 'no-brainer,' 'kids these days,' and 'way more' are slang. Replace them."),
-                     ("Did I stop talking to the reader?", "No, 'you can tell' addresses the reader. State it about the issue."),
+                     ("Did I cut slang and casual words?", "your call: yes / no"),
+                     ("Did I stop talking to the reader?", "your call: yes / no"),
                  ]),
                  closer="Now rewrite the weak draft into one formal, objective sentence that keeps the same "
                         "position and reason. Then name which question your rewrite fixed.")),

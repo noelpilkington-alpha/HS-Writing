@@ -242,9 +242,9 @@ LESSON = Lesson(
                  setapart_block=setapart("Weak draft to fix:",
                                          "Both building power and fixing the grid are important.", "red"),
                  checklist_block=checklist(title="Run the check:", rows=[
-                     ("Does it commit to one side?", "No, it fence-sits. Pick a side."),
-                     ("Does it name the close position it is NOT?", "No. Add the rejected rival with 'not'."),
-                     ("Does it say what it IS instead?", "No. State your own position with 'but'."),
+                     ("Does it commit to one side?", "your call: yes / no"),
+                     ("Does it name the close position it is NOT?", "your call: yes / no"),
+                     ("Does it say what it IS instead?", "your call: yes / no"),
                  ]),
                  closer="Now rewrite the weak draft into one nuanced claim that passes all three. "
                         "Then name the X your rewrite rejects.")),

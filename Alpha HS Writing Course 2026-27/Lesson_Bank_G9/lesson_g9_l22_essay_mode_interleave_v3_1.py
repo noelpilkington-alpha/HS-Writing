@@ -234,8 +234,8 @@ LESSON = Lesson(
                                          "Plants are amazing and we should protect them.", "red"),
                  checklist_block=checklist(title="Run the check:", rows=[
                      ("What mode does the verb call for?", "Explain, so an informational essay: a focusing thesis with no side."),
-                     ("Does the thesis match that mode?", "No, it takes a side (should protect them). Drop the side."),
-                     ("Does it set a focus that previews the parts?", "No. Set the focus and name the inputs and outputs."),
+                     ("Does the thesis match that mode?", "your call: yes / no"),
+                     ("Does it set a focus that previews the parts?", "your call: yes / no"),
                  ]),
                  closer="Now rewrite the thesis into one controlling idea that fits an explain essay, then name "
                         "which check your rewrite fixed.")),

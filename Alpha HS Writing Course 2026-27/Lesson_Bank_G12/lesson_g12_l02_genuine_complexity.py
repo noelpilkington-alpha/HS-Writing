@@ -213,9 +213,9 @@ LESSON = Lesson(
                  setapart_block=setapart("Weak draft to fix:",
                                          "Training is best, though others may disagree, but I still think training wins.", "red"),
                  checklist_block=checklist(title="Run the check:", rows=[
-                     ("Does it name a SPECIFIC cost the position pays?", "No, 'others may disagree' is a formula. Name the real cost (training does little for the worker displaced now)."),
-                     ("Is the tension real, not just a transition word?", "No. 'Though' and 'but' do the work; no real cost appears. Put the cost in."),
-                     ("Does the tension shape the claim?", "No, the claim ignores it. Connect the cost to the position."),
+                     ("Does it name a SPECIFIC cost the position pays?", "your call: yes / no"),
+                     ("Is the tension real, not just a transition word?", "your call: yes / no"),
+                     ("Does the tension shape the claim?", "your call: yes / no"),
                  ]),
                  closer="Now write a fresh claim on the workforce prompt that names a real tension, and run the "
                         "same check. For each No, use the fix. Finish by naming the tension you used.")),

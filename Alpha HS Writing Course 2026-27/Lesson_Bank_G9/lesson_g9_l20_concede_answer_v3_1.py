@@ -287,11 +287,11 @@ LESSON = Lesson(
                  setapart_block=setapart("Weak draft to fix:",
                                          "Although free transit costs money, cities should just make the buses free anyway.", "red"),
                  checklist_block=checklist(title="Run the test:", rows=[
-                     ("Did it concede a real objection (not a fact)?", "Yes, the cost is a real point the other side raises."),
+                     ("Did it concede a real objection (not a fact)?", "your call: yes / no"),
                      ("Did it answer that objection with a reason?",
                       "No. It says 'anyway' but gives no reason, so the cost objection is left standing. Add a "
                       "reason that answers it, such as free rides getting low-income workers to their jobs."),
-                     ("Does it still hold a clear position?", "Yes, it keeps the side that the buses should be free."),
+                     ("Does it still hold a clear position?", "your call: yes / no"),
                  ]),
                  closer="Now rewrite the weak draft into one concede-and-answer sentence that passes all three. "
                         "Then name, in a few words, the reason you used to answer the objection.")),

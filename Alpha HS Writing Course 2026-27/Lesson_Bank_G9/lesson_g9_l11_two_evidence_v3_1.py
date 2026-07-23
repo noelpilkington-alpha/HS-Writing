@@ -198,9 +198,9 @@ LESSON = Lesson(
                  setapart_block=setapart("Weak paragraph to fix:",
                                          "Technology jobs are booming. The Bureau projects data-science jobs will grow about 33.5 percent, and data-science jobs are one of the fastest-growing fields around.", "red"),
                  checklist_block=checklist(title="Run the check:", rows=[
-                     ("Do the two pieces ADD something?", "No, both say data-science jobs grow fast. Swap the second for a fact that adds, like the overall growth rate."),
+                     ("Do the two pieces ADD something?", "your call: yes / no"),
                      ("Are they ordered so the second builds on the first?", "Cannot tell yet, they repeat. Fix the second fact first."),
-                     ("Does one warrant tie both to the point?", "No warrant at all. Add one that says what the two figures show together."),
+                     ("Does one warrant tie both to the point?", "your call: yes / no"),
                  ]),
                  closer="Now rewrite it as a developed paragraph: point, two facts that add up (in order), and one "
                         "warrant tying both to the point. Then name which part your rewrite fixed.")),

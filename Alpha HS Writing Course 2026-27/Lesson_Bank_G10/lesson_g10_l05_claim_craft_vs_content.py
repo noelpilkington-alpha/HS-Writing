@@ -260,9 +260,9 @@ LESSON = Lesson(
                  setapart_block=setapart("Weak draft to fix:",
                                          "Chopin shows that Mrs. Mallard feels trapped in her marriage.", "red"),
                  checklist_block=checklist(title="Run the test:", rows=[
-                     ("Does it name a technique (something the author did)?", "No. It names only a feeling (trapped). Name the technique that creates it."),
-                     ("Does it name an effect on the reader?", "No. Add what that choice makes the reader feel or notice."),
-                     ("Or does it only report the character's feeling?", "Yes, right now it does. That is why it is content, not craft."),
+                     ("Does it name a technique (something the author did)?", "your call: yes / no"),
+                     ("Does it name an effect on the reader?", "your call: yes / no"),
+                     ("Or does it only report the character's feeling?", "your call: yes / no"),
                  ]),
                  closer="Now rewrite the weak draft into one sentence that names a Chopin technique and its "
                         "effect. Then name which question your rewrite fixed.")),

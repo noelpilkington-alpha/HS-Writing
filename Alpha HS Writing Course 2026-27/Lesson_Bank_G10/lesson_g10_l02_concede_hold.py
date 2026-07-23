@@ -263,8 +263,8 @@ LESSON = Lesson(
                  setapart_block=setapart("Weak draft to fix:",
                                          "Although some people like evening light, it is hard to know the best answer.", "red"),
                  checklist_block=checklist(title="Run the test:", rows=[
-                     ("Did it name a real objection (concede)?", "Yes, evening light is a real point."),
-                     ("After conceding, does it hold a clear side?", "No, 'hard to know' collapses. State a side."),
+                     ("Did it name a real objection (concede)?", "your call: yes / no"),
+                     ("After conceding, does it hold a clear side?", "your call: yes / no"),
                      ("Does the reason answer that objection, not just repeat your side?",
                       "No. There is no reason yet. Add one that answers the evening-light point, such as morning "
                       "safety outweighing it."),

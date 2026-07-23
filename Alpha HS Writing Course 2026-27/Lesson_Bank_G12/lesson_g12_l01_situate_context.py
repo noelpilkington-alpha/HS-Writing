@@ -240,7 +240,7 @@ LESSON = Lesson(
                      ("What larger question is this prompt one instance of?",
                       "It never names one. Name it: how a society rations a necessity it cannot fully supply."),
                      ("Is that larger question named inside the claim?",
-                      "No, only a bare answer is there. Put the frame into the sentence itself."),
+                      "your call: yes / no"),
                      ("Does the claim still commit to an answer within that frame?",
                       "Not yet. Connect the commitment to the frame you named."),
                  ]),

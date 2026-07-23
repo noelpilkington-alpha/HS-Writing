@@ -242,8 +242,8 @@ LESSON = Lesson(
                                          "According to the passage, some bird migrations cover thousands of miles.", "red"),
                  checklist_block=checklist(title="Run the test:", rows=[
                      ("What is the claim about?", "Why birds migrate, to survive the seasons."),
-                     ("Does this fact prove THAT?", "No. It is about distance, not the reason. Swap in a why-fact."),
-                     ("Is the source named?", "Yes, the passage is named as the source. Keep that, just swap the fact."),
+                     ("Does this fact prove THAT?", "your call: yes / no"),
+                     ("Is the source named?", "your call: yes / no"),
                  ]),
                  closer="Now rewrite the weak draft into one sentence that proves the claim with a relevant "
                         "fact, named. Then name which question your rewrite fixed.")),

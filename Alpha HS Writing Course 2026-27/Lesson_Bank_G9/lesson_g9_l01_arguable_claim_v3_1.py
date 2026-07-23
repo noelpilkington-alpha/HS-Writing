@@ -118,6 +118,10 @@ LESSON = Lesson(
     fade_ledger_moves=["decode-the-task-verb", "arguable-claim-vs-fact-vs-opinion", "side-plus-reason"],
     slots=[
         # ===== TEACH: ONE idea only (split; no cold 3-question test, verb trimmed to one line) =====
+        # COUNCIL FIX (Rule 6, all 6 seats): cut the thesis-scoring aside (not invoked by any task here), the
+        # long argue-vs-explain habit paragraph (no task classifies verbs in THIS lesson), and the "is my reason
+        # strong enough" future-skill disclaimer (extraneous load). What stays: the one idea + the fact/opinion/
+        # claim taxonomy the discriminations actually test. The thesis term moves to a tooltip only.
         Slot("TEACH", "teach_card", "The one idea: take a SIDE, give a REASON",
              body=(ONE_IDEA +
                    "Three kinds of sentence look alike but do different jobs, so keep them apart:"
@@ -126,19 +130,10 @@ LESSON = Lesson(
                    "about ('Some districts have tried a four-day week').</li>"
                    "<li style=\"margin:4px 0\"><strong>OPINION</strong>: a bare preference with nothing behind it "
                    "('A four-day week sounds great').</li>"
-                   "<li style=\"margin:4px 0\"><strong>Arguable claim</strong>: a sentence that takes a side "
-                   "someone could disagree with AND backs it with a reason ('Schools should switch to a four-day "
-                   "week, because a longer weekend gives students real time to rest').</li></ul>"
-                   "That last one is the sentence an argument is built on. (Scoring sometimes calls this a "
-                   "<dfn class=\"tb-glossary-term\" data-catalog-idref=\"def-thesis\" "
-                   "title=\"Thesis means the arguable claim your whole response defends. You do not need this "
-                   "word to finish today's task.\">thesis</dfn>, but you do not need that word for "
-                   "today's task.) One habit first: when a task says 'argue' or 'should schools ... ?', it wants "
-                   "a side; 'explain' wants no side. Today's task asks you to argue. One thing this lesson does "
-                   "NOT ask yet: whether your reason is a strong one. Today a reason just has to be present and "
-                   "on-topic; judging a reason as strong or weak is its own skill you will build in later "
-                   "lessons. So if you finish and wonder 'is my reason good enough?', that is the right question "
-                   "at the wrong time: get the side plus a real reason down first.")),
+                   "<li style=\"margin:4px 0\"><strong>Arguable claim</strong>: this is a sentence that takes a "
+                   "side someone could disagree with AND backs it with a reason ('Schools should switch to a "
+                   "four-day week, because a longer weekend gives students real time to rest').</li></ul>"
+                   "That last one is the sentence an argument is built on. Your task today: write one.")),
         Slot("TEACH", "stimulus_display", "The debate: a four-day school week",
              ref="ACC-W910-FRAME-FOURDAYWEEK", bank="four_day_week",
              body=("Read the short framing of the debate. In a moment you will watch a claim get built, then "
@@ -183,21 +178,25 @@ LESSON = Lesson(
              ref="", labeled_grade_c=True, bank="four_day_week",
              body=("One more set, this time watch for a side with nothing behind it. Which sentence is an "
                    "arguable claim: one that takes a side and backs it with a reason? "
-                   "(A) In many four-day plans, the school day simply runs longer and one weekday is dropped from the calendar.  "
+                   "(A) In many four-day plans, the school day simply runs longer, so one weekday is dropped from the calendar.  "
                    "(B) Schools should keep the five-day week.  "
                    "(C) A four-day week would help students, since a lighter week keeps them more focused in class.  "
                    "(D) The four-day and five-day weeks each have their own upsides and downsides for students. "
                    "Correct: C. It takes a side someone could reject and gives a reason for it, while a side with no reason is not finished."),
+             # COUNCIL FIX (confound, deterministic audit P1-C): the correct option (C) was the ONLY one with a
+             # connective ('since'), so a student could token-match instead of testing side+reason. Distractor A
+             # now carries a connective too ('so'), on a FACT with no side, so the connective no longer signals
+             # the answer, mirroring the same fix already made in this lesson's first discrimination.
              choices=[
-                 {"id": "A", "text": "In many four-day plans, the school day simply runs longer and one weekday is dropped from the calendar.",
+                 {"id": "A", "text": "In many four-day plans, the school day simply runs longer, so one weekday is dropped from the calendar.",
                   "correct": False,
-                  "why": "This just reports how the schedule works, a fact no one would argue with, so it takes no side and is not a claim."},
+                  "why": "This has a connective ('so'), but it only links two facts about the schedule that nobody argues with. A connective on a fact is still not a claim; it takes no side."},
                  {"id": "B", "text": "Schools should keep the five-day week.",
                   "correct": False,
                   "why": "This takes a clear side someone could reject, but it gives no reason to back that side, so it is not a finished claim yet."},
                  {"id": "C", "text": "A four-day week would help students, since a lighter week keeps them more focused in class.",
                   "correct": True,
-                  "why": "Correct. It takes a side someone could disagree with and gives a reason for that side, and a side plus a reason is what makes a claim."},
+                  "why": "Correct. It takes a side someone could disagree with and gives a reason for that side, and a side plus a reason is what makes a claim, not the connective word itself."},
                  {"id": "D", "text": "The four-day and five-day weeks each have their own upsides and downsides for students.",
                   "correct": False,
                   "why": "This balances both sides and lands on neither. A claim has to commit to one side, so a fence-sitting sentence like this is not a claim yet."},
@@ -229,18 +228,23 @@ LESSON = Lesson(
         # the Finish write). Stays on the taught topic = no new source to read (load balance). Noel 2026-07-14:
         # the three PRODUCED claims (Finish / Independent / Transfer) now sit on THREE DIFFERENT topics so a
         # student cannot reuse one sentence; this self-check is the fourth beat but produces no new claim.
+        # COUNCIL FIX (Rule 5, one-element-one-function; DI + Yeager + eg): the check PRE-ANSWERED itself
+        # (each row supplied the yes/no + the fix), leaving the student only to copy-edit. A check must leave a
+        # real decision. The rows now pose the three questions with a blank for the student's own yes/no; the
+        # coping-model DEMONSTRATION of running the test already happened at the annotated_before_after (Model It),
+        # so this stays a live student CHECK, not a second demonstration.
         Slot("MODEL", "diagnosis_frq", "Check and fix a weak draft with the 3 questions",
              ref="", bank="four_day_week", scored=True,
              body=frq_prompt(
-                 intro="Run the 3-question test on this weak draft, then rewrite it into a real claim.",
+                 intro="Run the 3-question test on this weak draft yourself, mark each yes or no, then rewrite it.",
                  setapart_block=setapart("Weak draft to fix:", "A lot of districts have four-day weeks now.", "red"),
-                 checklist_block=checklist(title="Run the test:", rows=[
-                     ("Does it take a side on the switch?", "No, it just reports a fact. Pick a side."),
-                     ("Could someone disagree?", "No, nobody argues with it. Word it so they could."),
-                     ("Is there a reason?", "No. Add one with 'because'."),
+                 checklist_block=checklist(title="Run the test (mark each yourself):", rows=[
+                     ("Does it take a side on the switch?", "your call: yes / no"),
+                     ("Could someone disagree?", "your call: yes / no"),
+                     ("Is there a reason?", "your call: yes / no"),
                  ]),
-                 closer="Now rewrite the weak draft into one arguable claim that passes all three. "
-                        "Then name which question your rewrite fixed.")),
+                 closer="Any 'no' means it is not a claim yet. Rewrite the weak draft into one arguable claim "
+                        "that passes all three, then name which question your rewrite fixed.")),
 
         # ===== INDEPENDENT: cold write on a DIFFERENT topic (pay-for-grades) + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "stimulus_display", "The debate: paying students for grades",
@@ -260,12 +264,17 @@ LESSON = Lesson(
              ref="ACC-W910-FRAME-FREETRANSIT", bank="free_transit",
              body=("One more new debate. Read the short framing, then take a side. Same move, a fresh topic, so "
                    "again you write a new claim. You only need the topic and the two sides.")),
-        Slot("TRANSFER", "production_frq", "Write an arguable claim on a NEW topic",
+        # COUNCIL FIX (Rule 4, escalate the last write; Yeager agency + K&H expertise-reversal): the transfer
+        # write was identical in demand to the independent one (constant scaffold across writes). It now
+        # ESCALATES: the student may pick their own topic (autonomy beat) and must add one line of why the claim
+        # matters, raising the demand instead of repeating it. Same taught move, harder application.
+        Slot("TRANSFER", "production_frq", "Write an arguable claim on a topic you choose",
              ref="", bank="free_transit", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="New topic. The task: should cities make public transit free to ride?",
-                 closer="Write ONE arguable claim: pick a side, then add a reason. Check it against the 3 "
-                        "questions before you submit.")),
+                 intro="Your turn to choose. Take the free-public-transit question, OR pick any school-or-"
+                       "community issue you actually care about.",
+                 closer="Write ONE arguable claim on your chosen topic: pick a side, add a reason, and this time "
+                        "add one more line saying why it matters. Run the 3 questions before you submit.")),
     ],
 )
 

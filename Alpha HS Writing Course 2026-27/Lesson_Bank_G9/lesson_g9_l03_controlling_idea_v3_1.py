@@ -247,9 +247,9 @@ LESSON = Lesson(
                  setapart_block=setapart("Weak draft to fix:", "The water cycle is a very important process.", "red"),
                  checklist_block=checklist(title="Run the check:", rows=[
                      ("Does it set a focus (an angle on how the cycle works)?",
-                      "No, 'important process' names no angle. Name the stages or the loop."),
-                     ("Does it preview the parts?", "No. Add the connected stages."),
-                     ("Does it take no side?", "No, 'important' leans to a side. Cut the judgment."),
+                      "your call: yes / no"),
+                     ("Does it preview the parts?", "your call: yes / no"),
+                     ("Does it take no side?", "your call: yes / no"),
                  ]),
                  closer="Now rewrite the weak draft into one controlling idea that passes all three. "
                         "Then name which question your rewrite fixed.")),

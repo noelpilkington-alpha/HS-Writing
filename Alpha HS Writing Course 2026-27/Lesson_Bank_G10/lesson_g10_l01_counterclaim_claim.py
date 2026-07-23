@@ -234,10 +234,10 @@ LESSON = Lesson(
                  setapart_block=setapart("Weak draft to fix:", "Tolls are a good idea because they reduce traffic.", "red"),
                  checklist_block=checklist(title="Run the test:", rows=[
                      ("Does it name the other side's strongest point?",
-                      "No, it never mentions the drivers the toll burdens. Add an 'although' clause that concedes it."),
-                     ("Does it hold a clear position?", "Yes, it backs the toll."),
+                      "your call: yes / no"),
+                     ("Does it hold a clear position?", "your call: yes / no"),
                      ("Does the reason answer that objection?",
-                      "No. 'Reduce traffic' just repeats a same-side point. Tie the reason to the objection you conceded."),
+                      "your call: yes / no"),
                  ]),
                  closer="Now rewrite the weak draft into one counterclaim-aware claim that passes all three. Then "
                         "name the objection your claim concedes.")),

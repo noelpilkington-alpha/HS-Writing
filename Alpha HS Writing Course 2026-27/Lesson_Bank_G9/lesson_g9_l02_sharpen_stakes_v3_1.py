@@ -244,10 +244,10 @@ LESSON = Lesson(
                                          "A lot of schools are paying students for grades now.", "red"),
                  checklist_block=checklist(title="Run the test:", rows=[
                      ("Is the side specific (names an amount or kind)?",
-                      "No, it just reports a trend. Pick a specific position, like a set amount for an A."),
-                     ("Is there a reason?", "No. Add one with 'because'."),
+                      "your call: yes / no"),
+                     ("Is there a reason?", "your call: yes / no"),
                      ("Does it say why it matters (the so-what)?",
-                      "No. Add a 'which matters because' beat."),
+                      "your call: yes / no"),
                  ]),
                  closer="Now write one fresh, specific claim on the pay-for-grades question that passes all "
                         "three. Then run the three checks on your own claim to confirm each one passes.")),
