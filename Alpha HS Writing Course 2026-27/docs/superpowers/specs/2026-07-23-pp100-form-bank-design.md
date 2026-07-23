@@ -265,3 +265,40 @@ The number that matters is an ALPHA POLICY fact we must pin: how many times can 
 lesson, and how many mastery attempts are typical before pass? Depth = that sum + margin. Pending that, a
 defensible planning default is depth 5-6 (covers ~2 initial + ~3 hole-filling redoes + margin), NOT 3.
 Escalate gate/essay lessons further if the source pool allows; those are the highest farming value.
+
+
+### DEPTH MODEL DECIDED (2026-07-23, Noel) — per-grain, defends against uncapped hole-filling
+
+Binding facts: hole-filling reassignment has NO cap (a lesson can be reassigned any number of times), and we
+DEFEND against repeat-farming. Round-robin over an assessment-bank means a student re-sees a form only after N
+intervening distinct forms, so depth = how many distinct redoes before a repeat. The "~30 question bank" norm
+Noel referenced traces to MCQ contexts (ALEKS adaptive diagnostic 25-30 Qs; Spearman-Brown reliability for a
+20-30 *MCQ* summative; AlphaTest 5x24-item MCQ forms) — cheap items averaged for reliability. It does NOT map
+1:1 to writing (our form = ONE rubric-graded composition, not 1 of 30 cheap items). Translated to writing +
+sized to farming-risk and sourcing-cost, the decided depths are:
+
+  DEPTH by grain:  sentence = 30   |   paragraph = 10   |   multi_paragraph = 10   |   essay = 10
+
+Rationale (farming-risk x sourcing-cost aligns perfectly):
+- SENTENCE is the MOST farmable (a student can memorize one sentence) AND its source is the CHEAPEST (an
+  issue-FRAME = a one-line topic prompt, e.g. "Should social media apps check users' ages?", not a passage).
+  So the deepest bank (30) runs on the cheapest fuel. We have 16 frames; reaching 30 = author ~14+ more short
+  frames (trivial sourcing, own-words/public-domain).
+- ESSAY/PARAGRAPH is the LEAST farmable (writing a full essay each attempt is real work) and the MOST expensive
+  to source (a full Lexile-banded federal/public-domain LESSON passage). Depth 10 is the right ceiling: 10
+  intervening forms before repeat is ample for compositions, without sourcing hundreds of passages.
+
+Load (measured across 101 lessons): sentence 38 x30=1140, paragraph 26 x10=260, multi_paragraph 7 x10=70,
+essay 30 x10=300  ->  ~1,770 total forms. Per grade: G9 590, G10 450, G11 510, G12 220. The load is dominated
+by sentence forms, which are the cheapest to source (frames), so the effort is front-loaded on cheap assets.
+
+Sourcing appetite (Noel): BOUNDED new sourcing approved. Plan: (1) reuse the existing pool first (16 frames,
+37 single passages, etc.); (2) author new ISSUE-FRAMES to bring sentence lessons to 30 (cheap, own-words);
+(3) source new vetted LESSON passages (Source Cache method: federal/public-domain, 480-word floor, Lexile in
+band) only where an essay/paragraph family is too thin to reach 10. A coverage report will list exactly which
+lessons/families need new sources and how many, before authoring.
+
+Repeat guarantee under this model: no finite bank can guarantee zero repeats forever with uncapped reassignment;
+depth 30 (sentence) / 10 (essay) means a repeat occurs only after 30 / 10 intervening distinct forms — rare and
+pedagogically harmless (a re-seen form after that many redoes is effectively fresh). This is the honest target,
+not "never repeat."
