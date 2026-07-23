@@ -237,3 +237,31 @@ fix is deployed and verified — otherwise we would be multiplying un-scorable i
 1. Target depth (recommended 3; 4 for gate lessons if sources allow) — confirm or set.
 2. Confirm the PP100 runtime rotates forms on retry (or how it selects) — the load-bearing platform fact.
 3. OK to source new stimuli for thin families, or cap those lessons at whatever the pool supports.
+
+
+### Depth requirement refined (2026-07-23) — hole-filling reassignment, not just in-session retries
+
+Noel's binding requirement: a student can be REASSIGNED a lesson as hole-filling after failing a test, and on
+a redo they must NOT see the same prompts. And: actively DEFEND against repeat-farming (favor deeper banks).
+So depth is driven by anti-repeat across the student's WHOLE history on a lesson, not just one sitting.
+
+PowerPath mechanics that make round-robin fit this (from the spec):
+- The round-robin is keyed to a PERSISTENT, ACCUMULATING attempt number. `getAttempts` returns ALL attempts
+  for a student+lesson ("each attempt may represent a different sub-test"); `createNewAttempt` advances to a
+  new attempt number (new sub-test by round-robin) when the current attempt is completed. So a hole-filling
+  REDO = a new attempt = the NEXT form. A reassigned student does NOT restart at form 1.
+- `resetAttempt` keeps the SAME bank test for the current attempt (does not advance, does not reset to form 1).
+- No max-attempts cap / cooldown exists in the API. Round-robin never blocks; it wraps at N.
+
+Consequence for depth: a student sees a REPEAT only once their CUMULATIVE attempt count on that lesson exceeds
+N (initial mastery retries + every later hole-filling reassignment, summed). So:
+
+  DEPTH N should cover:  (typical attempts to pass initial mastery)  +  (max hole-filling reassignments of the
+                          same lesson)  +  a small margin.
+
+This is why 3 is likely INSUFFICIENT under the hole-filling requirement: a student who fails initial mastery
+(say 1-2 attempts) and is then hole-filling-reassigned the lesson 2-3 times would wrap and re-see form 1.
+The number that matters is an ALPHA POLICY fact we must pin: how many times can hole-filling reassign the SAME
+lesson, and how many mastery attempts are typical before pass? Depth = that sum + margin. Pending that, a
+defensible planning default is depth 5-6 (covers ~2 initial + ~3 hole-filling redoes + margin), NOT 3.
+Escalate gate/essay lessons further if the source pool allows; those are the highest farming value.
