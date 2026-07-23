@@ -44,6 +44,8 @@ ROOT = os.path.join(HERE, "..")
 sys.path.insert(0, HERE)
 from xp_allocation import expected_xp
 import render_course_preview_grade as R   # canonical lesson selection + slug + unit grouping (what is deployed)
+import mastery_forms as MF
+from mastery_targets_grade import _authored   # per-grade MASTERY map (for PP100 form-bank depth)
 
 ONEROSTER = "https://api.alpha-1edtech.ai"
 QTI_BASE = "https://qti.alpha-1edtech.ai/api"
@@ -109,6 +111,7 @@ def _units_in_order(lessons):
 
 def build_plan(grade, base_url):
     lessons = R.lessons_for(grade)              # canonical selection (newest version per lesson number), in order
+    authored = _authored(grade)                 # per-lesson MASTERY entry -> PP100 form-bank depth
     cid = COURSE_ID[grade]
     total_xp = sum(expected_xp(L) for _n, L, _f in lessons)
     plan = []  # (kind, id, url, body)
@@ -151,17 +154,36 @@ def build_plan(grade, base_url):
             "sourcedId": f"cr-{L.id}-article", "status": "active", "title": (L.title or L.id)[:200],
             "sortOrder": 1, "resource": {"sourcedId": art_rid},
             "courseComponent": {"sourcedId": tid}, "metadata": {"xp": xp}}}))
-        # RESOURCE 2: PP100 MASTERY (powerpath-100 -> mastery assessment-test = the production FRQ + grader)
-        pp_rid = f"res-{L.id}-pp100"
-        plan.append(("resource", pp_rid, RES, {"resource": {
-            "sourcedId": pp_rid, "status": "active", "title": f"{(L.title or L.id)[:180]} - Mastery",
-            "importance": "primary", "vendorResourceId": f"{L.id}-pp100", "vendorId": "alpha-incept",
-            "applicationId": "incept",
-            "metadata": {"type": "qti", "subType": "qti-test", "xp": xp,
-                         "url": f"{QTI_BASE}/assessment-tests/{mastery_test_id(L)}"}}}))
+        # RESOURCE 2: PP100 MASTERY (powerpath-100). A lesson's PP100 is a form BANK: N equivalent single-item
+        # tests the PowerPath engine round-robins across attempts (retry serves the next form). Depth N comes
+        # from the lesson's MASTERY entry (mastery_forms.forms_for). PROD-SAFE: a bank of ONE points the PP100
+        # resource straight at the single mastery test (byte-identical to today); a bank of >1 emits an
+        # assessment-bank Resource listing the N form-test ids and points the CR at that bank.
+        bank_size = len(MF.forms_for(authored.get(L.id, {})) or [{}])
+        pp_title = f"{(L.title or L.id)[:180]} - Mastery"
+        if bank_size <= 1:
+            pp_rid = f"res-{L.id}-pp100"
+            plan.append(("resource", pp_rid, RES, {"resource": {
+                "sourcedId": pp_rid, "status": "active", "title": pp_title,
+                "importance": "primary", "vendorResourceId": f"{L.id}-pp100", "vendorId": "alpha-incept",
+                "applicationId": "incept",
+                "metadata": {"type": "qti", "subType": "qti-test", "xp": xp,
+                             "url": f"{QTI_BASE}/assessment-tests/{mastery_test_id(L)}"}}}))
+            pp_link_target = pp_rid
+        else:
+            # one assessment-bank Resource over the N form-test ids (round-robin pool). Individual form-tests
+            # are NOT linked as their own CRs (the documented "3 links per topic" defect); only the bank is.
+            form_test_ids = [MF.form_test_id(L.id, k, bank_size=bank_size) for k in range(1, bank_size + 1)]
+            bank_rid = MF.bank_resource_id(L.id)
+            plan.append(("resource", bank_rid, RES, {"resource": {
+                "sourcedId": bank_rid, "status": "active", "title": pp_title,
+                "importance": "primary", "vendorResourceId": f"{L.id}-pp100-bank", "vendorId": "alpha-incept",
+                "applicationId": "incept",
+                "metadata": {"type": "assessment-bank", "xp": xp, "resources": form_test_ids}}}))
+            pp_link_target = bank_rid
         plan.append(("component-resource", f"cr-{L.id}-pp100", COMPRES, {"componentResource": {
-            "sourcedId": f"cr-{L.id}-pp100", "status": "active", "title": f"{(L.title or L.id)[:180]} - Mastery",
-            "sortOrder": 2, "resource": {"sourcedId": pp_rid},
+            "sourcedId": f"cr-{L.id}-pp100", "status": "active", "title": pp_title,
+            "sortOrder": 2, "resource": {"sourcedId": pp_link_target},
             "courseComponent": {"sourcedId": tid},
             "metadata": {"lessonType": "powerpath-100", "expected_xp": xp}}}))
     return plan, lessons, units

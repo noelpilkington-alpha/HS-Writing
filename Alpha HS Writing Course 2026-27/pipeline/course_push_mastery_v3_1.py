@@ -32,7 +32,10 @@ ROOT = os.path.join(HERE, "..")
 sys.path.insert(0, HERE)
 from g9_push_live import get_token, QTI_BASE
 from g9_wire_grader import wire_payload, normalize_grader_url
-from mastery_targets_grade import mastery_targets   # generic per-grade (lesson_id, indep_slot, prompt_html, L)
+from mastery_targets_grade import mastery_targets, mastery_prompt_html, _authored, _indep_slot
+import mastery_forms as MF
+import pp100_forms as PF
+from g9_push_dryrun import STIM
 
 ITEMS_URL = f"{QTI_BASE}/assessment-items"
 TESTS_URL = f"{QTI_BASE}/assessment-tests"
@@ -55,33 +58,65 @@ def _checkpoint(grade):
     return os.path.join(ROOT, f"MASTERY_V3_1_{grade}_CHECKPOINT.json")
 
 
-def build_plan(grade, grader_url):
-    """(kind, id, url, body) plan for one grade: per lesson a grader-wired FRQ item + a single-item mastery test.
-    Skips a lesson only if it has no INDEPENDENT production slot (no composition outcome to master)."""
+def _taught_sources(L):
+    """The set of stimulus ids the ARTICLE teaches (every stimulus_display ref). A held-out mastery form must
+    not reuse any of these (seen-in-lesson leakage). Used as the QC gate's taught_source."""
+    return {getattr(s, "ref", "") for s in L.slots
+            if s.kind == "stimulus_display" and getattr(s, "ref", "")}
+
+
+def _single_item_test(test_id, frq_id, title):
+    return {"identifier": test_id, "title": f"{title[:110]} - Mastery",
+            "qti-test-part": [{"identifier": "test_part", "navigationMode": "linear",
+                               "submissionMode": "individual", "sequence": 1,
+                               "qti-assessment-section": [{
+                                   "identifier": "mastery_section", "title": "Mastery", "visible": True,
+                                   "sequence": 1,
+                                   "qti-assessment-item-ref": [
+                                       {"identifier": frq_id, "href": f"{frq_id}.xml", "sequence": 1}]}]}],
+            "outcomeDeclarations": [{"identifier": "SCORE", "cardinality": "single", "baseType": "float"}]}
+
+
+def build_plan(grade, grader_url, gate=True):
+    """(kind, id, url, body) plan for one grade. Per lesson, expand its PP100 form BANK (mastery_forms.forms_for)
+    into N grader-wired FRQ items + N single-item mastery tests (one per equivalent form). A bank of ONE reuses
+    the legacy ids (`<lesson>-MASTERY-FRQ`/`<lesson>-MASTERY`), so single-form lessons are byte-identical to
+    today. A bank of >1 uses the `-f{k}` suffixed ids and the assembler wraps them in an assessment-bank.
+
+    Skips a lesson only if it has no INDEPENDENT production slot (no composition outcome to master). When
+    gate=True, a bank that fails the equivalence QC gate is skipped (with its problems recorded); this keeps a
+    malformed multi-form bank from ever reaching the API. A single-form bank always passes (it is the taught
+    form itself), so gating never blocks the prod-safe path."""
     plan = []
     skipped = []
-    for lid, slot, prompt_html, L in mastery_targets(grade):
+    gate_fail = []
+    authored = _authored(grade)
+    # mastery_targets already resolves the lesson list + indep slot per grade; reuse it for the slot + L object.
+    for lid, slot, _prompt_html, L in mastery_targets(grade):
         if slot is None:
             skipped.append(lid)
             continue
-        frq_id = f"{lid}-MASTERY-FRQ"
-        test_id = f"{lid}-MASTERY"
-        # grader-wired FRQ (ExternalApiScore + rubricBlock from the slot's rubric_ref/unit/frq_type), then
-        # OVERRIDE its prompt with the reviewed PP100 prompt HTML (held-out source block + cold task) that the
-        # preview renders. This keeps the pushed item byte-identical to what was reviewed.
-        item = wire_payload(frq_id, slot, grader_url, source_html=None)
-        item["interaction"]["questionStructure"]["prompt"] = prompt_html
-        plan.append(("item", frq_id, ITEMS_URL, item))
-        test = {"identifier": test_id, "title": f"{(getattr(slot, 'title', '') or lid)[:110]} - Mastery",
-                "qti-test-part": [{"identifier": "test_part", "navigationMode": "linear",
-                                   "submissionMode": "individual", "sequence": 1,
-                                   "qti-assessment-section": [{
-                                       "identifier": "mastery_section", "title": "Mastery", "visible": True,
-                                       "sequence": 1,
-                                       "qti-assessment-item-ref": [
-                                           {"identifier": frq_id, "href": f"{frq_id}.xml", "sequence": 1}]}]}],
-                "outcomeDeclarations": [{"identifier": "SCORE", "cardinality": "single", "baseType": "float"}]}
-        plan.append(("test", test_id, TESTS_URL, test))
+        entry = authored.get(lid, {})
+        forms = MF.forms_for(entry) or [{}]   # a lesson with no authored entry still masters its indep slot
+        bank_size = len(forms)
+        if gate and bank_size > 1:
+            ok, problems = PF.qc_form_bank(lid, forms, taught_source=_taught_sources(L), stim=STIM)
+            if not ok:
+                gate_fail.append((lid, problems))
+                continue
+        for k, form in enumerate(forms, 1):
+            frq_id = MF.form_frq_id(lid, k, bank_size=bank_size)
+            test_id = MF.form_test_id(lid, k, bank_size=bank_size)
+            # render THIS form's prompt (held-out source block + authored task) exactly as the preview does
+            prompt_html = mastery_prompt_html(L, form if form else entry)
+            item = wire_payload(frq_id, slot, grader_url, source_html=None)
+            item["interaction"]["questionStructure"]["prompt"] = prompt_html
+            plan.append(("item", frq_id, ITEMS_URL, item))
+            plan.append(("test", test_id, TESTS_URL,
+                         _single_item_test(test_id, frq_id, getattr(slot, "title", "") or lid)))
+    if gate_fail:
+        for lid, problems in gate_fail:
+            print(f"  QC-GATE SKIP {lid}: {problems[0]}" + (f" (+{len(problems)-1} more)" if len(problems) > 1 else ""))
     return plan, skipped
 
 
