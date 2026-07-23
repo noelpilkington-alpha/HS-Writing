@@ -105,3 +105,21 @@ testing agent will automate).
    the 47 live items. `rc.4trait` is confirmed live and scoring.
 
 Nothing about the course structure or content is wrong; both issues are in the scoring layer.
+
+
+## FINAL VERIFICATION (2026-07-23) — grader resolved + G11/G12 re-wired
+
+Grader confirmed FIXED on the live `/score` (re-probed):
+- Defect 1: rc.staar SENTENCE now scores 3/3 (`grain=sentence -> sentence_writing`, was 0/5 "too short");
+  PARAGRAPH 10/10 (`-> paragraph`); ESSAY 3.5/5 (no regression).
+- Defect 2 (grader side): rc.4trait scores in BOTH modes over the live endpoint — argument 10/24, analysis
+  9/16 (`panel_ccss`). rc.ap correctly still 503 (deprecated).
+
+Defect 2 (OUR side) — DONE. Re-wired all 47 live G11/G12 mastery FRQs from rc.ap -> rc.4trait via a new
+`course_push_mastery_v3_1.py --rewire` mode (upsert: POST, and on 409 PUT the full item to url/{id}; ignores
+the item checkpoint so every item is re-PUT). Result: G11 31/31 + G12 16/16 updated, 0 failed. Live read-back
+confirms rubric=rc.4trait, rc.ap absent, and the 3 declared analysis lessons (G11 C1103-0031, G12 C1201-0005,
+C1202-0010) carry `?mode=analysis` while argument lessons carry no mode (grader defaults to argument). An
+end-to-end live score of a G11 analysis response returned 11/16 via panel_ccss analysis.
+
+Both defects are now closed end-to-end. Grading is functional on all four live courses.
