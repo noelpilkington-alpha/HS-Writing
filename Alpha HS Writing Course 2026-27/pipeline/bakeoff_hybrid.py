@@ -6,6 +6,13 @@ bake-off metric. Reuses the shipped adapter, gates, judge, and scorer; adds no n
 Honest scope: ranks TEST-ARTIFACT quality, not student outcomes. The Incept pool is 8 items from one cached
 test (mostly 'evidence'), so the hybrid is mostly ours + Incept wins only the few slots it has eligible
 items for; the 3-way scorecard reports per-slot source composition.
+
+RESULT DEPENDS ON THE JUDGE MODE (read before quoting a headline):
+- OFFLINE (default `python bakeoff_hybrid.py`): the deterministic heuristic proxy penalizes Incept's
+  em-dashes, so Incept wins 0/21 slots, the hybrid TIES ours (96.45), and winner=ours.
+- LIVE (`--live`, neutral Claude judge): Incept's items judge higher, so it wins ~4 slots (ECR + MC-evidence)
+  and the HYBRID WINS (e.g. 81.05 > ours 79.4 > incept 65.57). The "hybrid wins" headline is a LIVE result;
+  the offline default does NOT reproduce it (by design - offline is a reproducible proxy, not the real judge).
 """
 from __future__ import annotations
 import os, sys, json, html, copy
