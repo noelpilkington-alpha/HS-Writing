@@ -35,7 +35,7 @@ confirmed against the live platform before go-live (see the OPEN item in the gra
 """
 from __future__ import annotations
 import os
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, Field
 
 # PORTED into HS-Writing/api 2026-07-21: engine vendored as the grader_engine sub-package; auth reuses this
@@ -120,11 +120,21 @@ class ScoreResponse(BaseModel):
 
 
 @router.post("/score", response_model=ScoreResponse, tags=["ExternalApiScore"])
-def external_score(req: ScoreRequest):
+def external_score(
+    req: ScoreRequest,
+    grain: str = Query(default=""),
+    frq_type: str = Query(default=""),
+):
     """Score ONE free-response answer against a rubric config. Synchronous (ExternalApiScore contract).
 
     Auth is applied at router-include time in main.py (dependencies=[Depends(verify_api_key)]), using this
     app's X-API-Key scheme — so this route carries no auth dependency of its own (avoids a circular import).
+
+    GRAIN ROUTING FIX (2026-07-23): the wirer bakes grain/frq_type into the grader URL as QUERY params
+    (.../score?grain=sentence&frq_type=writing). FastAPI populates the Pydantic body model from the JSON
+    body ONLY, so `req.grain` was always empty on the live HTTP path and every task fell to the essay
+    engine (sentence/paragraph scored 0 — GRADER_WIRING_FINDINGS Defect 1). We now read grain/frq_type
+    from the QUERY string first, falling back to the body fields for non-URL callers.
     """
     response = (req.response or req.studentResponse or "").strip()
     rubric = req.rubric or req.rubricId or "rc.staar"
@@ -140,9 +150,10 @@ def external_score(req: ScoreRequest):
     # Route off the DECLARED (grain, frq_type) tuple, not the content. grain is baked into the grader URL by
     # the wirer from the slot's `unit`; frq_type is the declared construct. Absent grain -> essay (back-compat:
     # today's essay callers, which send no grain, fall straight through to the rubric-family dispatch below).
-    grain = (req.grain or "").strip().lower()
+    # query param wins (the wirer's channel); body field is the fallback for JSON-only callers.
+    grain = (grain or req.grain or "").strip().lower()
     if grain and grain != "essay":
-        frq_type = (req.frq_type or routing.default_frq_type(grain)).strip().lower()
+        frq_type = (frq_type or req.frq_type or routing.default_frq_type(grain)).strip().lower()
         scorer = routing.resolve(grain, frq_type)
         if scorer is None:
             raise HTTPException(status_code=400,
