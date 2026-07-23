@@ -64,3 +64,11 @@ P0#1 (stale old quiz on 23 lessons) is a HARD LAUNCH BLOCKER and should be fixed
 fixes - a student literally sees broken raw-HTML questions today. It is also a small, mechanical, low-risk fix
 (delete 23 stale CRs + resources). The Council content fixes are quality improvements; this is a correctness
 break visible to every G9 student right now.
+
+## P0 RESOLVED (2026-07-23)
+Retired the 23 stale old per-item quiz component-resource links on the live G9 course (deleted cr-<id>, 204
+each, 0 failed). Deleting the CR link removes the broken quiz from the student's lesson; the orphaned old
+res-<id> + assessment-tests are left as harmless unlinked orphans (soft-delete would block id reuse, and
+nothing serves an unlinked resource). Re-certified: tree_check G9 = 0 fail (was 23); L01 now serves exactly
+article + pp100 (old CR status=tobedeleted). Every G9 lesson is now clean. G10/G11/G12 were never affected.
+Cleanup was CR-links only, per the minimal-sufficient fix; no article/pp100/content object was touched.
