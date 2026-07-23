@@ -48,7 +48,10 @@ def _live_grader_url(session, item_id: str) -> str:
     r = session.get(f"{QTI}/assessment-items/{item_id}", timeout=30)
     if r.status_code != 200:
         return ""
-    m = re.search(r"https://[^\"\\<>\s]*?/score\?[a-zA-Z0-9=&_%]*", r.text)
+    # match the grader /score URL WITH OR WITHOUT a query string. Essay/multi_paragraph items are wired to a
+    # BARE /score (the grader defaults to the essay engine, which is correct for those grains); only
+    # sentence/paragraph carry explicit ?grain=&frq_type= to avoid the essay-engine default. Both are valid.
+    m = re.search(r"https://[^\"\\<>\s]*?/score(?:\?[a-zA-Z0-9=&_%]*)?", r.text)
     return m.group(0) if m else ""
 
 
