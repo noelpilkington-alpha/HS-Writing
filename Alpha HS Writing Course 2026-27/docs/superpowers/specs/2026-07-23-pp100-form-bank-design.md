@@ -66,6 +66,31 @@ does it just group links? The timeback skill documents the bank STRUCTURE (paren
 `metadata.resources:[ids]`, link only the bank) but NOT the selection semantics. If the runtime does not rotate
 forms on retry, a bank buys us nothing and this whole effort should pause until that is confirmed. VERIFY FIRST.
 
+### Empirical probe result (2026-07-23) — bank STRUCTURE confirmed; runtime SELECTION still unverified
+
+Ran an isolated live probe (all `TEST-PP100PROBE-*` ids, since deleted — env clean). Findings:
+
+- **CONFIRMED (data layer):** the API accepts a bank resource with `metadata.selectionCount: 1` +
+  `metadata.resources: ["TEST-A","TEST-B"]` (201) and PERSISTS both fields intact on read-back. So the
+  Assessment Bank Pattern is real on the live API, not just docs. Two variant single-item tests + their FRQ
+  items also created cleanly. `vendorResourceId` is REQUIRED on the bank resource (a 422 otherwise — that was
+  the initial probe error, unrelated to the bank fields).
+- **NEGATIVE (test-level selection):** a single assessment-test carrying a section-level `qti-selection`
+  {select:1} / `selectionCount` was accepted, but the API SILENTLY DROPPED the selection directive — the
+  stored test kept both item-refs with NO select. So "pick 1 of N inside one test" is NOT the mechanism; the
+  pool + selectionCount must live on the BANK RESOURCE, not the test.
+- **STILL UNVERIFIED (runtime rendering):** whether the student runtime actually serves a DIFFERENT form per
+  attempt cannot be observed from the anonymous LearnWith player — loading a raw QTI test/bank URL directly
+  returns `401` (the player only anonymously fetches `kind=text` article `contentUrl`s from CloudFront/Vercel;
+  QTI tests are delivered only INSIDE a course through the AUTHENTICATED student runtime). To observe selection
+  behavior we would need the bank wired into a course component and delivered through an authenticated student
+  session (a heavier live experiment, or a direct platform-team answer).
+
+**Net:** the bank structure is proven to store; the selection-on-retry behavior is a platform-runtime property
+we still need confirmed (authenticated student-runtime observation, or a platform-team answer). The build can
+proceed to STAGE the banks (structure is known-good) but must not be presented as "rotating on retry" until the
+runtime behavior is confirmed.
+
 ## Delivery mechanism (platform-native, already documented)
 
 Use the timeback **Assessment Bank Pattern** (create-course.md):
