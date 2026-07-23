@@ -85,7 +85,11 @@ def build_plan(grade, grader_url):
     return plan, skipped
 
 
-def post(session, url, body):
+def post(session, url, body, upsert=False):
+    """POST (create) with retry. 409/already-exists = idempotent success. When upsert=True, a 409 (or an
+    'already exists') triggers a PUT to url/{identifier} to UPDATE the existing object (full replace) - used to
+    RE-WIRE live items whose grader config changed (e.g. rc.ap -> rc.4trait). The body already carries the
+    complete item (wire_payload builds it), so a full-replace PUT is safe."""
     import requests
     for attempt in range(4):
         try:
@@ -97,19 +101,38 @@ def post(session, url, body):
         if r.status_code in (200, 201):
             return True, r.status_code, "created"
         if r.status_code == 409 or "already exists" in (r.text or "").lower():
-            return True, r.status_code, "exists (idempotent)"
+            if not upsert:
+                return True, r.status_code, "exists (idempotent)"
+            # UPDATE the existing object via PUT (full replace) to apply the new wiring
+            put_url = f"{url.rstrip('/')}/{body['identifier']}"
+            for a2 in range(4):
+                try:
+                    pr = session.put(put_url, json=body, timeout=60)
+                except requests.RequestException as e:
+                    if a2 < 3:
+                        time.sleep(BACKOFF[a2]); continue
+                    return False, 0, f"PUT network error: {e}"
+                if pr.status_code in (200, 201):
+                    return True, pr.status_code, "updated (re-wired)"
+                if pr.status_code in RETRY_ON and a2 < 3:
+                    time.sleep(BACKOFF[a2]); continue
+                return False, pr.status_code, "PUT: " + (pr.text or "")[:280]
         if r.status_code in RETRY_ON and attempt < 3:
             time.sleep(BACKOFF[attempt]); continue
         return False, r.status_code, (r.text or "")[:300]
     return False, 0, "exhausted retries"
 
 
-def push_grade(grade, grader_url):
+def push_grade(grade, grader_url, rewire=False):
+    """Push (or, with rewire=True, RE-WIRE) a grade's mastery FRQs + tests. rewire=True upserts ITEMS via PUT on
+    409 (to apply changed grader config on already-live items) and IGNORES the item checkpoint so every item is
+    re-PUT; tests are unchanged so they stay POST-409-idempotent."""
     load_env()
     import requests
     plan, skipped = build_plan(grade, grader_url)
     n_tests = sum(1 for k, *_ in plan if k == "test")
-    print(f"  {grade}: {n_tests} lessons -> {n_tests} FRQ items + {n_tests} tests ({len(plan)} objects)."
+    mode = "RE-WIRE (PUT existing items)" if rewire else "push"
+    print(f"  {grade} [{mode}]: {n_tests} lessons -> {n_tests} FRQ items + {n_tests} tests ({len(plan)} objects)."
           + (f" skipped (no INDEPENDENT slot): {skipped}" if skipped else ""))
     session = requests.Session()
     session.headers.update({"Authorization": f"Bearer {get_token()}", "Content-Type": "application/json"})
@@ -119,11 +142,18 @@ def push_grade(grade, grader_url):
     # push ALL items first, then tests (a test that refs a not-yet-created item 400s)
     for kind in ("item", "test"):
         for k, oid, url, body in plan:
-            if k != kind or oid in okset:
+            if k != kind:
                 continue
-            ok, status, detail = post(session, url, body)
+            # on a re-wire, do NOT skip already-"ok" ITEMS (they must be re-PUT); tests still honor the checkpoint
+            if oid in okset and not (rewire and k == "item"):
+                continue
+            ok, status, detail = post(session, url, body, upsert=(rewire and k == "item"))
             if ok:
-                okset.add(oid); done["ok"].append(oid)
+                okset.add(oid)
+                if oid not in done["ok"]:
+                    done["ok"].append(oid)
+                if rewire and k == "item":
+                    print(f"    {k} {oid}: {detail}")
             else:
                 done["fail"].append({"id": oid, "kind": k, "status": status, "detail": detail})
                 print(f"    FAIL [{status}] {k} {oid}: {detail}")
@@ -150,27 +180,29 @@ def print_dry(grade, grader_url):
 def main():
     args = sys.argv[1:]
     if len(args) < 2:
-        print("usage: course_push_mastery_v3_1.py <G9|G10|G11|G12|all> <grader-base-url> [--live]")
+        print("usage: course_push_mastery_v3_1.py <G9|G10|G11|G12|all> <grader-base-url> [--live] [--rewire]")
         return 2
     target, grader_base = args[0], args[1]
     live = "--live" in args
+    rewire = "--rewire" in args   # PUT-update EXISTING live items to apply changed grader wiring
     grader_url = normalize_grader_url(grader_base)
     grades = list(GRADES) if target.lower() == "all" else [target.upper()]
     for g in grades:
         if g not in GRADES:
             print(f"unknown grade {g!r}"); return 2
-    print(f"v3.1 MASTERY push  grader = {grader_url}")
+    print(f"v3.1 MASTERY {'RE-WIRE' if rewire else 'push'}  grader = {grader_url}")
     if not live:
         for g in grades:
             print_dry(g, grader_url)
-        print("\nDRY mode. No network call made. Re-run with --live to push.")
+        print(f"\nDRY mode. No network call made. Re-run with --live{' --rewire' if rewire else ''} to "
+              f"{'re-wire existing items (PUT)' if rewire else 'push'}.")
         return 0
     load_env()
     if not (os.environ.get("TIMEBACK_CLIENT_ID") and os.environ.get("TIMEBACK_CLIENT_SECRET")):
         print("LIVE push needs TIMEBACK_CLIENT_ID / TIMEBACK_CLIENT_SECRET (load ../.env)."); return 2
     allok = True
     for g in grades:
-        allok = push_grade(g, grader_url) and allok
+        allok = push_grade(g, grader_url, rewire=rewire) and allok
     return 0 if allok else 1
 
 
