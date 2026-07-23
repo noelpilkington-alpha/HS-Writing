@@ -42,6 +42,14 @@ BACKOFF = [5, 15, 30]
 _RUBRIC_BLOCKS = {
     "rc.staar": '<div data-part="development">STAAR Organization &amp; Development of Ideas (0-3)</div>'
                 '<div data-part="conventions">STAAR Conventions (0-2)</div>',
+    # rc.4trait = NY Regents 4-criterion analytic (G11/G12 CCSS), scored by panel_ccss. The per-criterion
+    # ceiling varies by mode (argument 0-6 x4 = 24 | analysis 0-4 x4 = 16); the student-visible block names
+    # the four criteria without pinning a scale (the grader returns the mode-correct max in maxScore).
+    "rc.4trait": '<div data-part="content_analysis">Content &amp; Analysis</div>'
+                 '<div data-part="command_of_evidence">Command of Evidence</div>'
+                 '<div data-part="coherence_org_style">Coherence, Organization &amp; Style</div>'
+                 '<div data-part="control_of_conventions">Control of Conventions</div>',
+    # rc.ap retained for any legacy caller; the deployed grader 503s it (superseded by rc.4trait for G11/G12).
     "rc.ap": '<div data-part="thesis">AP Row A Thesis (0-1)</div>'
              '<div data-part="evidence">AP Row B Evidence &amp; Commentary (0-4)</div>'
              '<div data-part="sophistication">AP Row C Sophistication (0-1)</div>',
@@ -65,16 +73,25 @@ _GRAIN_RUBRIC_BLOCKS = {
 }
 
 
-def _grader_url_for(base_url: str, unit: str, frq_type: str) -> str:
-    """Bake the DECLARED (grain, frq_type) into the grader definition URL (regeneration contract).
+def _grader_url_for(base_url: str, unit: str, frq_type: str, mode: str = "") -> str:
+    """Bake the DECLARED (grain, frq_type[, mode]) into the grader definition URL (regeneration contract).
 
     The grader routes off these query params; rubric_ref stays stable in the item. Essay/multi_paragraph
     carry no grain (back-compat: the grader defaults absent-grain -> essay). Sentence/paragraph carry both.
+    `mode` (rc.4trait TASK PROFILE: argument|analysis) is baked ONLY when the slot declares it — an empty mode
+    lets the grader apply its rc.4trait default (argument), so only analysis essays carry ?mode=analysis. mode
+    is orthogonal to grain, so it can ride ALONGSIDE grain (short-grain rc.4trait) OR alone (essay-grain).
     """
+    params = []
     if unit in ("sentence", "paragraph"):
-        sep = "&" if "?" in base_url else "?"
-        return f"{base_url}{sep}grain={unit}&frq_type={frq_type or 'writing'}"
-    return base_url
+        params.append(f"grain={unit}")
+        params.append(f"frq_type={frq_type or 'writing'}")
+    if mode:
+        params.append(f"mode={mode}")
+    if not params:
+        return base_url
+    sep = "&" if "?" in base_url else "?"
+    return f"{base_url}{sep}{'&'.join(params)}"
 
 
 def g9_production_frq_items():
@@ -127,8 +144,9 @@ def wire_payload(item_id, slot, grader_url, source_html=None):
     rubric = getattr(slot, "rubric_ref", "") or "rc.staar"
     unit = getattr(slot, "unit", "") or ""
     frq_type = getattr(slot, "frq_type", "") or ""
-    # REGENERATION CONTRACT: bake the declared (grain, frq_type) into the grader URL so /score routes off them.
-    definition = _grader_url_for(grader_url, unit, frq_type)
+    mode = getattr(slot, "mode", "") or ""   # rc.4trait TASK PROFILE (analysis essays only; else grader defaults argument)
+    # REGENERATION CONTRACT: bake the declared (grain, frq_type[, mode]) into the grader URL so /score routes off them.
+    definition = _grader_url_for(grader_url, unit, frq_type, mode)
     p["responseProcessing"] = {"templateType": "custom",
                                "customOperator": {"class": "com.alpha-1edtech.ExternalApiScore",
                                                   "definition": definition}}

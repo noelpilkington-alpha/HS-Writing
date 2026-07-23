@@ -197,7 +197,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: plan a weave-and-weight synthesis (multi_paragraph) - the frame is the scaffold =====
         Slot("SUPPORTED", "production_frq", "Plan a weave-and-weight synthesis",
-             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="water_competing_uses", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="Plan your synthesis of the water set before you write the essay.",
                  setapart_block=setapart("Fill in this plan:",
@@ -207,7 +207,7 @@ LESSON = Lesson(
                         "This plan is what you will build the essay from.")),
         # ===== INDEPENDENT: build the whole synthesis essay (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write the synthesis essay",
-             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="water_competing_uses", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, build the whole essay from your plan.",
                  closer="Write a full synthesis essay on the water set: an introduction that states the one "

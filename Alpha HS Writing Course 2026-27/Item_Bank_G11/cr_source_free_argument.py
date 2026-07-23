@@ -41,7 +41,7 @@ ITEMS = [
               "experience, and address the strongest objection to your view."),
         acc_tags=ACC,
         stimulus_ref=TRAD,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0702: INDIVIDUAL vs COMMUNITY (defend + counter) --------------------------------------------
@@ -55,7 +55,7 @@ ITEMS = [
               "address the strongest objection to your view."),
         acc_tags=ACC,
         stimulus_ref=FREEDOM,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0703: AMBITION vs CONTENTMENT (defend + counter) --------------------------------------------
@@ -69,7 +69,7 @@ ITEMS = [
               "address the strongest objection to your view."),
         acc_tags=ACC,
         stimulus_ref=AMBITION,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0704: TRADITION vs PROGRESS, second prompt (draw the line) ----------------------------------
@@ -83,7 +83,7 @@ ITEMS = [
               "that it holds even in the cases that seem to work against it."),
         acc_tags=ACC,
         stimulus_ref=TRAD,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0705: INDIVIDUAL vs COMMUNITY, second prompt (draw the line) --------------------------------
@@ -97,7 +97,7 @@ ITEMS = [
               "imagine."),
         acc_tags=ACC,
         stimulus_ref=FREEDOM,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0706: AMBITION vs CONTENTMENT, second prompt (draw the line) --------------------------------
@@ -111,7 +111,7 @@ ITEMS = [
               "holds even in the cases that seem to challenge it."),
         acc_tags=ACC,
         stimulus_ref=AMBITION,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
 ]

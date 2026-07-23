@@ -200,7 +200,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: write the fast plan (multi_paragraph) - the frame is the highest-value scaffold =====
         Slot("SUPPORTED", "production_frq", "Write a fast plan",
-             ref="", bank="ai_regulation", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="ai_regulation", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="For the AI-workforce prompt, write a fast plan before you draft a word of the essay.",
                  setapart_block=setapart("Fill in this plan:",
@@ -210,7 +210,7 @@ LESSON = Lesson(
                         "for each paragraph. This plan is what you will build the essay from.")),
         # ===== INDEPENDENT: build the whole essay from the fast plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Draft the essay from your fast plan",
-             ref="", bank="ai_regulation", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="ai_regulation", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now. Make a two or three line fast plan for the AI-workforce prompt, then "
                        "build the whole essay from it.",

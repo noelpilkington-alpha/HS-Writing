@@ -105,7 +105,7 @@ LESSON = Lesson(
                    "specific examples that will carry it. The text stays on screen while you work.")),
         # ===== UNSCORED plan affordance (not a certification write; a map for the cold essay) =====
         Slot("SUPPORTED", "production_frq", "Name the type and plan your essay (not graded)",
-             ref="", bank="sfa_individual_community", rubric_ref="rc.ap", scored=False, unit="essay",
+             ref="", bank="sfa_individual_community", rubric_ref="rc.4trait", scored=False, unit="essay",
              body=frq_prompt(
                  intro="Before you write, jot a quick plan. This plan is not graded; it is your map for the cold "
                        "essay. First write which task type this is and the tell that names it, then plan the "
@@ -115,7 +115,7 @@ LESSON = Lesson(
                  closer="Then write the full essay from this plan.")),
         # ===== the GATE: ONE cold name-the-type-then-write essay on the held-out prompt (certification write) ====
         Slot("TRANSFER", "production_frq", "GATE: name the type, then write the complete essay",
-             ref="", bank="sfa_individual_community", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="sfa_individual_community", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="The gate. On your own now, write the whole essay from your plan. The task: when, if ever, "
                        "should individual freedom yield to the good of the community?",

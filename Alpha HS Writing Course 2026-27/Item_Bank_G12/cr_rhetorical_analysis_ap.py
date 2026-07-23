@@ -44,7 +44,7 @@ ITEMS = [
               "Support your analysis with specific evidence from the passage."),
         acc_tags=ACC,
         stimulus_ref=FDR,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0802: BRYAN (complexity + audience) ---------------------------------------------------------
@@ -59,7 +59,7 @@ ITEMS = [
               "situation. Support your analysis with specific evidence from the passage."),
         acc_tags=ACC,
         stimulus_ref=BRYAN,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0803: EMERSON (complexity + purpose) --------------------------------------------------------
@@ -75,7 +75,7 @@ ITEMS = [
               "from the passage."),
         acc_tags=ACC,
         stimulus_ref=EMERSON,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0804: FDR, second prompt (shifts + how choices build on one another) ------------------------
@@ -90,7 +90,7 @@ ITEMS = [
               "from the passage."),
         acc_tags=ACC,
         stimulus_ref=FDR,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0805: BRYAN, second prompt (structure + figurative language in tension) ---------------------
@@ -105,7 +105,7 @@ ITEMS = [
               "analysis with specific evidence from the passage."),
         acc_tags=ACC,
         stimulus_ref=BRYAN,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
 ]

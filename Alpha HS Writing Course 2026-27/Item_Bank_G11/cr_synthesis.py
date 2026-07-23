@@ -43,7 +43,7 @@ ITEMS = [
               "rather than summarizing each one in turn, and cite the sources you draw on."),
         acc_tags=ACC,
         stimulus_ref=GRID,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0702: AI WORKFORCE (impact framing) ---------------------------------------------------------
@@ -57,7 +57,7 @@ ITEMS = [
               "line of reasoning rather than summarizing each source separately, and cite the sources you use."),
         acc_tags=ACC,
         stimulus_ref=AI,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0703: WATER SCARCITY (policy framing) -------------------------------------------------------
@@ -71,7 +71,7 @@ ITEMS = [
               "summarizing each in turn, and cite the sources you draw on."),
         acc_tags=ACC,
         stimulus_ref=WATER,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0704: RENEWABLE GRID, second prompt (tradeoffs framing) -------------------------------------
@@ -85,7 +85,7 @@ ITEMS = [
               "reasoning rather than dictate a summary, and cite the sources you use."),
         acc_tags=ACC,
         stimulus_ref=GRID,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0705: AI WORKFORCE, second prompt (evidence-limits framing) ---------------------------------
@@ -99,7 +99,7 @@ ITEMS = [
               "reasoning rather than summarizing each one, and cite the sources you draw on."),
         acc_tags=ACC,
         stimulus_ref=AI,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0706: WATER SCARCITY, second prompt (priorities framing) ------------------------------------
@@ -113,7 +113,7 @@ ITEMS = [
               "rather than summarizing each in turn, and cite the sources you use."),
         acc_tags=ACC,
         stimulus_ref=WATER,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
 ]

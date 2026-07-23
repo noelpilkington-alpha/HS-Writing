@@ -213,7 +213,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: plan the essay (multi_paragraph) - the frame is the highest-value scaffold =====
         Slot("SUPPORTED", "production_frq", "Plan your source-free essay",
-             ref="", bank="sfa_curiosity_use", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="sfa_curiosity_use", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="Use the outline grid below to plan your source-free essay on the curiosity prompt "
                        "before you write a word of it. Copy it into the box and fill in each blank.",
@@ -228,7 +228,7 @@ LESSON = Lesson(
                         "thesis. This plan is what you will build the essay from.")),
         # ===== INDEPENDENT: build the whole essay from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write the full source-free essay",
-             ref="", bank="sfa_curiosity_use", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="sfa_curiosity_use", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, build the whole essay from your plan.",
                  closer="Write a complete source-free argument essay on the curiosity prompt: an introduction "

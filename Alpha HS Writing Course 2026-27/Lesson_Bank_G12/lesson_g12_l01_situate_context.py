@@ -222,7 +222,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught source =====
         Slot("SUPPORTED", "production_frq", "Situate the question, then stake a claim",
-             ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="automation_policy", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the two moves: name the larger question, then commit.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
@@ -249,7 +249,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write on the water prompt, no frame + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Situate on your own",
-             ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="automation_policy", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. The prompt: when water is scarce, should a region protect its "
                        "water for growing food or for generating power?",
@@ -266,7 +266,7 @@ LESSON = Lesson(
                    "Ask what LARGER question its specific choice is one instance of, so you can situate your "
                    "answer. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Situate on a NEW source",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="public_health", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New source. The prompt: should a society invest first in preparing more people for the "
                        "growing technical fields, or first in protecting the workers the change leaves behind?",

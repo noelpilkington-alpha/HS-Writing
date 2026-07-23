@@ -226,7 +226,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught topic =====
         Slot("SUPPORTED", "production_frq", "Finish the claim: fill in the not-X and the but-Y",
-             ref="", bank="energy_spending_priority", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="energy_spending_priority", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the two moves.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
@@ -251,7 +251,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write on the same topic, no frame + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a nuanced claim on your own",
-             ref="", bank="energy_spending_priority", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="energy_spending_priority", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. The task: should energy money go first to new clean-power "
                        "capacity, or first to the grid?",
@@ -266,7 +266,7 @@ LESSON = Lesson(
                    "short framing, then notice the two close positions; your nuanced claim will name which it is "
                    "NOT. You only need the topic and the two sides.")),
         Slot("TRANSFER", "production_frq", "Write a nuanced claim on a NEW topic",
-             ref="", bank="ai_workforce_policy", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="ai_workforce_policy", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. The task: should the government steer workers toward growing fields, or leave "
                        "it to the market?",

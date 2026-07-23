@@ -212,7 +212,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: plan the RA essay (multi_paragraph) - the frame is the highest-value scaffold =====
         Slot("SUPPORTED", "production_frq", "Plan the essay: purpose and ordered choices",
-             ref="", bank="ra_speech_1", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="ra_speech_1", rubric_ref="rc.4trait", scored=True, mode="analysis", unit="multi_paragraph",
              body=frq_prompt(
                  intro="Plan your rhetorical-analysis essay on Roosevelt's First Inaugural before you write a "
                        "word of it.",
@@ -223,7 +223,7 @@ LESSON = Lesson(
                         "how that effect serves the purpose. This plan is what you will build the essay from.")),
         # ===== INDEPENDENT: build the whole essay from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write the full rhetorical-analysis essay",
-             ref="", bank="ra_speech_1", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="ra_speech_1", rubric_ref="rc.4trait", scored=True, mode="analysis", unit="essay",
              body=frq_prompt(
                  intro="On your own now, build the whole essay from your plan.",
                  closer="Write a complete rhetorical-analysis essay on Roosevelt's First Inaugural: an "

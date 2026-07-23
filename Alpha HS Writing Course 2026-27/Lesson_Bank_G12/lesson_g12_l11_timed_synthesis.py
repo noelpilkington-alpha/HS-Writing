@@ -215,7 +215,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: plan the synthesis (multi_paragraph) - the frame is the highest-value scaffold =====
         Slot("SUPPORTED", "production_frq", "Budget the reading and plan the weave",
-             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="Plan your synthesis on the AI-workforce set before you draft, so the reading is capped "
                        "and there is time to weave.",
@@ -226,7 +226,7 @@ LESSON = Lesson(
                         "plan is what you will draft the synthesis from.")),
         # ===== INDEPENDENT: rehearse the whole synthesis from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Rehearse the full synthesis",
-             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now. Using your budget and plan, rehearse the complete synthesis end to end.",
                  closer="Write a complete synthesis essay on the AI-workforce set: a situated, woven, weighted "

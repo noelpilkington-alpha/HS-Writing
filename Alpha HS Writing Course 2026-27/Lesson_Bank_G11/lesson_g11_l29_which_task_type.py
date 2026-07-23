@@ -201,7 +201,7 @@ LESSON = Lesson(
                          "perspectives are printed for you, and that changes the task to multi-perspective."},
              ]),
         Slot("SUPPORTED", "production_frq", "Name the type and plan its moves",
-             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
+             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro=("The AI-workforce prompt gives you this directive above the sources: \"Using the four "
                         "sources below on how artificial intelligence will reshape the American workforce, write "
@@ -231,7 +231,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: plan for the prompt with no checklist scaffold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Name the type and plan on your own",
-             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
+             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no checklist. The AI-workforce prompt directs: \"Using the four sources "
                        "below, write an essay that develops your own position, drawing on at least three of "
@@ -248,7 +248,7 @@ LESSON = Lesson(
                    "question, or printed perspectives, so you can name its task type from the tell. The prompt "
                    "stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Name the type and plan on a NEW prompt",
-             ref="", bank="mp_standardized_testing", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
+             ref="", bank="mp_standardized_testing", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New prompt, same move. For the standardized-testing prompt, write a short plan that names "
                        "its task type (with its tell) and lists the first moves it rewards.",

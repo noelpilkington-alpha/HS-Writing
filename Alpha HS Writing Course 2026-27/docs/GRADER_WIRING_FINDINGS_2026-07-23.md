@@ -60,6 +60,36 @@ Verified `rc.4trait` scores correctly (12/24, panel_ccss). Fix on our side: chan
 `g9_wire_grader`-style PUT of the customOperator + rc.4trait rubricBlock). `_RUBRIC_BLOCKS` in
 `g9_wire_grader.py` also needs an `rc.4trait` block (currently only has rc.staar / rc.ap).
 
+## RESOLUTION (2026-07-23)
+
+Both defects fixed; the grader-side fixes ride ONE PR (branch `grader-grain-query-fix`) so they deploy
+together. Live re-verification + the 47-item re-wire happen AFTER that branch merges + Render redeploys.
+
+**Defect 1 (grader) — FIXED.** `/score` now reads `grain`/`frq_type` from the QUERY string (FastAPI put them
+only in the body model before, so the wirer's `?grain=` never reached routing). Verified over real HTTP
+(TestClient, query params): `?grain=sentence` scores 3/3, the same text `?grain=essay` scores 0/5.
+
+**Defect 2 — FIXED (both sides).**
+- *Grader side (same PR):* `mode` had the identical query-vs-body bug. `/score` now reads `mode` query-first;
+  verified over real HTTP: rc.4trait `?mode=analysis` -> maxScore 16 (0-4/criterion), `?mode=argument` ->
+  maxScore 24 (0-6/criterion).
+- *Our side:* swapped `rubric_ref` `rc.ap` -> `rc.4trait` across all live G11/G12 (170 kwarg + 47 mastery
+  dict assignments, 58 production files; G10 had none — only comments). `rc.ap` is KEPT as a valid-value
+  definition (RUBRIC_CONFIGS / KNOWN_RUBRICS) for any legacy caller; the grader still 503s it at score time.
+- *Mode derivation (regeneration-robust):* added a declared `mode` field to `Slot` (parallel to `frq_type`)
+  + `MODES={argument,analysis}` + gate validation. Only the 3 PURE-ANALYSIS lessons declare `mode="analysis"`
+  (g11_l30 rhetorical-analysis `ACC-W1112-L-G11-C1103-0031`, g12_l05 `ACC-W910-L-G12-C1201-0005`, g12_l10
+  `ACC-W910-L-G12-C1202-0010`); every other essay FRQ omits mode and the grader defaults rc.4trait ->
+  argument. The wirer (`g9_wire_grader._grader_url_for` / `wire_payload`) bakes `?mode=analysis` into those 3
+  FRQ URLs and adds an `rc.4trait` `_RUBRIC_BLOCKS` entry (the 4 Regents criteria).
+- *Verified:* `course_push_mastery_v3_1.build_plan` produces all 47 FRQs (31 G11 + 16 G12); the 3 analysis
+  FRQs carry `?mode=analysis`, the rest are bare; every essay-grain FRQ carries the rc.4trait block. New
+  regression test `pipeline/tests/test_grader_mode_wiring.py` locks it in; full suite 256 pass.
+
+**Still pending (post-deploy):** merge `grader-grain-query-fix` + redeploy hs-writing-grading; then (a)
+re-verify BOTH on the LIVE `/score`, and (b) re-wire the 47 G11/G12 live items (`course_push_mastery_v3_1
+G11/G12 <grader-url> --live`, PUT-updating the customOperator + rc.4trait rubricBlock — no content re-push).
+
 ## Layer 3 (runtime roundtrip) — DEFERRED
 
 Verifying a score flowing back through the live Timeback player (not just a direct grader curl) is deferred

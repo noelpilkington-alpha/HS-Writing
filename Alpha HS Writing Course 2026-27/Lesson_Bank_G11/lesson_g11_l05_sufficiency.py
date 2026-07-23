@@ -217,7 +217,7 @@ LESSON = Lesson(
                          "'because' clause can read as finished while the claim is still thin."},
              ]),
         Slot("SUPPORTED", "production_frq", "Develop the thin claim",
-             ref="", bank="ai_workforce_policy", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="revision",
+             ref="", bank="ai_workforce_policy", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="revision",
              body=frq_prompt(
                  intro="Develop the thin claim below so its reasoning is proportional to it. Keep the position; "
                        "add the reasoning that earns it.",
@@ -250,7 +250,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: develop a claim with no frame + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Develop a claim on your own",
-             ref="", bank="ai_workforce_policy", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
+             ref="", bank="ai_workforce_policy", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Write a claim about the government's role in the AI workforce "
                        "and develop it with reasoning proportional to the claim, drawing on the source.",
@@ -264,7 +264,7 @@ LESSON = Lesson(
              body=("Read this new source on energy-spending priorities so you have real reasons to draw on. The "
                    "claim you develop is about this topic. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Develop a claim on a NEW topic",
-             ref="", bank="grid_investment_priority", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
+             ref="", bank="grid_investment_priority", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New topic, same move. Write a claim about energy-spending priorities (build clean "
                        "capacity first, or strengthen the grid first) and develop it with reasoning "

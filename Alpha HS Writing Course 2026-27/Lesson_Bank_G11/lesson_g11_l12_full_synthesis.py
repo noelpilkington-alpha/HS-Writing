@@ -196,7 +196,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: draw the set into one claim with a fill-in FRAME (the highest-value scaffold) =====
         Slot("SUPPORTED", "production_frq", "Draw the set into one argument",
-             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="water_competing_uses", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="Using all three sources in the set, draw them into ONE claim the set builds.",
                  setapart_block=setapart("Fill in this frame:",
@@ -224,7 +224,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: synthesize the set with no frame + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Synthesize the set on your own",
-             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="water_competing_uses", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="On your own now, with no frame.",
                  closer="Using the three-source set, write ONE synthesized argument the set builds that no single "
@@ -239,7 +239,7 @@ LESSON = Lesson(
                    "energy. Because your job is full synthesis, read all of it and ask what conclusion the set "
                    "forces that no single source states alone. The texts stay on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Synthesize a NEW set",
-             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="New set. The question: can the United States grid run mostly on renewable energy?",
                  closer="Using the renewable-grid sources, write ONE synthesized argument the set builds that no "

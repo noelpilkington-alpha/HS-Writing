@@ -198,7 +198,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write on the taught source =====
         Slot("SUPPORTED", "production_frq", "State a claim that names a real tension",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="public_health", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the one move: naming a real cost, then letting it shape the claim.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
@@ -222,7 +222,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write, autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Show genuine complexity on your own",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="public_health", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. The task: as the workforce shifts, should a society invest first in preparing more people, or first in protecting the workers displaced now?",
                  closer="Pick the priority you can actually defend, then write ONE claim whose complexity names a "
@@ -237,7 +237,7 @@ LESSON = Lesson(
                    "water for growing food or for generating power. Find the REAL tension (what favoring either "
                    "use costs the other), so your claim can name it. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Show genuine complexity on a NEW source",
-             ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="automation_policy", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New source. The task: when water is scarce, should a region protect it first for food or first for power?",
                  closer="Write ONE claim whose complexity names a real, specific cost the choice pays and lets it "
