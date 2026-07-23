@@ -22,17 +22,25 @@ from incept_test_adapter import parse, classify_gate_failure
 from incept_test import load_cached_output_json
 import bakeoff_g9 as bg
 import render_model_tests as rmt
+import incept_pool
 
-def merged_pool():
-    """Ours (source=ours) + Incept-adapted (source=incept), each tagged in provenance (NOT in judge input)."""
+def merged_pool(deepened=False):
+    """Ours (source=ours) + Incept (source=incept), each tagged in provenance (NOT in judge input).
+    deepened=True pulls the 6-subskill deepened Incept pool; default pulls the single cached test (8 items)."""
     pool = []
     for it in bg._load_our_g9_items():
         it = copy.copy(it); it.provenance = dict(it.provenance or {}); it.provenance["bakeoff_source"] = "ours"
         pool.append(it)
-    inc, _warnings = parse(load_cached_output_json())
-    for it in inc:
-        it = copy.copy(it); it.provenance = dict(it.provenance or {}); it.provenance["bakeoff_source"] = "incept"
-        pool.append(it)
+    if deepened:
+        inc = incept_pool.load_deepened_incept_pool()
+        for it in inc:
+            it = copy.copy(it); it.provenance = dict(it.provenance or {}); it.provenance["bakeoff_source"] = "incept"
+            pool.append(it)
+    else:
+        inc, _warnings = parse(load_cached_output_json())
+        for it in inc:
+            it = copy.copy(it); it.provenance = dict(it.provenance or {}); it.provenance["bakeoff_source"] = "incept"
+            pool.append(it)
     return pool
 
 def is_eligible(item) -> bool:
@@ -53,10 +61,10 @@ def _matches(item, sec) -> bool:
     keys = sec.get("subskills") or sec.get("modes") or []
     return item.subskill_or_mode in keys
 
-def select_hybrid(live: bool = False):
+def select_hybrid(live: bool = False, deepened: bool = False):
     """For each blueprint slot: eligible items that match the slot, ranked by judge median (desc),
     source-blind; take the slot's count. Returns (picked_items_in_blueprint_order, per_slot_source_map)."""
-    pool = [it for it in merged_pool() if is_eligible(it)]
+    pool = [it for it in merged_pool(deepened=deepened) if is_eligible(it)]
     # judge each eligible item ONCE (cache dedupes live calls); attach the score
     scored = {}
     for it in pool:
@@ -126,10 +134,13 @@ def _score_side_mixed(items, live=False):
 def _rank(sc):
     return round(sc["fidelity"] * 25 + sc["fatal_gate_pass_rate"] * 25 + sc["judge_median_mean"] / 100 * 50, 2)
 
-def run_3way(live: bool = False) -> dict:
+def run_3way(live: bool = False, deepened: bool = False) -> dict:
     ours = bg._load_our_g9_items()
-    incept, _w = parse(load_cached_output_json())
-    hybrid_items, srcmap = select_hybrid(live=live)
+    if deepened:
+        incept = incept_pool.load_deepened_incept_pool()
+    else:
+        incept, _w = parse(load_cached_output_json())
+    hybrid_items, srcmap = select_hybrid(live=live, deepened=deepened)
 
     ours_sc = bg._score_side(ours, cross_pipeline=False, live=live); ours_sc["fidelity"] = bg._fidelity(ours)
     inc_sc = bg._score_side(incept, cross_pipeline=True, live=live); inc_sc["fidelity"] = bg._fidelity(incept)
@@ -181,7 +192,8 @@ def _write_html(sc):
 
 if __name__ == "__main__":
     live = "--live" in sys.argv
-    sc = run_3way(live=live)
+    deep = "--deepened" in sys.argv
+    sc = run_3way(live=live, deepened=deep)
     v = sc["verdict"]
     print(f"winner={v['winner']} ranks={v['ranks']}")
     print(f"incept won {v['incept_slot_wins']}/{v['total_slots']} hybrid slots")

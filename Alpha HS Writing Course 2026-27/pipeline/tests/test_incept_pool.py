@@ -68,3 +68,18 @@ def test_generate_pool_dry_returns_six_bodies():
     from incept_client import InceptClient
     subs = ip.generate_pool(live=False, client=InceptClient())   # dry: no network
     assert set(subs) == set(ip.SUBSKILLS)   # one submission per subskill
+
+def test_merged_pool_deepened_uses_six_subskill_banks():
+    _write_fixture_banks()
+    import importlib, bakeoff_hybrid
+    importlib.reload(bakeoff_hybrid)
+    default_pool = bakeoff_hybrid.merged_pool()               # unchanged 8-item incept behavior
+    deep_pool = bakeoff_hybrid.merged_pool(deepened=True)     # uses the 6 fixture banks
+    inc_default = [it for it in default_pool if it.provenance.get("bakeoff_source") == "incept"]
+    inc_deep = [it for it in deep_pool if it.provenance.get("bakeoff_source") == "incept"]
+    # deepened incept pool spans multiple subskills (default is mostly 'evidence')
+    assert len({it.subskill_or_mode for it in inc_deep}) >= 4
+    assert len(inc_deep) > len(inc_default)
+    # ours side identical in both
+    assert sum(1 for it in default_pool if it.provenance.get("bakeoff_source") == "ours") == \
+           sum(1 for it in deep_pool if it.provenance.get("bakeoff_source") == "ours")
