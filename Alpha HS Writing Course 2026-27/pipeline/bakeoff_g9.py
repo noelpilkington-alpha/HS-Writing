@@ -45,29 +45,38 @@ def _load_our_g9_items():
         picked += sorted(pool, key=lambda i: i.id)[:n]
     return picked
 
-def _score_side(items):
+def _score_side(items, cross_pipeline=False):
     fatal_ok = 0
     fixable_failures = 0
+    excluded_failures = 0
     per_item = []
     judges = []
     for it in items:
         r = qc_item(it)
         fatal = []
         fixable = []
+        excluded = []
         if not r["passed"]:
             for gname, g in r["gates"].items():
                 if not g["passed"]:
-                    (fatal if classify_gate_failure(gname) == "fatal" else fixable).append(gname)
+                    cls = classify_gate_failure(gname, cross_pipeline=cross_pipeline)
+                    if cls == "fatal":
+                        fatal.append(gname)
+                    elif cls == "fixable":
+                        fixable.append(gname)
+                    else:  # "excluded"
+                        excluded.append(gname)
         if not fatal:
             fatal_ok += 1
         fixable_failures += len(fixable)
+        excluded_failures += len(excluded)
         j = judge_item(it, n=3, live=False)
         judges.append(j["median"])
         per_item.append({"id": it.id, "family": it.family, "fatal": fatal, "fixable": fixable,
-                         "judge_median": j["median"]})
+                         "excluded": excluded, "judge_median": j["median"]})
     n = len(items) or 1
     return {"n_items": len(items), "fatal_gate_pass_rate": round(fatal_ok / n, 3),
-            "fixable_failures": fixable_failures,
+            "fixable_failures": fixable_failures, "excluded_failures": excluded_failures,
             "judge_median_mean": round(sum(judges) / n, 1), "per_item": per_item}
 
 def _fidelity(items, is_ours: bool):
@@ -79,8 +88,8 @@ def _fidelity(items, is_ours: bool):
 def run(live: bool = False) -> dict:
     ours = _load_our_g9_items()
     incept_items, warnings = parse(load_cached_output_json() if not live else _live_incept())
-    ours_sc = _score_side(ours); ours_sc["fidelity"] = _fidelity(ours, True)
-    inc_sc = _score_side(incept_items); inc_sc["fidelity"] = _fidelity(incept_items, False)
+    ours_sc = _score_side(ours, cross_pipeline=False); ours_sc["fidelity"] = _fidelity(ours, True)
+    inc_sc = _score_side(incept_items, cross_pipeline=True); inc_sc["fidelity"] = _fidelity(incept_items, False)
     inc_sc["adapter_warnings"] = warnings
     def rank(sc):
         return round(sc["fidelity"] * 40 + sc["fatal_gate_pass_rate"] * 40 + sc["judge_median_mean"] / 100 * 20, 2)
@@ -88,7 +97,8 @@ def run(live: bool = False) -> dict:
     winner = "ours" if ours_rank > inc_rank else "incept" if inc_rank > ours_rank else "tie"
     verdict = {"winner": winner, "ours_rank": ours_rank, "incept_rank": inc_rank,
                "primary_rank": "fidelity*40 + fatal_gate_pass*40 + judge_median_mean/100*20 "
-                               "(fixable_failures reported separately, not in rank)"}
+                               "(fixable_failures reported separately, not in rank)",
+               "excluded_gates_note": "acc_tags excluded from Incept fatal-gate (our-internal taxonomy; not a test-design defect)"}
     sc = {"ours": ours_sc, "incept": inc_sc, "verdict": verdict}
     with open("C:/tmp/bakeoff_g9_scorecard.json", "w", encoding="utf-8") as fh:
         json.dump(sc, fh, indent=1)
@@ -112,13 +122,15 @@ def _write_html(sc):
     for side in ("ours", "incept"):
         s = sc[side]
         rows.append(f"<tr><td>{side}</td><td>{s['fidelity']}</td><td>{s['fatal_gate_pass_rate']}</td>"
-                    f"<td>{s['fixable_failures']}</td><td>{s['judge_median_mean']}</td><td>{s['n_items']}</td></tr>")
+                    f"<td>{s['fixable_failures']}</td><td>{s['excluded_failures']}</td>"
+                    f"<td>{s['judge_median_mean']}</td><td>{s['n_items']}</td></tr>")
     doc = (f"<!DOCTYPE html><html><head><meta charset='UTF-8'><title>G9 Bake-Off</title></head><body>"
            f"<h1>G9 Test Bake-Off: winner = {esc(v['winner'])}</h1>"
            f"<p>ours rank {v['ours_rank']} vs incept rank {v['incept_rank']}</p>"
            f"<p>{esc(v['primary_rank'])}</p>"
+           f"<p><em>{esc(v.get('excluded_gates_note', ''))}</em></p>"
            f"<table border=1 cellpadding=6><tr><th>side</th><th>fidelity</th><th>fatal gate pass</th>"
-           f"<th>fixable failures</th><th>judge median mean</th><th>items</th></tr>{''.join(rows)}</table>"
+           f"<th>fixable failures</th><th>excluded failures</th><th>judge median mean</th><th>items</th></tr>{''.join(rows)}</table>"
            f"</body></html>")
     with open("C:/tmp/bakeoff_g9.html", "w", encoding="utf-8") as fh:
         fh.write(doc)

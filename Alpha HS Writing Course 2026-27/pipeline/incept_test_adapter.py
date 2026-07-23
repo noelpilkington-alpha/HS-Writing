@@ -15,8 +15,15 @@ _FATAL_GATES = {"schema", "acc_tags", "cr_binding", "rubric_config",
                 "distractor_integrity", "scr_schema", "scr_binding", "scr_rubric"}
 _FIXABLE_GATES = {"no_em_dash", "no_change_discipline", "content"}
 
-def classify_gate_failure(gate_name: str) -> str:
-    """A failing gate is 'fatal' (structural) or 'fixable' (mechanical/post-processable)."""
+# Gates that assert OUR internal taxonomy, which a foreign generator cannot satisfy and which say
+# nothing about test-DESIGN quality. Excluded from cross-pipeline fatal metrics.
+_PIPELINE_SPECIFIC_GATES = {"acc_tags"}
+
+def classify_gate_failure(gate_name: str, cross_pipeline: bool = False) -> str:
+    """A failing gate is 'fatal' (structural), 'fixable' (mechanical/post-processable), or 'excluded'
+    (pipeline-specific, not a design defect when comparing cross-pipeline)."""
+    if cross_pipeline and gate_name in _PIPELINE_SPECIFIC_GATES:
+        return "excluded"
     if gate_name in _FATAL_GATES:
         return "fatal"
     if gate_name in _FIXABLE_GATES:

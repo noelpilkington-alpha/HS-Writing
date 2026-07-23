@@ -41,6 +41,9 @@ def test_classify_gate_failure_split():
     assert classify_gate_failure("rubric_config") == "fatal"
     assert classify_gate_failure("schema") == "fatal"
     assert classify_gate_failure("no_em_dash") == "fixable"
+    # cross-pipeline mode excludes our-internal taxonomy gates
+    assert classify_gate_failure("acc_tags") == "fatal"
+    assert classify_gate_failure("acc_tags", cross_pipeline=True) == "excluded"
 
 def test_load_cached_output_json_roundtrips_to_adapter():
     from incept_test import load_cached_output_json
@@ -67,9 +70,13 @@ def test_judge_offline_is_deterministic_and_medianed():
 def test_bakeoff_run_offline_produces_ranked_scorecard():
     from bakeoff_g9 import run
     sc = run(live=False)
-    assert set(sc["ours"]) >= {"fidelity", "fatal_gate_pass_rate", "fixable_failures", "judge_median_mean", "n_items"}
-    assert set(sc["incept"]) >= {"fidelity", "fatal_gate_pass_rate", "fixable_failures", "judge_median_mean", "n_items"}
+    assert set(sc["ours"]) >= {"fidelity", "fatal_gate_pass_rate", "fixable_failures", "excluded_failures", "judge_median_mean", "n_items"}
+    assert set(sc["incept"]) >= {"fidelity", "fatal_gate_pass_rate", "fixable_failures", "excluded_failures", "judge_median_mean", "n_items"}
     assert sc["verdict"]["winner"] in ("ours", "incept", "tie")
     assert "primary_rank" in sc["verdict"]           # documents the fidelity+fatal+judge formula
     # Incept side must surface its known structural costs (uncited inline stimulus -> binding fails)
     assert sc["incept"]["fatal_gate_pass_rate"] <= 1.0
+    # acc_tags gate excluded from cross-pipeline fatal metric for Incept
+    assert "excluded_failures" in sc["incept"]
+    # With acc_tags excluded, Incept fatal-pass should now be > 0 (not all items fail fatal)
+    assert sc["incept"]["fatal_gate_pass_rate"] > 0
