@@ -19,6 +19,25 @@ import render_model_tests as rmt
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 
+_CACHE_DIR = "C:/tmp/bakeoff_cache"
+
+def _judge_cached(item, live):
+    """Resumable judge: offline is free + deterministic (no cache needed); live results are cached to disk
+    keyed by (item id + rubric version) so a killed/quota-limited run resumes without re-calling."""
+    from bakeoff_judge import judge_item, RUBRIC_VERSION
+    if not live:
+        return judge_item(item, n=3, live=False)
+    os.makedirs(_CACHE_DIR, exist_ok=True)
+    safe = "".join(c if c.isalnum() or c in "-_" else "_" for c in f"{item.id}_{RUBRIC_VERSION}")
+    path = os.path.join(_CACHE_DIR, f"judge_{safe}.json")
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as fh:
+            return json.load(fh)
+    result = judge_item(item, n=3, live=True)
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(result, fh)
+    return result
+
 def _load_our_g9_items():
     """Full Item objects for the G9 form, selected to BLUEPRINTS['G9'] section filters."""
     bank = {}
@@ -71,7 +90,7 @@ def _score_side(items, cross_pipeline=False, live=False):
             fatal_ok += 1
         fixable_failures += len(fixable)
         excluded_failures += len(excluded)
-        j = judge_item(it, n=3, live=live)
+        j = _judge_cached(it, live)
         judges.append(j["median"])
         variances.append(j["variance"])
         per_item.append({"id": it.id, "family": it.family, "fatal": fatal, "fixable": fixable,
@@ -107,16 +126,17 @@ def run(live: bool = False) -> dict:
     inc_sc = _score_side(incept_items, cross_pipeline=True, live=live); inc_sc["fidelity"] = _fidelity(incept_items)
     inc_sc["adapter_warnings"] = warnings
     def rank(sc):
-        return round(sc["fidelity"] * 40 + sc["fatal_gate_pass_rate"] * 40 + sc["judge_median_mean"] / 100 * 20, 2)
+        return round(sc["fidelity"] * 25 + sc["fatal_gate_pass_rate"] * 25
+                     + sc["judge_median_mean"] / 100 * 50, 2)
     ours_rank, inc_rank = rank(ours_sc), rank(inc_sc)
     winner = "ours" if ours_rank > inc_rank else "incept" if inc_rank > ours_rank else "tie"
     verdict = {"winner": winner, "ours_rank": ours_rank, "incept_rank": inc_rank,
-               "primary_rank": "fidelity*40 + fatal_gate_pass*40 + judge_median_mean/100*20 "
-                               "(fixable_failures reported separately, not in rank)",
-               "excluded_gates_note": "acc_tags, cr_binding, scr_binding excluded from Incept fatal-gate "
-                                      "(our-internal taxonomy / our-bank binding; not a test-design defect)",
+               "primary_rank": "fidelity*25 + fatal_gate_pass*25 + judge_median_mean/100*50 "
+                               "(fixable + excluded failures reported separately, not in rank)",
                "judge_note": "offline runs use a deterministic structural-heuristic proxy (variance 0); "
-                             "live runs use the 3-sample LLM median"}
+                             "live runs use the neutral own-Claude 3-sample median",
+               "excluded_gates_note": "acc_tags + cr/scr_binding excluded from Incept fatal-gate "
+                                       "(our-internal taxonomy/bank; not test-design defects)"}
     sc = {"ours": ours_sc, "incept": inc_sc, "verdict": verdict}
     with open("C:/tmp/bakeoff_g9_scorecard.json", "w", encoding="utf-8") as fh:
         json.dump(sc, fh, indent=1)
