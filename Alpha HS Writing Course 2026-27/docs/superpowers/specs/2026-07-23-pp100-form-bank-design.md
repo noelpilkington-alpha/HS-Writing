@@ -337,3 +337,35 @@ are fully covered.
 passages), because sources reuse across lessons in a group and most passage-grain groups are already covered.
 The sourcing effort is dominated by cheap sentence frames; the genuinely costly part is ~46 analysis/explanatory
 passages. Report is reproducible: `python pipeline/pp100_coverage_report.py`.
+
+### ANALYSIS-GRAIN depth reconsidered (2026-07-23) — shared public-domain text pool, staggered
+
+Finding while prototyping G10 L21 (cross-text analysis): an ANALYSIS form's source is not a cheap topic frame
+but a substantial ~500-word TEXT the student analyzes. Depth-10 uniform across the 11 analysis passage-grain
+lessons (G10/G11/G12) = ~120 distinct analysis texts (cross-text = 2/form), far above the coverage report's
+~30 (which deduped by topic, an abstraction that does not hold for analysis: a text cannot be reused within a
+lesson's own bank the way a sentence topic-frame can).
+
+BUT: the existing analysis stimuli are VERBATIM EXCERPTS FROM REAL PRE-1929 US PUBLIC-DOMAIN WORKS (Patrick
+Henry 1775, Douglass 1852, Kate Chopin 1897), copyright=public_domain, rights="US public domain (pre-1929)".
+So analysis texts are CURATED (real, provenance-clean excerpts), never own-authored/fabricated. Supply is
+effectively unlimited (Project Gutenberg etc.); the risk is not scarcity but fabrication if discipline slips
+(the repo already caught a fabricated-Douglass incident) and uneven curation (off-band Lexile / no analyzable
+craft) degrading the gate.
+
+DECISION (best outcome): analysis grain does NOT use per-lesson depth 10. Instead:
+- Build a SHARED, VETTED POOL of ~8 excellent public-domain analysis texts PER GRADE BAND (a mix of speech /
+  story / essay so students meet varied craft). ~8 x (G10, G11-12) ~= 16-24 curated texts total, NOT ~120.
+- Each analysis lesson's assessment-bank lists the pool in a STAGGERED order (lesson A starts [t1,t2,...],
+  lesson B starts [t3,t4,...]) so the per-lesson round-robin (verified per-lesson, keyed to that lesson's own
+  attempt number) gives different lessons different first-served texts. This is set at build time via the
+  bank's `resources` array order, which we control.
+- Rationale: maximizes text VARIETY (the thing analysis transfer needs) + SAFETY (all real, provenance-clean)
+  while keeping curation small enough to do to consistently high quality. Curation quality per text matters
+  more than raw count for analysis.
+
+Argument/explanatory grains are UNCHANGED (sentence 30 own-words frames; paragraph/essay 10 own-words-from-
+federal framings). Only ANALYSIS moves to the shared-pool model.
+
+Net sourcing revised: ~179 frames (unchanged) + ~16 argument/explanatory passages + ~16-24 curated public-
+domain analysis texts (shared) ~= a far more bounded, safer effort than 120 bespoke analysis texts.
