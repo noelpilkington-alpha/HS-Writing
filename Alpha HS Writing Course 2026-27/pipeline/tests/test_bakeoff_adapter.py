@@ -41,3 +41,10 @@ def test_classify_gate_failure_split():
     assert classify_gate_failure("rubric_config") == "fatal"
     assert classify_gate_failure("schema") == "fatal"
     assert classify_gate_failure("no_em_dash") == "fixable"
+
+def test_load_cached_output_json_roundtrips_to_adapter():
+    from incept_test import load_cached_output_json
+    oj = load_cached_output_json("C:/tmp/incept_fulltest_11324.json")
+    assert "items" in oj and len(oj["items"]) == 8
+    items, warnings = parse(oj)          # cached -> adapter must work end to end offline
+    assert len(items) == 8
