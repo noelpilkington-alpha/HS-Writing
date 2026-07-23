@@ -112,3 +112,30 @@ def load_deepened_incept_pool(cache_dir: str = "C:/tmp/incept_pool") -> list[Ite
         for i, raw in enumerate(raws, 1):
             pool.append(_build_item(i, sk, raw))
     return pool
+
+def generate_pool(live: bool = False, client=None) -> dict:
+    """Submit the 6 targeted bank generations. Dry mode returns the would-send bodies (no network).
+    Live mode returns the 201 responses (request_id/status_url); polling to terminal is the operator step."""
+    from incept_client import InceptClient
+    client = client or InceptClient()
+    out = {}
+    for sk, spec in SUBSKILL_PROMPTS.items():
+        out[sk] = client.generate(spec["prompt"], spec["generation_type"], options=dict(spec["options"]),
+                                  grade_levels=["g9"], subject="writing", live=live)
+    return out
+
+def fetch_pool(artifact_ids: dict, live: bool = False, client=None, cache_dir: str = "C:/tmp/incept_pool") -> dict:
+    """artifact_ids: {subskill -> succeeded artifact id}. Fetch each artifact's output_json and cache it to
+    <cache_dir>/<subskill>.json. Operator passes the ids after polling (mirrors incept_test's hand-off)."""
+    from incept_client import InceptClient
+    client = client or InceptClient()
+    os.makedirs(cache_dir, exist_ok=True)
+    paths = {}
+    for sk, aid in artifact_ids.items():
+        art = client.artifact(aid, live=live)
+        oj = (art or {}).get("output_json", {})
+        path = os.path.join(cache_dir, f"{sk}.json")
+        with open(path, "w", encoding="utf-8") as fh:
+            json.dump(oj, fh, indent=1)
+        paths[sk] = path
+    return paths

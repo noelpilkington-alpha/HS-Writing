@@ -63,3 +63,8 @@ def test_load_deepened_pool_missing_bank_raises():
     except Exception as e:
         assert "organization" in str(e)
     _write_fixture_banks()  # restore for other tests
+
+def test_generate_pool_dry_returns_six_bodies():
+    from incept_client import InceptClient
+    subs = ip.generate_pool(live=False, client=InceptClient())   # dry: no network
+    assert set(subs) == set(ip.SUBSKILLS)   # one submission per subskill
