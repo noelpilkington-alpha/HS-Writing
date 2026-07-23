@@ -108,3 +108,55 @@ def test_report_summarize_and_markdown():
     md = markdown("G9", findings, {"lessons_run": 2, "lessons_total": 29, "browser": True})
     assert "one_beat_pause_1" in md and "grading" in md
     assert "1 pass, 1 warn, 1 fail" in md
+
+
+# ---------------------------------------------------------------------------
+# tree_check: OneRoster lesson-tree integrity (the gap the article-only eval missed).
+# ---------------------------------------------------------------------------
+
+class _FakeResp:
+    def __init__(self, status_code, cr_id):
+        self.status_code = status_code
+        self._cr_id = cr_id
+    def json(self):
+        return {"componentResource": {"sourcedId": self._cr_id, "status": "active"}}
+
+
+class _FakeSession:
+    """Returns canned component-resource GETs. `active` = set of cr ids that exist + are active."""
+    def __init__(self, active):
+        self._active = set(active)
+    def get(self, url, timeout=25):
+        cr_id = url.rstrip("/").split("/")[-1]
+        return _FakeResp(200 if cr_id in self._active else 404, cr_id)
+
+
+def test_tree_check_flags_stale_quiz_cr():
+    from player_test.tree_check import check_lesson_tree
+    exp = {"lesson_id": "ACC-W910-L-G9-C901-0001", "grade": "G9"}
+    # article + pp100 present AND the stale old quiz cr still active -> fail
+    sess = _FakeSession({"cr-ACC-W910-L-G9-C901-0001-article",
+                         "cr-ACC-W910-L-G9-C901-0001-pp100",
+                         "cr-ACC-W910-L-G9-C901-0001"})
+    fs = check_lesson_tree(exp, sess)
+    assert any(f.check == "tree_stale_cr" and f.severity == "fail" for f in fs), \
+        "must flag the stale old quiz CR still active alongside article+pp100"
+
+
+def test_tree_check_passes_clean_lesson():
+    from player_test.tree_check import check_lesson_tree
+    exp = {"lesson_id": "ACC-W910-L-G10-C1001-0001", "grade": "G10"}
+    # only article + pp100 active, no stale quiz cr -> pass
+    sess = _FakeSession({"cr-ACC-W910-L-G10-C1001-0001-article",
+                         "cr-ACC-W910-L-G10-C1001-0001-pp100"})
+    fs = check_lesson_tree(exp, sess)
+    assert any(f.check == "tree_integrity" and f.severity == "pass" for f in fs)
+    assert not any(f.severity == "fail" for f in fs)
+
+
+def test_tree_check_flags_missing_article():
+    from player_test.tree_check import check_lesson_tree
+    exp = {"lesson_id": "ACC-W910-L-G9-C901-0099", "grade": "G9"}
+    sess = _FakeSession({"cr-ACC-W910-L-G9-C901-0099-pp100"})  # article missing
+    fs = check_lesson_tree(exp, sess)
+    assert any(f.check == "tree_article_cr" and f.severity == "fail" for f in fs)

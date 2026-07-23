@@ -28,6 +28,7 @@ from player_test.expectations import grade_expectations
 from player_test.driver import Driver
 from player_test import checks as C
 from player_test.grading_check import check_grading
+from player_test.tree_check import check_lesson_tree
 from player_test.report import markdown
 import render_course_preview_grade as R
 
@@ -44,8 +45,10 @@ def _session():
     return s
 
 
-def run_lesson(driver, exp, shot_dir, session, do_browser=True, do_grading=True) -> list:
+def run_lesson(driver, exp, shot_dir, session, do_browser=True, do_grading=True, do_tree=True) -> list:
     findings = []
+    if do_tree:
+        findings += check_lesson_tree(exp, session)   # OneRoster lesson-tree integrity (stale/extra CRs)
     if do_browser and driver.available:
         ok = driver.goto(exp["player_url"], timeout=90)
         driver.wait_ms(4000)   # let the SPA render the lesson
@@ -72,6 +75,7 @@ def main():
     ap.add_argument("--lessons", default="", help="comma list of slugs, e.g. l01,l07")
     ap.add_argument("--no-browser", action="store_true")
     ap.add_argument("--grading-only", action="store_true")
+    ap.add_argument("--tree-only", action="store_true", help="only the OneRoster lesson-tree integrity check")
     ap.add_argument("--base-url", default=R.DEFAULT_BASE)
     args = ap.parse_args()
     g = args.grade
@@ -87,8 +91,9 @@ def main():
     if args.limit:
         exps = exps[:args.limit]
 
-    do_browser = not (args.no_browser or args.grading_only)
-    do_grading = True
+    do_browser = not (args.no_browser or args.grading_only or args.tree_only)
+    do_grading = not args.tree_only
+    do_tree = not args.grading_only   # tree runs by default; --grading-only skips it, --tree-only keeps only it
     driver = Driver()
     session = _session()
 
@@ -96,7 +101,7 @@ def main():
     done = json.load(open(cp_path)) if os.path.exists(cp_path) else {}
     for e in exps:
         lid = e["lesson_id"]
-        fs = run_lesson(driver, e, shot_dir, session, do_browser=do_browser, do_grading=do_grading)
+        fs = run_lesson(driver, e, shot_dir, session, do_browser=do_browser, do_grading=do_grading, do_tree=do_tree)
         done[lid] = [f.dict() for f in fs]
         json.dump(done, open(cp_path, "w"), indent=1)   # checkpoint after each lesson
         sev = [f.severity for f in fs]
