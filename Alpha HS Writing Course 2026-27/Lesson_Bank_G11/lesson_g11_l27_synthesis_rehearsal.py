@@ -208,7 +208,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: budget + fast plan (multi_paragraph) - the frame is the highest-value scaffold =====
         Slot("SUPPORTED", "production_frq", "Budget the stages and fast-plan the synthesis",
-             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="Imagine a 40-minute window on the renewable-grid set. Set your budget and fast plan "
                        "before you draft a word of the synthesis.",
@@ -221,7 +221,7 @@ LESSON = Lesson(
                         "what you will build the full synthesis from.")),
         # ===== INDEPENDENT: build the whole synthesis from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Rehearse the full synthesis",
-             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, run the whole routine and build the synthesis from your budget and plan.",
                  closer="Write a complete synthesis on the renewable-grid set: weave ONE argument from the "

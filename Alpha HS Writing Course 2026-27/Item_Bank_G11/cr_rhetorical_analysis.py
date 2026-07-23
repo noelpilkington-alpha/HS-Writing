@@ -41,7 +41,7 @@ ITEMS = [
               "of the choices you identify."),
         acc_tags=ACC,
         stimulus_ref=FDR,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0702: BRYAN (broad choices -> purpose) ------------------------------------------------------
@@ -55,7 +55,7 @@ ITEMS = [
               "choices you identify."),
         acc_tags=ACC,
         stimulus_ref=BRYAN,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0703: EMERSON (broad choices -> purpose) ----------------------------------------------------
@@ -69,7 +69,7 @@ ITEMS = [
               "the effect of the choices you identify."),
         acc_tags=ACC,
         stimulus_ref=EMERSON,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0704: FDR, second prompt (appeals + tone) ---------------------------------------------------
@@ -82,7 +82,7 @@ ITEMS = [
               "restating his message. Support your analysis with specific evidence from the passage."),
         acc_tags=ACC,
         stimulus_ref=FDR,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0705: BRYAN (structure + figurative language) -----------------------------------------------
@@ -95,7 +95,7 @@ ITEMS = [
               "restating his position. Support your analysis with specific evidence from the passage."),
         acc_tags=ACC,
         stimulus_ref=BRYAN,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0706: EMERSON (diction + sentence style) ----------------------------------------------------
@@ -108,7 +108,7 @@ ITEMS = [
               "than restating his ideas. Support your analysis with specific evidence from the passage."),
         acc_tags=ACC,
         stimulus_ref=EMERSON,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
 ]

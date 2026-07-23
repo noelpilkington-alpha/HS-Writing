@@ -46,7 +46,7 @@ ITEMS = [
               "public trust it turns on, and cite the sources you draw on."),
         acc_tags=ACC,
         stimulus_ref=GRID,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0802: AI WORKFORCE (tension across sources) -------------------------------------------------
@@ -62,7 +62,7 @@ ITEMS = [
               "between them. Cite the sources you use."),
         acc_tags=ACC,
         stimulus_ref=AI,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0803: WATER SCARCITY (situate in broader context) -------------------------------------------
@@ -78,7 +78,7 @@ ITEMS = [
               "each in turn, and cite the sources you draw on."),
         acc_tags=ACC,
         stimulus_ref=WATER,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0804: RENEWABLE GRID, second prompt (competing perspectives + significance) -----------------
@@ -94,7 +94,7 @@ ITEMS = [
               "rather than dictate a summary. Cite the sources you use."),
         acc_tags=ACC,
         stimulus_ref=GRID,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0805: AI WORKFORCE, second prompt (limits of the evidence + so-what) ------------------------
@@ -110,7 +110,7 @@ ITEMS = [
               "for anyone deciding what to do now. Cite the sources you draw on."),
         acc_tags=ACC,
         stimulus_ref=AI,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
 ]

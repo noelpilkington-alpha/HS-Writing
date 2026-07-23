@@ -161,7 +161,7 @@ LESSON = Lesson(
                        "landing on a position that answers the difficulty. A firmer dismissal (B), a statistic "
                        "(C), or shorter wording (D) all leave the tension flattened.")),
         Slot("SUPPORTED", "production_frq", "Warm up: write the pivot sentence",
-             ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="automation_policy", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Warm up with just the pivot, the sentence that keeps both truths live. Here is one truth "
                        "to start from:",
@@ -184,7 +184,7 @@ LESSON = Lesson(
                  closer="Now write a fresh paragraph on the water trade-off that holds the tension, then run the "
                         "same three questions on it. Finish by naming the tension you held.")),
         Slot("INDEPENDENT", "production_frq", "Hold the tension on your own",
-             ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
+             ref="", bank="automation_policy", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now. Write ONE body paragraph on the water trade-off.",
                  closer="Keep both true things in view, reason from the conflict between them, and land on a rule "
@@ -198,7 +198,7 @@ LESSON = Lesson(
                    "Find the tension: each side has to grant the other's central fact. Note it, so your paragraph "
                    "can hold it. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Hold the tension on a NEW source",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
+             ref="", bank="public_health", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New source, same move. Write ONE body paragraph on the workforce prompt.",
                  closer="Hold the tension between preparing the next generation and protecting displaced workers: "

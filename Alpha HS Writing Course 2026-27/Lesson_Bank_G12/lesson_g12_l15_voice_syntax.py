@@ -223,7 +223,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed edit (fill-in frame) on the taught topic (source read at TEACH step 2) =====
         Slot("SUPPORTED", "production_frq", "Reshape this sentence for emphasis",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="revision",
+             ref="", bank="public_health", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="Reshape this flat string with a syntactic choice. Flat sentence to fix: 'Training helps "
                        "the young, and it does not help older workers, and a budget must choose, and that is "
@@ -251,7 +251,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold edit on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Shape voice with syntax on your own",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="public_health", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Take one idea from the workforce source, write it as a flat "
                        "compound string, then reshape it with a syntactic choice: subordinate the minor idea and "
@@ -266,7 +266,7 @@ LESSON = Lesson(
                    "will state an idea from it and reshape the sentence for emphasis. The text stays on screen "
                    "while you work.")),
         Slot("TRANSFER", "production_frq", "Shape voice with syntax on a NEW source",
-             ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="automation_policy", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New source. Take one idea from the water source, write it as a flat 'and' string, then "
                        "reshape it with a syntactic choice for emphasis.",

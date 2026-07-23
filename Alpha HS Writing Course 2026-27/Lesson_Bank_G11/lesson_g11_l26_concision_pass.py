@@ -221,7 +221,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed edit (fill-in frame) on the taught topic (source read at TEACH step 2) =====
         Slot("SUPPORTED", "production_frq", "Tighten this sentence",
-             ref="", bank="water_infrastructure", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="revision",
+             ref="", bank="water_infrastructure", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="revision",
              body=frq_prompt(
                  intro="Run a concision pass on this padded sentence, keeping the claim. Here is the sentence to "
                        "fix: 'In my own personal opinion, I really think it is very important to basically realize "
@@ -249,7 +249,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Run a concision pass on your own",
-             ref="", bank="water_infrastructure", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="water_infrastructure", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Take one fact from the water-use source, write it first as a "
                        "padded sentence, then tighten it: cut the empty intensifiers, redundant pairs, and "
@@ -266,7 +266,7 @@ LESSON = Lesson(
                    "running a concision pass on a sentence, not writing from scratch, and the text stays on screen "
                    "while you work.")),
         Slot("TRANSFER", "production_frq", "Run a concision pass on a NEW source",
-             ref="", bank="energy_transition", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="energy_transition", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New source. Take one fact from the electricity-mix source, write it first as a padded "
                        "sentence, then run a concision pass to cut the words that do no work.",

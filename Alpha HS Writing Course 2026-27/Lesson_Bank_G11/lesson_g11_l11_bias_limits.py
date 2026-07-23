@@ -190,7 +190,7 @@ LESSON = Lesson(
                        "(B), dropping it (C), or flipping to blanket trust (D) all skip the strengths-and-limits "
                        "move.")),
         Slot("SUPPORTED", "production_frq", "Warm up: fill in a strengths-and-limits frame",
-             ref="", bank="water_infrastructure", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="water_infrastructure", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Warm up with a frame. Here is the shape of a strengths-and-limits sentence:",
                  setapart_block=setapart("Copy this frame:",
@@ -210,7 +210,7 @@ LESSON = Lesson(
                  closer="Now write a fresh strengths-and-limits evaluation of the water-use source, then run the "
                         "same three checks. Finish by naming the limit you identified.")),
         Slot("INDEPENDENT", "production_frq", "Evaluate strengths and limits on your own",
-             ref="", bank="water_infrastructure", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="water_infrastructure", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now. Write ONE evaluation of the water-use source that names a strength (what "
                        "to trust it for) and a limit (where it falls short).",
@@ -223,7 +223,7 @@ LESSON = Lesson(
                    "is strong evidence for and what it cannot tell you. Same strengths-and-limits move, new "
                    "topic. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Evaluate strengths and limits on a NEW source",
-             ref="", bank="energy_transition", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="energy_transition", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New source. Write ONE evaluation of the electricity-mix source that names a strength and a limit.",
                  closer="Same strengths-and-limits move as the water-use evaluation, new source. Do not give an "

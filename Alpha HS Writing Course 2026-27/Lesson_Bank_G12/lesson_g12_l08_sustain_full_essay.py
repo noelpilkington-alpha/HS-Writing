@@ -220,7 +220,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: plan + pacing frame (multi_paragraph) - the frame is the highest-value scaffold =====
         Slot("SUPPORTED", "production_frq", "Budget, fast-plan, and pace the essay",
-             ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="automation_policy", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="For a 40-minute window on the water trade-off, write your budget, your fast plan, and a "
                        "rough share of the drafting minutes per body paragraph before you draft. First set your "
@@ -237,7 +237,7 @@ LESSON = Lesson(
                         "the last paragraph and the conclusion still get finished minutes, not scraps.")),
         # ===== INDEPENDENT: sustain the whole essay from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Sustain the full essay",
-             ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="automation_policy", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, carry the whole essay from your plan and pacing.",
                  closer="Write a complete argument essay on the water trade-off so the last body paragraph and "

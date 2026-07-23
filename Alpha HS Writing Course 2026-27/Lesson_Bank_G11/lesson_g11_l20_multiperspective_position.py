@@ -247,7 +247,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: framed write (fill-in frame) on the taught topic (source already read at slot 2) =====
         Slot("SUPPORTED", "production_frq", "Finish the position: fill in the frame",
-             ref="", bank="mp_public_space", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="mp_public_space", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Use the frame below so you can focus on the two moves: weigh, then stake.",
                  setapart_block=setapart("Copy this frame, then fill in the blanks:",
@@ -273,7 +273,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: cold write on the same issue, no frame + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Weigh and stake on your own",
-             ref="", bank="mp_public_space", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="mp_public_space", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, no frame. Write ONE position on the streets issue that weighs the given "
                        "perspectives against each other and stakes your own position in relation to them.",
@@ -290,7 +290,7 @@ LESSON = Lesson(
                    "perspectives conflict and where one depends on another. The prompt stays on screen while you "
                    "work.")),
         Slot("TRANSFER", "production_frq", "Weigh and stake on a NEW set",
-             ref="", bank="mp_automation_work", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="mp_automation_work", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="New set. Write ONE position on the automation-and-work issue that weighs the given "
                        "perspectives and stakes your own in relation to them.",

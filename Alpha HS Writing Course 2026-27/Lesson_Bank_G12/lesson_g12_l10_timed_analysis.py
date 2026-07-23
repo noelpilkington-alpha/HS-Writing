@@ -208,7 +208,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: plan the analysis (multi_paragraph) - the frame is the highest-value scaffold =====
         Slot("SUPPORTED", "production_frq", "Budget the reading and plan the analysis",
-             ref="", bank="ra_speech_1", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="ra_speech_1", rubric_ref="rc.4trait", scored=True, mode="analysis", unit="multi_paragraph",
              body=frq_prompt(
                  intro="Plan your rhetorical analysis of this speech before you write a word of the essay.",
                  setapart_block=setapart("Fill in this plan:",
@@ -218,7 +218,7 @@ LESSON = Lesson(
                         "one-line thesis. This plan is what leaves you time to finish the analysis.")),
         # ===== INDEPENDENT: rehearse the whole analysis from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Rehearse the full analysis",
-             ref="", bank="ra_speech_1", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="ra_speech_1", rubric_ref="rc.4trait", scored=True, mode="analysis", unit="essay",
              body=frq_prompt(
                  intro="On your own now, rehearse the whole analysis from the plan and budget you just checked, applying any process fix you named.",
                  closer="Write a complete rhetorical analysis of this speech end to end: a situated introduction "

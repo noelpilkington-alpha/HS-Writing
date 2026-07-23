@@ -139,7 +139,7 @@ LESSON = Lesson(
         # BUDGET only: it precedes the sources, so it does NOT ask the student to name types yet (no tell is
         # visible) and does NOT pre-label the FRQ types (that naming IS the assessed skill, done at each FRQ). =====
         Slot("SUPPORTED", "production_frq", "Plan your budget for the set (not graded)",
-             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=False, unit="multi_paragraph",
+             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.4trait", scored=False, unit="multi_paragraph",
              body=frq_prompt(
                  intro="This set has three writing tasks. Before you start, set a budget so the third essay is never "
                        "abandoned. This plan is not graded; it is your map. You will name each task's type and "
@@ -155,7 +155,7 @@ LESSON = Lesson(
                    "mostly on renewable energy. Read the tell and name the type yourself, then run that type's "
                    "moves and write the full response. The texts stay on screen while you work.")),
         Slot("TRANSFER", "production_frq", "GATE: write Task 1",
-             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="The gate, Task 1. Name the type from the tell, then on your own write the full response to "
                        "this writing task.",
@@ -172,7 +172,7 @@ LESSON = Lesson(
                    "and notice it is a different type from Task 1, so it needs different moves. Keep to your "
                    "budget for the set. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "GATE: write Task 2",
-             ref="", bank="ra_speech_2", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="ra_speech_2", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="Task 2. Name the type from the tell, then write the full response.",
                  closer="Run the moves that match the type you named and write a complete, situated response with "
@@ -182,7 +182,7 @@ LESSON = Lesson(
         # ===== FRQ 3 (argument, no source): the THIRD type, cold write. Different prompt from the PP100 mastery
         # FRQ 3 so mastery stays a fresh cold task; bank partitioned from the taught set. =====
         Slot("TRANSFER", "production_frq", "GATE: write Task 3",
-             ref="", bank="argument_no_source", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="argument_no_source", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="The last writing task. Read the tell and name its type yourself: notice there is no passage this "
                        "time, only a general question. Name the type, then write the full response.",

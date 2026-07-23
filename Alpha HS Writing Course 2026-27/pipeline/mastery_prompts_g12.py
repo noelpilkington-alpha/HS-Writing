@@ -11,7 +11,7 @@ The held-out `source` id is a stimulus the lesson's OWN taught/transfer stimuli 
 matching kind (argument lessons -> an argument source, rhetorical-analysis lessons -> an RA source, synthesis
 lessons -> a synthesis set). AP argument prompts are source-free by design, so where a task also needs an
 argument FRQ we state a self-contained prompt in the box; the inlined held-out source carries the
-synthesis/analysis FRQ. rubric_ref = "rc.ap" for every entry. `unit` keeps the graded grain. prompt_html is
+synthesis/analysis FRQ. rubric_ref = "rc.4trait" for every entry. `unit` keeps the graded grain. prompt_html is
 rendered by gated_reading._render_body (same typography as the in-article writes). No em dashes.
 """
 
@@ -45,7 +45,7 @@ MASTERY = {
     # L01 - situate the question in the larger one (sentence). Taught/transfer: WATERTRADEOFF, WORKFORCEINVEST
     # (arg). Held-out arg source: SCHOOLLUNCH.
     "ACC-W910-L-G12-C1201-0001": {"source": "ACC-W910-ARG-LESSON-SCHOOLLUNCH", "unit": "sentence",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("The prompt to answer:",
                "Should schools be required to provide free lunch to every student, regardless of family income?",
                "teal")
@@ -57,7 +57,7 @@ MASTERY = {
     # L02 - show a real tension, not a formulaic both-sides (sentence). Taught/transfer: WORKFORCEINVEST,
     # WATERTRADEOFF (arg). Held-out arg source: GRIDSPENDING.
     "ACC-W910-L-G12-C1201-0002": {"source": "ACC-W910-ARG-LESSON-GRIDSPENDING", "unit": "sentence",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("The prompt to answer:",
                "Should the country spend first on the electric grid, or first on new clean-power generation?",
                "teal")
@@ -69,7 +69,7 @@ MASTERY = {
     # L03 - hold the tension in a body paragraph (paragraph). Taught/transfer: WATERTRADEOFF, WORKFORCEINVEST
     # (arg). Held-out arg source: AIWORKFORCE.
     "ACC-W910-L-G12-C1201-0003": {"source": "ACC-W910-ARG-LESSON-AIWORKFORCE", "unit": "paragraph",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your position:",
                "The government should actively help workers move into the fastest-growing technical fields.",
                "teal")
@@ -81,7 +81,7 @@ MASTERY = {
     # L04 - full argument that earns sophistication (essay). Taught/transfer: WORKFORCEINVEST, WATERTRADEOFF
     # (arg). Held-out arg source: GRIDSPENDING.
     "ACC-W910-L-G12-C1201-0004": {"source": "ACC-W910-ARG-LESSON-GRIDSPENDING", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your argument task:",
                "Should the country fund the electric grid before new clean-power generation, or the reverse? "
                "Take a side.", "teal")
@@ -94,7 +94,7 @@ MASTERY = {
     # L05 - analyze the rhetoric with sophistication (essay). Taught/transfer: ANALYSIS-LESSON-DOUGLASS,
     # RA-SINGLE-0001 (RA). Held-out RA source: RA-SINGLE-0002.
     "ACC-W910-L-G12-C1201-0005": {"source": "ACC-W910-RA-SINGLE-0002", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("The rhetorical situation:",
                "The passage above is from William Jennings Bryan's \"Cross of Gold\" speech, delivered July 9, "
                "1896, to the Democratic National Convention in Chicago. Speaking to a divided audience of party "
@@ -114,7 +114,7 @@ MASTERY = {
     # L06 - full synthesis that earns sophistication (essay). Taught/transfer: SYNTH-LESSON-0001,
     # SYNTH-SET-0002 (synth). Held-out synth set: SYNTH-SET-0001.
     "ACC-W1112-L-G12-C1201-0006": {"source": "ACC-W910-SYNTH-SET-0001", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your synthesis prompt:",
                "Read the source set above, then develop and defend your own position on the issue the sources "
                "debate.", "teal")
@@ -127,7 +127,7 @@ MASTERY = {
     # L07 - predict whether you earned sophistication, then name the gap (essay). Taught/transfer:
     # WORKFORCEINVEST, WATERTRADEOFF (arg). Held-out arg source: SCHOOLLUNCH.
     "ACC-W910-L-G12-C1201-0007": {"source": "ACC-W910-ARG-LESSON-SCHOOLLUNCH", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your argument task:",
                "Should schools provide free lunch to every student regardless of family income? Take a side.",
                "teal")
@@ -140,7 +140,7 @@ MASTERY = {
     # L08 - sustain the whole essay, do not front-load it (essay). Taught/transfer: WATERTRADEOFF,
     # WORKFORCEINVEST (arg). Held-out arg source: AIWORKFORCE.
     "ACC-W910-L-G12-C1202-0008": {"source": "ACC-W910-ARG-LESSON-AIWORKFORCE", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your argument task:",
                "Should the government actively steer workers toward growing fields, or leave that sorting to the "
                "market? Take a side.", "teal")
@@ -154,7 +154,7 @@ MASTERY = {
     # L09 - rehearse a complete argument, end to end (essay). Taught/transfer: WORKFORCEINVEST, WATERTRADEOFF
     # (arg). Held-out arg source: GRIDSPENDING.
     "ACC-W910-L-G12-C1202-0009": {"source": "ACC-W910-ARG-LESSON-GRIDSPENDING", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your argument task:",
                "Should the country fund the electric grid before new clean-power generation? Take a side.",
                "teal")
@@ -165,7 +165,7 @@ MASTERY = {
     # L10 - rehearse a complete rhetorical analysis, end to end (essay). Taught/transfer: RA-SINGLE-0001,
     # RA-SINGLE-0002 (RA). Held-out RA source: RA-SINGLE-0003.
     "ACC-W910-L-G12-C1202-0010": {"source": "ACC-W910-RA-SINGLE-0003", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("The rhetorical situation:",
                "The passage above is from Ralph Waldo Emerson's essay \"Self-Reliance,\" published in Essays: "
                "First Series (1841). Writing for the general reading public of his day, Emerson urges each "
@@ -183,7 +183,7 @@ MASTERY = {
     # L11 - rehearse a complete synthesis, end to end (essay). Taught/transfer: SYNTH-SET-0002, SYNTH-SET-0001
     # (synth). Held-out synth set: SYNTH-LESSON-0001 (the G11-12 synth set).
     "ACC-W910-L-G12-C1202-0011": {"source": "ACC-W1112-SYNTH-LESSON-0001", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your synthesis prompt:",
                "Read the source set above, then develop and defend your own position on the issue the sources "
                "debate.", "teal")
@@ -200,7 +200,7 @@ MASTERY = {
     # unambiguously (use the source set + cite), and drop the rubric-rows deliverable (name the type + tell +
     # move-set + plan is what the lesson teaches).
     "ACC-W910-L-G12-C1202-0012": {"source": "ACC-W910-SYNTH-SET-0002", "unit": "paragraph",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("The FRQ to diagnose (you will PLAN it, not write the full essay):",
                "Read the source set above and develop your position on the issue the sources debate, using and "
                "citing at least three of the sources to support it.", "teal")
@@ -214,7 +214,7 @@ MASTERY = {
     # (arg + synth). Held-out synth set (for the synthesis half): SYNTH-SET-0001; the argument half is
     # source-free by AP design.
     "ACC-W910-L-G12-C1202-0013": {"source": "ACC-W910-SYNTH-SET-0001", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Two FRQs, back to back:",
                "FRQ 1 (argument, no source): Some hold that progress depends on questioning ideas most people "
                "accept. Take a position on the value of challenging widely held beliefs. &nbsp; FRQ 2 (synthesis): "
@@ -229,7 +229,7 @@ MASTERY = {
     # L14 - predict your full-write scores, then name the pacing gap (essay). Taught/transfer: WATERTRADEOFF,
     # WORKFORCEINVEST (arg). Held-out arg source: SCHOOLLUNCH.
     "ACC-W910-L-G12-C1202-0014": {"source": "ACC-W910-ARG-LESSON-SCHOOLLUNCH", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your argument task:",
                "Should schools provide free lunch to every student regardless of family income? Take a side.",
                "teal")
@@ -243,7 +243,7 @@ MASTERY = {
     # L15 - shape voice with a syntactic choice (sentence). Taught/transfer: WORKFORCEINVEST, WATERTRADEOFF
     # (arg). Held-out arg source: GRIDSPENDING. Provided flat draft to revise.
     "ACC-W910-L-G12-D1201-0015": {"source": "ACC-W910-ARG-LESSON-GRIDSPENDING", "unit": "sentence",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("A flat compound sentence to revise:",
                "The grid is aging, and new wind and solar are being built quickly, and the power often cannot "
                "reach the cities that need it.")
@@ -256,7 +256,7 @@ MASTERY = {
     # RA-SINGLE-0002. Held-out synth set (inlined, carries the synthesis + rhetorical-analysis halves):
     # SYNTH-SET-0002; the argument half is source-free by AP design.
     "ACC-W910-L-G12-C1202-0016": {"source": "ACC-W910-SYNTH-SET-0002", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your gate: three cold FRQs.",
                "FRQ 1 (synthesis): Using the source set above, develop and defend your own position on the issue "
                "the sources debate. &nbsp; FRQ 2 (rhetorical analysis): Choose ONE passage from the set above and "

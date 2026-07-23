@@ -47,7 +47,7 @@ ITEMS = [
               "of the view opposed to yours rather than a weak one, and make clear why the answer matters."),
         acc_tags=ACC,
         stimulus_ref=EFFICIENCY,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0802: DOUBT vs CERTAINTY (nuanced position + competing perspective) -------------------------
@@ -62,7 +62,7 @@ ITEMS = [
               "make clear what is at stake in how a person answers."),
         acc_tags=ACC,
         stimulus_ref=DOUBT,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0803: FREEDOM vs OBLIGATION (nuanced position + competing perspective) ----------------------
@@ -77,7 +77,7 @@ ITEMS = [
               "you reject, and explain why the question matters beyond the individual case."),
         acc_tags=ACC,
         stimulus_ref=FREEDOM,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0804: EFFICIENCY, second prompt (define terms, draw the line, significance) -----------------
@@ -92,7 +92,7 @@ ITEMS = [
               "against it, and situate the choice in the larger values it serves or sacrifices."),
         acc_tags=ACC,
         stimulus_ref=EFFICIENCY,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0805: DOUBT vs CERTAINTY, second prompt (draw the line, significance) -----------------------
@@ -107,7 +107,7 @@ ITEMS = [
               "explain why getting this balance right matters."),
         acc_tags=ACC,
         stimulus_ref=DOUBT,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0806: FREEDOM vs OBLIGATION, second prompt (define terms, draw the line, significance) -------
@@ -122,7 +122,7 @@ ITEMS = [
               "and make clear why the line you draw matters for how people live together."),
         acc_tags=ACC,
         stimulus_ref=FREEDOM,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
 ]

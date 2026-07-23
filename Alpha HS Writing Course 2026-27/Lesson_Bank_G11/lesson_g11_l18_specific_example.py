@@ -158,7 +158,7 @@ LESSON = Lesson(
                        "gesturing at many. More sweeps (B), emphasis (C), or appeals to experts (D) do not supply "
                        "the specific example.")),
         Slot("SUPPORTED", "production_frq", "Warm up: build the example with a frame",
-             ref="", bank="sfa_curiosity_use", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
+             ref="", bank="sfa_curiosity_use", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="Warm up the move with a frame. Pick ONE specific case for the curiosity prompt, then fill "
                        "each blank:",
@@ -182,7 +182,7 @@ LESSON = Lesson(
                         "For each No, use the fix: name it, detail it, tie it. Finish by naming the example you "
                         "developed.")),
         Slot("INDEPENDENT", "production_frq", "Develop a specific example on your own",
-             ref="", bank="sfa_curiosity_use", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
+             ref="", bank="sfa_curiosity_use", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now, with no frame. Write ONE body paragraph for the curiosity prompt built "
                        "on a single specific, developed example from your own knowledge, tied to your claim.",
@@ -195,7 +195,7 @@ LESSON = Lesson(
                    "is no passage; the example is yours to supply. Pick ONE specific case you can develop. Same "
                    "develop-and-tie move, new topic. The prompt stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Develop a specific example on a NEW prompt",
-             ref="", bank="sfa_individual_community", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
+             ref="", bank="sfa_individual_community", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. Write ONE body paragraph for the individual-versus-community prompt built on a "
                        "single specific, developed example from your own knowledge, tied to your claim.",
