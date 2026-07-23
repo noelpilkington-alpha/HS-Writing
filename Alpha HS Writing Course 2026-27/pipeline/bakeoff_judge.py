@@ -17,8 +17,8 @@ def _heuristic_score(item) -> float:
     stem = getattr(item, "stem", "") or ""
     if len(stem) >= 20:
         s += 10
-    body = stem + " ".join(o.text + o.rationale for o in getattr(item, "options", []))
-    if "—" in body or "–" in body:   # em/en dash present
+    body = stem + " " + " ".join(o.text + o.rationale for o in getattr(item, "options", []))
+    if "\u2014" in body or "\u2013" in body:   # em or en dash present
         s -= 15
     if item.qti_type == "choice":
         opts = item.options
@@ -42,7 +42,7 @@ def judge_item(item, anchor: str = "STAAR English I (G9 argument)", n: int = 3,
                live: bool = False, client=None) -> dict:
     if not live:
         base = _heuristic_score(item)
-        samples = [base, base, base][:max(1, n)]   # deterministic: no variance offline
+        samples = [base] * max(1, n)   # deterministic: no variance offline
     else:
         # LIVE: call the real judge n times. Kept minimal + identical for both pipelines.
         from incept_client import InceptClient
