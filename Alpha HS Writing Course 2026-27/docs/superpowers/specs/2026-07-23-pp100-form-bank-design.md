@@ -302,3 +302,38 @@ Repeat guarantee under this model: no finite bank can guarantee zero repeats for
 depth 30 (sentence) / 10 (essay) means a repeat occurs only after 30 / 10 intervening distinct forms — rare and
 pedagogically harmless (a re-seen form after that many redoes is effectively fresh). This is the honest target,
 not "never repeat."
+
+
+### COVERAGE REPORT (2026-07-23) — new sources needed to hit target depth
+
+Ran `pipeline/pp100_coverage_report.py` (read-only). Eligibility = a held-out source matches a lesson form when
+its FAMILY fits the grain (sentence: issue_frame/single/opposing/prompt_only; paragraph+/essay: passage + set
+families), its MODE matches (argument/explanatory/analysis), and its GRADE BAND is compatible. Distinctness is
+required only WITHIN one lesson's bank, and a source is REUSED across all lessons in the same (grade,grain,mode)
+group — so new-source need is `target_depth - distinct_topics_in_pool`, counted ONCE per group (not per lesson).
+
+**Corrected new-source need (deduped across lessons):**
+- **~179 cheap ISSUE-FRAMES** to author (sentence groups reaching depth 30). Frames are one-line topic prompts
+  (own-words, no passage) - the cheapest asset. Concentrated in sentence/argument, sentence/explanatory,
+  sentence/analysis across all grades.
+- **~46 vetted PASSAGES** to source (paragraph/essay groups reaching depth 10). These are the expensive assets
+  (Source-Cache method: federal/public-domain, 480-word floor, Lexile in band). Concentrated in the ANALYSIS
+  mode (G10/G11/G12 essay+paragraph analysis) and G12 explanatory, where the existing pool is thinnest.
+
+**Groups already at target (no new sourcing):** most argument/explanatory paragraph+essay groups in G9-G11
+(the pool of `single`/`opposing`/`synthesis_set` passages already exceeds depth 10 for those). G9 essay/paragraph
+are fully covered.
+
+**Caveats (honest):**
+- These are UPPER bounds if we silo topic sets by grade. A frame or passage authored for one grade's group can
+  often serve the same grain/mode group in an adjacent grade band, which would reduce both counts.
+- The `~179 frames` / `~46 passages` replace an earlier miscount of `~367 frames / ~34 passages` that WRONGLY
+  summed the gap per-lesson; sources reuse across a group, so the per-group dedup is correct.
+- `task_demand` is unused in the stimulus bank (all 0); matching is on family+mode+grade only.
+- ANALYSIS-mode passages are the real sourcing pinch (G10-G12): the analysis pool is small, so those essay/
+  paragraph groups drive most of the 46-passage need.
+
+**Bottom line:** the ~1,770 forms are backed by only **~225 net new sources** (~179 cheap frames + ~46
+passages), because sources reuse across lessons in a group and most passage-grain groups are already covered.
+The sourcing effort is dominated by cheap sentence frames; the genuinely costly part is ~46 analysis/explanatory
+passages. Report is reproducible: `python pipeline/pp100_coverage_report.py`.
