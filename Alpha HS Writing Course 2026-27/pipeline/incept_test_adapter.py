@@ -15,9 +15,12 @@ _FATAL_GATES = {"schema", "acc_tags", "cr_binding", "rubric_config",
                 "distractor_integrity", "scr_schema", "scr_binding", "scr_rubric"}
 _FIXABLE_GATES = {"no_em_dash", "no_change_discipline", "content"}
 
-# Gates that assert OUR internal taxonomy, which a foreign generator cannot satisfy and which say
-# nothing about test-DESIGN quality. Excluded from cross-pipeline fatal metrics.
-_PIPELINE_SPECIFIC_GATES = {"acc_tags"}
+# Gates that assert OUR internal taxonomy / OUR bank bindings, which a foreign generator cannot satisfy
+# and which say nothing about test-DESIGN quality. acc_tags asserts our standard-tag taxonomy; cr_binding /
+# scr_binding assert binding to OUR Stimulus_Bank ids (Incept's stimulus is inline, not bank-bound). Both are
+# pipeline-specific, so with cross_pipeline=True they classify as "excluded", not "fatal". In the default
+# (cross_pipeline=False) path they stay fatal, so OUR items are still held to binding.
+_PIPELINE_SPECIFIC_GATES = {"acc_tags", "cr_binding", "scr_binding"}
 
 def classify_gate_failure(gate_name: str, cross_pipeline: bool = False) -> str:
     """A failing gate is 'fatal' (structural), 'fixable' (mechanical/post-processable), or 'excluded'

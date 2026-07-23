@@ -44,6 +44,11 @@ def test_classify_gate_failure_split():
     # cross-pipeline mode excludes our-internal taxonomy gates
     assert classify_gate_failure("acc_tags") == "fatal"
     assert classify_gate_failure("acc_tags", cross_pipeline=True) == "excluded"
+    # binding gates are our-bank-specific: fatal for our items, excluded cross-pipeline
+    assert classify_gate_failure("cr_binding") == "fatal"
+    assert classify_gate_failure("cr_binding", cross_pipeline=True) == "excluded"
+    assert classify_gate_failure("scr_binding") == "fatal"
+    assert classify_gate_failure("scr_binding", cross_pipeline=True) == "excluded"
 
 def test_load_cached_output_json_roundtrips_to_adapter():
     from incept_test import load_cached_output_json
@@ -80,3 +85,8 @@ def test_bakeoff_run_offline_produces_ranked_scorecard():
     assert "excluded_failures" in sc["incept"]
     # With acc_tags excluded, Incept fatal-pass should now be > 0 (not all items fail fatal)
     assert sc["incept"]["fatal_gate_pass_rate"] > 0
+    # count-aware fidelity: Incept's under-count drops its fidelity below ours (which is 1.0)
+    assert sc["incept"]["fidelity"] < sc["ours"]["fidelity"]
+    # offline runs disclose the judge proxy mode
+    assert "judge_mode" in sc["ours"]
+    assert sc["ours"]["judge_mode"] == "offline_heuristic_proxy"
