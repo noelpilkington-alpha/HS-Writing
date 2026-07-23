@@ -69,3 +69,10 @@ def test_run_3way_scores_all_three_and_hybrid_fidelity_full():
     assert "25" in sc["verdict"]["primary_rank"] and "50" in sc["verdict"]["primary_rank"]
     # source composition reported: how many slots incept won
     assert "incept_slot_wins" in sc["verdict"]
+
+def test_hybrid_scored_source_aware_no_false_fatal():
+    # every item selected for the hybrid was eligible under its own source rule (Incept items excluded
+    # our-internal acc_tags + cr/scr_binding); when scored source-aware, none should be fatal
+    from bakeoff_hybrid import run_3way
+    sc = run_3way(live=False)
+    assert sc["hybrid"]["fatal_gate_pass_rate"] == 1.0

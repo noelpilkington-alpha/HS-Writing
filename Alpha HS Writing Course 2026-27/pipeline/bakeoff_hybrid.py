@@ -74,6 +74,48 @@ def select_hybrid(live: bool = False):
                                   "judge": scored[id(it)]} for it in take]})
     return picked, srcmap
 
+def _score_side_mixed(items, live=False):
+    """Per-item source-aware scorer: Incept-origin items use cross_pipeline=True (excludes our-internal
+    acc_tags + cr/scr_binding), ours use cross_pipeline=False. Reuses the shared gate classification + judge."""
+    fatal_ok = 0
+    fixable_failures = 0
+    excluded_failures = 0
+    per_item = []
+    judges = []
+    variances = []
+    for it in items:
+        r = qc_item(it)
+        xp = (it.provenance.get("bakeoff_source") == "incept")
+        fatal = []
+        fixable = []
+        excluded = []
+        if not r["passed"]:
+            for gname, g in r["gates"].items():
+                if not g["passed"]:
+                    cls = classify_gate_failure(gname, cross_pipeline=xp)
+                    if cls == "fatal":
+                        fatal.append(gname)
+                    elif cls == "fixable":
+                        fixable.append(gname)
+                    else:  # "excluded"
+                        excluded.append(gname)
+        if not fatal:
+            fatal_ok += 1
+        fixable_failures += len(fixable)
+        excluded_failures += len(excluded)
+        j = bg._judge_cached(it, live)
+        judges.append(j["median"])
+        variances.append(j["variance"])
+        per_item.append({"id": it.id, "family": it.family, "fatal": fatal, "fixable": fixable,
+                         "excluded": excluded, "judge_median": j["median"], "judge_variance": j["variance"]})
+    n = len(items) or 1
+    return {"n_items": len(items), "fatal_gate_pass_rate": round(fatal_ok / n, 3),
+            "fixable_failures": fixable_failures, "excluded_failures": excluded_failures,
+            "judge_median_mean": round(sum(judges) / n, 1),
+            "judge_variance_mean": round(sum(variances) / n, 3),
+            "judge_mode": "live_llm_median" if live else "offline_heuristic_proxy",
+            "per_item": per_item}
+
 def _rank(sc):
     return round(sc["fidelity"] * 25 + sc["fatal_gate_pass_rate"] * 25 + sc["judge_median_mean"] / 100 * 50, 2)
 
@@ -84,10 +126,10 @@ def run_3way(live: bool = False) -> dict:
 
     ours_sc = bg._score_side(ours, cross_pipeline=False, live=live); ours_sc["fidelity"] = bg._fidelity(ours)
     inc_sc = bg._score_side(incept, cross_pipeline=True, live=live); inc_sc["fidelity"] = bg._fidelity(incept)
-    # hybrid: ours-side gate rule for our-authored picks and incept rule for incept picks is already baked into
-    # eligibility; for scoring parity score the hybrid as a mixed form with cross_pipeline=False (its Incept
-    # picks already passed the stricter-for-us gates during selection, so no acc_tags/binding exclusion needed).
-    hyb_sc = bg._score_side(hybrid_items, cross_pipeline=False, live=live); hyb_sc["fidelity"] = bg._fidelity(hybrid_items)
+    # hybrid: score each item under its own source rule (Incept-origin uses cross_pipeline=True to exclude
+    # our-internal acc_tags + cr/scr_binding; ours uses cross_pipeline=False). This matches the per-item
+    # eligibility rule and prevents false-fatal failures on Incept picks that were selected as eligible.
+    hyb_sc = _score_side_mixed(hybrid_items, live=live); hyb_sc["fidelity"] = bg._fidelity(hybrid_items)
 
     ranks = {"ours": _rank(ours_sc), "incept": _rank(inc_sc), "hybrid": _rank(hyb_sc)}
     winner = max(ranks, key=ranks.get)
