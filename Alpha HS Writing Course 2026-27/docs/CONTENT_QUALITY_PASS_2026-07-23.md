@@ -67,3 +67,64 @@ delivery-verification is structurally blind to. Recommend: scale the Fable-5 rev
 the lens that surfaced the most, and the pattern looks systematic), triage against deliberate-design intent,
 then decide fixes. The Council (grounded-pedagogy) lens is the natural adjudicator for the "is this repetition
 deliberate or defect?" calls.
+
+## COUNCIL ADJUDICATION - deliberate vs defect (6 seats: TWR, SRSD, DI, K&H, Yeager, Elbow/Gallagher)
+
+Ruled by evidence strength, not averaged. Verdict per finding-family:
+
+### F1 (padding) = SPLIT
+- CUT (unanimous, all 6 seats): rubric/thesis jargon a step does not invoke + future-skill disclaimers. Pure
+  extraneous load (load-additivity, A) / signal-diluting clutter (faultless communication, A) / autonomy-
+  threatening test-prep register (Yeager, eg readicide).
+- KEEP (reframed): exactly ONE motivational beat per lesson, tied to the real standard/strategy, in its own
+  bounded frame, stated once, never bare "you're ready", never fused into a teach/check step. Resolution: the
+  Yeager-vs-SRSD conflict dissolved once FORM/FUNCTION separated - Yeager's high-standards line = SRSD's
+  strategy-tied self-instruction (both Grade A). Bare person-praise is inert (0.12 < no-praise 0.34), so the
+  FORM must be standard-tied; a repeated pep-talk degrades into the seen-through compliment sandwich.
+
+### F2 (dense formatting) = FIX (UNANIMOUS - all 6 seats)
+Decompose the source+prompt+instruction wall into labeled blocks (SOURCE/PROMPT/YOUR WRITE); multi-part
+instructions as one action per numbered line; delete the duplicated title. Guardrail: keep source ADJACENT to
+its prompt, annotation ON its exemplar - do not over-split complementary content into a split-attention problem.
+This is the safest, highest-certainty change (segmenting + split-attention + redundancy, all A). FORMATTING-ONLY.
+
+### F3 (repetition + pre-answered checks) = SPLIT (4 sub-patterns, opposite rulings)
+The reviewer's single uniform "revise" was the error. Corrected frame (K&H, endorsed even by DI): repetition of
+a student RESPONSE is protected mastery practice; repetition of PRESENTED CONTENT is redundancy and cut; support
+must FADE. Five-to-six seats converge on the fade.
+- F3a verbatim source reprinted at each write -> FIX (redundancy effect, Kalyuga 1998, A + the MEASURED
+  course fatigue). Show once, then pointer + collapsible + load-bearing excerpt only.
+- F3b check-tool restated verbatim 4-5x -> FIX/FADE (expertise-reversal d=-0.428, A + Memorize-It). Teach once
+  with coping think-aloud; then invoke by name + collapsible; final write self-invoked, no cue.
+- F3c three near-identical writes -> KEEP the count (transfer needs multi-round varied practice, A), FADE the
+  scaffold (write1 modeled -> write2 completion -> write3 independent + escalated or student-choice).
+- F3d worked example pre-answering its check -> SPLIT: KEEP the pre-answer INSIDE the first Model-It only (show
+  the messy coping self-talk, not a clean pre-fill); write2 = completion, write3 = a LIVE check with a real
+  decision. A demonstration and a check may never be the same element.
+
+### Losing positions named
+- DI's "cut even the reframed motivational beat outright" - rejected (Yeager wise-feedback A shows a correctly
+  framed high-standards line has measured positive effect).
+- DI's "re-present the stimulus at every step / constant scaffold" - rejected on redundancy + expertise-reversal
+  (both A); note DI's OWN filed position actually endorses the response-vs-content split, so the "DI wants
+  constant repetition" caricature was not DI's real stance.
+- Naive "cut to one write" - rejected (one-and-done buys retention, not transfer).
+
+### KEY TAKEAWAY
+The Fable-5 "revise on everything" was PARTLY right and PARTLY wrong, and the Council separated them:
+- REAL defects (fix course-wide): verbatim source reprint (F3a), un-faded check-tool restatement (F3b),
+  constant scaffold across the 3 writes (F3c), conflated pre-answered checks (F3d), non-invoked jargon +
+  disclaimers (F1), dense walls (F2).
+- DELIBERATE design to KEEP: the 3 distinct-topic writes (count), the check-tool re-invocation as a routine,
+  the Model-It coping demonstration on first encounter, and one standard-tied motivation beat.
+
+## Consolidated author ruleset (8 rules, ranked) - see judge output in session; P1 = present-once, fade-the-
+scaffold, response-vs-content test, keep-count+escalate-last; P2 = one-element-one-function, every-sentence-
+serves-the-step, chunk-the-surface; P3 = one bounded belief-beat.
+
+## SPLIT: formatting-only (safe, batch) vs content/design (needs authoring judgment)
+- FORMATTING-ONLY (schedule first, near-zero risk): all of F2 (walls->blocks, numbered instructions, dedupe
+  title); the mechanical half of F3a/F3b (move full source + full check-tool behind a collapsible after first
+  presentation).
+- CONTENT/DESIGN (do NOT batch-automate): F1 pep-talk reframe + per-step jargon judgment; F3c descending
+  scaffold + write-3 escalation; F3d fading pre-answered checks while preserving the coping-model process.
