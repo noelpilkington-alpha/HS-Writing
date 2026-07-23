@@ -29,13 +29,15 @@ def _write_fixture_banks():
                "metadata": {"difficulty": "hard"}, "stimulus": {"article": "some passage text"}}]}]},
               open(f"{CACHE}/argument.json", "w", encoding="utf-8"))
 
-def test_normalize_handles_three_shapes():
+def test_normalize_handles_four_shapes():
     single = {"stem": "s", "interaction_type": "multiple_choice", "options": ["a"], "answer": "a"}
     flat = {"items": [single, single]}
     formed = {"forms": [{"items": [single]}, {"items": [single, single]}]}
+    qshape = {"questions": [single, single]}
     assert len(ip._normalize_items(single)) == 1     # single question IS the item
     assert len(ip._normalize_items(flat)) == 2       # items[]
     assert len(ip._normalize_items(formed)) == 3     # forms[].items[]
+    assert len(ip._normalize_items(qshape)) == 2     # questions[] alt bank key
 
 def test_load_deepened_pool_stamps_subskills():
     _write_fixture_banks()
