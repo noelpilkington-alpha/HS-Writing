@@ -100,8 +100,13 @@ def test_judge_live_fails_loud_without_provider(monkeypatch):
 def test_parse_score_extracts_number():
     from bakeoff_judge import _parse_score
     assert _parse_score('{"score": 82}') == 82.0
-    assert _parse_score("Score: 74 / 100") == 74.0
+    assert _parse_score("SCORE: 74") == 74.0
     assert _parse_score("no number here") == 0.0
+    # regression: reasoning-first prose whose FIRST digit is a section number "1." must NOT score 1.0;
+    # the trailing SCORE line wins (this is the live bug the offline proxy never exposed).
+    assert _parse_score("**1. Distractor plausibility** strong.\n**2. Discrimination** good.\nSCORE: 88") == 88.0
+    # no SCORE line: fall back to the LAST number, not the first section marker
+    assert _parse_score("1. axis one ok. 2. axis two ok. Overall 79 out of 100") == 100.0
 
 def test_bakeoff_run_offline_produces_ranked_scorecard():
     from bakeoff_g9 import run

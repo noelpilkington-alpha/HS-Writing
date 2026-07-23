@@ -19,7 +19,8 @@ _RUBRIC = (
     "misconception, not filler); (2) discrimination (does the item separate a student who has the skill from "
     "one who does not); (3) gradeability (is the prompt specific enough and the expected response clear "
     "enough that a scorer could reliably tell a strong answer from a weak one); (4) fit to the anchor and "
-    "grade 9. Judge ONLY the item shown. Reply with a single JSON object: {{\"score\": <0-100 integer>}}."
+    "grade 9. Judge ONLY the item shown. You may reason briefly first, but your reply MUST END with a line "
+    "in exactly this form and nothing after it:\nSCORE: <integer 0-100>"
 )
 
 def _judge_prompt(item, anchor: str) -> str:
@@ -34,14 +35,24 @@ def _judge_prompt(item, anchor: str) -> str:
     return _RUBRIC.format(anchor=anchor) + "\n\nITEM:\n" + "\n".join(lines)
 
 def _parse_score(text: str) -> float:
+    """Read the judge's score. The judge is told to END with a 'SCORE: <int>' line, which we prefer so a
+    leading '1.' in reasoning ('1. Distractor plausibility...') is never mistaken for the score. Falls back
+    to a JSON {"score": N} object, then to the LAST number in the text. Returns 0.0 only if no number at all."""
+    t = text or ""
+    # 1) preferred: the explicit SCORE: line (take the last one if repeated)
+    labeled = re.findall(r"SCORE\s*[:=]\s*(\d+(?:\.\d+)?)", t, flags=re.IGNORECASE)
+    if labeled:
+        return max(0.0, min(100.0, float(labeled[-1])))
+    # 2) a JSON object with a score field
     try:
-        obj = json.loads(text)
+        obj = json.loads(t)
         if isinstance(obj, dict) and "score" in obj:
             return max(0.0, min(100.0, float(obj["score"])))
     except Exception:
         pass
-    m = re.search(r"(\d+(?:\.\d+)?)", text or "")
-    return max(0.0, min(100.0, float(m.group(1)))) if m else 0.0
+    # 3) last-ditch: the LAST number in the text (a score line, if present, comes last), not the first
+    nums = re.findall(r"(\d+(?:\.\d+)?)", t)
+    return max(0.0, min(100.0, float(nums[-1]))) if nums else 0.0
 
 def _anthropic_client():
     """Self-contained Anthropic client (mirrors the grader engine's provider logic; NOT a cross-repo import).
@@ -101,7 +112,7 @@ def judge_item(item, anchor: str = "STAAR English I (G9 argument)", n: int = 3,
         prompt = _judge_prompt(item, anchor)
         samples = []
         for _ in range(max(1, n)):
-            msg = cli.messages.create(model=model, max_tokens=64,
+            msg = cli.messages.create(model=model, max_tokens=512,
                                       messages=[{"role": "user", "content": prompt}])
             text = "".join(getattr(b, "text", "") for b in msg.content)
             samples.append(_parse_score(text))
