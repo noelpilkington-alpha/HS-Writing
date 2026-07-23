@@ -36,3 +36,34 @@ sound; both passes are needed.
 ## Still to run (LLM lenses, on the sample)
 - lesson_review.py (Fable-5 per-lesson student-POV: clarity/engagement/necessity)
 - council-of-writing-instruction (review mode: grounded pedagogy critique)
+
+## LLM lens (Fable-5 lesson_review) on the sample - 4 lessons, 1/grade
+
+Sample: G9 l01 (sentence/concept), G10 l07 (paragraph/analysis), G11 l02 (sentence/nuance), G12 l01 (essay).
+RESULT: all 4 returned "revise" on ALL THREE axes (operational_necessity, formatting, engagement) - a
+CONSISTENT COURSE-WIDE pattern, not per-lesson noise. The recurring items:
+
+1. OPERATIONAL NECESSITY (padding): each teach step carries nice-to-know asides - thesis/rubric jargon,
+   motivational pep-talk lines, future-skill disclaimers - beyond what the tasks require. Recommendation: cut
+   or move to tooltips.
+2. FORMATTING (dense walls): sources + prompts run together into unbroken blocks; source titles duplicated
+   into the first sentence; multi-part instructions in one run-on. Recommendation: line breaks / bullets.
+3. ENGAGEMENT (repetition + pre-answered checks): full sources reprinted verbatim at each write step
+   immediately after being shown; the check-tool checklist restated 4-5x; three near-identical write tasks in
+   a row; some worked examples pre-answer their own questions (student just copy-edits). Recommendation: show
+   source once + a one-line reminder after; vary the check framing; ensure at least one write is genuinely cold.
+
+CAVEAT (do NOT bulk-act): these are ADVISORY judgments. Some flagged "repetition" is likely DELIBERATE spaced
+practice / worked-example scaffolding (the coping-model + check-tool reuse were intentional design decisions).
+This is a triage-and-decide list for a human, not a defect count. But the CONSISTENCY across all 4 sampled
+lessons/grades strongly suggests these are AUTHORING-TEMPLATE patterns worth a course-wide design decision
+(especially the verbatim-source-reprint and pre-answered-check items, which the ORIGINAL Fable eval also
+flagged as skim-drivers).
+
+## Verdict of the content pass
+The multi-lens sample EARNED ITS KEEP: it found (a) a confirmed assessment-validity confound (g9_l01 discrim 2),
+(b) provenance flags to verify, and (c) a systematic prose/repetition pattern across every sampled lesson that
+delivery-verification is structurally blind to. Recommend: scale the Fable-5 review to the full course (it is
+the lens that surfaced the most, and the pattern looks systematic), triage against deliberate-design intent,
+then decide fixes. The Council (grounded-pedagogy) lens is the natural adjudicator for the "is this repetition
+deliberate or defect?" calls.
