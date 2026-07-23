@@ -92,6 +92,13 @@ def test_form_ids_are_stable_and_1_indexed():
     assert MF.form_test_id("ACC-W910-L-G9-C901-0001", 2) == "ACC-W910-L-G9-C901-0001-MASTERY-f2"
 
 
+def test_form_subresource_ids_are_stable_1_indexed():
+    """The bank references wrapping Resource sub-ids (verified live: bank.resources must be Resource ids)."""
+    assert MF.form_subresource_id("ACC-W910-L-G9-C901-0001", 1) == "res-ACC-W910-L-G9-C901-0001-pp100-f1"
+    assert MF.form_subresource_id("ACC-W910-L-G9-C901-0001", 2) == "res-ACC-W910-L-G9-C901-0001-pp100-f2"
+    assert MF.bank_resource_id("ACC-W910-L-G9-C901-0001") == "res-ACC-W910-L-G9-C901-0001-pp100-bank"
+
+
 def test_bank_of_one_uses_legacy_ids_for_prod_safety():
     """A bank of exactly one form must reuse the CURRENT live ids (<lesson>-MASTERY-FRQ / <lesson>-MASTERY),
     NOT the -f1 suffixed ids, so a single-form lesson stays byte-identical to what is already live."""

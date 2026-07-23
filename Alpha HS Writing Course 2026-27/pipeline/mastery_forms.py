@@ -74,3 +74,12 @@ def form_test_id(lesson_id: str, k: int, bank_size: int = None) -> str:
 def bank_resource_id(lesson_id: str) -> str:
     """The assessment-bank Resource id for a lesson's PP100 (the CR points at this when bank > 1)."""
     return f"res-{lesson_id}-pp100-bank"
+
+
+def form_subresource_id(lesson_id: str, k: int) -> str:
+    """The wrapping OneRoster Resource id for form k's single-item test.
+
+    Verified live (2026-07-23 probe): a `type: assessment-bank` bank validates metadata.resources as Resource
+    sourcedIds, NOT assessment-test ids. So each form-test must be wrapped in its own Resource, and the bank
+    lists these sub-resource ids. Only used when bank > 1 (a single-form lesson has no bank)."""
+    return f"res-{lesson_id}-pp100-f{k}"

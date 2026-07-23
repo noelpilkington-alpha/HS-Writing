@@ -79,18 +79,25 @@ def test_multiform_emits_assessment_bank(monkeypatch):
     res = _resources(plan)
     crs = _crs(plan)
     bank_id = MF.bank_resource_id(lid)
-    # bank resource exists, correct type, lists BOTH form-test ids
+    sub1, sub2 = MF.form_subresource_id(lid, 1), MF.form_subresource_id(lid, 2)
+    # each form-test is wrapped in its own Resource (type qti), pointing at the form's single-item test
+    for sub, k in ((sub1, 1), (sub2, 2)):
+        r = res.get(sub)
+        assert r is not None, f"form sub-resource {sub} missing"
+        assert r["resource"]["metadata"]["type"] == "qti"
+        assert r["resource"]["metadata"]["url"].endswith(f"/assessment-tests/{lid}-MASTERY-f{k}")
+    # bank resource exists, correct type, lists the SUB-RESOURCE ids (verified live: not test ids)
     bank = res.get(bank_id)
     assert bank is not None, "assessment-bank resource missing for multi-form lesson"
     md = bank["resource"]["metadata"]
     assert md["type"] == "assessment-bank"
-    assert md["resources"] == [f"{lid}-MASTERY-f1", f"{lid}-MASTERY-f2"]
+    assert md["resources"] == [sub1, sub2]
     # the PP100 CR now points at the BANK, not a single test resource
     cr = crs[f"cr-{lid}-pp100"]
     assert cr["componentResource"]["resource"]["sourcedId"] == bank_id
-    # individual form-tests are NOT linked as their own CRs (only the bank is linked)
-    assert f"cr-{lid}-MASTERY-f1" not in crs
-    assert f"cr-{lid}-MASTERY-f2" not in crs
+    # individual form sub-resources are NOT linked as their own CRs (only the bank is linked)
+    assert f"cr-{sub1}" not in crs
+    assert f"cr-{sub2}" not in crs
 
 
 def test_other_lessons_unaffected_by_one_multiform(monkeypatch):

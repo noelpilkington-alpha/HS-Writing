@@ -171,15 +171,28 @@ def build_plan(grade, base_url):
                              "url": f"{QTI_BASE}/assessment-tests/{mastery_test_id(L)}"}}}))
             pp_link_target = pp_rid
         else:
-            # one assessment-bank Resource over the N form-test ids (round-robin pool). Individual form-tests
-            # are NOT linked as their own CRs (the documented "3 links per topic" defect); only the bank is.
-            form_test_ids = [MF.form_test_id(L.id, k, bank_size=bank_size) for k in range(1, bank_size + 1)]
+            # each form-test is wrapped in its OWN Resource; the assessment-bank lists these SUB-RESOURCE ids
+            # (verified live 2026-07-23: a type:assessment-bank validates metadata.resources as Resource
+            # sourcedIds, NOT test ids). The engine round-robins over the bank's sub-resources per attempt.
+            # Individual sub-resources are NOT linked as their own CRs (the documented "3 links per topic"
+            # defect); only the bank is linked to the topic.
+            sub_ids = []
+            for k in range(1, bank_size + 1):
+                sub_rid = MF.form_subresource_id(L.id, k)
+                test_id = MF.form_test_id(L.id, k, bank_size=bank_size)
+                sub_ids.append(sub_rid)
+                plan.append(("resource", sub_rid, RES, {"resource": {
+                    "sourcedId": sub_rid, "status": "active", "title": f"{pp_title} - form {k}",
+                    "importance": "primary", "vendorResourceId": f"{L.id}-pp100-f{k}", "vendorId": "alpha-incept",
+                    "applicationId": "incept",
+                    "metadata": {"type": "qti", "subType": "qti-test", "xp": xp,
+                                 "url": f"{QTI_BASE}/assessment-tests/{test_id}"}}}))
             bank_rid = MF.bank_resource_id(L.id)
             plan.append(("resource", bank_rid, RES, {"resource": {
                 "sourcedId": bank_rid, "status": "active", "title": pp_title,
                 "importance": "primary", "vendorResourceId": f"{L.id}-pp100-bank", "vendorId": "alpha-incept",
                 "applicationId": "incept",
-                "metadata": {"type": "assessment-bank", "xp": xp, "resources": form_test_ids}}}))
+                "metadata": {"type": "assessment-bank", "xp": xp, "resources": sub_ids}}}))
             pp_link_target = bank_rid
         plan.append(("component-resource", f"cr-{L.id}-pp100", COMPRES, {"componentResource": {
             "sourcedId": f"cr-{L.id}-pp100", "status": "active", "title": pp_title,
