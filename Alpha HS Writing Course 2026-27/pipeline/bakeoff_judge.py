@@ -7,8 +7,61 @@ offline bake-off runs are reproducible; it scores structural quality signals the
 pipelines, so it never advantages one source.
 """
 from __future__ import annotations
-import os, sys, statistics
+import os, sys, statistics, re, json
 sys.path.insert(0, os.path.dirname(__file__))
+
+RUBRIC_VERSION = "g9-item-quality-v1"
+
+_RUBRIC = (
+    "You are scoring the QUALITY of a single grade 9 argumentative-writing TEST ITEM, as a neutral "
+    "assessment reviewer. Anchor: {anchor}. Score 0-100 on these axes, weighted equally: "
+    "(1) distractor plausibility (for MC: are the wrong options tempting but defensibly wrong, each a real "
+    "misconception, not filler); (2) discrimination (does the item separate a student who has the skill from "
+    "one who does not); (3) gradeability (is the prompt specific enough and the expected response clear "
+    "enough that a scorer could reliably tell a strong answer from a weak one); (4) fit to the anchor and "
+    "grade 9. Judge ONLY the item shown. Reply with a single JSON object: {{\"score\": <0-100 integer>}}."
+)
+
+def _judge_prompt(item, anchor: str) -> str:
+    lines = [f"STEM: {getattr(item, 'stem', '')}"]
+    if getattr(item, "options", None):
+        for o in item.options:
+            mark = " [KEY]" if o.correct else ""
+            rat = f"  (rationale: {o.rationale})" if o.rationale else ""
+            lines.append(f"OPTION {o.id}{mark}: {o.text}{rat}")
+    if getattr(item, "answer_key", None):
+        lines.append(f"MODEL ANSWER: {item.answer_key[0] if item.answer_key else ''}")
+    return _RUBRIC.format(anchor=anchor) + "\n\nITEM:\n" + "\n".join(lines)
+
+def _parse_score(text: str) -> float:
+    try:
+        obj = json.loads(text)
+        if isinstance(obj, dict) and "score" in obj:
+            return max(0.0, min(100.0, float(obj["score"])))
+    except Exception:
+        pass
+    m = re.search(r"(\d+(?:\.\d+)?)", text or "")
+    return max(0.0, min(100.0, float(m.group(1)))) if m else 0.0
+
+def _anthropic_client():
+    """Self-contained Anthropic client (mirrors the grader engine's provider logic; NOT a cross-repo import).
+    FAILS LOUD if no provider is usable (live judge must never silently fall back to the heuristic)."""
+    import anthropic   # lazy: only imported on the live path
+    provider = os.environ.get("ANTHROPIC_PROVIDER", "bedrock").strip().lower()
+    if provider == "bedrock":
+        region = os.environ.get("AWS_REGION", os.environ.get("AWS_DEFAULT_REGION", "us-east-1")).strip()
+        return anthropic.AnthropicBedrock(aws_region=region), _model()
+    key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+    if not key:
+        raise ValueError("live judge needs ANTHROPIC_API_KEY (provider=direct) or ANTHROPIC_PROVIDER=bedrock")
+    return anthropic.Anthropic(api_key=key), _model()
+
+def _model() -> str:
+    explicit = os.environ.get("ANTHROPIC_MODEL", "").strip()
+    if explicit:
+        return explicit
+    prov = os.environ.get("ANTHROPIC_PROVIDER", "bedrock").strip().lower()
+    return "us.anthropic.claude-sonnet-4-6" if prov == "bedrock" else "claude-sonnet-4-6"
 
 def _heuristic_score(item) -> float:
     """Deterministic 0-100 proxy: rewards a real stem, >=3 options for MC, rationalized distractors,
@@ -44,22 +97,14 @@ def judge_item(item, anchor: str = "STAAR English I (G9 argument)", n: int = 3,
         base = _heuristic_score(item)
         samples = [base] * max(1, n)   # deterministic: no variance offline
     else:
-        # LIVE: call the real judge n times. Kept minimal + identical for both pipelines.
-        from incept_client import InceptClient
-        client = client or InceptClient()
+        cli, model = (client if client else _anthropic_client())
+        prompt = _judge_prompt(item, anchor)
         samples = []
         for _ in range(max(1, n)):
-            verdict = client.qc("question", _item_to_qc_content(item), prompt=anchor, live=True)
-            samples.append(float(_extract_score(verdict)))
+            msg = cli.messages.create(model=model, max_tokens=64,
+                                      messages=[{"role": "user", "content": prompt}])
+            text = "".join(getattr(b, "text", "") for b in msg.content)
+            samples.append(_parse_score(text))
     med = statistics.median(samples)
     var = statistics.pvariance(samples) if len(samples) > 1 else 0.0
     return {"median": med, "samples": samples, "variance": var}
-
-def _item_to_qc_content(item) -> dict:
-    return {"stem": item.stem,
-            "options": [o.text for o in item.options],
-            "answer_key": {"answer": (item.answer_key[0] if item.answer_key else "")}}
-
-def _extract_score(verdict: dict) -> float:
-    v = (verdict or {}).get("verdict") or verdict or {}
-    return float(v.get("judge_score", 0.0))
