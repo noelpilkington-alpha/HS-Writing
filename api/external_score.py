@@ -124,6 +124,7 @@ def external_score(
     req: ScoreRequest,
     grain: str = Query(default=""),
     frq_type: str = Query(default=""),
+    mode: str = Query(default=""),
 ):
     """Score ONE free-response answer against a rubric config. Synchronous (ExternalApiScore contract).
 
@@ -135,6 +136,12 @@ def external_score(
     body ONLY, so `req.grain` was always empty on the live HTTP path and every task fell to the essay
     engine (sentence/paragraph scored 0 — GRADER_WIRING_FINDINGS Defect 1). We now read grain/frq_type
     from the QUERY string first, falling back to the body fields for non-URL callers.
+
+    MODE ROUTING FIX (2026-07-23, GRADER_WIRING_FINDINGS Defect 2): `mode` (the rc.4trait task profile
+    argument|analysis, and the rc.sbac purpose argumentative|explanatory) had the SAME query-vs-body bug —
+    it was read only from `req.mode`, so a URL `?mode=analysis` never reached the engine and every rc.4trait
+    item scored on the argument (0-24) scale. The wirer now bakes `mode` into the grader URL from the
+    lesson's task type; we read it from the QUERY string first, body field as fallback.
     """
     response = (req.response or req.studentResponse or "").strip()
     rubric = req.rubric or req.rubricId or "rc.staar"
@@ -152,6 +159,8 @@ def external_score(
     # today's essay callers, which send no grain, fall straight through to the rubric-family dispatch below).
     # query param wins (the wirer's channel); body field is the fallback for JSON-only callers.
     grain = (grain or req.grain or "").strip().lower()
+    # mode: same query-first resolution (Defect 2). Empty here -> each engine branch applies its own default.
+    mode = (mode or req.mode or "").strip().lower()
     if grain and grain != "essay":
         frq_type = (frq_type or req.frq_type or routing.default_frq_type(grain)).strip().lower()
         scorer = routing.resolve(grain, frq_type)
@@ -202,7 +211,7 @@ def external_score(
         # scorer == "essay" for multi_paragraph -> fall through to the rubric-family dispatch below.
 
     if cfg["engine"] == "sbac":
-        mode = (req.mode or "argumentative").strip().lower()
+        mode = mode or "argumentative"
         if mode not in _SBAC_MODES:
             raise HTTPException(status_code=400,
                                 detail=f"unknown mode '{mode}' for rc.sbac; expected {sorted(_SBAC_MODES)}")
@@ -218,7 +227,7 @@ def external_score(
             note=f"rc.sbac via panel_sbac (SBAC full-write, {mode}).")
 
     if cfg["engine"] == "ccss":
-        mode = (req.mode or "argument").strip().lower()
+        mode = mode or "argument"
         if mode not in _CCSS_MODES:
             raise HTTPException(status_code=400,
                                 detail=f"unknown mode '{mode}' for rc.4trait; expected {sorted(_CCSS_MODES)}")
@@ -240,8 +249,10 @@ def external_score(
         # 5-point scale the item declares. The item stays tagged rc.staar; only the scoring engine changes.
         if _RC_STAAR_SCORE_ENGINE == "sbac":
             # STAAR CR mode maps to SBAC's argumentative/explanatory purpose; default argumentative unless the
-            # caller specifies (STAAR ECR is argumentative OR informational).
-            mode = (req.mode or "argumentative").strip().lower()
+            # caller specifies (STAAR ECR is argumentative OR informational). Note: rc.staar essays carry the
+            # SBAC purpose vocabulary (argumentative|explanatory), NOT the rc.4trait vocabulary
+            # (argument|analysis) — so an rc.4trait-style mode falls back to the default here, harmlessly.
+            mode = mode or "argumentative"
             if mode not in _SBAC_MODES:
                 mode = "argumentative"
             qs, tr = score_panel_sbac(client, qnum=11, grade=grade, passage=passage,
