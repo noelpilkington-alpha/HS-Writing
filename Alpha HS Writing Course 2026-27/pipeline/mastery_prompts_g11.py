@@ -9,7 +9,7 @@ synthesize, given perspectives to weigh, etc. All content is own-words; any sour
 
 Single source of truth: the G11 pusher reads L.mastery if the lesson file sets it, else falls back to
 MASTERY[L.id] here. The held-out `source` id must be a stimulus the lesson's own taught/transfer did NOT use, so
-the task cannot be a re-submit. `unit`/`rubric_ref` keep the graded shape; rubric_ref = "rc.ap" for AP scoring.
+the task cannot be a re-submit. `unit`/`rubric_ref` keep the graded shape; rubric_ref = "rc.4trait" (Regents 4-criterion CCSS; G11/G12 moved off AP).
 prompt_html is rendered by gated_reading._render_body (same typography as the in-article writes). No em dashes.
 
 Held-out sources are drawn from the shared ACC pool. For source-free (C.11.06) and multi-perspective (C.11.07)
@@ -46,7 +46,7 @@ MASTERY = {
 
     # C1101-0001 - scope a sweeping claim (sentence). Held-out: PHONEBAN (lesson used the AIWORKFORCE frames).
     "ACC-W1112-L-G11-C1101-0001": {"source": "ACC-W910-ARG-LESSON-PHONEBAN", "unit": "sentence",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("A sweeping claim to scope:",
                '"Phones always ruin students\' focus, so every school everywhere should ban them for everyone."')
         + _task("This claim overreaches: always, every, everyone. Nobody has to prove that much, so it is not "
@@ -56,7 +56,7 @@ MASTERY = {
 
     # C1101-0002 - nuanced not-X-but-Y claim (sentence). Held-out: SCHOOLLUNCH.
     "ACC-W1112-L-G11-C1101-0002": {"source": "ACC-W910-ARG-LESSON-SCHOOLLUNCH", "unit": "sentence",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("A flat, one-sided claim:",
                '"Free school lunch for every student is simply the right thing to do."')
         + _task("This asserts one side but never marks off the close position it is rejecting, so the exact "
@@ -66,7 +66,7 @@ MASTERY = {
 
     # C1101-0003 - qualify without waffling (sentence). Held-out: WATERTRADEOFF.
     "ACC-W1112-L-G11-C1101-0003": {"source": "ACC-W910-ARG-LESSON-WATERTRADEOFF", "unit": "sentence",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("An absolute claim to qualify:",
                '"In a drought, a region must always protect water for growing food before protecting water for generating power."')
         + _task("The word always makes this indefensible, but a claim that hedges until it says nothing is no "
@@ -77,7 +77,7 @@ MASTERY = {
 
     # C1101-0004 - build a line of reasoning (paragraph). Held-out: WORKFORCEINVEST.
     "ACC-W1112-L-G11-C1101-0004": {"source": "ACC-W910-ARG-LESSON-WORKFORCEINVEST", "unit": "paragraph",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("The claim to build toward:",
                "Public money should go first to preparing more workers for the fastest-growing fields rather "
                "than to cushioning the workers those changes leave behind.",
@@ -89,7 +89,7 @@ MASTERY = {
 
     # C1101-0005 - earn the claim: develop a thin assertion (paragraph). Held-out: COMMUNITYSERVICE.
     "ACC-W1112-L-G11-C1101-0005": {"source": "ACC-W910-ARG-LESSON-COMMUNITYSERVICE", "unit": "paragraph",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("A thin, under-argued paragraph:",
                "Required community service is good for students. It teaches them useful things. Schools should "
                "require it before graduation.")
@@ -99,7 +99,7 @@ MASTERY = {
 
     # C1103-0006 - name a choice + its effect on the audience (sentence). Held-out: RA-SINGLE-0002.
     "ACC-W1112-L-G11-C1103-0006": {"source": "ACC-W910-RA-SINGLE-0002", "unit": "sentence",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your rhetorical-analysis task:",
                "The source above is an excerpt from an 1896 speech delivered to the delegates of a national "
                "political convention, an audience the speaker needed to win to his side. Analyze ONE rhetorical "
@@ -111,7 +111,7 @@ MASTERY = {
 
     # C1103-0007 - chain choice to effect to purpose (paragraph). Held-out: RA-SINGLE-0003.
     "ACC-W1112-L-G11-C1103-0007": {"source": "ACC-W910-RA-SINGLE-0003", "unit": "paragraph",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your rhetorical-analysis task:",
                "Analyze how one choice by the author of the source above serves a larger purpose.", "teal")
         + _task("Write ONE paragraph that chains the move all the way: name the author's choice, its effect on "
@@ -120,7 +120,7 @@ MASTERY = {
 
     # C1103-0008 - trim the quote, then frame it (paragraph). Held-out: RA-SINGLE-0001.
     "ACC-W1112-L-G11-C1103-0008": {"source": "ACC-W910-RA-SINGLE-0001", "unit": "paragraph",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your task:",
                "Analyze one moment in the source above where the author's exact wording does work.", "teal")
         + _task("From the source above, choose a phrase worth quoting and TRIM it to the smallest piece that "
@@ -130,7 +130,7 @@ MASTERY = {
 
     # C1103-0009 - check: rhetorical analysis or summary, then revise (paragraph). Held-out: RA-SINGLE-0002.
     "ACC-W1112-L-G11-C1103-0009": {"source": "ACC-W910-RA-SINGLE-0002", "unit": "paragraph",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("A paragraph that slips into summary:",
                "The author of the source above argues that ordinary working people count as business men, praises "
                "the pioneers who settled the West, and says the people will beg no longer but defy their opponents. "
@@ -143,7 +143,7 @@ MASTERY = {
     # source that names its producer in-text and reports checkable federal figures, so the taught who+backed frame
     # transfers; the lesson's own taught=ENERGYMIX and transfer=WATERUSE, so HIGHWAYS is not a re-submit).
     "ACC-W1112-L-G11-C1108-0010": {"source": "ACC-W910-INFO-LESSON-HIGHWAYS", "unit": "sentence",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your task:",
                "Judge the credibility of the source above.", "teal")
         + _task("Write ONE sentence that assesses this source on GROUNDS: who produced it and whether its claims "
@@ -156,7 +156,7 @@ MASTERY = {
     # totals, limited on any single place - transfers directly; the lesson's own taught=WATERUSE and
     # transfer=ENERGYMIX, so RECYCLING is not a re-submit). Task matches the two-part move the lesson practices.
     "ACC-W1112-L-G11-C1108-0011": {"source": "ACC-W910-INFO-LESSON-RECYCLING", "unit": "sentence",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your task:",
                "Weigh what the source above is good for and where it falls short.", "teal")
         + _task("Write ONE sentence that names BOTH a strength and a limit of this source: what to trust it for "
@@ -166,7 +166,7 @@ MASTERY = {
 
     # C1102-0012 - full synthesis: one argument from the set (multi_paragraph). Held-out: SYNTH-SET-0002.
     "ACC-W1112-L-G11-C1102-0012": {"source": "ACC-W910-SYNTH-SET-0002", "unit": "multi_paragraph",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your task:",
                "Synthesize the source set above.", "teal")
         + _task("Write a synthesis across the source set above that draws three or more of the sources into ONE "
@@ -175,7 +175,7 @@ MASTERY = {
 
     # C1102-0013 - weave by point, do not tour (multi_paragraph). Held-out: SYNTH-SET-0001.
     "ACC-W1112-L-G11-C1102-0013": {"source": "ACC-W910-SYNTH-SET-0001", "unit": "multi_paragraph",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your task:",
                "Synthesize the source set above, organized by point.", "teal")
         + _task("Write a synthesis from the source set above organized BY POINT, with several sources meeting on "
@@ -184,7 +184,7 @@ MASTERY = {
 
     # C1102-0014 - weave the argument, weight the sources (essay). Held-out: SYNTH-SET-0002.
     "ACC-W1112-L-G11-C1102-0014": {"source": "ACC-W910-SYNTH-SET-0002", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your task:",
                "Write a full synthesis essay on the source set above.", "teal")
         + _task("Write a full multi-source synthesis that weaves ONE argument from the set AND weights each "
@@ -193,7 +193,7 @@ MASTERY = {
 
     # C1103-0015 (kc C.11.02) - predict own score, then name the gap (essay). Held-out: SYNTH-SET-0001.
     "ACC-W1112-L-G11-C1103-0015": {"source": "ACC-W910-SYNTH-SET-0001", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your task:",
                "Write a full synthesis on the source set above, then grade your own work.", "teal")
         + _task("Write a full synthesis that weaves ONE argument from the source set above.",
@@ -204,7 +204,7 @@ MASTERY = {
 
     # C1102-0016 - mid-gate: independent full synthesis (essay). Held-out: SYNTH-LESSON-0001.
     "ACC-W1112-L-G11-C1102-0016": {"source": "ACC-W1112-SYNTH-LESSON-0001", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your gate task (follow THIS, not the prompt printed inside the source set):",
                "The three sources above are labeled Source 1, Source 2, and Source 3. On your own, plan and "
                "write a full synthesis ACROSS the set.", "teal")
@@ -218,7 +218,7 @@ MASTERY = {
     # C1104-0017 (kc C.11.06) - source-free: position + own example (sentence). SOURCE-FREE: no passage inlined
     # (an inlined passage would contradict the "do not use any passage" instruction); the general prompt is in-box.
     "ACC-W1112-L-G11-C1104-0017": {"source": None, "unit": "sentence",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("A general prompt (no passage to quote):",
                "Do smartphones help or hurt the way people your age pay attention?", "teal")
         + _task("This is a SOURCE-FREE task. Do not use any passage; argue from your own knowledge.",
@@ -230,7 +230,7 @@ MASTERY = {
     # SOURCE-FREE task, so attaching a passage would contradict the "do not use any passage" instruction. The
     # fresh topic (community service, unused in the lesson) supplies the held-out material inline in the _box.
     "ACC-W1112-L-G11-C1104-0018": {"unit": "paragraph",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("A general prompt (no passage to quote):",
                "Should schools require students to complete community service in order to graduate?", "teal")
         + _task("This is a SOURCE-FREE task. Argue from your own knowledge; do not use any passage.",
@@ -242,7 +242,7 @@ MASTERY = {
     # so inlining a passage would contradict the "do not use any passage" instruction. The fresh topic (school
     # lunch, unused in the lesson) supplies the held-out material inline in the _box.
     "ACC-W1112-L-G11-C1104-0019": {"unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("A general prompt (no passage to quote):",
                "Should public schools provide free lunch to every student, regardless of family income?", "teal")
         + _task("This is a SOURCE-FREE task. Argue entirely from your own knowledge; do not use any passage.",
@@ -254,7 +254,7 @@ MASTERY = {
     # as a two-way food-vs-power trade-off, which does not match and actively misleads against the three farms /
     # cities / rivers perspectives authored inline below.) The three perspectives are self-contained in the _box.
     "ACC-W1112-L-G11-C1105-0020": {"source": None, "unit": "sentence",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Three perspectives on how a dry region should share its limited water:",
                "(1) Farms should get first claim, since they grow the food everyone depends on. "
                "(2) Cities should get first claim, since that is where most people live. "
@@ -264,7 +264,7 @@ MASTERY = {
 
     # C1105-0021 - weigh a perspective against your own (paragraph). Held-out: PHONEBAN.
     "ACC-W1112-L-G11-C1105-0021": {"source": "ACC-W910-ARG-LESSON-PHONEBAN", "unit": "paragraph",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("A given perspective:",
                "Schools should ban phones outright, because any phone in the room splits students' attention.",
                "teal")
@@ -274,7 +274,7 @@ MASTERY = {
 
     # C1105-0022 - full multi-perspective essay (essay). Held-out: WORKFORCEINVEST.
     "ACC-W1112-L-G11-C1105-0022": {"source": "ACC-W910-ARG-LESSON-WORKFORCEINVEST", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Three perspectives on where a society should spend first as technical fields grow faster than "
                "the economy:",
                "(1) Prepare the next generation first: widen the pipeline into the fast-growing technical fields "
@@ -291,7 +291,7 @@ MASTERY = {
 
     # C1106-0023 (kc C.11.05) - budget your minutes across an essay (essay). Held-out: SCHOOLLUNCH.
     "ACC-W1112-L-G11-C1106-0023": {"source": "ACC-W910-ARG-LESSON-SCHOOLLUNCH", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your task and window:",
                "You have 40 minutes. Using the source above, write a full argument essay on whether free school "
                "lunch should be universal.", "teal")
@@ -302,7 +302,7 @@ MASTERY = {
 
     # C1106-0024 - make a fast plan: position plus ordered points (essay). Held-out: WATERTRADEOFF.
     "ACC-W1112-L-G11-C1106-0024": {"source": "ACC-W910-ARG-LESSON-WATERTRADEOFF", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your task:",
                "Using the source above, argue how a dry region should share its limited water.", "teal")
         + _task("First make a QUICK two- or three-line plan (your position plus your ordered points) that will "
@@ -312,7 +312,7 @@ MASTERY = {
 
     # C1107-0025 (kc C.11.04) - put the strongest reason last (sentence). Held-out: WORKFORCEINVEST.
     "ACC-W1112-L-G11-C1107-0025": {"source": "ACC-W910-ARG-LESSON-WORKFORCEINVEST", "unit": "sentence",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("A reason string in its current order:",
                "Training programs are worth funding because they measurably raise the wages of the workers who "
                "finish them, because they cost relatively little to launch, and because they are popular with "
@@ -324,7 +324,7 @@ MASTERY = {
 
     # C1107-0026 - cut the words that do no work (sentence). Held-out: COMMUNITYSERVICE.
     "ACC-W1112-L-G11-C1107-0026": {"source": "ACC-W910-ARG-LESSON-COMMUNITYSERVICE", "unit": "sentence",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("A padded sentence:",
                '"In my own personal opinion, it really does seem that required community service is basically a '
                'very important and truly necessary thing that all students everywhere should absolutely have to '
@@ -338,7 +338,7 @@ MASTERY = {
     # Labeled here (Source 1/2/3 by title) so the taught move (tag each point with the source that carries it) has
     # clear referents: the three sources are the three titled sections, not the USGS/EPA/EIA citations inside them.
     "ACC-W1112-L-G11-C1106-0027": {"source": "ACC-W1112-SYNTH-LESSON-0001", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("The set above is three sources:",
                "Source 1, \"Where the Nation's Water Goes,\" frames the national water budget. "
                "Source 2, \"The Water That Keeps the Lights On,\" argues for protecting the water that cools power "
@@ -357,7 +357,7 @@ MASTERY = {
     # C1106-0028 (kc C.11.05) - match the moves to the task type (essay). Both prompts authored inline; no
     # external passage, so the source-free vs multi-perspective spot stays clean and the student names it.
     "ACC-W1112-L-G11-C1106-0028": {"source": None, "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Two prompts:",
                "Prompt A: 'Does technology make people more connected or less connected?' "
                "Prompt B: respond to these three views on phones in school. "
@@ -374,7 +374,7 @@ MASTERY = {
     # classifies by their tell. No inlined stimulus source (a "New source" block would be irrelevant noise the
     # task never uses and would collide with prompt (1)'s quoted "four sources below").
     "ACC-W1112-L-G11-C1103-0029": {"source": "", "unit": "paragraph",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Three prompts:",
                "(1) 'Read the four sources below and write an essay that uses them to develop your position.' "
                "(2) 'Some argue success comes from talent, others from effort. Take a position, drawing on your "
@@ -394,7 +394,7 @@ MASTERY = {
     # what the gate rehearses. The held-out prompt is a self-contained argument prompt (states its own issue), so
     # the "name the type, then write the essay its moves reward" skill is exercised on a genuinely cold argument.
     "ACC-W1112-L-G11-C1102-0030": {"source": "ACC-W910-SFA-PROMPT-0004", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("A cold prompt:",
                "Read the prompt above and write the essay it calls for.", "teal")
         + _task("This is the course gate. First, name the TASK TYPE from its tell (what kind of prompt is this, "
@@ -404,7 +404,7 @@ MASTERY = {
 
     # C1103-0031 - full rhetorical-analysis essay (essay). Held-out: RA-SINGLE-0003.
     "ACC-W1112-L-G11-C1103-0031": {"source": "ACC-W910-RA-SINGLE-0003", "unit": "essay",
-        "rubric_ref": "rc.ap", "prompt_html": _INTRO
+        "rubric_ref": "rc.4trait", "prompt_html": _INTRO
         + _box("Your task:",
                "The source above is an excerpt from Ralph Waldo Emerson's essay \"Self-Reliance,\" published in "
                "1841 for a general reading audience of his day, in which he urges readers to trust their own "

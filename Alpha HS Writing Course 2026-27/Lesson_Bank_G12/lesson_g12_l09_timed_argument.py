@@ -219,7 +219,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: budget + fast-plan the whole argument (multi_paragraph) - the frame is the scaffold =====
         Slot("SUPPORTED", "production_frq", "Budget and plan the full argument",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="public_health", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="Before you draft, set your stage budget, then use the outline grid below to fast-plan "
                        "the WHOLE argument on the workforce prompt, end to end.",
@@ -236,7 +236,7 @@ LESSON = Lesson(
                         "will build the whole essay from.")),
         # ===== INDEPENDENT: rehearse the whole essay from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Rehearse the full argument",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="public_health", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, rehearse the whole essay from your budget and plan.",
                  closer="Write a complete argument essay on the workforce prompt end to end: a situated claim, "

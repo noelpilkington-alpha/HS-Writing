@@ -201,7 +201,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: write one woven paragraph from a frame (multi_paragraph) =====
         Slot("SUPPORTED", "production_frq", "Write one point-organized paragraph (framed)",
-             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="water_competing_uses", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="Write ONE woven paragraph on the water set. Plan the point before you write it.",
                  setapart_block=setapart("Fill in this frame:",
@@ -227,7 +227,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: weave a paragraph with no frame + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Weave by point on your own",
-             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="water_competing_uses", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="On your own now, with no frame.",
                  closer="Write ONE point-organized paragraph on the water set: state a claim and support it with "
@@ -242,7 +242,7 @@ LESSON = Lesson(
                    "workforce? Because your job is woven synthesis, read for a point that several sources bear on, "
                    "so they can meet in one paragraph. The texts stay on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Weave by point on a NEW set",
-             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="New set. Same weave-by-point move as the water set, a new topic.",
                  closer="Write ONE point-organized paragraph on the AI-and-workforce sources: state a claim and "

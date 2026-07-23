@@ -8,7 +8,7 @@ competent-but-flat synthesis. KC C.12.01, type 8. SYNTHESIS-TIER binds the G11 t
 to the G12 student): taught SYNTH-LESSON-0001 (water) -> transfer SYNTH-SET-0002 (AI workforce, cold-to-G12).
 
 Preserved EXACTLY from the prior L06: id="ACC-W1112-L-G12-C1201-0006", lesson_type=8, mnemonic_status="proposal",
-kc="C.12.01", unit, the bound stimuli, rubric_ref="rc.ap", and the production_frq unit= ladder (SUPPORTED plan =
+kc="C.12.01", unit, the bound stimuli, rubric_ref="rc.4trait", and the production_frq unit= ladder (SUPPORTED plan =
 multi_paragraph, INDEPENDENT + TRANSFER = essay). The unit ladder still climbs to the essay, the type-8 ceiling.
 
 V3.1 changes vs the prior L06 (the two failing gates + the spine polish):
@@ -219,7 +219,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: plan the sophisticated synthesis (multi_paragraph) - the frame is the top scaffold =====
         Slot("SUPPORTED", "production_frq", "Plan the complex synthesis",
-             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="water_competing_uses", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="Plan a complex synthesis of the water set before you draft a word of it.",
                  setapart_block=setapart("Fill in this plan:",
@@ -229,7 +229,7 @@ LESSON = Lesson(
                         "position you defend within it. This plan is what you will build the essay from.")),
         # ===== INDEPENDENT: build the whole synthesis from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "BUILD: write the complex synthesis",
-             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="water_competing_uses", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, build the whole synthesis from your plan.",
                  closer="Write a complete synthesis essay on the water set: an introduction that states the "

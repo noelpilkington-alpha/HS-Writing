@@ -200,7 +200,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: set the budget + plan (multi_paragraph) - the frame is the highest-value scaffold =====
         Slot("SUPPORTED", "production_frq", "Set your budget, then plan the essay",
-             ref="", bank="infrastructure_spending", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="infrastructure_spending", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="Set a time budget for a 40-minute window on the grid-spending prompt, then use the "
                        "planning minutes to outline the essay.",
@@ -213,7 +213,7 @@ LESSON = Lesson(
                         "source fact it will use. This budget and plan are what you will build the essay from.")),
         # ===== INDEPENDENT: build the whole essay on the budget (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a full essay on your budget",
-             ref="", bank="infrastructure_spending", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="infrastructure_spending", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, build the whole essay on your budget.",
                  closer="Using a minute budget for a 40-minute window, write a complete argument essay on the "

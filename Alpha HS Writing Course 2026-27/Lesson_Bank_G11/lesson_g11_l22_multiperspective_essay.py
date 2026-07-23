@@ -226,7 +226,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: plan the essay (multi_paragraph) - the frame is the highest-value scaffold =====
         Slot("SUPPORTED", "production_frq", "Plan your multi-perspective essay",
-             ref="", bank="mp_public_space", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="mp_public_space", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="Plan your essay on the streets issue before you write a word of it.",
                  setapart_block=setapart("Fill in this plan:",
@@ -236,7 +236,7 @@ LESSON = Lesson(
                         "is what you will build the essay from.")),
         # ===== INDEPENDENT: build the whole essay from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write the full multi-perspective essay",
-             ref="", bank="mp_public_space", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="mp_public_space", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, build the whole essay from your plan.",
                  closer="Write a complete multi-perspective essay on the streets issue: an introduction that "

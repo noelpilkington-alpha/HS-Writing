@@ -231,7 +231,7 @@ LESSON = Lesson(
                   "why": "A good start does not earn a holistic result. Real complexity needs the tension held across every body paragraph, and body two flattened it."},
              ]),
         Slot("SUPPORTED", "production_frq", "Write your essay, then predict whether it reaches real complexity",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="public_health", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="Write a complex argument on the workforce prompt: situate the question in the "
                        "broader tension, and hold that tension throughout. Then predict whether it reaches real complexity.",
@@ -242,7 +242,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: calibrate cold, no frame + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Calibrate on your own",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="public_health", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, with no frame.",
                  closer="Write a fresh complex argument on the workforce prompt, predict whether it reaches real complexity "

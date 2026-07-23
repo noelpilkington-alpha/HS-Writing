@@ -230,7 +230,7 @@ LESSON = Lesson(
                   "why": "Look again. Naming the sources is not the same as weaving them. This piece surveys Source 1, 2, and 3 in turn and never builds ONE argument across them, so it scores Development 2, not 4."},
              ]),
         Slot("SUPPORTED", "production_frq", "Write your synthesis, then predict its score",
-             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="water_competing_uses", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="Write a synthesis on the water set, then predict its score before the grader does.",
                  setapart_block=setapart("Predict on the rows like this:",
@@ -241,7 +241,7 @@ LESSON = Lesson(
                         "you will compare against when you re-score your draft next.")),
         # ===== INDEPENDENT: predict + name the gap with no frame + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Calibrate on your own",
-             ref="", bank="water_competing_uses", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="water_competing_uses", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now. No frame this time.",
                  closer="Write a fresh synthesis on the water set, predict your score on each row with a reason, "

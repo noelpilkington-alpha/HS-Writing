@@ -42,7 +42,7 @@ ITEMS = [
               "them, or take a position of your own."),
         acc_tags=ACC,
         stimulus_ref=WORK,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0702: PRIVACY vs SAFETY (weigh all three) ---------------------------------------------------
@@ -56,7 +56,7 @@ ITEMS = [
               "disagree with all of them, or take a position of your own."),
         acc_tags=ACC,
         stimulus_ref=PRIVACY,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0703: STANDARDIZED TESTING (weigh all three) ------------------------------------------------
@@ -70,7 +70,7 @@ ITEMS = [
               "them, or take a position of your own."),
         acc_tags=ACC,
         stimulus_ref=TESTING,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0704: AUTOMATION AND WORK, second prompt (single-relationship focus) ------------------------
@@ -84,7 +84,7 @@ ITEMS = [
               "Evaluate the remaining perspectives as you build your case."),
         acc_tags=ACC,
         stimulus_ref=WORK,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0705: PRIVACY vs SAFETY, second prompt (single-relationship focus) --------------------------
@@ -98,7 +98,7 @@ ITEMS = [
               "perspectives as you build your case."),
         acc_tags=ACC,
         stimulus_ref=PRIVACY,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
     # ---- 0706: STANDARDIZED TESTING, second prompt (single-relationship focus) -----------------------
@@ -112,7 +112,7 @@ ITEMS = [
               "the remaining perspectives as you build your case."),
         acc_tags=ACC,
         stimulus_ref=TESTING,
-        rubric_ref="rc.ap",
+        rubric_ref="rc.4trait",
         provenance=PROV,
     ),
 ]

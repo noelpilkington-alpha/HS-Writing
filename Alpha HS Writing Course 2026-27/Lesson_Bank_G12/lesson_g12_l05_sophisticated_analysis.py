@@ -218,7 +218,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: plan the analysis (multi_paragraph) - the frame is the highest-value scaffold =====
         Slot("SUPPORTED", "production_frq", "Plan the analysis with depth",
-             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="douglass_1852", rubric_ref="rc.4trait", scored=True, mode="analysis", unit="multi_paragraph",
              body=frq_prompt(
                  intro="Plan an analysis of Douglass with real depth before you write the essay.",
                  setapart_block=setapart("Fill in this plan:",
@@ -228,7 +228,7 @@ LESSON = Lesson(
                         "analysis from.")),
         # ===== INDEPENDENT: build the whole analysis essay from the plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "BUILD: write the analysis with depth",
-             ref="", bank="douglass_1852", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="douglass_1852", rubric_ref="rc.4trait", scored=True, mode="analysis", unit="essay",
              body=frq_prompt(
                  intro="On your own now, build the whole analysis essay from your plan.",
                  closer="Write a complete rhetorical-analysis essay on Douglass: an introduction that situates the "

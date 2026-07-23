@@ -192,7 +192,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: plan the argument prompt + flag the switch (multi_paragraph) - frame scaffold =====
         Slot("SUPPORTED", "production_frq", "Plan the argument prompt, then flag the switch",
-             ref="", bank="water_tradeoff", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="water_tradeoff", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="Plan the first prompt (the water argument) before you write, and flag the switch to the "
                        "next prompt.",
@@ -203,7 +203,7 @@ LESSON = Lesson(
                         "different type you will re-name before planning.")),
         # ===== INDEPENDENT: rehearse the first prompt end to end (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Rehearse the first prompt (argument)",
-             ref="", bank="water_tradeoff", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="water_tradeoff", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now. Under your own budget, rehearse the first prompt end to end.",
                  closer="Write a complete argument essay on the water trade-off: a thesis that takes a "

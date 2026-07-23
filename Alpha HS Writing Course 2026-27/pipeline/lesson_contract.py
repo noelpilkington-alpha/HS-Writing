@@ -56,6 +56,9 @@ RUBRIC_CONFIGS = {"rc.staar", "rc.sbac", "rc.mcas", "rc.ohio", "rc.4trait", "rc.
 # A scored production_frq declares (unit, frq_type, rubric_ref); the grader routes off (unit, frq_type).
 # frq_type = the CONSTRUCT: revision (transform a provided draft) | writing (produce from a task).
 FRQ_TYPES = {"revision", "writing"}
+# rc.4trait (G11/G12 Regents) TASK PROFILE the wirer bakes into the grader URL (?mode=). Orthogonal to the
+# (unit, frq_type) grain routing above. "" = the grader's rc.4trait default (argument); analysis is explicit.
+MODES = {"argument", "analysis"}
 # Thin CAPABILITY MIRROR of the grader's SUPPORTED (grader/engine/routing.py is the source of truth).
 # "unit:frq_type" strings the deployed grader accepts. A drift test (pipeline/tests) asserts this equals the
 # grader's capability_manifest()['supported']; if the grader adds/removes a combo, the test fails until synced.
@@ -150,6 +153,11 @@ class Slot:
                              # "revision" = transform a PROVIDED draft; "writing" = produce from a task.
                              # With `unit`, forms the (unit, frq_type) tuple the grader routes off (regeneration
                              # contract). REQUIRED for scored sentence/paragraph; essays default to "writing".
+    mode: str = ""           # scored production_frq only, rc.4trait (G11/G12 Regents): the TASK PROFILE, one of
+                             # MODES. "argument" (each criterion 0-6, total 24) | "analysis" (each 0-4, total 16).
+                             # Orthogonal to grain routing; baked into the grader URL by the wirer (?mode=).
+                             # Empty -> the grader defaults rc.4trait to "argument", so ONLY analysis tasks
+                             # (rhetorical/literary analysis essays) must declare mode="analysis".
     choices: list = field(default_factory=list)   # OPTIONAL explicit MCQ options for discrimination/predict:
                              # [{"id":"A","text":"...","correct":bool,"why":"why this option is right/wrong"}].
                              # When present, the renderer uses these directly (reliable per-choice feedback)
@@ -475,6 +483,15 @@ def gate_grader_routing(L: Lesson) -> tuple[bool, str]:
         if tuple_key not in GRADER_SUPPORTED_TUPLES:
             return False, (f"scored production_frq '{s.title[:30]}' declares ({tuple_key}) which the grader "
                            f"does not support; accepts {sorted(GRADER_SUPPORTED_TUPLES)}")
+        # mode (rc.4trait TASK PROFILE) is optional; if declared it must be valid, and it only means anything
+        # for rc.4trait (the argument/analysis scale switch). A stray mode on another rubric is a design error.
+        mode = getattr(s, "mode", "") or ""
+        if mode:
+            if mode not in MODES:
+                return False, (f"scored production_frq '{s.title[:30]}' mode '{mode}' not in {sorted(MODES)}")
+            if s.rubric_ref != "rc.4trait":
+                return False, (f"scored production_frq '{s.title[:30]}' declares mode '{mode}' but rubric_ref "
+                               f"is '{s.rubric_ref}' (mode only applies to rc.4trait)")
     scored = [s for s in prods if getattr(s, "scored", False)]
     return True, f"{len(prods)} production FRQ(s) ({len(scored)} scored); all tuples routable to the grader"
 

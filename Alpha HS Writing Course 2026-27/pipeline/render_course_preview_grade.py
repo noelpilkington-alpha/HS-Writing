@@ -137,13 +137,27 @@ def main():
         except Exception:
             video_map = {}
 
+    # PREVIEW-SCOPED One-Beat map (rule 2026-07-22): every your-turn beat of a video gets one non-gating
+    # in-video question, so a matching video renders as an INTERACTIVE tb-video. Preview-only: the production
+    # push passes no one_beat_map, so it is unaffected.
+    one_beat_map = {}
+    try:
+        from incept_one_beats import ALL_ONE_BEATS
+        one_beat_map = {lid: b for lid, b in ALL_ONE_BEATS.items() if lid in video_map}
+        if one_beat_map:
+            _nbeats = sum(len(b.get("beats", [])) for b in one_beat_map.values())
+            print(f"one_beat_map: {len(one_beat_map)} {grade} lesson(s), {_nbeats} in-video One-Beat checks")
+    except Exception:
+        one_beat_map = {}
+
     # 1) render each lesson's gated ARTICLE (lesson.html + items/*.xml) into its own subfolder
     qc_failures = []
     for n, L, _f in lessons:
         art_dir = os.path.join(args.deploy, slug(grade, n).replace("/", os.sep))
         items_dir = os.path.join(art_dir, "items")
         os.makedirs(items_dir, exist_ok=True)
-        html_str, checkpoints = build_lesson_html(L, base_url=f"{base_url}/{slug(grade, n)}", video_map=video_map)
+        html_str, checkpoints = build_lesson_html(L, base_url=f"{base_url}/{slug(grade, n)}", video_map=video_map,
+                                                   one_beat_map=one_beat_map)
         # pass the source lesson so render_qc also runs the OPTION-INTEGRITY choices[] cross-check (A6) - the
         # full Tier-A render gate, not the lighter artifact-only pass. Tier-A already proved all 100 pass it.
         problems = render_qc(html_str, checkpoints, lessons=L)
@@ -152,7 +166,8 @@ def main():
             continue
         # clean stale item files for THIS lesson id, then write fresh
         for old in (glob.glob(os.path.join(items_dir, f"cp-{L.id}-*.xml")) +
-                    glob.glob(os.path.join(items_dir, f"frq-{L.id}-*.xml"))):
+                    glob.glob(os.path.join(items_dir, f"frq-{L.id}-*.xml")) +
+                    glob.glob(os.path.join(items_dir, f"vq-{L.id}-*.xml"))):
             try:
                 os.remove(old)
             except OSError:

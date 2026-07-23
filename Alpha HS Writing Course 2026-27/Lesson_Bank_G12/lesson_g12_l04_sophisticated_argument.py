@@ -227,7 +227,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: plan the sophisticated argument (multi_paragraph) - the frame is the top scaffold =====
         Slot("SUPPORTED", "production_frq", "Plan the complex argument",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="public_health", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="Use the outline grid below so you can see the shape of a complex plan. Copy it into "
                        "the box and fill each blank to plan a complex argument on the workforce prompt "
@@ -243,7 +243,7 @@ LESSON = Lesson(
                         "plan is what you will build the essay from.")),
         # ===== INDEPENDENT: build the whole sophisticated essay from the plan (essay ceiling) + say-standard =====
         Slot("INDEPENDENT", "production_frq", "Write the full, complex argument",
-             ref="", bank="public_health", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="public_health", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, build the whole essay from your plan.",
                  closer="Write a complete argument essay on the workforce prompt: an introduction that situates "

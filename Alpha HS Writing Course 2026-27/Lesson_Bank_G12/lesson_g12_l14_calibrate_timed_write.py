@@ -220,7 +220,7 @@ LESSON = Lesson(
                   "why": "Look again. A strong opening is not the whole essay. The grader also reads the thin third paragraph and the missing conclusion, and the tension dropped at the end, so this row scores no. That is the opening-only pull."},
              ]),
         Slot("SUPPORTED", "production_frq", "Write a full essay, then predict its scores",
-             ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="automation_policy", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="Under your own budget, write a full argument essay on the water trade-off end to end, "
                        "then predict its scores using this frame.",
@@ -232,7 +232,7 @@ LESSON = Lesson(
 
         # ===== INDEPENDENT: calibrate a full-write cold (no frame) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Calibrate a full essay on your own",
-             ref="", bank="automation_policy", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="automation_policy", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, no frame. Under your own budget, write a fresh full essay on the water "
                        "trade-off.",

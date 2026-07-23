@@ -105,7 +105,7 @@ LESSON = Lesson(
                    "The texts stay on screen while you work.")),
         # ===== UNSCORED plan affordance (not a certification write; a map for the cold essay) =====
         Slot("SUPPORTED", "production_frq", "Plan your synthesis (not graded)",
-             ref="", bank="national_parks_synthesis", rubric_ref="rc.ap", scored=False, unit="essay",
+             ref="", bank="national_parks_synthesis", rubric_ref="rc.4trait", scored=False, unit="essay",
              body=frq_prompt(
                  intro="Before you write, jot a quick plan. This plan is not graded; it is your map for the cold "
                        "essay. Use every source in the set.",
@@ -114,7 +114,7 @@ LESSON = Lesson(
                  closer="Then write the full synthesis from this plan.")),
         # ===== the GATE: ONE cold synthesis essay on the held-out set (the certification write) =====
         Slot("TRANSFER", "production_frq", "THE MID-GATE: write the complete synthesis",
-             ref="", bank="national_parks_synthesis", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="national_parks_synthesis", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="The gate. On your own now, write the whole synthesis from your plan. Use every source in "
                        "the set.",

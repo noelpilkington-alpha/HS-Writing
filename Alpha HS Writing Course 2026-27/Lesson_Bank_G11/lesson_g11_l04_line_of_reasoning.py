@@ -151,7 +151,7 @@ LESSON = Lesson(
                        "demand will strain delivery, therefore fund the grid. A fifth reason (B), longer sentences "
                        "(C), or reordering (D) do not connect the reasons into a line.")),
         Slot("SUPPORTED", "production_frq", "Warm up: chain just two reasons",
-             ref="", bank="infrastructure_spending", rubric_ref="rc.ap", scored=True, unit="sentence", frq_type="writing",
+             ref="", bank="infrastructure_spending", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
                  intro="Warm up the move with a single link. Here is a claim and two loose reasons about the grid:",
                  setapart_block=setapart("Claim + two loose reasons:",
@@ -173,7 +173,7 @@ LESSON = Lesson(
                  closer="Now rewrite it as a two- or three-step line of reasoning for the grid claim, each step "
                         "leading to the next. Then name the link word you used to connect the steps.")),
         Slot("INDEPENDENT", "production_frq", "Build a line of reasoning on your own",
-             ref="", bank="infrastructure_spending", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
+             ref="", bank="infrastructure_spending", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="On your own now. For a claim about energy-spending priorities, build a short paragraph "
                        "that is a LINE of reasoning, not a list.",
@@ -186,7 +186,7 @@ LESSON = Lesson(
                    "Read the whole thing and gather reasons that can be ordered so each leads to the next. Same "
                    "build-a-line move, new topic. The text stays on screen while you work.")),
         Slot("TRANSFER", "production_frq", "Build a line of reasoning on a NEW topic",
-             ref="", bank="ai_workforce_policy", rubric_ref="rc.ap", scored=True, unit="paragraph", frq_type="writing",
+             ref="", bank="ai_workforce_policy", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
                  intro="New topic. For a claim about the government's role in the AI workforce, build a short "
                        "paragraph that is a line of reasoning.",

@@ -1,0 +1,3395 @@
+{
+ "ACC-W1112-L-G11-C1101-0001": {
+  "beats": [
+   {
+    "cue_seconds": 77.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Whom",
+       "why": "The reveal says whom is still unnamed, since \"workers\" could still mean everyone."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Which case",
+       "why": "The claim does limit the case to training for growing fields, so this axis is not the open one."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "When",
+       "why": "Timing is not the gap the reveal flags; the missing piece is who the claim covers."
+      }
+     ],
+     "stem": "The revised claim reads, \"The government should help workers train for growing fields.\" Of the three scope axes (whom, which case, when), which one does it still leave wide open?",
+     "title": "Quick check: the open axis"
+    }
+   },
+   {
+    "cue_seconds": 151.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Narrow whom it covers to a named group, then narrow what it claims.",
+       "why": "Correct. Scope means narrowing both whom and what."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Keep the sweeping everyone, since a bold, wide claim is more persuasive.",
+       "why": "Broad sounds bold but is fragile; precision is stronger."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Narrow only the topic wording but keep whom as everyone.",
+       "why": "Whom must be narrowed too, not left as everyone."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Add more reasons without limiting whom or what.",
+       "why": "Scope is about narrowing, not adding reasons."
+      }
+     ],
+     "stem": "\"Social media harms everyone who uses it\" trips the first scope question. Which move makes it defensible?",
+     "title": "Quick check: fixing an overbroad claim"
+    }
+   }
+  ],
+  "duration_seconds": 166.0
+ },
+ "ACC-W1112-L-G11-C1101-0002": {
+  "beats": [
+   {
+    "cue_seconds": 66.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": false,
+       "id": "A",
+       "text": "Claim A",
+       "why": "A flat claim states a side but names no close rival it rejects, so it is not the nuanced one."
+      },
+      {
+       "correct": true,
+       "id": "B",
+       "text": "Claim B",
+       "why": "The reveal says B is nuanced: it rejects the lazy-teens rival, then states its own stance."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Claim C",
+       "why": "A fence-sitting claim names the tension but refuses to commit, so it is not nuanced."
+      }
+     ],
+     "stem": "Three claims about school start times are on screen: one flat, one fence-sitting, one truly nuanced. Which is the nuanced one?",
+     "title": "Quick check: which claim is nuanced"
+    }
+   },
+   {
+    "cue_seconds": 160.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It names no close position it is not, and states no precise instead, so it fails questions two and three.",
+       "why": "Correct. It commits but lacks the not-X and the precise Y."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Nothing, because committing to a side is all a nuanced claim needs.",
+       "why": "Nuance needs the rejected position and the precise instead."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It fails question one because it never commits to a side.",
+       "why": "It does commit; questions two and three are what fail."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It states the precise instead but names no rejected position.",
+       "why": "It is missing both the not and the precise instead."
+      }
+     ],
+     "stem": "\"Schools should move the school day to a later start\" commits to a side. Running the three questions, what does it still fail?",
+     "title": "Quick check: what the claim still lacks"
+    }
+   }
+  ],
+  "duration_seconds": 213.0
+ },
+ "ACC-W1112-L-G11-C1101-0003": {
+  "beats": [
+   {
+    "cue_seconds": 76.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "A real limit on when or which workers, and a reason.",
+       "why": "Correct. It commits but claims this for every worker with no reason."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Nothing, because a committed position is already a qualified claim.",
+       "why": "A qualified claim needs a real limit and a reason."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Only a reason; the claim already has a real limit.",
+       "why": "It has no limit yet."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Only a limit; the claim already gives a reason.",
+       "why": "It gives no reason yet."
+      }
+     ],
+     "stem": "The second try reads, \"The government should retrain workers.\" It does commit, but which two things are still missing?",
+     "title": "Quick check: what is still missing"
+    }
+   },
+   {
+    "cue_seconds": 143.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It fails all three: no commitment, no real bound, no reason.",
+       "why": "Correct. Vague hedging commits to nothing, bounds nothing, and gives no reason."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It passes, because sometimes is a real limit and it depends shows nuance.",
+       "why": "Vague hedging is not a real bound or a commitment."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It passes questions one and two but fails only the reason.",
+       "why": "It also fails to commit and to set a real bound."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It fails only the commitment question.",
+       "why": "It also lacks a real bound and a reason."
+      }
+     ],
+     "stem": "Run the three questions on \"Schools should maybe ban phones sometimes, it depends.\" How does it do?",
+     "title": "Quick check: hedge or qualify"
+    }
+   }
+  ],
+  "duration_seconds": 174.0
+ },
+ "ACC-W1112-L-G11-C1101-0004": {
+  "beats": [
+   {
+    "cue_seconds": 106.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "A list: each sentence is true but none leads into the next.",
+       "why": "Correct. The reader has to bolt the true sentences together."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "A line of reasoning: each step uses the one before.",
+       "why": "No step leads into the next, so it is a list."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "A line, because all the sentences are true.",
+       "why": "Truth does not make a chain; linkage does."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "A list, but only because it has too many sentences.",
+       "why": "The issue is missing linkage, not the count."
+      }
+     ],
+     "stem": "Four true, on-topic sentences argue that phones should be locked away in class. Is this a line of reasoning or a list?",
+     "title": "Quick check: line or list"
+    }
+   },
+   {
+    "cue_seconds": 152.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Each step uses the one before it, so the last step reaches the claim on its own.",
+       "why": "Correct. That is a line of reasoning, not a list."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Listing all three true reasons together, in any order.",
+       "why": "That is a list, not a line."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Stating the claim first, then three separate reasons.",
+       "why": "That is a list under a claim, not a chain."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Giving the single strongest reason and stopping.",
+       "why": "A chain links steps toward the claim."
+      }
+     ],
+     "stem": "You are asked to chain three loose reasons for a later school start into one sentence. What makes it a chain rather than a list?",
+     "title": "Quick check: what makes a chain"
+    }
+   }
+  ],
+  "duration_seconds": 208.0
+ },
+ "ACC-W1112-L-G11-C1103-0006": {
+  "beats": [
+   {
+    "cue_seconds": 64.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It reports what he argues, so it is content.",
+       "why": "Correct. It names no rhetorical choice, only what he argues."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It names a rhetorical choice Douglass makes.",
+       "why": "It reports what he argues, so it stays content."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It names a choice, because it uses Douglass's name.",
+       "why": "Naming the author is not naming a choice."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It reports content, but only because it is too brief.",
+       "why": "The issue is that it names no choice, not its length."
+      }
+     ],
+     "stem": "Does the first-try sentence name a choice Douglass makes, or just report what he argues?",
+     "title": "Quick check: choice or content"
+    }
+   },
+   {
+    "cue_seconds": 118.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "The effect that repeated your has on his celebrating audience.",
+       "why": "Correct. Naming the choice's effect on the audience completes the move."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "A second choice Douglass makes elsewhere in the speech.",
+       "why": "Finish this choice's effect, do not add another choice."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "The technical name for repeating a word.",
+       "why": "Labeling the device is not its effect."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "A summary of what Douglass argues overall.",
+       "why": "That returns to content."
+      }
+     ],
+     "stem": "The stub names the choice: \"Douglass repeats the word your throughout the opening...\" What must you add to make it rhetorical analysis?",
+     "title": "Quick check: what finishes the sentence"
+    }
+   }
+  ],
+  "duration_seconds": 166.0
+ },
+ "ACC-W1112-L-G11-C1103-0007": {
+  "beats": [
+   {
+    "cue_seconds": 80.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It names the choice only; the effect and purpose are missing.",
+       "why": "Correct. It got link one but not the effect or purpose."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It reaches all three: choice, effect, and purpose.",
+       "why": "It stops after naming the choice."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It names the choice and effect, missing only purpose.",
+       "why": "The effect is not stated yet either."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It names the effect and purpose but no choice.",
+       "why": "The choice is the one thing it does name."
+      }
+     ],
+     "stem": "Run the purpose check on the first try: choice, effect, purpose. How far did it get?",
+     "title": "Quick check: how far the first try got"
+    }
+   },
+   {
+    "cue_seconds": 124.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "The purpose: why the author wants the audience to feel that way.",
+       "why": "Correct. So that names the purpose behind the effect."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "A restatement that the audience feels singled out.",
+       "why": "Repeating the effect is not the purpose."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "A new rhetorical choice Douglass makes next.",
+       "why": "You are completing this chain, not adding a choice."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "A summary of the speech's main argument.",
+       "why": "That is content, not purpose."
+      }
+     ],
+     "stem": "The effect is on the page: the audience feels singled out. What does a \"so that\" clause supply to complete the chain?",
+     "title": "Quick check: what the so-that clause adds"
+    }
+   }
+  ],
+  "duration_seconds": 169.0
+ },
+ "ACC-W1112-L-G11-C1103-0008": {
+  "beats": [
+   {
+    "cue_seconds": 85.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Trimmed yes, but not set up and not interpreted, so it still floats.",
+       "why": "Correct. The quote is short but never framed before or after."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It passes all three: trimmed, set up, and interpreted.",
+       "why": "It is never set up or interpreted."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Not trimmed, and not set up or interpreted.",
+       "why": "It is trimmed; the framing is what is missing."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Set up and interpreted, but not trimmed.",
+       "why": "It is trimmed but unframed."
+      }
+     ],
+     "stem": "Run the three questions on the second try: trimmed, set up, interpreted. How does it do?",
+     "title": "Quick check: is the quote framed"
+    }
+   },
+   {
+    "cue_seconds": 169.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Set it up before and interpret it after.",
+       "why": "Correct. Framing on both sides keeps the quote from floating."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Trimming it short is enough on its own.",
+       "why": "A trimmed quote still floats without framing."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Quote more so the reader sees full context.",
+       "why": "The move is to quote less and frame."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Interpret it after, with no setup before.",
+       "why": "Both setup and interpretation are needed."
+      }
+     ],
+     "stem": "You run the three questions on a quote from your own essay. Beyond trimming it, what does framing require?",
+     "title": "Quick check: what framing a quote means"
+    }
+   }
+  ],
+  "duration_seconds": 184.0
+ },
+ "ACC-W1112-L-G11-C1104-0017": {
+  "beats": [
+   {
+    "cue_seconds": 89.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "One concrete case; often turns out useful is still a generality.",
+       "why": "Correct. On a source-free prompt you supply a concrete case."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Nothing; taking a side with a reason is enough.",
+       "why": "You still need a concrete case as evidence."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "A stronger opinion word to sound more certain.",
+       "why": "Certainty is not evidence."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "A second general trend to back the first.",
+       "why": "A general trend is not a concrete case."
+      }
+     ],
+     "stem": "The second try reads, \"Society should fund curiosity-driven inquiry, because pure research often turns out to be useful later.\" It takes a side. What does it still lack?",
+     "title": "Quick check: what is still missing"
+    }
+   },
+   {
+    "cue_seconds": 171.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Take a side, then anchor it with one concrete case from your own knowledge.",
+       "why": "Correct. Position then example is the move."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Take a side and cite a general trend, since no sources are provided.",
+       "why": "A trend is still a generality."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Describe both sides without taking one.",
+       "why": "You must take a position."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Take a side and repeat it more forcefully.",
+       "why": "Force is not evidence."
+      }
+     ],
+     "stem": "On a source-free prompt about requiring a skilled trade, what do you have to do to land the claim?",
+     "title": "Quick check: who supplies the evidence"
+    }
+   }
+  ],
+  "duration_seconds": 191.0
+ },
+ "ACC-W1112-L-G11-C1104-0018": {
+  "beats": [
+   {
+    "cue_seconds": 74.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It fails Named and Detailed, so it is a generality, not an example.",
+       "why": "Correct. Many discoveries names no case and gives no detail."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It passes, because referring to discoveries is a specific example.",
+       "why": "Many discoveries names no specific case."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It passes Named but fails Detailed.",
+       "why": "It names no specific case, so Named fails too."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It fails only Tied to the claim.",
+       "why": "It also fails Named and Detailed."
+      }
+     ],
+     "stem": "Run Named, Detailed, and Tied on the first try, which rests on \"many discoveries.\" How does it do?",
+     "title": "Quick check: example or generality"
+    }
+   },
+   {
+    "cue_seconds": 161.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Name one case, give a telling detail, and tie it to the claim.",
+       "why": "Correct. Named, Detailed, and Tied is the develop-and-tie move."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "State that failure generally teaches more, pointing to many cases.",
+       "why": "That is a generality, not an example."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Name a case but leave out any detail.",
+       "why": "Detailed must pass too."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Give a vivid detail without naming the case.",
+       "why": "Named must pass too."
+      }
+     ],
+     "stem": "You write one example for \"failure teaches more than easy success.\" What turns it into an example rather than a generality?",
+     "title": "Quick check: what makes it an example"
+    }
+   }
+  ],
+  "duration_seconds": 179.0
+ },
+ "ACC-W1112-L-G11-C1105-0020": {
+  "beats": [
+   {
+    "cue_seconds": 83.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It stakes a position but never weighs the given views.",
+       "why": "Correct. It takes a side but drops a perspective and never weighs them."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It weighs the views but never stakes a position.",
+       "why": "It does stake a side; it just skips weighing."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It both weighs the views and stakes a position.",
+       "why": "It drops Perspective Two and never weighs."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It neither weighs nor stakes anything.",
+       "why": "It does stake a position."
+      }
+     ],
+     "stem": "The second try reads, \"Residents should decide what their street is for.\" Test it against the two moves, weigh the given views and stake your own position. What is it missing?",
+     "title": "Quick check: weigh and stake"
+    }
+   },
+   {
+    "cue_seconds": 174.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Yes: it weighs the views against each other and stakes the writer's own position.",
+       "why": "Correct. The final draft weighs and then stakes."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "No: it only reports what the perspectives say.",
+       "why": "The final draft weighs and stakes, not just reports."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Yes, but it stakes a position without weighing the views.",
+       "why": "It does weigh the views."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "No: it weighs the views but takes no position.",
+       "why": "It takes a clear position."
+      }
+     ],
+     "stem": "Run the three questions on the final draft, which says Perspective Three is right that users should decide but only once the city protects Two's public-room use. Does it pass?",
+     "title": "Quick check: does the final pass"
+    }
+   }
+  ],
+  "duration_seconds": 192.0
+ },
+ "ACC-W1112-L-G11-C1105-0021": {
+  "beats": [
+   {
+    "cue_seconds": 93.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Concede yes, but no limit and no advance.",
+       "why": "Correct. It only concedes; the limit and advance are missing."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It makes all three moves: concede, limit, and advance.",
+       "why": "It only concedes."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It names a limit and advances, but never concedes.",
+       "why": "It concedes; the limit and advance are missing."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It advances a new position but concedes nothing.",
+       "why": "It does concede."
+      }
+     ],
+     "stem": "Run the three-move check (concede, limit, advance) on the first try. How does it do?",
+     "title": "Quick check: which moves the first try made"
+    }
+   },
+   {
+    "cue_seconds": 165.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Concede, name a limit, then advance your own position with a specific example.",
+       "why": "Correct. Concede, limit, advance is the three-move order."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Politely restate the perspective and agree with it.",
+       "why": "That concedes everything and advances nothing."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Concede and name a limit, then stop.",
+       "why": "You must advance your own position."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Advance your position without conceding anything.",
+       "why": "Concede first, then limit, then advance."
+      }
+     ],
+     "stem": "You draft one sentence weighing Perspective One. What are the three moves, and what is the trap to avoid?",
+     "title": "Quick check: the three moves and the trap"
+    }
+   }
+  ],
+  "duration_seconds": 187.0
+ },
+ "ACC-W1112-L-G11-C1107-0025": {
+  "beats": [
+   {
+    "cue_seconds": 82.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": false,
+       "id": "A",
+       "text": "It can create jobs",
+       "why": "The reveal names preventing blackout losses, not jobs, as the strongest reason."
+      },
+      {
+       "correct": true,
+       "id": "B",
+       "text": "A reliable grid prevents the losses blackouts cause",
+       "why": "The reveal says preventing blackout losses is the strongest reason and belongs in the emphatic last slot."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It looks modern",
+       "why": "The reveal calls \"it looks modern\" weak filler to cut, yet it currently sits in the last slot."
+      }
+     ],
+     "stem": "The first try gives three reasons to expand clean power: it can create jobs, a reliable grid prevents the enormous losses blackouts cause, and it looks modern. Which is the strongest, the one that belongs in the last, emphatic slot?",
+     "title": "Quick check: the strongest reason"
+    }
+   },
+   {
+    "cue_seconds": 152.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Students would get real sleep and learn better",
+       "why": "The reveal says to put your strongest reason in the last slot; the sleep-and-learning reason is the strongest here."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Morning tardiness would drop",
+       "why": "This is a real benefit but not the strongest, so it should not occupy the emphatic last slot."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It sounds trendy",
+       "why": "The reveal says to cut weak filler like this, not place it in the emphatic slot."
+      }
+     ],
+     "stem": "The reasons for later classes are: students would get real sleep and learn better, morning tardiness would drop, and it sounds trendy. Which reason belongs in the last, emphatic slot?",
+     "title": "Quick check: what lands last"
+    }
+   }
+  ],
+  "duration_seconds": 173.0
+ },
+ "ACC-W1112-L-G11-C1107-0026": {
+  "beats": [
+   {
+    "cue_seconds": 100.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It is important to understand that",
+       "why": "Correct. That is a throat-clearing opener that delays the point."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "use a large amount of water for cooling",
+       "why": "That is the real point of the sentence; keep it."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "thermoelectric power plants",
+       "why": "That is the subject; keep it."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "for cooling",
+       "why": "That is a needed detail; keep it."
+      }
+     ],
+     "stem": "The second try still hides filler. Which phrase is the throat-clearing opener that delays the point?",
+     "title": "Quick check: spot the filler"
+    }
+   },
+   {
+    "cue_seconds": 173.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "The opener it is important to understand that in my opinion, the intensifier truly, and the redundant pairs end result and own personal.",
+       "why": "Correct. Those words do no work and can be cut."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "photosynthesis, boost, and energy supply.",
+       "why": "Those carry the point; do not cut them."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Only the single word truly, leaving the rest.",
+       "why": "The opener and redundant pairs also do no work."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "The whole sentence, since it is too wordy to fix.",
+       "why": "Trim the filler and keep the point."
+      }
+     ],
+     "stem": "In \"It is important to understand that in my opinion, the end result of photosynthesis is a truly huge boost to the plant's own personal energy supply,\" which words should be cut as filler?",
+     "title": "Quick check: which words do no work"
+    }
+   }
+  ],
+  "duration_seconds": 199.0
+ },
+ "ACC-W1112-L-G11-C1108-0010": {
+  "beats": [
+   {
+    "cue_seconds": 99.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Feel: it names no producer and no checkable backing, only tone.",
+       "why": "Correct. It rests on how official it sounds, which is a feeling."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Grounds a reader could check.",
+       "why": "It names no producer or checkable backing, only tone."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Feel, but only because the source is too short.",
+       "why": "The issue is no producer or backing, not length."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Grounds, because sounds official points to real backing.",
+       "why": "Sounding official is tone, not checkable backing."
+      }
+     ],
+     "stem": "The first try reads, \"This source is reliable because it sounds official and confident.\" What is it resting on?",
+     "title": "Quick check: grounds or feel"
+    }
+   },
+   {
+    "cue_seconds": 146.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Whether the claims can be checked.",
+       "why": "Correct. The producer is now named, but checkable backing is still missing."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "The name of the producer.",
+       "why": "The producer is now named; the missing ground is checkable backing."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "The tone of the source.",
+       "why": "Grounds, not tone, are what is missing."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Both grounds are still missing.",
+       "why": "The producer was named; only checkable backing remains."
+      }
+     ],
+     "stem": "The second try reads, \"This source is credible because it comes from the United States Energy Information Administration.\" It names the producer. Which ground is still missing?",
+     "title": "Quick check: which ground is missing"
+    }
+   },
+   {
+    "cue_seconds": 209.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Yes: it names the producer and checkable backing, with no reliance on feel.",
+       "why": "Correct. Two yes answers and no feel means the judgment holds."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "No: it still rests on how official the source sounds.",
+       "why": "The final version names real grounds, not tone."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Yes, but it names only the producer, not any backing.",
+       "why": "It names both the producer and checkable backing."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "No: it names backing but never says who produced it.",
+       "why": "It names the producer too."
+      }
+     ],
+     "stem": "Run the three questions (who, backed, feel) on the final version, which names the EIA and figures checkable against public federal data. Does its verdict rest on grounds?",
+     "title": "Quick check: does the final rest on grounds"
+    }
+   }
+  ],
+  "duration_seconds": 234.0
+ },
+ "ACC-W1112-L-G11-C1108-0011": {
+  "beats": [
+   {
+    "cue_seconds": 104.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Where the source falls short, its limit.",
+       "why": "Correct. A split verdict names both a strength and a limit."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Nothing; naming a strength is the whole evaluation.",
+       "why": "A split verdict needs a limit too."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Its strength, which it has not named yet.",
+       "why": "The strength is named; the limit is missing."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "A second strength to reinforce the first.",
+       "why": "You need a limit, not another strength."
+      }
+     ],
+     "stem": "The second try calls the source \"strong evidence for national water-use totals.\" What is still missing?",
+     "title": "Quick check: half the move"
+    }
+   },
+   {
+    "cue_seconds": 182.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Naming both a strength and a limit, avoiding all-or-nothing.",
+       "why": "Correct. The split verdict names strength and limit."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Giving one overall verdict, either trust it fully or reject it.",
+       "why": "That is the all-or-nothing trap."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Naming two strengths and no limit.",
+       "why": "The limit is required."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Naming a limit only, since flaws matter most.",
+       "why": "You must name the strength too."
+      }
+     ],
+     "stem": "You write a one-sentence verdict on a source from your own research. What makes it a real evaluation rather than a blanket verdict?",
+     "title": "Quick check: the split verdict"
+    }
+   }
+  ],
+  "duration_seconds": 199.0
+ },
+ "ACC-W910-L-G10-C1001-0001": {
+  "beats": [
+   {
+    "cue_seconds": 81.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "A reason that answers the objection, the because part.",
+       "why": "Correct. It concedes and holds but never gives the reason that answers the objection."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It still fails to concede the other side.",
+       "why": "It does concede; the missing piece is the reason."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "A clear position to hold.",
+       "why": "It holds a position; the reason is what is missing."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "A second objection from the other side.",
+       "why": "You need a reason that answers, not more objections."
+      }
+     ],
+     "stem": "The second try, \"Although some drivers cannot shift their hours, cities should charge downtown tolls,\" concedes and holds a position. What is it still missing?",
+     "title": "Quick check: the missing move"
+    }
+   },
+   {
+    "cue_seconds": 173.0,
+    "item": {
+     "note": "No penalty. Make your call first, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Answer the objection you just conceded.",
+       "why": "Correct. The because must answer the concession you made."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Add a fresh new point for your own side.",
+       "why": "The reason must answer the objection, not open a new line."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Concede a second objection instead of answering.",
+       "why": "You must answer, not keep conceding."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Drop the concession and restate your position louder.",
+       "why": "The shape needs the concession plus an answer."
+      }
+     ],
+     "stem": "Rebuilding \"Schools should ban phones in class because they distract students\" into the shape Although X, Y because Z, what must the reason after because do?",
+     "title": "Quick check: what the reason must do"
+    }
+   }
+  ],
+  "duration_seconds": 191.0
+ },
+ "ACC-W910-L-G10-C1001-0002": {
+  "beats": [
+   {
+    "cue_seconds": 81.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "No: the words hard to say give the position away and collapse it.",
+       "why": "Correct. Hard to say abandons the side, so the claim collapses."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Yes: it takes a clear side after conceding.",
+       "why": "Hard to say means it takes no clear side."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "No: because it never names an objection to concede.",
+       "why": "It does concede; the collapse is the words hard to say."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Yes: conceding a point always means staying neutral.",
+       "why": "After conceding you must still hold a side."
+      }
+     ],
+     "stem": "In \"Although the switch disrupts sleep, both sides have fair points, so it is hard to say what we should do,\" does the sentence still hold a position after conceding?",
+     "title": "Quick check: does it still hold a side"
+    }
+   },
+   {
+    "cue_seconds": 163.0,
+    "item": {
+     "note": "No penalty. Run the three questions, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Question two: after conceding, it holds no clear side.",
+       "why": "Correct. The middle question fails because it takes no side."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Question one: it never names a real objection.",
+       "why": "It names an objection; the failure is the missing side, question two."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Question three: its reason does not answer the objection.",
+       "why": "The failure is the missing side, question two."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "None: it passes all three questions.",
+       "why": "Question two fails."
+      }
+     ],
+     "stem": "Running the three checks on \"Although phones in class can distract, schools are complicated places, so it is tough to set one rule,\" which question does the claim fail?",
+     "title": "Quick check: which check fails"
+    }
+   }
+  ],
+  "duration_seconds": 185.0
+ },
+ "ACC-W910-L-G10-C1002-0004": {
+  "beats": [
+   {
+    "cue_seconds": 65.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Summary: it only retells what happens.",
+       "why": "Correct. It retells events and names no author choice, so it is summary."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Analysis: it claims what Chopin is doing.",
+       "why": "Chopin never appears in it; it only retells events."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Analysis: because it mentions the setting in detail.",
+       "why": "Detail about events is still summary."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Summary: but only because it is too short to be analysis.",
+       "why": "Length is not the issue; naming no author choice is."
+      }
+     ],
+     "stem": "Is the first try, \"Missus Mallard sits by the open window and sees the spring trees, the rain, and the patches of blue sky,\" analysis or summary?",
+     "title": "Quick check: analysis or summary"
+    }
+   },
+   {
+    "cue_seconds": 112.0,
+    "item": {
+     "note": "No penalty. Make your call first, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "The purpose: what that imagery is doing, such as tilting grief toward renewal.",
+       "why": "Correct. Analysis names the choice and what it does, to what end."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "More detail about what Missus Mallard sees out the window.",
+       "why": "More content is still summary."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "A judgment that the writing is beautiful and skillful.",
+       "why": "Praise is not analysis of purpose."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "A restatement that spring imagery appears in the passage.",
+       "why": "Naming the choice without its effect stops short of analysis."
+      }
+     ],
+     "stem": "The second try names Chopin's choice but stops at reporting. To finish \"Chopin describes this spring view in order to ___,\" what must the ending supply?",
+     "title": "Quick check: what the ending must add"
+    }
+   },
+   {
+    "cue_seconds": 191.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "One that names Chopin's use of irony and says what that choice does and to what end.",
+       "why": "Correct. That names the craft choice and its purpose."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "One that restates that the doctors were wrong about how she died.",
+       "why": "Retelling the ending is summary."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "One that praises how surprising and well-crafted the ending is.",
+       "why": "Praise is a label, not analysis."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "One that names the irony but stops before saying what it does.",
+       "why": "You must reach the effect and purpose."
+      }
+     ],
+     "stem": "For the ironic ending, \"died of the joy that kills,\" which sentence counts as an analytical claim rather than summary?",
+     "title": "Quick check: what makes it a claim"
+    }
+   }
+  ],
+  "duration_seconds": 208.0
+ },
+ "ACC-W910-L-G10-C1002-0005": {
+  "beats": [
+   {
+    "cue_seconds": 83.0,
+    "item": {
+     "note": "No penalty. Run the craft test, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "No: it names a word but the effect is only on the character, so it stays content.",
+       "why": "Correct. A craft claim needs an effect on the reader, not just the character."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Yes: it names a technique and an effect on the reader, so it is a craft claim.",
+       "why": "The effect it names is only on the character, so it stays content."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "No: it names no technique at all.",
+       "why": "It does name a word; the missing piece is the reader effect."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Yes: an effect on the character counts as a craft claim.",
+       "why": "The effect must reach the reader to be a craft claim."
+      }
+     ],
+     "stem": "Testing \"Chopin uses the word free to show she feels free\": does it name both a technique and an effect on the reader?",
+     "title": "Quick check: craft claim or content"
+    }
+   },
+   {
+    "cue_seconds": 139.0,
+    "item": {
+     "note": "No penalty. Make your call first, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Naming a specific technique Chopin uses and the effect that choice has on the reader.",
+       "why": "Correct. Technique plus reader effect is the craft claim."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Putting a stronger author verb like shows or reveals in front of the feeling.",
+       "why": "A verb swap in front of a feeling is still content."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Describing the character's feeling in more vivid detail.",
+       "why": "More feeling-detail is still content."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Naming the technique but leaving out any effect.",
+       "why": "A craft claim needs the reader effect too."
+      }
+     ],
+     "stem": "\"Chopin reveals that Missus Mallard is overwhelmed by joy\" only reports a feeling. What turns it into a craft claim?",
+     "title": "Quick check: what makes it craft"
+    }
+   }
+  ],
+  "duration_seconds": 161.0
+ },
+ "ACC-W910-L-G10-C1002-0006": {
+  "beats": [
+   {
+    "cue_seconds": 68.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Label only: it praises the writing but names no effect on the reader.",
+       "why": "Correct. Praising care and skill is a label; it names no reader effect."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Analysis: it states an effect on the reader.",
+       "why": "It states no reader effect, only praise."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Analysis: because it names how carefully Chopin builds the paragraph.",
+       "why": "Praising how carefully it is built is still a label."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Label only: but only because it never names Chopin.",
+       "why": "The issue is the missing effect, not the name."
+      }
+     ],
+     "stem": "Is \"Chopin builds this paragraph with remarkable care and layered detail\" a label or analysis?",
+     "title": "Quick check: label or analysis"
+    }
+   },
+   {
+    "cue_seconds": 167.0,
+    "item": {
+     "note": "No penalty. Make your call first, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "What the repetition does to the reader, such as grief turning into release.",
+       "why": "Correct. Naming the effect on the reader turns a label into analysis."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "The technical name of the device, calling it repetition.",
+       "why": "Naming the device is a label, not its effect."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Praise that the repetition is used very skillfully.",
+       "why": "Praise is a label."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "A note that the word free appears more than once.",
+       "why": "Spotting the device without its effect stops short."
+      }
+     ],
+     "stem": "The sentence \"Chopin repeats the word free as Louise looks out the window\" names a device. What must a rewrite add to make it analysis?",
+     "title": "Quick check: what the rewrite must add"
+    }
+   }
+  ],
+  "duration_seconds": 219.0
+ },
+ "ACC-W910-L-G10-C1002-0007": {
+  "beats": [
+   {
+    "cue_seconds": 79.0,
+    "item": {
+     "note": "No penalty. Run the three checks, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "The warrant: why that effect matters to the author's purpose.",
+       "why": "Correct. It names the device and effect but never says why the effect matters."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "The device: what the author does.",
+       "why": "The device is named."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "The effect: what it does to the reader.",
+       "why": "The effect is named; the warrant is what is missing."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Nothing: it already reaches the warrant.",
+       "why": "It stops at the effect, right in the middle band."
+      }
+     ],
+     "stem": "In \"The author opens with something readers pass without ever thinking about it, which makes the interstate feel familiar,\" which of the three beats is still missing?",
+     "title": "Quick check: which beat is missing"
+    }
+   },
+   {
+    "cue_seconds": 117.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "No: interesting is praise, not a purpose.",
+       "why": "Correct. Interesting is praise, so it is not a real purpose."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Yes: it now explains why the effect matters.",
+       "why": "Interesting is praise, not an explanation of why it matters."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "No: because it never named the device.",
+       "why": "The device is named; interesting just is not a purpose."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Yes: any comment after the effect counts as a warrant.",
+       "why": "A warrant must name a real purpose, not just any comment."
+      }
+     ],
+     "stem": "Does adding \"and that is an interesting way to start\" reach the warrant?",
+     "title": "Quick check: does it reach the warrant"
+    }
+   }
+  ],
+  "duration_seconds": 169.0
+ },
+ "ACC-W910-L-G10-C1002-0008": {
+  "beats": [
+   {
+    "cue_seconds": 81.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Yes: both make recycling feel like an ongoing process, not a finished act.",
+       "why": "Correct. Both choices build the same point, so they can be linked."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "No: the factory detail makes a separate point about complex machinery.",
+       "why": "Both choices build the same ongoing-process point."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Yes: because both sentences are about recycling.",
+       "why": "Same topic is not the same point."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "No: two choices can never build a single point.",
+       "why": "Linking two choices to one point is exactly the move."
+      }
+     ],
+     "stem": "Does tracing the bottle \"through trucks, machines, and factories\" build the same point as calling it \"the beginning of a story,\" and what is that point?",
+     "title": "Quick check: same point or not"
+    }
+   },
+   {
+    "cue_seconds": 152.0,
+    "item": {
+     "note": "No penalty. Run the chain check, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Find a second choice that builds the same point, then name that point.",
+       "why": "Correct. That is the device-chain move."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Add a second choice that makes a different, unrelated point.",
+       "why": "Both choices must build one point."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Repeat the first choice in stronger words.",
+       "why": "Repetition is not a second choice."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Name two points, one for each choice.",
+       "why": "The chain builds one shared point."
+      }
+     ],
+     "stem": "If your paragraph analyzes only one choice and fails the chain check, what fixes it?",
+     "title": "Quick check: how to fix a thin paragraph"
+    }
+   }
+  ],
+  "duration_seconds": 167.0
+ },
+ "ACC-W910-L-G10-C1005-0010": {
+  "beats": [
+   {
+    "cue_seconds": 76.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": false,
+       "id": "A",
+       "text": "Wetlands protect against floods.",
+       "why": "The reveal keeps this sentence; it states the flood point itself."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "They hold rain.",
+       "why": "The reveal keeps this sentence; it is later sharpened for detail, but it is not the cut."
+      },
+      {
+       "correct": true,
+       "id": "C",
+       "text": "Some people think swamps look ugly.",
+       "why": "The reveal says this is true but does nothing for the flood point, so it goes."
+      }
+     ],
+     "stem": "Of the three sentences, \"Wetlands protect against floods,\" \"They hold rain,\" and \"Some people think swamps look ugly,\" which one fails the test and must be cut from the flood point?",
+     "title": "Quick check: which sentence to cut"
+    }
+   },
+   {
+    "cue_seconds": 118.0,
+    "item": {
+     "note": "No penalty. Make your call first, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "One that shows the mechanism: they soak up rain like a sponge and release it slowly, so rivers rise less sharply.",
+       "why": "Correct. It shows how wetlands hold back a flood."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "One that repeats more strongly that wetlands are very important for stopping floods.",
+       "why": "Louder repetition is not the missing how."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "One that adds that some people find swamps ugly.",
+       "why": "That off-point detail was already cut."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "One that states wetlands hold rain, with no how.",
+       "why": "That is the thin sentence being fixed."
+      }
+     ],
+     "stem": "The point still needs a sentence showing HOW wetlands stop a flood. Which addition does the job?",
+     "title": "Quick check: what the added sentence needs"
+    }
+   }
+  ],
+  "duration_seconds": 167.0
+ },
+ "ACC-W910-L-G10-C1005-0011": {
+  "beats": [
+   {
+    "cue_seconds": 71.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": false,
+       "id": "A",
+       "text": "The sentence giving the present-day result.",
+       "why": "The reveal says the result comes later; cause must come before effect."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "The sentence about the nineteen fifties founding.",
+       "why": "The reveal treats the founding as the cause that comes after the planners' question, not first."
+      },
+      {
+       "correct": true,
+       "id": "C",
+       "text": "The planners' question.",
+       "why": "The reveal says the earliest step is the planners' question, so it moves to the front."
+      }
+     ],
+     "stem": "Three sentences are labeled A, B, and C. Which one is the earliest step and belongs first?",
+     "title": "Quick check: which sentence goes first"
+    }
+   },
+   {
+    "cue_seconds": 133.0,
+    "item": {
+     "note": "No penalty. Make your call first, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Two, three, one: cause, then effect, then further effect.",
+       "why": "Correct. Events run in the order they actually happened."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "One, two, three: leave them as given, with the result first.",
+       "why": "The result before its cause forces the reader to jump back."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Three, two, one: reverse the given order.",
+       "why": "That is still out of cause-then-effect sequence."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "One, three, two: keep the result first, then reorder.",
+       "why": "The cause must come first."
+      }
+     ],
+     "stem": "The three kitchen-fire sentences are scrambled so the result comes first. What is the correct order?",
+     "title": "Quick check: the correct order"
+    }
+   }
+  ],
+  "duration_seconds": 172.0
+ },
+ "ACC-W910-L-G12-C1201-0001": {
+  "beats": [
+   {
+    "cue_seconds": 60.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Narrow",
+       "why": "The reveal says it is narrow: it names no larger question and answers the literal prompt as a standalone puzzle, adding no complexity."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Situated",
+       "why": "A situated claim names the larger question and then commits within it; the reveal notes this one names no larger question, so it cannot be situated."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "The trap",
+       "why": "The trap names a larger question but never commits; this claim commits to an answer yet names no larger question, so it is narrow, not the trap."
+      }
+     ],
+     "stem": "Classify this first try, \"The country should protect its water for food, because people need to eat.\" Is it narrow, situated, or the trap?",
+     "title": "Quick check: classify the thesis"
+    }
+   },
+   {
+    "cue_seconds": 103.0,
+    "item": {
+     "note": "No penalty. Make your call, then the video shows the situated version.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It names the larger question (how a society rations a necessity it can no longer fully supply) and still commits to protecting food first within that frame.",
+       "why": "The reveal names both moves: name the larger question, then answer within it by committing to a position inside that frame."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It names the larger question about rationing but stays neutral, leaving the food-first commitment out.",
+       "why": "The reveal's move two is to commit to a position inside the frame; naming the question without committing is the trap, not a situated thesis."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It commits to protecting food first and adds the reason that people need to eat, but names no larger question.",
+       "why": "The reveal calls that the narrow version; committing without naming a larger question is exactly what situating was built to fix."
+      }
+     ],
+     "stem": "You rebuild the water claim into a situated thesis. Which move set is what makes it situated rather than narrow or the trap?",
+     "title": "Quick check: what makes it situated"
+    }
+   },
+   {
+    "cue_seconds": 160.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video gives the verdict.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "The third question, whether it commits: it names a larger question but never commits to an answer on the actual prompt, which is the trap.",
+       "why": "The reveal says the claim names a larger question but never commits to an answer, so it fails the commit question and is the trap."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "The second question, whether it names a larger question: it never names one inside the claim.",
+       "why": "The reveal confirms the claim does name a larger question; the failure is the missing commitment, not a missing question."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "None of them: it names the larger question about rationing, so it already works as a situated thesis.",
+       "why": "The reveal says it never commits to an answer on the actual prompt, so it is the trap rather than a finished situated thesis."
+      }
+     ],
+     "stem": "Run the three questions on \"Every society must eventually decide how to ration scarce necessities.\" Which question does it fail?",
+     "title": "Quick check: which question it fails"
+    }
+   }
+  ],
+  "duration_seconds": 183.0
+ },
+ "ACC-W910-L-G12-C1201-0002": {
+  "beats": [
+   {
+    "cue_seconds": 80.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "No. It names nothing; a transition word did the work and no cost was admitted, so it is a formula.",
+       "why": "The reveal's verdict is that it names nothing and is a formula, because a transition word carried the sentence and no cost was admitted."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Yes. Admitting that some people disagree is the cost the writer's side pays.",
+       "why": "The reveal says disagreement is not a cost; only naming what choosing training actually costs the present worker would count."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Yes. The transition \"on the other hand\" does the work of naming the cost.",
+       "why": "The reveal says a transition word did all the work and no cost was admitted, so the transition names nothing."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Yes. The closing \"But overall, training is best\" shows the writer weighed the cost and still chose training.",
+       "why": "The reveal says no cost was ever admitted, so there was nothing to weigh; recommitting after a hollow concession is part of the formula."
+      }
+     ],
+     "stem": "In the first try, \"We should fund training for growing fields. On the other hand, some people disagree. But overall, training is best,\" does \"some people disagree\" name a real cost the writer's own side pays?",
+     "title": "Quick check: real cost or formula"
+    }
+   },
+   {
+    "cue_seconds": 128.0,
+    "item": {
+     "note": "No penalty. Make your call, then the video shows the final version.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Name the specific cost (the same dollar cannot also protect the displaced worker), then let that cost shape the claim so the position holds only if it admits the choice.",
+       "why": "The reveal names both moves: name the specific cost, then let that cost shape what the claim is willing to defend."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Add a transition like \"on the other hand\" to signal the other side has a point.",
+       "why": "The reveal treats a transition alone as naming no cost, which leaves only a formula, not a real tension."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Point at the other aim (protecting displaced workers also matters) and stop there, since naming the competing goal is enough.",
+       "why": "The reveal calls that second try better but not done: it points at the other aim without saying what training costs the present worker or letting that cost shape the claim."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Name the specific cost the same dollar imposes, but keep the claim as \"fund training,\" so the cost is mentioned without changing what you defend.",
+       "why": "The reveal's second move is to let the cost shape the claim; mentioning the cost without changing the position leaves the move half done."
+      }
+     ],
+     "stem": "You sharpen the training claim into a real tension. Which move set is what makes it work?",
+     "title": "Quick check: what makes the tension real"
+    }
+   },
+   {
+    "cue_seconds": 187.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms the check.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Names a specific cost the writer's own side pays and lets that cost shape the claim itself.",
+       "why": "The reveal says to name the cost your side pays first, then let that cost shape the position, then run the three questions."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Signals disagreement with a transition and then reaffirms the writer's side.",
+       "why": "The reveal calls that a formula, not a real tension, because \"some people disagree\" names no cost."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Names the competing goal the other side cares about, then leaves the claim unchanged.",
+       "why": "The check's third question asks whether the tension shapes the claim; naming a competing goal without reshaping the claim still leaves a formula."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Names a specific cost the opposing side pays if the writer's position wins.",
+       "why": "The check's first question asks for a cost the writer's own side pays, not a cost imposed on the other side."
+      }
+     ],
+     "stem": "A claim passes the real-tension check only if it does what?",
+     "title": "Quick check: the real-tension test"
+    }
+   }
+  ],
+  "duration_seconds": 208.0
+ },
+ "ACC-W910-L-G12-C1201-0003": {
+  "beats": [
+   {
+    "cue_seconds": 86.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "weak",
+       "why": "The reveal says the flattening word is weak: the power side gets called weak and dropped, leaving only one truth standing."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "basic, as in calling food the more basic need",
+       "why": "The reveal shows a draft can call food the more basic need and still keep both truths in view, so ranking with basic does not flatten the tension."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "and yet, the connective joining the two truths",
+       "why": "The reveal says \"and yet\" grants the other truth, so it keeps both truths live rather than dismissing one."
+      }
+     ],
+     "stem": "Check question one asks whether both truths are still live, with neither dismissed. Which word flattens the tension by dismissing one side?",
+     "title": "Quick check: the flattening word"
+    }
+   },
+   {
+    "cue_seconds": 129.0,
+    "item": {
+     "note": "No penalty. Make your call, then the video shows the final version.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Reason from the clash (protecting food already requires protecting some power, one system not rivals) and land on a rule: a shared rationing rule beats naming a winner.",
+       "why": "The reveal's moves are to grant the other truth, reason from the conflict, then land on a shared rationing rule."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Keep both truths in view and then rank food above power as the winner.",
+       "why": "The reveal says the two are not rivals to rank; a shared rationing rule beats naming a winner."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Keep both truths in view (food is basic, yet the pumps run on the grid) and stop there, since holding both is enough.",
+       "why": "Check question two asks whether the claim argues from the clash; holding both truths without reasoning from the conflict still fails it."
+      }
+     ],
+     "stem": "To pass check question two, you rewrite the second try so it argues from the conflict. Which move makes it work?",
+     "title": "Quick check: reason from the clash"
+    }
+   }
+  ],
+  "duration_seconds": 204.0
+ },
+ "ACC-W910-L-G12-D1201-0015": {
+  "beats": [
+   {
+    "cue_seconds": 58.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "The point is that a budget has to choose (the hard choice); \"training helps the next generation\" is the minor idea to tuck into an \"although.\"",
+       "why": "The reveal subordinates the training clause with although and identifies the hard choice as the point that should land at the end."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "The point is that training helps the next generation; the hard choice is the minor idea.",
+       "why": "The reveal subordinates the training clause under although and treats the hard choice as the point, so this reverses the two."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "The point is that it does not help the displaced worker; \"training helps the next generation\" is the minor idea.",
+       "why": "The reveal names the hard choice, that a budget has to choose, as the point; the displaced-worker clause is not the point the video identifies."
+      }
+     ],
+     "stem": "In \"Although training helps the next generation, it does not help the displaced worker, and a budget has to choose,\" which clause is the point to place at the emphatic end, and which is the minor idea to subordinate?",
+     "title": "Quick check: minor idea vs. the point"
+    }
+   },
+   {
+    "cue_seconds": 132.0,
+    "item": {
+     "note": "No penalty. Make your call, then the video shows one shaped version.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Subordinate the setting and style under \"although\" and let the point (the ending breaks the reader in two, and that is why the book stays with you) land last.",
+       "why": "The reveal subordinates setting and style and places the point last, which is the whole shaping move."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Keep the clauses joined with \"and\" at equal weight but move the ending clause to the front.",
+       "why": "The reveal places the point last, not first, and treats equal-weight \"and\" chains as the flat problem to fix."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Subordinate the ending under \"although\" and leave the small setting and quiet prose at the end.",
+       "why": "The reveal subordinates the minor ideas, the setting and style, and keeps the point last; this subordinates the point instead."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Replace the \"and\"s with commas but keep every clause at equal weight, with nothing subordinated.",
+       "why": "The check's first question flags clauses strung together at equal weight; swapping conjunctions for commas without subordinating a minor idea leaves the sentence just as flat."
+      }
+     ],
+     "stem": "You reshape \"The novel is set in a small village, and the prose is quiet, and the ending breaks the reader in two, and that is why the book stays with you.\" Which move makes it work?",
+     "title": "Quick check: reshape the flat sentence"
+    }
+   }
+  ],
+  "duration_seconds": 186.0
+ },
+ "ACC-W910-L-G9-C901-0001": {
+  "beats": [
+   {
+    "cue_seconds": 82.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It fails the reason question: no reason is attached.",
+       "why": "Correct. It states a side of sorts but gives no reason, so the reason question is the one it fails."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It fails the side question: it takes no side.",
+       "why": "It does take a side of sorts, so this is not the question it fails."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It fails the disagree question: no one could disagree.",
+       "why": "Someone could disagree with it, so it passes the disagree question."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It passes all three and is already an arguable claim.",
+       "why": "It fails the reason question, so it is not an arguable claim yet."
+      }
+     ],
+     "stem": "The sentence \"Homework is boring\" is run through the three arguable-claim questions. Which question does it fail?",
+     "title": "Quick check: which test does it fail?"
+    }
+   },
+   {
+    "cue_seconds": 131.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Add a side someone could disagree with, and attach a reason.",
+       "why": "Correct. A side plus a reason is exactly the two-move build the video shows next."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Add more detail about how often students use phones.",
+       "why": "Another fact stays a fact; it takes no side and gives no reason."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Make the sentence longer and use more formal words.",
+       "why": "Length and formality do not turn a fact into a claim."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Describe how the school day is scheduled.",
+       "why": "Describing takes no side, so it is not a claim."
+      }
+     ],
+     "stem": "You start with the fact \"Students use phones during the school day.\" What two moves turn it into an arguable claim?",
+     "title": "Quick check: what makes it arguable?"
+    }
+   }
+  ],
+  "duration_seconds": 169.0
+ },
+ "ACC-W910-L-G9-C901-0003": {
+  "beats": [
+   {
+    "cue_seconds": 78.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "One that names an exact amount, gives a real reason, and says why it matters.",
+       "why": "Correct. A specific side, a reason, and a so-what are the three moves the sharp claim needs."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "One that just repeats the idea more forcefully with words like definitely.",
+       "why": "Louder wording adds no amount, reason, or so-what."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "One that names an exact amount but never says why it matters.",
+       "why": "It is missing the so-what that shows why the claim matters."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "One that keeps the vague good grades with no amount.",
+       "why": "Without a specific amount or kind, the side is not sharp yet."
+      }
+     ],
+     "stem": "You rewrite \"Schools should pay students for good grades.\" Which rewrite is the strong one the writer landed on?",
+     "title": "Quick check: the sharp rewrite"
+    }
+   },
+   {
+    "cue_seconds": 147.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Cap homework at one hour a night, with a reason, and stakes about students losing sleep.",
+       "why": "Correct. It names a specific limit, gives a reason, and says why it matters."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Homework is very bad and unfair to students.",
+       "why": "That is just louder; it names no specific side, reason, or stakes."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Cap homework at one hour a night, but stop there with no reason or stakes.",
+       "why": "It has a specific side but is missing the reason and the so-what."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Say homework hurts students' sleep, with no limit named.",
+       "why": "It gives stakes but names no specific side to defend."
+      }
+     ],
+     "stem": "You rewrite \"Homework is bad.\" Which version passes the three questions: specific side, a reason, and a so-what?",
+     "title": "Quick check: does it pass?"
+    }
+   }
+  ],
+  "duration_seconds": 187.0
+ },
+ "ACC-W910-L-G9-C901-0006": {
+  "beats": [
+   {
+    "cue_seconds": 52.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "No: it takes a side, which is an argue move, not explain.",
+       "why": "Correct. Explain wants no side, and this draft takes one, so it is the wrong product."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Yes: it matches explain.",
+       "why": "It takes a side, which is an argue move, so it does not match explain."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "No: but only because the sentence is too short.",
+       "why": "The problem is the side it takes, not its length."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Yes: taking a side is fine for an explain task.",
+       "why": "Explain wants no side, so taking one answers the wrong question."
+      }
+     ],
+     "stem": "The task says explain how a volcano erupts. Does the writer's first-try sentence match the verb explain?",
+     "title": "Quick check: does it match EXPLAIN?"
+    }
+   },
+   {
+    "cue_seconds": 131.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Draft B: it takes a side and gives a reason.",
+       "why": "Correct. A side plus a reason is the arguable claim an argue task needs."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Draft A: it has a focus but stays neutral.",
+       "why": "A neutral focus is a controlling idea, the wrong product for an argue task."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Neither draft takes a side.",
+       "why": "Draft B takes a clear side."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Both drafts work equally for an argue task.",
+       "why": "Draft A is neutral, so only B works for argue."
+      }
+     ],
+     "stem": "The verb is argue: should your school adopt a later start time? Which draft, A or B, matches argue?",
+     "title": "Quick check: which draft argues?"
+    }
+   }
+  ],
+  "duration_seconds": 173.0
+ },
+ "ACC-W910-L-G9-C902-0007": {
+  "beats": [
+   {
+    "cue_seconds": 52.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Quote it.",
+       "why": "The reveal says the answer is quote, because the exact wording and figure matter, so you keep them word for word."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Paraphrase it.",
+       "why": "The reveal says the exact figure matters and must be kept word for word, so paraphrasing would lose it."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Summarize it.",
+       "why": "The reveal says to keep the exact figure, so summarizing (which shortens and rewords) is the wrong move."
+      }
+     ],
+     "stem": "A source gives an exact, striking figure (four point eight billion lunches) and the exact number matters. Should you quote, paraphrase, or summarize?",
+     "title": "Quick check: which move fits?"
+    }
+   },
+   {
+    "cue_seconds": 96.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It names no source, so it is a dropped quote.",
+       "why": "Correct. No quote stands alone; the missing piece is a source tag."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It is missing the exact figure.",
+       "why": "The figure is there; the source is what is missing."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "The quotation is too long and should be trimmed.",
+       "why": "Length is not the issue; the missing attribution is."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It needs quotation marks around the words.",
+       "why": "Punctuation is not the fix; naming the source is."
+      }
+     ],
+     "stem": "Look at \"The program served more than four point eight billion lunches.\" What is missing?",
+     "title": "Quick check: what is missing?"
+    }
+   },
+   {
+    "cue_seconds": 168.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It must name its source, because no quote stands alone.",
+       "why": "Correct. Every quote needs an attributive tag naming who said it."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "A striking figure can stand on its own without naming a source.",
+       "why": "No quote or figure stands alone; it still needs a source."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "If it is quoted word for word, it does not need a source tag.",
+       "why": "Exact wording still needs its source named."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Naming the source is optional as long as the fact is true.",
+       "why": "Truth does not remove the need to name the source."
+      }
+     ],
+     "stem": "You run the three-question check before submitting (named the source, chose the move on purpose, fact is really in the source). What must be true for the sentence to be ready?",
+     "title": "Quick check: is it ready?"
+    }
+   }
+  ],
+  "duration_seconds": 185.0
+ },
+ "ACC-W910-L-G9-C902-0008": {
+  "beats": [
+   {
+    "cue_seconds": 68.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "No: it is off-point, it tells the path, not the reason.",
+       "why": "Correct. The flyways fact is about the route, not why birds migrate, so it does not prove the claim."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Yes: it proves why birds migrate.",
+       "why": "It gives the path, not the reason, so it does not prove why."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "No: but only because it is too short to be proof.",
+       "why": "The problem is that it is off-point, not that it is short."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Yes: any true fact from the passage supports the claim.",
+       "why": "A fact must match the claim's point; being true is not enough."
+      }
+     ],
+     "stem": "Does the fact \"Birds follow set routes called flyways\" prove why birds migrate (to survive the seasons)?",
+     "title": "Quick check: does it prove it?"
+    }
+   },
+   {
+    "cue_seconds": 139.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It matches what the claim actually says and names its source.",
+       "why": "Correct. On-point plus a named source is what makes it real proof."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It is the first true fact you found in the passage.",
+       "why": "Being first or true is not the test; relevance and a source are."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It is the longest, most detailed fact available.",
+       "why": "Length is not the test; matching the claim is."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It sounds impressive even though it is off the claim's point.",
+       "why": "Off-point evidence fails the relevance test no matter how it sounds."
+      }
+     ],
+     "stem": "You run the relevance test on the according-to-the-passage fact. What makes a fact good proof?",
+     "title": "Quick check: what makes it proof?"
+    }
+   }
+  ],
+  "duration_seconds": 157.0
+ },
+ "ACC-W910-L-G9-C902-0009": {
+  "beats": [
+   {
+    "cue_seconds": 82.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "The one that is integrated into a built sentence.",
+       "why": "Correct. An integrated quote shows the reader how the number connects."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "The one that leaves the reader to figure out how the number connects.",
+       "why": "That is the dropped version the lesson is fixing."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Both work the same, since the number is identical.",
+       "why": "Integration changes whether the reader can follow the connection."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "The dropped one, because a bare statistic is more striking.",
+       "why": "A dropped statistic forces the reader to connect it alone."
+      }
+     ],
+     "stem": "Two sentences use the same quote (forty-eight minutes). Which one, A or B, folds it into a built sentence?",
+     "title": "Quick check: which is integrated?"
+    }
+   },
+   {
+    "cue_seconds": 130.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "One built sentence that names Pew and folds the seventy-two percent inside it.",
+       "why": "Correct. Naming the source and folding the number in is the integrated move."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "The number sits alone, then Pew is named in a separate sentence.",
+       "why": "Splitting it into two sentences still leaves the quote dropped."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Just the statistic on its own, since it is striking enough.",
+       "why": "A statistic alone is a dropped quote."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Name Pew, but leave out the number to keep it short.",
+       "why": "That drops the evidence the sentence is built on."
+      }
+     ],
+     "stem": "You fold the quote (seventy-two percent) from Pew into one sentence. Which version passes the check?",
+     "title": "Quick check: which sentence passes?"
+    }
+   }
+  ],
+  "duration_seconds": 168.0
+ },
+ "ACC-W910-L-G9-C903-0010": {
+  "beats": [
+   {
+    "cue_seconds": 82.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Because.",
+       "why": "The reveal uses because, which states the reason the fact supports the claim."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "But.",
+       "why": "The reveal shows the fact backs the claim rather than limiting it, so but does not fit."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "So.",
+       "why": "The reveal links the fact as the reason for the claim, not as a result of it, so so does not fit."
+      }
+     ],
+     "stem": "Claim: schools should offer free meals to all students. Fact: the program already reaches millions who would go hungry. Which hinge links them: because, but, or so?",
+     "title": "Quick check: pick the hinge"
+    }
+   },
+   {
+    "cue_seconds": 119.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "But.",
+       "why": "The reveal uses but, because the fact names a limit on the claim."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Because.",
+       "why": "The reveal says the fact names a limit, not a reason for the claim, so because does not fit."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "So.",
+       "why": "The reveal says the fact pushes against the claim, not follows from it, so so does not fit."
+      }
+     ],
+     "stem": "Claim: The program is large. Fact: It still misses some families. Which hinge shows the relationship: because, but, or so?",
+     "title": "Quick check: pick the hinge"
+    }
+   }
+  ],
+  "duration_seconds": 157.0
+ },
+ "ACC-W910-L-G9-C903-0011": {
+  "beats": [
+   {
+    "cue_seconds": 87.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "A restatement: the because just repeats the claim.",
+       "why": "Correct. The because carries no reason; it only repeats the claim."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "A real warrant that explains why the evidence fits.",
+       "why": "It never explains why; it just repeats the claim."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "A warrant, because it uses the word because.",
+       "why": "The word because alone does not make a warrant; the reason does."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Neither, because it has no evidence at all.",
+       "why": "It has evidence; what is missing is the why."
+      }
+     ],
+     "stem": "Is \"Schools should require service because it really should be required\" a real warrant or a restatement?",
+     "title": "Quick check: warrant or restatement?"
+    }
+   },
+   {
+    "cue_seconds": 161.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Yes: it uses a causal word, explains why, and uses the fact.",
+       "why": "Correct. It passes all three warrant questions."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "No: it only restates the claim.",
+       "why": "It explains why the evidence fits, so it does not merely restate."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "No: it never mentions the fact about programs.",
+       "why": "It does use the fact that most schools already run programs."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "No: it is missing a causal word like because.",
+       "why": "The causal word is present."
+      }
+     ],
+     "stem": "You run the three warrant questions on the sentence (causal word, explains why, uses a fact from the source). Does it pass?",
+     "title": "Quick check: does it pass?"
+    }
+   }
+  ],
+  "duration_seconds": 176.0
+ },
+ "ACC-W910-L-G9-C903-0012": {
+  "beats": [
+   {
+    "cue_seconds": 81.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Spell out the link: connect the moving-water loop to the meaning of reuse.",
+       "why": "Correct. A warrant names why the evidence supports the point."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Restate that the water cycle is important.",
+       "why": "Restating the point is not a warrant."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Add another fact about how much water Earth has.",
+       "why": "A new fact is not a warrant; the warrant explains the link."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Say the evidence is interesting and move on.",
+       "why": "Praise is not a warrant."
+      }
+     ],
+     "stem": "You write a warrant for why evaporating and falling water proves the water cycle reuses the same water. What must the warrant do?",
+     "title": "Quick check: what the warrant does"
+    }
+   },
+   {
+    "cue_seconds": 134.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Point, then Evidence, then Warrant.",
+       "why": "Correct. The claim comes first, then the attributed fact, then the why."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Evidence first, then a Point, then a summary.",
+       "why": "A summary is not a warrant, and the point should lead."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Point, then Warrant, with no evidence in between.",
+       "why": "Skipping the evidence leaves the warrant with nothing to explain."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Evidence and a Point, ending before any Warrant.",
+       "why": "Dropping the warrant leaves the reader guessing why the evidence fits."
+      }
+     ],
+     "stem": "A short attempt on screen does not hold together. What three moves must a paragraph have, in order, to hold?",
+     "title": "Quick check: the three moves in order"
+    }
+   }
+  ],
+  "duration_seconds": 158.0
+ },
+ "ACC-W910-L-G9-C903-0028": {
+  "beats": [
+   {
+    "cue_seconds": 52.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Pair A: one gives the usage rate, the other shows the scale unused.",
+       "why": "Correct. The two facts add up: rate plus scale develop one point."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Pair B: it repeats the same idea twice.",
+       "why": "Repetition does not add up to a developed point."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Neither pair works with a single point.",
+       "why": "Pair A does add up to one point."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Both pairs work equally well.",
+       "why": "Pair B just repeats, so only A adds up."
+      }
+     ],
+     "stem": "Point: our school library is underused. Pair A (about twelve percent borrowed a book; the library holds forty thousand books) or Pair B (twelve percent borrowed; very few checked anything out). Which pair adds up?",
+     "title": "Quick check: which pair adds up?"
+    }
+   },
+   {
+    "cue_seconds": 123.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "The second fact adds something the first needs (a baseline), and one warrant ties both to the point.",
+       "why": "Correct. The facts add up and one warrant links them to the point."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "The two facts repeat the same idea for emphasis.",
+       "why": "Repetition is not the same as adding up."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "The two facts are strong, so no warrant is needed to tie them.",
+       "why": "A warrant must tie both facts to the point."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "The facts are listed in any order, since order does not matter.",
+       "why": "They must be ordered so each builds on the last."
+      }
+     ],
+     "stem": "You run the three questions on the finished paragraph. What makes two pieces of evidence work together?",
+     "title": "Quick check: what makes two facts work?"
+    }
+   }
+  ],
+  "duration_seconds": 159.0
+ },
+ "ACC-W910-L-G9-C904-0030": {
+  "beats": [
+   {
+    "cue_seconds": 65.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "No: it is a neutral fact both sides accept.",
+       "why": "Correct. A fact both sides accept does not push back on the claim."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Yes: it is a real counterargument.",
+       "why": "It is neutral, so it does not oppose the claim."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "No: but only because it is worded too politely.",
+       "why": "The problem is that it is neutral, not its tone."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Yes: any fact about the topic counts as the other side.",
+       "why": "A counterargument must oppose your claim, not just touch the topic."
+      }
+     ],
+     "stem": "Claim: schools should require community service. First try: \"Many students already volunteer on their own.\" Is that a real counterargument?",
+     "title": "Quick check: real counterargument?"
+    }
+   },
+   {
+    "cue_seconds": 105.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "The writer's own side in disguise.",
+       "why": "Correct. It is the writer's claim again, just dressed up with a reason."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "The other side speaking.",
+       "why": "It is the writer's own position, not the opposing one."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "A neutral fact both sides accept.",
+       "why": "It is the writer's claim, not a neutral fact."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "A real counterargument, since it gives a reason.",
+       "why": "A reason for your own side is still your side, not the other."
+      }
+     ],
+     "stem": "Second try: \"Community service teaches responsibility, so schools should require it.\" Is that the other side, or the writer's own side in disguise?",
+     "title": "Quick check: whose side is it?"
+    }
+   },
+   {
+    "cue_seconds": 167.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It opposes your claim, is what the other side would really say, and is their strongest form.",
+       "why": "Correct. Those are the three marks of a real counterargument."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It is a fact both sides accept, or a weak point easy to knock down.",
+       "why": "That is not a real counterargument."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It is the writer's own reason, restated more forcefully.",
+       "why": "That is your side, not the other side."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It opposes the claim but uses the weakest point you can find.",
+       "why": "A real counterargument uses the other side's strongest point."
+      }
+     ],
+     "stem": "You write the strongest point the other side would make about banning phones. What makes a counterargument real?",
+     "title": "Quick check: what makes it real?"
+    }
+   }
+  ],
+  "duration_seconds": 191.0
+ },
+ "ACC-W910-L-G9-C904-0031": {
+  "beats": [
+   {
+    "cue_seconds": 84.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It does not concede the other side's strongest objection, the cost.",
+       "why": "Correct. The first try skips the concession move entirely."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It is missing a reason for its own side.",
+       "why": "It has its side; what it skips is conceding the objection."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It fails to hold a clear position.",
+       "why": "It holds a position; it just never concedes."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It concedes but forgets to answer the objection.",
+       "why": "It never conceded in the first place."
+      }
+     ],
+     "stem": "Claim: cities should make public transit free. First try: \"Cities should make the buses free, because free rides get people to work.\" Which of the three moves is missing?",
+     "title": "Quick check: which move is missing?"
+    }
+   },
+   {
+    "cue_seconds": 150.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Concede a real objection, answer it with a reason, and still hold your position.",
+       "why": "Correct. Those are the three moves of Although X, Y because Z."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Concede the objection and then switch to the other side's position.",
+       "why": "You must still hold your own side."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Concede a fact everyone already accepts, then restate your side.",
+       "why": "Concede a real objection, not a truism, and answer it."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Skip the concession and just give two reasons for your side.",
+       "why": "The move requires conceding first."
+      }
+     ],
+     "stem": "You write one \"Although X, Y because Z\" sentence defending a later start time. What must it do?",
+     "title": "Quick check: what the sentence must do"
+    }
+   }
+  ],
+  "duration_seconds": 175.0
+ },
+ "ACC-W910-L-G9-C904-0032": {
+  "beats": [
+   {
+    "cue_seconds": 67.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It only names the worry, then moves on, so the worry is still standing.",
+       "why": "Correct. Naming an objection without answering it leaves it standing."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It answers the money worry with a reason.",
+       "why": "It only names the worry; it never answers it."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "It never mentions the money worry at all.",
+       "why": "It does name the worry; it just fails to answer it."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It answers the worry by switching to a new topic.",
+       "why": "Changing topic is not answering the objection."
+      }
+     ],
+     "stem": "\"Some say it wastes money. But free meals help students learn.\" Does this answer the money worry with a reason, or only name it and move on?",
+     "title": "Quick check: does it answer it?"
+    }
+   },
+   {
+    "cue_seconds": 155.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "State your position, name the other side fairly, and answer it with a reason.",
+       "why": "Correct. Those are the three parts: position, other side, answer."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "State your position, name the other side, then move on.",
+       "why": "Naming without answering leaves the worry standing."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "State your position and answer worries you invented yourself.",
+       "why": "You must name the real objection, not an invented one."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Name the other side first, then drop your own position.",
+       "why": "You must hold your position."
+      }
+     ],
+     "stem": "You run the three-question check on the paragraph. What three parts must a counterargument paragraph have?",
+     "title": "Quick check: the three parts"
+    }
+   }
+  ],
+  "duration_seconds": 174.0
+ },
+ "ACC-W910-L-G9-C905-0004": {
+  "beats": [
+   {
+    "cue_seconds": 82.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "An argument claim.",
+       "why": "The reveal says the words \"most important\" take a side another reader could dispute, so it is an argument claim."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "A fact.",
+       "why": "The reveal says the sentence takes a side, and a fact takes no side, so it is not a fact."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "A controlling idea.",
+       "why": "The reveal says it leans toward a side, but a controlling idea sets a neutral focus, so it is not one."
+      }
+     ],
+     "stem": "Is \"The water cycle is the most important process on Earth\" a fact, an argument claim, or a controlling idea?",
+     "title": "Quick check: which one is it?"
+    }
+   },
+   {
+    "cue_seconds": 176.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Does it name the parts it will cover?",
+       "why": "Correct. It sets a focus and stays neutral, but names no parts, so this is the question it fails."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Does it set a focus?",
+       "why": "It does set a focus, so it passes this question."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Does it stay neutral and take no side?",
+       "why": "It is neutral, so it passes this question."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It passes all three and is a controlling idea already.",
+       "why": "It fails the naming-parts question, so it is not a controlling idea yet."
+      }
+     ],
+     "stem": "Run the three controlling-idea questions on \"The water cycle moves water around the planet.\" Which question does it fail?",
+     "title": "Quick check: the one that fails"
+    }
+   }
+  ],
+  "duration_seconds": 212.0
+ },
+ "ACC-W910-L-G9-C906-0014": {
+  "beats": [
+   {
+    "cue_seconds": 80.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Sequence: they are steps in order.",
+       "why": "Correct. Taking sunlight, then water, then making sugar are ordered steps, so sequence signposts fit."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Addition: they are similar ideas.",
+       "why": "They are ordered steps, not a list of similar ideas."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Contrast: they pull against each other.",
+       "why": "The steps do not clash, so contrast does not fit."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Cause and effect: one makes the next happen.",
+       "why": "They are ordered steps, not a cause chain."
+      }
+     ],
+     "stem": "A draft moves from taking in sunlight, then water, then making sugar. What relationship connects these links?",
+     "title": "Quick check: label the links"
+    }
+   },
+   {
+    "cue_seconds": 157.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Contrast: use However.",
+       "why": "Correct. Hard studying and a low score pull against each other, so contrast fits."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Addition: keep Also.",
+       "why": "The ideas clash, so addition does not fit."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Cause and effect: use Because.",
+       "why": "Studying did not produce the low score, so cause does not fit."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Sequence: use Next.",
+       "why": "These are not ordered steps."
+      }
+     ],
+     "stem": "Draft: \"I studied for the quiz all week. Also, I got a low score.\" What relationship is hiding, and which signpost fits?",
+     "title": "Quick check: which signpost?"
+    }
+   }
+  ],
+  "duration_seconds": 201.0
+ },
+ "ACC-W910-L-G9-C906-0015": {
+  "beats": [
+   {
+    "cue_seconds": 48.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "It could point to more than one thing (the distance, the weather, or both), so it is unclear.",
+       "why": "Correct. With more than one possible referent, This is ambiguous."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "It clearly points to one thing already.",
+       "why": "It has more than one possible referent, so it is not clear."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "The word This is banned and can never be used.",
+       "why": "This is fine when it has a clear anchoring noun."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "It points clearly, but the sentence is just too short.",
+       "why": "The problem is the unclear reference, not the length."
+      }
+     ],
+     "stem": "In the first sentence, what is the problem with the word \"This\"?",
+     "title": "Quick check: what is the problem?"
+    }
+   },
+   {
+    "cue_seconds": 115.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "Add an anchoring noun after This that names the real thing, like this combination of buzzing phones and piling homework.",
+       "why": "Correct. An anchoring noun makes the reference exact."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Leave This alone but add an exclamation mark for emphasis.",
+       "why": "Punctuation does not fix an unclear reference."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Replace This with It and change nothing else.",
+       "why": "A bare It is just as unclear as a bare This."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Delete the sentence, since This can never be clear.",
+       "why": "An anchoring noun makes This clear."
+      }
+     ],
+     "stem": "Rewrite \"Phones keep buzzing during class, and homework keeps piling up at night. This is wearing me out.\" How do you fix the last sentence?",
+     "title": "Quick check: how to fix it"
+    }
+   }
+  ],
+  "duration_seconds": 159.0
+ },
+ "ACC-W910-L-G9-C906-0027": {
+  "beats": [
+   {
+    "cue_seconds": 84.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "way better",
+       "why": "Correct. This is casual slang, so a formal essay cuts it."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "is more effective",
+       "why": "This is formal phrasing that belongs in the essay."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "the evidence shows",
+       "why": "This is objective, formal phrasing to keep."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "a significant benefit",
+       "why": "This is formal phrasing to keep."
+      }
+     ],
+     "stem": "The essay should sound formal and objective. Which phrase in the draft is an informal marker to cut?",
+     "title": "Quick check: spot the marker"
+    }
+   },
+   {
+    "cue_seconds": 154.0,
+    "item": {
+     "note": "No penalty. Just your first call, then the video confirms it.",
+     "options": [
+      {
+       "correct": true,
+       "id": "A",
+       "text": "No first person, no slang, no talking to the reader; it states the position and gives a real reason.",
+       "why": "Correct. That is what makes the rewrite formal and objective."
+      },
+      {
+       "correct": false,
+       "id": "B",
+       "text": "Keeps the position but still says you can totally see why.",
+       "why": "Talking to the reader keeps it informal."
+      },
+      {
+       "correct": false,
+       "id": "C",
+       "text": "Removes slang but keeps I honestly think at the start.",
+       "why": "First person keeps it informal."
+      },
+      {
+       "correct": false,
+       "id": "D",
+       "text": "Sounds formal but drops the position and gives no reason.",
+       "why": "Formal tone alone is not enough; it must state a position with a reason."
+      }
+     ],
+     "stem": "You rewrite a casual draft as a formal, objective claim. Which rewrite fits?",
+     "title": "Quick check: which rewrite is formal?"
+    }
+   }
+  ],
+  "duration_seconds": 195.0
+ }
+}

@@ -10,7 +10,8 @@ Blueprints (from the anchor docs):
   G9  = STAAR English I (near-identical to English II): 1 ECR (arg OR info) + 1 SCR + editing/revising SR sets.
   G11 = the college-test year: assembled as the AP-Lang-style 3-essay FRQ set (synthesis + rhetorical analysis
         + source-free argument) PLUS a multi-perspective (ACT) essay -- the four G11 CR task types.
-  G12 = AP Lang exam FRQ section: synthesis + rhetorical analysis + argument, scored rc.ap (sophistication).
+  G12 = timed FRQ section: synthesis + rhetorical analysis + argument, scored rc.4trait (Regents 4-criterion
+        CCSS; analysis on the rhetorical-analysis essay, argument on synthesis/argument).
 
 HONEST SCOPE: a blueprint-conformant FORM (items + sequence + scoring configs). NOT cut scores, NOT proof of
 passing -- that needs a field test with student data. Run: python pipeline/render_model_tests.py [G9|G11|G12|all]
@@ -42,16 +43,17 @@ BLUEPRINTS = {
     # ACT) both carry mode="argument", so they are separated by item-id substring, not by mode. SR editing at
     # G11 is the Language course's tier, so the G11 model WRITING test is the essay set.
     "G11": [
-        {"section": "FRQ-synth", "label": "Synthesis essay, SBAC/AP Q1 (4-6 sources -> one argument)", "family": "CR", "modes": ["explanatory"], "count": 1, "scoring": "rc.ap (Thesis 0-1 + Ev&Comm 0-4 + Soph 0-1)"},
-        {"section": "FRQ-ra", "label": "Rhetorical-analysis essay, AP Q2 (author's choices)", "family": "CR", "modes": ["analysis"], "count": 1, "scoring": "rc.ap"},
-        {"section": "FRQ-arg-sf", "label": "Source-free argument essay, AP Lang Q3 (own knowledge)", "family": "CR", "modes": ["argument"], "id_contains": "-SFA-", "count": 1, "scoring": "rc.ap"},
-        {"section": "FRQ-arg-mp", "label": "Multi-perspective argument essay, ACT Writing (3 given perspectives)", "family": "CR", "modes": ["argument"], "id_contains": "-MP-", "count": 1, "scoring": "rc.ap"},
+        {"section": "FRQ-synth", "label": "Synthesis essay, SBAC/AP Q1 (4-6 sources -> one argument)", "family": "CR", "modes": ["explanatory"], "count": 1, "scoring": "rc.4trait argument (4 criteria x 0-6 = 24)"},
+        {"section": "FRQ-ra", "label": "Rhetorical-analysis essay, AP Q2 (author's choices)", "family": "CR", "modes": ["analysis"], "count": 1, "scoring": "rc.4trait analysis (4 criteria x 0-4 = 16)"},
+        {"section": "FRQ-arg-sf", "label": "Source-free argument essay, AP Lang Q3 (own knowledge)", "family": "CR", "modes": ["argument"], "id_contains": "-SFA-", "count": 1, "scoring": "rc.4trait argument"},
+        {"section": "FRQ-arg-mp", "label": "Multi-perspective argument essay, ACT Writing (3 given perspectives)", "family": "CR", "modes": ["argument"], "id_contains": "-MP-", "count": 1, "scoring": "rc.4trait argument"},
     ],
-    # G12 = AP Lang exam FRQ section (3 essays), the mastery/timed tier, all rc.ap with sophistication foregrounded.
+    # G12 = the timed FRQ-section tier (3 essays); scored on rc.4trait (Regents 4-criterion CCSS), analysis on
+    # the rhetorical-analysis essay + argument on synthesis/argument. (G11/G12 moved off AP-track to CCSS.)
     "G12": [
-        {"section": "FRQ-synth", "label": "AP synthesis FRQ (sophistication + timed)", "family": "CR", "modes": ["explanatory"], "count": 1, "scoring": "rc.ap"},
-        {"section": "FRQ-ra", "label": "AP rhetorical-analysis FRQ (sophistication + timed)", "family": "CR", "modes": ["analysis"], "count": 1, "scoring": "rc.ap"},
-        {"section": "FRQ-arg", "label": "AP argument FRQ (sophistication + timed)", "family": "CR", "modes": ["argument"], "count": 1, "scoring": "rc.ap"},
+        {"section": "FRQ-synth", "label": "Synthesis FRQ (sophistication + timed)", "family": "CR", "modes": ["explanatory"], "count": 1, "scoring": "rc.4trait argument"},
+        {"section": "FRQ-ra", "label": "Rhetorical-analysis FRQ (sophistication + timed)", "family": "CR", "modes": ["analysis"], "count": 1, "scoring": "rc.4trait analysis"},
+        {"section": "FRQ-arg", "label": "Argument FRQ (sophistication + timed)", "family": "CR", "modes": ["argument"], "count": 1, "scoring": "rc.4trait argument"},
     ],
 }
 ANCHOR = {"G9": "STAAR English I", "G11": "SBAC + ACT + AP Lang (college-test year)", "G12": "AP Lang FRQ (mastery)"}

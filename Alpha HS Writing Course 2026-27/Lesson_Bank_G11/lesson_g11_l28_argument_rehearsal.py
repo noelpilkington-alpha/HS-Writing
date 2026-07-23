@@ -221,7 +221,7 @@ LESSON = Lesson(
 
         # ===== SUPPORTED: name the type + fast-plan (multi_paragraph) - the frame is the top scaffold =====
         Slot("SUPPORTED", "production_frq", "Name the task type and fast-plan its moves",
-             ref="", bank="sfa_tradition_progress", rubric_ref="rc.ap", scored=True, unit="multi_paragraph",
+             ref="", bank="sfa_tradition_progress", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
                  intro="For the tradition-versus-progress prompt, name the task type before you plan a word of it.",
                  setapart_block=setapart("Fill in this plan:",
@@ -231,7 +231,7 @@ LESSON = Lesson(
                         "plan is what you will build the essay from.")),
         # ===== INDEPENDENT: build the whole essay from the matched plan (essay ceiling) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Rehearse the matched argument essay",
-             ref="", bank="sfa_tradition_progress", rubric_ref="rc.ap", scored=True, unit="essay",
+             ref="", bank="sfa_tradition_progress", rubric_ref="rc.4trait", scored=True, unit="essay",
              body=frq_prompt(
                  intro="On your own now, run the full rehearsal on the tradition-versus-progress prompt.",
                  closer="Spot the task type, then under your own budget write a complete argument essay using "

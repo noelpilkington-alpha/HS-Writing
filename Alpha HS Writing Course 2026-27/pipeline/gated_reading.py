@@ -40,6 +40,13 @@ try:
     from incept_videos import INCEPT_VIDEOS as _INCEPT_VIDEOS  # lessons with an intro video, keyed by lesson_id
 except Exception:
     _INCEPT_VIDEOS = {}
+try:
+    # One-Beat Check items (council rule 2026-07-22), keyed by lesson_id ->
+    #   {"cue_seconds": float, "duration_seconds": float, "item": {stem, options[], note, title}}
+    # ships EMPTY (prod push has no in-video questions); presence on a lesson triggers the interactive tb-video.
+    from incept_one_beats import ONE_BEATS as _ONE_BEATS
+except Exception:
+    _ONE_BEATS = {}
 
 # ---- palette (faithful to the decoded science lesson) ------------------------------------------------------
 NODE_COLORS = [  # cycled per content node (bar/bg/ink), matching the science lesson's color-coded nodes
@@ -437,6 +444,94 @@ def checkpoint_xml(cp_id: str, slot) -> str:
             f'{response_processing}</qti-assessment-item>')
 
 
+def _one_beat_list(entry) -> list:
+    """Normalize a One-Beat map entry into an ordered list of beats, each {"cue_seconds", "item"}. Accepts:
+      - {"beats": [{"cue_seconds","item"}, ...]}          (multi-beat)
+      - {"cue_seconds": t, "item": {...}}                 (single-beat, back-compat)
+    Drops any beat without an item. Returns [] for anything else. Rule (2026-07-22): cover EVERY your-turn beat,
+    no cap (the earlier 2-per-video cap was overridden; a scripted your-turn beat must not dangle)."""
+    if not isinstance(entry, dict):
+        return []
+    if isinstance(entry.get("beats"), list):
+        return [b for b in entry["beats"] if isinstance(b, dict) and b.get("item")]
+    if entry.get("item"):
+        return [{"cue_seconds": entry.get("cue_seconds"), "item": entry["item"]}]
+    return []
+
+
+def one_beat_xml(vq_id: str, item: dict) -> str:
+    """A NON-GATING in-video One-Beat Check QTI item (council rule 2026-07-22). A choice interaction with
+    per-wrong-choice teaching feedback and a persistent 'correct' feedback-block, BUT (unlike checkpoint_xml)
+    with NO INTERACTION_VISIBILITY hard-gate: completionStatus is set to `completed` on ANY answer, so the
+    player lets the video RESUME whether the learner is right or wrong (the beat records a score but never
+    blocks). SCORE is still 1/0 for signal. Different-in-kind from the downstream discrimination gate.
+
+    `item` = {"stem": str, "options": [{"id","text","correct","why"}...], "note": optional str}. `note` is a
+    one-line no-penalty transparency line rendered above the choices. Exactly one option must be correct."""
+    stem = (item.get("stem") or "").strip()
+    note = (item.get("note") or "").strip()
+    opts = list(item.get("options") or [])
+    correct = next((o["id"] for o in opts if o.get("correct")), (opts[0]["id"] if opts else "A"))
+    correct_text = next((o.get("why", "") for o in opts if o.get("correct")), "") or "Correct."
+    choices_xml, wrong_conditions = [], []
+    for o in opts:
+        oid = f"opt_{o['id']}"
+        fb = ""
+        if o["id"] != correct:
+            fbid = f"feedback_{oid}"
+            wt = (o.get("why") or "").strip() or "Not quite. Look again at what the video just showed."
+            fb = (f'<qti-feedback-block identifier="{fbid}" outcome-identifier="FEEDBACK" show-hide="show">'
+                  f'<qti-content-body><div class="tb-feedback-incorrect"><p>{esc(wt)}</p></div>'
+                  f'</qti-content-body></qti-feedback-block>')
+            wrong_conditions.append(
+                f'<qti-response-condition><qti-response-if>'
+                f'<qti-match><qti-variable identifier="RESPONSE"/>'
+                f'<qti-base-value base-type="identifier">{oid}</qti-base-value></qti-match>'
+                f'<qti-set-outcome-value identifier="FEEDBACK">'
+                f'<qti-base-value base-type="identifier">{fbid}</qti-base-value></qti-set-outcome-value>'
+                f'</qti-response-if></qti-response-condition>')
+        choices_xml.append(f'<qti-simple-choice identifier="{oid}"><div>{esc(o["text"])}</div>{fb}'
+                           f'</qti-simple-choice>')
+    correct_block = (f'<qti-feedback-block identifier="correct" outcome-identifier="FEEDBACK" show-hide="show">'
+                     f'<qti-content-body><div class="tb-feedback-correct"><p>{esc(correct_text)}</p></div>'
+                     f'</qti-content-body></qti-feedback-block>')
+    # NON-GATING response-processing: completionStatus -> completed on BOTH branches (so any answer resumes the
+    # video), SCORE 1/0 for signal, FEEDBACK routed to the correct block or (below) the per-wrong block. NO
+    # INTERACTION_VISIBILITY outcome at all: this beat never hides/gates the way a checkpoint does.
+    response_processing = (
+        f'<qti-response-processing>'
+        f'<qti-response-condition><qti-response-if>'
+        f'<qti-match><qti-variable identifier="RESPONSE"/><qti-correct identifier="RESPONSE"/></qti-match>'
+        f'<qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">1</qti-base-value></qti-set-outcome-value>'
+        f'<qti-set-outcome-value identifier="completionStatus"><qti-base-value base-type="identifier">completed</qti-base-value></qti-set-outcome-value>'
+        f'<qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">correct</qti-base-value></qti-set-outcome-value>'
+        f'</qti-response-if><qti-response-else>'
+        f'<qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">0</qti-base-value></qti-set-outcome-value>'
+        f'<qti-set-outcome-value identifier="completionStatus"><qti-base-value base-type="identifier">completed</qti-base-value></qti-set-outcome-value>'
+        f'</qti-response-else></qti-response-condition>'
+        f'{"".join(wrong_conditions)}'
+        f'</qti-response-processing>')
+    prompt_html = (f'<qti-prompt>{esc(stem)}</qti-prompt>')
+    note_block = (f'<p style="color:#5a5d77;font-size:13px;margin:0 0 8px;">{esc(note)}</p>' if note else "")
+    return (f'<?xml version="1.0" encoding="UTF-8"?>\n'
+            f'<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" identifier="{vq_id}" '
+            f'title="{esc(item.get("title") or "Quick check")}" adaptive="true" time-dependent="false">'
+            f'<qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">'
+            f'<qti-correct-response><qti-value>opt_{correct}</qti-value></qti-correct-response>'
+            f'</qti-response-declaration>'
+            f'<qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float">'
+            f'<qti-default-value><qti-value>0</qti-value></qti-default-value></qti-outcome-declaration>'
+            f'<qti-outcome-declaration identifier="FEEDBACK" cardinality="single" base-type="identifier"/>'
+            f'<qti-outcome-declaration identifier="completionStatus" cardinality="single" base-type="identifier">'
+            f'<qti-default-value><qti-value>incomplete</qti-value></qti-default-value></qti-outcome-declaration>'
+            f'<qti-item-body>{note_block}'
+            f'<qti-choice-interaction class="qti-labels-none" response-identifier="RESPONSE" shuffle="true" max-choices="1">'
+            f'{prompt_html}{"".join(choices_xml)}</qti-choice-interaction>'
+            f'{correct_block}'
+            f'</qti-item-body>'
+            f'{response_processing}</qti-assessment-item>')
+
+
 def _source_reminder(source_text) -> str:
     """A ONE-LINE reminder of the topic/question, for repeat same-source writes (so we don't re-paste the whole
     source block every time). Uses the source's own question sentence if present, else its first clause.
@@ -577,7 +672,7 @@ def _sentences_to_paras(text: str, per=2) -> list[str]:
     return out
 
 
-def build_lesson_html(L, base_url="", video_map=None) -> tuple[str, list[tuple[str, str]]]:
+def build_lesson_html(L, base_url="", video_map=None, one_beat_map=None) -> tuple[str, list[tuple[str, str]]]:
     """Return (lesson_html, [(item_id, xml)]) for a lesson. Content slots -> narration segments; discrimination/
     predict/self_score -> checkpoint gates; production/diagnosis_frq -> extended-text writing items. base_url =
     the absolute URL where items/*.xml are hosted (the player resolves tb-qti-config hrefs against ITS OWN
@@ -587,11 +682,21 @@ def build_lesson_html(L, base_url="", video_map=None) -> tuple[str, list[tuple[s
     segment is emitted first (council placement: title -> video -> compressed prose) AND the opening teach
     prose is compressed (council rule). Callers that pass video_map opt INTO video behavior explicitly; the
     production push path passes nothing, so it is unaffected by the empty module-level INCEPT_VIDEOS. This
-    keeps the real push + tier_a gate-checks free of compression until videos genuinely ship."""
+    keeps the real push + tier_a gate-checks free of compression until videos genuinely ship.
+
+    one_beat_map (optional): {lesson_id -> {"cue_seconds","duration_seconds","item":{stem,options[],note,title}}}.
+    When THIS lesson has BOTH a video and a One-Beat entry, the intro video is rendered as an INTERACTIVE
+    tb-video figure (council rule 2026-07-22): one non-gating tb-interaction pauses the video at cue_seconds,
+    shows the One-Beat item, and resumes. Its QTI item is appended to the returned checkpoints list (hosted at
+    items/<vq_id>.xml) and its tb-qti-config is added to the catalog. Preview-scoped; prod push passes none."""
     base_url = (base_url or "").rstrip("/")
     # video behavior triggers off the explicit video_map when given, else the module INCEPT_VIDEOS (empty in prod).
     _videos = video_map if video_map is not None else _INCEPT_VIDEOS
     _this_video = _videos.get(L.id) if _videos else None
+    # One-Beat Check (in-video question): explicit one_beat_map when given, else the module ONE_BEATS (empty in
+    # prod). Only meaningful when this lesson also has a video. Presence turns the intro video INTERACTIVE.
+    _beats = one_beat_map if one_beat_map is not None else _ONE_BEATS
+    _this_beat = (_beats.get(L.id) if _beats else None) if _this_video else None
     segments = []
     catalog_defs, catalog_audio, catalog_items = [], [], []
     gloss_defs = {}   # catalog id -> full definition text, harvested from authored <dfn> tooltips
@@ -691,6 +796,61 @@ def build_lesson_html(L, base_url="", video_map=None) -> tuple[str, list[tuple[s
                                                boxed_source=boxed)))
             catalog_items.append(f'<div class="tb-qti-config" id="{fr_id}"><a href="{base_url}/items/{fr_id}.xml" '
                                  f'type="application/xml"></a></div>')
+    # Council placement rule (2026-07-21): when this lesson has an intro video, insert it as the FIRST
+    # segment (its own gated reveal), so the order is title -> video -> compressed prose. The teach prose
+    # was already compressed above (idx==0 teach_card hook). video_map is preview-scoped; prod push passes
+    # none, so this never fires on the real push.
+    # This runs BEFORE catalog assembly so an interactive One-Beat's tb-qti-config joins the catalog.
+    if _this_video and _this_video.get("mp4"):
+        _vtt = _this_video.get("vtt")
+        # XHTML/XML-valid boolean attrs (controls="controls", default="default"): the player + render_qc
+        # parse the body as XML, which rejects bare boolean attributes.
+        _track = (f'<track kind="captions" srclang="en" src="{esc(_vtt)}" default="default"/>' if _vtt else "")
+        _caption = ('A short video of this lesson\'s core idea. The reading that follows covers the same idea.')
+        _beat_list = _one_beat_list(_this_beat)
+        if _beat_list:
+            # INTERACTIVE tb-video (council rule 2026-07-22): a tb-video figure carrying up to TWO non-gating
+            # tb-interactions, ONE per scripted "your turn"/recap beat, each pausing at its cue_seconds, showing
+            # the One-Beat item, then resuming. Same tb-* family as the gated-reading checkpoints (decoded from
+            # live MS Chemistry), NOT a separate video system. Council caps in-video questions at 2 per video.
+            _dur = float(_this_beat.get("duration_seconds") or 0) if isinstance(_this_beat, dict) else 0
+            _dur_attr = f' data-duration-seconds="{_dur:g}"' if _dur > 0 else ""
+            _interactions = []
+            for _i, _b in enumerate(_beat_list, start=1):
+                vq_id = f"vq-{L.id}-{_i}"
+                _cue = float(_b.get("cue_seconds") or 0)
+                _interactions.append(f'<div class="tb-interaction tb-qti-assessment-item" '
+                                     f'data-timestamp-seconds="{_cue:g}" data-catalog-idref="{vq_id}"></div>')
+                # register each One-Beat item XML (hosted at items/<vq_id>.xml) + its catalog config.
+                checkpoints.append((vq_id, one_beat_xml(vq_id, _b["item"])))
+                catalog_items.append(f'<div class="tb-qti-config" id="{vq_id}"><a href="{base_url}/items/{vq_id}.xml" '
+                                     f'type="application/xml"></a></div>')
+            _n = len(_beat_list)
+            _pause_note = ("It pauses once for a quick, no-penalty check." if _n == 1
+                           else f"It pauses {_n} times for a quick, no-penalty check.")
+            _vcard = (
+                '<div style="border-radius:18px; border:1px solid #d7d2f7; background:#f6f4ff; '
+                'box-shadow:0 12px 22px rgba(43,42,85,.08); padding:16px 18px;">'
+                '<div style="font-weight:900; color:#3b3a88; font-size:16px; margin-bottom:8px;">Watch: the one idea</div>'
+                f'<figure class="tb-video" id="video-{esc(L.id)}"{_dur_attr} style="margin:0;">'
+                f'<video crossorigin="anonymous" controls="controls" preload="metadata" '
+                f'style="width:100%; max-width:720px; border-radius:12px; display:block; margin:0 auto;">'
+                f'<source src="{esc(_this_video["mp4"])}" type="video/mp4"/>{_track}'
+                'Your browser does not support video playback.</video>'
+                f'{"".join(_interactions)}</figure>'
+                '<div style="margin-top:6px; color:#5a5d77; font-size:13px; text-align:center;">'
+                f'{_caption} {_pause_note}</div></div>')
+        else:
+            # plain (non-interactive) intro video: exempt archetype, or no One-Beat authored for this lesson.
+            _vcard = (
+                '<div style="border-radius:18px; border:1px solid #d7d2f7; background:#f6f4ff; '
+                'box-shadow:0 12px 22px rgba(43,42,85,.08); padding:16px 18px;">'
+                '<div style="font-weight:900; color:#3b3a88; font-size:16px; margin-bottom:8px;">Watch: the one idea</div>'
+                f'<video controls="controls" preload="metadata" style="width:100%; max-width:720px; border-radius:12px; '
+                f'display:block; margin:0 auto;"><source src="{esc(_this_video["mp4"])}" type="video/mp4"/>{_track}'
+                'Your browser does not support video playback.</video>'
+                f'<div style="margin-top:6px; color:#5a5d77; font-size:13px; text-align:center;">{_caption}</div></div>')
+        segments.insert(0, _node(NODE_COLORS[0], _vcard, first=True))
     # emit harvested glossary definitions into the catalog (player resolves tb-glossary-term -> these by id)
     for ref, text in gloss_defs.items():
         catalog_defs.append(f'<div id="{ref}" class="tb-glossary-definition"><p>{esc(_xml_safe_entities(text))}</p></div>')
@@ -703,25 +863,6 @@ def build_lesson_html(L, base_url="", video_map=None) -> tuple[str, list[tuple[s
               f'background:linear-gradient(135deg,#eef6ff 0%,#f6f2ff 55%,#ffffff 100%); color:#1d3b7a; '
               f'font-weight:900; font-size:24px; text-align:center; padding:18px; margin-bottom:14px;">'
               f'{esc(L.title or L.id)}</div>')
-    # Council placement rule (2026-07-21): when this lesson has an intro video, insert it as the FIRST
-    # segment (its own gated reveal), so the order is title -> video -> compressed prose. The teach prose
-    # was already compressed above (idx==0 teach_card hook). video_map is preview-scoped; prod push passes
-    # none, so this never fires on the real push.
-    if _this_video and _this_video.get("mp4"):
-        _vtt = _this_video.get("vtt")
-        # XHTML/XML-valid boolean attrs (controls="controls", default="default"): the player + render_qc
-        # parse the body as XML, which rejects bare boolean attributes.
-        _track = (f'<track kind="captions" srclang="en" src="{esc(_vtt)}" default="default"/>' if _vtt else "")
-        _vcard = (
-            '<div style="border-radius:18px; border:1px solid #d7d2f7; background:#f6f4ff; '
-            'box-shadow:0 12px 22px rgba(43,42,85,.08); padding:16px 18px;">'
-            '<div style="font-weight:900; color:#3b3a88; font-size:16px; margin-bottom:8px;">Watch: the one idea</div>'
-            f'<video controls="controls" preload="metadata" style="width:100%; max-width:720px; border-radius:12px; '
-            f'display:block; margin:0 auto;"><source src="{esc(_this_video["mp4"])}" type="video/mp4"/>{_track}'
-            'Your browser does not support video playback.</video>'
-            '<div style="margin-top:6px; color:#5a5d77; font-size:13px; text-align:center;">'
-            'A short video of this lesson\'s core idea. The reading that follows covers the same idea.</div></div>')
-        segments.insert(0, _node(NODE_COLORS[0], _vcard, first=True))
     if segments:
         # place the banner as the first child of the first segment, so it shares that segment's reveal step
         # (the student sees title + first teaching card together, no empty title tile / extra Continue click).
