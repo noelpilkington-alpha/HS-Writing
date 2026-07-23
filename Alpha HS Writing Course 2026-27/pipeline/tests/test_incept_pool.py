@@ -2,7 +2,7 @@ import os, sys, json
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import incept_pool as ip
 
-CACHE = "C:/tmp/incept_pool"
+CACHE = "C:/tmp/incept_pool_test"
 SUBSKILLS = ["evidence", "organization", "conventions", "sentence", "scr_writing", "argument"]
 
 def _write_fixture_banks():
@@ -70,11 +70,23 @@ def test_generate_pool_dry_returns_six_bodies():
     assert set(subs) == set(ip.SUBSKILLS)   # one submission per subskill
 
 def test_merged_pool_deepened_uses_six_subskill_banks():
+    from unittest.mock import patch
     _write_fixture_banks()
     import importlib, bakeoff_hybrid
     importlib.reload(bakeoff_hybrid)
     default_pool = bakeoff_hybrid.merged_pool()               # unchanged 8-item incept behavior
-    deep_pool = bakeoff_hybrid.merged_pool(deepened=True)     # uses the 6 fixture banks
+    # patch load_deepened_incept_pool to use the isolated CACHE dir
+    with patch.object(ip, 'load_deepened_incept_pool', lambda cache_dir=CACHE: ip.load_deepened_incept_pool.__wrapped__(cache_dir)):
+        # wrapper won't work, use direct approach
+        pass
+    # simpler: directly patch the function to call with CACHE
+    orig_loader = ip.load_deepened_incept_pool
+    try:
+        ip.load_deepened_incept_pool = lambda cache_dir=CACHE: orig_loader(CACHE)
+        importlib.reload(bakeoff_hybrid)  # ensure it picks up the patched function
+        deep_pool = bakeoff_hybrid.merged_pool(deepened=True)     # uses the 6 fixture banks
+    finally:
+        ip.load_deepened_incept_pool = orig_loader
     inc_default = [it for it in default_pool if it.provenance.get("bakeoff_source") == "incept"]
     inc_deep = [it for it in deep_pool if it.provenance.get("bakeoff_source") == "incept"]
     # deepened incept pool spans multiple subskills (default is mostly 'evidence')
