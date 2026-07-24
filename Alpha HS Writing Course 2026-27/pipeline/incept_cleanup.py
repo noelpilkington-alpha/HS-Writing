@@ -15,8 +15,8 @@ def _dedash(text: str) -> str:
     """Replace em/en dashes with house-style punctuation, preserving content. A spaced dash becomes a comma;
     a bare dash becomes a comma too (never drops words)."""
     t = text or ""
-    t = t.replace(" — ", ", ").replace(" – ", ", ")
-    t = t.replace("—", ", ").replace("–", ", ")
+    t = t.replace(" \u2014 ", ", ").replace(" \u2013 ", ", ")
+    t = t.replace("\u2014", ", ").replace("\u2013", ", ")
     return t
 
 def _strip_em_dash(item: Item) -> Item:
