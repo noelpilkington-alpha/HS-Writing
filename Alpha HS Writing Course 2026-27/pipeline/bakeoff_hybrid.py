@@ -61,10 +61,15 @@ def _matches(item, sec) -> bool:
     keys = sec.get("subskills") or sec.get("modes") or []
     return item.subskill_or_mode in keys
 
-def select_hybrid(live: bool = False, deepened: bool = False):
+def select_hybrid(live: bool = False, deepened: bool = False, pool: list | None = None):
     """For each blueprint slot: eligible items that match the slot, ranked by judge median (desc),
-    source-blind; take the slot's count. Returns (picked_items_in_blueprint_order, per_slot_source_map)."""
-    pool = [it for it in merged_pool(deepened=deepened) if is_eligible(it)]
+    source-blind; take the slot's count. Returns (picked_items_in_blueprint_order, per_slot_source_map).
+    If `pool` is given, select over it (already merged+eligible-filterable);
+    else build merged_pool(deepened)."""
+    if pool is None:
+        pool = [it for it in merged_pool(deepened=deepened) if is_eligible(it)]
+    else:
+        pool = [it for it in pool if is_eligible(it)]
     # judge each eligible item ONCE (cache dedupes live calls); attach the score
     scored = {}
     for it in pool:
