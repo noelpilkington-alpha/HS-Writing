@@ -31,6 +31,39 @@ So to test mastery / observe round-robin, Codex must drive an **enrolled student
    administers your Timeback roster (the API credentials in this project can create content but are DENIED
    roster writes - confirmed by a 403 on student/enrollment creation - so I can't provision it).
 
+## PREREQUISITE: sync the student's lesson plan first (do this ONCE before Codex runs)
+
+The PP100 banks were added to the **base course** AFTER the test student was enrolled. PowerPath gives each
+student a personal **lesson plan** (a per-student copy of the course structure, created when they start the
+course). An already-enrolled student's lesson plan may still hold the OLD single-test structure until it is
+re-synced from the base course. Re-enrolling is NOT the fix and is not needed - the enrollment is unchanged;
+only the lesson content changed. The documented mechanism is a lesson-plan **sync**, which recreates each
+plan from the current base course while preserving the student's progress/personalizations.
+
+Before Codex tests mastery, have whoever holds Timeback API/admin access run (once per course you want tested):
+
+```
+POST https://api.alpha-1edtech.ai/powerpath/lessonPlans/course/hs-writing-g9-2026/sync
+POST https://api.alpha-1edtech.ai/powerpath/lessonPlans/course/hs-writing-g10-2026/sync
+POST https://api.alpha-1edtech.ai/powerpath/lessonPlans/course/hs-writing-g11-2026/sync
+POST https://api.alpha-1edtech.ai/powerpath/lessonPlans/course/hs-writing-g12-2026/sync
+```
+
+(Authenticated with a token that has PowerPath access. This "recreates each lesson plan from the base course
+structure and applies all historical operations to maintain personalizations" - per the PowerPath API. It
+returns the affected lesson-plan IDs.)
+
+Notes / caveats (honest):
+- This is read from the PowerPath spec, not yet verified on a live student (I lack roster/enrolled-student
+  access). It is possible new attempts already read the base course directly and no sync is needed; the sync
+  is the safe, documented way to be sure. Codex's first observation below will reveal which is true.
+- **Stuck in-progress attempt:** `createNewAttempt` only advances to a new (bank-served) attempt "if the
+  current attempt is completed." If the test student has an OPEN, incomplete mastery attempt on a lesson from
+  before the change, finish it or reset it first (`POST /powerpath/resetAttempt` with the student + lesson),
+  then start a fresh attempt so it draws from the bank.
+- If you provisioned a BRAND-NEW student (enrolled after this push), no sync is needed - their lesson plan is
+  built from the current base course and already has the banks.
+
 ## The prompt to give Codex (authenticated run)
 
 Paste this, and fill in the two placeholders:
@@ -41,6 +74,11 @@ Paste this, and fill in the two placeholders:
 >
 > Do NOT use any external `content.platform.learnwith.ai/player?...` link. Navigate to courses through the
 > student app's own menus. Open the **AlphaWriting G9** course first.
+>
+> FIRST, a smoke test on **G9 L01** before anything else: open its mastery / test-out task and just READ the
+> prompt (don't submit yet). Report the topic it shows. This one check tells us whether the lesson-plan sync
+> took effect (L01 should present an arguable-claim prompt on some topic; if the mastery task is missing or
+> errors, stop and report that immediately - it means the plan did not pick up the update). Then continue:
 >
 > For each lesson you test:
 > 1. Open the lesson from the course menu. Complete the gated reading (play the video, answer the in-video
