@@ -250,23 +250,58 @@ LESSON = Lesson(
                                          "Chopin uses ______ [the choice from the story] to ______ [its effect or purpose]."),
                  closer="Claim what Chopin is DOING and to what end, not what happens. Do not retell the plot. "
                         "Write one sentence, then run the craft check before you submit.")),
-        # DIAGNOSIS = check-and-fix on a PROVIDED weak draft (not a fresh production, so it does not repeat the
-        # supported write). Stays on the taught source = no new reading (load). Uses checklist() so the check
-        # renders as one clean numbered list (no 'Step N' double-numbering).
-        Slot("MODEL", "diagnosis_frq", "Check your claim: about the craft, or about the plot?",
-             ref="", bank="story_of_an_hour", scored=True,
+        # COUNCIL FIX (2026-07-24): Option B (first-in-arc). Graded recognition + graded fresh-draft rewrite;
+        # name-act dropped. The old single diagnosis_frq bundled 3 acts in one box (run a craft check as pre-
+        # answered (q,a) tuple rows + rewrite + name-which-question-you-fixed) - unscoreable, wired to no grader,
+        # and the (q,a) tuple rows leaked the answers. First diagnosis item in this arc -> two single-act items.
+        # Item 1 = graded RECOGNITION on a minimal-pair draft that fails EXACTLY ONE check (single-select is
+        # faultless; DI constraint): the draft names a real craft choice (spring imagery) and is about the craft,
+        # not the plot (so the names-a-choice check and the craft-not-plot check pass), but it only reports the
+        # choice and never says what it is doing (so only the effect-check fails). Item 2 = graded FRESH-draft
+        # rewrite (the repetition-of-free draft, different from the imagery recognition draft), with the craft
+        # check printed READ-ONLY beneath. The name-which-question third act is deleted. Stays on the taught source.
+        Slot("MODEL", "discrimination", "Diagnose the draft: which check does it fail?",
+             ref="", labeled_grade_c=True, bank="story_of_an_hour",
+             body=("Run the craft check on this draft. The task is to analyze the story. Draft: 'Chopin fills the "
+                   "view from Mrs. Mallard's open window with spring trees, blue sky, and fresh rain.' It fails "
+                   "exactly one check. Which one? "
+                   "(A) It names no craft choice at all and only reports what happens in the plot here.  "
+                   "(B) It names a real choice but never says what that choice does to the reader.  "
+                   "(C) It is about the plot events, not about any choice the author actually makes.  "
+                   "(D) It passes all three checks already, so nothing about this draft needs fixing here. "
+                   "Correct: B. The draft names a real craft choice (the spring imagery outside the window) and "
+                   "stays on the craft rather than retelling the plot, so the names-a-choice check and the craft-"
+                   "not-plot check both pass. But it only reports the imagery and never says what that imagery "
+                   "does, so only the effect-check fails."),
+             choices=[
+                 {"id": "A", "text": "It names no craft choice at all and only reports what happens in the plot here.",
+                  "correct": False,
+                  "why": "It does name a real craft choice: the spring imagery Chopin puts outside the window. That check passes; look for the one that fails."},
+                 {"id": "B", "text": "It names a real choice but never says what that choice does to the reader.",
+                  "correct": True,
+                  "why": "Correct. It names the spring imagery and stays on the craft, but it only reports the imagery and never says what that choice does, so only the effect-check fails."},
+                 {"id": "C", "text": "It is about the plot events, not about any choice the author actually makes.",
+                  "correct": False,
+                  "why": "It points to a real authorial choice (the spring imagery), not a plot event, so the craft-not-plot check passes; this is not the failing check."},
+                 {"id": "D", "text": "It passes all three checks already, so nothing about it needs fixing here.",
+                  "correct": False,
+                  "why": "Not quite. It names a choice and stays on craft, but it never states the effect, so one check still fails."},
+             ]),
+        Slot("MODEL", "production_frq", "Now fix a draft: name what the choice is doing",
+             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the craft check on this weak draft, then rewrite it into a sentence that claims what "
-                       "Chopin is doing, not just what happens.",
+                 intro="Here is a different weak draft. Rewrite it into one sentence that claims what Chopin is "
+                       "doing, not just what happens.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "Chopin repeats the word free three times near the end of the story.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("What choice does it name?", "The repetition of the word free. Good, a real craft choice is named."),
-                     ("Does it say what that choice is DOING, or only that it happens?", "Only that it happens. Add the effect: what the repetition does to the meaning or the reader."),
-                     ("Is it about the craft, not just the plot?", "It points at a choice but stops at reporting it. Name the purpose to make it analytical."),
+                 checklist_block=checklist(title="Check your rewrite against these (no need to type answers):", rows=[
+                     "What choice does it name?",
+                     "Does it say what that choice is DOING, or only that it happens?",
+                     "Is it about the craft, not just the plot?",
                  ]),
-                 closer="Now rewrite the weak draft into one sentence that names the choice AND what it is doing. "
-                        "Then name which question your rewrite fixed.")),
+                 closer="This draft names a real choice (the repetition of the word free) but only reports that it "
+                        "happens. Rewrite it into one sentence that names the choice AND says what the repetition "
+                        "does to the meaning or the reader. Run the craft check above before you submit.")),
 
         # ===== INDEPENDENT: cold write, no frame, a DIFFERENT choice + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write an analytical claim on your own",

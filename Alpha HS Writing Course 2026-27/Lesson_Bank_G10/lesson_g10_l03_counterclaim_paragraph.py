@@ -214,22 +214,31 @@ LESSON = Lesson(
                                          "and the ANSWER sentence (respond with a fact from the source plus a reason)."),
                  closer="Write those two sentences so the answer truly engages the objection, not just repeats "
                         "the claim. You are building the concede-then-answer onto the given position.")),
-        # DIAGNOSIS: run the 3-part check on a PROVIDED weak draft, then on a fresh paragraph. Stays on the taught
-        # topic (no new source to read). Structured via checklist (no 'Step N' prose).
-        Slot("MODEL", "diagnosis_frq", "Check your counterargument: named, or answered?", ref="", bank="school_year",
-             scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched 3-part check-run demo (pre-answered (q,a) tuple rows) + a
+        # fresh paragraph + a run-the-check-and-name tail in one box (unscoreable, wired to no grader, and the
+        # (q,a) rows leaked the answers). The coping-model demo is PRESERVED as read-only narration (the 3-part
+        # check shown running on the weak draft, in plain declarative prose). The student's ONLY graded act is the
+        # fresh paragraph; the three checks sit read-only beneath as plain-string reminders; the run-and-name tail
+        # is deleted. Stays on the taught topic (no new source).
+        Slot("MODEL", "diagnosis_frq", "Write a fresh counterargument that answers the objection", ref="",
+             bank="school_year", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the 3-part check run on a weak draft, then run it on a fresh paragraph of your own.",
-                 setapart_block=setapart("Weak draft to check:",
+                 intro="First, watch the 3-part check run on the weak draft below. The POSITION is clear ('a longer "
+                       "year is good' states the point). The counterclaim is fairly CONCEDED (the cost is named). "
+                       "But it is not truly ANSWERED: 'still a good idea' just repeats the claim, so a stronger "
+                       "version would answer the cost with a fact from the source and a reason. Now write a fresh "
+                       "concede-then-answer paragraph of your own that does not fall into that trap.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                                          "A longer year is good. Critics say it costs money. But it is still a good idea.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Is the POSITION clear?", "Yes, 'a longer year is good' states the point."),
-                     ("Is the counterclaim fairly CONCEDED?", "Yes, the cost is named."),
-                     ("Is it truly ANSWERED with evidence and reasoning?", "No. 'Still a good idea' just repeats the claim. Answer the cost with a fact from the source and a reason."),
+                 checklist_block=checklist(title="Check your paragraph against these (no need to type answers):", rows=[
+                     "Is the POSITION clear?",
+                     "Is the counterclaim fairly CONCEDED?",
+                     "Is it truly ANSWERED with evidence and reasoning, not just a repeat of the claim?",
                  ]),
-                 closer="Now write one fresh concede-then-answer for the school-year position, then run the same "
-                        "three checks and fix any part that fails. Finish by naming how your answer engages the "
-                        "objection instead of dodging it.")),
+                 closer="Write one fresh concede-then-answer for the school-year position: state the POSITION, "
+                        "fairly CONCEDE the strongest objection, then ANSWER it with a fact from the source and a "
+                        "reason. Run the three checks above before you submit.")),
 
         # ===== INDEPENDENT: cold full-paragraph build on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Write a full counterargument paragraph", ref="", bank="school_year",

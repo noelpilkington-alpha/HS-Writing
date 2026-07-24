@@ -217,23 +217,33 @@ LESSON = Lesson(
                      "Concede the fairness objection, then answer it (say why the claim still holds).",
                  ]),
                  closer="Rewrite the whole paragraph with the sources woven and the objection answered.")),
-        # DIAGNOSIS: watch the check run on a provided draft, then run it on a fresh paragraph in this box
-        # (stateless-safe; the material is provided, and the self-check is on the same item, not a prior submission).
-        Slot("MODEL", "diagnosis_frq", "Self-check a fresh cross-text paragraph against the list",
-             ref="", bank="congestion_pricing", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched synthesis-check demo (pre-answered (q,a) tuple rows) + a
+        # fresh cross-text paragraph + a run-and-name-the-gap tail in one box (unscoreable, wired to no grader,
+        # and the (q,a) rows leaked the answers). The coping-model demo is PRESERVED as read-only narration (the
+        # three synthesis checks shown running on the weak draft, in plain declarative prose). The student's ONLY
+        # graded act is now the fresh cross-text paragraph; the three checks sit read-only beneath as
+        # plain-string reminders; the run-and-name tail is deleted. Kept as diagnosis_frq (paragraph grain needs
+        # an own-draft diagnosis for model_sequence). Stays on the taught source (load balance).
+        Slot("MODEL", "diagnosis_frq", "Write a fresh cross-text paragraph that passes the list",
+             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the check run on a provided draft, then run it on a fresh cross-text "
-                       "paragraph you write here.",
-                 setapart_block=setapart("Provided draft to check:",
+                 intro="First, watch the synthesis check run on the weak draft below. Source A and Source B sit "
+                       "in separate sentences, so it is not woven; Source B's objection is named but never "
+                       "answered; and the claim 'I support it' names no source fact, so it is only partly "
+                       "attributed. A stronger version would connect both sources on one claim, concede then "
+                       "answer the objection, and tie each point to its source. Now write a fresh cross-text "
+                       "paragraph of your own that passes all three.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                                          "Source A supports the plan. Source B opposes it. I support it.", "red"),
-                 checklist_block=checklist(title="Run the synthesis check:", rows=[
-                     ("Woven?", "No. Source A and Source B sit in separate sentences. Connect them on one claim."),
-                     ("Counterclaim answered?", "No. Source B's objection is named but never answered. Concede it, then answer it."),
-                     ("Attributed?", "Partly. The claim 'I support it' names no source fact. Tie each point to its source."),
+                 checklist_block=checklist(title="Check your paragraph against these (no need to type answers):", rows=[
+                     "Woven? Both sources connect on one claim, not in separate sentences.",
+                     "Counterclaim answered? The objection is conceded, then answered.",
+                     "Attributed? Each point is tied to its source fact.",
                  ]),
-                 closer="Now write a fresh cross-text paragraph on congestion pricing here, then run the same "
-                        "three questions on it: woven? counterclaim answered? attributed? For each No, fix that "
-                        "part, and finish by naming which gap you had to close.")),
+                 closer="Write a fresh cross-text paragraph on congestion pricing that weaves both sources on "
+                        "one claim, concedes then answers the objection, and attributes each point to its "
+                        "source. Run the three checks above before you submit.")),
 
         # ===== INDEPENDENT: revise a PROVIDED draft with no checklist scaffold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided cross-text draft on your own",

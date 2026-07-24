@@ -233,23 +233,32 @@ LESSON = Lesson(
                  ]),
                  closer="The first No names the type. Start your answer by naming that type, then rewrite the "
                         "draft as a short paragraph so the fix matches it.")),
-        # DIAGNOSIS: watch the check run on a provided draft, then run it on a fresh draft written in this box
-        # (stateless-safe; the material is provided, and the self-check is on the same item, not a prior submission).
-        Slot("MODEL", "diagnosis_frq", "Diagnose a fresh draft by naming its type",
-             ref="", bank="weather", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched type-check demo (pre-answered (q,a) tuple rows) + a
+        # build-a-draft-with-a-deliberate-error act + a run-and-name-the-type tail in one box (unscoreable, wired
+        # to no grader, and the (q,a) rows leaked the answers; the "build in a deliberate error" act also asked
+        # the student to write BADLY on purpose). The coping-model demo is PRESERVED as read-only narration (the
+        # type check shown running on the weak draft, in plain declarative prose). The student's ONLY graded act
+        # is now a fresh, clean rewrite that avoids those error types; the checks sit read-only beneath as
+        # plain-string reminders; the run-and-name tail is deleted. Stays on the taught topic (no new source).
+        Slot("MODEL", "diagnosis_frq", "Fix the draft: rewrite it clean",
+             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the check run on a provided draft, then run it on a fresh draft you write "
-                       "here.",
-                 setapart_block=setapart("Provided draft to check:",
+                 intro="First, watch the type check run on the weak draft below. 'Made carefully' names no tool "
+                       "or step, so it leans too general, and 'weather matters because it is important' just "
+                       "restates the claim, which is a circular reason. The fix is to name a specific reason, "
+                       "such as that a forecast lets people prepare for storms. Now rewrite the draft clean so "
+                       "neither error is left in it.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                                          "Weather matters because it is important, and forecasts are made carefully.", "red"),
-                 checklist_block=checklist(title="Run the type check:", rows=[
-                     ("Any specifics?", "Barely. 'Made carefully' names no tool or step. Leans too general."),
-                     ("Does every part serve the point?", "The first clause is circular: 'matters because it is important' restates the claim."),
-                     ("Name the type and fix.", "Circular reason. Fix: replace it with a specific reason, such as a forecast lets people prepare for storms."),
+                 checklist_block=checklist(title="Check your rewrite against these (no need to type answers):", rows=[
+                     "Any specifics? Name a real tool or step, not just 'carefully.'",
+                     "Does every part serve the point, with no circular clause that restates the claim?",
+                     "Is each reason a specific, checkable one (for example, a forecast lets people prepare for storms)?",
                  ]),
-                 closer="Now write one short draft about forecasting that contains a deliberate error, then run "
-                        "the same three questions on it. Finish by naming the error type you built in and the "
-                        "fix that type calls for.")),
+                 closer="Rewrite the draft as a short paragraph about forecasting with the two errors fixed: "
+                        "swap the circular clause for a specific reason, and add a concrete detail in place of "
+                        "'made carefully.' Run the type check above before you submit.")),
 
         # ===== INDEPENDENT: name-and-fix a PROVIDED draft with no checklist scaffold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Name the type and fix a draft on your own",

@@ -248,16 +248,20 @@ LESSON = Lesson(
                         "every real cross-text analysis is built on, and you are ready to do it cold. Take the "
                         "time you need.")),
 
-        # DIAGNOSIS = self-revision of the student's OWN just-written draft (not a check on a provided weak
-        # draft). Same taught source (load balance). Scaffolded by the 3-row checklist run on their own essay.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written essay (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a
+        # separate graded rewrite, so there is no fresh draft to grade. The checklist is made READ-ONLY (plain-
+        # string rows; the (question, answer) tuple form dropped and each row's conditional guidance folded into
+        # one plain instruction). The slot stays a self-check. scored left as-is; no rewrite invented. Same
+        # taught source (load balance).
         Slot("MODEL", "diagnosis_frq", "Check your essay: one claim across both texts?",
              ref="", bank="story_of_an_hour", scored=True,
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Is there ONE analytical claim about a technique, not a rating?", "If it rates the texts or calls them interesting, name a specific technique both authors use and say what it does."),
-                     ("Does each text supply a device that supports the claim?", "If a text gives only a topic like 'a sad story' or 'about roads', assign one named device from that text instead."),
-                     ("Is an effect tied to each device?", "If a device sits there unexplained, say what it makes the reader feel or realize, then add why it matters."),
+                 checklist_block=checklist(title="Check your own draft against these (no need to type answers):", rows=[
+                     "Is there ONE analytical claim about a technique, not a rating? If it rates the texts or calls them interesting, name a specific technique both authors use and say what it does.",
+                     "Does each text supply a device that supports the claim? If a text gives only a topic like 'a sad story' or 'about roads', assign one named device from that text instead.",
+                     "Is an effect tied to each device? If a device sits there unexplained, say what it makes the reader feel or realize, then add why it matters.",
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you move on. Finish by "
                         "naming the shared technique your claim is about.")),

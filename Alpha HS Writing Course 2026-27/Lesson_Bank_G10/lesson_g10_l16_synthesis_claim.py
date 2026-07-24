@@ -202,20 +202,33 @@ LESSON = Lesson(
                  closer="Turn the frame into one clean sentence in your own words. It must be YOUR position (not "
                         "a report of one source) and must draw on both sources, the health case AND the reframed "
                         "objection.")),
-        # DIAGNOSIS = watch the check run on a PROVIDED weak draft, then write a fresh claim and run it yourself.
-        Slot("MODEL", "diagnosis_frq", "Check a thesis: synthesis, or single-source summary?",
-             ref="", bank="daylight_saving", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched synthesis-check demo (pre-answered (q,a) tuple rows) + a
+        # fresh claim + a run-and-name-which-sources tail in one box (unscoreable, wired to no grader, and the
+        # (q,a) rows leaked the answers). The coping-model demo is PRESERVED as read-only narration (the three
+        # synthesis checks shown running on the weak draft, in plain declarative prose). The student's ONLY
+        # graded act is now the fresh synthesis claim; the three checks sit read-only beneath as plain-string
+        # reminders; the run-and-name tail is deleted. Kept as diagnosis_frq (multi_paragraph grain needs an
+        # own-draft diagnosis for model_sequence). Stays on the taught source (load balance).
+        Slot("MODEL", "diagnosis_frq", "Write a synthesis claim, not a single-source summary",
+             ref="", bank="daylight_saving", rubric_ref="rc.staar", scored=True, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="First watch the check run on a weak draft, then run it on a fresh claim of your own.",
-                 setapart_block=setapart("Weak draft to fix:",
+                 intro="First, watch the synthesis check run on the weak draft below. It reports source 1 rather "
+                       "than stating the writer's own position, it uses only that one source, and it is a report "
+                       "a reader cannot disagree with rather than an arguable stance. A stronger version would "
+                       "take a position on whether the switch should end and draw on both the health case and "
+                       "the objection source. Now write a fresh claim of your own that does not fall short that "
+                       "way.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                                          "Source 1 argues the switch is bad for health.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Does it state YOUR position, or report a source?", "It reports source 1. State your own position on whether the switch should end."),
-                     ("Does it draw on more than one source?", "No. It uses only source 1. Bring in a point from the objection source too."),
-                     ("Is it one clear position a reader could disagree with?", "No. It is a report. Turn it into a stance someone could argue against."),
+                 checklist_block=checklist(title="Check your claim against these (no need to type answers):", rows=[
+                     "Does it state YOUR position rather than report one source?",
+                     "Does it draw on more than one source?",
+                     "Is it one clear position a reader could disagree with?",
                  ]),
-                 closer="Now write a fresh synthesis claim on the daylight-saving set, run the same three checks, "
-                        "and fix any that fail. Finish by naming which sources your claim draws on.")),
+                 closer="Write ONE fresh synthesis claim on the daylight-saving set: your own arguable position "
+                        "on whether the switch should end, drawing on both the health case and the objection "
+                        "source. Run the three checks above before you submit.")),
 
         # ===== INDEPENDENT: write a synthesis claim cold, no frame + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a synthesis claim on your own",

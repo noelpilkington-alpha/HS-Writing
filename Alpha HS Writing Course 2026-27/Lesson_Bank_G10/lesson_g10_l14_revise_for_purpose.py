@@ -221,23 +221,32 @@ LESSON = Lesson(
                      "Reorder so the flood point leads and the support builds behind it.",
                  ]),
                  closer="Rewrite the whole paragraph with all three moves applied.")),
-        # DIAGNOSIS: watch the check run on a provided draft, then run it on a fresh paragraph in this box
-        # (stateless-safe; the material is provided, and the self-check is on the same item, not a prior submission).
-        Slot("MODEL", "diagnosis_frq", "Check a fresh draft against the purpose",
-             ref="", bank="wetlands", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched purpose-check demo (pre-answered (q,a) tuple rows) + a
+        # fresh paragraph + a run-and-name-which-move tail in one box (unscoreable, wired to no grader, and the
+        # (q,a) rows leaked the answers). The coping-model demo is PRESERVED as read-only narration (the three
+        # purpose questions shown running on the weak draft, in plain declarative prose). The student's ONLY
+        # graded act is now the fresh paragraph; the three checks sit read-only beneath as plain-string
+        # reminders; the run-and-name tail is deleted. Stays on the taught topic (no new source).
+        Slot("MODEL", "diagnosis_frq", "Write a fresh draft that serves the purpose",
+             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the check run on a provided draft, then run it on a fresh paragraph you write "
-                       "here. Purpose of the provided draft: explain how wetlands shelter wildlife.",
-                 setapart_block=setapart("Provided draft to check:",
+                 intro="First, watch the purpose check run on the weak draft below. Purpose: explain how wetlands "
+                       "shelter wildlife. The land-area line and the legal line wander from the shelter point, so "
+                       "they would be cut; one specific detail on the shelter is missing, such as which animals "
+                       "feed, hide, or breed there; and once the wandering lines are gone the paragraph should "
+                       "lead with the shelter point and let the detail follow. Now write a fresh paragraph of "
+                       "your own that does not need those fixes.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                                          "Wetlands cover little land. They give birds and fish food and nesting spots. Some are protected by law.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Serve the purpose?", "No. The land-area line and the legal line wander from the shelter point. Delete them."),
-                     ("Missing detail?", "Yes. Add one specific detail on the shelter, such as which animals feed, hide, or breed there."),
-                     ("Order builds?", "Once the wandering lines are cut, lead with the shelter point and let the detail follow."),
+                 checklist_block=checklist(title="Check your paragraph against these (no need to type answers):", rows=[
+                     "Serve the purpose? Every sentence works toward the shelter point.",
+                     "Missing detail? One specific detail names which animals feed, hide, or breed there.",
+                     "Order builds? It leads with the shelter point, then the supporting detail follows.",
                  ]),
-                 closer="Now write a fresh short paragraph on wetlands sheltering wildlife here, then run the same "
-                        "three questions on it: serve the purpose? missing detail? order builds? Fix each No, and "
-                        "finish by naming which move you had to use most.")),
+                 closer="Write a fresh short paragraph explaining how wetlands shelter wildlife, with every "
+                        "sentence serving that purpose, one specific shelter detail included, and an order that "
+                        "builds. Run the three questions above before you submit.")),
 
         # ===== INDEPENDENT: revise a PROVIDED draft with no checklist scaffold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided draft on your own",

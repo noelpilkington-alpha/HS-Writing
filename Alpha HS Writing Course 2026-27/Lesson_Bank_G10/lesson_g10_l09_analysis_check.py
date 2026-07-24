@@ -230,23 +230,32 @@ LESSON = Lesson(
                      "Reach the WARRANT: one sentence saying why that effect matters to the author's purpose.",
                  ]),
                  closer="Rewrite the whole paragraph so it names a choice, its effect, and the warrant.")),
-        # DIAGNOSIS: watch the check run on a provided paragraph, then run it on a fresh paragraph in this box
-        # (stateless-safe; the material is provided, and the self-check is on the same item, not a prior submission).
-        Slot("MODEL", "diagnosis_frq", "Self-check a fresh paragraph on the analysis line",
-             ref="", bank="weather", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. This item is FIRST in the arc but is a watch-then-do, so it keeps the coping-model demo (Option B
+        # would destroy it). The old diagnosis_frq bundled a watched check-run demo (pre-answered (q,a) tuple rows)
+        # + a fresh paragraph + a run-the-check-and-name tail in one box (unscoreable, wired to no grader, and the
+        # (q,a) rows leaked the answers). The demo is PRESERVED as read-only narration (the check shown running on
+        # the provided paragraph, in plain declarative prose). The student's ONLY graded act is the fresh
+        # analytical paragraph; the three checks sit read-only beneath as plain-string reminders; the run-and-name
+        # tail is deleted. Grain and rubric held (paragraph, rc.staar); the fresh act is a writing construct.
+        Slot("MODEL", "diagnosis_frq", "Write a fresh analytical paragraph on the weather text", ref="",
+             bank="weather", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the check run on a provided paragraph, then run it on a fresh paragraph you "
-                       "write here.",
-                 setapart_block=setapart("Provided paragraph to check:",
+                 intro="First, watch the check run on the provided paragraph below. Choice named? No: it lists "
+                       "content the article gives, not something the author did. Effect stated? No: it never says "
+                       "what any choice does to the reader. Warrant reached? No: it never says why an effect "
+                       "matters, so it stays summary. Now write a fresh analytical paragraph of your own about the "
+                       "weather text that passes all three.",
+                 setapart_block=setapart("Provided paragraph the check was run on:",
                                          "The author lists many uses of forecasts, from farming to flights.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Choice named?", "No. It lists content the article gives, not something the author did."),
-                     ("Effect stated?", "No. It never says what any choice does to the reader."),
-                     ("Warrant reached?", "No. It never says why an effect matters, so it is summary."),
+                 checklist_block=checklist(title="Check your paragraph against these (no need to type answers):", rows=[
+                     "Choice named?",
+                     "Effect stated?",
+                     "Warrant reached (why that effect matters to the author's purpose)?",
                  ]),
-                 closer="Now write a fresh analytical paragraph about the weather text here, then run the same "
-                        "three questions on it: choice? effect? warrant? For each No, add that part, and finish "
-                        "by naming the choice your paragraph analyzes.")),
+                 closer="Write a fresh analytical paragraph about the weather text: name a choice the author made, "
+                        "state its effect, and reach the warrant. Run the three questions above before you "
+                        "submit.")),
 
         # ===== INDEPENDENT: revise a PROVIDED paragraph with no checklist scaffold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided paragraph on your own",

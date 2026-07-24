@@ -240,23 +240,27 @@ LESSON = Lesson(
                  closer="Pick a device you can point to (the spring imagery, the irony of her reaction, the "
                         "repeated word \"free\"), then say what it does to the reader. Do not stop at the label. "
                         "Run the device-to-effect check before you submit.")),
-        # DIAGNOSIS = check-and-fix on a PROVIDED weak draft (not a fresh production, so it does not repeat the
-        # supported write). Stays on the taught source = no new reading (load). Uses checklist() so the check
-        # renders as one clean numbered list (no 'Step N' double-numbering).
-        Slot("MODEL", "diagnosis_frq", "Check your sentence: effect stated, or label only?",
-             ref="", bank="story_of_an_hour", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act
+        # dropped. The old single diagnosis_frq bundled 3 acts in one box (run a device-to-effect check as pre-
+        # answered (q,a) tuple rows + rewrite + name-which-question-you-fixed) - unscoreable, wired to no grader,
+        # and the (q,a) tuple rows leaked the answers. The pre-answered diagnosis of the provided draft is folded
+        # into the intro as given context; the ONLY graded act is now the rewrite; the three check questions sit
+        # read-only beneath as plain-string reminders; the name-act tail is deleted. Stays on the taught source.
+        Slot("MODEL", "diagnosis_frq", "Fix a weak draft so it states the effect",
+             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the device-to-effect check on this weak draft, then rewrite it into a sentence that "
-                       "states the effect.",
+                 intro="This weak draft names a device (the descriptive imagery of the sky and trees) but stops at "
+                       "the label: it never says what that imagery does to the reader. Rewrite it into a sentence "
+                       "that states the effect.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "Chopin uses descriptive language about the sky and the trees outside the window.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("What device can I point to?", "Descriptive imagery of the sky and trees. Good, a device is named."),
-                     ("What does it DO to the reader?", "The draft never says. It stops at the label. Add what the imagery does."),
-                     ("Did I state that effect, or stop at the label?", "Stopped at the label. Add a 'so' clause that names the effect on the reader."),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "What device can you point to?",
+                     "What does it DO to the reader?",
+                     "Did you state that effect, or stop at the label?",
                  ]),
-                 closer="Now rewrite the weak draft into one sentence that names the device AND states its effect "
-                        "on the reader. Then name which question your rewrite fixed.")),
+                 closer="Rewrite the weak draft into one sentence that names the device AND adds a 'so' clause that "
+                        "states its effect on the reader. Run the device-to-effect check above before you submit.")),
 
         # ===== INDEPENDENT: cold write, no frame + autonomy on the device + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a device-to-effect sentence on your own",
