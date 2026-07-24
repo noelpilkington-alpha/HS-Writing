@@ -53,3 +53,13 @@ def test_fact_verify_drops_on_percent_or_year_figure():
                     ["Turnover fell from 21% to 13% after the change.", "A", "B", "C"])
     out, note = _fact_verify(it)
     assert out is None
+
+def test_fact_verify_allows_study_as_verb():
+    it = _incept_mc("Which is the best claim?", ["Students should study more before exams.", "B", "C", "D"])
+    out, note = _fact_verify(it)
+    assert out is not None   # 'study' as a verb is not a citation
+
+def test_fact_verify_allows_data_as_generic_noun():
+    it = _incept_mc("Which is an arguable claim?", ["Cities should update their data privacy rules.", "B", "C", "D"])
+    out, note = _fact_verify(it)
+    assert out is not None   # 'data privacy' is not a stat citation

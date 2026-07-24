@@ -31,7 +31,7 @@ def _strip_em_dash(item: Item) -> Item:
 # Patterns that signal a factual claim/figure that would need a real source (default DROP if present).
 _STAT_PATTERNS = [
     re.compile(r"\b\d+\s*(?:percent|%)", re.I),          # "14 percent", "13%"
-    re.compile(r"\b(?:study|survey|research|report|data)\b", re.I),  # cites a study/data
+    re.compile(r"\b(?:a|an|the|this|that|according to|per the)\s+(?:study|survey|research|report|data|poll|census)\b", re.I),  # citation context
     re.compile(r"\b\d{2,}\s+(?:districts|schools|students|people|cities|states)\b", re.I),  # "62 districts"
     re.compile(r"\bin\s+(?:19|20)\d{2}\b"),               # "in 2019"
     re.compile(r"\bfrom\s+\d+\S*\s+to\s+\d+", re.I),      # "from 21% to 13%"
