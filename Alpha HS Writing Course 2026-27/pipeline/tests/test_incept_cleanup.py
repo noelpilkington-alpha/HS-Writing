@@ -11,27 +11,27 @@ def _incept_mc(stem, opts, answer_idx=0):
                 answer_key=[chr(65+answer_idx)], provenance={"bakeoff_source": "incept"})
 
 def test_strip_em_dash_removes_all_dashes_and_passes_gate():
-    it = _incept_mc("Which choice — the best evidence — supports the claim?",
-                    ["Cities should add bike lanes – safer routes get more riders.",
+    it = _incept_mc("Which choice \u2014 the best evidence \u2014 supports the claim?",
+                    ["Cities should add bike lanes \u2013 safer routes get more riders.",
                      "It was warm.", "Buses run late.", "People liked it."])
     out = _strip_em_dash(it)
     body = out.stem + " ".join(o.text + o.rationale for o in out.options) + " ".join(out.answer_key)
-    assert "—" not in body and "–" not in body        # no em/en dashes remain
+    assert "\u2014" not in body and "\u2013" not in body        # no em/en dashes remain
     # the no-em-dash gate now passes on the cleaned item
     r = qc_item(out)
     assert r["gates"]["no_em_dash"]["passed"]
 
 def test_strip_em_dash_preserves_meaning():
-    it = _incept_mc("The plan — adopted last year — helped.", ["A", "B", "C"])
+    it = _incept_mc("The plan \u2014 adopted last year \u2014 helped.", ["A", "B", "C"])
     out = _strip_em_dash(it)
     # content preserved minus the dash: the words survive
     assert "adopted last year" in out.stem
     assert "The plan" in out.stem and "helped" in out.stem
 
 def test_strip_em_dash_does_not_mutate_original():
-    it = _incept_mc("X — Y", ["A", "B", "C"])
+    it = _incept_mc("X \u2014 Y", ["A", "B", "C"])
     _strip_em_dash(it)
-    assert "—" in it.stem   # original untouched (copy semantics)
+    assert "\u2014" in it.stem   # original untouched (copy semantics)
 
 def test_fact_verify_keeps_claim_free_item():
     it = _incept_mc("Which sentence is an arguable claim?",
@@ -99,12 +99,12 @@ def test_clean_item_passes_ours_through_untouched():
 
 def test_clean_item_incept_clean_mc_survives_with_actions():
     it = _incept_mc("Which is an arguable claim?",
-                    ["Schools should start later — teens need sleep.",
+                    ["Schools should start later \u2014 teens need sleep.",
                      "School starts at 8.", "I like sleep.", "Sleep matters."])
     out, actions = clean_item(it)
     assert out is not None                  # clean-able MC survives
     body = out.stem + " ".join(o.text for o in out.options)
-    assert "—" not in body             # em-dash stripped
+    assert "\u2014" not in body             # em-dash stripped
     assert out.provenance.get("copyright") == "incept_generated"
     assert any("em-dash" in a or "dash" in a for a in actions)
 
@@ -127,6 +127,6 @@ def test_build_produces_two_disjoint_clean_forms():
     for f in forms:
         for it in f["items"]:
             body = it.stem + " ".join(o.text for o in it.options) + " ".join(it.answer_key)
-            assert "—" not in body and "–" not in body
+            assert "\u2014" not in body and "\u2013" not in body
     # the cleanup ledger accounts for the Incept items (kept + dropped)
     assert "cleanup_ledger" in res and len(res["cleanup_ledger"]) >= 1
