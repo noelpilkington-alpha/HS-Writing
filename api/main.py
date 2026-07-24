@@ -48,8 +48,9 @@ client: anthropic.Anthropic | None = None
 api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
 
 async def verify_api_key(request: Request, api_key: str | None = Security(api_key_header)):
-    if request.url.path.startswith("/timeback/"):
-        return  # Timeback calls this directly without our API key
+    if request.url.path.startswith("/timeback/") or request.url.path == "/score":
+        return  # Timeback's ExternalApiScore calls /timeback/* and /score KEYLESS (no API-key support in the
+                # customOperator). Both must stay exempt or every live mastery submit 403s.
     if not GRADING_API_KEY:
         return  # No key configured = local dev, skip auth
     if api_key != GRADING_API_KEY:

@@ -35,7 +35,7 @@ confirmed against the live platform before go-live (see the OPEN item in the gra
 """
 from __future__ import annotations
 import os
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, Field
 
 # PORTED into HS-Writing/api 2026-07-21: engine vendored as the grader_engine sub-package; auth reuses this
@@ -120,11 +120,21 @@ class ScoreResponse(BaseModel):
 
 
 @router.post("/score", response_model=ScoreResponse, tags=["ExternalApiScore"])
-def external_score(req: ScoreRequest):
+def external_score(
+    req: ScoreRequest,
+    grain: str = Query(default=""),
+    frq_type: str = Query(default=""),
+    mode: str = Query(default=""),
+):
     """Score ONE free-response answer against a rubric config. Synchronous (ExternalApiScore contract).
 
     Auth is applied at router-include time in main.py (dependencies=[Depends(verify_api_key)]), using this
     app's X-API-Key scheme — so this route carries no auth dependency of its own (avoids a circular import).
+
+    QUERY-PARAM ROUTING (2026-07-23 Defect 1+2 fix): the wirer bakes grain/frq_type/mode into the grader URL as
+    QUERY params (.../score?grain=sentence&frq_type=writing). FastAPI populates the Pydantic body model from the
+    JSON body ONLY, so req.grain/req.frq_type/req.mode are empty on the live HTTP path — every task fell to the
+    essay engine (sentence scored 0). We now read them from the QUERY string first, body as fallback.
     """
     response = (req.response or req.studentResponse or "").strip()
     rubric = req.rubric or req.rubricId or "rc.staar"
@@ -140,9 +150,11 @@ def external_score(req: ScoreRequest):
     # Route off the DECLARED (grain, frq_type) tuple, not the content. grain is baked into the grader URL by
     # the wirer from the slot's `unit`; frq_type is the declared construct. Absent grain -> essay (back-compat:
     # today's essay callers, which send no grain, fall straight through to the rubric-family dispatch below).
-    grain = (req.grain or "").strip().lower()
+    # query param wins (the wirer's channel); body field is the fallback for JSON-only callers.
+    grain = (grain or req.grain or "").strip().lower()
+    mode = (mode or req.mode or "").strip().lower()   # resolved once; each engine branch applies its default
     if grain and grain != "essay":
-        frq_type = (req.frq_type or routing.default_frq_type(grain)).strip().lower()
+        frq_type = (frq_type or req.frq_type or routing.default_frq_type(grain)).strip().lower()
         scorer = routing.resolve(grain, frq_type)
         if scorer is None:
             raise HTTPException(status_code=400,
@@ -191,7 +203,7 @@ def external_score(req: ScoreRequest):
         # scorer == "essay" for multi_paragraph -> fall through to the rubric-family dispatch below.
 
     if cfg["engine"] == "sbac":
-        mode = (req.mode or "argumentative").strip().lower()
+        mode = mode or "argumentative"
         if mode not in _SBAC_MODES:
             raise HTTPException(status_code=400,
                                 detail=f"unknown mode '{mode}' for rc.sbac; expected {sorted(_SBAC_MODES)}")
@@ -207,7 +219,7 @@ def external_score(req: ScoreRequest):
             note=f"rc.sbac via panel_sbac (SBAC full-write, {mode}).")
 
     if cfg["engine"] == "ccss":
-        mode = (req.mode or "argument").strip().lower()
+        mode = mode or "argument"
         if mode not in _CCSS_MODES:
             raise HTTPException(status_code=400,
                                 detail=f"unknown mode '{mode}' for rc.4trait; expected {sorted(_CCSS_MODES)}")
@@ -230,7 +242,7 @@ def external_score(req: ScoreRequest):
         if _RC_STAAR_SCORE_ENGINE == "sbac":
             # STAAR CR mode maps to SBAC's argumentative/explanatory purpose; default argumentative unless the
             # caller specifies (STAAR ECR is argumentative OR informational).
-            mode = (req.mode or "argumentative").strip().lower()
+            mode = mode or "argumentative"
             if mode not in _SBAC_MODES:
                 mode = "argumentative"
             qs, tr = score_panel_sbac(client, qnum=11, grade=grade, passage=passage,

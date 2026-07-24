@@ -31,7 +31,7 @@ HERE = os.path.dirname(__file__)
 ROOT = os.path.join(HERE, "..")
 sys.path.insert(0, HERE)
 from g9_push_live import get_token, QTI_BASE
-from g9_wire_grader import wire_payload, normalize_grader_url
+from g9_wire_grader import wire_payload, normalize_grader_url, item_to_xml_payload
 from mastery_targets_grade import mastery_targets, mastery_prompt_html, _authored, _indep_slot
 import mastery_forms as MF
 import pp100_forms as PF
@@ -111,7 +111,9 @@ def build_plan(grade, grader_url, gate=True):
             prompt_html = mastery_prompt_html(L, form if form else entry)
             item = wire_payload(frq_id, slot, grader_url, source_html=None)
             item["interaction"]["questionStructure"]["prompt"] = prompt_html
-            plan.append(("item", frq_id, ITEMS_URL, item))
+            # Serialize to XML so the customOperator lands in the executable rawXml (a JSON push silently
+            # strips it -> no grader fires; CRITICAL RULE 1 + 2026-07-24 allowlist finding).
+            plan.append(("item", frq_id, ITEMS_URL, item_to_xml_payload(item)))
             plan.append(("test", test_id, TESTS_URL,
                          _single_item_test(test_id, frq_id, getattr(slot, "title", "") or lid)))
     if gate_fail:

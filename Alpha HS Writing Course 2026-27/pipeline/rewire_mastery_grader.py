@@ -55,15 +55,20 @@ def rewire_grade(grade, grader_url, live):
           + (f"  (skipped no-INDEPENDENT: {skipped})" if skipped else ""))
     if not live:
         # DRY: show the baked grader URL + rubricBlock kind for each, so the plan is auditable pre-PUT.
+        # build_plan now emits the XML-format body ({format,xml,metadata}); read the operator+block from there.
+        import re as _re
         for oid, body in frqs:
-            defn = body["responseProcessing"]["customOperator"]["definition"]
-            blk = body["rubricBlock"]["content"]
+            xml = body.get("xml", "")
+            m = _re.search(r'definition="([^"]*)"', xml)
+            defn = (m.group(1) if m else "").replace("&amp;", "&")
+            blk = ((body.get("metadata") or {}).get("rubricBlock") or {}).get("content", "")
             which = ("rc.4trait" if "content_analysis" in blk else
                      "sentence-grain" if ("Skill Application" in blk or "Answer Quality" in blk) else
                      "paragraph-grain" if "Ideas &amp; Content" in blk else
                      "rc.staar" if "STAAR" in blk else "??")
+            has_op = "custom-operator" in xml
             tail = "/score" + defn.split("/score")[-1] if "/score" in defn else defn
-            print(f"    {oid:44s} {tail:44s} block={which}")
+            print(f"    {oid:44s} {tail:40s} block={which} op={'yes' if has_op else 'MISSING'}")
         return True, len(frqs), 0
     load_env()
     import requests

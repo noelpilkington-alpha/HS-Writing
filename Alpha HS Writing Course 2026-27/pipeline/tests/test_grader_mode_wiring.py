@@ -40,7 +40,17 @@ def _plan_items(grade):
 
 
 def _definition(body):
-    return body["responseProcessing"]["customOperator"]["definition"]
+    # build_plan now emits the XML-format body ({format,xml,metadata}); the operator + grader URL live
+    # LITERALLY in the XML (a JSON body would have the converter strip them). Read the definition from there.
+    import re
+    xml = body.get("xml", "")
+    assert "custom-operator" in xml, "customOperator missing from the executable XML (JSON strip regression!)"
+    m = re.search(r'definition="([^"]*)"', xml)
+    return (m.group(1) if m else "").replace("&amp;", "&")
+
+
+def _block(body):
+    return ((body.get("metadata") or {}).get("rubricBlock") or {}).get("content", "")
 
 
 def test_mode_is_a_valid_slot_field():
@@ -55,7 +65,7 @@ def test_no_g11_g12_mastery_frq_uses_rc_ap():
     # AP-style rubricBlock (the "AP Row A/B/C" markers) — every essay FRQ must show the rc.4trait criteria.
     for grade in ("G11", "G12"):
         for oid, body in _plan_items(grade):
-            blk = body["rubricBlock"]["content"]
+            blk = _block(body)
             assert "AP Row" not in blk, f"{oid} still carries an rc.ap-style rubricBlock: {blk[:80]}"
 
 
@@ -80,9 +90,9 @@ def test_essay_grain_rc4trait_frqs_carry_the_rc4trait_block():
     for grade in ("G11", "G12"):
         for oid, body in _plan_items(grade):
             defn = _definition(body)
-            if "grain=" in defn:
-                continue  # sentence/paragraph carry their own short-grain block
-            blk = body["rubricBlock"]["content"]
+            if "grain=" in defn or "alphatest.alpha.school" in defn:
+                continue  # sentence/paragraph carry their own block; sentence now routes to the NATIVE grader
+            blk = _block(body)
             assert "content_analysis" in blk and "command_of_evidence" in blk, (
                 f"{oid} essay-grain FRQ missing the rc.4trait block: {blk[:80]}")
             assert "STAAR" not in blk, f"{oid} fell through to the rc.staar block: {blk[:80]}"
