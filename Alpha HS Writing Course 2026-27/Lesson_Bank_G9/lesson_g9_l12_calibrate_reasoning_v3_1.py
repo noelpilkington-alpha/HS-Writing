@@ -257,19 +257,22 @@ LESSON = Lesson(
                  closer="Keep the claim, but replace the empty because-clause with a real reason (what ash "
                         "actually does). Write it in one sentence, then run the check: after because, is there a "
                         "new reason, or the claim again?")),
-        # DIAGNOSIS = run the check on a PROVIDED draft, then write and check a fresh one (self-contained).
-        Slot("MODEL", "diagnosis_frq", "Run the check on a fresh warrant",
-             ref="", bank="volcanoes", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act dropped.
+        Slot("MODEL", "diagnosis_frq", "Write a warrant that explains",
+             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the check on this provided draft, then write and check a fresh warrant of your own.",
-                 setapart_block=setapart("Provided draft to check:", "Living near a volcano is risky because it is dangerous.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Is there a causal word (because, since, as)?", "Yes, because. That part is fine."),
-                     ("After it, is there a new reason, or the claim again?", "Just the claim again: 'risky because dangerous' repeats itself, so this warrant is empty."),
-                     ("Does it name what actually happens?", "No. A real reason would name it, such as lava flows, ashfall, or sudden eruptions."),
+                 intro="This provided draft has a causal word (because), but after it the draft only repeats the "
+                       "claim: 'risky because dangerous' says the same idea twice and names nothing that actually "
+                       "happens near a volcano, so the warrant is empty. Write a fresh warrant sentence that "
+                       "explains a real reason instead.",
+                 setapart_block=setapart("Empty warrant to replace:", "Living near a volcano is risky because it is dangerous.", "red"),
+                 checklist_block=checklist(title="Make your warrant pass these (no need to type answers):", rows=[
+                     "Is there a causal word (because, since, or as)?",
+                     "After it, is there a new reason, or just the claim again?",
+                     "Does the reason name what actually happens (such as lava flows, ashfall, or sudden eruptions)?",
                  ]),
-                 closer="Now write one fresh warrant sentence about volcanoes, then run the same check on it. "
-                        "Finish by naming whether your warrant explains or still restates.")),
+                 closer="Write one fresh warrant sentence about living near a volcano. Run the check above before "
+                        "you submit.")),
 
         # ===== INDEPENDENT: cold revise a provided draft + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided draft on your own",

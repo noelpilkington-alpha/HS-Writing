@@ -222,23 +222,30 @@ LESSON = Lesson(
                      "Add the warrant: one sentence saying WHY lava, ash, and gas make an eruption dangerous.",
                  ]),
                  closer="Rewrite the whole paragraph with the warrant added.")),
-        # DIAGNOSIS: watch the check run on a provided paragraph, then run it on a fresh paragraph in this box
-        # (stateless-safe; the material is provided, and the self-check is on the same item, not a prior submission).
-        Slot("MODEL", "diagnosis_frq", "Self-check a fresh paragraph against the rubric list",
-             ref="", bank="volcanoes", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched rubric-check-run demo on a provided paragraph + a fresh
+        # paragraph + a run-the-same-three-questions-and-name-which-part tail in one box (unscoreable, wired to no
+        # grader). The coping-model demo is PRESERVED as read-only narration (the rubric check shown running on the
+        # provided paragraph, in plain declarative form so it is not a hidden self-answer prompt). The student's ONLY
+        # graded act is now the fresh build; the three checks sit read-only beneath as plain-string reminders; the
+        # run-and-name tail is deleted. Stays on the taught topic (no new source to read).
+        Slot("MODEL", "diagnosis_frq", "Write a fresh paragraph the rubric check would pass",
+             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the check run on a provided paragraph, then run it on a fresh paragraph you "
-                       "write here.",
-                 setapart_block=setapart("Provided paragraph to check:",
+                 intro="First, watch the rubric check run on the provided paragraph below. The CLAIM is there "
+                       "('monitoring volcanoes saves lives' takes a position), but no ATTRIBUTED EVIDENCE is given "
+                       "(there is no source fact) and there is no WARRANT ('it is a good idea' never says why "
+                       "evidence would support the claim), so two of the three come back missing. Now write a "
+                       "fresh body paragraph about volcanoes that does not leave those gaps.",
+                 setapart_block=setapart("Provided paragraph the check was run on:",
                                          "Monitoring volcanoes saves lives. It is a good idea.", "red"),
-                 checklist_block=checklist(title="Run the rubric check:", rows=[
-                     ("Claim?", "Yes. 'Monitoring volcanoes saves lives' takes a position."),
-                     ("Attributed evidence?", "No. There is no source fact. Add one."),
-                     ("Warrant?", "No. 'It is a good idea' is not a warrant. Add why the evidence supports the claim."),
+                 checklist_block=checklist(title="Check your paragraph against these (no need to type answers):", rows=[
+                     "Claim: does one sentence take a clear position?",
+                     "Attributed evidence: is a fact given, and is its source named?",
+                     "Warrant: does a sentence say why that evidence supports the claim?",
                  ]),
-                 closer="Now write a fresh body paragraph about volcanoes here, then run the same three questions "
-                        "on it: claim? attributed evidence? warrant? For each No, fix that part, and finish by "
-                        "naming which part you had to add.")),
+                 closer="Write ONE fresh body paragraph about volcanoes with all three parts (a claim, attributed "
+                        "evidence, and a warrant). Run the check above before you submit.")),
 
         # ===== INDEPENDENT: revise a PROVIDED paragraph with no checklist scaffold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided paragraph and self-check your fix",

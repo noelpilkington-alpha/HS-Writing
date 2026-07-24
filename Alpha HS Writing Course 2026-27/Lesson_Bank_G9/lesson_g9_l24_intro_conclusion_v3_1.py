@@ -190,22 +190,31 @@ LESSON = Lesson(
                  closer="Write the INTRODUCTION for an essay arguing that schools should offer free meals to all "
                         "students. Orient the reader in a sentence, then state the thesis. Do not announce 'this "
                         "essay is about ...'; frame the thesis instead.")),
-        # DIAGNOSIS (mechanism 4): watch the 2-job check run on a weak draft, then run it on a fresh conclusion.
-        Slot("MODEL", "diagnosis_frq", "Check an intro and conclusion for their jobs", ref="", bank="school_lunch",
-             scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched 2-job check-run demo (intro + conclusion) + a fresh
+        # conclusion + a run-the-check-and-name-the-upshot tail in one box (unscoreable, wired to no grader). The
+        # coping-model demo is PRESERVED as read-only narration (the 2-job check shown running on the weak draft, in
+        # plain declarative form so it is not a hidden self-answer prompt). The student's ONLY graded act is now the
+        # fresh conclusion; the 2 jobs sit read-only beneath as plain-string reminders; the run-and-name tail is
+        # deleted. Stays on the taught topic (no new source to read).
+        Slot("MODEL", "diagnosis_frq", "Write a fresh conclusion that lands the upshot", ref="", bank="school_lunch",
+             rubric_ref="rc.staar", scored=True, unit="multi_paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="Watch the check run on a weak draft, then run it on a fresh conclusion of your own.",
-                 setapart_block=setapart("Weak draft to fix:",
+                 intro="First, watch the 2-job check run on the weak draft below. The INTRO only announces the "
+                       "topic ('this essay will discuss free school meals'), so it frames no thesis, and the "
+                       "CONCLUSION just repeats ('free meals are a good idea'), so it lands no upshot. Now write a "
+                       "fresh CONCLUSION of your own for the free-meals essay that lands an upshot instead of "
+                       "repeating.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                      "Intro: This essay will discuss free school meals and give reasons. Conclusion: In "
                      "conclusion, free meals are a good idea.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Intro: does it FRAME the thesis (orient, then state it)?",
-                      "No, it only announces the topic. Set up why meals matter, then state the thesis."),
-                     ("Conclusion: does it LAND an upshot (why it matters or what follows)?",
-                      "No, it just repeats. Add why it matters, for example that removing hunger removes a barrier to learning."),
+                 checklist_block=checklist(title="Check your conclusion against these (no need to type answers):", rows=[
+                     "Does it land an upshot (why the argument matters or what follows), not just repeat the thesis?",
+                     "Would a reader gain something new from it, rather than hearing the claim again?",
                  ]),
-                 closer="Now you: write a fresh CONCLUSION for the free-meals essay, then check it, does it land "
-                        "an upshot rather than repeat? Fix it if not, and name the upshot your conclusion delivers.")),
+                 closer="Write ONE fresh CONCLUSION for an essay arguing schools should offer free meals to every "
+                        "student: land the upshot (why it matters or what follows), for example that removing "
+                        "hunger removes a barrier to learning. Run the check above before you submit.")),
 
         # ===== INDEPENDENT: cold write (no frame) on the taught topic + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write an intro and a conclusion", ref="", bank="school_lunch",

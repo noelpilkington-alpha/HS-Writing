@@ -240,19 +240,57 @@ LESSON = Lesson(
                                          "The water cycle ______ [what it does overall], through ______ [name the connected stages]."),
                  closer="Set a clear focus and preview the parts, take NO side. Do not argue that the cycle is "
                         "important or best. Then check it against the 3 questions.")),
-        Slot("MODEL", "diagnosis_frq", "Check your controlling idea: focus set, parts previewed, no side?",
-             ref="", bank="water_cycle", scored=True,
+        # ===== COUNCIL FIX (2026-07-24): Option B (first-in-arc). Graded recognition + graded fresh-draft
+        # rewrite; name-act dropped. The old single diagnosis_frq bundled 3 acts in one box (mark 3 yes/no +
+        # rewrite + name-the-check) - unscoreable, wired to no grader. First diagnosis item in this arc ->
+        # two single-act items. Item 1 = graded RECOGNITION on a minimal-pair draft that fails EXACTLY ONE
+        # check (single-select is faultless; DI constraint): the draft sets a focus and takes no side but
+        # previews no stages (the lesson's own second discrimination already classifies this exact sentence
+        # that way). Item 2 = graded FRESH-draft rewrite, with the 3 checks printed READ-ONLY beneath the
+        # prompt (no scrolling back). The "name which question" third act is deleted. =====
+        Slot("MODEL", "discrimination", "Diagnose the draft: which check does it fail?",
+             ref="", labeled_grade_c=True, bank="water_cycle",
+             body=("Run the 3-question check on this draft. It already sets a focus and takes no side, so "
+                   "focus on what is still missing. The draft: 'The water cycle keeps the planet's water "
+                   "moving all the time.' Which single check does it fail? "
+                   "(A) It sets no focusing angle a reader can follow.  "
+                   "(B) It takes an arguable side.  "
+                   "(C) It never previews the parts (the stages).  "
+                   "(D) It fails none of the checks; it is already a controlling idea. "
+                   "Correct: C. It sets a focus and takes no side, but it never names the stages, so a "
+                   "reader cannot tell what parts the explanation will cover."),
+             choices=[
+                 {"id": "A", "text": "It sets no focusing angle a reader can follow.",
+                  "correct": False,
+                  "why": "It does set a focus: it says the cycle keeps the planet's water moving. That check "
+                         "passes; look for the one that fails."},
+                 {"id": "B", "text": "It takes an arguable side.",
+                  "correct": False,
+                  "why": "It reports how the cycle behaves without any judgment a reader could dispute, so the "
+                         "no-side check passes too."},
+                 {"id": "C", "text": "It never previews the parts (the stages).",
+                  "correct": True,
+                  "why": "Correct. It sets a focus and takes no side, but it never names the stages, so a "
+                         "reader cannot tell what parts the explanation will cover. A focus with no parts "
+                         "previewed is only half a controlling idea."},
+                 {"id": "D", "text": "It fails none of the checks; it is already a controlling idea.",
+                  "correct": False,
+                  "why": "Not yet. It sets a focus and takes no side, but it previews no parts, so one check "
+                         "still fails."},
+             ]),
+        Slot("MODEL", "production_frq", "Now fix a draft: add what is missing",
+             ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question check on this weak draft, then rewrite it into a real controlling idea.",
+                 intro="Here is a different weak draft. Rewrite it into one controlling idea.",
                  setapart_block=setapart("Weak draft to fix:", "The water cycle is a very important process.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Does it set a focus (an angle on how the cycle works)?",
-                      "your call: yes / no"),
-                     ("Does it preview the parts?", "your call: yes / no"),
-                     ("Does it take no side?", "your call: yes / no"),
-                 ]),
-                 closer="Now rewrite the weak draft into one controlling idea that passes all three. "
-                        "Then name which question your rewrite fixed.")),
+                 checklist_block=checklist(title="Check your rewrite against these (no need to type answers):",
+                                           rows=["Does it set a focus (an angle on how the cycle works)?",
+                                                 "Does it preview the parts (the stages)?",
+                                                 "Does it take no side?"]),
+                 closer="This one only calls the cycle important, a side no one asked for on an explain task, "
+                        "and it sets no focus. Rewrite it into one controlling idea: set a focusing angle on "
+                        "how the cycle works, name the stages, and take no side. Write one sentence, and run "
+                        "the three checks above before you submit.")),
 
         # ===== INDEPENDENT: autonomy (own angle) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write one controlling idea for the water cycle",

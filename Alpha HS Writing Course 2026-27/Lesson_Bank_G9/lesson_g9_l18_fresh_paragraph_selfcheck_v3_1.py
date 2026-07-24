@@ -225,22 +225,31 @@ LESSON = Lesson(
                  closer="For every No, fix that part before you submit. This build-it-then-check-it move is what "
                         "strong writers do on every paragraph, and you are ready to run it on your own.")),
 
-        # DIAGNOSIS = watch the check run on a PROVIDED weak draft, then run it on a FRESH paragraph written in
-        # this same slot (no prior-work look-back; stateless-safe). Produces no reused claim.
-        Slot("MODEL", "diagnosis_frq", "Run the checklist on a fresh paragraph you write here",
-             ref="", bank="community_service", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched four-item check-run demo + a fresh paragraph + a run-the-
+        # check-and-name-which-item tail in one box (unscoreable, wired to no grader). The coping-model demo is
+        # PRESERVED as read-only narration (the four-item check shown running on the weak draft, in plain
+        # declarative form so it is not a hidden self-answer prompt). The student's ONLY graded act is now the
+        # fresh build; the four items sit read-only beneath as plain-string reminders; the run-and-name tail is
+        # deleted. Fresh paragraph written in this slot (no prior-work look-back; stateless-safe).
+        Slot("MODEL", "diagnosis_frq", "Build a fresh paragraph the check would pass",
+             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the four-item check run on a weak draft, then run it on a fresh paragraph you write here.",
-                 setapart_block=setapart("Weak draft:", "Required service builds character. Schools should adopt it.", "red"),
-                 checklist_block=checklist(title="Run the check on the weak draft:", rows=[
-                     ("Is there a claim?", "Yes, 'schools should adopt it' takes a side."),
-                     ("Is there a fact with its source named?", "No. Add a fact and name who reports it."),
-                     ("Is there a warrant that says why the fact supports the claim?", "No. Add the why."),
-                     ("Do the sentences connect with functional transitions?", "Not yet. Add connectors so they flow."),
+                 intro="First, watch the four-item check run on the weak draft below. It has a claim ('schools "
+                       "should adopt it' takes a side), but it gives no fact with a source named, no warrant to "
+                       "say why a fact would support the claim, and no functional transitions connecting the "
+                       "sentences, so three of the four items come back missing. Now build a fresh paragraph of "
+                       "your own that the same check would pass.",
+                 setapart_block=setapart("Weak draft the check was run on:", "Required service builds character. Schools should adopt it.", "red"),
+                 checklist_block=checklist(title="Check your paragraph against these (no need to type answers):", rows=[
+                     "Is there a claim?",
+                     "Is there a fact with its source named?",
+                     "Is there a warrant that says why the fact supports the claim?",
+                     "Do the sentences connect with functional transitions?",
                  ]),
-                 closer="Now write a fresh complete body paragraph on required service here, then run the same "
-                        "four yes/no items on the paragraph you just wrote in this box. For each No, fix that "
-                        "part. Finish by naming which item you had to fix.")),
+                 closer="Build ONE fresh, complete body paragraph on required community service with all four "
+                        "features (claim, attributed fact, warrant, functional transitions), connected so they "
+                        "flow. Run the check above before you submit.")),
 
         # ===== TRANSFER: same move, a NEW topic (animal migration), partitioned from the taught bank =====
         Slot("TRANSFER", "stimulus_display", "Read a NEW source: animal migration",

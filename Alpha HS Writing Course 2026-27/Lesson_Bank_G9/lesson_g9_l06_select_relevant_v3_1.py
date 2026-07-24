@@ -230,23 +230,23 @@ LESSON = Lesson(
                  closer="Pick the fact about WHY birds migrate, name the source, and choose to quote or "
                         "paraphrase. Do not grab a true-but-off-point fact. Then run the relevance test before "
                         "you submit.")),
-        # DIAGNOSIS = check-and-fix on a PROVIDED weak draft (not a fresh production, so it does not repeat the
-        # supported write). Stays on the taught source = no new reading (load). Uses checklist() so the check
-        # renders as one clean numbered list (no 'Step N' double-numbering).
-        Slot("MODEL", "diagnosis_frq", "Check your evidence: does it prove the claim?",
-             ref="", bank="animal_migration", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act dropped.
+        # Stays on the taught source = no new reading (load). Uses checklist() so the checks render as one clean
+        # numbered list of plain read-only reminders (no 'Step N' double-numbering, no self-answered fields).
+        Slot("MODEL", "diagnosis_frq", "Fix the evidence draft",
+             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the relevance test on this weak draft, then rewrite it into a sentence that proves "
-                       "the claim that birds migrate to survive the seasons.",
+                 intro="The claim is that birds migrate to survive the seasons. The draft below picks a fact "
+                       "about how FAR birds travel, which is true but off-point, so it does not prove that claim. "
+                       "Rewrite it into one sentence that proves the claim with a relevant fact from the reading, "
+                       "named.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "According to the passage, some bird migrations cover thousands of miles.", "red"),
-                 checklist_block=checklist(title="Run the test:", rows=[
-                     ("What is the claim about?", "Why birds migrate, to survive the seasons."),
-                     ("Does this fact prove THAT?", "your call: yes / no"),
-                     ("Is the source named?", "your call: yes / no"),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Does your fact prove WHY birds migrate to survive the seasons, or is it just true?",
+                     "Is the source named?",
                  ]),
-                 closer="Now rewrite the weak draft into one sentence that proves the claim with a relevant "
-                        "fact, named. Then name which question your rewrite fixed.")),
+                 closer="Write one sentence that proves the claim with a relevant fact, named, then run the checks above before you submit.")),
 
         # ===== INDEPENDENT: cold write, SAME source but a DIFFERENT claim (cannot reuse the supported
         #        sentence) + autonomy on form + say-the-standard =====

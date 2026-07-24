@@ -191,23 +191,26 @@ LESSON = Lesson(
                  closer="Write the building order as three labeled lines, then write the opening transition "
                         "sentence for the second and third paragraphs so each links to the one before. Run the 2 "
                         "checks.")),
-        # DIAGNOSIS: check-and-fix on a PROVIDED weak plan (a checklist(), not "Step 1/Step 2" prose), then a
-        # fresh self-check. Self-contained (no look-back at the student's own prior work). Stays on the taught
-        # topic (no new source to read).
-        Slot("MODEL", "diagnosis_frq", "Check a plan for order and links, then run it on a fresh one",
-             ref="", bank="volcanoes", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). Was a bundle: a pre-answered 2-check demo on a weak
+        # plan + a fresh three-point write + a name-the-relationship tail, all in one box (unscoreable, wired to no
+        # grader). Now ONE graded act (rewrite the weak plan into an ordered, linked one); the weak plan's two
+        # faults move into the intro as read-only narration; the 2 checks print READ-ONLY beneath the prompt (no
+        # typed yes/no); the "name the relationship" tail is dropped. Stays on the taught topic (no new source).
+        Slot("MODEL", "diagnosis_frq", "Fix a weak plan's order and links",
+             ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="multi_paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the two checks on this weak plan, then fix it and run the same checks on a fresh plan "
-                       "of your own.",
+                 intro="This plan puts the effect before the cause (P1 says eruptions are dangerous before P2 "
+                       "explains how magma forms), and each paragraph starts cold with no transition. Rewrite it "
+                       "into a plan that builds and links.",
                  setapart_block=setapart("Weak plan to fix:",
                                          "P1: Eruptions are dangerous. P2: Magma forms deep underground. P3: Monitoring helps spot risk.", "red"),
-                 checklist_block=checklist(title="Run the 2 checks:", rows=[
-                     ("Does each paragraph build on the one before?", "No. P1 (the effect) comes before P2 (the cause), so reorder to magma, eruption, monitoring."),
-                     ("Does each paragraph after the first open with a link?", "No. Add opening transitions that tie each paragraph to the one before."),
+                 checklist_block=checklist(title="Make your rewrite pass these two (no need to type answers):", rows=[
+                     "Does each paragraph build on the one before (cause before effect)?",
+                     "Does each paragraph after the first open with a transition that links it to the one before?",
                  ]),
-                 closer="Now write a fresh three-point order for a volcano essay and run the same two checks, "
-                        "fixing any that fail. Finish by naming the relationship your order follows (for example, "
-                        "cause to effect).")),
+                 closer="Rewrite the three points as three labeled lines in a building order (cause, then effect, "
+                        "then response), and open the second and third with a transition that links to the "
+                        "paragraph before. Run the 2 checks above before you submit.")),
 
         # ===== INDEPENDENT: cold write on the taught topic, no frame, autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Order and link a full set of body paragraphs",

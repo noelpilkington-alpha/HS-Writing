@@ -278,23 +278,51 @@ LESSON = Lesson(
                                          "Although ______ [a real objection], ______ [your position, held] because ______ [a reason that answers it]."),
                  closer="Concede a real objection AND answer it with a reason while keeping a clear side. Do not "
                         "drift into 'both sides are right.' Then check it against the 3 questions.")),
-        # DIAGNOSIS = a CHECK-and-FIX on a PROVIDED weak draft (concede-no-answer), so it is not a fresh production
-        # and does not repeat the framed write. Stays on the taught topic = no new source to read (load balance).
-        Slot("MODEL", "diagnosis_frq", "Check and fix a weak draft with the 3 questions",
-             ref="", bank="free_transit", scored=True,
+        # COUNCIL FIX (2026-07-24): Option B (first-in-arc). The old single diagnosis_frq bundled 3 acts in one
+        # box (mark 3 yes/no + rewrite + name the reason) - unscoreable, wired to no grader. First diagnosis item
+        # in this arc -> two single-act items. Item 1 = graded RECOGNITION on a draft that fails EXACTLY ONE of the
+        # 3 checks (single-select is faultless; DI constraint). Item 2 = graded FRESH-draft rewrite, with the 3
+        # checks printed READ-ONLY beneath the prompt (no scrolling back). The "name the reason" third act is dropped.
+        Slot("MODEL", "discrimination", "Diagnose the draft: which check does it fail?",
+             ref="", labeled_grade_c=True, bank="free_transit",
+             body=("Run the 3-question test on this draft. It already concedes a real objection and holds a side, "
+                   "so focus on what is missing. The draft: 'Although free transit costs money, cities should just "
+                   "make the buses free anyway.' Which single check does it fail? "
+                   "(A) It does not concede a real objection the other side would raise.  "
+                   "(B) It never answers the objection with a reason.  "
+                   "(C) It does not hold a clear position.  "
+                   "(D) It fails none of the checks; it is already a concede-and-answer sentence. "
+                   "Correct: B. It concedes the cost and holds its side, but 'anyway' gives no reason, so the "
+                   "objection is never answered."),
+             choices=[
+                 {"id": "A", "text": "It does not concede a real objection the other side would raise.",
+                  "correct": False,
+                  "why": "It does concede a real objection: the cost to taxpayers is exactly what the other side "
+                         "raises. That check passes; look for the one that fails."},
+                 {"id": "B", "text": "It never answers the objection with a reason.",
+                  "correct": True,
+                  "why": "Correct. It says 'anyway' but gives no reason, so the cost objection is left standing. A "
+                         "concede-and-answer sentence has to answer the objection with a reason."},
+                 {"id": "C", "text": "It does not hold a clear position.",
+                  "correct": False,
+                  "why": "It does hold a clear side: cities should make the buses free. That check passes too."},
+                 {"id": "D", "text": "It fails none of the checks; it is already a concede-and-answer sentence.",
+                  "correct": False,
+                  "why": "Not yet. It concedes and holds a side, but it never answers the objection, so one check still fails."},
+             ]),
+        Slot("MODEL", "production_frq", "Now fix a draft: add what is missing",
+             ref="", bank="free_transit", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question test on this weak draft, then rewrite it into a real concede-and-answer sentence.",
+                 intro="Here is a different weak draft. Rewrite it into one real concede-and-answer sentence.",
                  setapart_block=setapart("Weak draft to fix:",
-                                         "Although free transit costs money, cities should just make the buses free anyway.", "red"),
-                 checklist_block=checklist(title="Run the test:", rows=[
-                     ("Did it concede a real objection (not a fact)?", "your call: yes / no"),
-                     ("Did it answer that objection with a reason?",
-                      "No. It says 'anyway' but gives no reason, so the cost objection is left standing. Add a "
-                      "reason that answers it, such as free rides getting low-income workers to their jobs."),
-                     ("Does it still hold a clear position?", "your call: yes / no"),
-                 ]),
-                 closer="Now rewrite the weak draft into one concede-and-answer sentence that passes all three. "
-                        "Then name, in a few words, the reason you used to answer the objection.")),
+                                         "Cities should make the buses free because it helps people get to work.", "red"),
+                 checklist_block=checklist(title="Check your rewrite against these three (no need to type answers):",
+                                           rows=["Did it concede a real objection (not a fact)?",
+                                                 "Did it answer that objection with a reason?",
+                                                 "Does it still hold a clear position?"]),
+                 closer="This draft holds a side and gives a reason, but it concedes nothing the other side would "
+                        "raise. Add a concession and answer it, using the shape Although X, Y because Z. Write one "
+                        "sentence, and run the three checks above before you submit.")),
 
         # ===== INDEPENDENT: cold concede-and-answer write on the taught topic (no frame) =====
         Slot("INDEPENDENT", "production_frq", "Write a concede-and-answer sentence on your own",

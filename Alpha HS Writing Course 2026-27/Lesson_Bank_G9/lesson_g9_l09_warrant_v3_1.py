@@ -242,19 +242,48 @@ LESSON = Lesson(
                                          "Schools should require service because ______ [a fact from the source] so ______ [explain WHY that fact supports requiring service]."),
                  closer="Use because, since, or as, then give a real reason, do not just restate the claim. "
                         "Write one warrant sentence, then check it against the 3 questions.")),
-        # DIAGNOSIS = check-and-fix on a PROVIDED weak draft (self-contained, no look-back at prior work).
-        Slot("MODEL", "diagnosis_frq", "Check and fix a weak warrant with the 3 questions",
-             ref="", bank="community_service", scored=True,
+        # COUNCIL FIX (2026-07-24): Option B (first-in-arc). Graded recognition + graded fresh-draft rewrite; name-act dropped.
+        Slot("MODEL", "discrimination", "Diagnose the draft: which check does it fail?",
+             ref="", labeled_grade_c=True, bank="community_service",
+             body=("Here is a weak warrant: 'Schools should require service because it teaches students "
+                   "responsibility and builds skills they will use later in life.' Run the 3 warrant questions "
+                   "on it. It passes two of them and fails exactly one. Which check does this draft fail? "
+                   "(A) It has no causal word such as because, since, or as, so nothing signals that reasoning is coming.  "
+                   "(B) It only restates the claim in different words instead of giving a real reason.  "
+                   "(C) It gives a real reason, but the reason is not a fact drawn from the source.  "
+                   "(D) It states a fact from the source but never explains why that fact supports the claim. "
+                   "Correct: C. The draft has a causal word (because) and gives a real reason (it teaches "
+                   "responsibility and builds skills), so it passes the first two checks. But that reason is a "
+                   "general value, not a fact from the source, so it fails the source-fact check. (A) is wrong "
+                   "because 'because' is right there. (B) is wrong because the reason is a real explanation, not a "
+                   "restatement of 'should require service.' (D) is wrong because the draft uses no source fact at all."),
+             choices=[
+                 {"id": "A", "text": "It has no causal word such as because, since, or as, so nothing signals that reasoning is coming.",
+                  "correct": False,
+                  "why": "The draft opens its reasoning with 'because,' so the causal-word check passes. That is not the failing check."},
+                 {"id": "B", "text": "It only restates the claim in different words instead of giving a real reason.",
+                  "correct": False,
+                  "why": "The reason ('it teaches responsibility and builds skills') is a real explanation, not a restatement of 'schools should require service,' so the explain-vs-restate check passes."},
+                 {"id": "C", "text": "It gives a real reason, but the reason is not a fact drawn from the source.",
+                  "correct": True,
+                  "why": "Correct. The reason is a general value about service, not a fact from the source, so the source-fact check fails. A real warrant would reason from a source fact, such as the share of high schools already running service programs."},
+                 {"id": "D", "text": "It states a fact from the source but never explains why that fact supports the claim.",
+                  "correct": False,
+                  "why": "The draft uses no source fact at all; it rests on a general value, so this is not what it fails. The missing piece is a source fact, not the explanation."},
+             ]),
+        Slot("MODEL", "production_frq", "Now fix a draft: add what is missing",
+             ref="", bank="community_service", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question warrant check on this weak draft, then rewrite it into a real warrant.",
+                 intro="Now fix a different weak draft. This one restates the claim and uses no source fact, so "
+                       "the reasoning is empty. Rewrite it into a real warrant.",
                  setapart_block=setapart("Weak draft to fix:", "Service should be required because requiring it is a good idea.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Is there a causal word (because, since, as)?", "Yes, because. That part is fine."),
-                     ("Does it explain WHY, or just restate the claim?", "It restates ('required because it is a good idea'). Replace that with a real reason."),
-                     ("Does it use a fact from the source?", "No. Add one, such as the share of high schools already running service programs."),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Is there a causal word (because, since, or as)?",
+                     "Does it explain WHY, or just restate the claim?",
+                     "Does it use a fact from the source?",
                  ]),
-                 closer="Now write one fresh warrant sentence for a claim about requiring service that passes "
-                        "all three, then name which check the weak draft failed hardest.")),
+                 closer="Write one fresh warrant sentence for a claim about requiring service. Run the checks "
+                        "above before you submit.")),
 
         # ===== INDEPENDENT: cold write on the taught topic, no frame + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a warrant on your own",

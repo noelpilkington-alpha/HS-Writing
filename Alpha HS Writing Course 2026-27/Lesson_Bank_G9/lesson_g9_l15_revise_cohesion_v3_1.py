@@ -192,21 +192,26 @@ LESSON = Lesson(
                  ]),
                  closer="Then reread: does each transition name a relationship, and does every reference point "
                         "clearly?")),
-        # DIAGNOSIS: watch the check run on a provided draft, then run it on a fresh paragraph (stateless-safe;
-        # the material is provided, so no look-back at the student's own prior submission).
-        Slot("MODEL", "diagnosis_frq", "Check and fix a weak paragraph for cohesion",
-             ref="", bank="school_lunch", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act dropped.
+        # The old diagnosis_frq bundled a self-answered 2-question check + a rewrite + a name-which-relationship tail
+        # in one box (unscoreable, wired to no grader). Now: ONE graded rewrite of the provided weak paragraph; the
+        # checks are plain read-only reminders (no pre-answered yes/no fields); the name-act is deleted. Stays on the
+        # taught topic = no new source to read; material is provided (stateless-safe, no look-back at prior work).
+        Slot("MODEL", "diagnosis_frq", "Fix a weak paragraph for cohesion",
+             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the check on this weak paragraph, then rewrite it so it connects.",
+                 intro="In the weak paragraph below the second idea is really a contrast (it feeds kids but costs "
+                       "money), yet 'also' hides that, and the final 'this' floats with no anchor. Rewrite it as "
+                       "one connected paragraph.",
                  setapart_block=setapart("Weak paragraph to fix:",
                                          "Free meals feed more kids. Also, they cost the district money. This is debated.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Does each transition name a real relationship?", "No. The second idea is a contrast (feeds kids but costs money), so 'also' hides it. Name it with 'however' or 'but'."),
-                     ("Does every reference point to one clear thing?", "No. The final 'this' floats. Anchor it, such as 'this tradeoff'."),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Does each transition name the real relationship (watch the contrast), not filler like 'also'?",
+                     "Does the final reference point to one clear thing (anchor 'this' to a noun, such as 'this tradeoff')?",
                  ]),
-                 closer="Now rewrite it as one connected paragraph: each transition naming the real relationship "
-                        "(watch the contrast) and the final reference anchored. Then name which relationship each "
-                        "transition signals.")),
+                 closer="Rewrite it as one connected paragraph: name the real relationship at each link (the "
+                        "second one is a contrast) and anchor the final reference. Run the checks above before "
+                        "you submit.")),
 
         # ===== INDEPENDENT: revise a PROVIDED paragraph with no checklist scaffold (still on the taught topic) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided paragraph on your own",

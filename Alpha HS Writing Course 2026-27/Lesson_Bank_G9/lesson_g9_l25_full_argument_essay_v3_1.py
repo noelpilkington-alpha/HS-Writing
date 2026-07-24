@@ -236,16 +236,19 @@ LESSON = Lesson(
                         "the reread check and fix any part that fails. Assembling the moves you own into one "
                         "essay is the real skill, and you are ready to do it. Take the time you need.")),
 
-        # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the same checklist on it, fixing
-        # any line that fails. Same taught source (load balance). Scaffolded by the checklist itself.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written essay (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a
+        # separate graded rewrite, so there is no fresh draft to grade. The checklist is made READ-ONLY (plain-
+        # string rows, the (question, answer) tuple form dropped; the row's own conditional guidance folded in) and
+        # the slot stays a self-check. scored left as-is; no rewrite invented. Same taught source (load balance).
         Slot("MODEL", "diagnosis_frq", "Check your draft defends the thesis",
              ref="", bank="community_service", scored=True,
              body=frq_prompt(
-                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Does your thesis take a clear side?", "If it only rates the topic (like 'X is good'), sharpen it into a position someone could reject."),
-                     ("Are your body points distinct and ordered?", "If they overlap or restate each other, make them distinct and put them in a building order."),
-                     ("Is a source fact named for each point?", "If a point has no evidence behind it, attach one piece of evidence to it."),
+                 intro="Reread the essay you just wrote and run this checklist on YOUR draft, fixing any line that fails.",
+                 checklist_block=checklist(title="Check your own draft against these (no need to type answers):", rows=[
+                     "Does your thesis take a clear side? If it only rates the topic (like 'X is good'), sharpen it into a position someone could reject.",
+                     "Are your body points distinct and ordered? If they overlap or restate each other, make them distinct and put them in a building order.",
+                     "Is a source fact named for each point? If a point has no evidence behind it, attach one piece of evidence to it.",
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you submit. Finish by "
                         "naming which part your essay still needs most.")),

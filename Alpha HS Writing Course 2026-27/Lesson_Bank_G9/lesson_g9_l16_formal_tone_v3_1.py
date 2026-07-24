@@ -213,21 +213,26 @@ LESSON = Lesson(
                                          "A four-day week ______ [state the position about the issue, no I-think] because ______ [keep the reason, no slang]."),
                  closer="Cut the first person and the slang, state the point about the issue, and keep the reason. "
                         "Do not change what the sentence claims. Then run the 3-question check before you submit.")),
-        # DIAGNOSIS = run the check on a PROVIDED weak draft, then rewrite it (not a fresh production). Stays on the
-        # taught topic = no new source to read (load balance).
-        Slot("MODEL", "diagnosis_frq", "Check and fix an informal draft with the 3 questions",
-             ref="", bank="four_day_week", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act dropped.
+        # The old diagnosis_frq bundled a part-pre-answered 3-question check + a rewrite + a name-which-question tail
+        # in one box (unscoreable, wired to no grader). Now: ONE graded rewrite of the provided weak draft; the checks
+        # are plain read-only reminders (no self-answered yes/no fields); the name-act is deleted. Stays on the taught
+        # topic = no new source to read (load balance).
+        Slot("MODEL", "diagnosis_frq", "Fix an informal draft: make the tone formal",
+             ref="", bank="four_day_week", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question check on this weak draft, then rewrite it in a formal, objective tone.",
+                 intro="The draft below is informal on all three counts: 'I think' is first person, 'no-brainer' "
+                       "and 'way more' are slang, and 'you can tell' talks to the reader. Rewrite it into one "
+                       "formal, objective sentence that keeps the same position and reason.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "I think you can tell a four-day week is a no-brainer, because kids these days just need way more of a break.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Did I cut the first person?", "Not yet, 'I think' is first person. Cut it."),
-                     ("Did I cut slang and casual words?", "your call: yes / no"),
-                     ("Did I stop talking to the reader?", "your call: yes / no"),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Did you cut the first person (I think, in my opinion, I feel)?",
+                     "Did you cut slang and casual words (no-brainer, kids, way more)?",
+                     "Did you stop talking to the reader (you) and state it about the issue?",
                  ]),
-                 closer="Now rewrite the weak draft into one formal, objective sentence that keeps the same "
-                        "position and reason. Then name which question your rewrite fixed.")),
+                 closer="Rewrite it into one formal, objective sentence that keeps the same position and its "
+                        "reason. Change only the register. Run the checks above before you submit.")),
 
         # ===== INDEPENDENT: cold edit on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Fix the tone on your own",
