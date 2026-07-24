@@ -248,14 +248,19 @@ LESSON = Lesson(
         # DIAGNOSIS = self-revision: reread your OWN just-written essay and run the 3-question check on it,
         # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written essay (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a
+        # separate graded rewrite, so there is no fresh draft to grade. The checklist is made READ-ONLY (plain-
+        # string rows; the (question, answer) tuple form dropped and each row's conditional guidance folded into
+        # one plain instruction). The slot stays a self-check. scored left as-is; no rewrite invented.
         Slot("MODEL", "diagnosis_frq", "Check the plan reaches the conclusion",
              ref="", bank="public_health", scored=True,
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Does your essay build every body paragraph, not just the opening?", "If a later paragraph is thin or missing, name the point it should hold and the tension it grants, then build it out."),
-                     ("Does your conclusion defend the priority, not just repeat the thesis?", "If it only restates the claim, revise it to defend why that priority holds even for a reader who leans the other way."),
-                     ("Did the ending get finished work, or did it run out of time?", "If the conclusion came out rushed, adjust your stage budget on your next write so the ending gets real time, not the last thirty seconds."),
+                 checklist_block=checklist(title="Run the check (no need to type answers):", rows=[
+                     "Does your essay build every body paragraph, not just the opening? If a later paragraph is thin or missing, name the point it should hold and the tension it grants, then build it out.",
+                     "Does your conclusion defend the priority, not just repeat the thesis? If it only restates the claim, revise it to defend why that priority holds even for a reader who leans the other way.",
+                     "Did the ending get finished work, or did it run out of time? If the conclusion came out rushed, adjust your stage budget on your next write so the ending gets real time, not the last thirty seconds.",
                  ]),
                  closer="For the body and conclusion rows, name what is off in one sentence and fix it in your "
                         "draft now. The pacing row is about your process, not this finished draft, so instead "

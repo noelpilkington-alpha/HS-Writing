@@ -170,19 +170,31 @@ LESSON = Lesson(
                  closer="Write ONE sentence that starts 'and yet ...' and grants the opposing truth from the "
                         "source (that irrigation runs on electric pumps, so protecting food depends on power). "
                         "Check that both truths are now live in your sentence.")),
-        Slot("MODEL", "diagnosis_frq", "Check a flattened draft, then write one that holds",
-             ref="", bank="automation_policy", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched check-run demo (pre-answered (q,a) tuple rows) + a fresh
+        # paragraph + a run-the-check-and-name tail in one box (unscoreable, wired to no grader, and the (q,a) rows
+        # leaked the answers). The coping-model demo is PRESERVED as read-only narration (the 3-question check shown
+        # running on the weak draft, in plain declarative prose in the intro). The student's ONLY graded act is the
+        # fresh paragraph; the three checks sit read-only beneath as plain-string reminders; the run-and-name tail
+        # is deleted. Stays on the taught topic (no new source).
+        Slot("MODEL", "diagnosis_frq", "Write a fresh paragraph that holds the tension",
+             ref="", bank="automation_policy", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the check run on a weak draft, then write a fresh paragraph and run the same check.",
-                 setapart_block=setapart("Weak draft to diagnose:",
+                 intro="First, watch the 3-question check run on the weak draft below. Both truths live? No: the "
+                       "power point is dismissed as not important, so one truth is dropped. Reason from the "
+                       "conflict? No: it avoids the clash instead of arguing from it. Land on a position? No: it "
+                       "just names a winner. So the draft flattens the tension on all three. Now write a fresh "
+                       "paragraph of your own that does not.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                                          "Food matters most; the power point is not important and can be set aside.", "red"),
-                 checklist_block=checklist(title="Run the 3-question check:", rows=[
-                     ("Both truths live?", "No. The power point is dismissed as not important, so one truth is dropped. Restore it."),
-                     ("Reason from the conflict?", "No. It avoids the clash instead of arguing from it. Build the claim out of the clash."),
-                     ("Land on a position?", "No. It just names a winner. Reach a rule or a priority that answers the difficulty."),
+                 checklist_block=checklist(title="Check your paragraph against these (no need to type answers):", rows=[
+                     "Both truths live (neither side dismissed as weak)?",
+                     "Does the claim reason from the conflict between them?",
+                     "Does it land on a rule or a priority, not just a winner?",
                  ]),
-                 closer="Now write a fresh paragraph on the water trade-off that holds the tension, then run the "
-                        "same three questions on it. Finish by naming the tension you held.")),
+                 closer="Write one fresh body paragraph on the water trade-off that holds the tension: keep both "
+                        "truths live, reason from their conflict, and land on a rule or a priority. Run the three "
+                        "checks above before you submit.")),
         Slot("INDEPENDENT", "production_frq", "Hold the tension on your own",
              ref="", bank="automation_policy", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(

@@ -257,14 +257,19 @@ LESSON = Lesson(
         # DIAGNOSIS = self-revision: reread your OWN just-written essay and run the 3-question check on it,
         # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written essay (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a
+        # separate graded rewrite, so there is no fresh draft to grade. The checklist is made READ-ONLY (plain-
+        # string rows; the (question, answer) tuple form dropped and each row's conditional guidance folded into
+        # one plain instruction). The slot stays a self-check. scored left as-is; no rewrite invented.
         Slot("MODEL", "diagnosis_frq", "Self-check your own essay against the three moves",
              ref="", bank="public_health", scored=True,
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Check your own draft, line by line:", rows=[
-                     ("Is the thesis situated in a larger question?", "If it only answers the narrow prompt (like just picking whether to fund training), frame it inside the larger question of how a society splits a fixed budget between the future and the present."),
-                     ("Does each body paragraph hold a tension?", "If a paragraph just stacks reasons for one side or calls the other side wrong, give it a real tension it keeps live instead of a dismissal."),
-                     ("Does the conclusion defend a real position?", "If it only restates the thesis, name the rule or priority a thoughtful opponent would still have to respect."),
+                 checklist_block=checklist(title="Check your own draft against these (no need to type answers):", rows=[
+                     "Is the thesis situated in a larger question? If it only answers the narrow prompt (like just picking whether to fund training), frame it inside the larger question of how a society splits a fixed budget between the future and the present.",
+                     "Does each body paragraph hold a tension? If a paragraph just stacks reasons for one side or calls the other side wrong, give it a real tension it keeps live instead of a dismissal.",
+                     "Does the conclusion defend a real position? If it only restates the thesis, name the rule or priority a thoughtful opponent would still have to respect.",
                  ]),
                  closer="For every line that fails on your draft, name what is off in one sentence and make the "
                         "fix. Finish by naming the larger question your essay situates the choice in.")),

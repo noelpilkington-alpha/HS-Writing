@@ -230,14 +230,19 @@ LESSON = Lesson(
         # DIAGNOSIS = self-check on the student's OWN just-written PLAN and budget (not a check on a provided
         # weak draft). The rows are pacing/process rows, so fixes carry into the NEXT write, not a finished
         # draft. Self-contained: the checklist is the scaffold and the grader scores the diagnosis within the item.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written PLAN and budget (a process self-check), not a separate graded rewrite, so there is no fresh
+        # draft to grade. The checklist is made READ-ONLY (plain-string rows; the (question, answer) tuple form
+        # dropped and each row's conditional guidance folded into one plain instruction). The slot stays a
+        # self-check. scored left as-is; no rewrite invented.
         Slot("MODEL", "diagnosis_frq", "Check the plan leaves time to finish",
              ref="", bank="ra_speech_1", scored=True,
              body=frq_prompt(
                  intro="Reread the plan and budget you just wrote. Run this checklist on it before you draft.",
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Is the reading capped to a small share of the time?", "If your budget gives the reading most of the window, cap it: read only until you have the situation and two or three choices."),
-                     ("Are just two or three choices chosen, not every appeal?", "If the plan tries to cover every appeal, narrow it to the two or three choices with the clearest effect."),
-                     ("Is time reserved to finish the analysis with a conclusion?", "If little time is left for drafting, reserve most of it to write choice to effect to purpose, conclusion included."),
+                 checklist_block=checklist(title="Run the check (no need to type answers):", rows=[
+                     "Is the reading capped to a small share of the time? If your budget gives the reading most of the window, cap it: read only until you have the situation and two or three choices.",
+                     "Are just two or three choices chosen, not every appeal? If the plan tries to cover every appeal, narrow it to the two or three choices with the clearest effect.",
+                     "Is time reserved to finish the analysis with a conclusion? If little time is left for drafting, reserve most of it to write choice to effect to purpose, conclusion included.",
                  ]),
                  closer="These are process fixes, not draft edits: for every line that fails, name in one sentence "
                         "what you will change about your budget or plan, and carry that adjustment into the full "

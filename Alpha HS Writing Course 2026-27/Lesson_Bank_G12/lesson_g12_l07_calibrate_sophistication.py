@@ -250,19 +250,26 @@ LESSON = Lesson(
                         "gap. Predicting against the depth-and-significance criterion and then naming the gap is what every "
                         "calibrated writer is built on, and you are ready to do it cold. Take the time you need.")),
 
-        # ===== DIAGNOSIS = run the same 3-question check on your OWN just-written draft (scaffolded self-revision) =====
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written essay (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a
+        # separate graded rewrite, so there is no fresh draft to grade. The modeled "Example (naming a gap)" whose
+        # rows were (question, answer) tuples is preserved as READ-ONLY narration in the intro, and the checklist is
+        # now three plain-string questions the student runs on their OWN draft. The (q,a) tuple form is gone. The
+        # slot stays a self-check. scored left as-is; no rewrite invented.
         Slot("MODEL", "diagnosis_frq", "Name the gap between your prediction and the grader",
              ref="", bank="public_health", scored=True,
              body=frq_prompt(
-                 intro="Here is what naming a gap looks like:",
-                 checklist_block=checklist(title="Example (naming a gap):", rows=[
-                     ("Where did the essay meet the criterion?", "It situated the question in the broader tension."),
-                     ("Where did it miss?", "One body paragraph flattened the tension, so the complexity was not consistent."),
-                     ("What was the blind spot?", "Counting the strong opening as enough for a holistic point."),
+                 intro="Here is what naming a gap looks like. One writer found the essay met the criterion where it "
+                       "situated the question in the broader tension; it missed where one body paragraph flattened "
+                       "the tension, so the complexity was not consistent; and the blind spot was counting the "
+                       "strong opening as enough for a holistic point. Now do the same on YOUR draft.",
+                 checklist_block=checklist(title="Run these three on your own draft (no need to type answers):", rows=[
+                     "Where did your essay meet the depth-and-significance criterion?",
+                     "Where did it miss?",
+                     "What was your blind spot?",
                  ]),
-                 closer="Now do the same on YOUR draft: reread the essay you just wrote, run these three questions "
-                        "on it, revise the weakest line, and finish by naming your single biggest gap and the one "
-                        "change you made to close it.")),
+                 closer="Reread the essay you just wrote, run these three questions on it, revise the weakest line, "
+                        "and finish by naming your single biggest gap and the one change you made to close it.")),
     ],
 )
 

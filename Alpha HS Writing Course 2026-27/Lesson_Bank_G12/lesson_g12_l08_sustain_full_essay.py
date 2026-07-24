@@ -250,14 +250,20 @@ LESSON = Lesson(
         # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the 3-question pacing check on it,
         # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written essay (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a
+        # separate graded rewrite, so there is no fresh draft to grade. C1202's first item is a check-only, so it
+        # has NO Option B recognition. The checklist is made READ-ONLY (plain-string rows; the (question, answer)
+        # tuple form dropped and each row's conditional guidance folded into one plain instruction). The slot stays
+        # a self-check. scored left as-is; no rewrite invented.
         Slot("MODEL", "diagnosis_frq", "Run the pacing check on your own draft",
              ref="", bank="automation_policy", scored=True,
              body=frq_prompt(
                  intro="Reread the essay you just wrote and run this checklist on YOUR draft.",
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Did planning and checking get their own protected minutes?", "If planning up front or the final reread got squeezed out, reserve minutes for both on your next write, before the drafting block."),
-                     ("Did every body paragraph get a share of the drafting minutes, not just the first?", "If the first paragraph took most of the block, split the drafting minutes more evenly across all the paragraphs on your next write."),
-                     ("Do your last body paragraph and conclusion have the same finished work as your opening?", "If the ending is thin or shrinks to a flat line while the opening is fully developed, build it out now so it is as finished as the first paragraph."),
+                 checklist_block=checklist(title="Run the check (no need to type answers):", rows=[
+                     "Did planning and checking get their own protected minutes? If planning up front or the final reread got squeezed out, reserve minutes for both on your next write, before the drafting block.",
+                     "Did every body paragraph get a share of the drafting minutes, not just the first? If the first paragraph took most of the block, split the drafting minutes more evenly across all the paragraphs on your next write.",
+                     "Do your last body paragraph and conclusion have the same finished work as your opening? If the ending is thin or shrinks to a flat line while the opening is fully developed, build it out now so it is as finished as the first paragraph.",
                  ]),
                  closer="The two pacing rows (protected minutes for planning and checking, and an even share of "
                         "the drafting minutes) cannot be repaired in a finished draft, so carry those adjustments "

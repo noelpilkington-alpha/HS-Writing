@@ -205,20 +205,25 @@ LESSON = Lesson(
                                          "______ [your position on the workforce prompt], yet ______ [the specific cost that choice pays the other side] so ______ [how the position still holds]."),
                  closer="Name a genuine, specific tension, not 'on the other hand.' Write one sentence, then check "
                         "it against the 3 questions.")),
-        # ===== DIAGNOSIS: watch a check on a PROVIDED weak draft, then write fresh (scaffolded, no Step N prose) =====
-        Slot("MODEL", "diagnosis_frq", "Check a claim: genuine tension, or formula?",
-             ref="", bank="public_health", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). Was a bundle: mark 3 yes/no checks + rewrite + name
+        # the tension in one box (unscoreable, wired to no grader; the (q,a) "your call: yes / no" rows leaked the
+        # marking act). Now ONE graded act (the rewrite); the 3 checks print READ-ONLY beneath as plain strings
+        # (no typed yes/no), and the "name which tension" tail is dropped.
+        Slot("MODEL", "diagnosis_frq", "Fix a formulaic claim into one that names a real tension",
+             ref="", bank="public_health", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the check on this weak draft first, then write a fresh claim of your own and run the same check.",
+                 intro="This weak draft gestures at both sides but names no real cost. Rewrite it into one claim "
+                       "whose complexity names a real tension.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "Training is best, though others may disagree, but I still think training wins.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Does it name a SPECIFIC cost the position pays?", "your call: yes / no"),
-                     ("Is the tension real, not just a transition word?", "your call: yes / no"),
-                     ("Does the tension shape the claim?", "your call: yes / no"),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Does it name a SPECIFIC cost the position pays?",
+                     "Is the tension real, not just a transition word?",
+                     "Does the tension shape the claim?",
                  ]),
-                 closer="Now write a fresh claim on the workforce prompt that names a real tension, and run the "
-                        "same check. For each No, use the fix. Finish by naming the tension you used.")),
+                 closer="This draft only says others disagree. Rewrite it into one claim on the workforce prompt "
+                        "that names a specific cost your side pays and lets it shape the position. Run the three "
+                        "checks above before you submit.")),
 
         # ===== INDEPENDENT: cold write, autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Show genuine complexity on your own",
