@@ -1,6 +1,6 @@
 import os, sys, copy
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from incept_cleanup import _strip_em_dash, _fact_verify, _provenance_screen
+from incept_cleanup import _strip_em_dash, _fact_verify, _provenance_screen, _fix_scr_model_answer, clean_item
 from item_contract import Item, Option, qc_item
 
 def _incept_mc(stem, opts, answer_idx=0):
@@ -79,3 +79,37 @@ def test_provenance_screen_rejects_bright_line_content():
     out, note = _provenance_screen(it)
     assert out is None
     assert "reject" in note.lower() or "content" in note.lower()
+
+def _incept_scr(stem, model=None):
+    return Item(id="INCEPT-scr-01", family="SCR", grade="9-10", stem=stem, qti_type="text-entry",
+                subskill_or_mode="scr_writing", acc_tags=["CCSS.L.9-10.1"],
+                answer_key=([model] if model else []), rubric_ref="rc.scr1",
+                provenance={"bakeoff_source": "incept"})
+
+def test_scr_without_model_answer_dropped():
+    out, note = _fix_scr_model_answer(_incept_scr("Rewrite to fix the modifier."))
+    assert out is None
+
+def test_clean_item_passes_ours_through_untouched():
+    ours = _incept_mc("Which is an arguable claim?", ["Schools should start later.", "A", "B", "C"])
+    ours.provenance = {"bakeoff_source": "ours"}
+    out, actions = clean_item(ours)
+    assert out is ours                      # ours passes through unchanged
+    assert actions == ["passthrough (ours)"]
+
+def test_clean_item_incept_clean_mc_survives_with_actions():
+    it = _incept_mc("Which is an arguable claim?",
+                    ["Schools should start later — teens need sleep.",
+                     "School starts at 8.", "I like sleep.", "Sleep matters."])
+    out, actions = clean_item(it)
+    assert out is not None                  # clean-able MC survives
+    body = out.stem + " ".join(o.text for o in out.options)
+    assert "—" not in body             # em-dash stripped
+    assert out.provenance.get("copyright") == "incept_generated"
+    assert any("em-dash" in a or "dash" in a for a in actions)
+
+def test_clean_item_incept_with_stat_dropped_with_reason():
+    it = _incept_mc("Best evidence?", ["A study of 62 districts found gains.", "A", "B", "C"])
+    out, actions = clean_item(it)
+    assert out is None
+    assert any("stat" in a.lower() or "62" in a for a in actions)
