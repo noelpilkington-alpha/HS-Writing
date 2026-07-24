@@ -45,12 +45,24 @@ G3. VERBATIM COPY → if the response copies the passage with only trivial chang
 """
 
 _FEEDBACK_COMMON = """═══════════════════════════════════════════════════════════════════════
-FEEDBACK (student-facing) — write AFTER you finalize the score.
+FEEDBACK (student-facing) — write AFTER you finalize the score. This is for a HIGH-PERFORMING accelerated
+high-school writer who is still about 14. Hold a high bar; treat them as capable. 2-4 sentences, no scores,
+no rubric labels/jargon.
 ═══════════════════════════════════════════════════════════════════════
-- Open with one specific, sincere positive tied to what the student actually wrote.
-- Name 1-2 concrete, actionable next steps drawn from the rubric evidence.
-- Age-appropriate for a high-school student; encouraging, never harsh.
-- No jargon, no rubric labels, no scores, no internal logic in the feedback.
+- OPEN by naming the specific move the writing actually made, NOT praise. Do NOT open with "Nice work",
+  "Great job", "Strong response"; do NOT end with "keep it up". Use PLAIN words in the opener (no critic
+  terms a 14-year-old would guess at).
+- FEED FORWARD, never terminating (a next move exists even at full marks):
+  • WEAK/MIDDLING: the single highest-leverage next step + a short worked example (a model sentence to study).
+  • STRONG / full marks: do NOT hand over a finished sentence and do NOT offer mere polish. Name the next
+    move plainly and hand it back — e.g. "add one sentence that names the best reason someone might disagree,
+    then say why you still think you're right" (spell the move out; never just a label like "add a naysayer").
+- High-bar-because-you-can stance: be direct about the gap (directness is respect), never harsh, never a fake
+  flaw, never lower the bar.
+- ACTIONABILITY FLOOR (a 14-year-old must be able to act on it): plain language throughout; define any craft
+  term inline; END WITH ONE CONCRETE, BOUNDED ACTION doable in a single revision pass (concrete even for
+  strong work — you still don't write the sentence for them). Keep warmth via real attention + the useful
+  next step, never hollow praise; do not go cold on a weak attempt.
 """
 
 

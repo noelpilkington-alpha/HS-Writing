@@ -36,7 +36,7 @@ confirmed against the live platform before go-live (see the OPEN item in the gra
 from __future__ import annotations
 import os
 from fastapi import APIRouter, HTTPException, Query
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 # PORTED into HS-Writing/api 2026-07-21: engine vendored as the grader_engine sub-package; auth reuses this
 # app's X-API-Key (verify_api_key in main.py), not the grader repo's require_api_key. Provider = Anthropic-
@@ -117,6 +117,17 @@ class ScoreResponse(BaseModel):
     breakdown: dict
     calibrated: bool
     note: str = ""
+    # WIRE-SHAPE SUPERSET (2026-07-24): Timeback's ExternalApiScore contract is documented to expect the score
+    # under `outcomes.SCORE` (+ feedback). Our own tooling reads the flat `score`/`feedback` above. We return
+    # BOTH so the response satisfies the platform's outcome-parsing AND our harness — additive, non-breaking.
+    # `outcomes` is derived from score/feedback by the validator below (covers all return sites at once).
+    outcomes: dict = Field(default_factory=dict)
+
+    @model_validator(mode="after")
+    def _fill_outcomes(self):
+        if not self.outcomes:
+            self.outcomes = {"SCORE": self.score, "maxScore": self.maxScore, "feedback": self.feedback}
+        return self
 
 
 @router.post("/score", response_model=ScoreResponse, tags=["ExternalApiScore"])
