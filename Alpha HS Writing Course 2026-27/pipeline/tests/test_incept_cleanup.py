@@ -1,6 +1,6 @@
 import os, sys, copy
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from incept_cleanup import _strip_em_dash
+from incept_cleanup import _strip_em_dash, _fact_verify
 from item_contract import Item, Option, qc_item
 
 def _incept_mc(stem, opts, answer_idx=0):
@@ -32,3 +32,24 @@ def test_strip_em_dash_does_not_mutate_original():
     it = _incept_mc("X — Y", ["A", "B", "C"])
     _strip_em_dash(it)
     assert "—" in it.stem   # original untouched (copy semantics)
+
+def test_fact_verify_keeps_claim_free_item():
+    it = _incept_mc("Which sentence is an arguable claim?",
+                    ["Cities should build bike lanes because safer routes get more riders.",
+                     "Many cities have bike lanes.", "Bikes are nice.", "Some cities got grants."])
+    out, note = _fact_verify(it)
+    assert out is not None    # no hard stat -> kept
+
+def test_fact_verify_drops_unverifiable_stat():
+    it = _incept_mc("Which is the best evidence?",
+                    ["A study of 62 districts found a 14 percent rise in scores.",
+                     "It was warm.", "Buses run late.", "People liked it."])
+    out, note = _fact_verify(it)
+    assert out is None          # fabricated/unverifiable stat -> dropped
+    assert "stat" in note.lower() or "percent" in note.lower() or "62" in note
+
+def test_fact_verify_drops_on_percent_or_year_figure():
+    it = _incept_mc("Pick the strongest support.",
+                    ["Turnover fell from 21% to 13% after the change.", "A", "B", "C"])
+    out, note = _fact_verify(it)
+    assert out is None

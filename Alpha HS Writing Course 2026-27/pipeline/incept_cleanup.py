@@ -27,3 +27,23 @@ def _strip_em_dash(item: Item) -> Item:
                    for o in item.options]
     out.answer_key = [_dedash(a) for a in item.answer_key]
     return out
+
+# Patterns that signal a factual claim/figure that would need a real source (default DROP if present).
+_STAT_PATTERNS = [
+    re.compile(r"\b\d+\s*(?:percent|%)", re.I),          # "14 percent", "13%"
+    re.compile(r"\b(?:study|survey|research|report|data)\b", re.I),  # cites a study/data
+    re.compile(r"\b\d{2,}\s+(?:districts|schools|students|people|cities|states)\b", re.I),  # "62 districts"
+    re.compile(r"\bin\s+(?:19|20)\d{2}\b"),               # "in 2019"
+    re.compile(r"\bfrom\s+\d+\S*\s+to\s+\d+", re.I),      # "from 21% to 13%"
+]
+
+def _fact_verify(item: Item):
+    """DETERMINISTIC strip-or-drop: if any option/stem carries a stat/claim pattern we cannot verify, DROP the
+    item (default-safe: no fabricated facts to students). Claim-free items pass. An agent verify-pass could
+    rescue some, but the deterministic path drops-when-uncertain."""
+    body = item.stem + " " + " ".join(o.text for o in item.options) + " " + " ".join(item.answer_key)
+    for pat in _STAT_PATTERNS:
+        m = pat.search(body)
+        if m:
+            return None, f"dropped: unverifiable stat/claim '{m.group(0)}'"
+    return item, "no stats"
