@@ -209,21 +209,34 @@ LESSON = Lesson(
                  closer="Now write the paragraph: state the point, bring in the two or three sources that bear on "
                         "it, and show how they connect, citing each. Aim for several sources meeting on ONE point, "
                         "not a paragraph per source.")),
-        # DIAGNOSIS = watch the weave check run on a PROVIDED weak draft, then write fresh + run it (load balance,
-        # same taught source). Scaffolded by the checklist run on the weak draft.
-        Slot("MODEL", "diagnosis_frq", "Check a paragraph: woven by point, or by source?",
-             ref="", bank="water_competing_uses", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched weave-check demo (pre-answered (q,a) tuple rows) + a fresh
+        # paragraph + a run-and-name tail in one box (unscoreable, wired to no grader, the (q,a) rows leaked the
+        # answers). The coping-model demo is PRESERVED as read-only narration (the three weave checks shown running
+        # on the weak draft, in plain declarative prose). The student's ONLY graded act is now the fresh
+        # point-organized paragraph; the three checks sit read-only beneath as plain-string reminders; the
+        # run-and-name tail is deleted. Kept as diagnosis_frq (multi_paragraph grain needs an own-draft diagnosis
+        # for model_sequence). Same taught source (load balance).
+        Slot("MODEL", "diagnosis_frq", "Write a point-organized paragraph, not a source report",
+             ref="", bank="water_competing_uses", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="First watch the weave check run on a weak draft, then run it on your own.",
-                 setapart_block=setapart("Weak draft to check:",
+                 intro="First, watch the weave check run on the weak draft below. It is built around one source, "
+                       "not a point: it announces it is about Source 3 and reports one figure. Only Source 3 "
+                       "appears, so no two sources meet on a claim. And the sources are not connected; it just "
+                       "lists one figure. A stronger version would name a claim (for example, about scarcity or "
+                       "tradeoffs) and bring in the sources that bear on it, showing how they corroborate, qualify, "
+                       "or answer each other. Now write a fresh paragraph of your own that does not fall short "
+                       "that way.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                                          "This paragraph is about Source 3. Source 3 says irrigation uses about 42 percent of the water. That is a lot of water for farms.", "red"),
-                 checklist_block=checklist(title="Run the weave check:", rows=[
-                     ("Is it built around a POINT, not one source?", "No. It is built around Source 3. Name a claim (for example, about scarcity or tradeoffs) and organize around it."),
-                     ("Do at least two sources meet on that point?", "No. Only Source 3 appears. Bring in the sources that also bear on the claim."),
-                     ("Are the sources connected, not just listed?", "No. It reports one figure. Show how the sources corroborate, qualify, or answer each other on the point."),
+                 checklist_block=checklist(title="Check your paragraph against these (no need to type answers):", rows=[
+                     "Is it built around a POINT, not one source?",
+                     "Do at least two sources meet on that point?",
+                     "Are the sources connected, not just listed?",
                  ]),
-                 closer="Now write a fresh point-organized paragraph on the water set, run the same three checks, "
-                        "and fix any that fail. Finish by naming the point your sources meet on.")),
+                 closer="Write ONE fresh point-organized paragraph on the water set: state a claim and support it "
+                        "with several sources meeting on it, connected and cited. Run the three checks above "
+                        "before you submit.")),
 
         # ===== INDEPENDENT: weave a paragraph with no frame + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Weave by point on your own",

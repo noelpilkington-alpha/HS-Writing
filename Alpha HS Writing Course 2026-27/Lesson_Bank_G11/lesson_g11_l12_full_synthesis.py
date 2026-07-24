@@ -205,22 +205,35 @@ LESSON = Lesson(
                                          "source states alone]."),
                  closer="Write one synthesized claim that draws across the set, naming the sources it uses. It "
                         "should be one argument the combination builds, not a tour of the sources one by one.")),
-        # DIAGNOSIS = check-and-fix on a PROVIDED weak claim (not a fresh production), so it does not repeat the
-        # supported write. Same taught source (load balance). Scaffolded by the synthesis check run on the draft.
-        Slot("MODEL", "diagnosis_frq", "Check your claim: synthesized, or surveyed?",
-             ref="", bank="water_competing_uses", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act (first-in-arc kept as A to preserve demo). The old diagnosis_frq bundled a watched synthesis-check
+        # demo (pre-answered (q,a) tuple rows) + a fresh claim + a run-and-name tail in one box (unscoreable, wired
+        # to no grader, the (q,a) rows leaked the answers). The coping-model demo is PRESERVED as read-only
+        # narration (the three synthesis checks shown running on the weak draft, in plain declarative prose). The
+        # student's ONLY graded act is now the fresh synthesized claim; the three checks sit read-only beneath as
+        # plain-string reminders; the run-and-name tail is deleted. Kept as diagnosis_frq (multi_paragraph grain
+        # needs an own-draft diagnosis for model_sequence). Same taught source (load balance).
+        Slot("MODEL", "diagnosis_frq", "Write a synthesized claim, not a survey of the sources",
+             ref="", bank="water_competing_uses", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="First watch the check run on a weak draft, then run it on a fresh claim of your own.",
-                 setapart_block=setapart("Weak draft to fix:",
+                 intro="First, watch the synthesis check run on the weak draft below. It is a tour: it walks "
+                       "through the three sources and stops at 'they all relate to water use,' so there is no one "
+                       "argument the set builds. It never goes beyond any single source, since it only restates "
+                       "that each source is about water. And it never connects two or more sources; they sit side "
+                       "by side, unlinked. A stronger version would connect scarcity to the competing demands so "
+                       "the set forces a conclusion none of the sources states alone. Now write a fresh claim of "
+                       "your own that does not fall short that way.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                                          "Source 1 says one thing about water, source 2 says another, and source "
                                          "3 says another. They all relate to water use.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Is there ONE argument the set builds, or a tour?", "A tour. It walks through the sources and stops at 'they all relate to water.' Build one claim the combination forces."),
-                     ("Does the claim go beyond any single source?", "No. It only restates that each source is about water. Make it a conclusion no single source states."),
-                     ("Does it connect two or more sources?", "No. The sources sit side by side, unlinked. Connect scarcity to the competing demands so they combine."),
+                 checklist_block=checklist(title="Check your claim against these (no need to type answers):", rows=[
+                     "Is there ONE argument the set builds, or just a tour of the sources?",
+                     "Does the claim go beyond what any single source states?",
+                     "Does it connect two or more sources so they combine?",
                  ]),
-                 closer="Now write a fresh synthesized claim from the set, run the same three checks, and fix any "
-                        "that fail. Finish by naming the conclusion the set builds that no single source states.")),
+                 closer="Write ONE fresh synthesized claim from the three-source set: one argument the combination "
+                        "builds that no single source states alone, naming the sources it uses. Run the three "
+                        "checks above before you submit.")),
 
         # ===== INDEPENDENT: synthesize the set with no frame + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Synthesize the set on your own",

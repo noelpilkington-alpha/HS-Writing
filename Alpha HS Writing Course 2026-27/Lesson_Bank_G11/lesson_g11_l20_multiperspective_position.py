@@ -254,22 +254,58 @@ LESSON = Lesson(
                                          "Perspective ___ is right that ___, but ___, so I hold that ___."),
                  closer="Measure the views against each other AND land your own position in relation to them. Do "
                         "not just summarize the three. Write one sentence, then check it against the 3 questions.")),
-        # DIAGNOSIS = a CHECK-and-FIX exercise on a PROVIDED draft (self-contained; no look-back at prior work).
-        Slot("MODEL", "diagnosis_frq", "Check and fix a weak draft with the 3 questions",
-             ref="", bank="mp_public_space", scored=True,
+        # COUNCIL FIX (2026-07-24): Option B (first-in-arc). Graded recognition + graded fresh-draft rewrite;
+        # name-act dropped. The old single diagnosis_frq bundled 3 acts in one box (run the 3 weigh-and-stake
+        # questions as pre-answered (q,a) "your call: yes / no" rows + rewrite + name-which-question-you-fixed) -
+        # unscoreable, wired to no grader, and the (q,a) rows leaked the answers. First diagnosis item in this arc
+        # -> two single-act items. WEIGH and STAKE are independent moves, so a true single-check minimal pair is
+        # possible. Item 1 = graded RECOGNITION on a draft that WEIGHS (measures One against Two) but never STAKES,
+        # so it fails EXACTLY the stake move (single-select is faultless; DI constraint). Item 2 = graded
+        # FRESH-draft rewrite (a different weak draft that neither weighs nor stakes), with the 3 questions printed
+        # READ-ONLY beneath. The name-which-question third act is deleted. Stays on the taught topic (no new read).
+        Slot("MODEL", "discrimination", "Diagnose the draft: which move does it fail?",
+             ref="", labeled_grade_c=True, bank="mp_public_space",
+             body=("Run the weigh-and-stake check on this draft: 'Perspective One's push for moving traffic runs "
+                   "straight into Perspective Two's call for gathering space, so the two clearly pull hard against "
+                   "each other.' It fails exactly one move. Which one? "
+                   "(A) It never measures the given views against each other, so nothing here weighs them.  "
+                   "(B) It weighs the views against each other, but it never commits to a position of the writer's "
+                   "own.  "
+                   "(C) It commits to a clear position of the writer's own but never measures the given views "
+                   "against each other at all.  "
+                   "(D) It already weighs and stakes, so the draft needs no fix. "
+                   "Correct: B. It measures Perspective One against Perspective Two, so the weigh move passes, but "
+                   "it stops at the tension and stakes no position of its own, so only the stake move fails."),
+             choices=[
+                 {"id": "A", "text": "It never measures the given views against each other, so nothing here weighs them.",
+                  "correct": False,
+                  "why": "It does weigh: it sets Perspective One against Perspective Two and names the tension. That move passes, so look for the move that fails."},
+                 {"id": "B", "text": "It weighs the views against each other, but it never commits to a position of the writer's own.",
+                  "correct": True,
+                  "why": "Correct. It measures One against Two, so the weigh move passes, but it stops at the tension and stakes no position, so only the stake move fails. Naming a clash is not committing to a side."},
+                 {"id": "C", "text": "It commits to a clear position of the writer's own but never measures the given views against each other at all.",
+                  "correct": False,
+                  "why": "This is the opposite half. The draft weighs the views but takes no position; it does not stake a position while skipping the weighing."},
+                 {"id": "D", "text": "It already weighs and stakes, so the draft needs no fix.",
+                  "correct": False,
+                  "why": "Not yet. It weighs the views but never commits to a position of its own, so the stake move still fails."},
+             ]),
+        Slot("MODEL", "production_frq", "Now fix a draft: weigh the views and stake your own position",
+             ref="", bank="mp_public_space", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question check on this provided weak draft, then rewrite it into a real "
-                       "position.",
+                 intro="Here is a different weak draft. Rewrite it into one weighed, staked position.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "Each perspective on streets has a good point, and the answer is "
                                          "somewhere in the middle.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Does it WEIGH the views against each other?", "your call: yes / no"),
-                     ("Does it STAKE a position of your own?", "your call: yes / no"),
-                     ("Could a reader tell what YOU hold?", "your call: yes / no"),
+                 checklist_block=checklist(title="Check your rewrite against these (no need to type answers):", rows=[
+                     "Does it WEIGH the views against each other (name where one holds, or where one depends on another)?",
+                     "Does it STAKE a position of your own, not just report theirs?",
+                     "Could a reader tell what YOU hold, not only what the three perspectives say?",
                  ]),
-                 closer="Now rewrite the weak draft into one weighed, staked position on the streets issue that "
-                        "passes all three. Then name which question your rewrite fixed.")),
+                 closer="This draft reports that every view has a point and lands in the middle, so it neither "
+                        "weighs nor stakes. Rewrite it into one sentence that measures the views against each other "
+                        "and commits to your own position on the streets issue. Write one sentence, and run the 3 "
+                        "questions above before you submit.")),
 
         # ===== INDEPENDENT: cold write on the same issue, no frame + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Weigh and stake on your own",

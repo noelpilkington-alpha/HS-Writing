@@ -212,22 +212,33 @@ LESSON = Lesson(
                      "List the first moves that type rewards (for synthesis: weave one argument, weight each source, cite each).",
                  ]),
                  closer="Write your plan as one paragraph: name the type, name its tell, and list the first moves.")),
-        # DIAGNOSIS: watch the check run on a provided weak read, then run it on a fresh prompt read
-        # (stateless-safe; the material is provided, and the self-check is on the same item, not a prior submission).
-        Slot("MODEL", "diagnosis_frq", "Check a fresh task-type read",
-             ref="", bank="ai_workforce_synthesis", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. RECLASSIFIED from check_only: this is not a reread-your-own-draft self-check; it is a coping-model
+        # demo (watch the check run on a provided weak read) followed by a genuine graded produce (read the
+        # AI-workforce prompt and name its type + tell + moves), so watch-then-do handling applies. The old
+        # diagnosis_frq bundled the watched two-question demo (pre-answered (q,a) tuple rows) + a fresh read + a
+        # run-and-name tail in one box (unscoreable, wired to no grader, the (q,a) rows leaked the answers). The
+        # coping-model demo is PRESERVED as read-only narration (the two checks shown running on the weak read, in
+        # plain declarative prose). The student's ONLY graded act is now the fresh task-type read + plan; the two
+        # checks sit read-only beneath as plain-string reminders; the run-and-name tail is deleted. Kept as
+        # diagnosis_frq (paragraph grain needs an own-draft diagnosis for model_sequence). Same taught prompt.
+        Slot("MODEL", "diagnosis_frq", "Read a fresh prompt and name its task type",
+             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the check run on a weak read, then run it on your own fresh read of the "
-                       "AI-workforce prompt.",
-                 setapart_block=setapart("Weak read to check:",
+                 intro="First, watch the check run on the weak read below. It asks whether a source SET is given: "
+                       "yes, four sources are given to combine, which is the synthesis tell. It asks whether the "
+                       "named moves match: no, summarizing is not synthesizing. A stronger read would switch to "
+                       "weaving one argument from the set and weighting each source. Now do your own fresh read of "
+                       "the AI-workforce prompt that does not fall short that way.",
+                 setapart_block=setapart("Weak read the check was run on:",
                                          "It has some text, so I will just summarize it.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("A source SET?", "Yes. Four sources are given to combine. That is the synthesis tell."),
-                     ("Do the named moves match?", "No. Summarizing is not synthesizing. Switch to weaving one argument and weighting each source."),
+                 checklist_block=checklist(title="Check your read against these (no need to type answers):", rows=[
+                     "Is a source SET given (the synthesis tell), a bare question, or printed perspectives?",
+                     "Do the moves you name match that type (for synthesis: weave one argument, weight each source)?",
                  ]),
-                 closer="Now you: read the AI-workforce prompt, name its type and the tell that gives it away, "
-                        "list the moves it rewards, then run the same two questions on your read. Finish by naming "
-                        "the task type.")),
+                 closer="Read the AI-workforce prompt and write a short plan: name its task type, name the tell "
+                        "that gives it away, and list the first moves that type rewards. Run the two checks above "
+                        "before you submit.")),
 
         # ===== INDEPENDENT: plan for the prompt with no checklist scaffold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Name the type and plan on your own",

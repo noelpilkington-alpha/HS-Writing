@@ -191,19 +191,53 @@ LESSON = Lesson(
                                          "This source is credible on ______ [what claim] because ______ [who produced it AND how the claims are backed]."),
                  closer="Write ONE sentence. The 'because' half must name WHO produced it and WHAT a reader could "
                         "check, not how official it sounds.")),
-        Slot("MODEL", "diagnosis_frq", "Check a weak judgment, then write a clean one",
-             ref="", bank="energy_transition", scored=True,
+        # COUNCIL FIX (2026-07-24): Option B (first-in-arc). Graded recognition + graded fresh-draft rewrite;
+        # name-act dropped. The old single diagnosis_frq bundled 3 acts in one box (run the 3 questions as
+        # pre-answered (q,a) tuple rows + rewrite + name-which-question-you-fixed) - unscoreable, wired to no
+        # grader, and the (q,a) rows leaked the answers. First diagnosis item in this arc -> two single-act items.
+        # WHO and BACKED are independent grounds, so a true single-check minimal pair is possible. Item 1 = graded
+        # RECOGNITION on a draft that names WHO (passes the who-check, so it is not resting on feel) but points to
+        # no checkable backing, so it fails EXACTLY the backed-check (single-select is faultless; DI constraint).
+        # Item 2 = graded FRESH-draft rewrite (a different weak draft that rests on feel), with the 3 questions
+        # printed READ-ONLY beneath. The name-which-question third act is deleted. Stays on the taught source.
+        Slot("MODEL", "discrimination", "Diagnose the judgment: which ground does it miss?",
+             ref="", labeled_grade_c=True, bank="energy_transition",
+             body=("Run the grounds check on this judgment: 'This source is credible because it comes from the U.S. "
+                   "Energy Information Administration.' It misses exactly one ground. Which one? "
+                   "(A) It never names who produced the source, so the who ground is missing.  "
+                   "(B) It names who produced it, but it never points to backing a reader could check.  "
+                   "(C) It rests on the source's official tone rather than on any ground at all.  "
+                   "(D) It already names who produced it and its checkable backing, so it needs no fix. "
+                   "Correct: B. It names WHO produced it (a federal energy agency), so the who ground is there, but "
+                   "it never says the claims can be checked against data, so only the backed ground is missing."),
+             choices=[
+                 {"id": "A", "text": "It never names who produced the source, so the who ground is missing.",
+                  "correct": False,
+                  "why": "It does name who: the U.S. Energy Information Administration. The who ground is there, so look for the ground that is missing."},
+                 {"id": "B", "text": "It names who produced it, but it never points to backing a reader could check.",
+                  "correct": True,
+                  "why": "Correct. It names the producer (a federal energy agency), so the who ground passes, but it never says the claims can be checked against data, so only the backed ground is missing. Naming who is only half the grounds."},
+                 {"id": "C", "text": "It rests on the source's official tone rather than on any ground at all.",
+                  "correct": False,
+                  "why": "It does not rest on tone. It names a real producer, so it already stands on one ground; what it lacks is checkable backing."},
+                 {"id": "D", "text": "It already names who produced it and its checkable backing, so it needs no fix.",
+                  "correct": False,
+                  "why": "Not yet. It names who produced it but points to no backing a reader could check, so one ground is still missing."},
+             ]),
+        Slot("MODEL", "production_frq", "Now fix a judgment: put it on grounds",
+             ref="", bank="energy_transition", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question check on this weak judgment, then write a fresh one of your own.",
-                 setapart_block=setapart("Weak judgment to check:",
+                 intro="Here is a different weak judgment. Rewrite it so the verdict rests on grounds, not feel.",
+                 setapart_block=setapart("Weak judgment to fix:",
                                          "This source is reliable because it seems professional.", "red"),
-                 checklist_block=checklist(title="Run the 3 questions:", rows=[
-                     ("Who: is the producer named?", "No. Add who produced it (for example, the federal agency)."),
-                     ("Backed: is checkable evidence named?", "No. Add what a reader could check."),
-                     ("Feel: does it rest on tone?", "Yes, 'seems professional' is tone. Replace it with who plus backing."),
+                 checklist_block=checklist(title="Check your rewrite against these (no need to type answers):", rows=[
+                     "Who: is the producer (author or organization) named?",
+                     "Backed: is data or evidence a reader could check named?",
+                     "Feel: does it rest on tone (sounds official)? If so, replace it with who plus backing.",
                  ]),
-                 closer="Now write ONE fresh grounds-based credibility judgment about the electricity-mix source, "
-                        "then name which of the three questions your version fixes.")),
+                 closer="This draft rests on feel: 'seems professional' is tone, not a ground. Rewrite it into one "
+                        "credibility judgment about the electricity-mix source that names WHO produced it and WHAT "
+                        "a reader could check. Write one sentence, and run the 3 questions above before you submit.")),
         Slot("INDEPENDENT", "production_frq", "Assess credibility on your own",
              ref="", bank="energy_transition", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(

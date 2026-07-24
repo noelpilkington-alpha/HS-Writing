@@ -234,17 +234,20 @@ LESSON = Lesson(
                         "Sustaining the choice-to-effect-to-purpose move across a whole essay is the real skill, "
                         "and you are ready to do it. Take the time you need.")),
 
-        # DIAGNOSIS = self-revision: reread your OWN just-written essay and run the 3-question check on it,
-        # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
-        # scaffold and the grader scores the diagnosis within the item.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written essay (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a
+        # separate graded rewrite, so there is no fresh draft to grade. The checklist is made READ-ONLY (plain-
+        # string rows; the (question, answer) tuple form dropped and each row's conditional guidance folded into
+        # one plain instruction). The slot stays a self-check. scored left as-is; no rewrite invented. Same
+        # taught source (load balance).
         Slot("MODEL", "diagnosis_frq", "Reread your finished essay and run the checklist",
              ref="", bank="ra_speech_1", scored=True,
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Check your own draft, line by line:", rows=[
-                     ("Does your thesis name an overall purpose?", "If it only names the topic (like 'talks about the Depression'), say instead what Roosevelt is trying to make the audience feel, believe, or do."),
-                     ("Does each choice name a quote and its effect on the audience?", "If a choice names a device with no quote and no effect (like 'mentions fear' or 'uses repetition'), attach a trimmed quote and the effect on his listeners to each."),
-                     ("Does each choice tie back to the purpose?", "If nothing connects the choices to one end, show how each effect serves the purpose named in the thesis."),
+                 checklist_block=checklist(title="Check your own draft against these (no need to type answers):", rows=[
+                     "Does your thesis name an overall purpose? If it only names the topic (like 'talks about the Depression'), say instead what Roosevelt is trying to make the audience feel, believe, or do.",
+                     "Does each choice name a quote and its effect on the audience? If a choice names a device with no quote and no effect (like 'mentions fear' or 'uses repetition'), attach a trimmed quote and the effect on his listeners to each.",
+                     "Does each choice tie back to the purpose? If nothing connects the choices to one end, show how each effect serves the purpose named in the thesis.",
                  ]),
                  closer="For every line that fails on your draft, name what is off in one sentence and make the "
                         "fix. Finish by naming the overall purpose your essay is built to prove.")),

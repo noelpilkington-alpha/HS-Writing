@@ -166,21 +166,33 @@ LESSON = Lesson(
                                          "Claim: ____. When ____ (name the case), ____ (the telling detail); this shows ____ (tie back to the claim)."),
                  closer="Write out the filled-in frame as a short paragraph. Goal: one named case, one real "
                         "detail, one clear tie, not a generality.")),
-        Slot("MODEL", "diagnosis_frq", "Check your example: specific, or general?",
-             ref="", bank="sfa_curiosity_use", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched 3-question check demo (pre-answered (q,a) tuple rows) + a
+        # fresh paragraph + a run-and-name tail in one box (unscoreable, wired to no grader, the (q,a) rows leaked
+        # the answers). The coping-model demo is PRESERVED as read-only narration (the three checks shown running
+        # on the weak draft, in plain declarative prose). The student's ONLY graded act is now the fresh
+        # specific-example paragraph; the three checks sit read-only beneath as plain-string reminders; the
+        # run-and-name tail is deleted. Kept as diagnosis_frq (paragraph grain needs an own-draft diagnosis for
+        # model_sequence). Stays on the taught prompt (no new source).
+        Slot("MODEL", "diagnosis_frq", "Write a fresh paragraph on one specific example",
+             ref="", bank="sfa_curiosity_use", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the 3-question check run on a weak draft, then run it on a fresh paragraph of "
-                       "your own.",
-                 setapart_block=setapart("Weak draft to check:",
+                 intro="First, watch the 3-question check run on the weak draft below. It names no single case: "
+                       "'many curious people' names no one. It gives no telling detail: 'big discoveries' is a "
+                       "label, not something a reader could picture. And its tie is vague, since 'which is why' is "
+                       "attached to a sweep rather than a named case. A stronger version would name one case, give "
+                       "a real detail, and land the tie on that case. Now write a fresh paragraph of your own that "
+                       "does not fall short that way.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                                          "History shows many curious people made big discoveries that helped everyone, which is why society should back curiosity.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Named: is there ONE specific case named?", "No. 'Many curious people' names no one. Name a single case."),
-                     ("Detailed: a telling detail a reader could picture?", "No. 'Big discoveries' is a label, not a detail. Add one."),
-                     ("Tied: does a sentence say what it shows?", "Vaguely. 'Which is why' is attached to a sweep, so make the tie land on the named case."),
+                 checklist_block=checklist(title="Check your paragraph against these (no need to type answers):", rows=[
+                     "Named: is there ONE specific case named?",
+                     "Detailed: is there a telling detail a reader could picture?",
+                     "Tied: does a sentence say what the case shows, landing on the named case?",
                  ]),
-                 closer="Now write a fresh paragraph on ONE specific example, then run the same three questions. "
-                        "For each No, use the fix: name it, detail it, tie it. Finish by naming the example you "
-                        "developed.")),
+                 closer="Write ONE fresh paragraph on the curiosity prompt built on a single specific, developed "
+                        "example from your own knowledge, tied to your claim. Run the three checks above before "
+                        "you submit.")),
         Slot("INDEPENDENT", "production_frq", "Develop a specific example on your own",
              ref="", bank="sfa_curiosity_use", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(

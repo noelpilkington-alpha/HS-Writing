@@ -178,20 +178,33 @@ LESSON = Lesson(
                  closer="Write ONE sentence that finishes the turn: name a LIMIT of Perspective Two (what it "
                         "ignores), then ADVANCE your own position with a specific example. Start with 'but' or "
                         "'yet'. Then check it names a limit and advances a position, not just more agreement.")),
-        Slot("MODEL", "diagnosis_frq", "Check a weak draft, then weigh a perspective yourself",
-             ref="", bank="mp_public_space", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched 3-move check demo (pre-answered (q,a) tuple rows that leaked
+        # the answers) + a fresh weighed paragraph + a "use the limit you identified" tail in one box (unscoreable,
+        # wired to no grader). The coping-model demo is PRESERVED as read-only narration (the concede/limit/advance
+        # check shown running on the provided draft, in plain declarative prose). The student's ONLY graded act is
+        # now the fresh weighed paragraph; the three moves sit read-only beneath as plain-string reminders; the
+        # run-and-name tail is dropped. Kept as diagnosis_frq (paragraph grain needs an own-draft diagnosis for
+        # model_sequence). Stays on the taught source (load balance).
+        Slot("MODEL", "diagnosis_frq", "Weigh a perspective yourself, all three moves",
+             ref="", bank="mp_public_space", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="Watch the 3-move check run on this weak draft, then run it on a fresh paragraph of your own.",
-                 setapart_block=setapart("Weak draft to check:",
+                 intro="First, watch the 3-move check run on the provided draft below. Its concede move is only "
+                       "vague: calling the view an 'interesting idea' is praise, not a real concession of what it "
+                       "gets right. It names no limit, so it never says where leaving the choice to users falls "
+                       "short. And it advances no position of the writer's own, with no example. The draft only "
+                       "restates Perspective Three, so it summarizes instead of weighing. Now write a fresh "
+                       "paragraph of your own that does all three moves in order.",
+                 setapart_block=setapart("Provided draft the check was run on:",
                                          "Perspective Three says users should decide what a street is for, which is an interesting idea worth considering.", "red"),
-                 checklist_block=checklist(title="Run the 3-move check:", rows=[
-                     ("Concede: names what the view gets right?", "Only vaguely. 'Interesting idea' is praise, not a real concession. Name what actually holds."),
-                     ("Limit: names where it falls short?", "No. Add one, for example whether leaving it to users settles anything."),
-                     ("Advance: states the writer's own position with an example?", "No. Add your position and a specific case."),
+                 checklist_block=checklist(title="Check your paragraph against these (no need to type answers):", rows=[
+                     "Concede: does it name what the perspective gets right?",
+                     "Limit: does it name where the perspective falls short or what it ignores?",
+                     "Advance: does it state your own position against it, with a specific example?",
                  ]),
-                 closer="Now write a fresh weighed paragraph on ONE perspective from the streets prompt, doing all "
-                        "three moves in order. Use the limit you identified as your middle move, then finish by "
-                        "advancing your own position with an example.")),
+                 closer="Write a fresh weighed paragraph on ONE perspective from the streets prompt, doing all "
+                        "three moves in order: concede what it gets right, name its limit, then advance your own "
+                        "position with a specific example. Run the three checks above before you submit.")),
         Slot("INDEPENDENT", "production_frq", "Weigh a perspective on your own",
              ref="", bank="mp_public_space", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(

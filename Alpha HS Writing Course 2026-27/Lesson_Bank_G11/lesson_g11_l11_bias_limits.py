@@ -197,18 +197,27 @@ LESSON = Lesson(
                                          "The source is strong evidence for ______ (what to trust it for), but ______ (where it falls short)."),
                  closer="Fill in both blanks using the water-use source. Name one use it is strong evidence for "
                         "and one place it falls short. Do not give an all-or-nothing verdict. Write ONE sentence.")),
-        Slot("MODEL", "diagnosis_frq", "Check an evaluation: strengths and limits, or all-or-nothing?",
-             ref="", bank="water_infrastructure", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act
+        # dropped. Was a bundle: 3 pre-answered (q,a) tuple rows (which leaked the answers) + a fresh evaluation +
+        # run-the-same-check + name-the-limit in one box (unscoreable, wired to no grader). Now ONE graded act (the
+        # rewrite); the 3 strengths-and-limits questions print READ-ONLY beneath (no typed yes/no, no scrolling
+        # back), and the run-again + name-the-limit tail is dropped. Kept as diagnosis_frq with the grader tuple
+        # declared (sentence:writing). Stays on the taught source (no new read).
+        Slot("MODEL", "diagnosis_frq", "Fix a weak evaluation into a strengths-and-limits one",
+             ref="", bank="water_infrastructure", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question check on this weak evaluation, then write a fresh one and run the same check.",
-                 setapart_block=setapart("Weak draft to check:", "This source is trustworthy.", "red"),
-                 checklist_block=checklist(title="Check for strengths AND limits:", rows=[
-                     ("Strength: does it say what to trust it FOR?", "Only vaguely. 'Trustworthy' names no specific use. Specify one, such as national water-use totals."),
-                     ("Limit: does it say where it falls short?", "No. Add one, for example that national averages hide any single region's shortage."),
-                     ("Verdict: is it all-or-nothing?", "Yes. Replace the blanket verdict with a named strength and a named limit."),
+                 intro="Rewrite this weak evaluation of the water-use source into one that names both a strength "
+                       "and a limit.",
+                 setapart_block=setapart("Weak draft to fix:", "This source is trustworthy.", "red"),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Strength: does it say what to trust the source FOR?",
+                     "Limit: does it say where the source falls short or what it leaves out?",
+                     "Verdict: did it avoid an all-or-nothing 'trust everything' or 'trust nothing'?",
                  ]),
-                 closer="Now write a fresh strengths-and-limits evaluation of the water-use source, then run the "
-                        "same three checks. Finish by naming the limit you identified.")),
+                 closer="This draft gives a blanket verdict: 'trustworthy' names no specific use and no limit. "
+                        "Write one strengths-and-limits evaluation of the water-use source that names one use it is "
+                        "strong evidence for and one place it falls short. Run the three checks above before you "
+                        "submit.")),
         Slot("INDEPENDENT", "production_frq", "Evaluate strengths and limits on your own",
              ref="", bank="water_infrastructure", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(

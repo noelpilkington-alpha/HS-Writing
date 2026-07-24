@@ -228,14 +228,20 @@ LESSON = Lesson(
         # process fix on the NEXT write; only a substance gap the pacing left behind (a missing conclusion, an
         # unchecked error) is fixed in the draft now. Same taught bank (load balance). Self-contained: the checklist
         # is the scaffold and the grader scores the diagnosis within the item.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a metacognitive pacing self-check
+        # on the student's OWN just-written essay (a calibration scaffold that runs AFTER the INDEPENDENT write),
+        # not a separate graded rewrite, so there is no fresh draft to grade. The checklist is made READ-ONLY
+        # (plain-string rows; the (question, answer) tuple form dropped and each row's conditional guidance folded
+        # into one plain instruction). The slot stays a self-check; scored left as-is; no rewrite invented. Same
+        # taught bank (load balance).
         Slot("MODEL", "diagnosis_frq", "Check your own budget and essay",
              ref="", bank="infrastructure_spending", scored=True,
              body=frq_prompt(
                  intro="Reread the essay you just wrote and look at how you spent your minutes. Run this pacing check on YOUR draft, one row at a time.",
-                 checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Does reading get real minutes?", "If reading got almost none, the prompt and evidence get skipped. Carve out minutes to read."),
-                     ("Are planning and checking protected?", "If planning or checking got only leftovers, give each its own protected minutes."),
-                     ("Does drafting fit what remains?", "If drafting swallowed the window, the other stages starve. Shrink drafting so read, plan, and check fit."),
+                 checklist_block=checklist(title="Check your own draft against these (no need to type answers):", rows=[
+                     "Does reading get real minutes? If reading got almost none, the prompt and evidence get skipped. Carve out minutes to read.",
+                     "Are planning and checking protected? If planning or checking got only leftovers, give each its own protected minutes.",
+                     "Does drafting fit what remains? If drafting swallowed the window, the other stages starve. Shrink drafting so read, plan, and check fit.",
                  ]),
                  closer="The rows above are all about how you spent your minutes, and you cannot buy those minutes "
                         "back by editing a finished draft. For each row that fails, note it and adjust your process "

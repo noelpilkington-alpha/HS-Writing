@@ -229,24 +229,33 @@ LESSON = Lesson(
                      "Do not just make it louder; add the specific WHY a skeptical reader would need.",
                  ]),
                  closer="Rewrite the whole claim as a paragraph with proportional reasoning added.")),
-        # DIAGNOSIS: watch the check run on a provided draft, then run it on a fresh claim the student writes here
-        # (stateless-safe; the material is provided, and the self-check is on the same item, not a prior submission).
-        Slot("MODEL", "diagnosis_frq", "Check a fresh claim for sufficiency",
-             ref="", bank="ai_workforce_policy", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched earn-the-claim
+        # demo (pre-answered (q,a) tuple rows) + a fresh develop + a run-and-name tail in one box (unscoreable,
+        # wired to no grader, the (q,a) rows leaked the answers). The coping-model demo is PRESERVED as read-only
+        # narration (the three sufficiency checks shown running on the provided draft, in plain declarative prose).
+        # The student's ONLY graded act is now the fresh developed claim; the three checks sit read-only beneath as
+        # plain-string reminders; the run-and-name tail is deleted. Kept as diagnosis_frq (paragraph grain needs an
+        # own-draft diagnosis for model_sequence). Stays on the taught source (load balance).
+        Slot("MODEL", "diagnosis_frq", "Develop a fresh claim so its reasoning is proportional",
+             ref="", bank="ai_workforce_policy", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the check run on a provided draft, then run it on a fresh claim you write "
-                       "here.",
-                 setapart_block=setapart("Provided draft to check:",
+                 intro="First, watch the earn-the-claim check run on the provided draft below. Its claim is big: "
+                       "it asks the government to do nothing at all in the job market. Its reason, that freedom is "
+                       "important, is a slogan rather than a reason aimed at this claim, so it is not proportional: "
+                       "a reader still asks why a hands-off approach actually serves workers. A stronger version "
+                       "would add a specific WHY, for example that employers adapt faster than central plans. Now "
+                       "write a fresh claim of your own that does not fall short that way.",
+                 setapart_block=setapart("Provided draft the check was run on:",
                                          "The government should stay out of the job market because freedom is important.", "red"),
-                 checklist_block=checklist(title="Run the earn-the-claim check:", rows=[
-                     ("Size?", "Big. It asks the government to do nothing at all in the job market."),
-                     ("Reasoning?", "No. 'Freedom is important' is a slogan, not a reason aimed at this claim."),
-                     ("Proportional?", "No. A reader still asks why a hands-off approach serves workers. Add a specific WHY (for example, that employers adapt faster than central plans)."),
+                 checklist_block=checklist(title="Check your claim against these (no need to type answers):", rows=[
+                     "Size: how big is the claim, and how much reasoning would carry it?",
+                     "Reasoning: is there a specific reason aimed at this claim, not a slogan?",
+                     "Proportional: is the reasoning enough for the size of the claim?",
                  ]),
-                 closer="Now write a fresh claim about the government's role in the AI workforce and develop it "
-                        "with proportional reasoning. Then run the same three questions on it: size? reasoning? "
-                        "proportional? If it is thin, add the reasoning it needs, and finish by naming the "
-                        "reason that earns your claim.")),
+                 closer="Write a fresh claim about the government's role in the AI workforce and develop it into a "
+                        "paragraph with proportional reasoning, drawing on the source. Run the three checks above "
+                        "before you submit.")),
 
         # ===== INDEPENDENT: develop a claim with no frame + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Develop a claim on your own",

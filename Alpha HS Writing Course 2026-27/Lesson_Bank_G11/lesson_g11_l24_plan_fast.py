@@ -223,14 +223,20 @@ LESSON = Lesson(
         # DIAGNOSIS = self-revision: reread the fast plan you JUST wrote and run the three-question check on it,
         # fixing any line that fails (not a check on a provided weak plan, and not a fresh production). Same taught
         # source (load balance). Self-contained: the checklist is the scaffold and the grader scores the diagnosis.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written fast plan (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write on the
+        # plan the student made), not a separate graded rewrite, so there is no fresh draft to grade. The checklist
+        # is made READ-ONLY (plain-string rows; the (question, answer) tuple form dropped and each row's conditional
+        # guidance folded into one plain instruction). The slot stays a self-check; scored left as-is; no rewrite
+        # invented. Same taught source (load balance).
         Slot("MODEL", "diagnosis_frq", "Check a fast plan before you draft",
              ref="", bank="ai_regulation", scored=True,
              body=frq_prompt(
                  intro="Reread the fast plan you just wrote. Run this checklist on YOUR plan and fix any line that fails.",
-                 checklist_block=checklist(title="Check your own plan, row by row:", rows=[
-                     ("Does one line name a position to defend?", "If it only names the topic, state a side someone could reject, such as whether the government should steer workers toward growing fields."),
-                     ("Are there two or three ordered points?", "If they are missing, add two or three reasons, each in a few words, in the order you will argue them."),
-                     ("Is it a few lines, not paragraphs?", "If it has grown into full sentences or written-out paragraphs, trim it back to a few lines: the position on one line and each point in a few words."),
+                 checklist_block=checklist(title="Check your own plan against these (no need to type answers):", rows=[
+                     "Does one line name a position to defend? If it only names the topic, state a side someone could reject, such as whether the government should steer workers toward growing fields.",
+                     "Are there two or three ordered points? If they are missing, add two or three reasons, each in a few words, in the order you will argue them.",
+                     "Is it a few lines, not paragraphs? If it has grown into full sentences or written-out paragraphs, trim it back to a few lines: the position on one line and each point in a few words.",
                  ]),
                  closer="For every check your plan fails, fix that line now. Finish by naming the position your "
                         "plan will defend.")),

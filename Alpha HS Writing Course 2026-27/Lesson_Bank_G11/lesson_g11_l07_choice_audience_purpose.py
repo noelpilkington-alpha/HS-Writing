@@ -203,23 +203,30 @@ LESSON = Lesson(
                                          "so that ______ [the purpose that effect serves]."),
                  closer="Fill all three blanks. The last blank is the one that matters most: reach the purpose, "
                         "do not stop at the effect. Then run the purpose check before you submit.")),
-        # DIAGNOSIS = check-and-fix on a PROVIDED weak draft (not a fresh production, so it does not repeat the
-        # supported write). Stays on the taught source = no new reading (load). Uses checklist() so the check
-        # renders as one clean numbered list (no "Step N" double-numbering).
-        Slot("MODEL", "diagnosis_frq", "Check the analysis: is the purpose reached?",
-             ref="", bank="douglass_1852", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act
+        # dropped. The old single diagnosis_frq bundled 3 acts in one box (run the purpose check as pre-answered
+        # (q,a) tuple rows + rewrite + name-which-question-you-fixed) - unscoreable, wired to no grader, and the
+        # (q,a) tuple rows leaked the answers. The pre-answered diagnosis of the provided draft is folded into the
+        # intro as given context; the ONLY graded act is now the rewrite; the three check questions sit read-only
+        # beneath as plain-string reminders; the name-act tail is deleted. Kept as diagnosis_frq (paragraph grain
+        # needs an own-draft diagnosis for model_sequence). Stays on the taught source (no new read).
+        Slot("MODEL", "diagnosis_frq", "Fix a weak draft so it reaches the purpose",
+             ref="", bank="douglass_1852", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the purpose check on this weak draft, then rewrite it into an analysis that reaches "
-                       "the purpose behind the choice.",
+                 intro="This weak draft names a choice (the pointed questions) and its effect (it grabs the "
+                       "audience's attention) but stops at the effect: it never reaches the purpose, why Douglass "
+                       "wants that attention. Rewrite it into a short analysis that reaches the purpose behind the "
+                       "choice.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "Douglass asks pointed questions, which grabs the audience's attention.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Is the choice named?", "Yes, the pointed questions."),
-                     ("Is the effect named?", "Yes, it grabs the audience's attention."),
-                     ("Is the purpose reached (why he wants that effect)?", "No. It stops at the effect. Add why he wants their attention: so they must face a question they cannot answer without admitting the exclusion."),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Is the choice named?",
+                     "Is the effect on the audience named?",
+                     "Is the purpose reached (why he wants that effect), not stopping at the effect?",
                  ]),
-                 closer="Now rewrite the weak draft into a short analysis that reaches the purpose the attention "
-                        "serves. Then name which check question your rewrite fixed.")),
+                 closer="Rewrite the weak draft into a short analytical passage that runs the full chain: the "
+                        "choice, its effect on the audience, and the purpose that effect serves. Run the three "
+                        "checks above before you submit.")),
 
         # ===== INDEPENDENT: cold write, no frame, own choice of move + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Reach the purpose on your own",

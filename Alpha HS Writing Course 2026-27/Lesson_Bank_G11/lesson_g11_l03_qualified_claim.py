@@ -218,20 +218,24 @@ LESSON = Lesson(
                                          "[commit to a position] because ______ [the reason]."),
                  closer="Bound the claim to a real case, still commit, and give a reason a reader could weigh. "
                         "Then check it against the 3 questions. Do not waffle. Write one sentence.")),
-        # DIAGNOSIS = a CHECK-and-FIX on a PROVIDED draft (stays on the taught topic; no new source to read).
-        Slot("MODEL", "diagnosis_frq", "Check and fix a weak draft with the 3 questions",
-             ref="", bank="ai_workforce_policy", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act
+        # dropped. Was a bundle: 3 pre-answered (q,a) "your call: yes / no" rows + rewrite + name-the-limit in one
+        # box. Now ONE graded act (the rewrite); the 3 questions print READ-ONLY beneath (no typed yes/no, no
+        # scrolling back), and the "name which limit" tail is dropped. Stays on the taught topic (no new source).
+        Slot("MODEL", "diagnosis_frq", "Fix a weak draft into a qualified claim", ref="", bank="ai_workforce_policy",
+             scored=True, unit="sentence", frq_type="writing", rubric_ref="rc.4trait",
              body=frq_prompt(
-                 intro="Run the 3-question test on this weak draft, then rewrite it into a real qualified claim.",
+                 intro="Rewrite this weak draft into one qualified claim of your own.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "Perhaps the government could sometimes assist, depending on the situation.", "red"),
-                 checklist_block=checklist(title="Run the test:", rows=[
-                     ("Does it commit to a position?", "your call: yes / no"),
-                     ("Is the limit stated as a bound (when ..., in most cases)?", "your call: yes / no"),
-                     ("Is there a reason (a warrant)?", "your call: yes / no"),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Does it commit to a position?",
+                     "Is the limit stated as a bound (when ..., in most cases)?",
+                     "Is there a reason (a warrant)?",
                  ]),
-                 closer="Now rewrite the weak draft into one qualified claim that passes all three. Then name "
-                        "which limit your claim sets.")),
+                 closer="This draft waffles: it hedges until no claim remains. Write one qualified claim that "
+                        "bounds the case, still commits, and gives a reason (when ..., the government should ..., "
+                        "because ...). Run the three checks above before you submit.")),
 
         # ===== INDEPENDENT: cold write on the taught topic, no frame + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a qualified claim on your own",
