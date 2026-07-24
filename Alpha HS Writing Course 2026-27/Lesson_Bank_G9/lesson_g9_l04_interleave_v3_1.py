@@ -208,18 +208,20 @@ LESSON = Lesson(
                                          "A volcano erupts ______ [set a focus that previews the stages]."),
                  closer="Set a focus, preview the parts, take no side. Write one sentence, then run the verb "
                         "check.")),
-        Slot("MODEL", "diagnosis_frq", "Check it: right product for the verb?",
-             ref="", bank="volcanoes", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). Was a bundle: pre-answered check + rewrite + name.
+        # Now ONE graded act (the rewrite); the checks print READ-ONLY beneath the prompt; the pre-answered
+        # verb line moves into the prompt intro (it is context, not a check to mark); "name which check" dropped.
+        Slot("MODEL", "diagnosis_frq", "Fix it: write the right product for the verb", ref="", bank="volcanoes",
+             scored=True, unit="sentence", frq_type="writing", rubric_ref="rc.staar",
              body=frq_prompt(
-                 intro="Run the verb check on this weak draft, then rewrite it into the right product.",
+                 intro="The task verb here is EXPLAIN, so the right product is a controlling idea, not a claim. "
+                       "Rewrite this weak draft into the right product.",
                  setapart_block=setapart("Weak draft to fix:", "Volcanoes should be studied more.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("What is the verb, argue or explain?", "Explain, so I need a controlling idea, not a claim."),
-                     ("Is this a no-side focus?", "your call: yes / no"),
-                     ("Does it preview the parts?", "your call: yes / no"),
-                 ]),
-                 closer="Now rewrite the weak draft into one controlling idea that fits EXPLAIN, then name which "
-                        "check your rewrite fixed.")),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):",
+                                           rows=["Is it a no-side focus (not a claim that takes a side)?",
+                                                 "Does it preview the parts?"]),
+                 closer="Write one controlling idea that fits EXPLAIN: a no-side focus that previews the parts. "
+                        "Run the checks above before you submit.")),
         Slot("INDEPENDENT", "production_frq", "Choose the product and write it (volcanoes)",
              ref="", bank="volcanoes", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(

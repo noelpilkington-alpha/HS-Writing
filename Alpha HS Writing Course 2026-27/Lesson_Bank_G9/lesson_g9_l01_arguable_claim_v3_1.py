@@ -233,18 +233,49 @@ LESSON = Lesson(
         # real decision. The rows now pose the three questions with a blank for the student's own yes/no; the
         # coping-model DEMONSTRATION of running the test already happened at the annotated_before_after (Model It),
         # so this stays a live student CHECK, not a second demonstration.
-        Slot("MODEL", "diagnosis_frq", "Check and fix a weak draft with the 3 questions",
-             ref="", bank="four_day_week", scored=True,
+        # ===== COUNCIL FIX (2026-07-24): the old single diagnosis_frq bundled 3 acts in one box (mark 3
+        # yes/no + rewrite + name-the-check) - unscoreable, wired to no grader. First diagnosis item in this
+        # arc -> OPTION B (two single-act items). Item 1 = graded RECOGNITION on a minimal-pair draft that
+        # fails EXACTLY ONE check (single-select is faultless; DI constraint). Item 2 = graded FRESH-draft
+        # rewrite opened with a because-stem, with the 3 checks printed READ-ONLY beneath the prompt (no
+        # scrolling back). The "name which check" third act is deleted. =====
+        Slot("MODEL", "discrimination", "Diagnose the draft: which check does it fail?",
+             ref="", labeled_grade_c=True, bank="four_day_week",
+             body=("Run the 3-question test on this draft. It already takes a side someone could dispute, so "
+                   "focus on what is still missing. The draft: 'Schools should switch to a four-day week.' "
+                   "Which single check does it fail? "
+                   "(A) It does not take a side.  "
+                   "(B) No one could reasonably disagree with it.  "
+                   "(C) It gives no reason.  "
+                   "(D) It fails none of the checks; it is already an arguable claim. "
+                   "Correct: C. It takes a disputable side but gives no reason, so it is not yet an arguable claim."),
+             choices=[
+                 {"id": "A", "text": "It does not take a side.",
+                  "correct": False,
+                  "why": "It does take a side: schools SHOULD switch. That check passes; look for the one that fails."},
+                 {"id": "B", "text": "No one could reasonably disagree with it.",
+                  "correct": False,
+                  "why": "Plenty of people would disagree that schools should switch, so this check passes too."},
+                 {"id": "C", "text": "It gives no reason.",
+                  "correct": True,
+                  "why": "Correct. It takes a disputable side but never says WHY, so it fails the reason check. "
+                         "A side with no reason is only half an arguable claim."},
+                 {"id": "D", "text": "It fails none of the checks; it is already an arguable claim.",
+                  "correct": False,
+                  "why": "Not yet. It has a side but no reason, so one check still fails."},
+             ]),
+        Slot("MODEL", "production_frq", "Now fix a draft: add what is missing",
+             ref="", bank="four_day_week", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question test on this weak draft yourself, mark each yes or no, then rewrite it.",
+                 intro="Here is a different weak draft. Rewrite it into one arguable claim.",
                  setapart_block=setapart("Weak draft to fix:", "A lot of districts have four-day weeks now.", "red"),
-                 checklist_block=checklist(title="Run the test (mark each yourself):", rows=[
-                     ("Does it take a side on the switch?", "your call: yes / no"),
-                     ("Could someone disagree?", "your call: yes / no"),
-                     ("Is there a reason?", "your call: yes / no"),
-                 ]),
-                 closer="Any 'no' means it is not a claim yet. Rewrite the weak draft into one arguable claim "
-                        "that passes all three, then name which question your rewrite fixed.")),
+                 checklist_block=checklist(title="Check your new claim against these three (no need to type answers):",
+                                           rows=["Does it take a side?",
+                                                 "Could someone reasonably disagree?",
+                                                 "Is there a reason?"]),
+                 closer="This one only reports a fact. Give it a side someone could dispute and a reason, using "
+                        "the shape: schools should ______ because ______. Write one sentence, and run the three "
+                        "checks above before you submit.")),
 
         # ===== INDEPENDENT: cold write on a DIFFERENT topic (pay-for-grades) + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "stimulus_display", "The debate: paying students for grades",
