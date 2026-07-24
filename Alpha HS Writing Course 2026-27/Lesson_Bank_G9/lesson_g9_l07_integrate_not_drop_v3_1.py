@@ -209,7 +209,7 @@ LESSON = Lesson(
         Slot("MODEL", "predict_the_fix", "What does this dropped quote most need?",
              bank="phone_ban",
              body=("Diagnose this draft before the reveal. A student wrote: 'Restricting phones is already "
-                   "common. \"76.9 percent.\" Schools agree.' Which single move would most improve how the "
+                   "common. \"76.9 percent.\" Schools agree.' Which change would most improve how the "
                    "quote is used? "
                    "(A) fold the number into a sentence the writer builds and name who reports it, so it does not stand alone  "
                    "(B) add a second number right after the first so the paragraph piles up even more supporting figures  "

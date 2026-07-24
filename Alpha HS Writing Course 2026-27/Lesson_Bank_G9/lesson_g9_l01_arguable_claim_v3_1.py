@@ -29,7 +29,7 @@ ONE_IDEA = (
 '<div style="border-left:4px solid #0d9488;background:#ecfdf5;border-radius:8px;padding:10px 14px;margin:8px 0;'
 'font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif">'
 '<div style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#0f766e;text-transform:uppercase">The one idea</div>'
-'<div style="color:#0f2f28;font-size:15px;margin-top:2px">An arguable claim takes a '
+'<div style="color:#0f2f28;font-size:15px;margin-top:2px">An arguable claim is a sentence that takes a '
 '<strong>SIDE</strong> and gives a <strong>REASON</strong>. A fact or a bare opinion is not a claim.</div></div>')
 
 REMEMBER = (
@@ -205,7 +205,7 @@ LESSON = Lesson(
              bank="four_day_week",
              body=("Diagnose this draft before the reveal. The task asked the student to argue whether schools "
                    "should switch to a four-day week. The student wrote: 'School schedules have changed in a lot "
-                   "of places over the years.' Which single move would most improve it? "
+                   "of places over the years.' Which change would most improve it? "
                    "(A) take a side on the four-day week and add a reason  "
                    "(B) add one more fact about how schedules have changed  "
                    "(C) make the sentence longer and use more formal words  "

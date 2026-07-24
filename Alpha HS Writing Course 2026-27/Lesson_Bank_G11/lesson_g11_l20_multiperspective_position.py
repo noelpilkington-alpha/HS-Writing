@@ -231,7 +231,7 @@ LESSON = Lesson(
              bank="mp_public_space",
              body=("Diagnose this draft before the reveal. A student wrote: 'All three perspectives are "
                    "interesting and each has real strengths and weaknesses, so the issue is complicated.' Which "
-                   "single move would most improve it? "
+                   "change would most improve it? "
                    "(A) weigh the perspectives against each other and stake the writer's own position in "
                    "relation to them  "
                    "(B) state even more strongly that all three perspectives are interesting and each one has "
