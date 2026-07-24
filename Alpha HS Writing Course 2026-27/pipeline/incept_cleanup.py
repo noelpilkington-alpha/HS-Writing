@@ -47,3 +47,22 @@ def _fact_verify(item: Item):
         if m:
             return None, f"dropped: unverifiable stat/claim '{m.group(0)}'"
     return item, "no stats"
+
+# a fixed cleanup date (deterministic; the module does not call datetime.now to keep tests reproducible)
+_CLEANUP_DATE = "2026-07-23"
+
+class _P:
+    def __init__(self, t): self.text = t
+
+def _provenance_screen(item: Item):
+    """Stamp provenance + run the appropriateness/copyright screen. REJECT verdict -> drop."""
+    body = item.stem + "\n" + "\n".join(o.text for o in item.options)
+    r = cs.screen([_P(body)], prompt=item.stem, mode="", family="")
+    if r["verdict"] == "REJECT":
+        reasons = "; ".join(x.get("check", "") for x in r.get("rejects", []))
+        return None, f"dropped: content REJECT ({reasons})"
+    out = copy.copy(item)
+    out.provenance = dict(item.provenance or {})
+    out.provenance.update({"copyright": "incept_generated", "model": "incept",
+                           "cleaned": _CLEANUP_DATE, "content_screen": r["verdict"]})
+    return out, "provenance stamped"

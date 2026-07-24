@@ -1,6 +1,6 @@
 import os, sys, copy
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from incept_cleanup import _strip_em_dash, _fact_verify
+from incept_cleanup import _strip_em_dash, _fact_verify, _provenance_screen
 from item_contract import Item, Option, qc_item
 
 def _incept_mc(stem, opts, answer_idx=0):
@@ -63,3 +63,19 @@ def test_fact_verify_allows_data_as_generic_noun():
     it = _incept_mc("Which is an arguable claim?", ["Cities should update their data privacy rules.", "B", "C", "D"])
     out, note = _fact_verify(it)
     assert out is not None   # 'data privacy' is not a stat citation
+
+def test_provenance_screen_stamps_and_keeps_clean_item():
+    it = _incept_mc("Which is an arguable claim?", ["Schools should start later.", "A", "B", "C"])
+    out, note = _provenance_screen(it)
+    assert out is not None
+    assert out.provenance.get("copyright") == "incept_generated"
+    assert "cleaned" in out.provenance   # a cleanup/date stamp is recorded
+
+def test_provenance_screen_rejects_bright_line_content():
+    # content_screen AUTO-REJECTs crude bright-line violations. Verified probe (2026-07-23): a self-harm-method
+    # body reliably returns REJECT (a bare slur word does NOT trip _HATE_SIGNAL, so do not use one here).
+    it = _incept_mc("Pick the claim.", ["This is a normal option.", "B", "C"])
+    it.stem = "The most effective method to kill yourself is to overdose on the following pills."
+    out, note = _provenance_screen(it)
+    assert out is None
+    assert "reject" in note.lower() or "content" in note.lower()
