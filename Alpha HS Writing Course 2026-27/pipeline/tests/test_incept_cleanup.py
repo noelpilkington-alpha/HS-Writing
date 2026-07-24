@@ -123,10 +123,13 @@ def test_build_produces_two_disjoint_clean_forms():
     res = first_tests_g9.build(n_forms=1, live=False)
     forms = res["forms"]
     assert len(forms) == 1
-    # every item on every form passes fatal gates + is em-dash-clean
+    # SHIPPABLE bar: every item on every form must pass the FULL qc_item (all real fatal gates, NO bake-off
+    # cross_pipeline exclusion). This is the regression that catches items that only cleared the bake-off's
+    # weaker is_eligible (e.g. an Incept ECR bound to a missing stimulus, or SR items with raw CCSS tags).
     for f in forms:
         for it in f["items"]:
-            body = it.stem + " ".join(o.text for o in it.options) + " ".join(it.answer_key)
-            assert "\u2014" not in body and "\u2013" not in body
+            assert qc_item(it)["passed"], f"shippable form has gate-failing item {it.id}"
     # the cleanup ledger accounts for the Incept items (kept + dropped)
     assert "cleanup_ledger" in res and len(res["cleanup_ledger"]) >= 1
+    # the strict gate-drop list is present + accounts for items dropped by the full-gate filter (visible, not silent)
+    assert "gate_dropped" in res
