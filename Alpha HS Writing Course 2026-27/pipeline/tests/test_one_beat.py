@@ -145,7 +145,11 @@ def test_two_beats_emit_two_interactions_and_items():
     assert f'data-catalog-idref="vq-{L.id}-1"' in html and f'data-catalog-idref="vq-{L.id}-2"' in html
     vq_ids = [cid for cid, _ in cps if cid.startswith("vq-")]
     assert vq_ids == [f"vq-{L.id}-1", f"vq-{L.id}-2"], f"two hosted vq items in order: {vq_ids}"
-    assert "pauses 2 times" in html, "the caption reflects two pauses"
+    # the meta caption below the video was removed course-wide (colleague review 2026-07-24): it was
+    # non-student-facing lesson-mechanics commentary duplicating the "Watch: the one idea" heading. The
+    # video card + its heading + the two interactions still render; only the caption line is gone.
+    assert "pauses 2 times" not in html and "A short video of this lesson" not in html, "no meta caption"
+    assert "Watch: the one idea" in html, "video card heading still present"
 
 
 def test_one_beat_list_normalizes_both_shapes():

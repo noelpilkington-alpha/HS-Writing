@@ -806,7 +806,10 @@ def build_lesson_html(L, base_url="", video_map=None, one_beat_map=None) -> tupl
         # XHTML/XML-valid boolean attrs (controls="controls", default="default"): the player + render_qc
         # parse the body as XML, which rejects bare boolean attributes.
         _track = (f'<track kind="captions" srclang="en" src="{esc(_vtt)}" default="default"/>' if _vtt else "")
-        _caption = ('A short video of this lesson\'s core idea. The reading that follows covers the same idea.')
+        # NO caption below the video (colleague review 2026-07-24): the old grey caption ("A short video of
+        # this lesson's core idea. The reading that follows covers the same idea. It pauses N times...") was
+        # meta-commentary about the lesson's construction, not student-facing content, and it duplicated the
+        # "Watch: the one idea" heading already above the video. Removed course-wide.
         _beat_list = _one_beat_list(_this_beat)
         if _beat_list:
             # INTERACTIVE tb-video (council rule 2026-07-22): a tb-video figure carrying up to TWO non-gating
@@ -825,9 +828,6 @@ def build_lesson_html(L, base_url="", video_map=None, one_beat_map=None) -> tupl
                 checkpoints.append((vq_id, one_beat_xml(vq_id, _b["item"])))
                 catalog_items.append(f'<div class="tb-qti-config" id="{vq_id}"><a href="{base_url}/items/{vq_id}.xml" '
                                      f'type="application/xml"></a></div>')
-            _n = len(_beat_list)
-            _pause_note = ("It pauses once for a quick, no-penalty check." if _n == 1
-                           else f"It pauses {_n} times for a quick, no-penalty check.")
             _vcard = (
                 '<div style="border-radius:18px; border:1px solid #d7d2f7; background:#f6f4ff; '
                 'box-shadow:0 12px 22px rgba(43,42,85,.08); padding:16px 18px;">'
@@ -837,9 +837,7 @@ def build_lesson_html(L, base_url="", video_map=None, one_beat_map=None) -> tupl
                 f'style="width:100%; max-width:720px; border-radius:12px; display:block; margin:0 auto;">'
                 f'<source src="{esc(_this_video["mp4"])}" type="video/mp4"/>{_track}'
                 'Your browser does not support video playback.</video>'
-                f'{"".join(_interactions)}</figure>'
-                '<div style="margin-top:6px; color:#5a5d77; font-size:13px; text-align:center;">'
-                f'{_caption} {_pause_note}</div></div>')
+                f'{"".join(_interactions)}</figure></div>')
         else:
             # plain (non-interactive) intro video: exempt archetype, or no One-Beat authored for this lesson.
             _vcard = (
@@ -848,8 +846,7 @@ def build_lesson_html(L, base_url="", video_map=None, one_beat_map=None) -> tupl
                 '<div style="font-weight:900; color:#3b3a88; font-size:16px; margin-bottom:8px;">Watch: the one idea</div>'
                 f'<video controls="controls" preload="metadata" style="width:100%; max-width:720px; border-radius:12px; '
                 f'display:block; margin:0 auto;"><source src="{esc(_this_video["mp4"])}" type="video/mp4"/>{_track}'
-                'Your browser does not support video playback.</video>'
-                f'<div style="margin-top:6px; color:#5a5d77; font-size:13px; text-align:center;">{_caption}</div></div>')
+                'Your browser does not support video playback.</video></div>')
         segments.insert(0, _node(NODE_COLORS[0], _vcard, first=True))
     # emit harvested glossary definitions into the catalog (player resolves tb-glossary-term -> these by id)
     for ref, text in gloss_defs.items():
