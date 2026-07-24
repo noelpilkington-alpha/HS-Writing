@@ -194,21 +194,29 @@ LESSON = Lesson(
                                          "WARRANT (why that fact supports the claim)."),
                  closer="Write those two sentences so the evidence and warrant connect with a linking word. You "
                         "are building two of the three parts onto the given claim.")),
-        # DIAGNOSIS: run the 3-part check on a PROVIDED weak draft, then on a fresh paragraph of your own. Stays on
-        # the taught topic (no new source to read). Structured via checklist (no 'Step N' prose).
-        Slot("MODEL", "diagnosis_frq", "Check the parts, then build a fresh paragraph", ref="", bank="phone_ban",
-             scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched check-run demo + a fresh paragraph + a run-the-checks-and-
+        # name-which-part tail in one box (unscoreable, wired to no grader). The coping-model demo is PRESERVED
+        # as read-only narration (the 3-part check shown running on the weak draft, in plain declarative form so
+        # it is not a hidden self-answer prompt). The student's ONLY graded act is now the fresh build; the checks
+        # sit read-only beneath as plain-string reminders; the run-and-name tail is deleted. Stays on the taught
+        # topic (no new source to read).
+        Slot("MODEL", "diagnosis_frq", "Build a fresh, complete paragraph", ref="", bank="phone_ban",
+             rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the 3-part check run on a weak draft, then run it on a fresh paragraph of your own.",
-                 setapart_block=setapart("Weak draft to check:", "Phones hurt focus. Most schools restrict them.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Is the CLAIM clear?", "Yes, 'phones hurt focus' states the point."),
-                     ("Is the EVIDENCE attributed and folded in?", "No, the fact is dropped with no source. Name who reports it."),
-                     ("Is the WARRANT there?", "No. Add a sentence saying why that fact supports the claim."),
+                 intro="First, watch the 3-part check run on the weak draft below. The CLAIM is clear ('phones "
+                       "hurt focus' states the point), but the EVIDENCE is dropped in with no source named, and "
+                       "there is no WARRANT to say why the fact supports the claim, so the draft is only partly "
+                       "built. Now build a complete paragraph of your own that does not leave those gaps.",
+                 setapart_block=setapart("Weak draft the check was run on:", "Phones hurt focus. Most schools restrict them.", "red"),
+                 checklist_block=checklist(title="Check your paragraph against these (no need to type answers):", rows=[
+                     "Is the CLAIM (your point) stated?",
+                     "Is the EVIDENCE a fact from the source, attributed and folded in?",
+                     "Is the WARRANT there, explaining why the evidence supports the claim?",
                  ]),
-                 closer="Now write one fresh claim-plus-evidence-plus-warrant for the phone topic, then run the "
-                        "same three checks and fix any part that fails. Finish by naming which of the three parts "
-                        "your paragraph needed most.")),
+                 closer="Build ONE fresh, complete body paragraph on the phone topic with all three parts in "
+                        "order (claim, attributed evidence, warrant), connected so they flow. Run the checks "
+                        "above before you submit.")),
 
         # ===== INDEPENDENT: cold full-paragraph build on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Build a complete body paragraph", ref="", bank="phone_ban",

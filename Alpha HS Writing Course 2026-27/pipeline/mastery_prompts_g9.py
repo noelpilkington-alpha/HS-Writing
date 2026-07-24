@@ -319,3 +319,64 @@ MASTERY = {
                 "claim backed by attributed evidence and a warrant explaining why that evidence proves the claim; "
                 "and a conclusion that lands the upshot. Run your self-check before you submit.")},
 }
+
+
+# ---- PP100 form-bank: L01 arguable-claim, sentence grain, depth 30 ----------------------------------------
+# The mastery test-out round-robins over N equivalent held-out forms (one whole form per attempt). L01's bank
+# reuses vetted held-out issue-frames (12 pre-existing + 18 authored in Stimulus_Bank_G9/frames_pp100_bank_
+# wave1.py), each a DISTINCT topic the article never taught. forms[0] is the current SOCIALMEDIAAGE prompt
+# VERBATIM (prod-safe: if this ever collapses to one form it equals today). Each other form is a mechanically
+# parallel one-sentence claim task on its own held-out topic. The equivalence QC gate (pp100_forms) enforces
+# grain/rubric/frq_type constancy + source distinctness before any form enters the bank.
+
+def _claim_form(source_id, question):
+    """One equivalent L01 form: take-a-side one-sentence claim task on a held-out issue frame."""
+    return {"source": source_id, "prompt_html": _INTRO
+            + _box("The question to take a side on:", question, "teal")
+            + _task("Write ONE arguable claim that answers this question.",
+                    "Take a clear side and give a reason drawn from the source above.",
+                    "It counts as arguable only if someone could reasonably disagree with it. Write one sentence.")}
+
+
+# (source_id, take-a-side question) for forms[1..29]; forms[0] is the existing SOCIALMEDIAAGE entry, verbatim.
+# Questions are the frames' own claim-task questions, phrased as a single "Should ...?" the student answers.
+_L01_BANK = [
+    ("ACC-W910-FRAME-HOMEWORKLIMIT", "Should schools cap how much homework teachers can assign each night?"),
+    ("ACC-W910-FRAME-LATERSTART", "Should high schools start the day later in the morning?"),
+    ("ACC-W910-FRAME-NARRATIVEGRADES", "Should schools replace letter grades with written feedback?"),
+    ("ACC-W910-FRAME-CURSIVE", "Should schools still require students to learn cursive handwriting?"),
+    ("ACC-W910-FRAME-OPENBOOK", "Should more tests be open-book?"),
+    ("ACC-W910-FRAME-CLASSRANK", "Should schools stop ranking students and naming a valedictorian?"),
+    ("ACC-W910-FRAME-AITOOLS", "Should students be allowed to use AI writing tools for schoolwork?"),
+    ("ACC-W910-FRAME-PHONELOCKER", "Should schools lock phones away during the school day?"),
+    ("ACC-W910-FRAME-FACEREC", "Should schools use facial recognition cameras for security?"),
+    ("ACC-W910-FRAME-ESPORTS", "Should competitive video gaming count as an official school sport?"),
+    ("ACC-W910-FRAME-MANDATORYVOTE", "Should voting be required by law for all eligible adults?"),
+    ("ACC-W910-FRAME-PLASTICBAN", "Should cities ban single-use plastic items like bags and straws?"),
+    ("ACC-W910-FRAME-BIKESHARE", "Should a city spend public money on a bike-share program?"),
+    ("ACC-W910-FRAME-JURY18", "Should eighteen-year-olds be called for jury duty like other adults?"),
+    ("ACC-W910-FRAME-JUNKFOODADS", "Should ads for junk food aimed at children be restricted?"),
+    ("ACC-W910-FRAME-PEALLYEARS", "Should physical education be required in all four years of high school?"),
+    ("ACC-W910-FRAME-DRESSWEATHER", "Should schools loosen dress codes so students can dress for the weather?"),
+    ("ACC-W910-FRAME-FOURDAYWORK", "Should companies move full-time workers to a four-day week?"),
+    # remaining distinct held-out topics from the existing bank (topics the article never taught)
+    ("ACC-W910-FRAME-COMMUNITYSERVICE", "Should students be required to do community service to graduate?"),
+    ("ACC-W910-FRAME-CONGESTION", "Should cities charge drivers a fee to enter the busiest downtown streets?"),
+    ("ACC-W910-FRAME-DST", "Should the country stop changing the clocks for daylight saving time?"),
+    ("ACC-W910-FRAME-SCHOOLLUNCH", "Should schools provide free meals to all students?"),
+    ("ACC-W910-FRAME-SCHOOLYEAR", "Should the school year be longer?"),
+    ("ACC-W910-FRAME-PHONEBAN", "Should phones be banned during the school day?"),
+    ("ACC-W910-ARG-OPP-0007", "Should schools require students to wear uniforms?"),
+    ("ACC-W910-ARG-OPP-0009", "Should the voting age be lowered to sixteen?"),
+    ("ACC-W910-ARG-OPP-0008", "Should schools switch to a year-round calendar?"),
+    ("ACC-W910-ARG-OPP-0010", "Do zoos do more good than harm?"),
+    ("ACC-W910-ARG-OPP-LESSON-SCHOOLYEAR", "Should the school year be extended into the summer?"),
+]
+
+# build the forms list: forms[0] = current entry (verbatim), forms[1..] = the bank above
+_l01 = MASTERY["ACC-W910-L-G9-C901-0001"]
+MASTERY["ACC-W910-L-G9-C901-0001"] = {
+    "unit": _l01["unit"], "rubric_ref": _l01["rubric_ref"], "frq_type": "writing",
+    "forms": [{"source": _l01["source"], "prompt_html": _l01["prompt_html"]}]
+             + [_claim_form(sid, q) for sid, q in _L01_BANK],
+}

@@ -221,21 +221,56 @@ LESSON = Lesson(
                                          "Wetlands protect against floods. They ______ [a detail that shows HOW they protect against floods]. (Delete the sentence that does not serve the point.)"),
                  closer="Cut the off-purpose sentence and add one detail that shows HOW wetlands protect against "
                         "floods. Then run the 3-question check: does every sentence now serve the point?")),
-        # DIAGNOSIS = run the check on a PROVIDED weak draft, then rewrite it (not a fresh production, so it does
-        # not repeat the Finish write). Stays on the taught topic = no new source to read (load balance).
-        Slot("MODEL", "diagnosis_frq", "Check and fix a weak draft with the 3 questions",
-             ref="", bank="wetlands", scored=True,
+        # COUNCIL FIX (2026-07-24): Option B (first-in-arc). Graded recognition + graded fresh-draft rewrite;
+        # name-act dropped. The old single diagnosis_frq bundled 3 acts in one box (run a 3-question check as
+        # pre-answered (q,a) rows + rewrite + name-which-sentence-you-cut) - unscoreable, wired to no grader,
+        # and the (q,a) tuple rows leaked the answers. First diagnosis item in this arc -> two single-act items.
+        # Item 1 = graded RECOGNITION on a minimal-pair draft that fails EXACTLY ONE check (single-select is
+        # faultless; DI constraint): the draft states its point and shows HOW (so the point-check and the
+        # add-check pass), but one true off-purpose sentence wanders (so only the delete-check fails). Item 2 =
+        # graded FRESH-draft rewrite, with the 3 questions printed READ-ONLY beneath the prompt. The
+        # name-which-sentence-you-cut third act is deleted.
+        Slot("MODEL", "discrimination", "Diagnose the draft: which check does it fail?",
+             ref="", labeled_grade_c=True, bank="wetlands",
+             body=("Run the 3-question check on this draft. Point: wetlands shelter wildlife. Draft: 'Wetlands "
+                   "give many animals a place to live. Birds, fish, and frogs feed and nest in the shallow "
+                   "water and reeds. Wetlands were once drained for farmland.' It fails exactly one check. "
+                   "Which one? "
+                   "(A) It never states the point the draft is about.  "
+                   "(B) It is missing a detail that shows HOW, so a needed piece must be added.  "
+                   "(C) One true sentence does not serve the point and should be deleted.  "
+                   "(D) It fails none of the checks; every sentence already serves the point. "
+                   "Correct: C. The draft states its point and shows how animals use the wetland, so the "
+                   "point-check and the add-check pass. But the last sentence, about wetlands being drained for "
+                   "farmland, is true yet off the wildlife point, so only the delete-check fails."),
+             choices=[
+                 {"id": "A", "text": "It never states the point the draft is about.",
+                  "correct": False,
+                  "why": "The first sentence states the point clearly: wetlands give animals a place to live. That check passes; look for the one that fails."},
+                 {"id": "B", "text": "It is missing a detail that shows HOW, so a needed piece must be added.",
+                  "correct": False,
+                  "why": "The second sentence already shows how animals use the wetland (they feed and nest in the shallow water and reeds), so no piece needs adding here."},
+                 {"id": "C", "text": "One true sentence does not serve the point and should be deleted.",
+                  "correct": True,
+                  "why": "Correct. The draining-for-farmland line is a true fact, but it does not serve the wildlife point, so it should be cut. A true fact that is off the point still has to go."},
+                 {"id": "D", "text": "It fails none of the checks; every sentence already serves the point.",
+                  "correct": False,
+                  "why": "Not quite. Two sentences serve the point, but the draining-for-farmland line wanders off it, so one check still fails."},
+             ]),
+        Slot("MODEL", "production_frq", "Now fix a draft: add what is missing",
+             ref="", bank="wetlands", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question check on this weak draft, then rewrite it so every sentence serves the point.",
+                 intro="Here is a different weak draft. Rewrite it so every sentence serves the point.",
                  setapart_block=setapart("Weak draft to fix:",
-                                         "Wetlands shelter many kinds of animals. Wetlands cover only a small share of the country. Birds, fish, and frogs feed and nest there.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("What is the point of this draft?", "Wetlands support wildlife."),
-                     ("Does each sentence serve that point?", "No. The middle sentence, about how small a share wetlands cover, does not serve the wildlife point."),
-                     ("What is the fix?", "Cut the off-purpose sentence; the other two already serve the point."),
+                                         "Wetlands help protect nearby towns from floods. Wetlands can be found on every continent except Antarctica. They soak up heavy rain and release it slowly, so rivers rise less sharply.", "red"),
+                 checklist_block=checklist(title="Check your rewrite against these (no need to type answers):", rows=[
+                     "What is the point of this draft?",
+                     "Does each sentence help the reader with THAT point?",
+                     "Cut any sentence that wanders off the point; add any needed piece that is missing.",
                  ]),
-                 closer="Now rewrite the weak draft so every sentence serves the wildlife point. Then name which "
-                        "sentence you cut and why it did not serve the point.")),
+                 closer="The point is that wetlands protect towns from floods. One sentence is a true fact that "
+                        "wanders off that point. Rewrite the draft so every sentence serves the flood point. Run "
+                        "the 3-question check above before you submit.")),
 
         # ===== INDEPENDENT: cold edit on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided draft on your own",

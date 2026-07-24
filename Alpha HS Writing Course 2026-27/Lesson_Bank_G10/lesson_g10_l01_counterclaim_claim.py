@@ -226,21 +226,57 @@ LESSON = Lesson(
                                          "position] because ______ [a reason that answers the objection]."),
                  closer="Concede a real point, then hold your position with a reason that answers it. Do not "
                         "ignore the other side. Then check it against the 3 questions.")),
-        # DIAGNOSIS = a CHECK-and-FIX exercise on a PROVIDED weak draft (stays on the taught topic; no new source).
-        Slot("MODEL", "diagnosis_frq", "Check and fix a weak draft with the 3 questions",
-             ref="", bank="congestion_pricing", scored=True,
+        # COUNCIL FIX (2026-07-24): Option B (first-in-arc). Graded recognition + graded fresh-draft rewrite;
+        # name-act dropped. The old single diagnosis_frq bundled 3 acts in one box (run a 3-question check as
+        # pre-answered (q,a) tuple rows + rewrite + name-which-objection-you-conceded) - unscoreable, wired to no
+        # grader, and the (q,a) tuple rows leaked the answers. First diagnosis item in this arc -> two single-act
+        # items. Item 1 = graded RECOGNITION on a minimal-pair draft that fails EXACTLY ONE check (single-select is
+        # faultless; DI constraint): the draft concedes a real objection and holds the position (so the concede-
+        # check and the hold-check pass), but its reason only adds a same-side point (so only the answer-check
+        # fails). Item 2 = graded FRESH-draft rewrite, with the 3 questions printed READ-ONLY beneath. The
+        # name-the-objection third act is deleted. Stays on the taught topic (no new source).
+        Slot("MODEL", "discrimination", "Diagnose the draft: which check does it fail?",
+             ref="", labeled_grade_c=True, bank="congestion_pricing",
+             body=("Run the 3-question check on this draft. Draft: 'Although a downtown toll would cost daily "
+                   "commuters more each week, the city should still charge it because rush-hour traffic keeps "
+                   "getting worse.' It fails exactly one check. Which one? "
+                   "(A) It never names the other side's strongest point, so it actually concedes nothing at all here.  "
+                   "(B) It never states or holds a clear position of its own.  "
+                   "(C) Its reason adds a same-side point instead of answering the objection it named.  "
+                   "(D) It passes all three checks, so nothing about it needs a fix. "
+                   "Correct: C. The draft concedes a real objection (the toll costs commuters more) and holds the "
+                   "position (the city should still charge it), so the concede-check and the hold-check both pass. "
+                   "But its reason, that traffic keeps getting worse, only adds a same-side point and never answers "
+                   "the cost it just conceded, so only the answer-check fails."),
+             choices=[
+                 {"id": "A", "text": "It never names the other side's strongest point, so it actually concedes nothing at all here.",
+                  "correct": False,
+                  "why": "The opening clause concedes a real objection: the toll would cost daily commuters more each week. That concede-check passes; look for the one that fails."},
+                 {"id": "B", "text": "It never states or holds a clear position of its own.",
+                  "correct": False,
+                  "why": "It holds a clear position: the city should still charge the toll. That hold-check passes, so this is not the failing check."},
+                 {"id": "C", "text": "Its reason adds a same-side point instead of answering the objection it named.",
+                  "correct": True,
+                  "why": "Correct. It concedes the cost and holds the position, but the reason (traffic keeps getting worse) is a fresh same-side point that never answers the cost it conceded, so only the answer-check fails."},
+                 {"id": "D", "text": "It passes all three checks, so nothing about it needs a fix.",
+                  "correct": False,
+                  "why": "Not quite. The concede-check and hold-check pass, but the reason does not answer the objection, so one check still fails."},
+             ]),
+        Slot("MODEL", "production_frq", "Now fix a draft: make the reason answer the objection",
+             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question test on this weak draft, then rewrite it into a counterclaim-aware claim.",
-                 setapart_block=setapart("Weak draft to fix:", "Tolls are a good idea because they reduce traffic.", "red"),
-                 checklist_block=checklist(title="Run the test:", rows=[
-                     ("Does it name the other side's strongest point?",
-                      "No, it never mentions the drivers the toll burdens. Add an 'although' clause that concedes it."),
-                     ("Does it hold a clear position?", "Yes, it backs the toll."),
-                     ("Does the reason answer that objection?",
-                      "No. 'Reduce traffic' just repeats a same-side point. Tie the reason to the objection you conceded."),
+                 intro="Here is a different weak draft. Rewrite it into one counterclaim-aware claim.",
+                 setapart_block=setapart("Weak draft to fix:",
+                                         "Cities should charge a downtown toll because it clears the streets and cuts pollution.", "red"),
+                 checklist_block=checklist(title="Check your rewrite against these (no need to type answers):", rows=[
+                     "Does it name the other side's strongest point (concede it)?",
+                     "Does it hold your own position?",
+                     "Does the reason answer that objection, not just add a same-side point?",
                  ]),
-                 closer="Now rewrite the weak draft into one counterclaim-aware claim that passes all three. Then "
-                        "name the objection your claim concedes.")),
+                 closer="This draft is one-sided: it never concedes the objection that a toll burdens drivers who "
+                        "cannot shift their hours. Rewrite it so it concedes that point, holds the position, and "
+                        "gives a reason that answers it (Although X, Y because Z). Run the 3 questions above before "
+                        "you submit.")),
 
         # ===== INDEPENDENT: cold write on the taught topic (no frame) + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a counterclaim-aware claim on your own",

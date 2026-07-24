@@ -251,9 +251,15 @@ LESSON = Lesson(
                         "your own score and naming the gap is what every calibrated writer does before a grader "
                         "ever sees the work, and you are ready to do it cold.")),
 
+        # COUNCIL FIX (2026-07-24): check-only: this is a self-check on the student's OWN just-written essay (a
+        # calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a separate graded rewrite,
+        # so there is no fresh draft to grade. It carried NO self-answered (q,a) checklist and NO "your call:
+        # yes / no" fields to convert (its scaffold is a single labeled EXAMPLE of naming a gap, already read-only),
+        # so nothing needed removing. The slot stays a calibration self-check; scored left as-is; no rewrite
+        # invented. Same taught source (load balance).
         # DIAGNOSIS = self-revision on the student's OWN just-written draft. A single labeled EXAMPLE shows what
         # naming a gap looks like (an example, NOT the student's essay); the student then names and fixes the gap
-        # on THEIR OWN draft. Same taught source (load balance). Self-contained: the grader scores the diagnosis.
+        # on THEIR OWN draft. Self-contained: the grader scores the diagnosis.
         Slot("MODEL", "diagnosis_frq", "Name the gap between your prediction and the grader",
              ref="", bank="water_competing_uses", scored=True,
              body=frq_prompt(

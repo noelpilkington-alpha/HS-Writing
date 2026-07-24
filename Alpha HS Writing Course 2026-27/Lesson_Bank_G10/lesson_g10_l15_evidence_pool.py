@@ -205,22 +205,54 @@ LESSON = Lesson(
                                          "Source 1 (pro) lets me say: ______. Source 2 (con) raises this objection I will answer: ______."),
                  closer="Name what each source lets you say, so you plan to draw on both, not one. Say the claim "
                         "the pro source supports and the objection the con source raises.")),
-        # DIAGNOSIS = check-and-fix on a PROVIDED weak map (not a fresh production), scaffolded by a checklist
-        # run on the weak map. Same taught source (load balance).
-        Slot("MODEL", "diagnosis_frq", "Check a weak pool map before you plan",
-             ref="", bank="congestion_pricing", scored=True,
+        # COUNCIL FIX (2026-07-24): Option B (first-in-arc). Graded recognition + graded fresh-draft rewrite;
+        # name-act dropped. The old single diagnosis_frq bundled 3 acts in one box (run a 3-check on a provided
+        # map as pre-answered (q,a) rows + write a fresh map + name-the-objection) - unscoreable, wired to no
+        # grader, and the (q,a) rows leaked the answers. First diagnosis item in this arc -> two single-act
+        # items. Item 1 = graded RECOGNITION on a minimal-pair map that fails EXACTLY ONE pool check
+        # (single-select is faultless; DI constraint): the map uses BOTH sources and names what each lets you
+        # say (checks 1 and 2 pass), but never names the objection it will answer (only check 3 fails). Item 2 =
+        # graded FRESH pool map, with the 3 pool checks printed READ-ONLY beneath. The name-the-objection third
+        # act is deleted. Item 2 keeps kind="diagnosis_frq" because at multi_paragraph grain model_sequence
+        # requires an own-draft diagnosis (the fresh map IS that graded own-draft write). Same taught source
+        # (load balance).
+        Slot("MODEL", "discrimination", "Diagnose the map: which pool check does it fail?",
+             ref="", labeled_grade_c=True, bank="congestion_pricing",
+             body=("Run the 3-check on this pool map. Map: 'Source 1 (pro) lets me say tolls cut traffic and "
+                   "fund transit. Source 2 (con) says tolls cost drivers who cannot afford them.' It fails "
+                   "exactly one check. Which one? "
+                   "(A) It draws on only one source.  "
+                   "(B) It names no claim or objection for either source.  "
+                   "(C) It never names the objection it will ANSWER.  "
+                   "(D) It fails none of the checks; the pool is fully mapped. "
+                   "Correct: C. The map uses both sources and gives each a job, so the first two checks pass. "
+                   "But it never says which objection the writer will answer, so only the third check fails."),
+             choices=[
+                 {"id": "A", "text": "It draws on only one source.",
+                  "correct": False,
+                  "why": "It names a job for both source 1 and source 2, so the check-every-source test passes. Look for the check that fails."},
+                 {"id": "B", "text": "It names no claim or objection for either source.",
+                  "correct": False,
+                  "why": "It does name each source's job: source 1 supports the traffic-and-transit case and source 2 raises the cost objection. That check passes."},
+                 {"id": "C", "text": "It never names the objection it will ANSWER.",
+                  "correct": True,
+                  "why": "Correct. The map lists what each source says but never commits to which objection the essay will answer, so the plan is not yet ready to draw on both against each other."},
+                 {"id": "D", "text": "It fails none of the checks; the pool is fully mapped.",
+                  "correct": False,
+                  "why": "Not yet. Both sources have a job, but the objection to answer is never named, so one check still fails."},
+             ]),
+        Slot("MODEL", "diagnosis_frq", "Now map a fresh pool for the set",
+             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="First watch the check run on a weak pool map, then run it on your own.",
-                 setapart_block=setapart("Weak map to fix:",
-                                         "Use source 1 for the reasons tolls are good.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Did the writer check every source, not just one?", "No. Only source 1 is used. Add what source 2 lets you say."),
-                     ("Is a claim or objection named for each source?", "No. Name the objection the con source raises."),
-                     ("Is the objection to answer named?", "No. Name the objection you will answer."),
+                 intro="Now build a fresh pool map for the congestion-pricing set of your own.",
+                 checklist_block=checklist(title="Check your map against these (no need to type answers):", rows=[
+                     "Does it draw on EVERY source, not just one?",
+                     "Is a claim or objection named for each source?",
+                     "Is the objection you will ANSWER named?",
                  ]),
-                 closer="Now write a fresh pool map for the congestion set that names what each source lets you "
-                        "say, run the same three checks, and fix any that fail. Finish by naming the objection "
-                        "you will answer.")),
+                 closer="Write a pool map that names what each source lets you say (the case the pro source "
+                        "supports and the objection the con source raises) and names the objection you will "
+                        "answer. Run the three checks above before you submit.")),
 
         # ===== INDEPENDENT: map the pool cold (no frame) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Map the evidence pool on your own",

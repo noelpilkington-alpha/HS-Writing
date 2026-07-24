@@ -234,20 +234,24 @@ LESSON = Lesson(
                                          "[your position] so ______ [what follows]."),
                  closer="Name the close rival you reject, then commit to your own side. Do not write a flat "
                         "one-sided claim or fence-sit. Then check it against the 3 questions.")),
-        # DIAGNOSIS = a CHECK-and-FIX exercise on a PROVIDED weak draft (no new source to read; taught topic).
-        Slot("MODEL", "diagnosis_frq", "Check and fix a weak draft with the 3 questions",
-             ref="", bank="energy_spending_priority", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act
+        # dropped. Was a bundle: 3 pre-answered (q,a) "your call: yes / no" rows + rewrite + name-the-X in one box.
+        # Now ONE graded act (the rewrite); the 3 nuance questions print READ-ONLY beneath (no typed yes/no, no
+        # scrolling back), and the "name the X" tail is dropped. Stays on the taught topic (no new source).
+        Slot("MODEL", "diagnosis_frq", "Fix a weak claim into a nuanced one", ref="", bank="energy_spending_priority",
+             scored=True, unit="sentence", frq_type="writing", rubric_ref="rc.4trait",
              body=frq_prompt(
-                 intro="Run the 3-question nuance check on this weak draft, then rewrite it into a real nuanced claim.",
+                 intro="Rewrite this weak draft into one nuanced claim of your own.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "Both building power and fixing the grid are important.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Does it commit to one side?", "No, it fence-sits. Pick a side."),
-                     ("Does it name the close position it is NOT?", "No. Add the rejected rival with 'not'."),
-                     ("Does it say what it IS instead?", "No. State your own position with 'but'."),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Does it commit to one side?",
+                     "Does it name the close position it is NOT?",
+                     "Does it say what it IS instead?",
                  ]),
-                 closer="Now rewrite the weak draft into one nuanced claim that passes all three. "
-                        "Then name the X your rewrite rejects.")),
+                 closer="This draft fence-sits: it calls both sides important and never picks one. Write one "
+                        "nuanced claim in the not-X-but-Y shape that rejects the close rival and commits to your "
+                        "side. Run the three checks above before you submit.")),
 
         # ===== INDEPENDENT: cold write on the same topic, no frame + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a nuanced claim on your own",

@@ -229,26 +229,33 @@ LESSON = Lesson(
                                          "reason that meets the objection, not a repeat of the claim]."),
                  closer="Write those two parts so the answer truly meets the objection, not just restates your "
                         "position. You are building the name-then-answer onto the given position, in a short paragraph.")),
-        # DIAGNOSIS: run the 3-question check on a PROVIDED weak draft, then write a fresh paragraph. Stays on the
-        # taught topic (no new source to read). Structured via checklist (no 'Step N' prose). Coping-model shape:
-        # a named weak draft to check + an independent own turn (satisfies gate_self_answered_check).
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched 3-question check-run demo + a fresh paragraph + a run-the-
+        # same-three-questions-and-name-how-your-answer-meets-the-objection tail in one box (unscoreable, wired to
+        # no grader). The coping-model demo is PRESERVED as read-only narration (the 3-question check shown running
+        # on the weak draft, in plain declarative form so it is not a hidden self-answer prompt). The student's ONLY
+        # graded act is now the fresh build; the three questions sit read-only beneath as plain-string reminders;
+        # the run-and-name tail is deleted. Stays on the taught topic (no new source to read).
         Slot("MODEL", "diagnosis_frq", "Check a counterargument: named, or answered?", ref="", bank="school_lunch",
-             scored=True,
+             rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the 3-question check run on a weak draft, then write a fresh paragraph of your own.",
-                 setapart_block=setapart("Weak draft to check:",
+                 intro="First, watch the 3-question check run on the weak draft below. The POSITION is clear "
+                       "('free meals for all are good' states the side) and the OPPOSING POINT is named fairly "
+                       "(the money should go to the neediest students), but the draft never ANSWERS that worry: "
+                       "'still a good idea' just repeats the claim, so the objection is left standing. Now write a "
+                       "fresh paragraph of your own that answers the other side instead of just naming it.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                                          "Free meals for all are good. Some say the money should go to the "
                                          "neediest students. But free meals are still a good idea.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Did it state the position clearly?", "Yes, 'free meals for all are good' states the side."),
-                     ("Did it name the opposing point fairly?", "Yes, the money should go to the neediest students."),
-                     ("Did it answer with a reason, not just repeat the claim?",
-                      "No. 'Still a good idea' just repeats the claim. Answer the money worry with a reason, such "
-                      "as that feeding everyone reaches the students who would otherwise skip the meal."),
+                 checklist_block=checklist(title="Check your paragraph against these (no need to type answers):", rows=[
+                     "Is your position stated clearly?",
+                     "Is the opposing point named fairly (the real point, not a weak version)?",
+                     "Do you answer it with a reason, not just repeat your claim?",
                  ]),
-                 closer="Now write one fresh short counterargument paragraph on the free-meals position, then run "
-                        "the same three questions and fix any part that fails. Finish by naming how your answer "
-                        "meets the objection instead of dodging it.")),
+                 closer="Write ONE fresh short counterargument paragraph on whether schools should give free meals "
+                        "to every student, with all three parts: state your position, name the opposing point "
+                        "fairly, then answer it with a reason while keeping your position. Run the check above "
+                        "before you submit.")),
 
         # ===== INDEPENDENT: cold short-paragraph build on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Write a short counterargument paragraph", ref="", bank="school_lunch",

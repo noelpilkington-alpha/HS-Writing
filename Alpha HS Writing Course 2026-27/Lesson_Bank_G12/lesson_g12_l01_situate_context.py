@@ -230,22 +230,53 @@ LESSON = Lesson(
                                          "(the larger question) so I hold that ______ (my position within that frame)."),
                  closer="Name the broader question AND answer within it. Do not answer only the narrow prompt. "
                         "Then check it against the 3 questions.")),
-        # DIAGNOSIS = watch a check on a PROVIDED weak draft, then rewrite a fresh one (self-contained; no look-back).
-        Slot("MODEL", "diagnosis_frq", "Check your claim: situated, or narrow?",
-             ref="", bank="automation_policy", scored=True,
+        # COUNCIL FIX (2026-07-24): Option B (first-in-arc). Graded recognition + graded fresh-draft rewrite;
+        # name-act dropped. The old single diagnosis_frq bundled a watched check-run on a weak draft (pre-answered
+        # (q,a) tuple rows, one holding "your call: yes / no") + a fresh rewrite + a name-the-larger-question tail
+        # in one box (unscoreable, wired to no grader, and the (q,a) rows leaked the answers). First diagnosis item
+        # in this arc -> two single-act items. Item 1 = graded RECOGNITION on a minimal-pair draft that fails
+        # EXACTLY ONE check (single-select is faultless): the draft names the larger question (checks 1 and 2 pass)
+        # but never commits within it (only the commit-check fails). Item 2 = graded FRESH-draft rewrite with the
+        # checks printed READ-ONLY beneath. The name-the-larger-question tail is deleted. Stays on the taught topic.
+        Slot("MODEL", "discrimination", "Diagnose the draft: which check does it fail?",
+             ref="", labeled_grade_c=True, bank="automation_policy",
+             body=("Run the 3-question situate check on this draft. Draft: 'The choice between water for food and "
+                   "water for power is really one instance of how a society rations a necessity it can no longer "
+                   "fully supply.' It fails exactly one check. Which one? "
+                   "(A) It never names a larger question at all, so the claim stays narrow and answers only the water prompt.  "
+                   "(B) It names the larger question but never commits to a position within that frame.  "
+                   "(C) It commits to a position, but the larger question it names just restates the water prompt.  "
+                   "(D) It passes all three checks, so this claim already situates and needs no fix. "
+                   "Correct: B. The draft names a genuinely larger question (how a society rations a necessity it "
+                   "can no longer fully supply), so the first two checks pass. But it only frames the question and "
+                   "never says which use to protect, so only the commit-check fails."),
+             choices=[
+                 {"id": "A", "text": "It never names a larger question at all, so the claim stays narrow and answers only the water prompt.",
+                  "correct": False,
+                  "why": "It does name a larger question (how a society rations a necessity it can no longer fully supply), so this check passes. Look for the one that fails."},
+                 {"id": "B", "text": "It names the larger question but never commits to a position within that frame.",
+                  "correct": True,
+                  "why": "Correct. The larger question is named, so checks 1 and 2 pass, but the draft only frames the choice and never commits to protecting food or power, so only the commit-check fails."},
+                 {"id": "C", "text": "It commits to a position, but the larger question it names just restates the water prompt.",
+                  "correct": False,
+                  "why": "Two problems: the draft never commits to a position, and the question it names (rationing a scarce necessity) is genuinely larger, not a restatement of the water prompt."},
+                 {"id": "D", "text": "It passes all three checks, so this claim already situates and needs no fix.",
+                  "correct": False,
+                  "why": "Not quite. The larger question is named, but the claim never commits to an answer within it, so one check still fails."},
+             ]),
+        Slot("MODEL", "production_frq", "Now fix a draft: name the larger question, then commit",
+             ref="", bank="automation_policy", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Watch the situate check run on a weak draft, then run it on a fresh claim of your own.",
-                 setapart_block=setapart("Weak draft to fix:", "We should protect food, because food is important.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("What larger question is this prompt one instance of?",
-                      "It never names one. Name it: how a society rations a necessity it cannot fully supply."),
-                     ("Is that larger question named inside the claim?",
-                      "No, only a bare answer is there. Put the frame into the sentence itself."),
-                     ("Does the claim still commit to an answer within that frame?",
-                      "Not yet. Connect the commitment to the frame you named."),
+                 intro="Here is a different weak draft. Rewrite it into one situated claim.",
+                 setapart_block=setapart("Weak draft to fix:",
+                                         "We should protect food, because food is important.", "red"),
+                 checklist_block=checklist(title="Check your rewrite against these (no need to type answers):", rows=[
+                     "Does it name the larger question this choice is one instance of?",
+                     "Does it still commit to a position within that frame?",
                  ]),
-                 closer="Now write a fresh situated claim for the water trade-off, then run the same three checks. "
-                        "Finish by naming the larger question you used.")),
+                 closer="This draft answers only the narrow prompt. Rewrite it into one claim that names the larger "
+                        "question the water choice belongs to (how a society rations a necessity it can no longer "
+                        "fully supply) and commits to a position within it. Run the checks above before you submit.")),
 
         # ===== INDEPENDENT: cold write on the water prompt, no frame + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Situate on your own",

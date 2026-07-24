@@ -149,19 +149,22 @@ LESSON = Lesson(
                                          "The water cycle reuses the same water. The source explains that water evaporates, condenses, and falls again."),
                  closer="Write ONE warrant sentence that says why that evidence supports the point (start with "
                         "'which shows' or 'because'). Then check it links the two.")),
-        Slot("MODEL", "diagnosis_frq", "Check and fix a paragraph missing a part",
-             ref="", bank="water_cycle", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act dropped.
+        Slot("MODEL", "diagnosis_frq", "Fix a paragraph that is missing a part",
+             ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-part check on this weak paragraph, then fix what is missing.",
+                 intro="This weak paragraph is missing a part. Its point is vague ('is important' takes no real "
+                       "position), and it has no warrant to link the evidence to the point. Rewrite it as a "
+                       "complete paragraph with all three parts in order.",
                  setapart_block=setapart("Weak paragraph to fix:",
                                          "The water cycle is important. The source explains that water evaporates, condenses, and falls again.", "red"),
-                 checklist_block=checklist(title="Check the 3 parts:", rows=[
-                     ("Point: a clear claim sentence?", "Weak, 'is important' takes no real position. Sharpen it."),
-                     ("Evidence: attributed and folded in?", "Yes, the stages are paraphrased and named to the source."),
-                     ("Warrant: does a sentence link them?", "No. Add one."),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Point: a clear claim sentence that takes a position?",
+                     "Evidence: an attributed fact from the source, folded in?",
+                     "Warrant: a sentence that says why the evidence supports the point?",
                  ]),
-                 closer="Now rewrite it as a complete paragraph with all three parts in order. Then name which "
-                        "part your rewrite added or fixed.")),
+                 closer="Put the point first, then the attributed evidence, then a warrant. Run the 3-part check "
+                        "above before you submit.")),
         Slot("INDEPENDENT", "production_frq", "Build the whole paragraph on the water cycle",
              ref="", bank="water_cycle", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(

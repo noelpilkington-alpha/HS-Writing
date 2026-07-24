@@ -234,23 +234,33 @@ LESSON = Lesson(
                      "State the effect on the AUDIENCE and reach his PURPOSE.",
                  ]),
                  closer="Write the full revised paragraph.")),
-        # DIAGNOSIS: watch the check run on a provided paragraph, then run it on a fresh paragraph in this box
-        # (stateless-safe; the material is provided, and the self-check is on the same item, not a prior submission).
-        Slot("MODEL", "diagnosis_frq", "Self-check a fresh paragraph against the check",
-             ref="", bank="douglass_1852", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched check demo (pre-answered (q,a) tuple rows) + a fresh
+        # paragraph + a run-and-name tail in one box (unscoreable, wired to no grader, the (q,a) rows leaked the
+        # answers). The coping-model demo is PRESERVED as read-only narration (the three checks shown running on
+        # the provided paragraph, in plain declarative prose). The student's ONLY graded act is now the fresh
+        # rhetorical-analysis paragraph; the checks sit read-only beneath as plain-string reminders; the
+        # run-and-name tail is deleted. Kept as diagnosis_frq (paragraph grain needs an own-draft diagnosis for
+        # model_sequence). Stays on the taught source (load balance).
+        Slot("MODEL", "diagnosis_frq", "Write a fresh rhetorical-analysis paragraph",
+             ref="", bank="douglass_1852", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the check run on a provided paragraph, then run it on a fresh paragraph you "
-                       "write here.",
-                 setapart_block=setapart("Provided paragraph to check:",
+                 intro="First, watch the check run on the provided paragraph below. It names no choice: it reports "
+                       "what Douglass says but points to no choice he makes. It frames no evidence: there is no "
+                       "quotation set up and interpreted. And it never gives an audience effect or purpose: it "
+                       "never says what a choice does to listeners or why. A stronger version would name a choice, "
+                       "frame a trimmed quote, and reach the audience effect and purpose. Now write a fresh "
+                       "paragraph of your own that does not fall short that way.",
+                 setapart_block=setapart("Provided paragraph the check was run on:",
                                          "Douglass says the nation is hypocritical. He gives many examples.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Choice named?", "No. It reports what Douglass says but points to no choice he makes."),
-                     ("Framed evidence?", "No. There is no quotation set up and interpreted. Add one."),
-                     ("Audience effect and purpose?", "No. It never says what a choice does to listeners or why. Add both."),
+                 checklist_block=checklist(title="Check your paragraph against these (no need to type answers):", rows=[
+                     "Is a CHOICE named?",
+                     "Is the evidence framed (a trimmed quote set up and interpreted)?",
+                     "Is the audience effect stated and the purpose reached?",
                  ]),
-                 closer="Now write a fresh rhetorical-analysis paragraph on the Douglass speech here, then run the "
-                        "same four questions on it: choice? framed evidence? audience effect? purpose? For each "
-                        "No, add that item, and finish by naming the choice you analyzed.")),
+                 closer="Write a fresh rhetorical-analysis paragraph on the Douglass speech: name a choice, frame "
+                        "a trimmed quote, state the audience effect, and reach the purpose. Run the three checks "
+                        "above before you submit.")),
 
         # ===== INDEPENDENT: revise a PROVIDED paragraph with no scaffold + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided paragraph on your own",

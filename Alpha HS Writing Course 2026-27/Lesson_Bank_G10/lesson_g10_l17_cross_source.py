@@ -241,21 +241,31 @@ LESSON = Lesson(
                                          "______ (my point) because ______ (a fact from the first source) meets ______ (a fact from the second source) in a way that ______ (why the two build one claim)."),
                  closer="Write ONE point that puts both school-year sources in the service of a single claim: "
                         "connect a fact from each, do not list them in separate sentences.")),
-        # DIAGNOSIS = check-and-fix on a PROVIDED weak point (not a fresh production), so it does not repeat the
-        # supported write. Same taught source (load balance). Scaffolded by a checklist run on the weak point.
-        Slot("MODEL", "diagnosis_frq", "Check your point: woven, or source-by-source?",
-             ref="", bank="school_year", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched weave-check demo (pre-answered (q,a) tuple rows) + a fresh
+        # woven point + a run-and-name-the-claim tail in one box (unscoreable, wired to no grader, and the (q,a)
+        # rows leaked the answers). The coping-model demo is PRESERVED as read-only narration (the three weave
+        # checks shown running on the weak point, in plain declarative prose). The student's ONLY graded act is
+        # now the fresh woven point; the three checks sit read-only beneath as plain-string reminders; the
+        # run-and-name tail is deleted. Stays on the taught source (load balance).
+        Slot("MODEL", "diagnosis_frq", "Write a woven point, not source-by-source",
+             ref="", bank="school_year", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the check run on a weak point, then run it on your own.",
-                 setapart_block=setapart("Weak point to fix:",
+                 intro="First, watch the weave check run on the weak point below. Both sources appear, but in "
+                       "separate sentences rather than one point; the two facts are just listed, not connected, "
+                       "so the harm and the cost never meet; and no single claim is built from them. A stronger "
+                       "version would pull both into one point where the summer-loss harm and the added cost "
+                       "relate and build one claim. Now write a fresh woven point of your own.",
+                 setapart_block=setapart("Weak point the check was run on:",
                                          "The first source says summer learning loss is a problem. The second source says a longer year costs money.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Do both sources appear in the SAME point?", "They both appear, but in separate sentences, not one point. Pull them into a single point."),
-                     ("Are the two facts connected, or just listed?", "Just listed. Show how one source's fact meets the other's, the harm and the cost relate."),
-                     ("Does the connection build one claim?", "Not yet. Name the single claim the two facts build together."),
+                 checklist_block=checklist(title="Check your point against these (no need to type answers):", rows=[
+                     "Do both sources appear in the SAME point?",
+                     "Are the two facts connected, not just listed?",
+                     "Does the connection build one claim?",
                  ]),
-                 closer="Now write a fresh woven point of your own from the school-year sources, run the same "
-                        "three checks, and fix any that fail. Finish by naming the one claim your two sources build together.")),
+                 closer="Write ONE fresh point from the school-year sources that uses both together, connecting "
+                        "a fact from each so they build a single claim rather than sitting in separate sentences. "
+                        "Run the three checks above before you submit.")),
 
         # ===== INDEPENDENT: weave a point cold (sentence ceiling for this grain) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a woven point on your own",

@@ -192,23 +192,58 @@ LESSON = Lesson(
                                          "______ they make sugar. ______ some energy is lost as the plant uses the sugar."),
                  closer="Use a sequence signpost (next, then) for the steps and a contrast signpost (however, "
                         "but) for the loss. Keep the ideas; change only the transitions.")),
-        # DIAGNOSIS = watch the check run on a PROVIDED draft, then run it on a fresh paragraph. Scaffolded with a
-        # real checklist (no "Step N" prose). Stays on the taught topic = no new source to read (load balance).
-        Slot("MODEL", "diagnosis_frq", "Check the transitions in a fresh paragraph",
-             ref="", bank="photosynthesis", scored=True,
+        # ===== COUNCIL FIX (2026-07-24): Option B (first-in-arc). Graded recognition + graded fresh-draft
+        # rewrite; name-act dropped. The old single diagnosis_frq bundled 3 acts in one box (mark a yes/no on a
+        # provided draft + write a fresh paragraph + name which relationship each transition signals) -
+        # unscoreable, wired to no grader. First diagnosis item in the C906 arc -> two single-act items. Item 1
+        # = graded RECOGNITION on a minimal-pair link that fails EXACTLY ONE check (single-select is faultless;
+        # DI constraint): the relationship is answerable (a contrast), but the filler transition fails to name
+        # it. Item 2 = graded FRESH-draft rewrite as a paragraph, with the 2 checks printed READ-ONLY beneath
+        # the prompt (no scrolling back). The "name which relationship" third act is deleted. =====
+        Slot("MODEL", "discrimination", "Diagnose the draft: what does the check catch?",
+             ref="", labeled_grade_c=True, bank="photosynthesis",
+             body=("Run the check on this draft: 'A plant makes sugar for energy. Also, some of that energy is "
+                   "lost.' What does the check catch? "
+                   "(A) The word 'Also' signals adding a similar idea, but the real relationship is a contrast.  "
+                   "(B) The word 'Also' already names the contrast, so the transition is fine as written.  "
+                   "(C) The two ideas share no real relationship, so no transition would fit this link.  "
+                   "(D) The link needs a sequence signpost such as 'next,' because one idea simply follows the "
+                   "other in time. "
+                   "Correct: A. Making energy and losing some of it pull in opposite directions, so the link is "
+                   "a contrast, but 'Also' signals adding, which hides that true relationship."),
+             choices=[
+                 {"id": "A", "text": "The word 'Also' signals adding a similar idea, but the real relationship is a contrast.",
+                  "correct": True,
+                  "why": "Correct. Making energy and then losing some pull in opposite directions, so the link "
+                         "is a contrast. 'Also' signals adding, which hides that true relationship."},
+                 {"id": "B", "text": "The word 'Also' already names the contrast, so the transition is fine as written.",
+                  "correct": False,
+                  "why": "'Also' signals adding a similar idea, not a contrast, so it does not name the real "
+                         "relationship. That filler is exactly what the check catches."},
+                 {"id": "C", "text": "The two ideas share no real relationship, so no transition would fit this link.",
+                  "correct": False,
+                  "why": "There is a clear relationship: the two ideas contrast. The only problem is that 'Also' "
+                         "fails to name it."},
+                 {"id": "D", "text": "The link needs a sequence signpost such as 'next,' because one idea simply follows the other in time.",
+                  "correct": False,
+                  "why": "The loss does not simply follow in time; it pulls against making the energy. That is a "
+                         "contrast, not a sequence, so 'next' would name the wrong relationship too."},
+             ]),
+        Slot("MODEL", "diagnosis_frq", "Now fix a draft: name the real relationship",
+             ref="", bank="photosynthesis", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 2-question check on this provided draft, then write and check your own.",
-                 setapart_block=setapart("Provided draft to check:",
-                                         "Sunlight reaches the leaf. Also, the leaf absorbs it. Also, this can be blocked by shade."),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("What is the real relationship at each link?",
-                      "Sunlight then absorb is a sequence; absorb versus blocked-by-shade is a contrast."),
-                     ("Does the transition match it?",
-                      "No, both are 'also,' so replace them (next, however)."),
+                 intro="Here is a fresh weak draft. Every link uses filler 'also,' so the real relationships are "
+                       "hidden. Rewrite it as a short paragraph in which each transition names the true relationship.",
+                 setapart_block=setapart("Weak draft to fix:",
+                                         "Leaves soak up sunlight. Also, they pull in water from the roots. "
+                                         "Also, too little sunlight slows the whole process down.", "red"),
+                 checklist_block=checklist(title="Check your rewrite against these (no need to type answers):", rows=[
+                     "What is the real relationship at each link: add, contrast, cause, or sequence?",
+                     "Does each transition name that relationship, instead of filler like 'also' or 'then'?",
                  ]),
-                 closer="Now write a fresh two-or-three-sentence paragraph on photosynthesis. Check each "
-                        "transition against the two questions and fix any filler before you submit. Finish by "
-                        "naming which relationship each transition signals.")),
+                 closer="Use a sequence signpost (next, then) for the steps and a contrast signpost (however, "
+                        "but) for the idea that pulls the other way. Keep the ideas; change only the "
+                        "transitions. Run the two checks above before you submit.")),
 
         # ===== INDEPENDENT: revise a provided paragraph, no frame, say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Revise a provided paragraph on your own",

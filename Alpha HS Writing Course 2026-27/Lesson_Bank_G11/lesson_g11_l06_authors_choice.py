@@ -234,23 +234,54 @@ LESSON = Lesson(
                                          "Douglass ______ [a rhetorical choice he makes] to ______ [its effect on his specific audience]."),
                  closer="Name the choice and its audience effect. Do not report the content of what he argues. "
                         "Write one sentence, then run the choice-and-effect check before you submit.")),
-        # DIAGNOSIS = check-and-fix on a PROVIDED weak draft (not a fresh production, so it does not repeat the
-        # supported write). Stays on the taught source = no new reading (load). Uses checklist() so the check
-        # renders as one clean numbered list (no 'Step N' double-numbering).
-        Slot("MODEL", "diagnosis_frq", "Check your analysis: the choice, or the content?",
-             ref="", bank="douglass_1852", scored=True,
+        # COUNCIL FIX (2026-07-24): Option B (first-in-arc). Graded recognition + graded fresh-draft rewrite;
+        # name-act dropped. The old single diagnosis_frq bundled 3 acts in one box (run the choice-and-effect check
+        # as pre-answered (q,a) tuple rows + rewrite + name-which-question-you-fixed) - unscoreable, wired to no
+        # grader, and the (q,a) rows leaked the answers. First diagnosis item in this arc -> two single-act items.
+        # Item 1 = graded RECOGNITION on a minimal-pair draft that fails EXACTLY ONE check (single-select is
+        # faultless; DI constraint): the draft names a real choice (so the choice-check and stay-on-crafting check
+        # pass), but it stops before any audience effect (so only the effect-check fails). Item 2 = graded
+        # FRESH-draft rewrite (a content-trap draft, different from the recognition one), with the checks printed
+        # READ-ONLY beneath. The name-which-question third act is deleted. Stays on the taught source (no new read).
+        Slot("MODEL", "discrimination", "Diagnose the draft: which part of the move does it miss?",
+             ref="", labeled_grade_c=True, bank="douglass_1852",
+             body=("Run the choice-and-effect check on this draft: 'Douglass opens his address by piling up a long "
+                   "series of sharp questions.' It falls short on exactly one part of the move. Which one? "
+                   "(A) It only reports what Douglass argues, so it names no rhetorical choice he makes at all here.  "
+                   "(B) It names a choice Douglass makes but never says what that choice does to his listening audience.  "
+                   "(C) It describes an effect on the audience but never names the specific choice that produces it.  "
+                   "(D) It already does the whole move, naming both the choice and its audience effect, so it needs no fix. "
+                   "Correct: B. It names a real choice (piling up questions at the opening) and stays on the "
+                   "crafting, so those checks pass, but it stops before saying what the questions do to his "
+                   "listeners, so only the audience-effect check fails."),
+             choices=[
+                 {"id": "A", "text": "It only reports what Douglass argues, so it names no rhetorical choice he makes at all here.",
+                  "correct": False,
+                  "why": "It does name a choice: piling up a series of questions at the opening. That check passes, so look for the part that fails."},
+                 {"id": "B", "text": "It names a choice Douglass makes but never says what that choice does to his listening audience.",
+                  "correct": True,
+                  "why": "Correct. It names the choice (the opening string of questions) but stops there, giving no effect on the audience, so only the effect-check fails. Naming a choice is only half the move."},
+                 {"id": "C", "text": "It describes an effect on the audience but never names the specific choice that produces it.",
+                  "correct": False,
+                  "why": "This is the opposite half. The draft names the choice clearly; what it is missing is the effect, not the choice."},
+                 {"id": "D", "text": "It already does the whole move, naming both the choice and its audience effect, so it needs no fix.",
+                  "correct": False,
+                  "why": "Not yet. It names the choice but never says what that choice does to the audience, so one part of the move still fails."},
+             ]),
+        Slot("MODEL", "production_frq", "Now fix a draft: add the choice and its audience effect",
+             ref="", bank="douglass_1852", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the choice-and-effect check on this weak draft, then rewrite it into a sentence "
-                       "that analyzes a choice Douglass makes and its effect on his audience.",
+                 intro="Here is a different weak draft. Rewrite it into one rhetorical-analysis sentence.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "Douglass points out that slavery goes against the nation's stated ideals.", "red"),
-                 checklist_block=checklist(title="Run the test:", rows=[
-                     ("Does it name a CHOICE Douglass makes?", "No. It reports his content. Name a choice, such as his string of questions or his sharp contrast."),
-                     ("Is there an effect on the AUDIENCE?", "No. Add what that choice does to his celebrating listeners."),
-                     ("Does it stay on the choice, not the subject?", "Not yet. Keep the focus on the crafting, not on slavery as a topic."),
+                 checklist_block=checklist(title="Check your rewrite against these (no need to type answers):", rows=[
+                     "Does it name a CHOICE Douglass makes (a question, a contrast, a repeated word, a shift in tone)?",
+                     "Does it give the effect on the AUDIENCE, his celebrating listeners?",
+                     "Does it stay on the crafting, not report the content?",
                  ]),
-                 closer="Now rewrite the weak draft into one rhetorical-analysis sentence, choice plus audience "
-                        "effect. Then name which question your rewrite fixed.")),
+                 closer="This draft only reports his content. Rewrite it so it names a choice Douglass makes and "
+                        "explains its effect on his audience (Douglass ______ to ______). Write one sentence, and "
+                        "run the three checks above before you submit.")),
 
         # ===== INDEPENDENT: cold write, no frame, student picks the choice + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Write a rhetorical-analysis sentence on your own",

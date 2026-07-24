@@ -190,20 +190,23 @@ LESSON = Lesson(
                  closer="From the source, choose a SECOND fact that ADDS to the first (a baseline to compare it "
                         "to), and write the two facts in an order where the second builds on the first. Then "
                         "check the two add up before you submit.")),
-        # DIAGNOSIS = run the 3-part check on a PROVIDED weak paragraph, then fix it. Taught source = no new read.
-        Slot("MODEL", "diagnosis_frq", "Check and fix a two-evidence paragraph",
-             ref="", bank="ai_workforce", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act dropped.
+        Slot("MODEL", "diagnosis_frq", "Fix a two-evidence paragraph",
+             ref="", bank="ai_workforce", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question check on this weak paragraph, then fix what is missing.",
+                 intro="This weak paragraph does not develop its point. Both sentences of evidence say the same "
+                       "thing (data-science jobs grow fast), so the two facts repeat instead of adding up, and no "
+                       "warrant ties them to the point. Rewrite it as a developed paragraph.",
                  setapart_block=setapart("Weak paragraph to fix:",
                                          "Technology jobs are booming. The Bureau projects data-science jobs will grow about 33.5 percent, and data-science jobs are one of the fastest-growing fields around.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Do the two pieces ADD something?", "No, both say data-science jobs grow fast. Swap the second for a fact that adds, like the overall growth rate."),
-                     ("Are they ordered so the second builds on the first?", "Cannot tell yet, they repeat. Fix the second fact first."),
-                     ("Does one warrant tie both to the point?", "No warrant at all. Add one that says what the two figures show together."),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Do the two pieces ADD something (not just repeat the same fact)?",
+                     "Are they ordered so the second builds on the first?",
+                     "Does one warrant tie both to the point?",
                  ]),
-                 closer="Now rewrite it as a developed paragraph: point, two facts that add up (in order), and one "
-                        "warrant tying both to the point. Then name which part your rewrite fixed.")),
+                 closer="Write a developed paragraph: point, two facts that add up (in order, so a baseline like "
+                        "the roughly 3.1 percent overall rate can be compared to the 33.5 percent tech rate), and "
+                        "one warrant tying both to the point. Run the 3 questions above before you submit.")),
 
         # ===== INDEPENDENT: full paragraph on the taught source + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Develop the whole paragraph with two facts",

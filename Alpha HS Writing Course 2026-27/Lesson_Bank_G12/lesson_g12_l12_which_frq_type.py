@@ -224,25 +224,32 @@ LESSON = Lesson(
                      "Name what the plan must include (for synthesis: a position, woven sources, and citations).",
                  ]),
                  closer="Write your plan as a short paragraph.")),
-        # DIAGNOSIS: watch the check run on a PROVIDED weak plan, then run it on a fresh plan written here
-        # (stateless-safe: the weak plan is provided, and the self-check is on the same item, not a prior submission).
-        Slot("MODEL", "diagnosis_frq", "Check a fresh writing task type read",
-             ref="", bank="renewable_grid_synthesis", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The task listed 0012 as check_only, but this slot is actually a watch-then-do: it watched a type
+        # check run on a PROVIDED weak plan (pre-answered (q,a) tuple rows) and then bundled a fresh plan write + a
+        # run-and-name-the-type tail in one box (the (q,a) rows leaked the answers). The coping-model demo is
+        # PRESERVED as read-only narration (the type check shown running on the weak plan, in plain declarative
+        # prose in the intro). The student's ONLY graded act is the fresh plan; the checks sit read-only beneath as
+        # plain strings; the run-and-name tail is dropped. unit/frq_type/rubric_ref added to declare the paragraph
+        # grain (matches this lesson's other production writes). Stays on the taught bank (no new source).
+        Slot("MODEL", "diagnosis_frq", "Write a fresh writing task type read",
+             ref="", bank="renewable_grid_synthesis", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the check run on a weak plan, then run it on a fresh plan you write here.",
-                 setapart_block=setapart("Weak plan to check:",
+                 intro="First, watch the type check run on the weak plan below. The plan sees text on the page and "
+                       "jumps to summarizing it. Running the check: the writing task is a set of four sources on "
+                       "one question, which is the synthesis tell, not a passage to summarize; summarizing is not "
+                       "the move synthesis rewards, weaving one position and citing the sources is; so the plan "
+                       "should name it a synthesis and plan to take a position, weave at least three sources, and "
+                       "cite each. Now write a fresh plan of your own.",
+                 setapart_block=setapart("Weak plan the check was run on:",
                                          "There is text on the page, so I will summarize what it says.", "red"),
-                 checklist_block=checklist(title="Run the type check:", rows=[
-                     ("Is it a set of sources, one passage asking how, or a general question?",
-                      "A set of four sources on one question. That is the synthesis tell."),
-                     ("Do the named moves match that type?",
-                      "No. Summarizing is not the move. Synthesis rewards weaving one position and citing the sources."),
-                     ("What should the plan say instead?",
-                      "Name it synthesis, then plan to take a position, weave at least three sources, and cite each."),
+                 checklist_block=checklist(title="Check your plan against these (no need to type answers):", rows=[
+                     "Did you name the type from a real tell (a set of sources, one passage asking how, or a general question)?",
+                     "Do the moves you named match that type?",
+                     "Does the plan say what to include (for synthesis: a position, woven sources, and citations)?",
                  ]),
-                 closer="Now you: read the writing task again, name its type and first moves, then run the same three "
-                        "questions on your plan. For each mismatch, fix the move, and finish by naming the writing task "
-                        "type you landed on.")),
+                 closer="Read the writing task again, then write one fresh plan that names its type from the tell "
+                        "and lists the first moves that type rewards. Run the three checks above before you submit.")),
 
         # ===== INDEPENDENT: name-the-type-and-plan with no frame + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Name the type and plan on your own",

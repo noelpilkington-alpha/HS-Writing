@@ -26,6 +26,7 @@ Usage:
 """
 from __future__ import annotations
 import os, sys, glob, re, json, time
+from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
 
 HERE = os.path.dirname(__file__)
 ROOT = os.path.join(HERE, "..")
@@ -81,17 +82,24 @@ def _grader_url_for(base_url: str, unit: str, frq_type: str, mode: str = "") -> 
     `mode` (rc.4trait TASK PROFILE: argument|analysis) is baked ONLY when the slot declares it — an empty mode
     lets the grader apply its rc.4trait default (argument), so only analysis essays carry ?mode=analysis. mode
     is orthogonal to grain, so it can ride ALONGSIDE grain (short-grain rc.4trait) OR alone (essay-grain).
+
+    IDEMPOTENT: any pre-existing grain/frq_type/mode on `base_url` is stripped before the computed params are
+    re-added, so passing an already-parameterized URL (e.g. a re-wire of a live item's current definition)
+    yields the same result instead of doubling params (the 2026-07-24 L01 doubled-param bug). Query keys we do
+    NOT manage are preserved.
     """
-    params = []
+    parts = urlsplit(base_url)
+    # drop only the keys this wirer owns; keep any other query the caller set
+    kept = [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True)
+            if k not in ("grain", "frq_type", "mode")]
     if unit in ("sentence", "paragraph"):
-        params.append(f"grain={unit}")
-        params.append(f"frq_type={frq_type or 'writing'}")
+        kept.append(("grain", unit))
+        kept.append(("frq_type", frq_type or "writing"))
     if mode:
-        params.append(f"mode={mode}")
-    if not params:
-        return base_url
-    sep = "&" if "?" in base_url else "?"
-    return f"{base_url}{sep}{'&'.join(params)}"
+        kept.append(("mode", mode))
+    # urlencode with safe='' keeps values readable; order is deterministic (kept-first, then grain/frq_type/mode)
+    new_query = urlencode(kept)
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, new_query, parts.fragment))
 
 
 def g9_production_frq_items():
@@ -130,7 +138,29 @@ def g9_production_frq_items():
     return out
 
 
-def wire_payload(item_id, slot, grader_url, source_html=None):
+# NATIVE grader (AlphaTest AI grader): the SAME customOperator class, but Timeback's OWN hosted definition
+# URL (inherently allowlist-approved) + a full authored grading prompt carried in a
+# <qti-rubric-block use="ext:grading-prompt" view="scorer">. Split decision (2026-07-24): SENTENCE grain ->
+# native (removes the allowlist/AWS dependency for the largest slice); paragraph+ -> Render (purpose-built
+# panels; pending the Render host resolution).
+NATIVE_GRADER_URL = "https://alphatest.alpha.school/prod/ai-grading"
+
+
+def _native_prompt_for(unit, frq_type):
+    """The authored native rubric-block grading prompt for a sentence route (or None if not sentence).
+    Sentence scoring is rubric-agnostic (rc.staar==rc.4trait), so only (grain, frq_type) selects the prompt."""
+    if unit != "sentence":
+        return None
+    try:
+        sys.path.insert(0, os.path.join(HERE, "native_grader"))
+        import native_prompts as _NP
+        spec = _NP.SENTENCE_SPECS.get(("sentence", frq_type or "writing"))
+        return _NP.rubric_block_text(spec) if spec else None
+    except Exception:
+        return None
+
+
+def wire_payload(item_id, slot, grader_url, source_html=None, native=None):
     """Rebuild the known-good FRQ payload FROM SOURCE and attach the external grader config.
 
     We do NOT round-trip the live item: a GET returns the interaction only inside `rawXml` (no top-level
@@ -139,21 +169,38 @@ def wire_payload(item_id, slot, grader_url, source_html=None):
     exact payload the original push used - then swapping match_correct for the ExternalApiScore operator and
     adding the 5 grader outcome declarations + rubricBlock - is faithful and idempotent. source_html re-inlines
     the framing Source card so the grader wire does not drop it.
+
+    ROUTING (2026-07-24 split): sentence grain wires to the NATIVE grader (Timeback's hosted AI grader +
+    an embedded ext:grading-prompt), everything else wires to the Render grader with the baked routing URL.
+    `native` overrides the auto-decision (True/False); default None = auto (sentence -> native).
     """
     p = frq_payload(item_id, slot, source_html=source_html)   # identical to what was pushed live (prompt + source)
     rubric = getattr(slot, "rubric_ref", "") or "rc.staar"
     unit = getattr(slot, "unit", "") or ""
     frq_type = getattr(slot, "frq_type", "") or ""
     mode = getattr(slot, "mode", "") or ""   # rc.4trait TASK PROFILE (analysis essays only; else grader defaults argument)
-    # REGENERATION CONTRACT: bake the declared (grain, frq_type[, mode]) into the grader URL so /score routes off them.
-    definition = _grader_url_for(grader_url, unit, frq_type, mode)
-    p["responseProcessing"] = {"templateType": "custom",
-                               "customOperator": {"class": "com.alpha-1edtech.ExternalApiScore",
-                                                  "definition": definition}}
-    # rubricBlock must MATCH the scorer the grain routes to: sentence -> short-grain block; else essay block.
-    grain_block = _GRAIN_RUBRIC_BLOCKS.get((unit, frq_type or "writing"))
-    block = grain_block if grain_block else _RUBRIC_BLOCKS.get(rubric, _RUBRIC_BLOCKS["rc.staar"])
-    p["rubricBlock"] = {"view": "scorer", "content": block}
+    use_native = native if native is not None else (unit == "sentence")
+    native_prompt = _native_prompt_for(unit, frq_type) if use_native else None
+
+    if use_native and native_prompt:
+        # NATIVE: Timeback's own hosted grader URL (no query routing - the rubric-block prompt carries the rubric)
+        p["responseProcessing"] = {"templateType": "custom",
+                                   "customOperator": {"class": "com.alpha-1edtech.ExternalApiScore",
+                                                      "definition": NATIVE_GRADER_URL}}
+        # the ext:grading-prompt rubric-block IS the grading spec the native grader reads.
+        scale = 2 if (frq_type or "writing") == "revision" else 3
+        p["nativeGradingPrompt"] = native_prompt
+        p["scoreMax"] = scale
+        p["rubricBlock"] = {"view": "scorer", "content": _GRAIN_RUBRIC_BLOCKS.get((unit, frq_type or "writing"), "")}
+    else:
+        # RENDER: bake the declared (grain, frq_type[, mode]) into the grader URL so /score routes off them.
+        definition = _grader_url_for(grader_url, unit, frq_type, mode)
+        p["responseProcessing"] = {"templateType": "custom",
+                                   "customOperator": {"class": "com.alpha-1edtech.ExternalApiScore",
+                                                      "definition": definition}}
+        grain_block = _GRAIN_RUBRIC_BLOCKS.get((unit, frq_type or "writing"))
+        block = grain_block if grain_block else _RUBRIC_BLOCKS.get(rubric, _RUBRIC_BLOCKS["rc.staar"])
+        p["rubricBlock"] = {"view": "scorer", "content": block}
     p["outcomeDeclarations"] = [
         {"identifier": "SCORE", "cardinality": "single", "baseType": "float"},
         {"identifier": "FEEDBACK", "cardinality": "single", "baseType": "identifier"},
@@ -163,15 +210,102 @@ def wire_payload(item_id, slot, grader_url, source_html=None):
     return p
 
 
+_QTI_NS = "http://www.imsglobal.org/xsd/imsqtiasi_v3p0"
+_XSI = "http://www.w3.org/2001/XMLSchema-instance"
+_SCHEMA_LOC = (f"{_QTI_NS} https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd")
+
+_BASETYPE = {"SCORE": "float", "FEEDBACK": "identifier", "API_RESPONSE": "string",
+             "GRADING_RESPONSE": "string", "FEEDBACK_VISIBILITY": "boolean", "RESPONSE": "string"}
+
+
+def _xattr(s: str) -> str:
+    """Escape a value for an XML attribute (the grader URL: & -> &amp; etc.)."""
+    return (str(s).replace("&", "&amp;").replace('"', "&quot;")
+            .replace("<", "&lt;").replace(">", "&gt;"))
+
+
+def item_to_xml_payload(item: dict) -> dict:
+    """Serialize a wire_payload() item dict into the {format:xml,xml,metadata} POST/PUT body.
+
+    WHY XML (CRITICAL RULE 1 + 2026-07-24 allowlist finding): the JSON->XML converter SILENTLY DROPS the
+    customOperator - even for an allowlisted host - so a JSON-pushed FRQ ends up with an empty
+    `<qti-response-processing template=".../custom.xml"/>` and NO grader in the executable rawXml (verified on
+    the live L01 FRQ). The runtime executes rawXml, so the grader never fires. We must write the operator
+    LITERALLY as `<qti-custom-operator class="com.alpha-1edtech.ExternalApiScore" definition="<url>"/>` inside
+    `<qti-response-processing>` and POST/PUT as {"format":"xml","xml":...}. The prompt HTML is already
+    sanitized XHTML (frq_payload -> _san_verify), so it is embedded verbatim inside <qti-prompt>.
+
+    Modeled byte-for-byte on the live rawXml shape (extended-text FRQ + 5 grader outcome declarations).
+    """
+    iid = item["identifier"]
+    title = _xattr(item.get("title", iid))
+    prompt = item["interaction"]["questionStructure"]["prompt"]      # already XHTML-sanitized
+    score_max = item.get("scoreMax")                                 # set for NATIVE items -> normal-maximum
+    outcomes = ""
+    for od in item.get("outcomeDeclarations", []):
+        ident = od["identifier"]
+        bt = od.get("baseType", _BASETYPE.get(ident, "string"))
+        extra = ""
+        if ident == "SCORE" and score_max is not None:
+            # native items express the scale on the SCORE declaration (shipped-STC shape: normal-maximum/minimum)
+            extra = f' normal-maximum="{score_max}" normal-minimum="0"'
+        outcomes += (f'<qti-outcome-declaration identifier="{ident}" '
+                     f'base-type="{bt}" cardinality="single"{extra}/>')
+    definition = item["responseProcessing"]["customOperator"]["definition"]
+    rp = (f'<qti-response-processing>'
+          f'<qti-custom-operator class="com.alpha-1edtech.ExternalApiScore" definition="{_xattr(definition)}"/>'
+          f'</qti-response-processing>')
+    # NATIVE grading prompt: embed as <qti-rubric-block use="ext:grading-prompt" view="scorer"> at the TOP of
+    # the item body (shipped-STC shape). The prompt text goes in <qti-content-body><pre> with XML entities
+    # escaped (& < >), newlines preserved as literal &#10; so the native grader receives it verbatim.
+    grading_block = ""
+    native_prompt = item.get("nativeGradingPrompt")
+    if native_prompt:
+        esc = (native_prompt.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+               .replace("\r\n", "\n").replace("\n", "&#10;"))
+        grading_block = (f'<qti-rubric-block use="ext:grading-prompt" view="scorer">'
+                         f'<qti-content-body><pre>{esc}</pre></qti-content-body></qti-rubric-block>')
+    xml = (f'<?xml version="1.0" encoding="UTF-8"?>'
+           f'<qti-assessment-item xmlns="{_QTI_NS}" xmlns:xsi="{_XSI}" xsi:schemaLocation="{_SCHEMA_LOC}" '
+           f'identifier="{iid}" title="{title}" adaptive="false" time-dependent="false">'
+           f'<qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="string">'
+           f'<qti-correct-response/></qti-response-declaration>'
+           f'{outcomes}'
+           f'<qti-item-body>{grading_block}'
+           f'<qti-extended-text-interaction response-identifier="RESPONSE">'
+           f'<qti-prompt>{prompt}</qti-prompt>'
+           f'</qti-extended-text-interaction></qti-item-body>'
+           f'{rp}'
+           f'</qti-assessment-item>')
+    # validate locally before it ever hits the wire (RULE 2: always ET.fromstring first)
+    import xml.etree.ElementTree as ET
+    ET.fromstring(xml)
+    body = {"format": "xml", "xml": xml}
+    md = dict(item.get("metadata") or {})
+    rb = item.get("rubricBlock")
+    if rb:
+        # rubricBlock rides in metadata (the JSON field is dropped from rawXml; the grader routes off the URL
+        # params + rubric anyway, but we keep the scorer-view block for the platform's grader UI).
+        md["rubricBlock"] = rb
+    if md:
+        body["metadata"] = md
+    return body
+
+
 def put_item(session, item_id, slot, grader_url, live, source_html=None):
-    """Rebuild the FRQ from source with the grader config and PUT it back (full replace)."""
+    """Rebuild the FRQ from source with the grader config and PUT it back (full replace) as XML.
+
+    XML-format PUT (2026-07-24): a JSON PUT drops the customOperator from rawXml (CRITICAL RULE 1), so the
+    grader never fires. We serialize to {format:xml} so the operator lands in the executable XML.
+    """
     item = wire_payload(item_id, slot, grader_url, source_html=source_html)
+    body = item_to_xml_payload(item)
     if not live:
-        return True, 0, "DRY: would PUT rebuilt payload with grader config"
+        return True, 0, "DRY: would PUT XML payload with literal custom-operator"
     for attempt in range(4):
-        pr = session.put(f"{QTI_BASE}/assessment-items/{item_id}", json=item, timeout=60)
+        pr = session.put(f"{QTI_BASE}/assessment-items/{item_id}", json=body, timeout=60)
         if pr.status_code in (200, 201):
-            return True, pr.status_code, "wired"
+            return True, pr.status_code, "wired (xml)"
         if pr.status_code in RETRY_ON and attempt < 3:
             time.sleep(BACKOFF[attempt]); continue
         return False, pr.status_code, (pr.text or "")[:200]
@@ -187,11 +321,16 @@ def normalize_grader_url(url: str) -> str:
     external_score.ScoreRequest) - NOT the older {identifier}-routing '/timeback/score' design a prior
     version used. So a bare host gets '/score' appended; an explicit '/score' (or a legacy
     '/timeback/score', left as-given for back-compat) is preserved.
+
+    IDEMPOTENT on an already-parameterized URL: any query string (e.g. '?grain=sentence&frq_type=writing' a
+    caller mistakenly passed in) is stripped here so we never append '/score' AFTER the query
+    (the 2026-07-24 '...frq_type=writing/score' bug). _grader_url_for re-adds the routing params.
     """
-    url = url.rstrip("/")
-    if url.endswith("/score"):          # covers both '/score' and legacy '/timeback/score'
-        return url
-    return url + "/score"
+    parts = urlsplit(url)
+    path = parts.path.rstrip("/")
+    if not path.endswith("/score"):     # covers both '/score' and legacy '/timeback/score'
+        path = path + "/score"
+    return urlunsplit((parts.scheme, parts.netloc, path, "", ""))
 
 
 def main(grader_url, live=False):

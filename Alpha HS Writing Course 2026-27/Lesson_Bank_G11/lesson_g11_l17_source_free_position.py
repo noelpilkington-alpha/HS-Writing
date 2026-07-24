@@ -230,23 +230,32 @@ LESSON = Lesson(
                                          "______ [one specific case from your reading, studies, or experience]."),
                  closer="Take a clear side AND name one concrete example you supply. Do not stay general. Then "
                         "check it against the 3 questions.")),
-        # DIAGNOSIS = watch the check run on a PROVIDED weak draft, then write a fresh anchored position. Stays
-        # on the taught prompt (no new source to read). checklist() renders one clean numbered list (no Step-N).
-        Slot("MODEL", "diagnosis_frq", "Check a weak draft, then write a fresh anchored position",
-             ref="", bank="sfa_curiosity_use", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act (first-in-arc kept as A to preserve demo). The old diagnosis_frq bundled a watched anchor-check demo
+        # (pre-answered (q,a) tuple rows) + a fresh position + a run-and-name tail in one box (unscoreable, wired
+        # to no grader, the (q,a) rows leaked the answers). The coping-model demo is PRESERVED as read-only
+        # narration (the three anchor checks shown running on the weak draft, in plain declarative prose). The
+        # student's ONLY graded act is now the fresh anchored position; the three checks sit read-only beneath as
+        # plain-string reminders; the run-and-name tail is deleted. Stays on the taught prompt (no new source).
+        Slot("MODEL", "diagnosis_frq", "Write a fresh position anchored to a specific example",
+             ref="", bank="sfa_curiosity_use", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Watch the anchor check run on this weak draft, then write a fresh position of your own "
-                       "and run the same check.",
-                 setapart_block=setapart("Weak draft to diagnose:",
+                 intro="First, watch the anchor check run on the weak draft below. It takes a side, loosely, so "
+                       "that check passes. But it names no specific example the writer supplies, and 'helps "
+                       "everyone' is a generality, not a concrete case. A stronger version would add one real case "
+                       "the writer knows. Now write a fresh position of your own that does not fall short that "
+                       "way.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                                          "Curiosity is important and society should support it because it helps "
                                          "everyone.", "red"),
-                 checklist_block=checklist(title="Run the anchor check:", rows=[
-                     ("Does it take a defensible position?", "Loosely, yes, it takes a side."),
-                     ("Does it name one specific example the writer supplies?", "No. Add one concrete case."),
-                     ("Is the example concrete, not a generality?", "No. 'Helps everyone' is a generality; name a real case."),
+                 checklist_block=checklist(title="Check your position against these (no need to type answers):", rows=[
+                     "Does it take a defensible position?",
+                     "Does it name one specific example you supply?",
+                     "Is the example concrete, not a generality?",
                  ]),
-                 closer="Now write a fresh position on the curiosity prompt that passes all three, then name the "
-                        "specific example you anchored it to.")),
+                 closer="Write ONE fresh position on the curiosity prompt: take a clear side and anchor it with "
+                        "one concrete example from your reading, studies, or experience. Run the three checks "
+                        "above before you submit.")),
 
         # ===== INDEPENDENT: cold write, no frame, autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Anchor a position on your own",

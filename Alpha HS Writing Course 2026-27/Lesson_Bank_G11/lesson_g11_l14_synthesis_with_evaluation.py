@@ -217,17 +217,20 @@ LESSON = Lesson(
                         "weighting is what every real college synthesis is built on, and you are ready to do it "
                         "cold. Take the time you need.")),
 
-        # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the three-question checklist on it,
-        # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
-        # scaffold and the grader scores the diagnosis within the item.
-        Slot("MODEL", "diagnosis_frq", "Check a synthesis: woven and weighted?",
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written essay (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a
+        # separate graded rewrite, so there is no fresh draft to grade. The checklist is made READ-ONLY (plain-
+        # string rows; the (question, answer) tuple form dropped and each row's conditional guidance folded into
+        # one plain instruction). The slot stays a self-check. scored left as-is; no rewrite invented. Same
+        # taught source (load balance).
+        Slot("MODEL", "diagnosis_frq", "Check your synthesis: woven and weighted?",
              ref="", bank="water_competing_uses", scored=True,
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Is there ONE argument woven from the whole set?", "If it just says every source agrees rather than building a single argument, state the ONE argument the whole set builds and organize by point."),
-                     ("Is each source used only where it is strong?", "If it leans on all three sources equally, assign each point to the source strongest for it, the overview source for the national limit and the sector sources for where the biggest draws are."),
-                     ("Does it say where the set stops short?", "If no line names what the set cannot settle, add one, such as which of the two giant uses a region should cut first."),
+                 checklist_block=checklist(title="Check your own draft against these (no need to type answers):", rows=[
+                     "Is there ONE argument woven from the whole set? If it just says every source agrees rather than building a single argument, state the ONE argument the whole set builds and organize by point.",
+                     "Is each source used only where it is strong? If it leans on all three sources equally, assign each point to the source strongest for it, the overview source for the national limit and the sector sources for where the biggest draws are.",
+                     "Does it say where the set stops short? If no line names what the set cannot settle, add one, such as which of the two giant uses a region should cut first.",
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you move on. Finish by "
                         "naming one source and the exact point it carries.")),

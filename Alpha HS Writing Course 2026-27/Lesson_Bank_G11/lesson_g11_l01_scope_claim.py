@@ -230,20 +230,54 @@ LESSON = Lesson(
                                          "For ______ [narrow whom or which case], the government should ______ [a narrowed action]."),
                  closer="Name whom it covers and narrow what it asks, so a single exception could not sink it. "
                         "Then check it against the 3 scope questions.")),
-        # DIAGNOSIS: watch the check run on a PROVIDED weak draft, then rewrite. Stays on the taught topic (no new
-        # source to read). No "Step 1/Step 2" prose; the checklist() renders the moves once.
-        Slot("MODEL", "diagnosis_frq", "Check and fix a weak draft with the scope questions",
-             ref="", bank="ai_workforce_policy", scored=True,
+        # COUNCIL FIX (2026-07-24): Option B (first-in-arc). Graded recognition + graded fresh-draft rewrite;
+        # name-act dropped. The old single diagnosis_frq bundled 3 acts in one box (run the 3 scope questions as
+        # pre-answered (q,a) "your call: yes / no" rows + rewrite + name-what-you-scoped-to) - unscoreable, wired
+        # to no grader. The 3 scope questions are correlated (a sweeping claim fails all three), so a true
+        # single-check minimal pair on them is impossible; the recognition is framed on the lesson's own two
+        # MOVES (narrow whom vs narrow what it asks), which are independent and are exactly what the earlier
+        # discrimination option C teaches. Item 1 = graded RECOGNITION on a draft that names whom (passes) but
+        # leaves the action sweeping (fails EXACTLY the narrow-what check; single-select is faultless). Item 2 =
+        # graded FRESH-draft rewrite, with the 3 scope questions printed READ-ONLY beneath. Stays on the taught
+        # topic (no new source).
+        Slot("MODEL", "discrimination", "Diagnose the draft: which scope move does it fail?",
+             ref="", labeled_grade_c=True, bank="ai_workforce_policy",
+             body=("Run the scope check on this draft: 'For workers whose industries are shrinking, the government "
+                   "should control the whole job market.' It fails exactly one move. Which one? "
+                   "(A) It never names whom or which case the claim covers, so nothing at all is scoped here.  "
+                   "(B) It names whom, but it leaves the action sweeping, so what it asks is not narrowed.  "
+                   "(C) It takes no clear side on what the government should actually do here.  "
+                   "(D) It passes both scope moves, so nothing about the claim needs a fix. "
+                   "Correct: B. It names whom (workers whose industries are shrinking), so the narrow-whom move "
+                   "passes, but 'control the whole job market' is still a sweeping action, so only the narrow-what "
+                   "move fails."),
+             choices=[
+                 {"id": "A", "text": "It never names whom or which case the claim covers, so nothing at all is scoped here.",
+                  "correct": False,
+                  "why": "It does name whom: workers whose industries are shrinking. The narrow-whom move passes, so look for the move that fails."},
+                 {"id": "B", "text": "It names whom, but it leaves the action sweeping, so what it asks is not narrowed.",
+                  "correct": True,
+                  "why": "Correct. It names whom, so that move passes, but 'control the whole job market' is a sweeping action, so only the narrow-what move fails. A phrase at the front does not scope a claim if the action stays universal."},
+                 {"id": "C", "text": "It takes no clear side on what the government should actually do here.",
+                  "correct": False,
+                  "why": "It takes a clear side: the government should act on the job market. Taking a side is not the failing move here."},
+                 {"id": "D", "text": "It passes both scope moves, so nothing about the claim needs a fix.",
+                  "correct": False,
+                  "why": "Not yet. It narrows whom, but the action is still sweeping, so one move still fails."},
+             ]),
+        Slot("MODEL", "production_frq", "Now fix a draft: scope it to what you can defend",
+             ref="", bank="ai_workforce_policy", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3 scope questions on this weak draft, then rewrite it into a scoped claim.",
-                 setapart_block=setapart("Weak draft to fix:", "The government should always manage the job market.", "red"),
-                 checklist_block=checklist(title="Run the test:", rows=[
-                     ("Does a sweeping word overreach?", "Yes, 'always' claims too much. Drop it and add a condition."),
-                     ("Is whom or which case named?", "No. Name the workers or the situation it covers."),
-                     ("Could one exception sink it?", "Yes. Narrow it until a single counterexample no longer collapses it."),
+                 intro="Here is a different weak draft. Rewrite it into one scoped claim.",
+                 setapart_block=setapart("Weak draft to fix:", "The government should always retrain everyone for technology jobs.", "red"),
+                 checklist_block=checklist(title="Check your rewrite against these (no need to type answers):", rows=[
+                     "Does a sweeping word (always, everyone, all) overreach?",
+                     "Is whom or which case it covers actually named?",
+                     "Could one exception sink it?",
                  ]),
-                 closer="Now rewrite the weak draft into one scoped claim that passes all three. Then name what "
-                        "your claim is scoped to (whom, which case, or when).")),
+                 closer="This draft overreaches: 'always' and 'everyone' claim more than anyone can defend. Narrow "
+                        "whom it covers and what it asks, using the shape: for ______, the government should "
+                        "______. Write one sentence, and run the 3 scope questions above before you submit.")),
 
         # ===== INDEPENDENT: cold write, no frame, autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Scope a claim on your own",

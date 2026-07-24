@@ -213,23 +213,28 @@ LESSON = Lesson(
                         "ready to do it cold. When you finish, note that the next prompt is a synthesis and you "
                         "will switch move-sets.")),
 
-        # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the 3-question switch check on it,
-        # fixing any line that fails. Same taught bank (load balance). Self-contained: the checklist is the
-        # scaffold and the grader scores the diagnosis within the item.
-        Slot("MODEL", "diagnosis_frq", "Run the switch check: your draft, then your plan for the next prompt",
-             ref="", bank="water_tradeoff", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). Was a bundle: run a 3-question switch check (as
+        # pre-answered (q,a) tuple rows) across BOTH the just-written argument essay AND a plan for the next prompt,
+        # then name the synthesis move-set, all in one graded box (the (q,a) rows leaked answers and could not be
+        # scored). Now ONE graded act: write the plan for the NEXT prompt (a synthesis on a source set), switching
+        # the move-set. The reread-your-argument-essay self-check is folded into the intro as read-only context; the
+        # two switch checks print READ-ONLY beneath as plain strings; the "name the synthesis move-set" tail is
+        # dropped. unit/frq_type/rubric_ref added to declare the multi_paragraph plan grain (matches the SUPPORTED
+        # plan). Stays on the taught bank (no new source). The graded act is the switch, which is this lesson's skill.
+        Slot("MODEL", "diagnosis_frq", "Write the plan for the next prompt, switching the move-set",
+             ref="", bank="water_tradeoff", rubric_ref="rc.4trait", scored=True, unit="multi_paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="Reread the argument essay you just wrote, then write the short plan you will run for the "
-                       "NEXT prompt, a synthesis on a source set. Run this checklist on your essay and your plan, "
-                       "and fix any line that fails.",
-                 checklist_block=checklist(title="Run the switch check:", rows=[
-                     ("Did your argument essay run the argument move-set, a defensible position carried by your own reasoning and examples?", "If it drifted into summarizing a source point by point, that is the wrong move-set for the argument; carry your position with your own reasons and specific examples."),
-                     ("In your plan for the next prompt, have you named it as a synthesis from its tell, a set of sources?", "If you have not named it yet, a source set is the synthesis tell, so name it before you plan the moves."),
-                     ("Does your synthesis plan switch the move-set, weaving one argument from the sources and weighting them, not repeating a personal opinion?", "If your plan still reaches for a personal position and your own examples, that is the argument move bleeding forward; switch it to weave-and-weight the sources the synthesis prompt gives you."),
+                 intro="You just wrote an argument essay on the water trade-off, which should run the argument "
+                       "move-set: a defensible position carried by your own reasoning and examples, not a "
+                       "source-by-source summary. The NEXT prompt is different: a synthesis on a source set. Write "
+                       "the short plan you will run for it, and make it switch the move-set.",
+                 checklist_block=checklist(title="Make your synthesis plan pass these (no need to type answers):", rows=[
+                     "Does it name the next prompt as a synthesis from its tell (a set of sources)?",
+                     "Does it switch the move-set, weaving one argument from the sources and weighting them, not repeating a personal opinion carried by your own examples?",
                  ]),
-                 closer="For every line that fails, name what is off in one sentence and make the fix on your "
-                        "essay or your plan. Finish by naming the synthesis move-set you will switch to for the "
-                        "next prompt.")),
+                 closer="Write the plan for the synthesis prompt: name it a synthesis, then plan to weave one "
+                        "argument from the sources and weight each, rather than carrying the argument prompt's "
+                        "personal-position move forward. Run the two checks above before you submit.")),
     ],
 )
 

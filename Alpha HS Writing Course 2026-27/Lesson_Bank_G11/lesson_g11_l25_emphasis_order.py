@@ -228,21 +228,60 @@ LESSON = Lesson(
                  closer="Put the strongest reason (the huge losses a reliable grid prevents) in the final slot, "
                         "and cut the weakest one ('it looks modern'). Write one sentence, then run the 3-question "
                         "check before you submit.")),
-        # DIAGNOSIS = run the check on a PROVIDED weak draft, then rewrite it (not a fresh production, so it does
-        # not repeat the Finish write). Stays on the taught topic = no new source to read (load balance).
-        Slot("MODEL", "diagnosis_frq", "Check the order, then fix a weak draft",
-             ref="", bank="energy_transition", scored=True,
+        # COUNCIL FIX (2026-07-24): Option B (first-in-arc). Graded recognition + graded fresh-draft rewrite;
+        # name-act dropped. The old single diagnosis_frq bundled 3 acts in one box (run the 3-question check as
+        # pre-answered (q,a) tuple rows + rewrite + name-which-reason-you-put-last) - unscoreable, wired to no
+        # grader, and the (q,a) rows leaked the answers. First diagnosis item in this arc -> two single-act items.
+        # The move splits cleanly: is the strongest reason present, and is it in the emphatic last slot. Item 1 =
+        # graded RECOGNITION on a draft that DOES include the strongest reason but leaves it in the middle and ends
+        # on a weak one, so it fails EXACTLY the emphatic-last-slot check (single-select is faultless; DI
+        # constraint). Item 2 = graded FRESH-draft rewrite (a different weak draft), with the 3-question check
+        # printed READ-ONLY beneath. The name-which-reason third act is deleted. Stays on the taught topic (no new
+        # source).
+        Slot("MODEL", "discrimination", "Diagnose the draft: which check does it fail?",
+             ref="", labeled_grade_c=True, bank="energy_transition",
+             body=("Run the emphasis check on this draft: 'We should expand clean power because it creates good "
+                   "jobs, because a reliable grid prevents the huge losses blackouts cause, and because plenty of "
+                   "people like the idea.' It fails exactly one check. Which one? "
+                   "(A) It never includes the strongest reason anywhere in the string, so there is no strong reason "
+                   "to move into place.  "
+                   "(B) The strongest reason is in the string, but it is not in the last slot, so it trails off on "
+                   "a weaker one.  "
+                   "(C) It already ends on the strongest reason, so the order of these three reasons needs no "
+                   "change of any kind.  "
+                   "(D) It lists only a single reason overall, so there is really no ordering of multiple reasons "
+                   "to fix here at all. "
+                   "Correct: B. The strongest reason (the huge losses a reliable grid prevents) is present but "
+                   "sits in the middle, and the string ends on 'plenty of people like the idea,' a weak reason, so "
+                   "only the emphatic-last-slot check fails."),
+             choices=[
+                 {"id": "A", "text": "It never includes the strongest reason anywhere in the string, so there is no strong reason to move into place.",
+                  "correct": False,
+                  "why": "The strongest reason is there: a reliable grid prevents the huge losses blackouts cause. It just is not last, so the problem is placement, not a missing reason."},
+                 {"id": "B", "text": "The strongest reason is in the string, but it is not in the last slot, so it trails off on a weaker one.",
+                  "correct": True,
+                  "why": "Correct. The strongest reason (blackout losses) sits in the middle and the string ends on 'people like the idea,' so the emphatic last slot lands on a weak reason. Move the strongest reason last."},
+                 {"id": "C", "text": "It already ends on the strongest reason, so the order of these three reasons needs no change of any kind.",
+                  "correct": False,
+                  "why": "It does not. It ends on 'people like the idea,' the weakest reason, while the strongest one is buried in the middle."},
+                 {"id": "D", "text": "It lists only a single reason overall, so there is really no ordering of multiple reasons to fix here at all.",
+                  "correct": False,
+                  "why": "It lists three reasons, so there is an order to fix; the fix is which one lands in the final slot."},
+             ]),
+        Slot("MODEL", "production_frq", "Now fix a draft: end on the strongest reason",
+             ref="", bank="energy_transition", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question check on this weak draft, then rewrite it so the strongest reason lands last.",
+                 intro="Here is a different weak draft. Rewrite it so the strongest reason lands last.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "Clean power matters because it prevents costly blackouts, because it makes jobs, and because it is modern.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Which reason is strongest?", "Preventing costly blackouts."),
-                     ("Is that reason in the last slot?", "No. It opens the string, and 'it is modern' (the weakest) ends it, so resequence."),
-                     ("What is the fix?", "Move the blackout reason last and cut 'it is modern.'"),
+                 checklist_block=checklist(title="Check your rewrite against these (no need to type answers):", rows=[
+                     "Which reason is your strongest?",
+                     "Is that reason in the last slot?",
+                     "If not, move it there, and cut any weak filler reason.",
                  ]),
-                 closer="Now rewrite the weak draft into one sentence that ends on the strongest reason. Then name "
-                        "which reason you put last.")),
+                 closer="This draft opens on its strongest reason (preventing costly blackouts) and trails off on "
+                        "the weakest ('it is modern'). Rewrite it into one sentence that ends on the strongest "
+                        "reason and cuts the weak filler. Run the 3-question check above before you submit.")),
 
         # ===== INDEPENDENT: cold edit on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Order for emphasis on your own",

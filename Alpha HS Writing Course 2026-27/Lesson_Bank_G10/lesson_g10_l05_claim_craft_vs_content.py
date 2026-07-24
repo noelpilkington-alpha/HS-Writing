@@ -249,23 +249,27 @@ LESSON = Lesson(
                                          "Chopin ______ [a specific technique: a placement, a repeated word, an image, or the point of view] so ______ [its effect on the reader]."),
                  closer="Name the technique and its effect. Do not settle for 'Chopin shows' plus a feeling. "
                         "Write one sentence, then run the craft test before you submit.")),
-        # DIAGNOSIS = check-and-fix on a PROVIDED weak draft (not a fresh production, so it does not repeat the
-        # supported write). Stays on the taught source = no new reading (load). Uses checklist() so the check
-        # renders as one clean numbered list (no 'Step N' double-numbering).
-        Slot("MODEL", "diagnosis_frq", "Check your claim: technique, or feeling?",
-             ref="", bank="story_of_an_hour", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act
+        # dropped. The old single diagnosis_frq bundled 3 acts in one box (run a craft test as pre-answered (q,a)
+        # 'your call: yes / no' tuple rows + rewrite + name-which-question-you-fixed) - unscoreable, wired to no
+        # grader, and the (q,a) tuple rows can't be typed into a single write box. Now the ONLY graded act is the
+        # rewrite; the three craft-test questions sit read-only beneath as plain-string reminders; the name-act
+        # tail is deleted. Stays on the taught source (no new reading).
+        Slot("MODEL", "diagnosis_frq", "Fix a weak draft into a claim about the craft",
+             ref="", bank="story_of_an_hour", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the craft test on this weak draft, then rewrite it into a claim about a Chopin "
-                       "technique and its effect.",
+                 intro="This weak draft only reports the character's feeling; it names no technique and no effect. "
+                       "Rewrite it into a claim about a Chopin technique and its effect on the reader.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "Chopin shows that Mrs. Mallard feels trapped in her marriage.", "red"),
-                 checklist_block=checklist(title="Run the test:", rows=[
-                     ("Does it name a technique (something the author did)?", "No. It names only a feeling (trapped). Name the technique that creates it."),
-                     ("Does it name an effect on the reader?", "No. Add what that choice makes the reader feel or notice."),
-                     ("Or does it only report the character's feeling?", "Yes, right now it does. That is why it is content, not craft."),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Does it name a technique (something the author did)?",
+                     "Does it name an effect on the reader?",
+                     "Does it do more than only report the character's feeling?",
                  ]),
-                 closer="Now rewrite the weak draft into one sentence that names a Chopin technique and its "
-                        "effect. Then name which question your rewrite fixed.")),
+                 closer="Rewrite the weak draft into one sentence that names a Chopin technique (a placement, a "
+                        "repeated word, an image, or the point of view) and its effect on the reader. Run the craft "
+                        "test above before you submit.")),
 
         # ===== INDEPENDENT: cold write, SAME source but a DIFFERENT technique (cannot reuse the supported
         #        sentence) + autonomy on the technique + say-the-standard =====

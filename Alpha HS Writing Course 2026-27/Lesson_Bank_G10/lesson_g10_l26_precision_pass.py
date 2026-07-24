@@ -221,24 +221,33 @@ LESSON = Lesson(
                      "Tighten the loose sentences into exact, complete statements.",
                  ]),
                  closer="Rewrite the whole paragraph with the words sharpened and the position unchanged.")),
-        # DIAGNOSIS: watch the pass run on a provided draft, then run it on a fresh piece written here
-        # (stateless-safe; the material is provided, and the self-check is on the same fresh item).
-        Slot("MODEL", "diagnosis_frq", "Self-check a fresh draft with the precision pass",
-             ref="", bank="wetlands", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. This item is FIRST in the arc but is a watch-then-do, so it keeps the coping-model demo (Option B
+        # would destroy it). The old diagnosis_frq bundled a watched precision-pass demo (pre-answered (q,a) tuple
+        # rows) + a fresh argument + a run-the-pass-and-name tail in one box (unscoreable, wired to no grader, and
+        # the (q,a) rows leaked the answers). The demo is PRESERVED as read-only narration (the precision pass
+        # shown running on the provided sentence, in plain declarative prose). The student's ONLY graded act is the
+        # fresh argument; the three pass questions sit read-only beneath as plain-string reminders; the run-and-name
+        # tail is deleted. Grain held (paragraph, rc.staar); the fresh argument is a writing construct.
+        Slot("MODEL", "diagnosis_frq", "Write a fresh, precise argument about wetlands", ref="",
+             bank="wetlands", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the precision pass run on a provided sentence, then run it on a fresh "
-                       "argument you write here.",
-                 setapart_block=setapart("Provided sentence to check:",
+                 intro="First, watch the precision pass run on the provided sentence below. Vague or overreaching "
+                       "word? Yes: 'important and stuff' names no exact function, so a stronger version would say "
+                       "what the source reports wetlands do, such as store floodwater. Hedge or empty intensifier? "
+                       "Yes: 'super' adds heat, not meaning, so cut it. Loose sentence? Yes: 'and stuff' trails "
+                       "off, so tighten it to one exact, complete statement. Now write a fresh, precise argument of "
+                       "your own about wetlands.",
+                 setapart_block=setapart("Provided sentence the pass was run on:",
                                          "Wetlands are super important and stuff.", "red"),
-                 checklist_block=checklist(title="Run the precision pass:", rows=[
-                     ("Vague or overreaching word?", "Yes. 'important and stuff' names no exact function. Replace it with what the source says wetlands do, such as store floodwater."),
-                     ("Hedge or empty intensifier?", "Yes. 'super' adds heat, not meaning. Cut it."),
-                     ("Loose sentence?", "Yes. 'and stuff' trails off. Tighten it to one exact, complete statement."),
+                 checklist_block=checklist(title="Check your argument against these (no need to type answers):", rows=[
+                     "Any vague or overreaching word?",
+                     "Any hedge or empty intensifier?",
+                     "Any loose sentence to tighten?",
                  ]),
-                 closer="Now write a fresh argument sentence or two about wetlands here, then run the same three "
-                        "questions on it: vague or overreaching word? hedge or empty intensifier? loose sentence? "
-                        "For each Yes, make the fix, and finish by naming which of the three edits you had to "
-                        "make.")),
+                 closer="Write a fresh short argument about wetlands (two or three sentences) that names an exact "
+                        "function the source supports and carries no vague words, hedges, or loose sentences. Run "
+                        "the three precision-pass questions above before you submit.")),
 
         # ===== INDEPENDENT: run the pass on a PROVIDED draft with no checklist scaffold + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Run the precision pass on your own",

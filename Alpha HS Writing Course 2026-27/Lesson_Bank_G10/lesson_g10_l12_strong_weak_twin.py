@@ -237,22 +237,30 @@ LESSON = Lesson(
                      "The reason must be specific and checkable (a fact, cause, or effect), not a restatement.",
                  ]),
                  closer="Write your strong twin as one sentence.")),
-        # DIAGNOSIS: watch the check run on a provided weak draft, then run it on a fresh sentence in this box.
-        Slot("MODEL", "diagnosis_frq", "Check a fresh draft: specific reason, or circular?",
-             ref="", bank="recycling", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched check-run demo (pre-answered (q,a) tuple rows) + a fresh
+        # sentence + a run-the-check-and-name tail in one box (unscoreable, wired to no grader, and the (q,a)
+        # rows leaked the answers). The coping-model demo is PRESERVED as read-only narration (the judge check
+        # shown running on the weak draft, in plain declarative prose, not a hidden self-answer prompt). The
+        # student's ONLY graded act is now the fresh sentence; the three judge questions sit read-only beneath as
+        # plain-string reminders; the run-and-name tail is deleted. Stays on the taught topic (no new source).
+        Slot("MODEL", "diagnosis_frq", "Write a fresh draft with a specific reason",
+             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the check run on a provided draft, then run it on a fresh sentence you write "
-                       "here.",
-                 setapart_block=setapart("Provided draft to check:",
+                 intro="First, watch the judge check run on the weak draft below. It uses \"because,\" so it looks "
+                       "like a reason. But \"beneficial\" just restates \"helps,\" so there is nothing a reader "
+                       "could verify, which makes the reason circular. A stronger version would swap in a "
+                       "checkable reason, such as that recycling keeps reusable materials out of the landfill. "
+                       "Now write a fresh sentence of your own that does not fall into that trap.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                                          "Recycling helps communities because it is beneficial.", "red"),
-                 checklist_block=checklist(title="Run the judge check:", rows=[
-                     ("Reason, not feeling?", "It uses \"because,\" so it looks like a reason."),
-                     ("Specific and checkable?", "No. \"Beneficial\" just restates \"helps.\" There is nothing to verify."),
-                     ("Circular?", "Yes. Replace it with a checkable reason, for example that it keeps reusable materials out of the landfill."),
+                 checklist_block=checklist(title="Check your sentence against these (no need to type answers):", rows=[
+                     "Reason, not feeling?",
+                     "Specific and checkable (something a reader could verify)?",
+                     "Not circular (the reason does not just restate the claim)?",
                  ]),
-                 closer="Now write one fresh sentence about recycling with a specific reason, then run the same "
-                        "three questions on it: reason not feeling? specific and checkable? circular? If it is "
-                        "circular, fix it, and finish by naming the specific reason you gave.")),
+                 closer="Write ONE fresh sentence about recycling that keeps a clear claim but gives a specific, "
+                        "checkable reason. Run the three judge questions above before you submit.")),
 
         # ===== INDEPENDENT: rewrite a weak twin with no frame + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Improve a weak draft on your own",

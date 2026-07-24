@@ -238,17 +238,20 @@ LESSON = Lesson(
                         "examples is what every real source-free essay is built on, and you are ready to do it "
                         "cold. Take the time you need.")),
 
-        # DIAGNOSIS = self-revision: reread your OWN just-written essay and run the three-question checklist on it,
-        # fixing any line that fails. Same taught bank (load balance). Self-contained: the checklist is the
-        # scaffold and the grader scores the diagnosis within the item.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written essay (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a
+        # separate graded rewrite, so there is no fresh draft to grade. The checklist is made READ-ONLY (plain-
+        # string rows; the (question, answer) tuple form dropped and each row's conditional guidance folded into
+        # one plain instruction). The slot stays a self-check. scored left as-is; no rewrite invented. Same
+        # taught bank (load balance).
         Slot("MODEL", "diagnosis_frq", "Check your own source-free essay",
              ref="", bank="sfa_curiosity_use", scored=True,
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Does your thesis take a defensible side?", "If it only rates the topic (like 'X is good'), sharpen it into a real position someone could reject."),
-                     ("Is each body point a specific NAMED example?", "If a body point just restates the opinion (like 'it helps' or 'it is important'), replace it with a real named case you can develop."),
-                     ("Does each example tie back to the thesis?", "If an example drifts to a new claim instead of linking back, add a sentence tying it to the thesis."),
+                 checklist_block=checklist(title="Check your own draft against these (no need to type answers):", rows=[
+                     "Does your thesis take a defensible side? If it only rates the topic (like 'X is good'), sharpen it into a real position someone could reject.",
+                     "Is each body point a specific NAMED example? If a body point just restates the opinion (like 'it helps' or 'it is important'), replace it with a real named case you can develop.",
+                     "Does each example tie back to the thesis? If an example drifts to a new claim instead of linking back, add a sentence tying it to the thesis.",
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you submit. Finish by "
                         "naming which part your essay still needs most.")),

@@ -236,21 +236,22 @@ LESSON = Lesson(
                                          "______ [the stakes]."),
                  closer="Make the side specific, give a reason a reader could weigh, and say why it matters. "
                         "Then check it against the 3 questions (specific? reason? why it matters?).")),
-        Slot("MODEL", "diagnosis_frq", "Check a claim with the 3 questions, then your own",
-             ref="", bank="pay_for_grades", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). Was a bundle: mark 3 yes/no + rewrite in one box.
+        # Now ONE graded act (the rewrite); the 3 checks print READ-ONLY beneath the prompt (no typed yes/no,
+        # no scrolling back), and the "name which check" tail is dropped.
+        Slot("MODEL", "diagnosis_frq", "Sharpen a weak claim", ref="", bank="pay_for_grades", scored=True,
+             unit="sentence", frq_type="writing", rubric_ref="rc.staar",
              body=frq_prompt(
-                 intro="Run the 3-question test on this weak draft, then write a sharp claim of your own.",
+                 intro="Rewrite this weak draft into one sharp claim of your own.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "A lot of schools are paying students for grades now.", "red"),
-                 checklist_block=checklist(title="Run the test:", rows=[
-                     ("Is the side specific (names an amount or kind)?",
-                      "No, it just reports a trend. Pick a specific position, like a set amount for an A."),
-                     ("Is there a reason?", "No. Add one with 'because'."),
-                     ("Does it say why it matters (the so-what)?",
-                      "No. Add a 'which matters because' beat."),
-                 ]),
-                 closer="Now write one fresh, specific claim on the pay-for-grades question that passes all "
-                        "three. Then run the three checks on your own claim to confirm each one passes.")),
+                 checklist_block=checklist(title="Make your new claim pass these three (no need to type answers):",
+                                           rows=["Is the side specific (names an amount or kind)?",
+                                                 "Is there a reason?",
+                                                 "Does it say why it matters (the so-what)?"]),
+                 closer="This draft only reports a fact. Write one specific claim on the pay-for-grades question "
+                        "that takes a side, gives a reason, and reaches the so-what. Run the three checks above "
+                        "before you submit.")),
 
         # ===== INDEPENDENT: autonomy (own side) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write one sharp claim with stakes on paying for grades",

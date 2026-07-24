@@ -209,7 +209,7 @@ LESSON = Lesson(
         Slot("MODEL", "predict_the_fix", "What does this dropped quote most need?",
              bank="phone_ban",
              body=("Diagnose this draft before the reveal. A student wrote: 'Restricting phones is already "
-                   "common. \"76.9 percent.\" Schools agree.' Which single move would most improve how the "
+                   "common. \"76.9 percent.\" Schools agree.' Which change would most improve how the "
                    "quote is used? "
                    "(A) fold the number into a sentence the writer builds and name who reports it, so it does not stand alone  "
                    "(B) add a second number right after the first so the paragraph piles up even more supporting figures  "
@@ -233,21 +233,23 @@ LESSON = Lesson(
                  closer="Fold one quote from the phone source into a single sentence you build, introduce and "
                         "attribute it, and keep it flowing. Do not park the quote as its own fragment. Then run "
                         "the 3-question check.")),
-        # DIAGNOSIS = a CHECK-and-FIX on a PROVIDED weak draft (not a fresh production, so it does not repeat the
-        # supported write). Stays on the taught source = no new source to read (load balance).
-        Slot("MODEL", "diagnosis_frq", "Check a weak draft: is the quote folded in or dropped?",
-             ref="", bank="phone_ban", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act dropped.
+        # Stays on the taught source = no new source to read (load balance). checklist() rows are plain read-only
+        # reminders (no self-answered yes/no fields).
+        Slot("MODEL", "diagnosis_frq", "Fix the dropped quote",
+             ref="", bank="phone_ban", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question check on this weak draft, then rewrite it into a real integrated sentence.",
+                 intro="In the draft below the quoted number sits alone as its own fragment, dropped in with no "
+                       "source named. Rewrite it into one sentence that folds the quote in, names who said it, "
+                       "and flows.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "Schools limit phones. \"90.9 percent\" in 2009-10. Rules were strict.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Is the quote folded into a built sentence?", "No, the number is its own fragment. Weave it into a sentence you build."),
-                     ("Did you name who said it?", "No source is named. Add an attributive tag (who reports it)."),
-                     ("Does it flow?", "No, it is choppy. Fix the first two and it will."),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Is the quote folded into a sentence you built, not sitting alone?",
+                     "Did you name who said it, with an attributive tag?",
+                     "Does it flow, so a reader sees how the quote fits your point?",
                  ]),
-                 closer="Now rewrite the weak draft into one sentence that folds the quote in, names the source, "
-                        "and flows. Then name which question your rewrite fixed.")),
+                 closer="Write one sentence that folds the quote in, names the source, and flows, then run the checks above before you submit.")),
 
         # ===== INDEPENDENT: cold write on the taught source, no frame; autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Integrate a quote on your own",

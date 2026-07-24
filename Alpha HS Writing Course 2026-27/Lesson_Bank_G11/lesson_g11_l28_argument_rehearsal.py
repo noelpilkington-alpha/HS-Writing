@@ -241,17 +241,20 @@ LESSON = Lesson(
                         "task type. Spotting the type and running its moves cold is what every real timed essay is "
                         "built on, and you are ready to do it. Take the time you need.")),
 
-        # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the 3-question check on it,
-        # fixing any line that fails. Same taught prompt (load balance). Self-contained: the checklist is the
-        # scaffold and the grader scores the diagnosis within the item.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written draft (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a
+        # separate graded rewrite, so there is no fresh draft to grade. The checklist is made READ-ONLY (plain-
+        # string rows; the (question, answer) tuple form dropped and each row's conditional guidance folded into one
+        # plain instruction). The slot stays a self-check; scored left as-is; no rewrite invented. Same taught
+        # prompt (load balance).
         Slot("MODEL", "diagnosis_frq", "Check: did the moves match the task type?",
              ref="", bank="sfa_tradition_progress", scored=True,
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Check your own draft, line by line:", rows=[
-                     ("Does the prompt print set perspectives?", "No. The tradition-versus-progress prompt gives a general question and no printed views, so it is source-free, not multi-perspective."),
-                     ("Do the planned moves match that type?", "They match if your draft takes a defensible position and backs it with specific examples. If it instead tries to weigh printed perspectives, there are none here to weigh, so that is the mismatch to fix: switch to the source-free moves."),
-                     ("Are your source-free moves doing the work?", "Check that you take a defensible position on whether progress requires breaking with tradition, then anchor it with specific examples from reading, studies, or experience, rather than leaving the position unsupported."),
+                 checklist_block=checklist(title="Check your own draft against these (no need to type answers):", rows=[
+                     "Does the prompt print set perspectives? The tradition-versus-progress prompt gives a general question and no printed views, so it is source-free, not multi-perspective.",
+                     "Do the planned moves match that type? They match if your draft takes a defensible position and backs it with specific examples. If it instead tries to weigh printed perspectives, there are none here to weigh, so switch to the source-free moves.",
+                     "Are your source-free moves doing the work? Check that you take a defensible position on whether progress requires breaking with tradition, then anchor it with specific examples from reading, studies, or experience, rather than leaving the position unsupported.",
                  ]),
                  closer="For every line that fails on your draft, name what is off in one sentence and make the "
                         "fix. Finish by naming the task type your draft is written for.")),

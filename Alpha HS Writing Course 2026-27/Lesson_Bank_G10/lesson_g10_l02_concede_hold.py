@@ -254,23 +254,27 @@ LESSON = Lesson(
                                          "Although ______ [a real objection], ______ [your position, held] because ______ [a reason]."),
                  closer="Concede a real point AND keep a clear position with a reason. Do not drift into 'both "
                         "sides are right.' Then check it against the 3 questions.")),
-        # DIAGNOSIS = a CHECK-and-FIX exercise on a PROVIDED draft (not a fresh production, so it does not repeat
-        # the framed write). Stays on the taught topic = no new source to read (load balance).
-        Slot("MODEL", "diagnosis_frq", "Check and fix a weak draft with the 3 questions",
-             ref="", bank="daylight_saving", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act
+        # dropped. The old single diagnosis_frq bundled 3 acts in one box (run a 3-question check as pre-answered
+        # (q,a) tuple rows + rewrite + name-your-held-position) - unscoreable, wired to no grader, and the (q,a)
+        # rows leaked the answers. Now the ONLY graded act is the rewrite; the 3 questions sit read-only beneath as
+        # plain-string reminders (the third row's pre-answered guidance folded into the intro as given context);
+        # the name-act tail is deleted. Stays on the taught topic (no new source).
+        Slot("MODEL", "diagnosis_frq", "Fix a weak draft into a concede-and-hold claim",
+             ref="", bank="daylight_saving", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question test on this weak draft, then rewrite it into a real concede-and-hold claim.",
+                 intro="This weak draft concedes a real point but then drifts instead of holding a side, and it "
+                       "gives no reason at all. Rewrite it into one real concede-and-hold claim.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "Although some people like evening light, it is hard to know the best answer.", "red"),
-                 checklist_block=checklist(title="Run the test:", rows=[
-                     ("Did it name a real objection (concede)?", "Yes, evening light is a real point."),
-                     ("After conceding, does it hold a clear side?", "No, 'hard to know' collapses. State a side."),
-                     ("Does the reason answer that objection, not just repeat your side?",
-                      "No. There is no reason yet. Add one that answers the evening-light point, such as morning "
-                      "safety outweighing it."),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Did it name a real objection (concede)?",
+                     "After conceding, does it hold a clear side?",
+                     "Does the reason answer that objection, not just repeat your side?",
                  ]),
-                 closer="Now rewrite the weak draft into one concede-and-hold claim that passes all three. Then "
-                        "name your held position in a few words.")),
+                 closer="Rewrite the weak draft into one concede-and-hold claim that passes all three: concede the "
+                        "evening-light point, hold a clear side, and add a reason that answers it (such as morning "
+                        "safety outweighing it). Run the 3 questions above before you submit.")),
 
         # ===== INDEPENDENT: cold write on the taught topic (only 2 bound frames), no frame, say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a concede-and-hold claim on your own",

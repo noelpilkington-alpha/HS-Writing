@@ -236,16 +236,20 @@ LESSON = Lesson(
                         "and-answer build is what every real cross-text argument is made of, and you are ready "
                         "to do it cold. Take the time you need.")),
 
-        # DIAGNOSIS = self-revision of the student's OWN just-written draft (not a check on a provided weak
-        # draft). Same taught source (load balance). Scaffolded by the 3-row checklist run on their own essay.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written essay (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a
+        # separate graded rewrite, so there is no fresh draft to grade. The checklist is made READ-ONLY (plain-
+        # string rows; the (question, answer) tuple form dropped and each row's conditional guidance folded into
+        # one plain instruction). The slot stays a self-check. scored left as-is; no rewrite invented. Same
+        # taught source (load balance).
         Slot("MODEL", "diagnosis_frq", "Check your essay: woven and answered?",
              ref="", bank="daylight_saving", scored=True,
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Does it state one position the whole SET supports?", "If it is soft like 'the switch is bad' or it leans on one source, sharpen the position and draw on both."),
-                     ("Are both sources woven, not used one at a time?", "If one source runs for several paragraphs on its own, that is single-source. Use both together on a shared point."),
-                     ("Is the strongest objection named and answered?", "If the other side never appears, add one paragraph that concedes its point and answers it."),
+                 checklist_block=checklist(title="Check your own draft against these (no need to type answers):", rows=[
+                     "Does it state one position the whole SET supports? If it is soft like 'the switch is bad' or it leans on one source, sharpen the position and draw on both.",
+                     "Are both sources woven, not used one at a time? If one source runs for several paragraphs on its own, that is single-source. Use both together on a shared point.",
+                     "Is the strongest objection named and answered? If the other side never appears, add one paragraph that concedes its point and answers it.",
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you move on. Finish by "
                         "naming the objection you will answer.")),

@@ -204,23 +204,28 @@ LESSON = Lesson(
                  closer="Pick two choices that push toward the SAME point, name each one, and name the point they "
                         "build together. Do not make one observation and stop. Then run the chain check before "
                         "you submit.")),
-        # DIAGNOSIS = check-and-fix on a PROVIDED weak draft (not a fresh production, so it does not repeat the
-        # supported write). Stays on the taught source = no new reading (load). Uses checklist() so the check
-        # renders as one clean numbered list (no 'Step N' double-numbering).
-        Slot("MODEL", "diagnosis_frq", "Check your analysis: chained, or single-shot?",
-             ref="", bank="recycling", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act
+        # dropped. The old single diagnosis_frq bundled 3 acts in one box (run a chain check as pre-answered (q,a)
+        # tuple rows + rewrite + name-which-question-you-fixed) - unscoreable, wired to no grader, and the (q,a)
+        # tuple rows leaked the answers. The pre-answered diagnosis of the provided draft is folded into the intro
+        # as given context; the ONLY graded act is now the rewrite; the three chain-check questions sit read-only
+        # beneath as plain-string reminders; the name-act tail is deleted. Stays on the taught source.
+        Slot("MODEL", "diagnosis_frq", "Fix a single-shot draft into a device chain",
+             ref="", bank="recycling", rubric_ref="rc.staar", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the chain check on this weak draft, then rewrite it into a passage that chains two of "
-                       "the recycling author's choices toward one point.",
+                 intro="This weak draft is single-shot: it analyzes just one of the author's choices (the opening "
+                       "image), so there is no second choice to build a shared point and no point is named. Rewrite "
+                       "it into a passage that chains two of the recycling author's choices toward one point.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "The author opens with a vivid image of a bottle dropping into the bin.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("How many of the author's choices does it analyze?", "Just one, the opening image. That is single-shot."),
-                     ("Do the choices build one shared point?", "They cannot; there is only one. Add a second choice that builds the same point."),
-                     ("Is that one point named?", "No. After you chain a second choice, name the single point the two build."),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "How many of the author's choices does it analyze?",
+                     "Do the choices build one shared point?",
+                     "Is that one point named?",
                  ]),
-                 closer="Now rewrite the weak draft into a passage that links two choices toward one point. Then "
-                        "name which question your rewrite fixed.")),
+                 closer="Rewrite the weak draft into a passage that links two of the author's choices toward one "
+                        "point: name each choice, then name the single point the two build together. Run the chain "
+                        "check above before you submit.")),
 
         # ===== INDEPENDENT: cold write, no frame + autonomy on which choices + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Write a device-chain paragraph on your own",

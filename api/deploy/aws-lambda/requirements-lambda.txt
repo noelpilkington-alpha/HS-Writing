@@ -1,0 +1,10 @@
+# Lambda runtime deps = the grader's runtime deps + Mangum (ASGI<->Lambda adapter).
+# Mirror of api/requirements.txt plus mangum. Pin at deploy time if reproducibility matters.
+fastapi>=0.110.0
+anthropic>=0.49.0
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+mangum>=0.17.0
+# NOTE: uvicorn is NOT needed on Lambda (Mangum replaces the ASGI server). It stays in api/requirements.txt
+# for the Render/local path. boto3 is NOT needed: the grader is Anthropic-DIRECT (ANTHROPIC_PROVIDER=anthropic),
+# not Bedrock. boto3 is preinstalled in the Lambda runtime anyway if ever needed.

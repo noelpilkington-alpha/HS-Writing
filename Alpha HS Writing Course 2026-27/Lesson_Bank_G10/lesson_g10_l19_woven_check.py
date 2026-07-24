@@ -222,23 +222,34 @@ LESSON = Lesson(
                                          "describes ______, and the ______ Source B describes ______ so ______."),
                  closer="Rewrite the paragraph using the frame. Goal: woven, not a list. Then run the "
                         "woven-or-listed check and fix any answer that is no.")),
-        # DIAGNOSIS = watch the check run on a PROVIDED weak paragraph, then write a fresh one and run it. Same
-        # taught source (load balance). Scaffolded by a checklist run on the weak draft (not a blank "diagnose it").
-        Slot("MODEL", "diagnosis_frq", "Check a fresh multi-source paragraph",
-             ref="", bank="weather", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched woven-or-listed demo (pre-answered (q,a) tuple rows) + a
+        # fresh two-source paragraph + a run-and-name-the-point tail in one box (unscoreable, wired to no grader,
+        # and the (q,a) rows leaked the answers). The coping-model demo is PRESERVED as read-only narration (the
+        # three checks shown running on the weak paragraph, in plain declarative prose). The student's ONLY
+        # graded act is now the fresh woven paragraph; the three checks sit read-only beneath as plain-string
+        # reminders; the run-and-name tail is deleted. Kept as diagnosis_frq (multi_paragraph grain needs an
+        # own-draft diagnosis for model_sequence). Stays on the taught source (load balance).
+        Slot("MODEL", "diagnosis_frq", "Write a woven multi-source paragraph",
+             ref="", bank="weather", rubric_ref="rc.staar", scored=True, unit="multi_paragraph",
              body=frq_prompt(
-                 intro="First watch the check run on a weak paragraph, then run it on one you write.",
-                 setapart_block=setapart("Weak paragraph to check:",
+                 intro="First, watch the woven-or-listed check run on the weak paragraph below. It reports a "
+                       "watch from Source A and a warning from Source B with no shared point tying them; each "
+                       "source gets its own sentence, then a soft 'both are about alerts'; and there is no point "
+                       "that would fall apart if one source were cut, which is the tell that it is a list. A "
+                       "stronger version would build ONE point both sources support, connected in the same "
+                       "sentences. Now write a fresh paragraph of your own that weaves them.",
+                 setapart_block=setapart("Weak paragraph the check was run on:",
                                          "Source A says the agency issues watches. Source B says the agency "
                                          "issues warnings. Both are about alerts.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Is there ONE point both sources build?", "No. It reports a watch from A and a warning from B, with no shared point tying them."),
-                     ("Are the sources connected in the same sentences?", "No. Each source gets its own sentence, then a soft 'both are about alerts.'"),
-                     ("Would the point fall apart if one source were cut?", "There is no point to fall apart, which is the tell that this is a list."),
+                 checklist_block=checklist(title="Check your paragraph against these (no need to type answers):", rows=[
+                     "Is there ONE point both sources build?",
+                     "Are the sources connected in the same sentences?",
+                     "Would the point fall apart if one source were cut (the test that it is truly woven)?",
                  ]),
-                 closer="Now write a fresh two-source paragraph on weather that WEAVES the sources into one "
-                        "point, then run the same three checks and fix any that fail. Finish by naming the one "
-                        "point your paragraph builds.")),
+                 closer="Write a fresh two-source paragraph on weather that WEAVES the sources into one point, "
+                        "connecting a fact from each in the same sentences so the point rests on both. Run the "
+                        "three checks above before you submit.")),
 
         # ===== INDEPENDENT: revise a listed paragraph with no frame (say-the-standard) =====
         Slot("INDEPENDENT", "production_frq", "Revise a listed paragraph on your own",

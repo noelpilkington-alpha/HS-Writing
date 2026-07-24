@@ -196,20 +196,33 @@ LESSON = Lesson(
                                          "[set up what to notice], \"[a short quoted phrase]\", [interpret what it does]."),
                  closer="Write ONE sentence that uses a TRIMMED Douglass quote, framed before and after. Quote "
                         "only the load-bearing phrase, not a long passage. Then run the 3-question check on it.")),
-        Slot("MODEL", "diagnosis_frq", "Check a weak quote, then write a strong one",
-             ref="", bank="douglass_1852", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched 3-question check demo (pre-answered (q,a) tuple rows) + a
+        # fresh sentence + a run-and-name tail in one box (unscoreable, wired to no grader, the (q,a) rows leaked
+        # the answers). The coping-model demo is PRESERVED as read-only narration (the three checks shown running
+        # on the weak draft, in plain declarative prose). The student's ONLY graded act is now the fresh
+        # trimmed-and-framed sentence; the three checks sit read-only beneath as plain-string reminders; the
+        # run-and-name tail is deleted. Kept at the sentence grain of its own fresh write (a diagnosis_frq is
+        # present, which model_sequence needs at this lesson's paragraph grain). Stays on the taught source.
+        Slot("MODEL", "diagnosis_frq", "Write a strong trimmed-and-framed quote sentence",
+             ref="", bank="douglass_1852", rubric_ref="rc.4trait", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Watch the 3-question check run on a weak draft, then write a fresh sentence and run the "
-                       "same check.",
-                 setapart_block=setapart("Weak draft to check:",
+                 intro="First, watch the 3-question check run on the weak draft below. It is not trimmed to a "
+                       "load-bearing phrase: there is no real quote, so nothing is pulled out. It is not set up: "
+                       "there is no lead-in saying what to notice. And it is not interpreted: 'very meaningful' is "
+                       "a flat label rather than a statement of what the phrase actually does. A stronger version "
+                       "would quote one short phrase, set it up, and interpret it. Now write a fresh sentence of "
+                       "your own that does not fall short that way.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                                          "Douglass says a lot about freedom in this long passage, which is very meaningful.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Trimmed to a load-bearing phrase?", "No. There is no real quote and nothing is trimmed. Quote one short phrase."),
-                     ("Set up before the quote?", "No. Add a lead-in that says what to notice."),
-                     ("Interpreted after the quote?", "No. 'Very meaningful' is a flat label. Say what the phrase actually does."),
+                 checklist_block=checklist(title="Check your sentence against these (no need to type answers):", rows=[
+                     "Trimmed to a load-bearing phrase?",
+                     "Set up before the quote?",
+                     "Interpreted after the quote?",
                  ]),
-                 closer="Now write a fresh trimmed-and-framed sentence of your own on the Douglass excerpt. For "
-                        "each 'no' above, apply the fix. Finish by naming the exact phrase you quoted.")),
+                 closer="Write ONE fresh trimmed-and-framed sentence of your own on the Douglass excerpt: quote a "
+                        "short load-bearing phrase, set it up, and interpret what it does. Run the three checks "
+                        "above before you submit.")),
         Slot("INDEPENDENT", "production_frq", "Trim and frame quotes in a full paragraph",
              ref="", bank="douglass_1852", rubric_ref="rc.4trait", scored=True, unit="paragraph", frq_type="writing",
              body=frq_prompt(

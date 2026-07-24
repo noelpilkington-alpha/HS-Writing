@@ -237,21 +237,32 @@ LESSON = Lesson(
                                          "The sources agree that ______, but they clash on ______ so the real disagreement is about ______."),
                  closer="State where the sources agree, where they conflict, and the real issue underneath. Do "
                         "not just report each source in turn.")),
-        # DIAGNOSIS = check-and-fix on a PROVIDED weak draft (not a fresh production), so it does not repeat the
-        # supported write. Same taught source (load balance). Scaffolded by a checklist run on the weak draft.
-        Slot("MODEL", "diagnosis_frq", "Check your synthesis: relationship named, or just listed?",
-             ref="", bank="congestion_pricing", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), watch-then-do: demo preserved, produce is the graded
+        # act. The old diagnosis_frq bundled a watched relationship-check demo (pre-answered (q,a) tuple rows) +
+        # a fresh sentence + a run-and-name-the-real-issue tail in one box (unscoreable, wired to no grader, and
+        # the (q,a) rows leaked the answers). The coping-model demo is PRESERVED as read-only narration (the
+        # three relationship checks shown running on the weak draft, in plain declarative prose). The student's
+        # ONLY graded act is now the fresh sentence; the three checks sit read-only beneath as plain-string
+        # reminders; the run-and-name tail is deleted. Stays on the taught source (load balance).
+        Slot("MODEL", "diagnosis_frq", "Name the relationship, do not just list the sides",
+             ref="", bank="congestion_pricing", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="First watch the check run on a weak draft, then run it on a fresh sentence of your own.",
-                 setapart_block=setapart("Weak draft to fix:",
+                 intro="First, watch the relationship check run on the weak draft below. It names no point the "
+                       "sources AGREE on, only that one is for tolls and one is against; 'for and against' is not "
+                       "a specific CLASH; and it never pinpoints the real disagreement. A stronger version would "
+                       "name the shared point (both accept downtown congestion is a real problem), the exact "
+                       "clash (who pays), and the real issue underneath (fairness, not whether tolls work). Now "
+                       "write a fresh sentence of your own that names all three.",
+                 setapart_block=setapart("Weak draft the check was run on:",
                                          "One source is for tolls and one is against.", "red"),
-                 checklist_block=checklist(title="Run the relationship check:", rows=[
-                     ("Does it name where the sources AGREE?", "No. It only says one is for and one is against. Add the point both accept (for example, that downtown congestion is a real problem)."),
-                     ("Does it name where they CLASH?", "No. 'For and against' is not a specific point. Name the exact clash (for example, who pays)."),
-                     ("Is the real disagreement pinpointed?", "No. Add it (for example, that the real issue is fairness, not whether tolls work)."),
+                 checklist_block=checklist(title="Check your sentence against these (no need to type answers):", rows=[
+                     "Does it name where the sources AGREE?",
+                     "Does it name where they CLASH (a specific point, not just for-and-against)?",
+                     "Is the real disagreement underneath pinpointed?",
                  ]),
-                 closer="Now write a fresh sentence naming the agreement and the tension in the congestion set, "
-                        "run the same three checks, and fix any that fail. Finish by naming that real issue.")),
+                 closer="Write ONE fresh sentence about the congestion-pricing set that names where the sources "
+                        "agree, names the exact point where they clash, and pinpoints the real issue underneath. "
+                        "Run the three checks above before you submit.")),
 
         # ===== INDEPENDENT: name the relationship on your own (no frame) + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Name agreement and tension on your own",

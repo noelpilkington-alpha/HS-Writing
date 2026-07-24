@@ -243,14 +243,19 @@ LESSON = Lesson(
         # DIAGNOSIS = self-revision: reread your OWN just-written draft and run the three-question check on it,
         # fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written synthesis essay (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write),
+        # not a separate graded rewrite, so there is no fresh draft to grade. The checklist is made READ-ONLY
+        # (plain-string rows; the (question, answer) tuple form dropped and each row's conditional guidance folded
+        # into one plain instruction). The slot stays a self-check. scored left as-is; no rewrite invented.
         Slot("MODEL", "diagnosis_frq", "Check your own synthesis: woven, situated, tension held?",
              ref="", bank="water_competing_uses", scored=True,
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Is there ONE woven argument with sources weighted?", "If it just says the sources agree (like 'all three say water matters'), that is summary, not a weave with weights. Assign each point to the source that carries it and weight them."),
-                     ("Is the claim situated in a larger question?", "If the claim stands alone with no larger frame, name the broader question this claim is one case of, so the reader sees the stakes."),
-                     ("Is the tension held rather than flattened?", "If it ends flat (like a plain call to 'conserve'), name the conflict (cutting either use starves the other) and reason from it to a real position."),
+                 checklist_block=checklist(title="Check your own draft against these (no need to type answers):", rows=[
+                     "Is there ONE woven argument with sources weighted? If it just says the sources agree (like 'all three say water matters'), that is summary, not a weave with weights. Assign each point to the source that carries it and weight them.",
+                     "Is the claim situated in a larger question? If the claim stands alone with no larger frame, name the broader question this claim is one case of, so the reader sees the stakes.",
+                     "Is the tension held rather than flattened? If it ends flat (like a plain call to 'conserve'), name the conflict (cutting either use starves the other) and reason from it to a real position.",
                  ]),
                  closer="For every row that fails on your draft, name the gap in one line and make the fix. "
                         "Finish by naming the larger question your synthesis answers.")),

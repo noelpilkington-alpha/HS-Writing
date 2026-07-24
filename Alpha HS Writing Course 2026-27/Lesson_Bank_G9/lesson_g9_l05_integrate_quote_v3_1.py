@@ -229,23 +229,46 @@ LESSON = Lesson(
                                          "According to ______ [name the source], ______ [the fact, quoted in exact words or put in your own words]."),
                  closer="Bring in one real fact from the reading and name its source with an attributive tag. "
                         "Do not drop the fact in with no source. Then check your sentence against the 3 questions.")),
-        # DIAGNOSIS = a CHECK-and-FIX on a PROVIDED weak draft (not a fresh production). Stays on the taught
-        # source (no new source to read). Rebuilt with frq_prompt + setapart(red) + checklist so the check is a
-        # real <ol>, not "Step 1 / Step 2" prose that double-numbers in the render.
-        Slot("MODEL", "diagnosis_frq", "Check and fix a weak draft with the 3 questions",
-             ref="", bank="school_lunch", scored=True,
+        # COUNCIL FIX (2026-07-24): Option B (first-in-arc). Graded recognition + graded fresh-draft rewrite; name-act dropped.
+        Slot("MODEL", "discrimination", "Diagnose the draft: which check does it fail?",
+             ref="", labeled_grade_c=True, bank="school_lunch",
+             body=("A student wrote this draft, using a fact from the reading: 'Free or reduced-price meals "
+                   "reach students under 185 percent of the poverty line. This helps a lot of families.' Run "
+                   "the 3 questions on it. Exactly one comes back no. Which check does this draft fail? "
+                   "(A) It never names who said it, so a reader cannot tell where the figure comes from.  "
+                   "(B) It quotes the source's exact words in a spot where a paraphrase would have been the better choice.  "
+                   "(C) The 185 percent figure it uses is not actually stated anywhere in the source reading.  "
+                   "(D) It already passes all three checks, so this piece of evidence is ready to submit as is. "
+                   "Correct: A. The fact is a paraphrase in the writer's own words and the 185 percent figure "
+                   "really is in the reading, so the only check it fails is naming the source."),
+             choices=[
+                 {"id": "A", "text": "It never names who said it, so a reader cannot tell where the figure comes from.",
+                  "correct": True,
+                  "why": "Correct. The fact is a paraphrase in the writer's own words, and the 185 percent figure really is in the reading, so the only check this draft fails is naming the source. Add an attributive tag like 'According to the National Center for Education Statistics.'"},
+                 {"id": "B", "text": "It quotes the source's exact words in a spot where a paraphrase would have been the better choice.",
+                  "correct": False,
+                  "why": "The draft is a paraphrase in the writer's own words, with no quotation marks, so it does not quote at all. Paraphrasing this fact is a fine choice; the missing piece is the source."},
+                 {"id": "C", "text": "The 185 percent figure it uses is not actually stated anywhere in the source reading.",
+                  "correct": False,
+                  "why": "The reading does give this figure: family income under 185 percent of the poverty line is the cutoff for free or reduced-price meals. The fact checks out, so this is not the failing check."},
+                 {"id": "D", "text": "It already passes all three checks, so this piece of evidence is ready to submit as is.",
+                  "correct": False,
+                  "why": "It does not pass all three. It never names who said it, so a reader has no reason to trust the number. Naming the source is the check it fails."},
+             ]),
+        Slot("MODEL", "production_frq", "Now fix a draft: add what is missing",
+             ref="", bank="school_lunch", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question test on this weak draft, then rewrite it so the evidence is ready.",
+                 intro="Now fix a different draft. Rewrite this weak draft into one sentence that brings the fact "
+                       "in and names who said it, so the number no longer floats with no source.",
                  setapart_block=setapart("Weak draft to fix:",
-                                         "Free or reduced-price meals reach students under 185 percent of the poverty line. This helps a lot of families.",
+                                         "The program is huge. It served more than 4.8 billion lunches in a recent year. That really shows its size.",
                                          "red"),
-                 checklist_block=checklist(title="Run the test:", rows=[
-                     ("Did the writer name who said it?", "No, the fact is dropped in with no source. Add an attributive tag naming who reported it."),
-                     ("Did the writer choose quote, paraphrase, or summarize on purpose?", "It is a paraphrase (the writer's own words, no quotation marks), so that choice is fine, it just needs its source named."),
-                     ("Is the fact really in the source?", "Yes, the 185 percent figure is in the reading."),
+                 checklist_block=checklist(title="Check your rewrite against these (no need to type answers):", rows=[
+                     "Did you name who said it, with an attributive tag?",
+                     "Did you choose to quote the exact words or put the fact in your own words on purpose?",
+                     "Is the fact really in the source?",
                  ]),
-                 closer="Now rewrite the weak draft into one sentence that names its source. Then name which "
-                        "question your rewrite fixed.")),
+                 closer="Rewrite it into one sentence that names its source, then run the checks above before you submit.")),
 
         # ===== INDEPENDENT: cold write on the taught source + autonomy + say-the-standard =====
         Slot("INDEPENDENT", "production_frq", "Bring in evidence and name its source, on your own",

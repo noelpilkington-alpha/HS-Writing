@@ -236,16 +236,19 @@ LESSON = Lesson(
                         "what every real analysis essay is built on, and you are ready to do it cold. Take the "
                         "time you need.")),
 
-        # DIAGNOSIS = self-revision of the student's OWN just-written draft (not a check on a provided weak
-        # draft). Same taught source (load balance). Scaffolded by the 3-row checklist run on their own essay.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written essay (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a
+        # separate graded rewrite, so there is no fresh draft to grade. The checklist is made READ-ONLY (plain-
+        # string rows, the (question, answer) tuple form dropped; each row's own conditional guidance folded in) and
+        # the slot stays a self-check. scored left as-is; no rewrite invented. Same taught source (load balance).
         Slot("MODEL", "diagnosis_frq", "Check your essay: a claim about craft, not a summary?",
              ref="", bank="story_of_an_hour", scored=True,
              body=frq_prompt(
-                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Is the thesis a claim about a choice the author makes?", "If it rates the story or summarizes the plot, name what Chopin does on purpose and to what end, such as pairing the news of the death with spring imagery."),
-                     ("Is each device a real authorial choice, not an event?", "If a line just reports something that happens, name the device instead: the spring imagery, the irony of grief turning to relief, or the repetition of the word free."),
-                     ("Is an effect tied to each device?", "If a device sits there unexplained, say what it makes the reader feel or realize, then add a warrant on why it matters."),
+                 intro="Reread the essay you just wrote and run this checklist on YOUR draft, fixing any line that fails.",
+                 checklist_block=checklist(title="Check your own draft against these (no need to type answers):", rows=[
+                     "Is the thesis a claim about a choice the author makes? If it rates the story or summarizes the plot, name what Chopin does on purpose and to what end, such as pairing the news of the death with spring imagery.",
+                     "Is each device a real authorial choice, not an event? If a line just reports something that happens, name the device instead: the spring imagery, the irony of grief turning to relief, or the repetition of the word free.",
+                     "Is an effect tied to each device? If a device sits there unexplained, say what it makes the reader feel or realize, then add a warrant on why it matters.",
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you submit. Finish by "
                         "naming which part your essay still needs most.")),

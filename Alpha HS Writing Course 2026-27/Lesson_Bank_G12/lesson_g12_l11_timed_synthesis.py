@@ -236,22 +236,26 @@ LESSON = Lesson(
                         "finished. Pacing a whole synthesis end to end is what every real synthesis writing task is built "
                         "on, and you are ready to do it cold. Take the time you need.")),
 
-        # DIAGNOSIS = self-revision: reread your OWN just-written synthesis and run the 3-question pacing check on
-        # it, fixing any line that fails. Same taught source (load balance). Self-contained: the checklist is the
-        # scaffold and the grader scores the diagnosis within the item.
-        Slot("MODEL", "diagnosis_frq", "Check your own synthesis: paced and woven?",
-             ref="", bank="ai_workforce_synthesis", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). Was a bundle: mark a 3-question pacing check (as
+        # pre-answered (q,a) tuple rows) + revise the draft + name the argument, all in one graded box (the (q,a)
+        # rows leaked answers and could not be scored). Now ONE graded act (revise your own synthesis essay); the
+        # checks print READ-ONLY beneath as plain strings; the reading-cap process line moved into the intro (it is
+        # a next-time note, not a fix to this draft); the "name the one argument" tail is dropped. unit/frq_type/
+        # rubric_ref added to declare the essay grain. NOTE: structurally near-identical to L09/L10 (self-revision
+        # on the own just-written essay); treated as Option A per the arc classification (rewrite_plus_name).
+        Slot("MODEL", "diagnosis_frq", "Revise your synthesis: one woven argument, a real conclusion",
+             ref="", bank="ai_workforce_synthesis", rubric_ref="rc.4trait", scored=True, unit="essay", frq_type="writing",
              body=frq_prompt(
-                 intro="Reread the essay you just wrote. Run this checklist on YOUR draft.",
-                 checklist_block=checklist(title="Check your own draft, line by line:", rows=[
-                     ("Did your reading stay capped to a share of your window?", "If you read every source to the bottom and ran low on time, note it: cap the reading sooner on your next write so there is time to weave."),
-                     ("Is there ONE woven argument with a source assigned to each point?", "If it reads as a source-by-source survey, name one argument the set builds and assign each point to the source that carries it best."),
-                     ("Does the essay reach a real conclusion that lands the upshot?", "If it stops mid-thought or just restates the claim, add an ending that states what the whole argument adds up to."),
+                 intro="Reread the synthesis essay you just wrote on the AI-workforce set, then revise it. If your "
+                       "reading ate most of the window and left little time to weave, note that for your next write, "
+                       "and repair the draft you have now.",
+                 checklist_block=checklist(title="Make your revision pass these (no need to type answers):", rows=[
+                     "Is there ONE woven argument, with a source assigned to each point (not a source-by-source survey)?",
+                     "Does the essay reach a real conclusion that lands the upshot, not stop mid-thought or restate the claim?",
                  ]),
-                 closer="For the two lines about the draft itself (the woven argument and the conclusion), name what "
-                        "is off in one sentence and fix it now. The reading cap is about your process, not a line "
-                        "you can rewrite, so note what to adjust on your next write. Finish by naming the one "
-                        "argument the set builds.")),
+                 closer="Revise the draft so it reads as one woven, weighted argument that assigns each point to the "
+                        "source that carries it, and add a conclusion that states what the whole argument adds up "
+                        "to. Check your revision against the two points above before you submit.")),
     ],
 )
 

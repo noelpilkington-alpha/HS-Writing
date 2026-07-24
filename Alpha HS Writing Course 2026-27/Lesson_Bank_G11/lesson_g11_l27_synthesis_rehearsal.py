@@ -235,14 +235,20 @@ LESSON = Lesson(
         # cannot be fixed in a finished draft, so it reframes as a metacognitive adjustment for the NEXT write.
         # Same taught source (load balance). Self-contained: the checklist is the scaffold and the grader scores
         # the diagnosis within the item.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written synthesis (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a
+        # separate graded rewrite, so there is no fresh draft to grade. The checklist is made READ-ONLY (plain-
+        # string rows; the (question, answer) tuple form dropped and each row's conditional guidance folded into one
+        # plain instruction). The slot stays a self-check; scored left as-is; no rewrite invented. Same taught
+        # source (load balance).
         Slot("MODEL", "diagnosis_frq", "Check your own synthesis: woven and weighted?",
              ref="", bank="renewable_grid_synthesis", scored=True,
              body=frq_prompt(
                  intro="Reread the synthesis you just wrote and run this check on YOUR draft.",
-                 checklist_block=checklist(title="Check your own draft, line by line:", rows=[
-                     ("Did planning and checking get protected minutes, or did the window go entirely to reading and drafting?", "If they got squeezed out, that is a process fix: on your NEXT synthesis, split the window into read, plan, draft, and check first, and protect the plan and check minutes."),
-                     ("Does your draft build ONE argument the whole set supports, not a summary of each source in turn?", "If it walks through the sources one at a time, name one argument (such as whether the grid can go mostly renewable and on what condition) and rebuild the draft around it."),
-                     ("Is each source pulled in at the point it best carries?", "If a source just sits in its own equal paragraph, tag each point with the source that best supports it and weave that source in where it carries the most weight."),
+                 checklist_block=checklist(title="Check your own draft against these (no need to type answers):", rows=[
+                     "Did planning and checking get protected minutes, or did the window go entirely to reading and drafting? If they got squeezed out, that is a process fix: on your NEXT synthesis, split the window into read, plan, draft, and check first, and protect the plan and check minutes.",
+                     "Does your draft build ONE argument the whole set supports, not a summary of each source in turn? If it walks through the sources one at a time, name one argument (such as whether the grid can go mostly renewable and on what condition) and rebuild the draft around it.",
+                     "Is each source pulled in at the point it best carries? If a source just sits in its own equal paragraph, tag each point with the source that best supports it and weave that source in where it carries the most weight.",
                  ]),
                  closer="Fix the two substance lines (one argument, and each source weighted to the point it "
                         "carries) in your draft now. The timing line cannot be fixed in a finished draft, so use "

@@ -217,21 +217,27 @@ LESSON = Lesson(
                                          "This ______ [a noun that names what 'this' points to] is what makes migration so hard."),
                  closer="Add a noun after 'this' that names exactly what it points to (the three challenges), and "
                         "keep the meaning. Then run the 3-question check before you submit.")),
-        # DIAGNOSIS = run the check on a PROVIDED weak draft, then rewrite it (not a fresh production, so it does
-        # not repeat the Finish write). Stays on the taught topic = no new source to read (load balance).
-        Slot("MODEL", "diagnosis_frq", "Check and fix a weak draft with the 3 questions",
-             ref="", bank="animal_migration", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). One graded rewrite; checks read-only beneath; name-act dropped.
+        # The old diagnosis_frq bundled a self-answered 3-question check + a rewrite + a name-which-question tail in
+        # one box (unscoreable, wired to no grader). Now: ONE graded rewrite of the provided weak draft; the checks
+        # are plain read-only reminders (no self-answered yes/no fields); the name-act is deleted. Stays on the
+        # taught topic = no new source to read (load balance).
+        Slot("MODEL", "diagnosis_frq", "Fix a weak draft: anchor the vague reference",
+             ref="", bank="animal_migration", rubric_ref="rc.staar", scored=True, unit="sentence", frq_type="writing",
              body=frq_prompt(
-                 intro="Run the 3-question check on this weak draft, then rewrite it so the reference is anchored.",
+                 intro="In the draft below the reference 'This' points to nothing clear: it could mean the "
+                       "deserts, the oceans, or the mountains. Rewrite it into one sentence whose reference names "
+                       "exactly what it points to.",
                  setapart_block=setapart("Weak draft to fix:",
                                          "Birds cross deserts, oceans, and mountains on one trip. This is why the route is so risky.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("Is there a back-reference (this, that, or it)?", "Yes, 'This.'"),
-                     ("Does it point to one clear thing?", "No. It could mean the deserts, the oceans, or the mountains, so anchor it."),
-                     ("What noun would name it?", "Something like 'This long chain of obstacles.'"),
+                 checklist_block=checklist(title="Make your rewrite pass these (no need to type answers):", rows=[
+                     "Does your rewrite still open with the back-reference (this, that, or it)?",
+                     "Does the reference now point to one clear thing?",
+                     "Did you add a noun after it that names exactly what it points to?",
                  ]),
-                 closer="Now rewrite the weak draft into one sentence whose reference names exactly what it points "
-                        "to. Then name which question your rewrite fixed.")),
+                 closer="Add a noun after the reference that names the exact thing it stands for (the whole run "
+                        "of obstacles), and keep the meaning. Write one sentence, and run the checks above before "
+                        "you submit.")),
 
         # ===== INDEPENDENT: cold edit on the taught topic + say-the-standard (Yeager) =====
         Slot("INDEPENDENT", "production_frq", "Fix a vague reference on your own",

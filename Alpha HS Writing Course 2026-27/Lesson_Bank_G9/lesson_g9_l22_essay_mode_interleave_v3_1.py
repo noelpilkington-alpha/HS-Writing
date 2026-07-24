@@ -226,19 +226,21 @@ LESSON = Lesson(
                         "an argument thesis for an explain task. Then run the verb check.")),
         # DIAGNOSIS = check-and-fix on a PROVIDED plan (not a fresh production). Stays on the taught topic (no new
         # source to read). Scaffolded with a checklist + a set-apart weak plan (model_before_required).
-        Slot("MODEL", "diagnosis_frq", "Check a plan: does the thesis match the verb?",
-             ref="", bank="photosynthesis", scored=True,
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc). Was a bundle: pre-answered check + rewrite + name.
+        # Now ONE graded act (the thesis rewrite); checks print READ-ONLY beneath; the mode context moves into
+        # the intro (it is given context, not a check to mark); "name which check" dropped.
+        Slot("MODEL", "diagnosis_frq", "Fix a plan's thesis to match the verb", ref="", bank="photosynthesis",
+             scored=True, unit="sentence", frq_type="writing", rubric_ref="rc.staar",
              body=frq_prompt(
-                 intro="Run the verb check on this weak plan, then rewrite its thesis into the right mode.",
+                 intro="The verb here calls for EXPLAIN, so this plan needs an informational thesis: a focusing "
+                       "thesis with no side. Rewrite the weak thesis into the right mode.",
                  setapart_block=setapart("Weak plan thesis to fix:",
                                          "Plants are amazing and we should protect them.", "red"),
-                 checklist_block=checklist(title="Run the check:", rows=[
-                     ("What mode does the verb call for?", "Explain, so an informational essay: a focusing thesis with no side."),
-                     ("Does the thesis match that mode?", "No, it takes a side (should protect them). Drop the side."),
-                     ("Does it set a focus that previews the parts?", "No. Set the focus and name the inputs and outputs."),
-                 ]),
-                 closer="Now rewrite the thesis into one controlling idea that fits an explain essay, then name "
-                        "which check your rewrite fixed.")),
+                 checklist_block=checklist(title="Make your new thesis pass these (no need to type answers):",
+                                           rows=["Does the thesis match the explain mode (no side)?",
+                                                 "Does it set a focus that previews the parts?"]),
+                 closer="Write one controlling idea that fits an explain essay: a focusing thesis, no side, that "
+                        "previews the parts. Run the checks above before you submit.")),
 
         # ===== INDEPENDENT: no frame; autonomy + say-the-standard (Yeager). Explain task, photosynthesis. =====
         Slot("INDEPENDENT", "production_frq", "Choose the mode and plan the thesis (photosynthesis)",

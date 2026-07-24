@@ -249,14 +249,20 @@ LESSON = Lesson(
         # DIAGNOSIS = self-revision: reread your OWN just-written essay and run the three-question checklist on it,
         # fixing any line that fails. Same taught bank (load balance). Self-contained: the checklist is the
         # scaffold and the grader scores the diagnosis within the item.
+        # COUNCIL FIX (2026-07-24): Option A (later-in-arc), check-only: this is a self-check on the student's OWN
+        # just-written essay (a calibration/self-revision scaffold that runs AFTER the INDEPENDENT write), not a
+        # separate graded rewrite, so there is no fresh draft to grade. The checklist is made READ-ONLY (plain-
+        # string rows; the (question, answer) tuple form dropped and each row's conditional guidance folded into
+        # one plain instruction). The slot stays a self-check. scored left as-is; no rewrite invented. Same taught
+        # source (load balance).
         Slot("MODEL", "diagnosis_frq", "Check your own multi-perspective essay",
              ref="", bank="mp_public_space", scored=True,
              body=frq_prompt(
                  intro="Reread the essay you just wrote. Run this checklist on YOUR draft and fix any line that fails.",
-                 checklist_block=checklist(title="Check your own draft, row by row:", rows=[
-                     ("Is the position a real stance, not 'it is complicated'?", "If it only says the issue is complicated or takes no side, commit to one position someone could reject."),
-                     ("Does each body paragraph WEIGH a perspective (concede, limit, advance)?", "If a paragraph only explains the view, rebuild it to concede what it gets right, name its limit, and advance your position."),
-                     ("Does every paragraph push the same position?", "If any paragraph drifts to a different stance, align them all to push the one position."),
+                 checklist_block=checklist(title="Check your own draft against these (no need to type answers):", rows=[
+                     "Is the position a real stance, not 'it is complicated'? If it only says the issue is complicated or takes no side, commit to one position someone could reject.",
+                     "Does each body paragraph WEIGH a perspective (concede, limit, advance)? If a paragraph only explains the view, rebuild it to concede what it gets right, name its limit, and advance your position.",
+                     "Does every paragraph push the same position? If any paragraph drifts to a different stance, align them all to push the one position.",
                  ]),
                  closer="For every row that fails on your draft, fix it in the essay before you move on. Finish by "
                         "naming which part your essay still needs most.")),
