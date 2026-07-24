@@ -27,12 +27,52 @@ _MASTERY_MOD = {"G9": "mastery_prompts_g9", "G10": "mastery_prompts_g10",
                 "G11": "mastery_prompts_g11", "G12": "mastery_prompts_g12"}
 
 
-def _authored(grade):
+# OPT-IN quick-bank overlay: when PP100_QUICK_BANK_DEPTH is set (env, an int >= 2), _authored applies the
+# conservative depth-N auto-bank generator (pp100_autobank) on top of the hand-authored MASTERY entries -
+# extending safely-swappable lessons to depth N and leaving source-specific / already-multi-form lessons
+# untouched. UNSET (default) => hand-authored entries only, byte-identical to today (prod path is unaffected
+# unless the operator explicitly opts in). This is the single choke point both the pusher and assembler read,
+# so the overlay reaches them without editing the 4 mastery_prompts_g{N} files.
+import os as _os
+
+
+def _raw_authored(grade):
     try:
         mod = importlib.import_module(_MASTERY_MOD[grade])
         return getattr(mod, "MASTERY", {})
     except Exception:
         return {}
+
+
+def _authored(grade):
+    raw = _raw_authored(grade)
+    depth_env = _os.environ.get("PP100_QUICK_BANK_DEPTH", "").strip()
+    if not depth_env:
+        return raw
+    try:
+        depth = int(depth_env)
+    except ValueError:
+        return raw
+    if depth < 2:
+        return raw
+    # apply the generator per lesson; needs the lesson object (for taught sources) + its indep slot
+    import pp100_autobank as _AB
+    from g9_push_dryrun import STIM as _STIM
+    out = dict(raw)
+    for _lid, _slot, _prompt, _L in mastery_targets_raw(grade):
+        if _slot is None:
+            continue
+        entry = raw.get(_lid, {}) or {}
+        taught = {getattr(s, "ref", "") for s in _L.slots
+                  if s.kind == "stimulus_display" and getattr(s, "ref", "")}
+        forms, _skip = _AB.build_quick_bank(grade, _lid, entry, _slot, taught, _STIM, depth=depth)
+        if len(forms) > 1:
+            # promote to a forms[] entry (grain/rubric/frq lifted to entry level; sources+prompts per form)
+            out[_lid] = {"unit": forms[0].get("unit"), "rubric_ref": forms[0].get("rubric_ref"),
+                         "frq_type": forms[0].get("frq_type", "writing"),
+                         "forms": [{"source": f.get("source"), "prompt_html": f.get("prompt_html")}
+                                   for f in forms]}
+    return out
 
 
 def _indep_slot(L):
@@ -106,6 +146,23 @@ def in_lesson_writes(L):
             role = getattr(s, "role", "") or ""
             label = _ROLE_LABEL.get(role, role or s.kind)
             out.append((label, s.title or "Write", inner))
+    return out
+
+
+def mastery_targets_raw(grade):
+    """[(lesson_id, indep_slot, None, L)] for a grade - lessons + indep slots WITHOUT the _authored overlay.
+    Used by the quick-bank overlay inside _authored (avoids recursion) and anywhere only the lesson objects
+    are needed. prompt_html is None here (the overlay does not need it)."""
+    subdir, pat = _GRADE_GLOB[grade]
+    out = []
+    for f in sorted(glob.glob(os.path.join(ROOT, subdir, pat))):
+        if "_deprecated" in f:
+            continue
+        m = _load(f)
+        L = getattr(m, "LESSON", None) or (getattr(m, "LESSONS", [None]) or [None])[0]
+        if not L:
+            continue
+        out.append((L.id, _indep_slot(L), None, L))
     return out
 
 
